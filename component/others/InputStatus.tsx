@@ -4,9 +4,10 @@ import { AttentionSeeker } from "react-awesome-reveal";
 import DoneAllOutlinedIcon from "@mui/icons-material/DoneAllOutlined";
 import PriorityHighOutlinedIcon from "@mui/icons-material/PriorityHighOutlined";
 
-import { IInputStatus } from "@interface/components/others/inputStatus";
+// import { IInputStatus } from "@interface/components/others/inputStatus";
 
-const InputStatus = (props: IInputStatus) => {
+// const InputStatus = (props: IInputStatus) => {
+const InputStatus = (props: any) => {
   const [visible, setVisible] = useState(props.status);
 
   useEffect(() => {
