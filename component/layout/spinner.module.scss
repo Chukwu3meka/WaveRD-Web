@@ -1,0 +1,55 @@
+@import "@source/scss/index.scss";
+
+.loading {
+  position: absolute;
+  top: 0;
+  background: #fff;
+  z-index: 1000000000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100vh;
+  @include quickFlex();
+  overflow: hidden;
+  & > svg {
+    position: absolute;
+  }
+  & > div {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: shine 1.5s infinite linear;
+  }
+}
+
+@keyframes shine {
+  0% {
+    width: 10px;
+    height: 10px;
+  }
+  15% {
+    width: 20px;
+    height: 20px;
+  }
+  30% {
+    width: 40px;
+    height: 40px;
+  }
+  50% {
+    width: 60px;
+    height: 60px;
+  }
+  70% {
+    width: 40px;
+    height: 40px;
+  }
+  85% {
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    width: 10px;
+    height: 10px;
+  }
+}

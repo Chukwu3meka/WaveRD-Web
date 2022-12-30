@@ -1,0 +1,44 @@
+@import "@source/scss/index.scss";
+
+@mixin header($color) {
+  border-top: 7px solid $color;
+  & > p:nth-of-type(1) {
+    color: darken($color: $color, $amount: 10);
+  }
+  & > div:nth-of-type(1) > span {
+    color: lighten($color: $color, $amount: 5);
+  }
+}
+
+.header {
+  @include quickFlex($justify: space-between, $align: stretch, $width: calc(100% - 200px));
+  padding: 10px;
+  gap: 20px;
+  & > div {
+    overflow: hidden;
+    border-radius: 5px;
+    @include quickFlex($dir: column, $justify: space-between, $align: flex-start, $width: 100%);
+    background-image: radial-gradient(circle at right, rgb(206, 195, 195), #fff 200%);
+
+    & > div:nth-of-type(1) {
+      @include quickFlex($justify: space-between, $width: 100%);
+    }
+  }
+
+  & > .purple {
+    @include header($color: #7f7cb3);
+  }
+  & > .green {
+    @include header($color: #3b8676);
+  }
+  & > .gold {
+    @include header($color: #da993d);
+  }
+  & > .red {
+    @include header($color: #983c46);
+  }
+}
+
+.fullwidth {
+  width: 100%;
+}
