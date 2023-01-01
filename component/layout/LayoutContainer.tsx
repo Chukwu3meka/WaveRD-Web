@@ -17,7 +17,7 @@ const LayoutContainer = (props: any) => {
     if (!appReady) {
       // !!! <= don't tamper with the ordering of this code
       setAppReady(true);
-      // setTimeout(() => setPageLoading(false), 3000);
+      setTimeout(() => setPageLoading(false), 3000);
 
       window.addEventListener("resize", handleResize);
       handleResize();
@@ -36,7 +36,7 @@ const LayoutContainer = (props: any) => {
     };
 
     const handleStop = () => {
-      // setTimeout(() => setPageLoading(false), 2000);
+      setTimeout(() => setPageLoading(false), 2000);
     };
     router.events.on("routeChangeStart", handleStart);
     router.events.on("routeChangeComplete", handleStop);
