@@ -6,11 +6,13 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import { Intro, Support, Solutions } from ".";
+
 const NoAuthHome = () => (
   <div className={styles.apihub}>
-    sasdas
-    {/*  */}
-    {/*  */}
+    <Intro />
+    <Solutions />
+    <Support />
   </div>
 );
 

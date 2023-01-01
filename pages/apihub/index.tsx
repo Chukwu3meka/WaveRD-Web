@@ -1,4 +1,4 @@
-import HomeContainer from "@component/home";
+import HomeContainer from "@component/apihub/home";
 
 const Page = () => <HomeContainer />;
 

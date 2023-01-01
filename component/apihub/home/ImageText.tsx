@@ -17,7 +17,8 @@ const ImageText = ({ title, body, src, link = "/", reverse }: IIMageText) => (
       <Typography>{title}</Typography>
       <Typography textAlign="justify">{body} </Typography>
       <Link href={link}>
-        <a>See all features</a>
+        {/* <a>See all features</a> */}
+        See all features
       </Link>
     </main>
     {src && (

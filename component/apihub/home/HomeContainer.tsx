@@ -1,4 +1,4 @@
-import Home from ".";
+import { Home } from ".";
 
 const HomeContainer = () => {
   return <Home />;
