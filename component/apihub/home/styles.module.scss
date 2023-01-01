@@ -1,112 +1,348 @@
 @import "@source/scss/index.scss";
 
-.noAuthHome {
-  & > div:nth-of-type(1) {
-    height: 400px;
-    color: $lightGray;
-    @include quickFlex($dir: column);
-    background-color: color(dark);
-    font-size: calc(1.8em + 1vw) !important;
+.home {
+  background-color: $lightGray;
+  @include flex(column);
+}
+
+#sectionOne {
+  background-image: radial-gradient($secondary, $primary);
+  @include flex(row);
+  justify-content: space-evenly;
+  padding: 50px 10px;
+  flex-wrap: wrap;
+  & > main {
+    max-width: 600px;
+    p:nth-of-type(1) {
+      font-size: 0.8em;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+    p:nth-of-type(2) {
+      line-height: 1.2em;
+      font-size: 1.6em;
+      letter-spacing: 5px;
+      margin: 15px 0;
+    }
+    p:nth-of-type(3) {
+      letter-spacing: 1px;
+    }
+    button {
+      margin-top: 10px;
+    }
   }
-  & > div:nth-of-type(2) {
-    padding: 20px 10px;
-    @include quickFlex(row);
-    flex-wrap: wrap;
-    & > div {
-      @include quickFlex($dir: column);
-      justify-content: space-evenly;
-      width: 100%;
-      height: 100%;
+  & > figure {
+    position: relative;
+    width: 50vw;
+    max-width: 600px;
+    min-width: 280px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #sectionOne {
+    flex-wrap: nowrap;
+    & > main {
       max-width: 400px;
-      background-color: darken($color: $lightGray, $amount: 10);
-      padding: 10px;
+      p:nth-of-type(1) {
+        font-size: 0.9em;
+      }
+      p:nth-of-type(2) {
+        font-size: 1.9em;
+      }
+    }
+    & > figure {
+      max-width: 350px;
+      min-width: 270px;
+    }
+  }
+}
+
+@media screen and (min-width: 715px) {
+  #sectionOne {
+    & > main {
+      p:nth-of-type(2) {
+        font-size: 2.9em;
+      }
+    }
+    & > figure {
+      max-width: 400px;
+      min-width: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #sectionOne {
+    & > main {
+      p:nth-of-type(1) {
+        font-size: 1em;
+      }
+      p:nth-of-type(2) {
+        font-size: 3.9em;
+      }
+    }
+    & > figure {
+      max-width: 600px;
+      min-width: 400px;
+      height: 430px;
+    }
+  }
+}
+
+#noImageText {
+  max-width: 700px;
+  @include flex(column);
+  padding: 70px 10px;
+  color: unset;
+  & > main {
+    & > p:nth-of-type(1) {
       text-align: center;
+      font-weight: 700;
+      color: $primary;
+      font-size: 1.3em;
+      letter-spacing: 5px;
+    }
+    & > p:nth-of-type(2) {
+      color: $textSecondary;
+    }
+    a {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #noImageText > p:nth-of-type(1) {
+    font-size: 1.7em;
+  }
+}
+
+#reverseImageText,
+#imageText {
+  @include flex(row);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  padding: 10px;
+  & > main {
+    p:nth-of-type(1) {
+      font-weight: 700;
+      color: $primary;
+      font-size: 1.1em;
+      letter-spacing: 2px;
+    }
+    & > p:nth-of-type(2) {
+      color: $textSecondary;
+      margin: 5px 0;
+    }
+  }
+
+  & > figure {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 280px;
+    max-width: 500px;
+    height: 170px;
+  }
+}
+
+#reverseImageText {
+  figure {
+    height: 220px;
+    width: 70px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  #reverseImageText,
+  #imageText {
+    flex-wrap: nowrap;
+    & > main {
+      max-width: 600px;
+      p:nth-of-type(1) {
+        font-size: 1.4em;
+        letter-spacing: 5px;
+      }
+      & > p:nth-of-type(2) {
+        margin: 10px 0;
+      }
+    }
+    & > figure {
+      position: relative;
+      width: 100%;
+      border-radius: 10px;
       overflow: hidden;
-      & > div {
-        position: relative;
-        width: 100%;
-        height: 200px;
-      }
-      & > span {
-        padding: 10px 30px;
-      }
-    }
-    & > div:nth-of-type(2) {
-      border: 7px solid darken($color: $lightGray, $amount: 3);
-      height: 300px;
-      width: 300px;
-      z-index: 1;
-      border-radius: 100%;
-      padding: 0;
-      & > div {
-        position: relative;
-        width: 100%;
-        height: 200px;
-      }
-    }
-  }
-
-  & > div:nth-of-type(3) {
-    background-color: color(dark);
-    & > div {
-      margin: auto;
-      padding: 20px;
-      flex-wrap: wrap;
+      min-width: 300px;
       max-width: 500px;
-      color: $lightGray;
-      @include quickFlex($dir: column);
-      & > i {
-        font-size: 0.6em;
-      }
+      height: 320px;
     }
   }
 
-  & > div:nth-of-type(4) {
-    @include quickFlex(row);
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding: 50px 20px;
+  #reverseImageText {
+    main {
+      order: 2;
+    }
+    figure {
+      order: 1;
+    }
+  }
+}
+
+#sectionSix {
+  width: 100%;
+  padding: 50px 10px;
+  background-image: repeating-radial-gradient(circle at 0 0, $primary, $secondary, $lightGray);
+  & > main:first-child {
+    text-align: center;
+    @include flex(column);
+    max-width: 600px;
     margin: auto;
-    row-gap: 20px;
-    column-gap: 20px;
+    & > p:first-of-type {
+      font-size: 1em;
+    }
+    & > p:last-of-type {
+      font-size: 0.8em;
+    }
   }
-}
+  & > main:last-child {
+    @include flex(row);
+    align-items: flex-start;
+    max-width: 600px;
+    margin: 60px auto 10px;
+    & > div:first-of-type {
+      & > figure:first-of-type {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        top: -30px;
+        margin: 0 auto -90px;
+        height: 80px;
+        z-index: 1;
+        left: 3px;
+        width: 110px;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+      & > figure:last-of-type {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 250px;
+        height: 270px;
+      }
+    }
 
-@media screen and (min-width: 746px) {
-  .noAuthHome {
-    & > div:nth-of-type(2) {
-      & > div {
-        max-width: 250px;
-      }
-      & > div:nth-of-type(1) {
-        margin-right: -25px;
-      }
-      & > div:nth-of-type(3) {
-        margin-left: -25px;
+    & > p:nth-last-of-type(1) {
+      color: $highlight;
+      font-size: 1.4em;
+      font-weight: 700;
+    }
+    & > div:last-of-type {
+      @include flex(column, initial);
+      align-items: flex-start;
+      & > div:nth-of-type(2) {
+        margin-top: 13px;
+        @include flex(row);
+        justify-content: flex-start;
+        column-gap: 10px;
+        & > div {
+          padding: 0 5px;
+          width: max-content;
+        }
       }
     }
   }
 }
+
+@media screen and (min-width: 460px) {
+  #sectionSix {
+    & > main:first-child {
+      & > p:first-of-type {
+        font-size: 2em;
+      }
+      & > p:last-of-type {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+#sectionSeven {
+  @include flex(row);
+  justify-content: space-evenly;
+  padding: 60px 10px 80px;
+  text-align: center;
+  & > main {
+    margin-top: 50px;
+    max-width: 1200px;
+    & > p:nth-of-type(1) {
+      font-weight: 700;
+      color: $primary;
+      font-size: 1.4em;
+      letter-spacing: 5px;
+    }
+    & > p:nth-of-type(2) {
+      color: $highlight;
+      margin: 10px 0;
+    }
+    & > div {
+      @include flex(row);
+      gap: 10px;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      & > div {
+        @include flex(column, initial);
+        text-align: center;
+        min-width: 270px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 360px) {
+  #sectionSeven > main {
+    & > p:nth-of-type(1) {
+      font-size: 1.2em;
+    }
+    & > div {
+      & > div {
+        @include flex(row, initial);
+        column-gap: 10px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 770px) {
+  #sectionSeven > main {
+    & > p:nth-of-type(1) {
+      font-size: 1.4em;
+    }
+    & > div {
+      & > div {
+        text-align: center;
+        @include flex(column, initial);
+        max-width: 350px;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 960px) {
-  .noAuthHome {
-    & > div:nth-of-type(2) {
+  #sectionSeven > main {
+    & > p:nth-of-type(1) {
+      font-size: 2em;
+    }
+    & > div {
       & > div {
         max-width: 300px;
-      }
-      & > div:nth-of-type(1) {
-        margin-right: -50px;
-      }
-      & > div:nth-of-type(3) {
-        margin-left: -50px;
-      }
-    }
-  }
-}
-@media screen and (min-width: 1166px) {
-  .noAuthHome {
-    & > div:nth-of-type(2) {
-      & > div {
-        max-width: 400px;
       }
     }
   }
