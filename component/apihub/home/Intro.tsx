@@ -20,7 +20,7 @@ const SectionOne = () => (
       </Link>
     </main>
     <figure>
-      <Image src="/images/layout/homePage1.png" alt="Soccer Atlas home" layout="fill" />
+      <Image src="/images/apihub/homePage1.png" alt="Soccer Atlas home" layout="fill" />
     </figure>
   </section>
 );

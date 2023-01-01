@@ -15,21 +15,21 @@ const SectionTwo = () => (
       title="Create robust App"
       body="If you can send an email, you can have an API connected website. Click and update content in an instant. Drag-and-drop stats,
     schedules, news, and other API wherever you want. Look like a professional webmaster without a data worries."
-      src="/images/layout/homePage3.png"
+      src="/images/apihub/homePage3.png"
       link="/documentation"
     />
     <ImageText
       reverse
       title="Improve Performance"
       body="We’ll make you look good. Select from dozens of stunning sports-API to begin creating a truly unique sports app for your organization."
-      src="/images/layout/homePage2.png"
+      src="/images/apihub/homePage2.png"
       link="/documentation"
     />
     <ImageText
       title="Massive data to fetch"
       body="Have more than one team? You’ll need more than one API. Quickly create and customize separate pages for all your squads so users
       can have fast access to schedules, news, stats, scores, and more."
-      src="/images/layout/homePage4.png"
+      src="/images/apihub/homePage4.png"
       link="/documentation"
     />
   </>

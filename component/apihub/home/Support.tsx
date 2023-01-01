@@ -11,7 +11,7 @@ const Support = () => (
       <Typography>Get the support you need when you need it from our trusted sports technology experts.</Typography>
       <div>
         <Paper elevation={2}>
-          <Image width={135} height={120} alt="" src="/images/layout/customerCare.png" />
+          <Image width={135} height={120} alt="" src="/images/apihub/customerCare.png" />
           <div>
             <Typography component="h3" variant="h6">
               Customer help center
@@ -22,7 +22,7 @@ const Support = () => (
           </div>
         </Paper>
         <Paper elevation={2}>
-          <Image width={135} height={120} alt="" src="/images/layout/247.png" />
+          <Image width={135} height={120} alt="" src="/images/apihub/247.png" />
           <div>
             <Typography component="h3" variant="h6">
               Dedicated 24/7
@@ -33,7 +33,7 @@ const Support = () => (
           </div>
         </Paper>
         <Paper elevation={2}>
-          <Image width={135} height={120} alt="" src="/images/layout/techSupport.png" />
+          <Image width={135} height={120} alt="" src="/images/apihub/techSupport.png" />
           <div>
             <Typography component="h3" variant="h6">
               Live tech support
