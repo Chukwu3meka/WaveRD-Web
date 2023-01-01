@@ -2,12 +2,12 @@
 
 .home {
   background-color: $lightGray;
-  @include flex(column);
+  @include quickFlex($dir: column);
 }
 
 #sectionOne {
   background-image: radial-gradient($secondary, $primary);
-  @include flex(row);
+  @include quickFlex($dir: row);
   justify-content: space-evenly;
   padding: 50px 10px;
   flex-wrap: wrap;
@@ -93,7 +93,7 @@
 
 #noImageText {
   max-width: 700px;
-  @include flex(column);
+  @include quickFlex($dir: column);
   padding: 70px 10px;
   color: unset;
   & > main {
@@ -105,7 +105,7 @@
       letter-spacing: 5px;
     }
     & > p:nth-of-type(2) {
-      color: $textSecondary;
+      color: $darkGray;
     }
     a {
       display: block;
@@ -122,7 +122,7 @@
 
 #reverseImageText,
 #imageText {
-  @include flex(row);
+  @include quickFlex($dir: row);
   flex-wrap: wrap;
   justify-content: space-evenly;
 
@@ -135,7 +135,7 @@
       letter-spacing: 2px;
     }
     & > p:nth-of-type(2) {
-      color: $textSecondary;
+      color: $darkGray;
       margin: 5px 0;
     }
   }
@@ -199,7 +199,7 @@
   background-image: repeating-radial-gradient(circle at 0 0, $primary, $secondary, $lightGray);
   & > main:first-child {
     text-align: center;
-    @include flex(column);
+    @include quickFlex($dir: column);
     max-width: 600px;
     margin: auto;
     & > p:first-of-type {
@@ -210,7 +210,7 @@
     }
   }
   & > main:last-child {
-    @include flex(row);
+    @include quickFlex($dir: row);
     align-items: flex-start;
     max-width: 600px;
     margin: 60px auto 10px;
@@ -243,11 +243,11 @@
       font-weight: 700;
     }
     & > div:last-of-type {
-      @include flex(column, initial);
+      @include quickFlex($dir: column, $width: initial);
       align-items: flex-start;
       & > div:nth-of-type(2) {
         margin-top: 13px;
-        @include flex(row);
+        @include quickFlex($dir: row);
         justify-content: flex-start;
         column-gap: 10px;
         & > div {
@@ -273,7 +273,7 @@
 }
 
 #sectionSeven {
-  @include flex(row);
+  @include quickFlex($dir: row);
   justify-content: space-evenly;
   padding: 60px 10px 80px;
   text-align: center;
@@ -291,13 +291,13 @@
       margin: 10px 0;
     }
     & > div {
-      @include flex(row);
+      @include quickFlex($dir: row);
       gap: 10px;
       justify-content: space-evenly;
       align-items: flex-start;
       flex-wrap: wrap;
       & > div {
-        @include flex(column, initial);
+        @include quickFlex($dir: column, $width: initial);
         text-align: center;
         min-width: 270px;
       }
@@ -312,7 +312,7 @@
     }
     & > div {
       & > div {
-        @include flex(row, initial);
+        @include quickFlex($dir: row, $width: initial);
         column-gap: 10px;
         text-align: left;
       }
@@ -328,7 +328,7 @@
     & > div {
       & > div {
         text-align: center;
-        @include flex(column, initial);
+        @include quickFlex($dir: column, $width: initial);
         max-width: 350px;
       }
     }
