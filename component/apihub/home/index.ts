@@ -1,5 +1,10 @@
 import HomeContainer from "./HomeContainer";
 import Home from "./Home";
-import homeStyles from "./homeStyles.module.scss";
+import styles from "./styles.module.scss";
 
-export { homeStyles, Home, HomeContainer as default };
+import Intro from "./Intro";
+import Support from "./Support";
+import Solutions from "./Solutions";
+import ImageText from "./ImageText";
+
+export { ImageText, Intro, Support, Solutions, styles, Home, HomeContainer as default };
