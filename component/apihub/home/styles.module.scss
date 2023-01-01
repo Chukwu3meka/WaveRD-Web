@@ -1,12 +1,12 @@
 @import "@source/scss/index.scss";
 
 .home {
-  background-color: $lightGray;
+  background-color: $apihub-lightGray;
   @include quickFlex($dir: column);
 }
 
 #sectionOne {
-  background-image: radial-gradient($secondary, $primary);
+  background-image: radial-gradient($apihub-secondary, $apihub-primary);
   @include quickFlex($dir: row);
   justify-content: space-evenly;
   padding: 50px 10px;
@@ -100,7 +100,7 @@
     & > p:nth-of-type(1) {
       text-align: center;
       font-weight: 700;
-      color: $primary;
+      color: $apihub-primary;
       font-size: 1.3em;
       letter-spacing: 5px;
     }
@@ -130,7 +130,7 @@
   & > main {
     p:nth-of-type(1) {
       font-weight: 700;
-      color: $primary;
+      color: $apihub-primary;
       font-size: 1.1em;
       letter-spacing: 2px;
     }
@@ -196,7 +196,7 @@
 #sectionSix {
   width: 100%;
   padding: 50px 10px;
-  background-image: repeating-radial-gradient(circle at 0 0, $primary, $secondary, $lightGray);
+  background-image: repeating-radial-gradient(circle at 0 0, $apihub-primary, $apihub-secondary, $apihub-lightGray);
   & > main:first-child {
     text-align: center;
     @include quickFlex($dir: column);
@@ -238,7 +238,7 @@
     }
 
     & > p:nth-last-of-type(1) {
-      color: $highlight;
+      color: $apihub-highlight;
       font-size: 1.4em;
       font-weight: 700;
     }
@@ -282,12 +282,12 @@
     max-width: 1200px;
     & > p:nth-of-type(1) {
       font-weight: 700;
-      color: $primary;
+      color: $apihub-primary;
       font-size: 1.4em;
       letter-spacing: 5px;
     }
     & > p:nth-of-type(2) {
-      color: $highlight;
+      color: $apihub-highlight;
       margin: 10px 0;
     }
     & > div {
