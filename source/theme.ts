@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-const iPhoneInput = {
+const iPhoneInputFix = {
   styleOverrides: {
     root: {
       "*": {
@@ -31,22 +31,45 @@ const muiTheme = createTheme({
   },
 
   palette: {
+    // primary: {
+    //   main: "#ad2723",
+    // },
+    // secondary: {
+    //   main: "#a8a8a8",
+    // },
+
+    text: {
+      primary: "#1e3952",
+      secondary: "#7E7C7C",
+      // light: "#E0D4D4",
+    },
     primary: {
-      main: "#ad2723",
+      main: "#e2ad26",
     },
     secondary: {
-      main: "#a8a8a8",
+      main: "#1197c0",
     },
+    success: {
+      main: "rgb(68, 139, 68)",
+      // main: "rgb(141, 202, 141)",
+    },
+    error: {
+      main: "#1197c0",
+    },
+    // neutral: {
+    //   main: "#1778FF",
+    //   contrastText: "#fff",
+    // },
   },
 
   components: {
-    // MuiInputLabel: iPhoneInput,
-    MuiInput: iPhoneInput,
-    MuiTextField: iPhoneInput,
-    MuiFilledInput: iPhoneInput,
-    // FormControl: iPhoneInput,
-    MuiOutlinedInput: iPhoneInput,
-    MuiFormControl: iPhoneInput,
+    // MuiInputLabel: iPhoneInputFix,
+    MuiInput: iPhoneInputFix,
+    MuiTextField: iPhoneInputFix,
+    MuiFilledInput: iPhoneInputFix,
+    // FormControl: iPhoneInputFix,
+    MuiOutlinedInput: iPhoneInputFix,
+    MuiFormControl: iPhoneInputFix,
     MuiPaper: {
       styleOverrides: {
         root: {
@@ -55,6 +78,11 @@ const muiTheme = createTheme({
           boxSizing: "border-box",
           // cursor: "pointer",
           // background,
+          // padding: 5,
+          // overflow: "hidden",
+          // boxSizing: "border-box",
+          // // borderRadius: 5,
+          // margin: "10px auto",
         },
       },
     },
