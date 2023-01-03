@@ -15,16 +15,28 @@ module.exports = {
     DOMAIN: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "localhost:3000",
   },
 
-  rewrites: [
-    {
-      source: "/:path*",
-      has: [
-        {
-          type: "host",
-          value: "apihub.soccermass.com",
-        },
-      ],
-      destination: "/apihub/:path*",
-    },
-  ],
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "apihub.soccermass.com",
+          },
+        ],
+        destination: "/apihub/:path*",
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "apihub.localhost.com",
+          },
+        ],
+        destination: "/apihub/:path*",
+      },
+    ];
+  },
 };
