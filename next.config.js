@@ -35,8 +35,4 @@ module.exports = {
       })),
     ];
   },
-
-  env: {
-    DOMAIN: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "localhost:3000",
-  },
 };
