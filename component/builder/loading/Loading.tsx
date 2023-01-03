@@ -5,7 +5,7 @@ import { arrayRotate } from "@utils/clientFuncs";
 import styles from "./styles.module.scss";
 
 const Loading = ({ height, status, component }: { height?: string; status: boolean; component: JSX.Element }) => {
-  const [time, setTime] = useState(0);
+  const [, setTime] = useState(0);
   const [colorScheme, setColorScheme] = useState<(string | undefined)[]>(["#dfefdf", "#bddebd", "#9ace9a", "#78bd78", "#56ac56"]);
 
   useEffect(() => {
