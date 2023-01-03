@@ -73,7 +73,7 @@ const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSear
                 {label.toUpperCase()}
               </Typography>
               <Typography sx={{ fontWeight: 600 }} color="text.primary">
-                {label === "age" ? `${ageGenerator(data)}yrs` : label === "value" ? `$${data}m` : data}
+                {label === "age" ? `${ageGenerator({ date: data })}yrs` : label === "value" ? `$${data}m` : data}
                 {"club" === label && (
                   <IconButton aria-label={label} component="span">
                     <Image

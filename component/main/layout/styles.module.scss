@@ -9,7 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: grid;
-  // grid-template-columns: 300px auto;
   * {
     outline: none;
     user-select: none; //disable select
@@ -24,12 +23,4 @@
   ::-webkit-scrollbar {
     display: none;
   }
-
-  // & > main {
-  // border: 3px solid red;
-  // overflow-y: hidden;
-  // height: 100vh;
-  // width: 100%;
-  // margin: auto;
-  // }
 }

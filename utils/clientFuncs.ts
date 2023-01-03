@@ -1,25 +1,22 @@
-export const ageGenerator = (dob: any) => {
+import { IAgeGenerator } from "@interface/utils/clientsFuncs-interface";
+export const ageGenerator = ({ date }: IAgeGenerator) => {
   const todaysDate: number = Number(new Date()),
-    birthDate: number = Number(new Date(dob));
+    birthDate: number = Number(new Date(date));
 
   Math.floor(Math.abs((birthDate - todaysDate) / (24 * 60 * 60 * 1000)) / 365);
 
   return;
 };
 
-interface IArrayRotate {
-  arr: (undefined | string)[];
-  reverse?: boolean;
-}
-
+import { IArrayRotate } from "@interface/utils/clientsFuncs-interface";
 export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
-  // export const arrayRotate = ({ arr, reverse = false }: any) => {
-  // const popped: string = arr.pop();
+  if (!arr.length) throw { message: "Array is empty" };
 
-  // if (reverse) arr.unshift(popped);
-
-  if (reverse) arr.push(arr.shift());
-  if (!reverse) arr.unshift(arr.pop());
+  if (reverse) {
+    arr.push(arr.shift()!);
+  } else {
+    arr.unshift(arr.pop()!);
+  }
 
   return arr;
 };

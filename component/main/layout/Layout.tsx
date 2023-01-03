@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 
 import theme from "@source/theme";
 import { styles } from ".";
-import Loading from "@component/builder/loading/Loading";
+import BuilderLoading from "@component/builder/loading";
 
-const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smallScreen }: any) => (
+const Layout = ({ pageProps, Component, store, pageLoading, appReady }: any) => (
   <>
     <Head>
       <title>SoccerMASS: No. 1 Soccer Manager and Football API Provider</title>
@@ -37,9 +37,9 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smal
     <Provider store={store}>
       <Box className={styles.layout}>
         <main style={{ position: "relative" }}>
-          <Loading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
+          <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
           {/* // {pageLoading && <Component {...pageProps} />} */}
-          {/* <Loading status={pageLoading} /> : !appReady ? <Loading status={true} /> : */}
+          {/* <BuilderLoading status={pageLoading} /> : !appReady ? <BuilderLoading status={true} /> : */}
         </main>
       </Box>
     </Provider>

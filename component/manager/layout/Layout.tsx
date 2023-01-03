@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import theme from "@source/theme";
 import { styles } from ".";
-import Spinner from "@component/builder/loading/Loading";
+import Spinner from "@component/builder/loading/BuilderLoading";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smallScreen }: any) => (
   <>
