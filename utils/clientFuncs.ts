@@ -6,3 +6,20 @@ export const ageGenerator = (dob: any) => {
 
   return;
 };
+
+interface IArrayRotate {
+  arr: (undefined | string)[];
+  reverse?: boolean;
+}
+
+export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
+  // export const arrayRotate = ({ arr, reverse = false }: any) => {
+  // const popped: string = arr.pop();
+
+  // if (reverse) arr.unshift(popped);
+
+  if (reverse) arr.push(arr.shift());
+  if (!reverse) arr.unshift(arr.pop());
+
+  return arr;
+};

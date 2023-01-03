@@ -17,7 +17,7 @@ const LayoutContainer = (props: any) => {
     if (!appReady) {
       // !!! <= don't tamper with the ordering of this code
       setAppReady(true);
-      setTimeout(() => setPageLoading(false), 3000);
+      stopPageLoadingHandler();
 
       window.addEventListener("resize", handleResize);
       handleResize();
@@ -29,23 +29,24 @@ const LayoutContainer = (props: any) => {
     if (appReady) setAuth(props.authStatus);
   }, [props.authStatus]);
 
+  const stopPageLoadingHandler = () => {
+    // setTimeout(() => setPageLoading(false), 2000);
+  };
+
   useEffect(() => {
     const handleStart = (url: string) => {
       setPageLoading(true);
       //
     };
 
-    const handleStop = () => {
-      setTimeout(() => setPageLoading(false), 2000);
-    };
     router.events.on("routeChangeStart", handleStart);
-    router.events.on("routeChangeComplete", handleStop);
-    router.events.on("routeChangeError", handleStop);
+    router.events.on("routeChangeComplete", stopPageLoadingHandler);
+    router.events.on("routeChangeError", stopPageLoadingHandler);
 
     return () => {
       router.events.off("routeChangeStart", handleStart);
-      router.events.off("routeChangeComplete", handleStop);
-      router.events.off("routeChangeError", handleStop);
+      router.events.off("routeChangeComplete", stopPageLoadingHandler);
+      router.events.off("routeChangeError", stopPageLoadingHandler);
     };
   }, [router]);
 
