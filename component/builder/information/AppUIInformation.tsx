@@ -1,7 +1,7 @@
 import { Drawer, Box, Stack, Typography } from "@mui/material";
 
 import { styles } from ".";
-import { IAppUIInformationProps } from "@interface/appui/information-interface";
+import { IAppUIInformationProps } from "@interface/builder/information-interface";
 
 const AppUIInformation = ({ information, closeDrawer }: IAppUIInformationProps) => (
   <Drawer anchor="right" open={!!information} onClose={() => closeDrawer()} className={styles.information}>

@@ -6,7 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 
-import { IAppUIDeleteDialogProps } from "@interface/appui/deleteDialog-interface";
+import { IAppUIDeleteDialogProps } from "@interface/builder/deleteDialog-interface";
 
 const AppUIDeleteDialog = ({
   open,

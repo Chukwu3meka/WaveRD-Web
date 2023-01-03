@@ -52,4 +52,7 @@ Additionally, depending on the club, some minor[citation needed] responsibilitie
 ---
 
 1. Migration to TypeScript is being carried out
-2. _appui_: contains most UI components used throughout the app
+2. _builder_: contains most UI components used throughout the app
+
+<!-- Image with src "/images/layout/ball.png" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 -->

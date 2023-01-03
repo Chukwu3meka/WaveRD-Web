@@ -1,4 +1,4 @@
-import { IAppUITableProps } from "@interface/appui/table-interface";
+import { IAppUITableProps } from "@interface/builder/table-interface";
 import {
   Box,
   Paper,

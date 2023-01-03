@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSnackbar } from "notistack";
 
 import { AppUIDeleteDialog } from ".";
-import { IAppUIDeleteDialogContainerProps } from "@interface/appui/deleteDialog-interface";
+import { IAppUIDeleteDialogContainerProps } from "@interface/builder/deleteDialog-interface";
 
 const RemoveBookingContainer = ({ deleteHandler, open, closeDialog, label }: IAppUIDeleteDialogContainerProps) => {
   const { enqueueSnackbar } = useSnackbar(),

@@ -1,7 +1,7 @@
 import { ChangeEvent, createRef, RefObject } from "react";
 
 import { AppUITable } from ".";
-import { AppUITableContainerProps } from "@interface/appui/table-interface";
+import { AppUITableContainerProps } from "@interface/builder/table-interface";
 
 const AppUITableContainer = ({
   page,
