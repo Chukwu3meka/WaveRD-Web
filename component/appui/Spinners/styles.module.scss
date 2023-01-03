@@ -1,6 +1,6 @@
 @import "@source/scss/index.scss";
 
-.spinner {
+.loading {
   // @include quickFlex($width: 100%, $dir: column);
   @include quickFlex(column);
   & > div {
