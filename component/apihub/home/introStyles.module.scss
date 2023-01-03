@@ -1,0 +1,95 @@
+@import "@source/scss/index.scss";
+
+.home {
+  background-color: $apihub-lightGray;
+  @include quickFlex($dir: column);
+}
+
+#sectionOne {
+  // height: ;
+  // border: 3px solid red;
+
+  background-image: radial-gradient($apihub-secondary, $apihub-primary);
+  @include quickFlex($dir: row);
+  justify-content: space-evenly;
+  padding: 50px 10px;
+  flex-wrap: wrap;
+  & > main {
+    max-width: 600px;
+    p:nth-of-type(1) {
+      font-size: 0.8em;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+    p:nth-of-type(2) {
+      line-height: 1.2em;
+      font-size: 1.6em;
+      letter-spacing: 5px;
+      margin: 15px 0;
+    }
+    p:nth-of-type(3) {
+      letter-spacing: 1px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  }
+  & > figure {
+    position: relative;
+    width: 50vw;
+    max-width: 600px;
+    min-width: 280px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #sectionOne {
+    flex-wrap: nowrap;
+    & > main {
+      max-width: 400px;
+      p:nth-of-type(1) {
+        font-size: 0.9em;
+      }
+      p:nth-of-type(2) {
+        font-size: 1.9em;
+      }
+    }
+    & > figure {
+      max-width: 350px;
+      min-width: 270px;
+    }
+  }
+}
+
+@media screen and (min-width: 715px) {
+  #sectionOne {
+    & > main {
+      p:nth-of-type(2) {
+        font-size: 2.9em;
+      }
+    }
+    & > figure {
+      max-width: 400px;
+      min-width: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #sectionOne {
+    & > main {
+      p:nth-of-type(1) {
+        font-size: 1em;
+      }
+      p:nth-of-type(2) {
+        font-size: 3.9em;
+      }
+    }
+    & > figure {
+      max-width: 600px;
+      min-width: 400px;
+      height: 430px;
+    }
+  }
+}

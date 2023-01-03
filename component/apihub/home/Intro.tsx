@@ -2,11 +2,11 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import { styles } from ".";
+import { introStyles } from ".";
 import Link from "next/link";
 
 const SectionOne = () => (
-  <section id={styles.sectionOne}>
+  <section id={introStyles.sectionOne}>
     <main>
       <Typography color="whitesmoke">ONLINE FOOTBALL API</Typography>
       <Typography color="whitesmoke">Connect with your community</Typography>
