@@ -8,7 +8,7 @@ import { styles, Spinner } from ".";
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smallScreen }: any) => (
   <>
     <Head>
-      <title>SoccerMASS: No. 1 football manager for advanced soccer management</title>
+      <title>SoccerMASS: No. 1 Soccer Manager and Football API Provider</title>
       <link rel="manifest" href="/manifest.json" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
