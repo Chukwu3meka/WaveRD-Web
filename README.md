@@ -1,4 +1,4 @@
-# SoccerMASS Frontend ✨
+# SoccerMASS Web ✨
 
 SoccerMASS: No. 1 free online football manager for advanced soccer management. The title of manager is almost exclusively used in British football. In most other European countries in which professional football is played, the person responsible for the direction of a team is awarded the position of coach or "trainer"
 
@@ -12,21 +12,17 @@ The manager's responsibilities in a professional football club usually include (
 4. Delegating duties to the first team coach and the coaching and medical staff.
 5. Scouting for young but talented players for eventual training in the youth academy or the reserves, and encouraging their development and improvement.
 6. Buying and selling players in the transfer market, including loans.
-7. Facing the media in pre-match and post-match interviews.
-
-> Some of the above responsibilities may be shared with a director of football or sporting director, and are at times delegated to an assistant manager or club coach.
-
-<hr/>
-
-Additionally, depending on the club, some minor[citation needed] responsibilities include:
-
+7. Facing the media in pre-match and post-match interviews. > Some of the above responsibilities may be shared with a director of football or sporting director, and are at times delegated to an assistant manager or club coach. <hr/> Additionally, depending on the club, some minor[citation needed] responsibilities include:
 8. Marketing the club, most especially for ticket admission, sponsorship and merchandising.
-9. Growing turnover and keeping the club profitable.
-   These responsibilities are more common among managers of small clubs.
+9. Growing turnover and keeping the club profitable. <br/ > These responsibilities are more common among managers of small clubs.
 
 ## Authors
 
 - Chukwuemeka Maduekwe [@Twitter](https://www.twitter.com/Chukwu3meka) [@GitHub](https://github.com/Chukwu3meka)
+
+## About SoccerMASS Web
+
+SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found here at [home](https://www.soccermass.com), [Manager](https://manager.soccermass.com/) and [apihub](https://apihub.soccermass.com/)
 
 > To learn more about this project, kindly contact the developer [😎 ChukwuEmeka Maduekwe](https://www.linkedin.com/in/chukwu3meka/):
 
