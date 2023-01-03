@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 import { Provider } from "react-redux";
 
 import theme from "@source/theme";
-import { styles, Spinner } from ".";
+import { styles } from ".";
+import Spinner from "@component/others/Spinner/Spinner";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smallScreen }: any) => (
   <>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { spinnerStyles as styles } from ".";
+import styles from "./styles.module.scss";
 
 const Spinner = ({ height }: { height?: number }) => (
   <div className={styles.spinner} style={{ height: height ? "100%" : "100vh" }}>
