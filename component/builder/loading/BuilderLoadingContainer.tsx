@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-// import { BuilderLoading } from ".";
+import { BuilderLoading } from ".";
 import { arrayRotate } from "@utils/clientFuncs";
 import { IBuilderLoadingContainer } from "@interface/builder/loading-interface";
-import { BuilderLoading } from ".";
 
 const BuilderLoadingContainer = ({ height, status, component }: IBuilderLoadingContainer) => {
   const [time, setTime] = useState(0);

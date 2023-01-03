@@ -1,9 +1,8 @@
 import Head from "next/head";
-import { Box } from "@mui/material";
 import { Provider } from "react-redux";
 
-import theme from "@source/theme";
 import { styles } from ".";
+import theme from "@source/theme";
 import BuilderLoading from "@component/builder/loading";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady }: any) => (
@@ -35,13 +34,9 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady }: any) => 
       />
     </Head>
     <Provider store={store}>
-      <Box className={styles.layout}>
-        <main style={{ position: "relative" }}>
-          <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
-          {/* // {pageLoading && <Component {...pageProps} />} */}
-          {/* <BuilderLoading status={pageLoading} /> : !appReady ? <BuilderLoading status={true} /> : */}
-        </main>
-      </Box>
+      <div className={styles.layout}>
+        <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
+      </div>
     </Provider>
   </>
 );
