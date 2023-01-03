@@ -52,3 +52,4 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 
 <!-- Image with src "/images/layout/ball.png" has legacy prop "layout". Did you forget to run the codemod?
 Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 -->
+
