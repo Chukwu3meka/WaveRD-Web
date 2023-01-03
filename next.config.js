@@ -14,4 +14,17 @@ module.exports = {
   env: {
     DOMAIN: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "localhost:3000",
   },
+
+  rewrites: [
+    {
+      source: "/:path*",
+      has: [
+        {
+          type: "host",
+          value: "apihub.soccermass.com",
+        },
+      ],
+      destination: "/apihub/:path*",
+    },
+  ],
 };
