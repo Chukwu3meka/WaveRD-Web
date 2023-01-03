@@ -1,4 +1,4 @@
-import HomeContainer from "@component/home";
+import HomeContainer from "@component/main/home";
 
 const Page = () => <HomeContainer />;
 

@@ -10,7 +10,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 // import PropTypes from "prop-types";
 // import { useEffect } from "react";
 
-import LayoutContainer from "@component/layout";
+import LayoutContainer from "@component/main/layout";
 import { useStore } from "@store/index";
 
 import { ThemeProvider } from "@mui/material/styles";
