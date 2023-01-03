@@ -11,7 +11,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { styles } from ".";
 import { ageGenerator } from "@utils/clientFuncs";
 
-const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSearchOptions, setSearchTermHandler, searching }) => (
+const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSearchOptions, setSearchTermHandler, searching }: any) => (
   <section id={styles.sectionSix}>
     <main>
       <Typography color="whitesmoke">Enter Footballer name</Typography>
@@ -27,7 +27,7 @@ const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSear
         loadingText={<CircularProgress size={25} />}
         onInputChange={playerSearchInputAutoComplete}
         getOptionLabel={(option) => option?.name || null}
-        isOptionEqualToValue={(option, value) => option.name === value.name}
+        isOptionEqualToValue={(option: any, value: any) => option.name === value.name}
         renderInput={(params) => (
           <TextField
             color="primary"
@@ -67,7 +67,7 @@ const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSear
       <div>
         <Typography>{playerDetails.name}</Typography>
         <div role="presentation">
-          {playerDetails.stat.map(({ label, data }) => (
+          {playerDetails.stat.map(({ label, data }: any) => (
             <Breadcrumbs aria-label="stat" separator="-" key={label}>
               <Typography fontSize={16} color="text.primary">
                 {label.toUpperCase()}
@@ -99,7 +99,7 @@ const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSear
           ))}
         </div>
         <div>
-          {playerDetails.roles.map((role) => (
+          {playerDetails.roles.map((role: string) => (
             <Paper key={role}>
               <Typography fontSize={13}>{role}</Typography>
             </Paper>
