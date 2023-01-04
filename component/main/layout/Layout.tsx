@@ -1,11 +1,15 @@
 import Head from "next/head";
 import { Provider } from "react-redux";
+import { SnackbarProvider } from "notistack";
+import { CacheProvider } from "@emotion/react";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 
 import { styles } from ".";
 import theme from "@source/theme";
 import BuilderLoading from "@component/builder/loading";
 
-const Layout = ({ pageProps, Component, store, pageLoading, appReady }: any) => (
+const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache }: any) => (
   <>
     <Head>
       <title>SoccerMASS: No. 1 Soccer Manager and Football API Provider</title>
@@ -33,11 +37,20 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady }: any) => 
         content="SoccerMASS is the No 1. Online Football Management Game and Fooftball data API Provider. Advanced formations and tactics, realistic transfer market and much more"
       />
     </Head>
-    <Provider store={store}>
-      <div className={styles.layout}>
-        <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
-      </div>
-    </Provider>
+
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+          <Provider store={store}>
+            <main className={styles.layout}>
+              <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
+            </main>
+          </Provider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </CacheProvider>
   </>
 );
 
