@@ -11,10 +11,8 @@ const BuilderLoading = ({ height, status, colorScheme, component }: IBuilderLoad
         alt="SoccerMASS Loading ball"
         height={50}
         width={50}
-        priority={true}
         placeholder="blur"
         blurDataURL="/images/layout/ball.png"
-        quality={100}
       />
       <div>
         {new Array(5).fill("").map((_, index) => (
