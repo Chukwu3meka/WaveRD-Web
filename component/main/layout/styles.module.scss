@@ -8,7 +8,10 @@
   -webkit-box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  display: grid;
+  min-height: calc(100vh - 2px);
+  // border: 3px solid red;
+  overflow-y: auto;
+  overflow-x: hidden;
   * {
     outline: none;
     user-select: none; //disable select
@@ -20,7 +23,9 @@
     }
   }
 
-  ::-webkit-scrollbar {
-    display: none;
+  & > * {
+    min-height: 200vh;
+
+    // border: 3px solid blue;
   }
 }
