@@ -18,8 +18,6 @@ const LayoutContainer = (props: ILayoutContainer) => {
     [authenticated, setAuthenticated] = useState(false),
     { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache } = props;
 
-  console.log(typeof setDeviceSizeAction);
-
   useEffect(() => {
     if (!appReady) {
       setAppReady(true);

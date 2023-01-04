@@ -12,7 +12,7 @@ export interface ILayoutContainer {
   Component: AppProps["Component"];
   store: any;
   emotionCache?: EmotionCache;
-  setDeviceSizeAction?: any;
+  setDeviceSizeAction?: Function;
   authStatus?: boolean;
 }
 
