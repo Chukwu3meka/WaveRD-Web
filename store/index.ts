@@ -5,6 +5,7 @@ import thunkMiddleware from "redux-thunk";
 import rootReducer from "./reducers";
 
 let store: any;
+// let store: object;
 
 function initStore(initialState: typeof store) {
   return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));

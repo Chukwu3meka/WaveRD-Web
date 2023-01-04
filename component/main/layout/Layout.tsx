@@ -8,8 +8,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { styles } from ".";
 import theme from "@source/theme";
 import BuilderLoading from "@component/builder/loading";
+import { ILayout } from "@interface/main/layout-interface";
 
-const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache }: any) => (
+const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache }: ILayout) => (
   <>
     <Head>
       <title>SoccerMASS: No. 1 Soccer Manager and Football API Provider</title>

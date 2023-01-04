@@ -12,19 +12,18 @@ const clientSideEmotionCache = createEmotionCache();
 import { IHandlePageLoading, IHandleProtectedRoute, ILayoutContainer } from "@interface/main/layout-interface";
 
 const LayoutContainer = (props: ILayoutContainer) => {
-  const { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache } = props,
-    router = useRouter(),
+  const router = useRouter(),
     [appReady, setAppReady] = useState(false),
+    [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
-    [smallScreen, setSmallScreen] = useState(true),
-    [pageLoading, setPageLoading] = useState(true);
+    { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache } = props;
+
+  console.log(typeof setDeviceSizeAction);
 
   useEffect(() => {
     if (!appReady) {
-      // !!! <= don't tamper with the ordering of this code
       setAppReady(true);
       handlePageLoading({ url: null, loading: false });
-
       window.addEventListener("resize", handleResize);
       handleResize(); // <= run handleResize on page load.
     }
@@ -32,9 +31,10 @@ const LayoutContainer = (props: ILayoutContainer) => {
   }, []);
 
   useEffect(() => {
-    if (appReady && authenticated !== props.authStatus) {
-      setAuthenticated(props.authStatus);
-      handleProtectedRoute({ route: location.pathname, authenticated: props.authStatus });
+    const authenticated = props.authStatus || false;
+    if (appReady && authenticated !== authenticated) {
+      setAuthenticated(authenticated);
+      handleProtectedRoute({ route: location.pathname, authenticated });
     }
   }, [props.authStatus]);
 
@@ -53,11 +53,11 @@ const LayoutContainer = (props: ILayoutContainer) => {
     if (appReady) handleProtectedRoute({ route: router.asPath, authenticated: authenticated });
   }, [router.asPath]);
 
-  const handleResize = () => functions.handleResize({ setDeviceSizeAction });
+  const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
   const handleProtectedRoute = ({ route, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ route, authenticated });
 
-  return <Layout {...{ emotionCache, pageProps, Component, store, pageLoading, appReady, authenticated, smallScreen }} />;
+  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),

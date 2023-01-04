@@ -1,11 +1,28 @@
 import { AppProps } from "next/app";
 import { EmotionCache } from "@emotion/react";
 
-export interface ILayoutContainer extends AppProps {
+// export interface ILayoutContainer extends AppProps {
+//   store: any;
+//   authStatus: boolean;
+//   emotionCache?: EmotionCache;
+//   setDeviceSizeAction: Function;
+// }
+export interface ILayoutContainer {
+  pageProps: AppProps["pageProps"];
+  Component: AppProps["Component"];
   store: any;
-  authStatus: boolean;
   emotionCache?: EmotionCache;
-  setDeviceSizeAction: Function;
+  setDeviceSizeAction?: any;
+  authStatus?: boolean;
+}
+
+export interface ILayout {
+  pageProps: AppProps["pageProps"];
+  Component: AppProps["Component"];
+  store: any;
+  pageLoading: boolean;
+  appReady: boolean;
+  emotionCache: EmotionCache;
 }
 
 export interface IFunctionsHandleResize {
