@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 
 const NoAuthHome = () => (
   <div className={homeStyles.noAuthHome}>
+    <Link href="/">Home</Link>________________
+    <Link href="/apihub">API HUB</Link>________________
+    <Link href="/manager">Manager</Link>
     <div>
       <Typography variant="caption">Welcome to</Typography>
       <Typography variant="h3" component="h1">
