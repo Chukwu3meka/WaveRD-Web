@@ -38,24 +38,25 @@ const muiTheme = createTheme({
     //   main: "#a8a8a8",
     // },
 
-    text: {
-      primary: "#1e3952",
-      secondary: "#7E7C7C",
-      // light: "#E0D4D4",
-    },
+    // text: {
+    //   primary: "#1e3952",
+    //   secondary: "#7E7C7C",
+    //   // light: "#E0D4D4",
+    // },
+
     primary: {
-      main: "#e2ad26",
+      main: "rgb(68, 139, 68)",
     },
     secondary: {
-      main: "#1197c0",
+      main: "rgb(141, 202, 141)",
     },
-    success: {
-      main: "rgb(68, 139, 68)",
-      // main: "rgb(141, 202, 141)",
-    },
-    error: {
-      main: "#1197c0",
-    },
+    // success: {
+    //   main: "rgb(68, 139, 68)",
+    //   // main: "rgb(141, 202, 141)",
+    // },
+    // error: {
+    //   main: "#1197c0",
+    // },
     // neutral: {
     //   main: "#1778FF",
     //   contrastText: "#fff",
