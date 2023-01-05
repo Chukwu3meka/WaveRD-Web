@@ -4,7 +4,7 @@ import { BuilderLoading } from ".";
 import { arrayRotate } from "@utils/clientFuncs";
 import { IBuilderLoadingContainer } from "@interface/builder/loading-interface";
 
-const BuilderLoadingContainer = ({ height, status, component }: IBuilderLoadingContainer) => {
+const BuilderLoadingContainer = ({ height, loading, component }: IBuilderLoadingContainer) => {
   const [time, setTime] = useState(0);
   const [colorScheme, setColorScheme] = useState<string[]>(["#dfefdf", "#bddebd", "#9ace9a", "#78bd78", "#56ac56"]);
 
@@ -13,14 +13,14 @@ const BuilderLoadingContainer = ({ height, status, component }: IBuilderLoadingC
       const movingColors: string[] = arrayRotate({ arr: colorScheme }) as string[];
       setTime((prevTime) => prevTime + 1); // <-- Change this line!
       setColorScheme(movingColors);
-      if (!status) clearInterval(timer);
+      if (!loading) clearInterval(timer);
     }, 200);
     return () => {
       window.clearInterval(timer);
     };
   }, [time]);
 
-  return <BuilderLoading {...{ height, status, colorScheme, component }} />;
+  return <BuilderLoading {...{ height, loading, colorScheme, component }} />;
 };
 
 export default BuilderLoadingContainer;

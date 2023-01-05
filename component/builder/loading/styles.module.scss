@@ -3,11 +3,15 @@
 .loading {
   @include quickFlex($dir: column);
   position: relative;
+  min-height: 200px;
+  // border: 3px solid red;
   & > img {
+    // border: 3px solid blue;
     border-radius: 100%;
     animation: ball-spinner 1.5s infinite linear;
   }
   & > div {
+    // border: 3px solid blue;
     margin-top: 10px;
     @include quickFlex($dir: row);
     column-gap: 5px;
@@ -19,6 +23,10 @@
       transition: background-color 0.2s ease-in;
     }
   }
+}
+
+.loading-hidden {
+  display: none;
 }
 
 @keyframes ball-spinner {

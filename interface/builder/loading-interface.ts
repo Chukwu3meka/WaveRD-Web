@@ -1,6 +1,6 @@
 export interface IBuilderLoadingContainer {
   height?: string;
-  status: boolean;
+  loading: boolean;
   component: JSX.Element;
 }
 
