@@ -12,6 +12,20 @@
   // min-height: calc(100vh - 2px);
   overflow-y: auto;
   overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto max-content;
+
+  a {
+    cursor: pointer;
+    color: $primary;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: darken($color: $primary, $amount: 5);
+    transition-delay: 200ms;
+  }
+
   * {
     outline: none;
     user-select: none; //disable select
@@ -22,6 +36,4 @@
       overflow: hidden;
     }
   }
-  display: grid;
-  grid-template-rows: auto max-content;
 }
