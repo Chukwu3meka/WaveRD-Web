@@ -1,4 +1,4 @@
-export default () => <>fdfsfds fs ds f</>;
+export default () => <></>;
 
 // import { homeStyles } from ".";
 // import Link from "next/link";
