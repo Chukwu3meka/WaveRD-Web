@@ -1,4 +1,5 @@
-import { IAgeGenerator } from "@interface/utils/clientsFuncs-interface";
+import { IAgeGenerator, IArrayRotate } from "@interface/utils/clientsFuncs-interface";
+
 export const ageGenerator = ({ date }: IAgeGenerator) => {
   const todaysDate: number = Number(new Date()),
     birthDate: number = Number(new Date(date));
@@ -8,7 +9,6 @@ export const ageGenerator = ({ date }: IAgeGenerator) => {
   return;
 };
 
-import { IArrayRotate } from "@interface/utils/clientsFuncs-interface";
 export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
   if (!arr.length) throw { message: "Array is empty" };
 
@@ -19,4 +19,12 @@ export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
   }
 
   return arr;
+};
+
+export const sleep = async (seconds: number) => {
+  const duration = seconds * 60 * 60;
+
+  console.log(duration);
+
+  return new Promise((resolve) => setTimeout(resolve, duration));
 };

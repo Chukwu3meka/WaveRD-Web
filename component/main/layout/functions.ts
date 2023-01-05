@@ -1,4 +1,5 @@
 import { IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
+import { sleep } from "@utils/clientFuncs";
 
 export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) => {
   const width = window.innerWidth,
@@ -7,7 +8,7 @@ export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) =>
 };
 
 export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHandlePageLoading) => {
-  if (url) console.log(`Switching page to ${url}`);
+  // if (url) console.log(`Switching page to ${url}`);
 
   if (loading) {
     setPageLoading(true);
