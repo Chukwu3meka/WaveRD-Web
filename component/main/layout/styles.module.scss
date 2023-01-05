@@ -8,8 +8,8 @@
   -webkit-box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  min-height: calc(100vh - 2px);
-  // border: 3px solid red;
+  min-height: 100vh;
+  // min-height: calc(100vh - 2px);
   overflow-y: auto;
   overflow-x: hidden;
   * {
@@ -22,10 +22,12 @@
       overflow: hidden;
     }
   }
+  // border: 3px solid red;
+  display: grid;
+  grid-template-rows: auto max-content;
+  // align-items: space-between;
 
-  & > * {
-    min-height: 200vh;
-
-    // border: 3px solid blue;
-  }
+  // & > * {
+  //   border: 3px solid blue;
+  // }
 }

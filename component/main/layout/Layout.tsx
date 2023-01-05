@@ -7,6 +7,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { styles } from ".";
 import theme from "@source/theme";
+import FooterContainer from "@component/main/footer";
 import BuilderLoading from "@component/builder/loading";
 import { ILayout } from "@interface/main/layout-interface";
 
@@ -46,7 +47,9 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
         <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
           <Provider store={store}>
             <main className={styles.layout}>
-              <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} />
+              {/* <BuilderLoading status={!appReady || pageLoading} component={<Component {...pageProps} />} /> */}
+              <span>dsfsdfd</span>
+              <FooterContainer />
             </main>
           </Provider>
         </SnackbarProvider>

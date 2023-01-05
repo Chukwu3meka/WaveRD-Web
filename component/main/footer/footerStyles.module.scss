@@ -1,0 +1,78 @@
+@import "@source/scss/index.scss";
+
+.footer {
+  // border: 3px solid red;
+  color: whitesmoke;
+  text-align: center;
+  // margin-bottom: 45px;
+  & > div:nth-of-type(1) {
+    padding: 10px;
+    background-color: $darkGray;
+    @include quickFlex($dir: column);
+    border-radius: 5px 5px 0 0;
+    & > main {
+      padding: 20px 10px 0;
+      @include quickFlex($dir: row);
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap-reverse;
+      & > aside {
+        @include quickFlex($dir: column, $width: initial);
+        align-items: flex-start;
+        & > div {
+          margin: 10px auto;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+        & > span {
+          margin-bottom: 20px;
+          & > a {
+            margin-right: 10px;
+          }
+        }
+      }
+      & > nav {
+        margin-bottom: 50px;
+        border-bottom: 1px solid $lightGray;
+        @include quickFlex($dir: row, $width: initial);
+        justify-content: flex-start !important;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        & > div {
+          @include quickFlex($dir: column, $width: max-content);
+          align-items: flex-start;
+          padding: 0 30px 10px 0;
+          & > label {
+            font-size: 0.9em;
+            font-weight: 800;
+            margin: 0 0 10px;
+          }
+          & > a {
+            display: block;
+            font-size: 0.76em;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    & > section {
+      margin-top: 20px;
+      padding: 20px 10px;
+      border-top: 1px solid $lightGray;
+      background-color: $darkGray;
+      @include quickFlex($dir: row);
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      & > p:first-of-type {
+        padding: 0 100px 20px 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 520px) {
+  .footer > div:nth-of-type(1) > section > p:first-of-type {
+    padding: 0;
+  }
+}
