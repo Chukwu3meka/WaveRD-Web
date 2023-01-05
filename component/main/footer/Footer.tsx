@@ -6,7 +6,7 @@ import { styles } from ".";
 
 const Footer = ({ logoutHandler, social }: any) => (
   <div className={styles.footer}>
-    <div>
+    <footer>
       <main>
         <aside>
           <Typography variant="h5" component="h1">
@@ -66,16 +66,14 @@ const Footer = ({ logoutHandler, social }: any) => (
         </nav>
       </main>
       <section>
-        <Typography variant="body2" component="p">
+        <Typography component="span" variant="body2">
+          ● All rights reserved. All trademarks are the property of their respective owners ●
+        </Typography>
+        <Typography component="span" variant="body2">
           ©SoccerMASS 2018 ~ {new Date().getFullYear()}
         </Typography>
-        <Typography variant="body2" component="p">
-          ●No. 1 Free online Football Manager●
-          <br />
-          All rights reserved. All trademarks are the property of their respective owners.
-        </Typography>
       </section>
-    </div>
+    </footer>
   </div>
 );
 

@@ -2,17 +2,22 @@
 
 .footer {
   // border: 3px solid red;
-  color: whitesmoke;
-  text-align: center;
-  // margin-bottom: 45px;
-  & > div:nth-of-type(1) {
+  background-color: $darkGray;
+  padding: 20px 10px 50px;
+  & > footer {
+    margin: auto;
+    max-width: 1200px;
+    color: whitesmoke;
+    text-align: center;
+    // margin-bottom: 45px;
     padding: 10px;
-    background-color: $darkGray;
     @include quickFlex($dir: column);
-    border-radius: 5px 5px 0 0;
+    // border-radius: 5px 5px 0 0;
     & > main {
+      border: 3px solid red;
+
       padding: 20px 10px 0;
-      @include quickFlex($dir: row);
+      @include quickFlex($dir: row, $width: 100%);
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap-reverse;
@@ -56,23 +61,11 @@
       }
     }
     & > section {
+      @include quickFlex($dir: column, $width: 100%);
       margin-top: 20px;
       padding: 20px 10px;
       border-top: 1px solid $lightGray;
-      background-color: $darkGray;
-      @include quickFlex($dir: row);
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      & > p:first-of-type {
-        padding: 0 100px 20px 0;
-      }
+      row-gap: 10px;
     }
-  }
-}
-
-@media screen and (min-width: 520px) {
-  .footer > div:nth-of-type(1) > section > p:first-of-type {
-    padding: 0;
   }
 }
