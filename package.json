@@ -4,10 +4,9 @@
   "description": "SoccerMASS: Football Manager and Football API Provider",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
+    "build": "next build && next export",
     "lint": "next lint",
-    "export": "next export",
     "type-check": "tsc"
   },
   "keywords": [

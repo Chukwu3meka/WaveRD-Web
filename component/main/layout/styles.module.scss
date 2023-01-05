@@ -13,7 +13,11 @@
   overflow-x: hidden;
   display: grid;
   grid-template-rows: auto max-content;
+  // border: 3px solid red;
 
+  // & > * {
+  //   border: 3px solid blue;
+  // }
   a {
     cursor: pointer;
     color: $primary;

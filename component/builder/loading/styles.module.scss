@@ -1,17 +1,14 @@
 @import "@source/scss/index.scss";
 
 .loading {
-  @include quickFlex($dir: column);
+  @include quickFlex($dir: column, $width: 100%);
   position: relative;
   min-height: 200px;
-  // border: 3px solid red;
   & > img {
-    // border: 3px solid blue;
     border-radius: 100%;
     animation: ball-spinner 1.5s infinite linear;
   }
   & > div {
-    // border: 3px solid blue;
     margin-top: 10px;
     @include quickFlex($dir: row);
     column-gap: 5px;
@@ -25,10 +22,6 @@
   }
 }
 
-.loading-hidden {
-  display: none;
-}
-
 @keyframes ball-spinner {
   from {
     transform: rotate(0deg);
@@ -37,9 +30,3 @@
     transform: rotate(360deg);
   }
 }
-
-// @for $i from 1 through 5 {
-//   & > .loading-block:nth-child(#{$i}) {
-//     animation: moving-block $i * 3s infinite;
-//   }
-// }
