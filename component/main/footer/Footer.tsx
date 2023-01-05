@@ -12,18 +12,19 @@ const Footer = ({ logoutHandler, social }: any) => (
           <Typography variant="h5" component="h1">
             SoccerMASS
           </Typography>
-          <div>
-            <Image src="/images/soccermass.webp" alt="SoccerMASS" width={80} height={80} />
-          </div>
+          <Image src="/images/soccermass.webp" alt="SoccerMASS" width={80} height={80} />
+
           <Typography variant="subtitle2">Follow US</Typography>
-          <span>
+
+          <div>
             {social.map(([social, link = "https://viewcrunch.com/"]) => (
               <a href={link} key={social} rel="noopener noreferrer">
                 <Image src={`/images/social/${social.toLowerCase()}.png`} alt={`SoccerMASS ${social} page`} width={30} height={30} />
               </a>
             ))}
-          </span>
+          </div>
         </aside>
+
         <nav>
           <div>
             <label htmlFor="company">Company</label>
@@ -65,6 +66,7 @@ const Footer = ({ logoutHandler, social }: any) => (
           </div>
         </nav>
       </main>
+
       <section>
         <Typography component="span" variant="body2">
           ● All rights reserved. All trademarks are the property of their respective owners ●

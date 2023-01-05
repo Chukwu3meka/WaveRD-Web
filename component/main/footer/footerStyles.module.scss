@@ -1,44 +1,34 @@
 @import "@source/scss/index.scss";
 
 .footer {
-  // border: 3px solid red;
   background-color: $darkGray;
-  padding: 20px 10px 50px;
   & > footer {
-    margin: auto;
     max-width: 1200px;
-    color: whitesmoke;
+    margin: auto;
+    color: $textSecondary;
     text-align: center;
-    // margin-bottom: 45px;
-    padding: 10px;
+    padding: 20px 10px 50px;
+    // padding: 10px;
     @include quickFlex($dir: column);
-    // border-radius: 5px 5px 0 0;
     & > main {
-      border: 3px solid red;
-
-      padding: 20px 10px 0;
       @include quickFlex($dir: row, $width: 100%);
       justify-content: space-between;
       align-items: flex-start;
-      flex-wrap: wrap-reverse;
+      flex-wrap: wrap;
       & > aside {
-        @include quickFlex($dir: column, $width: initial);
+        @include quickFlex($dir: column, $width: max-content);
         align-items: flex-start;
-        & > div {
+        & > img {
           margin: 10px auto;
           border-radius: 50%;
-          overflow: hidden;
         }
-        & > span {
-          margin-bottom: 20px;
-          & > a {
-            margin-right: 10px;
-          }
+        & > div > a:not(:last-of-type) {
+          margin-right: 10px;
         }
       }
       & > nav {
-        margin-bottom: 50px;
-        border-bottom: 1px solid $lightGray;
+        // margin-bottom: 50px;
+        // border-bottom: 1px solid $lightGray;
         @include quickFlex($dir: row, $width: initial);
         justify-content: flex-start !important;
         align-items: flex-start;
