@@ -9,10 +9,8 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&amp;family=Rubik+Microbe&amp;display=swap"
-            rel="stylesheet"
-          />
+
+          <link href="https://fonts.googleapis.com/css2?family=Merienda&amp;family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
 
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}

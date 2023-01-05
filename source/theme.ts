@@ -26,8 +26,7 @@ const theme = createTheme({});
 
 const muiTheme = createTheme({
   typography: {
-    // fontFamily: "'Playfair Display', serif",
-    fontFamily: "'Roboto Slab', serif",
+    fontFamily: '"Merienda", "Roboto Slab", serif',
   },
 
   palette: {
