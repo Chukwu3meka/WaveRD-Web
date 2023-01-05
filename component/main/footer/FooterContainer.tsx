@@ -2,26 +2,27 @@ import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 
 import { Footer } from ".";
+import { IThirdPartyAccounts } from "@interface/main/footer-interface";
 // import { logoutAction } from "@store/actions";
 const logoutAction = () => {};
 
 const FooterContainer = ({ logoutAction, club, maintainance }: any) => {
   const { enqueueSnackbar } = useSnackbar(),
-    social = [
+    thirdPartyAccounts: IThirdPartyAccounts[] = [
       ["Facebook", "https://web.facebook.com/theAlienForest"],
       ["Twitter", "https://twitter.com/TheAlienForest/"],
       ["Instagram", "https://www.instagram.com/alienforest/"],
       ["LinkedIn", "https://www.linkedin.com/company/alienforest/"],
-      ["AlienForest", "https://www.alienforest.com/"],
+      // ["AlienForest", "https://www.alienforest.com/"],
       // ["Pinterest", "https://www.pinterest.com/viewcrunch/"],
-      // ["Github", "https://github.com/viewcrunch/"],
+      ["Github", "https://github.com/Chukwu3meka/SoccerMASS-Web"],
       // ["YouTube", "https://www.youtube.com/channel/UCs_hSlk3N8bxP5xHSdKw3IQ/"],
       // ["Fiverr", "https://www.fiverr.com/viewcrunch/"],
-      // ["Whatsapp", "https://wa.me/qr/5KYEVNBVLVVSI1"],
-      // ["Phone", "tel:+2347064417213"],
+      ["Whatsapp", "https://wa.me/qr/5KYEVNBVLVVSI1"],
+      ["Phone", "tel:+234(706)-441-7213"],
     ];
 
-  const logoutHandler = () => {
+  const logoutHandler = () => () => {
     if (club) {
       logoutAction();
     } else {
@@ -29,7 +30,7 @@ const FooterContainer = ({ logoutAction, club, maintainance }: any) => {
     }
   };
 
-  return <Footer {...{ maintainance, logoutHandler, social }} />;
+  return <Footer {...{ maintainance, logoutHandler, thirdPartyAccounts }} />;
 };
 
 // const mapStateToProps = (state: any) => ({ club: state.profile.auth.club }),

@@ -2,13 +2,13 @@
 
 .footer {
   background-color: $darkGray;
+  border-top: 1px solid darken($color: $lightGray, $amount: 70);
   & > footer {
     max-width: 1200px;
     margin: auto;
     color: $textSecondary;
     text-align: center;
-    padding: 20px 10px 50px;
-    // padding: 10px;
+    padding: 40px 10px 20px;
     @include quickFlex($dir: column);
     & > main {
       @include quickFlex($dir: row, $width: 100%);
@@ -17,22 +17,24 @@
       flex-wrap: wrap;
       & > aside {
         @include quickFlex($dir: column, $width: max-content);
+        // flex: 1;
         align-items: flex-start;
         & > img {
           margin: 10px auto;
           border-radius: 50%;
         }
-        & > div > a:not(:last-of-type) {
-          margin-right: 10px;
+        & > div {
+          margin-top: 10px;
+          & > a:not(:last-of-type) {
+            margin-right: 10px;
+          }
         }
       }
       & > nav {
-        // margin-bottom: 50px;
-        // border-bottom: 1px solid $lightGray;
-        @include quickFlex($dir: row, $width: initial);
-        justify-content: flex-start !important;
+        margin-left: auto;
+        @include quickFlex($dir: row, $width: max-content);
+        column-gap: 20px;
         align-items: flex-start;
-        flex-wrap: wrap;
         & > div {
           @include quickFlex($dir: column, $width: max-content);
           align-items: flex-start;
@@ -43,10 +45,12 @@
             margin: 0 0 10px;
           }
           & > a {
+            text-align: left;
             display: block;
             font-size: 0.76em;
             margin-bottom: 5px;
           }
+          // }
         }
       }
     }
@@ -54,7 +58,7 @@
       @include quickFlex($dir: column, $width: 100%);
       margin-top: 20px;
       padding: 20px 10px;
-      border-top: 1px solid $lightGray;
+      border-top: 1px solid darken($color: $lightGray, $amount: 70);
       row-gap: 10px;
     }
   }

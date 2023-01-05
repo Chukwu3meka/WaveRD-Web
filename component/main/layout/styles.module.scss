@@ -9,7 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  // min-height: calc(100vh - 2px);
   overflow-y: auto;
   overflow-x: hidden;
   display: grid;
@@ -19,11 +18,13 @@
     cursor: pointer;
     color: $primary;
     text-decoration: none;
+    transition: color 500ms ease-in;
   }
 
   a:hover {
     color: darken($color: $primary, $amount: 5);
-    transition-delay: 200ms;
+    // transition-delay: 300ms;
+    transition: color 300ms ease-out;
   }
 
   * {
