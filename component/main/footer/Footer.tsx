@@ -10,7 +10,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
     <footer>
       <main>
         <aside>
-          <Typography variant="h5" component="h1">
+          <Typography fontWeight={700} fontSize="1.8em" component="h1">
             SoccerMASS
           </Typography>
           <Image src="/images/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/soccermass.webp" />
