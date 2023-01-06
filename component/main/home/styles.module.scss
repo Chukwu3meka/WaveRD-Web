@@ -1,13 +1,14 @@
 @import "@source/scss/index.scss";
 
+.intro {
+  height: 400px;
+  color: $lightGray;
+  @include quickFlex($dir: column);
+  background-color: $darkGray;
+  // font-size: calc(2.8em + 1vw) !important;
+}
+
 .noAuthHome {
-  & > div:nth-of-type(1) {
-    height: 400px;
-    color: $lightGray;
-    @include quickFlex($dir: column);
-    background-color: color(dark);
-    font-size: calc(1.8em + 1vw) !important;
-  }
   & > div:nth-of-type(2) {
     padding: 20px 10px;
     @include quickFlex(row);

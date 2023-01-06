@@ -1,20 +1,22 @@
-import { styles } from ".";
-
 import Link from "next/link";
-import Image from "next/image";
-
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import { styles } from ".";
+
 const Intro = () => (
-  <div className={styles.noAuthHome}>
-    <Typography variant="caption">Welcome to</Typography>
-    <Typography variant="h3" component="h1">
+  <div className={styles.intro}>
+    <Typography variant="caption" fontSize="1em">
+      <Link href="/">Welcome to</Link>
+    </Typography>
+    <Typography variant="h1" fontSize="4em" fontWeight={900}>
       SoccerMASS
     </Typography>
-    <Typography variant="body2">The home of managers</Typography>
-    <Typography variant="subtitle1">No. 1 Soccer Manager online</Typography>
+    <Typography variant="body2" fontSize="1.2em">
+      <Link href="https://manager.soccermass.com/">The home of Soccer Managers</Link>
+    </Typography>
+    <Typography variant="subtitle1" fontSize="1em">
+      <Link href="https://apihub.soccermass.com/">No. 1 Football API Provider</Link>
+    </Typography>
   </div>
 );
 
