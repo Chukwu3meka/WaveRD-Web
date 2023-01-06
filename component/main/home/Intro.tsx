@@ -6,16 +6,16 @@ import { styles } from ".";
 const Intro = () => (
   <div className={styles.intro}>
     <Typography variant="caption" fontSize="1em">
-      <Link href="https://www.soccermass.com/">Welcome to</Link>
+      <Link href={process.env.NEXT_PUBLIC_BASE_CLIENT!}>Welcome to</Link>
     </Typography>
     <Typography variant="h1" fontSize="3em" fontWeight={900}>
       SoccerMASS
     </Typography>
     <Typography variant="body2" fontSize="1.2em">
-      <Link href="https://manager.soccermass.com/">The home of Soccer Managers</Link>
+      <Link href={process.env.NEXT_PUBLIC_BASE_MANAGER!}>The home of Soccer Managers</Link>
     </Typography>
     <Typography variant="subtitle1" fontSize="1em">
-      <Link href="https://apihub.soccermass.com/">No. 1 Football API Provider</Link>
+      <Link href={process.env.NEXT_PUBLIC_BASE_APIHUB!}>No. 1 Football API Provider</Link>
     </Typography>
   </div>
 );
