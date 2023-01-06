@@ -30,6 +30,15 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
 
           <nav>
             <div>
+              <label htmlFor="info">Info</label>
+              <Link href="/info/privacy/">Privacy Policy</Link>
+              <Link href="/info/contact/">Contact US</Link>
+              <Link href="/info/terms/">Terms &amp; Conditions</Link>
+              <Link href="/info/advertise/">Advertise</Link>
+              <Link href="/info/donate/">Support/Donation</Link>
+            </div>
+
+            <div>
               <label htmlFor="soccermass-links">SoccerMASS</label>
               <Link href="/">Home</Link>
               <Link href="/apihub">API HUB</Link>
@@ -52,15 +61,6 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
               <a href="https://alienforest.com/" rel="noopener noreferrer">
                 AlienForest
               </a>
-            </div>
-
-            <div>
-              <label htmlFor="info">Info</label>
-              <Link href="/info/privacy/">Privacy Policy</Link>
-              <Link href="/info/contact/">Contact US</Link>
-              <Link href="/info/terms/">Terms &amp; Conditions</Link>
-              <Link href="/info/advertise/">Advertise</Link>
-              <Link href="/info/donate/">Support/Donation</Link>
             </div>
           </nav>
         </main>

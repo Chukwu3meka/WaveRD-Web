@@ -1,11 +1,14 @@
 @import "./variables.scss";
 
-@mixin quickFlex($width: initial, $dir: row, $justify: center, $align: center) {
+@mixin quickFlex($width: initial, $dir: row, $justify: center, $align: center, $wrap: nowrap, $column: 0, $row: 0) {
   display: flex;
   width: $width;
   flex-direction: $dir;
   justify-content: $justify;
   align-items: $align;
+  flex-wrap: $wrap;
+  column-gap: $column;
+  row-gap: $row;
 }
 
 @mixin boxShadow($br: 5px) {
