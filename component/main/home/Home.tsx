@@ -1,4 +1,4 @@
-import { homeStyles } from ".";
+import { ApiHubIntro, Intro, homeStyles, ManagerIntro } from ".";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 
 const NoAuthHome = () => (
   <div className={homeStyles.noAuthHome}>
+    <Intro />
+    <ManagerIntro />
+    <ApiHubIntro />
     <div>
       <Typography variant="caption">Welcome to</Typography>
       <Typography variant="h3" component="h1">
