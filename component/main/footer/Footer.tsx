@@ -7,7 +7,7 @@ import { styles } from ".";
 import { IFooter } from "@interface/main/footer-interface";
 
 const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
-  <Fade direction="up">
+  <Fade direction="right">
     <div className={styles.footer}>
       <footer>
         <main>
@@ -64,7 +64,6 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
             </div>
           </nav>
         </main>
-
         <section>
           <Typography component="span" variant="body2" fontSize=".7em">
             Proudly hosted on&nbsp;
