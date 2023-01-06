@@ -6,7 +6,7 @@ import { styles } from ".";
 const Intro = () => (
   <div className={styles.intro}>
     <Typography variant="caption" fontSize="1em">
-      <Link href="/">Welcome to</Link>
+      <Link href="https://www.soccermass.com/">Welcome to</Link>
     </Typography>
     <Typography variant="h1" fontSize="4em" fontWeight={900}>
       SoccerMASS

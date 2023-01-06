@@ -2,7 +2,7 @@ import { ApiHubIntro, Intro, ManagerIntro } from ".";
 
 const NoAuthHome = () => (
   <>
-    {/* <Intro /> */}
+    <Intro />
     {/* <ManagerIntro /> */}
     {/* <ApiHubIntro /> */}
   </>

@@ -15,6 +15,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
             <Typography fontWeight={700} fontSize="1.8em" component="h1">
               SoccerMASS
             </Typography>
+
             <Image src="/images/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/soccermass.webp" />
 
             <Typography variant="subtitle2">Follow US</Typography>
@@ -64,6 +65,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
             </div>
           </nav>
         </main>
+
         <section>
           <Typography component="span" variant="body2" fontSize=".6em">
             Proudly hosted on&nbsp;
@@ -75,9 +77,11 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
               Render
             </a>
           </Typography>
+
           <Typography component="span" variant="body2" fontSize=".7em">
             ● All rights reserved. All trademarks are the property of their respective owners ●
           </Typography>
+
           <Typography component="span" variant="body2" fontSize=".8em">
             ©SoccerMASS 2018 ~ {new Date().getFullYear()}
           </Typography>
