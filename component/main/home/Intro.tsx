@@ -8,7 +8,7 @@ const Intro = () => (
     <Typography variant="caption" fontSize="1em">
       <Link href="https://www.soccermass.com/">Welcome to</Link>
     </Typography>
-    <Typography variant="h1" fontSize="4em" fontWeight={900}>
+    <Typography variant="h1" fontSize="3em" fontWeight={900}>
       SoccerMASS
     </Typography>
     <Typography variant="body2" fontSize="1.2em">
