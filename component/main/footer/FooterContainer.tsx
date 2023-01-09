@@ -3,21 +3,21 @@ import { useSnackbar } from "notistack";
 
 import { Footer } from ".";
 import { useEffect, useState } from "react";
+import { IFooterContainer } from "@interface/main/footer-interface";
 // import { logoutAction } from "@store/actions";
 const logoutAction = () => {};
 
-const FooterContainer = (props: any) => {
-  const { logoutAction, club, maintainance } = props;
-
-  const { enqueueSnackbar } = useSnackbar();
-  const [authenticated, setauthenticated] = useState(false);
+const FooterContainer = (props: IFooterContainer) => {
+  const { logoutAction } = props,
+    { enqueueSnackbar } = useSnackbar(),
+    [authenticated, setauthenticated] = useState(false);
 
   useEffect(() => {
     setauthenticated(props.authenticated || false);
   }, [props.authenticated]);
 
   const logoutHandler = () => () => {
-    if (club) {
+    if (authenticated) {
       logoutAction();
     } else {
       enqueueSnackbar("You're not logged in yet", { variant: "info" });

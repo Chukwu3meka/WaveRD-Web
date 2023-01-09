@@ -4,6 +4,7 @@ export interface IFooter {
   authenticated: boolean;
 }
 
-// export interface  {
-//   //
-// }
+export interface IFooterContainer {
+  logoutAction: Function;
+  authenticated: boolean;
+}
