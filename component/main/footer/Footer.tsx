@@ -12,7 +12,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
       <footer>
         <main>
           <aside>
-            <Typography fontWeight={700} fontSize="1.8em" component="h1">
+            <Typography fontWeight={700} fontSize="2.2em" component="h1">
               SoccerMASS
             </Typography>
 
@@ -67,7 +67,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
         </main>
 
         <section>
-          <Typography component="span" variant="body2" fontSize=".6em">
+          <Typography component="span" variant="body2" fontSize=".8em">
             Proudly hosted on&nbsp;
             <a href="https://vercel.com/" rel="noopener noreferrer">
               Vercel
@@ -78,11 +78,11 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
             </a>
           </Typography>
 
-          <Typography component="span" variant="body2" fontSize=".7em">
+          <Typography component="span" variant="body2" fontSize=".9em">
             ● All rights reserved. All trademarks are the property of their respective owners ●
           </Typography>
 
-          <Typography component="span" variant="body2" fontSize=".8em">
+          <Typography component="span" variant="body2" fontSize="1em">
             ©SoccerMASS 2018 ~ {new Date().getFullYear()}
           </Typography>
         </section>

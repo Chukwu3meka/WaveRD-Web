@@ -33,15 +33,17 @@
           @include quickFlex($dir: column, $width: max-content);
           align-items: flex-start;
           & > label {
-            font-size: 0.9em;
+            font-size: 1.2em;
             font-weight: 800;
             margin: 0 0 10px;
           }
           & > a {
             text-align: left;
             display: block;
-            font-size: 0.76em;
-            margin-bottom: 5px;
+            font-size: 0.86em;
+            &:not(:last-of-type) {
+              margin-bottom: 10px;
+            }
           }
         }
       }
