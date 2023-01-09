@@ -5,8 +5,9 @@ import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 import { IFooter } from "@interface/main/footer-interface";
+import thirdPartyAccounts from "@source/thirdPartyAccounts";
 
-const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
+const Footer = ({ logoutHandler, authenticated }: IFooter) => (
   <Fade direction="right">
     <div className={styles.footer}>
       <footer>
@@ -21,7 +22,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
             <Typography variant="subtitle2">Follow US</Typography>
 
             <div>
-              {thirdPartyAccounts.map(([accounts, link = "https://viewcrunch.com/"]) => (
+              {thirdPartyAccounts.map(([accounts, link = "https://alienforest.com/"]) => (
                 <a href={link} key={accounts} rel="noopener noreferrer" target="_blank">
                   <Image src={`/images/social/${accounts.toLowerCase()}.png`} alt={`SoccerMASS ${accounts} page`} width={30} height={30} />
                 </a>
@@ -44,11 +45,14 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
               <Link href="/">Home</Link>
               <Link href="/apihub">API HUB</Link>
               <Link href="/manager">Manager</Link>
-              <Link href="/auth">Signin/Signup</Link>
+              {!authenticated && <Link href="/auth/signin">Signin</Link>}
+              {!authenticated && <Link href="/auth/signup">Signup</Link>}
               <Link href="/auth/reset">Reset Password</Link>
-              <Link href="/auth/signin" onClick={logoutHandler()}>
-                Logout
-              </Link>
+              {authenticated && (
+                <Link href="/auth/signin" onClick={logoutHandler()}>
+                  Logout
+                </Link>
+              )}
             </div>
 
             <div>
