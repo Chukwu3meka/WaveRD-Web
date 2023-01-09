@@ -22,7 +22,7 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
 
             <div>
               {thirdPartyAccounts.map(([accounts, link = "https://viewcrunch.com/"]) => (
-                <a href={link} key={accounts} rel="noopener noreferrer">
+                <a href={link} key={accounts} rel="noopener noreferrer" target="_blank">
                   <Image src={`/images/social/${accounts.toLowerCase()}.png`} alt={`SoccerMASS ${accounts} page`} width={30} height={30} />
                 </a>
               ))}
@@ -69,11 +69,11 @@ const Footer = ({ logoutHandler, thirdPartyAccounts }: IFooter) => (
         <section>
           <Typography component="span" variant="body2" fontSize=".8em">
             Proudly hosted on&nbsp;
-            <a href="https://vercel.com/" rel="noopener noreferrer">
+            <a href="https://vercel.com/" rel="noopener noreferrer" target="_blank">
               Vercel
             </a>
             &nbsp;&&nbsp;
-            <a href="https://render.com/" rel="noopener noreferrer">
+            <a href="https://render.com/" rel="noopener noreferrer" target="_blank">
               Render
             </a>
           </Typography>
