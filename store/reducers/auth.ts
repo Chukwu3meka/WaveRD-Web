@@ -1,4 +1,6 @@
-const authReducer = (state = { status: false }, { payload, type }: { payload: any; type: any }) => {
+const initialState: any = { status: false };
+
+const authReducer = (state = initialState, { payload, type }: { payload: any; type: any }) => {
   switch (type) {
     case "SET_AUTH":
       return payload;

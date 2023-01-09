@@ -12,7 +12,7 @@ export const setAuthAction = (payload: object) => {
   };
 };
 
-export const removeAuthAction = () => {
+export const logoutAction = () => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch({ type: "SET_AUTH", payload: { status: false } });

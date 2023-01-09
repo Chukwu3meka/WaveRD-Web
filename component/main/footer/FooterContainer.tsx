@@ -4,8 +4,7 @@ import { useSnackbar } from "notistack";
 import { Footer } from ".";
 import { useEffect, useState } from "react";
 import { IFooterContainer } from "@interface/main/footer-interface";
-// import { logoutAction } from "@store/actions";
-const logoutAction = () => {};
+import { logoutAction } from "@store/actions";
 
 const FooterContainer = (props: IFooterContainer) => {
   const { logoutAction } = props,
