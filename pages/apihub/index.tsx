@@ -1,5 +1,5 @@
 const Page = () => {
-  return <div>Page API HUB</div>;
+  return <div>API HUB index</div>;
 };
 
 export default Page;

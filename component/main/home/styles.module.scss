@@ -97,9 +97,9 @@
 
 @media screen and (min-width: 960px) {
   .managerIntro {
-    & > div {
-      // max-width: 300px;
-    }
+    // & > div {
+    //   // max-width: 300px;
+    // }
     & > div:nth-of-type(1) {
       margin-right: -50px;
     }
@@ -110,7 +110,7 @@
 }
 
 @media screen and (min-width: 1166px) {
-  .managerIntro > div {
-    // max-width: 400px;
-  }
+  // .managerIntro > div {
+  //   // max-width: 400px;
+  // }
 }

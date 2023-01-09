@@ -1,5 +1,5 @@
 const Page = () => {
-  return <div>Page Manager</div>;
+  return <div>Soccer Manager index</div>;
 };
 
 export default Page;
