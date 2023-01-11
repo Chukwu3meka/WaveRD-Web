@@ -21,6 +21,7 @@ const ManagerIntro = () => (
         </Button>
       </Link>
     </Paper>
+
     <Paper elevation={4}>
       <div>
         <Image src="/images/layout/indexClubs.png" fill alt="SoccerMASS Clubs" />
@@ -31,6 +32,7 @@ const ManagerIntro = () => (
         <Image src="/images/layout/indexPlayers.png" fill alt="SoccerMASS Players" />
       </div>
     </Paper>
+
     <Paper elevation={2}>
       <div>
         <Image src="/images/layout/squad.png" fill alt="SoccerMASS Clubs" />
