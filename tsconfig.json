@@ -6,7 +6,6 @@
       "@store/*": ["store/*"],
       "@source/*": ["source/*"],
       "@interface/*": ["interface/*"],
-
       "@component/*": ["component/*"]
     },
     "target": "es6",
