@@ -1,5 +1,6 @@
-import { Typography } from "@mui/material";
 import Carousel from "nuka-carousel";
+import { Typography } from "@mui/material";
+
 import { transparentStyles } from ".";
 
 const Transparent = () => {
