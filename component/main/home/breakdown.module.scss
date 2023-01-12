@@ -1,8 +1,6 @@
 @import "@source/scss/index.scss";
 
 .breakdown {
-  // background-image: url("/images/layout/background.jpg");
-
   // background-color: $darkGray;
   // background-color: transparent;
   // height: 100%;
@@ -11,6 +9,11 @@
   // position: relative;
   // overflow-x: hidden;
   & > div:first-of-type {
+    background-image: url("/images/layout/background.jpg");
+    background-position: center;
+    background-size: contain;
+    z-index: -1;
+    max-width: 1200px;
     // max-width: 1200px;
     position: fixed;
     // // bottom: 10vh;
@@ -21,15 +24,16 @@
     // margin: 50px auto 150px;
     border: 3px solid red;
 
-    bottom: 0;
+    bottom: 100px;
     // left: 0;
     // right: 0;
   }
 
   & > div:last-of-type {
+    height: 200px;
     max-width: 1200px;
     border: 3px solid blue;
-    // margin: 50px auto 150px;
+    margin: 50px auto 150px;
   }
 
   //  max-width: 1000px;
