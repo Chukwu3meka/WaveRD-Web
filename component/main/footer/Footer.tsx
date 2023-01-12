@@ -72,7 +72,11 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
 
         <section>
           <Typography component="span" variant="body2" fontSize=".8em">
-            Proudly hosted on&nbsp;
+            Powered with 💗 by&nbsp;
+            <a href="https://mongodb.com/" rel="noopener noreferrer" target="_blank">
+              MongoDB
+            </a>
+            ,&nbsp;
             <a href="https://vercel.com/" rel="noopener noreferrer" target="_blank">
               Vercel
             </a>
