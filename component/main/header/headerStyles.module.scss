@@ -57,6 +57,7 @@
         a {
           color: white;
           &:hover {
+            color: $secondary;
             background: linear-gradient(to left, $secondary, $darkGray 100%);
             background-position: 0 100%;
             background-size: 100% 2px;

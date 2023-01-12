@@ -30,5 +30,3 @@ const Transparent = () => {
 };
 
 export default Transparent;
-
-// 💗
