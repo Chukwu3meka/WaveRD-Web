@@ -8,8 +8,8 @@ import { IFooter } from "@interface/main/footer-interface";
 import thirdPartyAccounts from "@source/thirdPartyAccounts";
 
 const Footer = ({ logoutHandler, authenticated }: IFooter) => (
-  <Fade direction="right">
-    <div className={styles.footer}>
+  <div className={styles.footer}>
+    <Fade direction="right">
       <footer>
         <main>
           <aside>
@@ -91,8 +91,8 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
           </Typography>
         </section>
       </footer>
-    </div>
-  </Fade>
+    </Fade>
+  </div>
 );
 
 export default Footer;
