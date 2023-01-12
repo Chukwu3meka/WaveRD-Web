@@ -37,6 +37,12 @@ const SocialIcon = ({ account, link }) => {
   );
 };
 
+const navLinks = [
+  { title: "Home", path: "/" },
+  { title: "API Hub", path: "/apihub" },
+  { title: "Manager", path: "/manager" },
+];
+
 // const Header = ({ logoutHandler, authenticated }: IFooter) => (
 const Header = ({ logoutHandler, authenticated }: any) => (
   <Fade direction="down">
@@ -55,9 +61,11 @@ const Header = ({ logoutHandler, authenticated }: any) => (
         </div>
 
         <div>
-          <Typography variant="subtitle2">Manager</Typography>
-          <Typography variant="subtitle2">API Hub</Typography>
-          <Typography variant="subtitle2">Home</Typography>
+          {navLinks.map(({ title, path }) => (
+            <Typography variant="subtitle2">
+              <Link href={path}>{title}</Link>
+            </Typography>
+          ))}
         </div>
 
         <div>
