@@ -37,6 +37,8 @@
 }
 
 .managerIntro {
+  background: $textSecondary;
+
   padding: 20px 10px;
   @include quickFlex($width: 100%, $dir: row, $align: stretch);
   flex-wrap: wrap;

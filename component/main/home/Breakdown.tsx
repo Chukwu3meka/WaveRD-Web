@@ -3,8 +3,9 @@ import { breakdownStyles } from ".";
 const Breakdown = () => {
   return (
     <div className={breakdownStyles.breakdown}>
+      <div></div>
       <div>
-        <div>
+        {/* <div>
           <i>●●●💗●●●</i>
           <span> No Player hoarding </span>
           <span> Competitive transfer market </span>
@@ -13,7 +14,7 @@ const Breakdown = () => {
           <span> and many more</span>
           <i>●●●💗●●●</i>
         </div>
-        <img src="/images/layout/intro-breakdown.png" />
+        <img src="/images/layout/intro-breakdown.png" /> */}
       </div>
     </div>
   );
