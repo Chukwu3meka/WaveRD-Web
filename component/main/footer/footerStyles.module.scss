@@ -28,7 +28,7 @@
       & > nav {
         padding: 20px 20px 0;
         border-top: 1px solid darken($color: $lightGray, $amount: 70);
-        @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 20px, $align: flex-start, $justify: space-between);
+        @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 50px, $row: 40px, $align: flex-start, $justify: space-between);
         & > div {
           @include quickFlex($dir: column, $width: max-content);
           align-items: flex-start;
