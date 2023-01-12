@@ -1,7 +1,8 @@
 @import "@source/scss/index.scss";
 
 .intro {
-  height: calc(100vh - 50px);
+  // height: calc(100vh - 50px);
+  height: calc(100vh);
   color: $lightGray;
   @include quickFlex($dir: column);
   background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.998) 50%),

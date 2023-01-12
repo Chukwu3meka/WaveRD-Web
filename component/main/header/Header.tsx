@@ -44,8 +44,8 @@ const navLinks = [
 ];
 
 const Header = ({ logoutHandler, authenticated }: IHeader) => (
-  <Fade direction="down">
-    <div className={styles.header}>
+  <div>
+    <Fade direction="down" className={styles.header}>
       <header>
         <div>
           <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} placeholder="blur" blurDataURL="/images/soccermass.webp" />
@@ -99,8 +99,8 @@ const Header = ({ logoutHandler, authenticated }: IHeader) => (
           )}
         </div>
       </header>
-    </div>
-  </Fade>
+    </Fade>
+  </div>
 );
 
 export default Header;

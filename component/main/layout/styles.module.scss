@@ -12,11 +12,11 @@
   overflow-y: auto;
   overflow-x: hidden;
   display: grid;
-  grid-template-rows: auto max-content;
+  grid-template-rows: max-content auto max-content;
   // border: 3px solid red;
 
   // & > * {
-  //   border: 3px solid blue;
+  // border: 10px solid blue;
   // }
   a {
     cursor: pointer;
