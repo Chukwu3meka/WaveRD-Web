@@ -1,9 +1,10 @@
-import { ApiHubIntro, Intro, ManagerIntro } from ".";
+import { ApiHubIntro, Intro, ManagerIntro, Breakdown } from ".";
 
 const NoAuthHome = () => (
   <>
     <Intro />
     <ManagerIntro />
+    <Breakdown />
     {/* <ApiHubIntro /> */}
   </>
 );
