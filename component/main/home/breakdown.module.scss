@@ -5,8 +5,29 @@
 
   & > div {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 50px auto 150px;
     // max-width: 1000px;
-    border: 3px solid red;
+    // border: 3px solid red;
+    // @include quickFlex($dir: row, $justify: space-between);
+    @include quickFlex($dir: row);
+    position: relative;
+
+    background-image: url("/images/layout/intro-breakdown-bg.png");
+    background-repeat: no-repeat;
+    background-position: 120% 120px;
+    & > div {
+      padding: 40px 20px;
+      color: whitesmoke;
+      // border: 3px solid BLUE;
+      @include quickFlex($dir: column, $width: calc(100% - 500px), $row: 10px);
+    }
+    & > img {
+      position: absolute;
+      right: 70px;
+      bottom: 20px;
+      height: calc(100% + 100px);
+      width: 500px;
+      // border: 3px solid green;
+    }
   }
 }
