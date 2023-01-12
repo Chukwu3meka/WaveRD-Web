@@ -5,19 +5,22 @@
   color: $lightGray;
   text-align: center;
   @include quickFlex($dir: column);
-  background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 60%), url("../../../public/images/layout/intro.jpg") 50%/140% no-repeat;
+  background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 60%),
+    url("../../../public/images/layout/intro-welcome.jpg") 50%/140% no-repeat;
 }
 
 @media screen and (min-width: 620px) {
   .intro {
-    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%), url("../../../public/images/layout/intro.jpg") 50%/65% no-repeat;
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%),
+      url("../../../public/images/layout/intro-welcome.jpg") 50%/65% no-repeat;
   }
 }
 
 @media screen and (min-width: 1220px) {
   .intro {
     height: 500px;
-    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%), url("../../../public/images/layout/intro.jpg") 50%/65% no-repeat;
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%),
+      url("../../../public/images/layout/intro-welcome.jpg") 50%/65% no-repeat;
   }
 }
 

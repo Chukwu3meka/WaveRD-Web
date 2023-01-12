@@ -11,7 +11,7 @@ const ManagerIntro = () => (
   <div className={styles.managerIntro}>
     <Paper elevation={2}>
       <div>
-        <Image src="/images/layout/fans.png" fill alt="SoccerMASS Clubs" />
+        <Image src="/images/layout/intro-signup.jpg" fill alt="SoccerMASS Clubs" />
       </div>
       <span>Signup and compete with other elite managers, take your team to the peak</span>
 
@@ -24,18 +24,18 @@ const ManagerIntro = () => (
 
     <Paper elevation={4}>
       <div>
-        <Image src="/images/layout/indexClubs.png" fill alt="SoccerMASS Clubs" />
+        <Image src="/images/layout/intro-clubs.jpg" fill alt="SoccerMASS Clubs" />
       </div>
       <Typography variant="h5">64 Clubs</Typography>
       <Typography variant="h4">1,979 Players</Typography>
       <div>
-        <Image src="/images/layout/indexPlayers.png" fill alt="SoccerMASS Players" />
+        <Image src="/images/layout/intro-players.png" fill alt="SoccerMASS Players" />
       </div>
     </Paper>
 
     <Paper elevation={2}>
       <div>
-        <Image src="/images/layout/squad.png" fill alt="SoccerMASS Clubs" />
+        <Image src="/images/layout/intro-signin.jpg" fill alt="SoccerMASS Clubs" />
       </div>
       <span>Your Players are waiting for you, build your team, manage club finance and more </span>
       <Link href="/auth/signin">
