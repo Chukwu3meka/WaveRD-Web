@@ -3,11 +3,10 @@ import { useSnackbar } from "notistack";
 
 import { Header } from ".";
 import { useEffect, useState } from "react";
-// import { IHeaderContainer } from "@interface/main/Header-interface";
+import { IHeaderContainer } from "@interface/main/header-interface";
 import { logoutAction } from "@store/actions";
 
-// const HeaderContainer = (props: IHeaderContainer) => {
-const HeaderContainer = (props: any) => {
+const HeaderContainer = (props: IHeaderContainer) => {
   const { logoutAction } = props,
     { enqueueSnackbar } = useSnackbar(),
     [authenticated, setauthenticated] = useState(false);
