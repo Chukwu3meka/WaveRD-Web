@@ -3,6 +3,7 @@
 .intro {
   height: 400px;
   color: $lightGray;
+  text-align: center;
   @include quickFlex($dir: column);
   background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 60%), url("../../../public/images/layout/intro.jpg") 50%/140% no-repeat;
 }
