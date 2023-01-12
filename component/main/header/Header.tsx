@@ -4,7 +4,7 @@ import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
-// import { IFooter } from "@interface/main/header-interface";
+import { IHeader } from "@interface/main/header-interface";
 import thirdPartyAccounts from "@source/thirdPartyAccounts";
 import { IThirdPartyAccounts } from "@interface/source/thirdPartyAccounts-interface";
 
@@ -12,7 +12,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
-const SocialIcon = ({ account, link }) => {
+const SocialIcon = ({ account, link }: { account: string; link: string }) => {
   let icon;
 
   switch (account) {
@@ -43,8 +43,7 @@ const navLinks = [
   { title: "Manager", path: "/manager" },
 ];
 
-// const Header = ({ logoutHandler, authenticated }: IFooter) => (
-const Header = ({ logoutHandler, authenticated }: any) => (
+const Header = ({ logoutHandler, authenticated }: IHeader) => (
   <Fade direction="down">
     <div className={styles.header}>
       <header>
