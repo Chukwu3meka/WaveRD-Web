@@ -23,19 +23,30 @@
     // // left: 20px;
     height: 100vh;
     // margin: 50px auto 150px;
-    border: 3px solid red;
+    // border: 3px solid red;
 
     bottom: 0px;
     margin: auto;
     // left: 0;
     // right: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $darkGray;
+      opacity: 0.6;
+    }
   }
 
   & > div:last-of-type {
     height: 200px;
     max-width: 1200px;
     border: 3px solid blue;
-    // margin: 50px auto 150px;
+    margin: 100px auto;
   }
 
   //  max-width: 1000px;
