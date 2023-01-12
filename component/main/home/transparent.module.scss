@@ -43,10 +43,34 @@
   }
 
   & > div:last-of-type {
-    height: 200px;
     max-width: 1200px;
-    border: 3px solid blue;
-    margin: 100px auto;
+    // border: 1px solid blue;
+    margin: 50px auto;
+    // @include quickFlex();
+    // position: relative;
+    // width: 100px !important;
+    width: calc(100vw - 10px) !important;
+    .peak {
+      // min-height: 80px;
+      margin: 0 auto;
+      // border: 3px solid blue;
+      // span {
+      @include quickFlex();
+
+      & > p {
+        text-align: center;
+        color: $lightGray;
+
+        background: linear-gradient(to left, $secondary, $darkGray 100%);
+        background-position: 0 100%;
+        background-size: 100% 3px;
+        background-repeat: repeat-x;
+      }
+      //   // margin: auto;
+      //   // width: 100vw !important;
+      // }
+      // // text-align: center;
+    }
   }
 
   //  max-width: 1000px;

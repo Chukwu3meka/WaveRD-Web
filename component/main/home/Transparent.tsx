@@ -1,24 +1,33 @@
+import { Typography } from "@mui/material";
 import Carousel from "nuka-carousel";
 import { transparentStyles } from ".";
 
 const Transparent = () => {
+  const peaks = [
+    "No Player hoarding in any particular team",
+    "Competitive transfer market",
+    "Advanced tactics and formation",
+    "Real match simulation",
+    "Players with rating over '89' are registered as Free agents",
+  ];
   return (
     <div className={transparentStyles.transparent}>
       <div></div>
       <div>
-        {/* <div>
-          <i>●●●💗●●●</i>
-          <span> No Player hoarding </span>
-          <span> Competitive transfer market </span>
-          <span> Advanced tactics and formation </span>
-          <span> Real match simulation </span>
-          <span> and many more</span>
-          <i>●●●💗●●●</i>
-        </div>
-        <img src="/images/layout/intro-breakdown.png" /> */}
+        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={1}>
+          {peaks.map((peak) => (
+            <div key={peak} className={transparentStyles.peak}>
+              <Typography fontSize="2em" fontWeight={600}>
+                {peak}
+              </Typography>
+            </div>
+          ))}
+        </Carousel>
       </div>
     </div>
   );
 };
 
 export default Transparent;
+
+// 💗
