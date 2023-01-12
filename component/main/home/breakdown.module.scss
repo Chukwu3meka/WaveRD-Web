@@ -10,10 +10,11 @@
   // overflow-x: hidden;
   & > div:first-of-type {
     background-image: url("/images/layout/background.jpg");
-    background-position: center;
-    background-size: contain;
+    background-position: center 20px;
+    background-size: calc(max(100%, 900px)) 600px;
+    background-repeat: no-repeat;
     z-index: -1;
-    max-width: 1200px;
+    // max-width: 1200px;
     // max-width: 1200px;
     position: fixed;
     // // bottom: 10vh;
@@ -25,12 +26,13 @@
     border: 3px solid red;
 
     bottom: 0px;
+    margin: auto;
     // left: 0;
     // right: 0;
   }
 
   & > div:last-of-type {
-    height: 200px;
+    // height: 200px;
     max-width: 1200px;
     border: 3px solid blue;
     margin: 50px auto 150px;
