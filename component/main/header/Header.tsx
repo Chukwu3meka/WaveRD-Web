@@ -48,7 +48,7 @@ const Header = ({ logoutHandler, authenticated }: IHeader) => (
     <Fade direction="down" className={styles.header}>
       <header>
         <div>
-          <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} placeholder="blur" blurDataURL="/images/soccermass.webp" />
+          <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
           <Stack direction="row">
             <Typography fontWeight={700} fontSize="1.7em" component="h1">
               Soccer
@@ -61,7 +61,7 @@ const Header = ({ logoutHandler, authenticated }: IHeader) => (
 
         <div>
           {navLinks.map(({ title, path }) => (
-            <Typography variant="subtitle2">
+            <Typography variant="subtitle2" key={title}>
               <Link href={path}>{title}</Link>
             </Typography>
           ))}
@@ -72,7 +72,7 @@ const Header = ({ logoutHandler, authenticated }: IHeader) => (
             {thirdPartyAccounts
               .filter((acc) => ["Twitter", "Instagram", "Whatsapp"].includes(acc[0]))
               .map(([account, link = "https://alienforest.com/"]) => (
-                <SocialIcon account={account} link={link} />
+                <SocialIcon key={account} account={account} link={link} />
               ))}
           </div>
 
