@@ -21,7 +21,7 @@ const ApiHubIntro = () => (
       </div>
     </div>
     <div>
-      {[
+      {/* {[
         // "bundesliga 2.png",
         "bundesliga.png",
         "serie a tim.png",
@@ -34,7 +34,7 @@ const ApiHubIntro = () => (
         // "laliga smartbank.png",
       ].map((league) => (
         <Image src={`/images/layout/${league}`} alt={`SoccerMASS ${league}`} width={80} height={80} key={league} />
-      ))}
+      ))} */}
     </div>
   </div>
 );
