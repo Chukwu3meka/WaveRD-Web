@@ -1,4 +1,4 @@
-import { styles } from ".";
+import { managerIntroStyles } from ".";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const ManagerIntro = () => (
-  <div className={styles.managerIntro}>
+  <div className={managerIntroStyles.managerIntro}>
     <Paper elevation={2}>
       <div>
         <Image

@@ -1,4 +1,4 @@
-import { styles } from ".";
+import { apiHubIntroStyles } from ".";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const ApiHubIntro = () => (
-  <div className={styles.noAuthHome}>
+  <div className={apiHubIntroStyles.noAuthHome}>
     <div>
       <div>
         <i>●●●💗●●●</i>

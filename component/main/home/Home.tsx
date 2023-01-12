@@ -5,7 +5,7 @@ const NoAuthHome = () => (
     <Intro />
     <ManagerIntro />
     <Peaks />
-    <ApiHubIntro />
+    {/* <ApiHubIntro /> */}
   </>
 );
 

@@ -1,0 +1,37 @@
+@import "@source/scss/index.scss";
+
+.intro {
+  height: calc(100vh);
+  color: $lightGray;
+  @include quickFlex($dir: column);
+  background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.998) 50%),
+    url("../../../public/images/layout/intro-welcome.jpg") 50%/190% no-repeat;
+}
+
+@media screen and (min-width: 5350px) {
+  .intro {
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.998) 50%),
+      url("../../../public/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .intro {
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -88%, rgba($darkGray, 0.998) 45%),
+      url("../../../public/images/layout/intro-welcome.jpg") 50%/100% no-repeat;
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .intro {
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -58%, rgba($darkGray, 0.998) 40%),
+      url("../../../public/images/layout/intro-welcome.jpg") 50%/85% no-repeat;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .intro {
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -65%, rgba($darkGray, 0.998) 40%),
+      url("../../../public/images/layout/intro-welcome.jpg") 50%/65% no-repeat;
+  }
+}
