@@ -45,13 +45,13 @@
   & > div:last-of-type {
     max-width: 1200px;
     // border: 1px solid blue;
-    margin: 50px auto;
+    margin: auto;
     // @include quickFlex();
     // position: relative;
     // width: 100px !important;
     width: calc(100vw - 10px) !important;
     .peak {
-      // min-height: 80px;
+      min-height: 200px;
       margin: 0 auto;
       // border: 3px solid blue;
       // span {
