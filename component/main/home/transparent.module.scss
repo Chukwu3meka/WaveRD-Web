@@ -1,7 +1,6 @@
 @import "@source/scss/index.scss";
 
 .transparent {
-  // background-color: $darkGray;
   // background-color: transparent;
   // height: 100%;
   // width: 100%;
@@ -14,6 +13,7 @@
     background-size: calc(max(100%, 900px)) 100vh;
     background-repeat: no-repeat;
     z-index: -1;
+    background-color: $darkGray;
     // max-width: 1200px;
     // max-width: 1200px;
     position: fixed;
