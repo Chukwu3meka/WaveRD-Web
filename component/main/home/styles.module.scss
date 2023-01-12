@@ -1,10 +1,10 @@
 @import "@source/scss/index.scss";
 
 .intro {
-  height: 400px;
+  height: 600px;
   color: $lightGray;
   @include quickFlex($dir: column);
-  background-color: $darkGray;
+  background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%), url("../../../public/images/layout/intro.jpg") 50%/65% no-repeat;
 }
 
 .managerIntro {
