@@ -1,8 +1,8 @@
-import { breakdownStyles } from ".";
+import { leaguesStyles } from ".";
 
-const Breakdown = () => {
+const Leagues = () => {
   return (
-    <div className={breakdownStyles.breakdown}>
+    <div className={leaguesStyles.leagues}>
       <div></div>
       <div>
         {/* <div>
@@ -20,4 +20,4 @@ const Breakdown = () => {
   );
 };
 
-export default Breakdown;
+export default Leagues;
