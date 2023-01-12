@@ -1,10 +1,23 @@
 @import "@source/scss/index.scss";
 
 .intro {
-  height: 600px;
+  height: 400px;
   color: $lightGray;
   @include quickFlex($dir: column);
-  background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%), url("../../../public/images/layout/intro.jpg") 50%/65% no-repeat;
+  background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 60%), url("../../../public/images/layout/intro.jpg") 50%/140% no-repeat;
+}
+
+@media screen and (min-width: 620px) {
+  .intro {
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%), url("../../../public/images/layout/intro.jpg") 50%/65% no-repeat;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .intro {
+    height: 500px;
+    background: radial-gradient(circle closest-corner at 50% 50%, transparent -50%, rgba($darkGray, 0.987) 40%), url("../../../public/images/layout/intro.jpg") 50%/65% no-repeat;
+  }
 }
 
 .managerIntro {
@@ -40,33 +53,6 @@
   }
 }
 
-.noAuthHome {
-  & > div:nth-of-type(3) {
-    background-color: color(dark);
-    & > div {
-      margin: auto;
-      padding: 20px;
-      flex-wrap: wrap;
-      max-width: 500px;
-      color: $lightGray;
-      @include quickFlex($dir: column);
-      & > i {
-        font-size: 0.6em;
-      }
-    }
-  }
-
-  & > div:nth-of-type(4) {
-    @include quickFlex(row);
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding: 50px 20px;
-    margin: auto;
-    row-gap: 20px;
-    column-gap: 20px;
-  }
-}
-
 @media screen and (min-width: 600px) {
   .managerIntro {
     & > div {
@@ -77,6 +63,7 @@
     }
   }
 }
+
 @media screen and (min-width: 800px) {
   .managerIntro {
     gap: 0;
@@ -167,5 +154,32 @@
       height: 350px;
       width: 340px;
     }
+  }
+}
+
+.noAuthHome {
+  & > div:nth-of-type(3) {
+    background-color: color(dark);
+    & > div {
+      margin: auto;
+      padding: 20px;
+      flex-wrap: wrap;
+      max-width: 500px;
+      color: $lightGray;
+      @include quickFlex($dir: column);
+      & > i {
+        font-size: 0.6em;
+      }
+    }
+  }
+
+  & > div:nth-of-type(4) {
+    @include quickFlex(row);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+    margin: auto;
+    row-gap: 20px;
+    column-gap: 20px;
   }
 }
