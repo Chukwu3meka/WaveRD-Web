@@ -1,3 +1,4 @@
+import Carousel from "nuka-carousel";
 import { transparentStyles } from ".";
 
 const Transparent = () => {
