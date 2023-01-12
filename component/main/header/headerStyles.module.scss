@@ -1,0 +1,81 @@
+@import "@source/scss/index.scss";
+
+.header {
+  background-color: $darkGray;
+  border-top: 1px solid darken($color: $lightGray, $amount: 70);
+  & > header {
+    max-width: 1200px;
+    margin: auto;
+    color: $textSecondary;
+    text-align: center;
+    padding: 40px 10px 20px;
+    @include quickFlex($dir: column);
+    & > main {
+      @include quickFlex($dir: row, $width: 100%, $row: 20px, $justify: flex-start, $align: flex-start, $wrap: wrap);
+      & > aside {
+        @include quickFlex($dir: column, $width: 100%);
+        & > img {
+          margin: 10px auto;
+          border-radius: 50%;
+        }
+        & > div {
+          margin-top: 10px;
+          & > a:not(:last-of-type) {
+            margin-right: 10px;
+          }
+        }
+      }
+      & > nav {
+        padding: 20px 20px 0;
+        border-top: 1px solid darken($color: $lightGray, $amount: 70);
+        @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 20px, $align: flex-start, $justify: space-between);
+        & > div {
+          @include quickFlex($dir: column, $width: max-content);
+          align-items: flex-start;
+          & > label {
+            font-size: 1.2em;
+            font-weight: 800;
+            margin: 0 0 10px;
+          }
+          & > a {
+            text-align: left;
+            display: block;
+            font-size: 0.86em;
+            &:not(:last-of-type) {
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+    & > section {
+      @include quickFlex($dir: column, $width: 100%);
+      margin-top: 20px;
+      padding: 20px 10px;
+      border-top: 1px solid darken($color: $lightGray, $amount: 70);
+      row-gap: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .header > header > main > nav {
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .header > header > main {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    & > aside {
+      width: initial;
+      align-items: flex-start;
+    }
+    & > nav {
+      padding: 15px 0 0;
+      border-top: none;
+      width: initial;
+    }
+  }
+}
