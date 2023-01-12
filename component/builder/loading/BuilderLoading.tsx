@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
+
 import { IBuilderLoading } from "@interface/builder/loading-interface";
-import { Fade } from "react-awesome-reveal";
 
 const BuilderLoading = ({ height, loading, colorScheme, component }: IBuilderLoading) => (
   <>
@@ -19,11 +20,7 @@ const BuilderLoading = ({ height, loading, colorScheme, component }: IBuilderLoa
       </Fade>
     </div>
 
-    <main style={{ display: loading ? "none" : "unset" }}>
-      <Fade direction="down" duration={2000}>
-        {component}
-      </Fade>
-    </main>
+    <main style={{ display: loading ? "none" : "unset" }}>{component}</main>
   </>
 );
 
