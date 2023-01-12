@@ -1,10 +1,10 @@
-import { ApiHubIntro, Intro, ManagerIntro, Leagues, styles, Transparent } from ".";
+import { ApiHubIntro, Intro, ManagerIntro, Peaks } from ".";
 
 const NoAuthHome = () => (
   <>
     <Intro />
     <ManagerIntro />
-    <Transparent />
+    <Peaks />
     <ApiHubIntro />
   </>
 );
