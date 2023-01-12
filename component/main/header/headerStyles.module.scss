@@ -11,34 +11,86 @@
     @include quickFlex($dir: row, $justify: space-between);
 
     & > div:first-of-type {
-      @include quickFlex($dir: row, $column: 10px);
+      @include quickFlex($dir: row, $column: 10px, $width: 100%);
       & > img {
         border-radius: 50%;
       }
     }
 
     & > div:nth-of-type(2) {
-      margin-bottom: -5px;
-      @include quickFlex($dir: row, $column: 40px);
-      a {
-        color: white;
-        &:hover {
-          background: linear-gradient(to left, $secondary, $darkGray 100%);
-          background-position: 0 100%;
-          background-size: 100% 2px;
-          background-repeat: repeat-x;
-        }
-      }
+      display: none;
     }
 
     & > div:last-of-type {
-      @include quickFlex($dir: row, $column: 10px);
+      display: none;
+    }
+  }
+}
+
+// border: 3px solid red;
+@media screen and (min-width: 480px) {
+  .header {
+    & > header {
       & > div:first-of-type {
-        @include quickFlex($dir: row);
-        & > a {
+        width: unset;
+      }
+
+      & > div:nth-of-type(2) {
+        margin-bottom: -5px;
+        @include quickFlex($dir: row, $column: 20px);
+        a {
           color: white;
           &:hover {
-            color: $primary;
+            background: linear-gradient(to left, $secondary, $darkGray 100%);
+            background-position: 0 100%;
+            background-size: 100% 2px;
+            background-repeat: repeat-x;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 670px) {
+  .header {
+    & > header {
+      & > div:nth-of-type(2) {
+        column-gap: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .header {
+    & > header {
+      & > div:last-of-type {
+        @include quickFlex($dir: row, $column: 10px);
+
+        & > div:first-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .header {
+    & > header {
+      & > div:last-of-type {
+        & > div:first-of-type {
+          // display: unset;
+          border-right: 1px solid darken($color: $lightGray, $amount: 70);
+          padding-right: 15px;
+          margin-right: 10px;
+          @include quickFlex($dir: row);
+          & > a {
+            color: white;
+            &:hover {
+              color: $primary;
+            }
           }
         }
       }
