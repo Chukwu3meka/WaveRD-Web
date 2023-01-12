@@ -1,6 +1,6 @@
 @import "@source/scss/index.scss";
 
-.leagues {
+.transparent {
   // background-color: $darkGray;
   // background-color: transparent;
   // height: 100%;
@@ -11,7 +11,7 @@
   & > div:first-of-type {
     background-image: url("/images/layout/background.jpg");
     background-position: center 20px;
-    background-size: calc(max(100%, 900px)) 600px;
+    background-size: calc(max(100%, 900px)) 100vh;
     background-repeat: no-repeat;
     z-index: -1;
     // max-width: 1200px;
@@ -21,7 +21,7 @@
     width: 100%;
     // // bottom: 10px;
     // // left: 20px;
-    height: 500px;
+    height: 100vh;
     // margin: 50px auto 150px;
     border: 3px solid red;
 
@@ -32,10 +32,10 @@
   }
 
   & > div:last-of-type {
-    // height: 200px;
+    height: 200px;
     max-width: 1200px;
     border: 3px solid blue;
-    margin: 50px auto 150px;
+    // margin: 50px auto 150px;
   }
 
   //  max-width: 1000px;

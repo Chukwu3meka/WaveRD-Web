@@ -1,5 +1,5 @@
 import { Fade } from "react-awesome-reveal";
-import { ApiHubIntro, Intro, ManagerIntro, Leagues, styles } from ".";
+import { ApiHubIntro, Intro, ManagerIntro, Leagues, styles, Transparent } from ".";
 
 const NoAuthHome = () => (
   <>
@@ -8,7 +8,7 @@ const NoAuthHome = () => (
 
     <Intro />
     <ManagerIntro />
-    <Leagues />
+    <Transparent />
     {/* <ApiHubIntro /> */}
     {/* </div> */}
   </>
