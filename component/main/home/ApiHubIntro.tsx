@@ -1,11 +1,8 @@
-import { apiHubIntroStyles } from ".";
-
 import Link from "next/link";
 import Image from "next/image";
+import { Paper, Button, Typography } from "@mui/material";
 
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { apiHubIntroStyles } from ".";
 
 const ApiHubIntro = () => (
   <div className={apiHubIntroStyles.apihub}>
