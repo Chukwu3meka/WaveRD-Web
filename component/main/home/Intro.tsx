@@ -25,6 +25,7 @@ const Intro = () => (
         </a>
       </Typography>
     </div>
+    <div className={introStyles.introFade} />
   </Fade>
 );
 
