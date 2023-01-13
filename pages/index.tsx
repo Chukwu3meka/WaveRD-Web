@@ -1,5 +1,5 @@
-import HomeContainer from "@component/main/home";
+import Home from "@component/main/home";
 
-const Page = () => <HomeContainer />;
+const Page = () => <Home />;
 
 export default Page;

@@ -1,4 +1,4 @@
-import Typography from "@mui/material/Typography";
+import { Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 
 import { introStyles } from ".";
