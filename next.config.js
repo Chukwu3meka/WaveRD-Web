@@ -7,6 +7,7 @@ const domains = [
 ];
 
 module.exports = {
+  target: "serverless",
   reactStrictMode: true,
 
   // images: { unoptimized: true },
