@@ -6,7 +6,7 @@ import { styles } from ".";
 
 const Support = () => (
   <section id={styles.sectionSeven}>
-    <main>
+    {/* <main>
       <Typography>Unlimited access to helpful resources</Typography>
       <Typography>Get the support you need when you need it from our trusted sports technology experts.</Typography>
       <div>
@@ -44,7 +44,7 @@ const Support = () => (
           </div>
         </Paper>
       </div>
-    </main>
+    </main> */}
   </section>
 );
 

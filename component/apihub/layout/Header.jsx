@@ -120,43 +120,7 @@ const Header = () => {
     </Menu>
   );
 
-  return (
-    <header style={{ width: "100%" }}>
-      <AppBar position="static" color="secondary">
-        <Toolbar sx={{ p: 0 }}>
-          <Typography variant="h6" noWrap component="h1">
-            Soccer Atlas
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {menuItems.map(({ label, icon, link }) => (
-              <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                {icon}{" "}
-              </IconButton>
-            ))}
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit">
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-    </header>
-  );
+  return <>s</>;
 };
 
 export default Header;

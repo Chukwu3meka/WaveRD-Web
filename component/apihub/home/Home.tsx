@@ -10,8 +10,8 @@ import { Intro, Support, Solutions, SearchPlayer } from ".";
 
 const NoAuthHome = () => (
   <div className={styles.apihub}>
-    <Intro />
-    <Solutions />
+    {/* <Intro />
+    <Solutions /> */}
     {/* <SearchPlayer
       searching={searching}
       playerDetails={playerDetails}

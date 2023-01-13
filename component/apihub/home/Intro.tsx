@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const SectionOne = () => (
   <section id={introStyles.sectionOne}>
-    <main>
+    {/* <main>
       <Typography color="whitesmoke">ONLINE FOOTBALL API</Typography>
       <Typography color="whitesmoke">Connect with your community</Typography>
       <Typography color="whitesmoke">
@@ -21,7 +21,7 @@ const SectionOne = () => (
     </main>
     <figure>
       <Image src="/images/apihub/homePage1.png" alt="Soccer Atlas home" layout="fill" />
-    </figure>
+    </figure> */}
   </section>
 );
 

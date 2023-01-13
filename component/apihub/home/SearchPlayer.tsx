@@ -13,7 +13,7 @@ import { ageGenerator } from "@utils/clientFuncs";
 
 const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSearchOptions, setSearchTermHandler, searching }: any) => (
   <section id={styles.sectionSix}>
-    <main>
+    {/* <main>
       <Typography color="whitesmoke">Enter Footballer name</Typography>
       <Autocomplete
         color=""
@@ -106,7 +106,7 @@ const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSear
           ))}
         </div>
       </div>
-    </main>
+    </main> */}
   </section>
 );
 

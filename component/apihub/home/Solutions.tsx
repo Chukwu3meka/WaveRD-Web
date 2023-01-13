@@ -5,7 +5,7 @@ import { ImageText, styles } from ".";
 
 const SectionTwo = () => (
   <>
-    <ImageText
+    {/* <ImageText
       title="Shift your focus to UI/UX"
       body="Great first impressions lead to lasting relationships, that’s why we make it easy to put your best in app logi and UI while we focus on the data side of things. Quickly customize your API with players, clubs, photos, schedules, leagues, and more to make
       your site a place users love to visit over and over again."
@@ -31,7 +31,7 @@ const SectionTwo = () => (
       can have fast access to schedules, news, stats, scores, and more."
       src="/images/apihub/homePage4.png"
       link="/documentation"
-    />
+    /> */}
   </>
 );
 
