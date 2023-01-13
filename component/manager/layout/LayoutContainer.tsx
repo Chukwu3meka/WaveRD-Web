@@ -32,7 +32,6 @@ const LayoutContainer = (props: any) => {
   useEffect(() => {
     const handleStart = (url: string) => {
       setPageLoading(true);
-      //
     };
 
     const handleStop = () => {
