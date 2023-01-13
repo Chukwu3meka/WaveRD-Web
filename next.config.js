@@ -1,4 +1,6 @@
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 
 const domains = [
   { host: "localhost", domain: "http://localhost:3000" },
@@ -6,8 +8,9 @@ const domains = [
   { host: "127.0.0.1", domain: "http://127.0.0.1:3000" },
 ];
 
-module.exports = {
-  target: "serverless",
+const nextConfig = {
+  /* config options here */
+
   reactStrictMode: true,
 
   // images: { unoptimized: true },
@@ -39,3 +42,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
