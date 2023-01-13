@@ -3,8 +3,9 @@ import { useSnackbar } from "notistack";
 
 import { Header } from ".";
 import { useEffect, useState } from "react";
-import { IHeaderContainer } from "@interface/main/header-interface";
 import { logoutAction } from "@store/actions";
+
+import { IHeaderContainer } from "@interface/main/header-interface";
 
 const HeaderContainer = (props: IHeaderContainer) => {
   const { logoutAction } = props,
