@@ -7,31 +7,11 @@
     padding: 50px 10px;
     max-width: 1200px;
     height: 100%;
-    // border: 3px solid red;
-    // @include quickFlex($dir: column);
-
     & > div:first-of-type {
       position: relative;
       margin: 20px auto;
-      // @include quickFlex($dir: row);
-      // border: 3px solid blue;
-      // display: unset;
       width: 100%;
       max-width: 500px;
-      overflow: hidden;
-      // height: 100%;
-      border-radius: 10px;
-    }
-
-    & > main:first-of-type {
-      // height: 500px;
-
-      // height: 100px;
-      // width: 100px;
-
-      // padding: 10px !important;
-      // border: 3px solid red;
-      // border: 3px solid red;
     }
   }
 }
