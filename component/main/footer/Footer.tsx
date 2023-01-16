@@ -32,16 +32,34 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
 
           <nav>
             <div>
-              <label htmlFor="info">Info</label>
-              <Link href="/info/contact/">Contact US</Link>
-              <Link href="/info/privacy/">Privacy Policy</Link>
+              <label htmlFor="soccermass-links">SoccerMASS</label>
+              <Link href="/">Home</Link>
+              {!authenticated && <Link href="/auth/signin">Signin/Signup</Link>}
+              <Link href="/manager">Football Manager</Link>
+              <Link href="/apihub">API HUB</Link>
+              {/* {!authenticated && <Link href="/auth/signup">Signup</Link>} */}
+              <Link href="/auth/reset">Reset Password</Link>
+              {authenticated && (
+                <Link href="/auth/signin" onClick={logoutHandler()}>
+                  Logout
+                </Link>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="info">Learn More</label>
               <Link href="/info/advertise/">Advertise</Link>
+              <Link href="/info/contact/">Contact US</Link>
               <Link href="/info/terms/">Terms &amp; Conditions</Link>
+              <Link href="/info/privacy/">Privacy Policy</Link>
               <Link href="/info/donate/">Support/Donation</Link>
             </div>
 
             <div>
-              <label htmlFor="company">Company</label>
+              <label htmlFor="company">Websites</label>
+              <a href="https://github.com/Chukwu3meka/SoccerMASS-Web/issues" rel="noopener noreferrer">
+                Report Bug
+              </a>
               <a href="https://viewcrunch.com/" rel="noopener noreferrer">
                 ViewCrunch
               </a>
@@ -51,21 +69,9 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               <a href="https://alienforest.com/" rel="noopener noreferrer">
                 AlienForest
               </a>
-            </div>
-
-            <div>
-              <label htmlFor="soccermass-links">SoccerMASS</label>
-              <Link href="/">Home</Link>
-              <Link href="/apihub">API HUB</Link>
-              <Link href="/manager">Football Manager</Link>
-              {!authenticated && <Link href="/auth/signin">Signin</Link>}
-              {/* {!authenticated && <Link href="/auth/signup">Signup</Link>} */}
-              <Link href="/auth/reset">Reset Password</Link>
-              {authenticated && (
-                <Link href="/auth/signin" onClick={logoutHandler()}>
-                  Logout
-                </Link>
-              )}
+              <a href="https://www.mongodb.com/atlas/search" rel="noopener noreferrer">
+                Atlas Search
+              </a>
             </div>
           </nav>
         </main>
