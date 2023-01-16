@@ -18,17 +18,11 @@ const ApiHubIntro = () => (
       <main>
         <Typography color="primary">- WHY DO ANYTHING?</Typography>
 
-        <Box sx={{ display: "flex", flexWrap: "wrap", marginY: 2 }}>
-          <Typography fontSize="2em" fontWeight={700}>
-            Maintaining Football data is
-          </Typography>
-          <Typography fontSize="2em" fontWeight={700} color="primary">
-            &nbsp;not core&nbsp;
-          </Typography>
-          <Typography fontSize="2em" fontWeight={700}>
-            to your businesss
-          </Typography>
-        </Box>
+        <div style={{ margin: "20px auto", fontSize: "2em", fontWeight: 700 }}>
+          <span>Maintaining Football data is</span>
+          <span style={{ color: "green" }}>&nbsp;not core&nbsp;</span>
+          <span>to your businesss</span>
+        </div>
 
         <div>
           {apihubFeatures.map(({ icon, title, description }) => (
