@@ -9,15 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: grid;
-  grid-template-rows: max-content auto max-content;
-  // border: 3px solid red;
-
-  // & > * {
-  // border: 10px solid blue;
-  // }
   a {
     cursor: pointer;
     color: $primary;
@@ -40,5 +31,11 @@
     img {
       overflow: hidden;
     }
+  }
+  & > div:last-of-type {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-rows: max-content auto max-content;
   }
 }

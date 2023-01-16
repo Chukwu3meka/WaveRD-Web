@@ -49,8 +49,10 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
           <Provider store={store}>
             <main className={styles.layout}>
               <HeaderContainer />
-              <BuilderLoading loading={!appReady || pageLoading} component={<Component {...pageProps} />} />
-              <FooterContainer />
+              <div>
+                <BuilderLoading loading={!appReady || pageLoading} component={<Component {...pageProps} />} />
+                <FooterContainer />
+              </div>
             </main>
           </Provider>
         </SnackbarProvider>

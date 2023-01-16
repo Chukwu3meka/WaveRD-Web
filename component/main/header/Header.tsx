@@ -44,63 +44,63 @@ const navLinks = [
 ];
 
 const Header = ({ logoutHandler, authenticated }: IHeader) => (
-  <div>
-    <Fade direction="down" className={styles.header}>
-      <header>
+  // <div>
+  <Fade direction="down" className={styles.header}>
+    <header>
+      <div>
+        <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
+        <Stack direction="row">
+          <Typography fontWeight={700} fontSize="1.7em" component="h1">
+            Soccer
+          </Typography>
+          <Typography fontWeight={700} fontSize="1.7em" component="h1" color="primary">
+            MASS
+          </Typography>
+        </Stack>
+      </div>
+
+      <div>
+        {navLinks.map(({ title, path }) => (
+          <Typography variant="subtitle2" key={title}>
+            <Link href={path}>{title}</Link>
+          </Typography>
+        ))}
+      </div>
+
+      <div>
         <div>
-          <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
-          <Stack direction="row">
-            <Typography fontWeight={700} fontSize="1.7em" component="h1">
-              Soccer
-            </Typography>
-            <Typography fontWeight={700} fontSize="1.7em" component="h1" color="primary">
-              MASS
-            </Typography>
-          </Stack>
+          {thirdPartyAccounts
+            .filter((acc) => ["Twitter", "Instagram", "Whatsapp"].includes(acc[0]))
+            .map(([account, link = "https://alienforest.com/"]) => (
+              <SocialIcon key={account} account={account} link={link} />
+            ))}
         </div>
 
-        <div>
-          {navLinks.map(({ title, path }) => (
-            <Typography variant="subtitle2" key={title}>
-              <Link href={path}>{title}</Link>
-            </Typography>
-          ))}
-        </div>
-
-        <div>
-          <div>
-            {thirdPartyAccounts
-              .filter((acc) => ["Twitter", "Instagram", "Whatsapp"].includes(acc[0]))
-              .map(([account, link = "https://alienforest.com/"]) => (
-                <SocialIcon key={account} account={account} link={link} />
-              ))}
-          </div>
-
-          {!authenticated && (
-            <Link href="/auth/signin">
-              <Button variant="outlined" size="small">
-                Signin
-              </Button>
-            </Link>
-          )}
-          {!authenticated && (
-            <Link href="/auth/signup">
-              <Button variant="contained" size="small" color="primary">
-                Signup
-              </Button>
-            </Link>
-          )}
-          {authenticated && (
-            <Link href="/auth/signin" onClick={logoutHandler()}>
-              <Button variant="outlined" size="small">
-                Logout
-              </Button>
-            </Link>
-          )}
-        </div>
-      </header>
-    </Fade>
-  </div>
+        {!authenticated && (
+          <Link href="/auth/signin">
+            <Button variant="outlined" size="small">
+              Signin
+            </Button>
+          </Link>
+        )}
+        {!authenticated && (
+          <Link href="/auth/signup">
+            <Button variant="contained" size="small" color="primary">
+              Signup
+            </Button>
+          </Link>
+        )}
+        {authenticated && (
+          <Link href="/auth/signin" onClick={logoutHandler()}>
+            <Button variant="outlined" size="small">
+              Logout
+            </Button>
+          </Link>
+        )}
+      </div>
+    </header>
+  </Fade>
+  // </div>
 );
 
 export default Header;

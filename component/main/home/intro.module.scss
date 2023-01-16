@@ -7,7 +7,8 @@
     text-align: center;
     height: calc(100vh + 100px);
     @include quickFlex($dir: column);
-    clip-path: polygon(0 0, 50% 7.7%, 100% 0, 100% 98%, 50% 100%, 0 98%);
+    // clip-path: polygon(0 0, 50% 7.7%, 100% 0, 100% 98%, 50% 100%, 0 98%);
+    // clip-path: polygon(50% 4%, 100% 0, 100% 94%, 0 99%, 0 0);
     background: radial-gradient(circle closest-corner at 50% 40%, transparent -50%, rgba($darkGray, 0.998) 50%), url("/images/layout/intro-welcome.jpg") 50%/250% no-repeat;
   }
 }
@@ -20,14 +21,16 @@
 
 @media screen and (min-width: 620px) {
   .intro > div {
-    clip-path: polygon(0 0, 50% 7.7%, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    border: 3px solid red;
+    // clip-path: polygon(0 0, 50% 7.7%, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    clip-path: polygon(50% 4%, 100% 0, 100% 94%, 0 99%, 0 0);
     background: radial-gradient(circle closest-corner at 50% 30%, transparent -48%, rgba($darkGray, 0.998) 50%), url("/images/layout/intro-welcome.jpg") 50%/160% no-repeat;
   }
 }
 
 @media screen and (min-width: 860px) {
   .intro > div {
-    clip-path: polygon(0 0, 50% 7.7%, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    // clip-path: polygon(0 0, 50% 7.7%, 100% 0, 100% 90%, 50% 100%, 0 90%);
     background: radial-gradient(circle closest-corner at 50% 30%, transparent -58%, rgba($darkGray, 0.998) 50%), url("/images/layout/intro-welcome.jpg") 50%/130% no-repeat;
   }
 }
