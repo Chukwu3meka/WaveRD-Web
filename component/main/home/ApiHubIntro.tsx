@@ -16,12 +16,14 @@ const ApiHubIntro = () => (
       </div>
 
       <main>
-        <Typography color="primary">- WHY DO ANYTHING?</Typography>
+        <Typography fontWeight={600} color="primary">
+          - WHY DO ANYTHING?
+        </Typography>
 
-        <div style={{ margin: "20px auto", textAlign: "center", fontSize: "2em", fontWeight: 700 }}>
-          <span>Maintaining Football data is</span>
-          <span style={{ color: "green" }}>&nbsp;not core&nbsp;</span>
-          <span>to your businesss</span>
+        <div style={{ margin: "20px auto", textAlign: "center", fontSize: "2em", fontWeight: 800 }}>
+          <span>Let's handle the</span>
+          <span style={{ color: "green" }}>&nbsp;Football data&nbsp;</span>
+          <span>for your business</span>
         </div>
 
         <div>
