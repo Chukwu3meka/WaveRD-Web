@@ -53,7 +53,7 @@ const apihubFeatures = [
   {
     icon: <NetworkCheckIcon fontSize="inherit" />,
     title: "Improve Performance",
-    description: "Our Server is hosted on a reliable Cloud Provider to ensure 24/7 data availability and minimal response time with little to no down time",
+    description: "Our Server is hosted on 'Render'; A reliable Cloud Provider to ensure 24/7 data availability and minimal response time with little to no down time",
   },
   {
     icon: <DataObjectIcon fontSize="inherit" />,
@@ -65,6 +65,6 @@ const apihubFeatures = [
     icon: <VpnLockIcon fontSize="inherit" />,
     title: "Create Robust App",
     description:
-      "First to provide a full-text-search powered by the most powerful NoSQL Database 'MongoDB'. Overwhelming functionalities to consume, enough to solve your data worries.",
+      "First API provider to offer full-text-search powered by the most robust and flexible NoSQL Database 'MongoDB'. Overwhelming functionalities to consume, as we are here to solve your data worries.",
   },
 ];
