@@ -7,7 +7,7 @@
     text-align: center;
     height: calc(100vh);
     @include quickFlex($dir: column);
-    clip-path: polygon(50% 1%, 70% 0, 100% 0, 100% 93%, 0 100%, 0 0, 30% 0);
+    clip-path: polygon(50% 1%, 70% 0, 100% 0, 100% 96%, 0 100%, 0 0, 30% 0);
     background: radial-gradient(circle closest-corner at 50% 40%, transparent -50%, rgba($darkGray, 0.998) 50%), url("/images/layout/intro-welcome.jpg") 50%/250% no-repeat;
   }
 }
