@@ -3,7 +3,8 @@
 .loading {
   @include quickFlex($dir: column, $width: 100%);
   position: relative;
-  min-height: 200px;
+  height: 100vh;
+  min-height: 600px;
   & > img {
     border-radius: 100%;
     animation: ball-spinner 1.5s infinite linear;
