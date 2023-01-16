@@ -1,16 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 
 import { styles } from ".";
 import { IHeader } from "@interface/main/header-interface";
 import thirdPartyAccounts from "@source/thirdPartyAccounts";
-import { IThirdPartyAccounts } from "@interface/source/thirdPartyAccounts-interface";
-
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
 
 const SocialIcon = ({ account, link }: { account: string; link: string }) => {
   let icon;
@@ -44,7 +42,6 @@ const navLinks = [
 ];
 
 const Header = ({ logoutHandler, authenticated }: IHeader) => (
-  // <div>
   <Fade direction="down" className={styles.header}>
     <header>
       <div>
@@ -100,7 +97,6 @@ const Header = ({ logoutHandler, authenticated }: IHeader) => (
       </div>
     </header>
   </Fade>
-  // </div>
 );
 
 export default Header;
