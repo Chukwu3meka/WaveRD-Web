@@ -10,7 +10,7 @@ import { apiHubIntroStyles } from ".";
 
 const ApiHubIntro = () => (
   <div className={apiHubIntroStyles.apihub}>
-    <Stack direction="row" spacing={3} justifyContent="space-evenly">
+    <Stack spacing={3} justifyContent="space-evenly">
       <div>
         <Image src="/images/layout/intro-apihub.png" alt="SoccerMASS API HUB welcome image" layout="fill" />
       </div>
