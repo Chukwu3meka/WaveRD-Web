@@ -18,7 +18,7 @@ const ApiHubIntro = () => (
       <main>
         <Typography color="primary">- WHY DO ANYTHING?</Typography>
 
-        <div style={{ margin: "20px auto", fontSize: "2em", fontWeight: 700 }}>
+        <div style={{ margin: "20px auto", textAlign: "center", fontSize: "2em", fontWeight: 700 }}>
           <span>Maintaining Football data is</span>
           <span style={{ color: "green" }}>&nbsp;not core&nbsp;</span>
           <span>to your businesss</span>
