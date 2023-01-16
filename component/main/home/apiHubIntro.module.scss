@@ -2,6 +2,21 @@
 
 .apihub {
   background-color: $lightGray;
-  height: 200px;
-  margin-bottom: -20px;
+  & > div {
+    margin: auto;
+    padding: 50px 10px;
+    max-width: 1000px;
+    & > div:first-of-type {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      max-width: 500px;
+      padding: 10px !important;
+      overflow: hidden;
+      border-radius: 10px !important;
+    }
+    & > main:first-of-type {
+      border: 3px solid red;
+    }
+  }
 }
