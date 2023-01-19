@@ -12,7 +12,7 @@ import HeaderContainer from "@component/main/header";
 import BuilderLoading from "@component/builder/loading";
 import { ILayout } from "@interface/main/layout-interface";
 
-const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache }: ILayout) => (
+const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, handleScroll }: ILayout) => (
   <>
     <Head>
       <title>SoccerMASS: No. 1 Soccer Manager and Football API Provider</title>
@@ -47,9 +47,9 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
         <CssBaseline />
         <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
           <Provider store={store}>
-            <main className={styles.layout}>
-              <HeaderContainer />
-              <div>
+            <main className={styles.layout} onScrollCapture={handleScroll}>
+              <HeaderContainer displayHeader={displayHeader} />
+              <div onScroll={handleScroll}>
                 <BuilderLoading loading={!appReady || pageLoading} component={<Component {...pageProps} />} />
                 <FooterContainer />
               </div>

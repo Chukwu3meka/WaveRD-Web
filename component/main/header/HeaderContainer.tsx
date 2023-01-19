@@ -8,24 +8,13 @@ import { logoutAction } from "@store/actions";
 import { IHeaderContainer } from "@interface/main/header-interface";
 
 const HeaderContainer = (props: IHeaderContainer) => {
-  const { logoutAction } = props,
+  const { logoutAction, displayHeader } = props,
     { enqueueSnackbar } = useSnackbar(),
-    [lastScrollPos, setLastScrollPos] = useState(0),
-    [displayHeader, setDisplayHeader] = useState(true),
     [authenticated, setauthenticated] = useState(false);
 
   useEffect(() => {
     setauthenticated(props.authenticated || false);
   }, [props.authenticated]);
-
-  const handleScroll = (e) => {
-    if (e.target.scrollTop > lastScrollPos) {
-      setDisplayHeader(false);
-    } else {
-      setDisplayHeader(true);
-    }
-    setLastScrollPos(e.target.scrollTop);
-  };
 
   const logoutHandler = () => () => {
     if (authenticated) {
@@ -35,7 +24,7 @@ const HeaderContainer = (props: IHeaderContainer) => {
     }
   };
 
-  return <Header {...{ logoutHandler, authenticated }} />;
+  return <Header {...{ logoutHandler, displayHeader, authenticated }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

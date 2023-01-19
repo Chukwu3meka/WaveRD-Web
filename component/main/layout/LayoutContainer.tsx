@@ -14,6 +14,8 @@ import { IHandlePageLoading, IHandleProtectedRoute, ILayoutContainer } from "@in
 const LayoutContainer = (props: ILayoutContainer) => {
   const router = useRouter(),
     [appReady, setAppReady] = useState(false),
+    [lastScrollPos, setLastScrollPos] = useState(0),
+    [displayHeader, setDisplayHeader] = useState(true),
     [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
     { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache } = props;
@@ -51,11 +53,34 @@ const LayoutContainer = (props: ILayoutContainer) => {
     if (appReady) handleProtectedRoute({ route: router.asPath, authenticated: authenticated });
   }, [router.asPath]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
+  const handleScroll = (e: any) => {
+    // console.log("dsfsfd", e);
+    // if (e.target.scrollTop > lastScrollPos) {
+    //   setDisplayHeader(false);
+    // } else {
+    //   setDisplayHeader(true);
+    // }
+    // console.log(displayHeader);
+    // setLastScrollPos(e.target.scrollTop);
+
+    if (window.scrollY > lastScrollPos) {
+      setDisplayHeader(false);
+    } else {
+      setDisplayHeader(true);
+    }
+    setLastScrollPos(window.scrollY);
+  };
+
   const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
   const handleProtectedRoute = ({ route, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ route, authenticated });
 
-  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache }} />;
+  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, handleScroll }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),

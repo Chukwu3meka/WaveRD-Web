@@ -18,5 +18,5 @@ export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHa
 };
 
 export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
-  console.log("useEffect fired!", { asPath: route });
+  // console.log("useEffect fired!", { asPath: route });
 };
