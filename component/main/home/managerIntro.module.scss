@@ -1,7 +1,6 @@
 @import "@source/scss/index.scss";
 
 .managerIntro {
-  background: $textSecondary;
   @include quickFlex($width: 100%, $dir: row, $align: stretch);
   flex-wrap: wrap;
   gap: 20px;
