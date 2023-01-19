@@ -41,8 +41,12 @@ const navLinks = [
   { title: "Manager", path: "/manager" },
 ];
 
-const Header = ({ logoutHandler, authenticated }: IHeader) => (
-  <Fade direction="down" className={styles.header}>
+const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
+  <Fade
+    direction="down"
+    className={styles[displayHeader ? "header" : "headerHidden"]}
+    // className={styles.header}
+  >
     <header>
       <div>
         <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} />

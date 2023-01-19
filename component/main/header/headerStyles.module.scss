@@ -34,6 +34,13 @@
   }
 }
 
+.headerHidden {
+  @extend .header;
+  // top: -60px;
+  position: relative;
+  // transition: position 3s ease-in-out;
+}
+
 @media screen and (min-width: 480px) {
   .header {
     & > header {
