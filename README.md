@@ -50,5 +50,3 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 1. Migration to TypeScript is being carried out
 2. _builder_: contains most UI components used throughout the app
 3. listen to scroll in header
-<!-- Image with src "/images/layout/ball.png" has legacy prop "layout". Did you forget to run the codemod?
-Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 -->
