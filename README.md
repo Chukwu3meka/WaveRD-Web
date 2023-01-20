@@ -42,12 +42,3 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 5. Verify Git remote URL by running `git remote -v`
 6. ...
    😉
-
-### TODOs
-
----
-
-1. Migration to TypeScript is being carried out
-2. _builder_: contains most UI components used throughout the app
-3. work on apihub home page
-4. work on auth redirect
