@@ -29,6 +29,12 @@ export interface ILayout {
 export interface IFunctionsHandleResize {
   setDeviceSizeAction: Function;
 }
+export interface IHandleScroll {
+  window: Window;
+  lastScrollPos: number;
+  setDisplayHeader: Function;
+  setLastScrollPos: Function;
+}
 
 export interface IHandlePageLoading {
   url: null | string;

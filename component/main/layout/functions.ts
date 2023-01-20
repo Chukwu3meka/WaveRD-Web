@@ -1,5 +1,5 @@
-import { IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
-import { sleep } from "@utils/clientFuncs";
+// import { sleep } from "@utils/clientFuncs";
+import { IHandleScroll, IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
 export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) => {
   const width = window.innerWidth,
@@ -21,7 +21,7 @@ export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
   // console.log("useEffect fired!", { asPath: route });
 };
 
-export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: any) => {
+export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: IHandleScroll) => {
   if (window.scrollY > lastScrollPos) {
     setDisplayHeader(false);
   } else {
