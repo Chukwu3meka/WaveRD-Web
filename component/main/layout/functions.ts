@@ -20,3 +20,12 @@ export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHa
 export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
   // console.log("useEffect fired!", { asPath: route });
 };
+
+export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: any) => {
+  if (window.scrollY > lastScrollPos) {
+    setDisplayHeader(false);
+  } else {
+    setDisplayHeader(true);
+  }
+  setLastScrollPos(window.scrollY);
+};

@@ -20,7 +20,6 @@ export interface ILayout {
   pageProps: AppProps["pageProps"];
   Component: AppProps["Component"];
   store: any;
-  handleScroll: Function;
   displayHeader: boolean;
   pageLoading: boolean;
   appReady: boolean;

@@ -58,29 +58,12 @@ const LayoutContainer = (props: ILayoutContainer) => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
-  const handleScroll = (e: any) => {
-    // console.log("dsfsfd", e);
-    // if (e.target.scrollTop > lastScrollPos) {
-    //   setDisplayHeader(false);
-    // } else {
-    //   setDisplayHeader(true);
-    // }
-    // console.log(displayHeader);
-    // setLastScrollPos(e.target.scrollTop);
-
-    if (window.scrollY > lastScrollPos) {
-      setDisplayHeader(false);
-    } else {
-      setDisplayHeader(true);
-    }
-    setLastScrollPos(window.scrollY);
-  };
-
   const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
+  const handleScroll = () => functions.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
   const handleProtectedRoute = ({ route, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ route, authenticated });
 
-  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, handleScroll }} />;
+  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),
