@@ -5,8 +5,7 @@
   position: sticky;
   position: -webkit-sticky;
   top: 0; /* required */
-  // width: calc(100vw - 10px);
-  // width: 100vw;
+  transition: top 0.7s ease-out;
   z-index: 3;
   box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
   -webkit-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
@@ -36,9 +35,8 @@
 
 .headerHidden {
   @extend .header;
-  // top: -60px;
-  position: relative;
-  // transition: position 3s ease-in-out;
+  top: -60px;
+  transition: top 0.7s ease-out;
 }
 
 @media screen and (min-width: 480px) {
