@@ -1,7 +1,7 @@
 @import "@source/scss/index.scss";
 
 .transparent {
-  clip-path: polygon(0 0, 50% 10%, 100% 0, 100% 100%, 50% 90%, 0 100%);
+  clip-path: polygon(0 0, 50% 7%, 100% 0, 100% 100%, 50% 93%, 0 100%);
   & > div:first-of-type {
     background-color: $darkGray;
     background-image: url("/images/layout/background.jpg");
