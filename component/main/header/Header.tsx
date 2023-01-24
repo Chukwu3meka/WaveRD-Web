@@ -45,7 +45,6 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
   <Fade
     direction="down"
     className={styles[displayHeader ? "header" : "headerHidden"]}
-    // className={styles.header}
   >
     <header>
       <div>

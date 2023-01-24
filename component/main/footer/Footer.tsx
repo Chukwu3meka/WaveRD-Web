@@ -57,21 +57,11 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
 
             <div>
               <label htmlFor="company">Websites</label>
-              <a href="https://github.com/Chukwu3meka/SoccerMASS-Web/issues" rel="noopener noreferrer">
-                Report Bug
-              </a>
-              <a href="https://viewcrunch.com/" rel="noopener noreferrer">
-                ViewCrunch
-              </a>
-              <a href="https://soccermass.com/" rel="noopener noreferrer">
-                SoccerMASS
-              </a>
-              <a href="https://alienforest.com/" rel="noopener noreferrer">
-                AlienForest
-              </a>
-              <a href="https://www.mongodb.com/atlas/search" rel="noopener noreferrer">
-                Atlas Search
-              </a>
+              <a href="https://viewcrunch.com/">ViewCrunch</a>
+              <a href="https://soccermass.com/">SoccerMASS</a>
+              <a href="https://contact.alienforest.com/">AlienForest</a>
+              <a href="https://atlas-space.alienforest.com/">Homes & Space</a>
+              <a href="https://atlas-jobs.alienforest.com/">Hourly Jobs</a>
             </div>
           </nav>
         </main>
