@@ -1,26 +1,14 @@
-/**
- * @type {import('next').NextConfig}
- */
+//  @type {import('next').NextConfig}
 
 const domains = [
   { host: "localhost", domain: "http://localhost:3000" },
-  { host: "soccermass.com", domain: "https://soccermass.com" },
   { host: "127.0.0.1", domain: "http://127.0.0.1:3000" },
+  { host: "soccermass.com", domain: "https://soccermass.com" },
 ];
 
 const nextConfig = {
-  /* config options here */
-
   reactStrictMode: true,
-
   images: { unoptimized: true },
-
-  // typescript: {
-  //   // !! WARN !!
-  //   // Dangerously allow production builds to successfully complete even if
-  //   // your project has type errors.
-  //   ignoreBuildErrors: false,
-  // },
 
   async redirects() {
     return [
