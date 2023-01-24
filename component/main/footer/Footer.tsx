@@ -22,7 +22,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <Typography variant="subtitle2">Follow US</Typography>
 
             <div>
-              {thirdPartyAccounts.map(([accounts, link = "https://alienforest.com/"]) => (
+              {thirdPartyAccounts.map(([accounts, link = "https://soccermass.com/"]) => (
                 <a href={link} key={accounts} rel="noopener noreferrer" target="_blank">
                   <Image src={`/images/social/${accounts.toLowerCase()}.png`} alt={`SoccerMASS ${accounts} page`} width={30} height={30} />
                 </a>
@@ -57,9 +57,9 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
 
             <div>
               <label htmlFor="company">Domains</label>
-              <a href="https://contact.alienforest.com/">Blogs</a>
-              <a href="https://atlas-jobs.alienforest.com/">Hourly Jobs</a>
-              <a href="https://atlas-space.alienforest.com/">Homes & Space</a>
+              <a href="https://blog.soccermass.com/">Blogs</a>
+              <a href="https://job.soccermass.com/">Hourly Jobs</a>
+              <a href="https://space.soccermass.com/">Space</a>
             </div>
           </nav>
         </main>
