@@ -17,7 +17,6 @@
 
   a:hover {
     color: darken($color: $primary, $amount: 5);
-    // transition-delay: 300ms;
     transition: color 300ms ease-out;
   }
 
@@ -36,12 +35,6 @@
     overflow-y: auto;
     overflow-x: hidden;
     display: grid;
-    border: 3px solid red;
-    // grid-template-rows: max-content auto max-content;
     grid-template-rows: auto max-content;
-
-    & > * {
-      border: 3px solid blue;
-    }
   }
 }
