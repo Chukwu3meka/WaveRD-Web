@@ -31,12 +31,15 @@
     max-width: 1200px;
     margin: auto;
     width: calc(100vw - 10px) !important;
+
     .peak {
-      min-height: 450px;
+      min-height: 400px;
       margin: auto;
-      padding: 10px;
+      padding: 50px 10px 10px;
       @include quickFlex();
       & > p {
+        // font-size: 1.2em;
+        // border: 3px solid red;
         text-align: center;
         color: $lightGray;
         background: linear-gradient(to left, $secondary, $darkGray 100%);
