@@ -9,7 +9,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { styles } from ".";
-import { ageGenerator } from "@utils/clientFuncs";
+import { ageGenerator } from "@utils/handlers";
 
 const SearchPlayer = ({ playerDetails, playerSearchInputAutoComplete, playerSearchOptions, setSearchTermHandler, searching }: any) => (
   <section id={styles.sectionSix}>

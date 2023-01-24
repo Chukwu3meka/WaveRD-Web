@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { BuilderLoading } from ".";
-import { arrayRotate } from "@utils/clientFuncs";
+import { arrayRotate } from "@utils/handlers";
 import { IBuilderLoadingContainer } from "@interface/builder/loading-interface";
 
 const BuilderLoadingContainer = ({ height, loading, component }: IBuilderLoadingContainer) => {
