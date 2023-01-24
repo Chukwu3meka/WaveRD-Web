@@ -8,7 +8,6 @@
   -webkit-box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
   a {
     cursor: pointer;
     color: $primary;
@@ -33,9 +32,16 @@
     }
   }
   & > div:last-of-type {
+    min-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
     display: grid;
-    grid-template-rows: max-content auto max-content;
+    border: 3px solid red;
+    // grid-template-rows: max-content auto max-content;
+    grid-template-rows: auto max-content;
+
+    & > * {
+      border: 3px solid blue;
+    }
   }
 }
