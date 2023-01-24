@@ -1,7 +1,8 @@
 @import "@source/scss/index.scss";
 
 .transparent {
-  clip-path: polygon(0 0, 50% 7%, 100% 0, 100% 100%, 50% 93%, 0 100%);
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+
   & > div:first-of-type {
     background-color: $darkGray;
     background-image: url("/images/layout/background.jpg");
@@ -46,3 +47,17 @@
     }
   }
 }
+
+@media screen and (min-width: 620px) {
+  .transparent {
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+
+    // clip-path: polygon(0 4%, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+// @media screen and (min-width: 860px) {
+//   .transparent {
+//     clip-path: polygon(0 4%, 100% 0, 100% 100%, 0% 100%);
+//   }
+// }
