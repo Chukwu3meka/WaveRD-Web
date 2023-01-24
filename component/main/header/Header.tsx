@@ -42,10 +42,7 @@ const navLinks = [
 ];
 
 const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
-  <Fade
-    direction="down"
-    className={styles[displayHeader ? "header" : "headerHidden"]}
-  >
+  <Fade direction="down" className={styles[displayHeader ? "header" : "headerHidden"]}>
     <header>
       <div>
         <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
@@ -71,7 +68,7 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
         <div>
           {thirdPartyAccounts
             .filter((acc) => ["Twitter", "Instagram", "Whatsapp"].includes(acc[0]))
-            .map(([account, link = "https://alienforest.com/"]) => (
+            .map(([account, link = "https://soccermass.com/"]) => (
               <SocialIcon key={account} account={account} link={link} />
             ))}
         </div>

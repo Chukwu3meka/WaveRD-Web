@@ -5,7 +5,7 @@ const thirdPartyAccounts: IThirdPartyAccounts[] = [
   ["Twitter", "https://twitter.com/SoccerMASSinc/"],
   ["Instagram", "https://www.instagram.com/SoccerMASSinc/"],
   ["LinkedIn", "https://www.linkedin.com/company/soccermass/"],
-  // ["AlienForest", "https://www.alienforest.com/"],
+  // ["SoccerMASS", "https://www.soccermass.com/"],
   // ["Pinterest", "https://www.pinterest.com/viewcrunch/"],
   // ["Github", "https://github.com/SoccerMASS"],
   ["Github", "https://github.com/Chukwu3meka/SoccerMASS-Web/issues"],
