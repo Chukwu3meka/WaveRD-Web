@@ -56,12 +56,10 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             </div>
 
             <div>
-              <label htmlFor="company">Websites</label>
-              <a href="https://viewcrunch.com/">ViewCrunch</a>
-              <a href="https://soccermass.com/">SoccerMASS</a>
-              <a href="https://contact.alienforest.com/">AlienForest</a>
-              <a href="https://atlas-space.alienforest.com/">Homes & Space</a>
+              <label htmlFor="company">Domains</label>
+              <a href="https://contact.alienforest.com/">Blogs</a>
               <a href="https://atlas-jobs.alienforest.com/">Hourly Jobs</a>
+              <a href="https://atlas-space.alienforest.com/">Homes & Space</a>
             </div>
           </nav>
         </main>
