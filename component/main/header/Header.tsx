@@ -8,7 +8,7 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 
 import { styles } from ".";
 import { IHeader } from "@interface/main/header-interface";
-import thirdPartyAccounts from "@source/thirdPartyAccounts";
+import thirdPartyAccounts from "@source/constants/thirdPartyAccounts";
 
 const SocialIcon = ({ account, link }: { account: string; link: string }) => {
   let icon;

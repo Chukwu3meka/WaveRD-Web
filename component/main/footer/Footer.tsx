@@ -5,7 +5,7 @@ import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 import { IFooter } from "@interface/main/footer-interface";
-import thirdPartyAccounts from "@source/thirdPartyAccounts";
+import thirdPartyAccounts from "@source/constants/thirdPartyAccounts";
 
 const Footer = ({ logoutHandler, authenticated }: IFooter) => (
   <div className={styles.footer}>

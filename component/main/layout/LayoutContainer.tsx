@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { Layout, functions } from ".";
 import { setDeviceSizeAction } from "@store/actions";
-import createEmotionCache from "@source/createEmotionCache";
+import createEmotionCache from "@utils/createEmotionCache";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

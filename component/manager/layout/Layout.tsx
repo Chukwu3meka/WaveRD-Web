@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Box } from "@mui/material";
 import { Provider } from "react-redux";
 
-import theme from "@source/theme";
+import theme from "@utils/theme";
 import { styles } from ".";
 // import Spinner from "@component/builder/loading/BuilderLoading";
 
@@ -36,9 +36,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smal
     </Head>
     <Provider store={store}>
       <Box className={styles.layout}>
-        <main style={{ position: "relative" }}>
-          {/* {!appReady ? <Spinner /> : pageLoading ? <Spinner /> : <Component {...pageProps} />} */}
-        </main>
+        <main style={{ position: "relative" }}>{/* {!appReady ? <Spinner /> : pageLoading ? <Spinner /> : <Component {...pageProps} />} */}</main>
       </Box>
     </Provider>
   </>
