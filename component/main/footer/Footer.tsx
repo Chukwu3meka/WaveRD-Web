@@ -59,7 +59,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               <label htmlFor="company">Domains</label>
               <a href="https://blog.soccermass.com/">Blogs</a>
               <a href="https://job.soccermass.com/">Hourly Jobs</a>
-              <a href="https://space.soccermass.com/">Space</a>
+              <a href="https://space.soccermass.com/">Homes & Space</a>
             </div>
           </nav>
         </main>

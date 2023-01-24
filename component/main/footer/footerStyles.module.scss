@@ -45,6 +45,10 @@
               margin-bottom: 10px;
             }
           }
+
+          &:last-of-type {
+            display: none;
+          }
         }
       }
     }
@@ -55,6 +59,12 @@
       border-top: 1px solid darken($color: $lightGray, $amount: 70);
       row-gap: 10px;
     }
+  }
+}
+
+@media screen and (min-width: 437px) {
+  .footer > * > footer > main > nav > div:last-of-type {
+    display: flex;
   }
 }
 
