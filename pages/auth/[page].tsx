@@ -2,6 +2,8 @@ import dynamic from "next/dynamic";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 
+import LayoutContainer from "@component/main/auth/layout";
+
 const Page = () => {
   const router = useRouter();
   const { page } = router.query;
@@ -12,12 +14,9 @@ const Page = () => {
   const AuthPageContainer = dynamic(() => import(`@component/main/auth/${page}`));
 
   return (
-    // <Auth>
-    {
-      /* adsadsdsa */
-    }
-    // <AuthPageContainer />;
-    // </Auth>
+    <LayoutContainer>
+      <AuthPageContainer />;
+    </LayoutContainer>
   );
 };
 
