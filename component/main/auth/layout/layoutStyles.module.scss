@@ -1,51 +1,56 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  display: grid;
-  height: clamp(400px, calc(100vh - 65px), 800px);
-  grid-template-columns: clamp(350px, 40%, 500px) auto;
+  min-height: 400px;
   aside {
-    background-image: url("/images/layout/soccermass.webp");
-    background-size: 100% 100%;
-    position: relative;
-    overflow: hidden;
-    & > div {
-      position: relative;
-      z-index: 1;
-      height: 100%;
-      & > * {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+    display: none;
+  }
+}
 
-      p {
-        text-align: center;
-        color: darken($color: $textSecondary, $amount: 10);
-        font-size: 1.2em;
-        padding: 10px;
-        ul {
-          padding: 0;
-          list-style: none;
+@media screen and (min-width: 900px) {
+  .layout {
+    display: grid;
+    height: clamp(400px, calc(100vh - 65px), 800px);
+    grid-template-columns: clamp(350px, 40%, 500px) auto;
+
+    aside {
+      display: unset;
+      background-image: url("/images/layout/soccermass.webp");
+      background-size: 100% 100%;
+      position: relative;
+      overflow: hidden;
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: $darkGray;
+        opacity: 0.4;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      & > div {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        & > * {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        p {
+          text-align: center;
+          color: darken($color: $textSecondary, $amount: 10);
+          font-size: 1.2em;
+          padding: 10px;
+          ul {
+            padding: 0;
+            list-style: none;
+          }
         }
       }
     }
   }
-
-  aside::after {
-    content: "";
-    position: absolute;
-    background-color: $darkGray;
-    opacity: 0.4;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  //
-  //
 }
