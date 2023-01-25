@@ -49,7 +49,14 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
             <main className={styles.layout}>
               <HeaderContainer displayHeader={displayHeader} />
               <div>
-                <BuilderLoading loading={!appReady || pageLoading} component={<Component {...pageProps} />} />
+                {(!appReady || pageLoading) && <BuilderLoading />}
+
+                {appReady && !pageLoading && (
+                  <main>
+                    <Component {...pageProps} />
+                  </main>
+                )}
+
                 <FooterContainer />
               </div>
             </main>
