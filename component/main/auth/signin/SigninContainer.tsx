@@ -33,7 +33,7 @@ const SigninContainer = (props: any) => {
     errorMessages: "Email && Password cannot be empty",
   });
 
-  const handleChange = (prop: string) => (event: any) => {
+  const handleChange = (prop: "email" | "password") => (event: any) => {
     event.preventDefault();
 
     return setValues({ ...values, [prop]: event.target.value });
@@ -53,49 +53,49 @@ const SigninContainer = (props: any) => {
 
     let errorMessage: string | null;
 
-    switch (prop) {
-      case "email": {
-        setValues({ ...values, email: value.toLowerCase() });
+    // switch (prop) {
+    //   case "email": {
+    //     setValues({ ...values, email: value.toLowerCase() });
 
-        const validInput = validateInput(prop, value);
+    //     const validInput = validateInput({ type: prop, value, label: "Email" });
 
-        if (validInput) {
-          errorMessage = null;
-        } else if (value.length < 0) {
-          errorMessage = `${prop} cannot be empty`;
-        } else if (!value.endsWith("@zenithbank.com")) {
-          errorMessage = `${prop} must end with '@zenithbank.com'`;
-        } else {
-          errorMessage = `${prop} is required and can only contain 'Alphanumeric', 'Underscore', 'Hyphen' and 'Dot'`;
-        }
+    //     if (validInput) {
+    //       errorMessage = null;
+    //     } else if (value.length < 0) {
+    //       errorMessage = `${prop} cannot be empty`;
+    //     } else if (!value.endsWith("@zenithbank.com")) {
+    //       errorMessage = `${prop} must end with '@zenithbank.com'`;
+    //     } else {
+    //       errorMessage = `${prop} is required and can only contain 'Alphanumeric', 'Underscore', 'Hyphen' and 'Dot'`;
+    //     }
 
-        setFormError((values: any) => ({ ...values, email: errorMessage === null ? 1 : -1, errorMessages: errorMessage }));
+    //     setFormError((values: any) => ({ ...values, email: errorMessage === null ? 1 : -1, errorMessages: errorMessage }));
 
-        break;
-      }
-      case "password":
-        const newValue = isNumeric(value) ? parseInt(value) : null;
+    //     break;
+    //   }
+    //   case "password":
+    //     const newValue = isNumeric(value) ? parseInt(value) : null;
 
-        if (newValue) {
-          setValues({ ...values, password: `${newValue}` });
+    //     if (newValue) {
+    //       setValues({ ...values, password: `${newValue}` });
 
-          const validInput = validateInput(prop, newValue);
+    //       const validInput = validateInput(prop, newValue);
 
-          if (validInput) {
-            errorMessage = null;
-          } else if (`${newValue}`.length !== 10) {
-            errorMessage = `${prop} must have ten(10) characters`;
-          } else {
-            errorMessage = `${prop} should only have numbers`;
-          }
+    //       if (validInput) {
+    //         errorMessage = null;
+    //       } else if (`${newValue}`.length !== 10) {
+    //         errorMessage = `${prop} must have ten(10) characters`;
+    //       } else {
+    //         errorMessage = `${prop} should only have numbers`;
+    //       }
 
-          setFormError((values: any) => ({ ...values, password: errorMessage === null ? 1 : -1, errorMessages: errorMessage }));
-          break;
-        }
+    //       setFormError((values: any) => ({ ...values, password: errorMessage === null ? 1 : -1, errorMessages: errorMessage }));
+    //       break;
+    //     }
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
 
     setFormError((values: any) => ({ ...values, status: values.email === "valid" && values.password === "valid" ? false : true }));
   };

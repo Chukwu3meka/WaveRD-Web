@@ -5,10 +5,7 @@
   & > aside {
     display: none;
   }
-
-  // border: 3px solid red;
   & > main {
-    // border: 3px solid blue;
     @include quickFlex($height: 100%);
     padding: 10px;
   }

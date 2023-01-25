@@ -7,7 +7,7 @@ import { SocialAuth, styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
 const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
-  <div className={styles.formContainer} id="formContainer">
+  <div id="formContainer" className={styles.formContainer}>
     <div id="signin" className={styles.signin} onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
 
@@ -16,7 +16,7 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
         <span>or</span>
       </div>
 
-      <Stack spacing={3} alignItems="center" p={2} component="form" noValidate autoComplete="off" sx={{ width: "100%", maxWidth: 670 }}>
+      <Stack spacing={3} alignItems="center" p={2} component="form" noValidate autoComplete="off">
         <Stack direction="row" width="100%" alignItems="center">
           <TextField
             fullWidth
