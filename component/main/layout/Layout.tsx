@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
 import { styles } from ".";
-import theme from "@utils/theme";
+import theme from "@libs/theme";
 import FooterContainer from "@component/main/footer";
 import HeaderContainer from "@component/main/header";
 import BuilderLoading from "@component/builder/loading";

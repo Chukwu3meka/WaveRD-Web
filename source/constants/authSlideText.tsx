@@ -1,7 +1,7 @@
 export default [
   <>
     <h5>It's great to see you again</h5>
-    <h2>Your'e officially welcome to SoccerMASS</h2>
+    <h2>We're glad you're here</h2>
     <h3>It's time to roll your sleeves</h3>
     <h4>Signin and let's begin</h4>
   </>,
@@ -28,7 +28,7 @@ export default [
     <h3>
       <ul>
         <li>Free forever</li>
-        <li>No. 1 soccer manager</li>
+        <li>No. 1 Soccer manager</li>
         <li>Highly Interactive</li>
         <li>Competitive transfer market</li>
         <li>No player hoarding</li>
