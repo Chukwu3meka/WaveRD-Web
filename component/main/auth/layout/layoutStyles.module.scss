@@ -1,0 +1,60 @@
+@import "@source/scss/index.scss";
+
+.layout {
+  // border: 3px solid red;
+  height: clamp(400px, calc(100vh - 65px), 600px);
+
+  display: grid;
+  grid-template-columns: clamp(350px, 10%, 500px) auto;
+  // position: relative;
+
+  aside {
+    // border: 3px solid blue;
+    background-image: url("/images/sidebar.png");
+    background-repeat: repeat-y;
+    position: relative;
+    // height: 100vh;
+    overflow: hidden;
+    & > p {
+      // padding: 0;
+      // margin: 0;
+      // height: 100%;
+      // position: relative;
+      // z-index: 1;
+      // color: $textPrimary;
+      // @include quickFlex($width: 100%, $dir: column, $justify: space-between);
+    }
+  }
+
+  aside::after {
+    content: "";
+    position: absolute;
+    background-color: $primary;
+    opacity: 0.3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// @media screen and (min-width: 1000px) {
+// .header {
+//   & > header {
+//     & > div:last-of-type {
+//       & > div:first-of-type {
+//         border-right: 1px solid darken($color: $lightGray, $amount: 70);
+//         padding-right: 15px;
+//         margin-right: 10px;
+//         @include quickFlex($dir: row);
+//         & > a {
+//           color: white;
+//           &:hover {
+//             color: $primary;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// }

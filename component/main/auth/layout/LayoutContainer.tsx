@@ -4,7 +4,7 @@ import { Layout } from ".";
 import { logoutAction } from "@store/actions";
 
 const SigninContainer = (props: any) => {
-  return <Layout />;
+  return <Layout children={props.children} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
