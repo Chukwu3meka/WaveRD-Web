@@ -1,36 +1,43 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  // border: 3px solid red;
-  height: clamp(400px, calc(100vh - 65px), 600px);
-
   display: grid;
-  grid-template-columns: clamp(350px, 10%, 500px) auto;
-  // position: relative;
-
+  height: clamp(400px, calc(100vh - 65px), 800px);
+  grid-template-columns: clamp(350px, 40%, 500px) auto;
   aside {
-    // border: 3px solid blue;
-    background-image: url("/images/sidebar.png");
-    background-repeat: repeat-y;
+    background-image: url("/images/layout/soccermass.webp");
+    background-size: 100% 100%;
     position: relative;
-    // height: 100vh;
     overflow: hidden;
-    & > p {
-      // padding: 0;
-      // margin: 0;
-      // height: 100%;
-      // position: relative;
-      // z-index: 1;
-      // color: $textPrimary;
-      // @include quickFlex($width: 100%, $dir: column, $justify: space-between);
+    & > div {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      & > * {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      p {
+        text-align: center;
+        color: darken($color: $textSecondary, $amount: 10);
+        font-size: 1.2em;
+        padding: 10px;
+        ul {
+          padding: 0;
+          list-style: none;
+        }
+      }
     }
   }
 
   aside::after {
     content: "";
     position: absolute;
-    background-color: $primary;
-    opacity: 0.3;
+    background-color: $darkGray;
+    opacity: 0.4;
     top: 0;
     right: 0;
     bottom: 0;
@@ -38,23 +45,7 @@
   }
 }
 
-// @media screen and (min-width: 1000px) {
-// .header {
-//   & > header {
-//     & > div:last-of-type {
-//       & > div:first-of-type {
-//         border-right: 1px solid darken($color: $lightGray, $amount: 70);
-//         padding-right: 15px;
-//         margin-right: 10px;
-//         @include quickFlex($dir: row);
-//         & > a {
-//           color: white;
-//           &:hover {
-//             color: $primary;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// }
+@media screen and (min-width: 1200px) {
+  //
+  //
+}

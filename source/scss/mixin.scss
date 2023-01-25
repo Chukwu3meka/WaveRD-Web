@@ -1,8 +1,9 @@
 @import "./variables.scss";
 
-@mixin quickFlex($width: initial, $dir: row, $justify: center, $align: center, $wrap: nowrap, $column: 0, $row: 0) {
+@mixin quickFlex($width: initial, $height: initial, $dir: row, $justify: center, $align: center, $wrap: nowrap, $column: 0, $row: 0) {
   display: flex;
   width: $width;
+  height: $height;
   flex-direction: $dir;
   justify-content: $justify;
   align-items: $align;

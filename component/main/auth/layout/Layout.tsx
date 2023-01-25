@@ -1,10 +1,20 @@
+import authSlideText from "@source/constants/authSlideText";
+import Carousel from "nuka-carousel/lib/carousel";
+
 import { styles } from ".";
 
 const Layout = ({ children }: any) => (
   <div className={styles.layout}>
     <aside>
-      <p>Layout sidebar</p>
+      <div>
+        <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>
+          {authSlideText.map((slideText: any) => (
+            <p key={slideText}>{slideText}</p>
+          ))}
+        </Carousel>
+      </div>
     </aside>
+
     <main>{children}</main>
   </div>
 );
