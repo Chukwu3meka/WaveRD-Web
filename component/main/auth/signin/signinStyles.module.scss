@@ -1,26 +1,21 @@
 @import "@source/scss/index.scss";
 
 .signin {
-  max-width: 600px;
-  @include boxShadow($br: 10px);
-  position: relative;
-  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
-  transition: all 1.5s linear;
-
   padding: 10px;
-  // background-color: white;
-
+  max-width: 600px;
   margin: 50px auto;
-
+  position: relative;
+  transition: all 1.5s linear;
+  @include boxShadow($br: 10px);
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
   background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 35) 10%);
+
   & > .social {
-    padding: 10px;
     z-index: 2;
+    padding: 10px;
+    max-width: 800px;
     position: relative;
     margin: 20px auto 15px;
-    // border: 3px solid red;
-
-    max-width: 800px;
     @include quickFlex($dir: row, $wrap: wrap, $row: 20px);
     & > div {
       width: 100%;
@@ -31,19 +26,20 @@
   }
 
   & > .divider {
-    @include quickFlex($width: clamp(100px, calc(100% - 150px), 400px));
     margin: 30px auto;
     position: relative;
+    @include quickFlex($width: calc(100% - 20px));
     border-top: 1px solid darken($color: $lightGray, $amount: 10);
     & > span:first-of-type {
+      width: 180px;
       position: absolute;
-      width: 30px;
       border-top: 2px solid white;
     }
 
     & > span:last-of-type {
-      color: darken($color: $textSecondary, $amount: 50);
+      font-size: 0.8em;
       position: absolute;
+      color: darken($color: $textSecondary, $amount: 40);
     }
   }
 }

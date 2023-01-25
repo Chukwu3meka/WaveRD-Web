@@ -13,7 +13,7 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
 
       <div className={styles.divider}>
         <span />
-        <span>or</span>
+        <span>or Signin with Email</span>
       </div>
 
       <Stack spacing={3} alignItems="center" p={2} component="form" noValidate autoComplete="off">

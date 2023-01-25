@@ -1,4 +1,4 @@
-const signinFormMouseMoveCapture = () => {
+export const signinFormMouseMoveCapture = () => {
   const signinRef = document.getElementById("signin")!;
 
   const mouse = {
@@ -13,7 +13,7 @@ const signinFormMouseMoveCapture = () => {
     },
     setOrigin: function (e: any) {
       this._x = e.offsetLeft + Math.floor(e.offsetWidth / 0.5);
-      this._y = e.offsetTop + Math.floor(e.offsetHeight / 3);
+      this._y = e.offsetTop + Math.floor(e.offsetHeight / 1.7);
     },
     show: function () {
       return "(" + this.x + ", " + this.y + ")";
@@ -54,5 +54,3 @@ const signinFormMouseMoveCapture = () => {
   signinRef.onmouseleave = onMouseLeaveHandler;
   signinRef.onmousemove = onMouseMoveHandler;
 };
-
-export { signinFormMouseMoveCapture };
