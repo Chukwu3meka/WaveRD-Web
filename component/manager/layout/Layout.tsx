@@ -21,7 +21,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, auth, smal
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image" content="/images/soccermass.webp" />
+      <meta property="og:image" content="/images/layout/soccermass.webp" />
       <meta name="theme-color" content={theme.palette.primary.main} />
       <meta property="og:url" content="https://www.soccermass.com/" />
       <meta name="keywords" content="soccer manager, football manager" />

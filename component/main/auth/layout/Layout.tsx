@@ -9,7 +9,7 @@ const Layout = ({ children }: any) => (
       <div>
         <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>
           {authSlideText.map((slideText: any) => (
-            <p key={slideText}>{slideText}</p>
+            <div key={slideText}>{slideText}</div>
           ))}
         </Carousel>
       </div>
