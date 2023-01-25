@@ -26,39 +26,34 @@ const Social = () => {
 
   return (
     <section className={styles.social}>
-      <div>
-        <Chip
-          // avatar={<Avatar>T</Avatar>}
-          icon={<TwitterIcon />}
-          clickable
-          label="Sign in with Twitter"
-          variant="outlined"
-          color="primary"
-          onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/twitter`)}
-        />
-        <Chip
-          icon={<GoogleIcon />}
-          // avatar={<Avatar>G</Avatar>}
-          clickable
-          label="Sign in with Google"
-          variant="outlined"
-          color="primary"
-          onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/google`)}
-        />
-        <Chip
-          icon={<FacebookIcon />}
-          // avatar={<Avatar>F</Avatar>}
-          clickable
-          label="Sign in with Facebook"
-          variant="outlined"
-          color="primary"
-          onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/facebook`)}
-        />
-        {/* <SocialLink href={`http://127.0.0.1:5000/auth/twitter`} title="Continue with twitter" color="rgb(51, 133, 255)" /> */}
-      </div>
-      <span>
-        <i>eMail Signin</i>
-      </span>
+      <Chip
+        sx={{ "&>svg": { color: "#1DA1F2 !important" } }}
+        icon={<TwitterIcon />}
+        clickable
+        label="Sign in with Twitter"
+        variant="outlined"
+        color="primary"
+        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/twitter`)}
+      />
+      <Chip
+        icon={<GoogleIcon />}
+        sx={{ "&>svg": { color: "#DB4437 !important" } }}
+        clickable
+        label="Sign in with Google"
+        variant="outlined"
+        color="primary"
+        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/google`)}
+      />
+      <Chip
+        sx={{ "&>svg": { color: "#4267B2 !important" } }}
+        icon={<FacebookIcon />}
+        clickable
+        label="Sign in with Facebook"
+        variant="outlined"
+        color="primary"
+        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/facebook`)}
+      />
+      {/* <SocialLink href={`http://127.0.0.1:5000/auth/twitter`} title="Continue with twitter" color="rgb(51, 133, 255)" /> */}
     </section>
   );
 };

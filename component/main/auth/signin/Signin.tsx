@@ -5,6 +5,12 @@ const Signin = ({}: any) => (
     {/*  */}
 
     <SocialAuth />
+
+    <div>
+      <span>
+        <i>eMail Signin</i>
+      </span>
+    </div>
   </div>
 );
 
