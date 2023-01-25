@@ -1,3 +1,11 @@
-const Signin = ({}: any) => <div>Signin</div>;
+import { SocialAuth, styles } from ".";
+
+const Signin = ({}: any) => (
+  <div className={styles.signin}>
+    {/*  */}
+
+    <SocialAuth />
+  </div>
+);
 
 export default Signin;

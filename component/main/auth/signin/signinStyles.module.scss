@@ -1,22 +1,9 @@
 @import "@source/scss/index.scss";
 
-@media screen and (min-width: 1000px) {
-  .header {
-    & > header {
-      & > div:last-of-type {
-        & > div:first-of-type {
-          border-right: 1px solid darken($color: $lightGray, $amount: 70);
-          padding-right: 15px;
-          margin-right: 10px;
-          @include quickFlex($dir: row);
-          & > a {
-            color: white;
-            &:hover {
-              color: $primary;
-            }
-          }
-        }
-      }
-    }
-  }
+.social {
+  @include quickFlex($dir: column);
+  border: 3px solid red;
 }
+
+// @media screen and (min-width: 1000px) {
+// }

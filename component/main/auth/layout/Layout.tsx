@@ -4,7 +4,7 @@ import Carousel from "nuka-carousel/lib/carousel";
 import { styles } from ".";
 
 const Layout = ({ children }: any) => (
-  <main className={styles.layout}>
+  <div className={styles.layout}>
     <aside>
       <div>
         <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>
@@ -14,8 +14,8 @@ const Layout = ({ children }: any) => (
         </Carousel>
       </div>
     </aside>
-    {children}
-  </main>
+    <main>{children}</main>
+  </div>
 );
 
 export default Layout;
