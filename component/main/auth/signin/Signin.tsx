@@ -7,7 +7,7 @@ import { SocialAuth, styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
 const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
-  <div style={{ perspective: "30px" /*  <= Don't delete this, else animation stops */ }}>
+  <div style={{ perspective: "50px" /*  <= Don't delete this, else animation stops */ }}>
     <div id="signin" className={styles.signin} onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
 
@@ -25,9 +25,9 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
             disabled={values.buttonLoading}
             value={values.email}
             aria-describedby="email"
-            label="Office Email"
+            label="Email Address"
             variant="outlined"
-            placeholder="firstname.lastname@zenithbank.com"
+            placeholder="firstname.lastname@soccermass.com"
             onChange={handleChange("email")}
           />
           <InputStatus status={formError.email} />
@@ -43,7 +43,7 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
               value={values.password}
               disabled={values.buttonLoading}
               onChange={handleChange("password")}
-              placeholder="Four (4) digit pin + Token"
+              placeholder="Complex Password"
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
