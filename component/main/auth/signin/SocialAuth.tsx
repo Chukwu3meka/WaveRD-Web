@@ -33,7 +33,7 @@ const Social = () => {
         label="Sign in with Twitter"
         variant="outlined"
         color="primary"
-        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/twitter`)}
+        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}/auth/twitter`)}
       />
       <Chip
         icon={<GoogleIcon />}
@@ -42,7 +42,7 @@ const Social = () => {
         label="Sign in with Google"
         variant="outlined"
         color="primary"
-        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/google`)}
+        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}/auth/google`)}
       />
       <Chip
         sx={{ "&>svg": { color: "#4267B2 !important" } }}
@@ -51,7 +51,7 @@ const Social = () => {
         label="Sign in with Facebook"
         variant="outlined"
         color="primary"
-        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}auth/facebook`)}
+        onClick={oAuthHandler(`${process.env.NEXT_PUBLIC_BASE_SERVER}/auth/facebook`)}
       />
       {/* <SocialLink href={`http://127.0.0.1:5000/auth/twitter`} title="Continue with twitter" color="rgb(51, 133, 255)" /> */}
     </section>

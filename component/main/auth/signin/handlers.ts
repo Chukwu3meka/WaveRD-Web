@@ -1,7 +1,5 @@
 const signinFormMouseMoveCapture = () => {
-  const signin = document.getElementById("signin")!;
-  // signin = document.getElementById("signin")!; // <= ! tell typescript its always defined
-  // bg = document.getElementById("bg")!;
+  const signinRef = document.getElementById("signin")!;
 
   const mouse = {
     _x: 0,
@@ -14,7 +12,7 @@ const signinFormMouseMoveCapture = () => {
       this.y = (e.clientY - this._y) * -2;
     },
     setOrigin: function (e: any) {
-      this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
+      this._x = e.offsetLeft + Math.floor(e.offsetWidth / 0.5);
       this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
     },
     show: function () {
@@ -22,8 +20,8 @@ const signinFormMouseMoveCapture = () => {
     },
   };
 
-  // Track the mouse position relative to the center of the signin.
-  mouse.setOrigin(signin);
+  // Track the mouse position relative to the center of the signinRef.
+  mouse.setOrigin(signinRef);
 
   //-----------------------------------------
 
@@ -40,9 +38,9 @@ const signinFormMouseMoveCapture = () => {
   };
 
   const onMouseLeaveHandler = function () {
-    signin.setAttribute("style", "");
+    signinRef.setAttribute("style", "");
     // bg.setAttribute("style", "");
-    // signin.style = "";
+    // signinRef.style = "";
     // bg.style = "";
   };
 
@@ -58,26 +56,26 @@ const signinFormMouseMoveCapture = () => {
 
   const update = function (event: MouseEvent) {
     mouse.updatePosition(event);
-    updateTransformStyle((mouse.y / signin.offsetHeight / 2).toFixed(2), (mouse.x / signin.offsetWidth / 2).toFixed(2));
+    updateTransformStyle((mouse.y / signinRef.offsetHeight / 2).toFixed(2), (mouse.x / signinRef.offsetWidth / 2).toFixed(2));
   };
 
   const updateTransformStyle = function (x: any, y: any) {
     var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
-    signin.style.transform = style;
-    // signin.style.mozTransform = style;
-    // signin.style.msTransform = style;
-    // signin.style.oTransform = style;
+    signinRef.style.transform = style;
+    // signinRef.style.mozTransform = style;
+    // signinRef.style.msTransform = style;
+    // signinRef.style.oTransform = style;
     // bg.style.backgroundSize = "calc(100vw + 50px) 170%";
-    // bg.style.backgroundImage = `url('${process.env.CLIENT_URL}/images/signin-hover-background.jpg')`;
+    // bg.style.backgroundImage = `url('${process.env.CLIENT_URL}/images/signinRef-hover-background.jpg')`;
     // bg.style.backgroundSize = "calc(100vw + 300px) 110vh";
     // bg.style.backgroundPositionX = "-300px";
   };
 
   //-----------------------------------------
 
-  signin.onmouseenter = onMouseEnterHandler;
-  signin.onmouseleave = onMouseLeaveHandler;
-  signin.onmousemove = onMouseMoveHandler;
+  signinRef.onmouseenter = onMouseEnterHandler;
+  signinRef.onmouseleave = onMouseLeaveHandler;
+  signinRef.onmousemove = onMouseMoveHandler;
 };
 
 export { signinFormMouseMoveCapture };

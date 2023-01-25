@@ -8,7 +8,6 @@ import InputStatus from "@component/builder/InputStatus";
 
 const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
   <div style={{ perspective: "30px" /*  <= Don't delete this, else animation stops */ }}>
-    {/* // <div> */}
     <div id="signin" className={styles.signin} onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
 
