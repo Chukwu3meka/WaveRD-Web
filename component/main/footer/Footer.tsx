@@ -17,7 +17,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               SoccerMASS
             </Typography>
 
-            <Image src="/images/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/soccermass.webp" />
+            <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/soccermass.webp" />
 
             <Typography variant="subtitle2">Follow US</Typography>
 

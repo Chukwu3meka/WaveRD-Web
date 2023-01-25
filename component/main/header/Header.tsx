@@ -45,7 +45,7 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
   <Fade direction="down" className={styles[displayHeader ? "header" : "headerHidden"]}>
     <header>
       <div>
-        <Image src="/images/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
+        <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
         <Stack direction="row" component="a" href="https://soccermass.com/" rel="noopener noreferrer">
           <Typography fontWeight={700} fontSize="1.7em" component="h1" color="white">
             Soccer
