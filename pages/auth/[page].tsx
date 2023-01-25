@@ -15,7 +15,7 @@ const Page = () => {
 
   return (
     <LayoutContainer>
-      <AuthPageContainer />;
+      <AuthPageContainer />
     </LayoutContainer>
   );
 };
