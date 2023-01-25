@@ -55,7 +55,7 @@
   transition: all 1s ease-out;
 }
 
-.form {
+.signin {
   // margin-left: -20px;
   // margin-top: -20px;
   opacity: 0.8;
@@ -68,13 +68,13 @@
   transition: all 1.5s linear;
 }
 
-// .form:hover {
+// .signin:hover {
 //   opacity: 1;
 //   // background-image: radial-gradient(circle at bottom right, lighten($primary, 30), lighten($secondary, 30) 50%);
 //   transition: all 1.5s linear;
 // }
 
-.form > main {
+.signin > main {
   @include quickFlex($dir: column);
   height: 100%;
   padding: 20px;

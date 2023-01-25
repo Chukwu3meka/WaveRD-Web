@@ -8,7 +8,7 @@ import InputStatus from "@component/builder/InputStatus";
 
 const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
   <div className={styles.formContainer} id="formContainer">
-    <div id="form" className={styles.form} onMouseMoveCapture={signinFormMouseMoveCapture}>
+    <div id="signin" className={styles.signin} onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
 
       <div className={styles.divider}>
