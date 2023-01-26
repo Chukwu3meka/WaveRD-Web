@@ -18,7 +18,7 @@
     @include quickFlex($dir: row, $justify: space-between);
     & > div:first-of-type {
       @include quickFlex($dir: row, $column: 10px, $width: 100%);
-      & > img {
+      & > a > img {
         border-radius: 50%;
       }
     }
