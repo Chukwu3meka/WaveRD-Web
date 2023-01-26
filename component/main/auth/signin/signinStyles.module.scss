@@ -3,10 +3,12 @@
 .signin {
   // will-change: transform;
 
-  position: relative;
+  //
+
+  // position: relative;
   padding: 10px;
   max-width: 600px;
-  margin: 250px auto;
+  margin: 80px auto;
   // // position: relative;
   transition: all 1.5s linear;
   @include boxShadow($br: 10px);
