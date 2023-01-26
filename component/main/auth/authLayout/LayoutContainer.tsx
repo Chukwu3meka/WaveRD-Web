@@ -2,9 +2,10 @@ import { connect } from "react-redux";
 
 import { Layout } from ".";
 import { logoutAction } from "@store/actions";
+import { useEffect } from "react";
 
-const SigninContainer = (props: any) => {
-  return <Layout children={props.children} />;
+const SigninContainer = ({ component }: any) => {
+  return <Layout component={component} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

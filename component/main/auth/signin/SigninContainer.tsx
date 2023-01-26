@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 
@@ -14,7 +14,7 @@ import validateInput from "@utils/validator";
 // import { logoutAction } from "@store/actions";
 
 const SigninContainer = (props: any) => {
-  const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
+  // const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
 
   const { setAuthAction } = props,
     { enqueueSnackbar } = useSnackbar();
@@ -25,6 +25,10 @@ const SigninContainer = (props: any) => {
     email: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_EMAIL as string) : "",
     password: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_PASSWORD as string) : "",
   });
+
+  useEffect(() => {
+    console.log("useEffect");
+  }, []);
 
   const [formError, setFormError] = useState<any>({
     status: false,
@@ -191,7 +195,10 @@ const SigninContainer = (props: any) => {
     setValues((values: any) => ({ ...values, buttonLoading: false })); // activate botton loading
   };
 
-  return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
+  // return <header>saas</header>;
+
+  return <Signin {...{ handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
+  // return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

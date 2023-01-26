@@ -1,12 +1,18 @@
 @import "@source/scss/index.scss";
 
+.layout1 {
+  border: 3px solid red;
+  height: 1200px;
+}
+
 .layout {
-  min-height: 400px;
   & > aside {
+    margin: 0;
+    padding: 0;
     display: none;
   }
   & > main {
-    @include quickFlex($height: 100%);
+    @include quickFlex();
     padding: 10px;
   }
 }
@@ -14,7 +20,8 @@
 @media screen and (min-width: 1200px) {
   .layout {
     display: grid;
-    height: clamp(400px, calc(100vh - 65px), 1500px);
+    min-height: calc(100vh - 65px);
+    // height: clamp(400px, calc(100vh - 65px), 1500px);
     grid-template-columns: clamp(400px, 50%, 550px) auto;
     aside {
       display: unset;
@@ -33,22 +40,23 @@
         left: 0;
       }
       & > div {
+        border: 3px solid red;
         position: relative;
         z-index: 1;
         height: 100%;
-        & > * {
-          margin: 0;
+        & > div {
+          margin: auto;
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-        }
-
-        div {
-          text-align: center;
           color: darken($color: $textSecondary, $amount: 10);
           font-size: 1.1em;
-
           padding: 10px;
+          max-width: 450px;
+          * {
+            text-align: center;
+          }
+
           ul {
             padding: 0;
             list-style: none;

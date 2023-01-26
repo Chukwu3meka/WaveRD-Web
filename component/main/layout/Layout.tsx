@@ -27,11 +27,11 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image" content="/images/layout/soccermass.webp" />
       <meta name="theme-color" content={theme.palette.primary.main} />
       <meta property="og:url" content="https://www.soccermass.com/" />
       <meta name="keywords" content="soccer manager, football manager" />
       <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
+      <meta property="og:image" content="/images/layout/soccermass.webp" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content="SoccerMASS: No 1. Free Online Soccer Manager" />
       <meta property="og:title" content={`SoccerMASS: Soccer Manager ${new Date().getFullYear()}`} />
