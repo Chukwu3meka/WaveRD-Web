@@ -1,6 +1,7 @@
 @import "@source/scss/index.scss";
 
 .layout {
+  min-height: clamp(500px, calc(100vh - 185px), 21200px);
   & > aside {
     margin: 0;
     padding: 0;
