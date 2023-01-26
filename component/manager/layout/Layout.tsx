@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Box } from "@mui/material";
 import { Provider } from "react-redux";
 
-import theme from "@utils/theme";
+import theme from "@libs/theme";
 import { styles } from ".";
 // import Spinner from "@component/builder/loading/BuilderLoading";
 
