@@ -26,10 +26,6 @@ const SigninContainer = (props: any) => {
     password: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_PASSWORD as string) : "",
   });
 
-  useEffect(() => {
-    console.log("useEffect");
-  }, []);
-
   const [formError, setFormError] = useState<any>({
     status: false,
     email: "pristine",
