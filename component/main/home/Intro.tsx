@@ -4,7 +4,7 @@ import { Fade } from "react-awesome-reveal";
 import { introStyles } from ".";
 
 const Intro = () => (
-  <Fade direction="down">
+  <Fade direction="down" triggerOnce={true}>
     <div className={introStyles.intro}>
       <div>
         <Typography variant="caption" fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "2.5em" }}>
