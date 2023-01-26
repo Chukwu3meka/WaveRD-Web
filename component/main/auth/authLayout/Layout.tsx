@@ -4,14 +4,6 @@ import Carousel from "nuka-carousel/lib/carousel";
 import { styles } from ".";
 
 const Layout = ({ component }: any) => (
-  <div className={styles.layout1}>
-    {/*  */}
-
-    {component}
-  </div>
-);
-
-const Layout1 = ({ children }: any) => (
   <div className={styles.layout}>
     <aside>
       <div>
@@ -22,7 +14,7 @@ const Layout1 = ({ children }: any) => (
         </Carousel>
       </div>
     </aside>
-    <main>{children}</main>
+    <main>{component}</main>
   </div>
 );
 
