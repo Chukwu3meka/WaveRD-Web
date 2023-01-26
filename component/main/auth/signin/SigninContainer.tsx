@@ -6,7 +6,6 @@ import { Signin, handlers } from ".";
 // import validateInput from "@utils/validator";
 import { sleep } from "@utils/handlers";
 import { setAuthAction } from "@store/actions";
-// import {  } from "./signinMethods";
 import Router from "next/router";
 import validateInput from "@utils/validator";
 // import { any, any } from "@interface/components/siginin-interface";
@@ -14,7 +13,7 @@ import validateInput from "@utils/validator";
 // import { logoutAction } from "@store/actions";
 
 const SigninContainer = (props: any) => {
-  // const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
+  const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
 
   const { setAuthAction } = props,
     { enqueueSnackbar } = useSnackbar();
@@ -193,8 +192,8 @@ const SigninContainer = (props: any) => {
 
   // return <header>saas</header>;
 
-  return <Signin {...{ handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
-  // return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
+  // return <Signin {...{ handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
+  return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

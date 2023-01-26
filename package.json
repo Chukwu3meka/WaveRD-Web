@@ -7,7 +7,8 @@
     "start": "next start",
     "build": "next build",
     "export": "next export",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "clean": "rm -rf package-lock.json node_modules/ && npm install --force"
   },
   "keywords": [
     "SoccerMASS",

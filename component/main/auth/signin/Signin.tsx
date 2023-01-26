@@ -1,18 +1,14 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
+import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 
 import { SocialAuth, styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
-// const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
-//   <div id="signin" className={styles.signin} onMouseMoveCapture={signinFormMouseMoveCapture}></div>
-// );
-
-const Signin = ({ handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
-  <Fade direction="down" triggerOnce={true}>
-    <div className={styles.signin}>
+const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleFocus }: any) => (
+  <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
+    <div className={styles.signin} id="signin" onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
 
       <div className={styles.divider}>

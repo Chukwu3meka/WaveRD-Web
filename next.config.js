@@ -10,6 +10,12 @@ const nextConfig = {
   reactStrictMode: true,
   images: { unoptimized: true },
 
+  modularizeImports: {
+    "@mui/icons-material": {
+      transform: "@mui/icons-material/{{ member }}",
+    },
+  },
+
   async redirects() {
     return [
       // apihub
