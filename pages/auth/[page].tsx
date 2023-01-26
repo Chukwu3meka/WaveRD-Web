@@ -23,7 +23,8 @@ const Page = () => {
         console.log("AuthPage");
         const AuthPage = await dynamic(() => import(`@component/main/auth/${page}`));
         setComponent(<AuthPage />);
-        await sleep(2).then(() => setLoading(false)); // <= signin page tooke time to display, let's let the user know its loading
+        // await sleep(2).then(() => setLoading(false)); // <= signin page tooke time to display, let's let the user know its loading
+        setLoading(false);
       } else {
         setLoading(false);
         setInvalidRoute(true);
