@@ -19,25 +19,25 @@ const SigninContainer = (props: any) => {
   const [values, setValues] = useState<any>({
     showPassword: false,
     buttonLoading: false,
-    email: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_EMAIL as string) : "",
-    password: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_PASSWORD as string) : "",
+    email: "",
+    password: "",
+    // email: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_TEST_EMAIL as string) : "",
+    // password: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_TEST_PASSWORD as string) : "",
   });
 
   const [formError, setFormError] = useState<any>({
-    status: false,
-    email: "pristine",
-    password: "pristine",
-    errorMessages: "Email && Password cannot be empty",
+    // STATUS: valid, invalid, loading
+    email: { status: "invalid", pristine: true, message: "Email cannot be empty" },
+    password: { status: "invalid", pristine: true, message: "Password cannot be empty" },
   });
 
   const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
   const loginHandler = () => handlers.loginHandler({ setValues, values });
   const onBlurHandler = handlers.onBlurHandler;
-  // const handleChange =(e,value) handlers.handleChange;
-  const handleChange = handlers.handleChange;
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues, setFormError);
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
 
-  return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }} />;
+  return <Signin {...{ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

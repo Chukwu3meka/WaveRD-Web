@@ -1,3 +1,6 @@
+import { sleep } from "@utils/handlers";
+import validator from "@utils/validator";
+
 export const signinFormMouseMoveCapture = () => {
   const signinRef = document.getElementById("signin")!;
 
@@ -144,54 +147,16 @@ export const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
   // if (!validInput) enqueueSnackbar(formError.errorMessages, { variant: "error" });
 };
 
-// export const handleChange = (prop: "email" | "password") => (event: any) => {
-export const handleChange = (e: any) => {
-  // e.preventDefault();
-  // return setValues({ ...values, [prop]: event.target.value });
-  // setValues({ ...values, [prop]: event.target.value });
-  // function isNumeric(number: number) {
-  //   const value = parseInt(`${number}`);
-  //   if (typeof value !== "number") return false; // we only process strings!
-  //   return (
-  //     !isNaN(value) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-  //     !isNaN(parseFloat(`${value}`))
-  //   ); // ...and ensure strings of whitespace fail
-  // }
-  // const value = event.target.value;
-  // let errorMessage: string | null;
-  // switch (prop) {
-  //   case "email": {
-  //     setValues({ ...values, email: value.toLowerCase() });
-  //     const validInput = validateInput({ type: prop, value, label: "Email" });
-  //     if (validInput) {
-  //       errorMessage = null;
-  //     } else if (value.length < 0) {
-  //       errorMessage = `${prop} cannot be empty`;
-  //     } else if (!value.endsWith("@zenithbank.com")) {
-  //       errorMessage = `${prop} must end with '@zenithbank.com'`;
-  //     } else {
-  //       errorMessage = `${prop} is required and can only contain 'Alphanumeric', 'Underscore', 'Hyphen' and 'Dot'`;
-  //     }
-  //     setFormError((values: any) => ({ ...values, email: errorMessage === null ? 1 : -1, errorMessages: errorMessage }));
-  //     break;
-  //   }
-  //   case "password":
-  //     const newValue = isNumeric(value) ? parseInt(value) : null;
-  //     if (newValue) {
-  //       setValues({ ...values, password: `${newValue}` });
-  //       const validInput = validateInput(prop, newValue);
-  //       if (validInput) {
-  //         errorMessage = null;
-  //       } else if (`${newValue}`.length !== 10) {
-  //         errorMessage = `${prop} must have ten(10) characters`;
-  //       } else {
-  //         errorMessage = `${prop} should only have numbers`;
-  //       }
-  //       setFormError((values: any) => ({ ...values, password: errorMessage === null ? 1 : -1, errorMessages: errorMessage }));
-  //       break;
-  //     }
-  //   default:
-  //     break;
-  // }
-  // setFormError((values: any) => ({ ...values, status: values.email === "valid" && values.password === "valid" ? false : true }));
+export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {
+  const { value, id } = e.target;
+  setValues((values: any) => ({ ...values, [id]: value }));
+
+  setFormError((values: any) => ({ ...values, [id]: { ...values[id], pristine: false, status: "loading" } })); // <= set component state to loading
+  try {
+    validator({ value, type: id as "email" | "password", label: id === "email" ? "Email Address" : "password" });
+    setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
+  } catch ({ message }) {
+    console.log("222dsfdf");
+    setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message } }));
+  }
 };

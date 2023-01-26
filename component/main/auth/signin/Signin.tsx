@@ -6,7 +6,7 @@ import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, For
 import { SocialAuth, styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
-const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }: any) => (
+const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.signin} id="signin" onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
@@ -20,8 +20,6 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
         <Stack direction="row" width="100%" alignItems="center">
           <TextField
             fullWidth
-            // onBlur={onBlurHandler("email")}
-            onBlur={onBlurHandler}
             id="email"
             disabled={values.buttonLoading}
             value={values.email}
@@ -29,21 +27,21 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
             label="Email Address"
             variant="outlined"
             placeholder="firstname.lastname@soccermass.com"
-            onChange={handleChange("email")}
+            onChange={onInputChange}
           />
-          <InputStatus status={formError.email} />
+          <InputStatus value={values.email} status={formError.email.status} pristine={formError.email.pristine} />
         </Stack>
 
         <Stack direction="row" width="100%" alignItems="center">
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Admin Password</InputLabel>
             <OutlinedInput
-              onBlur={onBlurHandler}
               id="password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
               disabled={values.buttonLoading}
-              onChange={handleChange("password")}
+              // onChange={onInputChange("password")}
+              onChange={onInputChange}
               placeholder="Complex Password"
               endAdornment={
                 <InputAdornment position="end">
@@ -56,7 +54,7 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
             />
           </FormControl>
 
-          <InputStatus status={formError.password} />
+          <InputStatus value={values.password} status={formError.password.status} pristine={formError.password.pristine} />
         </Stack>
 
         <Box sx={{ textAlign: "right", width: "100%" }}>
