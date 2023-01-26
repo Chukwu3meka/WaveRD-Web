@@ -3,7 +3,7 @@ import Carousel from "nuka-carousel/lib/carousel";
 
 import { styles } from ".";
 
-const Layout = ({ component }: any) => (
+const AuthLayout = ({ component }: any) => (
   <div className={styles.layout}>
     <aside>
       <div>
@@ -18,4 +18,4 @@ const Layout = ({ component }: any) => (
   </div>
 );
 
-export default Layout;
+export default AuthLayout;

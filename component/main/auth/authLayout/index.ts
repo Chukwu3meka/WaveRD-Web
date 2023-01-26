@@ -1,5 +1,5 @@
-import Layout from "./Layout";
-import LayoutContainer from "./LayoutContainer";
-import styles from "./layoutStyles.module.scss";
+import AuthLayout from "./AuthLayout";
+import AuthLayoutContainer from "./AuthLayoutContainer";
+import styles from "./styles.module.scss";
 
-export { Layout, styles, LayoutContainer as default };
+export { AuthLayout, styles, AuthLayoutContainer as default };
