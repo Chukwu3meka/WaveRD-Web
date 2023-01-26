@@ -6,7 +6,7 @@ import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, For
 import { SocialAuth, styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
-const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleInputFocus }: any) => (
+const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.signin} id="signin" onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
@@ -20,8 +20,8 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
         <Stack direction="row" width="100%" alignItems="center">
           <TextField
             fullWidth
-            // onBlur={handleInputFocus("email")}
-            onBlur={handleInputFocus}
+            // onBlur={onBlurHandler("email")}
+            onBlur={onBlurHandler}
             id="email"
             disabled={values.buttonLoading}
             value={values.email}
@@ -38,7 +38,7 @@ const Signin = ({ signinFormMouseMoveCapture, handleChange, handleClickShowPassw
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Admin Password</InputLabel>
             <OutlinedInput
-              onBlur={handleInputFocus("password")}
+              onBlur={onBlurHandler}
               id="password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}

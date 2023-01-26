@@ -135,16 +135,16 @@ export const loginHandler = async ({ setValues, values }: any) => {
   setValues((values: any) => ({ ...values, buttonLoading: false })); // activate botton loading
 };
 
-export const handleInputFocus = (e: any) => {
-  console.log(e);
+export const onBlurHandler = (e: any) => {
+  console.log(e, "Sadsadsa");
   // return "";
   // const validInput = formError[prop] === 1 ? true : false;
   // if (!validInput) enqueueSnackbar(formError.errorMessages, { variant: "error" });
 };
 
 // export const handleChange = (prop: "email" | "password") => (event: any) => {
-export const handleChange = () => {
-  // event.preventDefault();
+export const handleChange = (e) => {
+  // e.preventDefault();
   // return setValues({ ...values, [prop]: event.target.value });
   // setValues({ ...values, [prop]: event.target.value });
   // function isNumeric(number: number) {

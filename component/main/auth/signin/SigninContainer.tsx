@@ -32,12 +32,12 @@ const SigninContainer = (props: any) => {
 
   const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
   const loginHandler = () => handlers.loginHandler({ setValues, values });
-  const handleInputFocus = handlers.handleInputFocus;
+  const onBlurHandler = handlers.onBlurHandler;
   // const handleChange =(e,value) handlers.handleChange;
   const handleChange = handlers.handleChange;
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
 
-  return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, handleInputFocus }} />;
+  return <Signin {...{ signinFormMouseMoveCapture, handleChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

@@ -16,6 +16,8 @@
 
 > Upcoming
 
+- fix flickering in header @ home page
+
 1. work on auth(sigin, signup, reset password)
 2. create professional email template
 3. work on soccer manager complete signup
