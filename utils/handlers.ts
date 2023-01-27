@@ -28,3 +28,18 @@ export const sleep = async (seconds: number) => {
 
   return new Promise((resolve) => setTimeout(resolve, duration));
 };
+
+export const fetcher = ({ endpoint, method = "GET", payload }: any) => {
+  const API = `${process.env.SERVER_URL}/api${endpoint}`;
+  const apiCall = ["POST"].includes(method)
+    ? fetch(API, { method, body: JSON.stringify(payload), headers: new Headers({ "Content-Type": "application/json", Authorization: `Basic ${basicAuth}` }) })
+    : fetch(API, { method, headers: new Headers({ "Content-Type": "application/json", Authorization: `Basic ${basicAuth}` }) });
+  return apiCall
+    .then(async (response) => {
+      if (!response.ok) throw await response.json();
+      return response.json();
+    })
+    .catch((err) => {
+      throw err;
+    });
+};

@@ -1,4 +1,3 @@
-import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
 export const signinFormMouseMoveCapture = () => {
@@ -65,6 +64,11 @@ export const loginHandler = async ({ setValues, values }: any) => {
 
   const { email, password } = values;
   const notificationResponse = { variant: "", message: "" };
+
+  console.log({ email, password });
+
+  // buttonLoading
+
   // const basicAuth = Buffer.from(`${email}:${password}`).toString("base64"); // (Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii'))
   // await services
   //   .signin({ basicAuth })
@@ -136,15 +140,6 @@ export const loginHandler = async ({ setValues, values }: any) => {
   //   enqueueSnackbar(notificationResponse.message, { variant: "error" });
   // }
   setValues((values: any) => ({ ...values, buttonLoading: false })); // activate botton loading
-};
-
-export const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-  const { value, id } = e.target;
-  console.log({ value, id });
-  // const a = e.target.
-  // return "";
-  // const validInput = formError[prop] === 1 ? true : false;
-  // if (!validInput) enqueueSnackbar(formError.errorMessages, { variant: "error" });
 };
 
 export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {

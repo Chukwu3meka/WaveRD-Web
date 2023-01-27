@@ -6,7 +6,7 @@ import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, For
 import { SocialAuth, styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
-const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler, onBlurHandler }: any) => (
+const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.signin} id="signin" onMouseMoveCapture={signinFormMouseMoveCapture}>
       <SocialAuth />
