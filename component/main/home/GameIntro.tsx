@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Paper, Button, Typography } from "@mui/material";
+import { Paper, Button } from "@mui/material";
 
-import { managerIntroStyles } from ".";
+import { gameIntroStyles } from ".";
 
-const ManagerIntro = () => (
-  <div className={managerIntroStyles.managerIntro}>
+const GameIntro = () => (
+  <div className={gameIntroStyles.gameIntro}>
     <Paper elevation={2}>
       <div>
         <Image
@@ -70,4 +70,4 @@ const ManagerIntro = () => (
   </div>
 );
 
-export default ManagerIntro;
+export default GameIntro;
