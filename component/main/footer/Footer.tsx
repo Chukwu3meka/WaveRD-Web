@@ -40,7 +40,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                 </Link>
               )}
               {!authenticated && <Link href="/auth/signin">App Signin</Link>}
-              <Link href="/manager">Football Manager</Link>
+              <Link href="/game">Football Manager</Link>
               {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
               <Link href="/auth/reset">Reset Password</Link>
             </div>

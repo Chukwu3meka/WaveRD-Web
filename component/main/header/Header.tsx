@@ -38,7 +38,7 @@ const SocialIcon = ({ account, link }: { account: string; link: string }) => {
 const navLinks = [
   { title: "Home", path: "/" },
   { title: "API Hub", path: "/apihub" },
-  { title: "Manager", path: "/manager" },
+  { title: "Manager", path: "/game" },
 ];
 
 const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
