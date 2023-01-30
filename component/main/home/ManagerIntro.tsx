@@ -37,8 +37,6 @@ const ManagerIntro = () => (
           alt="SoccerMASS Clubs"
         />
       </div>
-      <Typography variant="h5">64 Clubs</Typography>
-      <Typography variant="h4">1,979 Players</Typography>
       <div>
         <Image
           src="/images/layout/intro-players.png"
