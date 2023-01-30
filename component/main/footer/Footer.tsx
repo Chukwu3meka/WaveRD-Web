@@ -34,16 +34,15 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="soccermass-links">SoccerMASS</label>
               <Link href="/">Home</Link>
-              {!authenticated && <Link href="/auth/signin">Signin/Signup</Link>}
-              <Link href="/manager">Football Manager</Link>
-              <Link href="/apihub">API HUB</Link>
-              {/* {!authenticated && <Link href="/auth/signup">Signup</Link>} */}
-              <Link href="/auth/reset">Reset Password</Link>
               {authenticated && (
                 <Link href="/auth/signin" onClick={logoutHandler()}>
                   Logout
                 </Link>
               )}
+              {!authenticated && <Link href="/auth/signin">App Signin</Link>}
+              <Link href="/manager">Football Manager</Link>
+              {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
+              <Link href="/auth/reset">Reset Password</Link>
             </div>
 
             <div>
@@ -58,9 +57,10 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="company">Domains</label>
               <a href="https://blog.soccermass.com/">Blogs</a>
-              <a href="https://job.soccermass.com/">Hourly Jobs</a>
+              <a href="https://market.soccermass.com/">Market Place</a>
               <a href="https://space.soccermass.com/">Homes & Space</a>
-              <a href="https://market.soccermass.com/">Market</a>
+              <a href="https://job.soccermass.com/">Hourly Jobs</a>
+              <a href="https://blog.soccermass.com/">API Hub</a>
             </div>
           </nav>
         </main>
