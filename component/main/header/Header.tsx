@@ -46,7 +46,7 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
     <header>
       <div>
         <Link href="/">
-          <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={25} height={25} />
+          <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={35} height={35} />
         </Link>
 
         <Stack direction="row" component="a" href="https://soccermass.com/">
