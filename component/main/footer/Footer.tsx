@@ -39,10 +39,10 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                   Logout
                 </Link>
               )}
-              {!authenticated && <Link href="/auth/signin">App Signin</Link>}
-              <Link href="/game">Football Manager</Link>
-              {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
               <Link href="/auth/reset">Reset Password</Link>
+              <Link href="https://game.soccermass.com/">Football Manager</Link>
+              {!authenticated && <Link href="/auth/signin">Signin/Login</Link>}
+              {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
             </div>
 
             <div>
@@ -59,8 +59,8 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               <a href="https://blog.soccermass.com/">Blogs</a>
               <a href="https://market.soccermass.com/">Market Place</a>
               <a href="https://space.soccermass.com/">Homes & Space</a>
-              <a href="https://job.soccermass.com/">Hourly Jobs</a>
-              <a href="https://blog.soccermass.com/">API Hub</a>
+              <a href="https://jobs.soccermass.com/">Hourly Jobs</a>
+              <a href="https://apihub.soccermass.com/">API Hub</a>
             </div>
           </nav>
         </main>
