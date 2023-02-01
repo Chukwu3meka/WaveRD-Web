@@ -139,7 +139,7 @@ export const loginHandler = async ({ setValues, values }: any) => {
   //   setValues((values: any) => ({ ...values, buttonLoading: false })); // activate botton loading
   //   enqueueSnackbar(notificationResponse.message, { variant: "error" });
   // }
-  setValues((values: any) => ({ ...values, buttonLoading: false })); // activate botton loading
+  setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
 };
 
 export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {

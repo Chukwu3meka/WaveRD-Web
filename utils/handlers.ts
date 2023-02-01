@@ -21,13 +21,7 @@ export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
   return arr;
 };
 
-export const sleep = async (seconds: number) => {
-  const duration = seconds * 60 * 60;
-
-  console.log(duration);
-
-  return new Promise((resolve) => setTimeout(resolve, duration));
-};
+export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
 
 export const fetcher = ({ endpoint, method = "GET", payload }: any) => {
   const API = `${process.env.SERVER_URL}/api${endpoint}`;

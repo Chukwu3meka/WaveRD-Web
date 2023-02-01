@@ -1,3 +1,4 @@
+import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
 export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {
@@ -13,8 +14,22 @@ export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: 
   }
 };
 
-export const registerHandler = ({ setValues, values, formError }): any => {
-  console.log(formError);
+export const registerHandler = async ({ setValues, values, formError, enqueueSnackbar }): any => {
+  const formErrorArray = Object.values(formError);
 
-  console.log("registerHandler");
+  const notPristineAndValid = formErrorArray.every((x) => !x.pristine || x.status === "valid");
+
+  setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
+
+  if (notPristineAndValid) {
+    const { email, password } = values;
+  } else {
+    const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
+
+    // Inform user of regex error
+    enqueueSnackbar(invalidEntry, { variant: "error" });
+  }
+
+  await sleep(0.2);
+  setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
 };

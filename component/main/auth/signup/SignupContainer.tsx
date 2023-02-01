@@ -32,7 +32,7 @@ const SignupContainer = (props: any) => {
     fullName: { status: "invalid", pristine: true, message: "Full Name cannot be empty" },
   }); // <= STATUS: valid, invalid, loading
 
-  const registerHandler = () => handlers.registerHandler({ setValues, values, formError });
+  const registerHandler = () => handlers.registerHandler({ setValues, values, formError, enqueueSnackbar });
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues, setFormError);
 
