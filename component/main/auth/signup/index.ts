@@ -1,5 +1,5 @@
-import Signin from "./Signin";
-import SigninContainer from "./SigninContainer";
-import styles from "./signinStyles.module.scss";
+import Signup from "./Signup";
+import SignupContainer from "./SignupContainer";
+import styles from "./signupStyles.module.scss";
 
-export { Signin, styles, SigninContainer as default };
+export { Signup, styles, SignupContainer as default };
