@@ -11,10 +11,6 @@
 
     & > img {
       border-radius: 50%;
-      // border: 3px solid red;
-
-      // .zenithLogo {
-      //   margin: -110px 20px 0 auto;
       animation: spin 4s alternate infinite;
       @keyframes spin {
         100% {

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
@@ -5,9 +6,8 @@ import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, For
 
 import { styles } from ".";
 import InputStatus from "@component/builder/InputStatus";
-import Image from "next/image";
 
-const Signup = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }: any) => (
+const Signup = ({ onInputChange, handleClickShowPassword, values, formError, registerHandler }: any) => (
   <Fade direction="down" triggerOnce={true} className={styles.signup}>
     <Stack spacing={3} alignItems="center" p="40px 20px" component="form" noValidate autoComplete="off">
       <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
@@ -84,7 +84,7 @@ const Signup = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPass
       <Box sx={{ textAlign: "right", width: "100%" }}>
         <AttentionSeeker effect="bounce">
           <Tooltip title={formError.status && formError.errorMessages}>
-            <LoadingButton onClick={loginHandler} size="large" disabled={!!formError.status} variant="outlined" endIcon={<RegisterIcon />} loading={!!values.buttonLoading}>
+            <LoadingButton onClick={registerHandler} size="large" disabled={!!formError.status} variant="outlined" endIcon={<RegisterIcon />} loading={!!values.buttonLoading}>
               <Typography sx={{ fontWeight: 900 }}>register</Typography>
             </LoadingButton>
           </Tooltip>

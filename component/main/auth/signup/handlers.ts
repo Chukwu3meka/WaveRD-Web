@@ -9,11 +9,12 @@ export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: 
     validator({ value, type: id as "email" | "password", label: id === "email" ? "Email Address" : "password" });
     setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
   } catch ({ message }) {
-    console.log("222dsfdf");
     setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message } }));
   }
 };
 
-export const registerHandler = (): any => {
+export const registerHandler = ({ setValues, values, formError }): any => {
+  console.log(formError);
+
   console.log("registerHandler");
 };

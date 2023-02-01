@@ -32,13 +32,11 @@ const SignupContainer = (props: any) => {
     fullName: { status: "invalid", pristine: true, message: "Full Name cannot be empty" },
   }); // <= STATUS: valid, invalid, loading
 
-  // const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
-  const registerHandler = () => "handlers.registerHandler({ setValues, values })";
+  const registerHandler = () => handlers.registerHandler({ setValues, values, formError });
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues, setFormError);
 
   return <Signup {...{ onInputChange, handleClickShowPassword, values, formError, registerHandler }} />;
-  // return <Signup />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
