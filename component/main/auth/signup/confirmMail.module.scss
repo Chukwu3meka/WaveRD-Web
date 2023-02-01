@@ -1,0 +1,25 @@
+@import "@source/scss/index.scss";
+
+.confirmMail {
+  width: clamp(300px, 100%, 600px);
+  & > div {
+    padding: 30px 10px;
+    margin: 80px auto;
+    transition: all 1.5s linear;
+    @include boxShadow($br: 10px);
+    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 35) 10%);
+    text-align: center;
+    @include quickFlex($dir: column, $row: 10px);
+
+    & > * {
+      max-width: 400px;
+    }
+    & > div:first-of-type {
+      position: relative;
+      width: 100%;
+      max-width: 270px;
+      height: 170px;
+      margin: auto;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { logoutAction } from "@store/actions";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 
-import { Signup, handlers } from ".";
+import { Signup, handlers, ConfirmMail } from ".";
 // import validateInput from "@utils/validator";
 import { sleep } from "@utils/handlers";
 import { setAuthAction } from "@store/actions";
@@ -27,8 +27,8 @@ const SignupContainer = (props: any) => {
 
   const [formError, setFormError] = useState<any>({
     email: { status: "invalid", pristine: true, message: "Email cannot be empty" },
-    password: { status: "invalid", pristine: true, message: "Password cannot be empty" },
     handle: { status: "invalid", pristine: true, message: "Handle cannot be empty" },
+    password: { status: "invalid", pristine: true, message: "Password cannot be empty" },
     fullName: { status: "invalid", pristine: true, message: "Full Name cannot be empty" },
   }); // <= STATUS: valid, invalid, loading
 
@@ -36,7 +36,7 @@ const SignupContainer = (props: any) => {
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues, setFormError);
 
-  return <Signup {...{ onInputChange, handleClickShowPassword, values, formError, registerHandler }} />;
+  return values.accountCreated ? <ConfirmMail /> : <Signup {...{ onInputChange, handleClickShowPassword, values, formError, registerHandler }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

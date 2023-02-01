@@ -14,7 +14,9 @@ export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: 
   }
 };
 
-export const registerHandler = async ({ setValues, values, formError, enqueueSnackbar }): any => {
+export const registerHandler = async ({ setValues, values, formError, enqueueSnackbar }: any) => {
+  setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true }));
+
   const formErrorArray = Object.values(formError);
 
   const notPristineAndValid = formErrorArray.every((x) => !x.pristine || x.status === "valid");
@@ -23,13 +25,13 @@ export const registerHandler = async ({ setValues, values, formError, enqueueSna
 
   if (notPristineAndValid) {
     const { email, password } = values;
+    setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
   } else {
     const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
 
     // Inform user of regex error
     enqueueSnackbar(invalidEntry, { variant: "error" });
+    await sleep(0.2);
+    setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
   }
-
-  await sleep(0.2);
-  setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
 };

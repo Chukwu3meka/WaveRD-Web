@@ -4,11 +4,11 @@ import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
 import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 
-import { styles } from ".";
+import { signupStyles } from ".";
 import InputStatus from "@component/builder/InputStatus";
 
 const Signup = ({ onInputChange, handleClickShowPassword, values, formError, registerHandler }: any) => (
-  <Fade direction="down" triggerOnce={true} className={styles.signup}>
+  <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>
     <Stack spacing={3} alignItems="center" p="40px 20px" component="form" noValidate autoComplete="off">
       <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
 

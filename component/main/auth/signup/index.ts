@@ -1,6 +1,8 @@
 import Signup from "./Signup";
 import * as handlers from "./handlers";
+import ConfirmMail from "./ConfirmMail";
 import SignupContainer from "./SignupContainer";
-import styles from "./signupStyles.module.scss";
+import signupStyles from "./signup.module.scss";
+import confirmMailStyles from "./confirmMail.module.scss";
 
-export { Signup, handlers, styles, SignupContainer as default };
+export { ConfirmMail, confirmMailStyles, Signup, handlers, signupStyles, SignupContainer as default };
