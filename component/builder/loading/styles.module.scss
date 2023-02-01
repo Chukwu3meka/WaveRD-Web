@@ -18,8 +18,8 @@
     @include quickFlex($dir: row);
     column-gap: 5px;
     & > .loading-block {
-      width: 20px;
-      height: 5px;
+      width: 30px;
+      height: 7px;
       position: relative;
       border-radius: 2px;
       transition: background-color 0.2s ease-in;
