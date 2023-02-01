@@ -1,20 +1,24 @@
 @import "@source/scss/index.scss";
 
-@media screen and (min-width: 1000px) {
-  .header {
-    & > header {
-      & > div:last-of-type {
-        & > div:first-of-type {
-          border-right: 1px solid darken($color: $lightGray, $amount: 70);
-          padding-right: 15px;
-          margin-right: 10px;
-          @include quickFlex($dir: row);
-          & > a {
-            color: white;
-            &:hover {
-              color: $primary;
-            }
-          }
+.signup {
+  width: clamp(300px, 100%, 600px);
+  & > form {
+    margin: 80px auto;
+    transition: all 1.5s linear;
+    @include boxShadow($br: 10px);
+    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
+    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 35) 10%);
+
+    & > img {
+      border-radius: 50%;
+      // border: 3px solid red;
+
+      // .zenithLogo {
+      //   margin: -110px 20px 0 auto;
+      animation: spin 4s alternate infinite;
+      @keyframes spin {
+        100% {
+          transform: rotateY(360deg);
         }
       }
     }

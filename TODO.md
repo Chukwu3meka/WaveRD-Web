@@ -21,3 +21,6 @@
 1. work on auth(sigin, signup, reset password)
 2. create professional email template
 3. work on soccer manager complete signup
+
+reduce loader size
+rename app signin to sig/log in footer
