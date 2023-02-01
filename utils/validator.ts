@@ -1,6 +1,6 @@
 interface IValidator {
   value: any;
-  type: "email" | "password" | "handle";
+  type: "email" | "password" | "handle" | "fullName";
   label: string;
 }
 
@@ -9,9 +9,8 @@ const validator = ({ value, type, label }: IValidator) => {
 
   switch (type) {
     case "email": {
-      // ? <= email address that starts with a word or number
       const reg = /^[\w\d]+[\w\.-]+@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
-      if (!reg.test(value)) throw { message: `Invalid ${label}` };
+      if (!reg.test(value)) throw { message: `Invalid ${label}`, description: "email address that starts with a word or number" };
       break;
     }
     case "password": {
@@ -26,9 +25,8 @@ const validator = ({ value, type, label }: IValidator) => {
       if (!reg.test(value)) throw { message: `Invalid ${label}` };
       break;
     }
-    case "handle": {
-      // ? <= start with a letter, and allows for middle names or initials separated by spaces, dots, single quotes, or hyphens.
-      const reg = /^[a-zA-Z]+((['. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+    case "fullName": {
+      const reg = /^[a-zA-Z]+([\ \'\.\-][a-zA-Z]+)*$/;
       if (!reg.test(value)) throw { message: `Invalid ${label}` };
       break;
     }
