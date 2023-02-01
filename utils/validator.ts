@@ -9,13 +9,13 @@ const validator = ({ value, type, label }: IValidator) => {
 
   if (value === "" || value === undefined) throw { message: `${label} cannot be empty` };
 
-  const charLength = (min: number, max: number) => {
+  const charLengthLimit = (min: number, max: number) => {
     if (`${value}`.length < min || `${value}`.length > max) throw { message: `${label} must be between ${min} to ${max} characters` };
   };
 
   switch (type) {
     case "email": {
-      charLength(6, 254);
+      charLengthLimit(6, 254);
 
       //  The minimum length of an email address is typically 6 characters (e.g. a@b.com) and can be up to 254 characters.
       // Limiting the total characters would result in an invalid email address and not meet the standards set by the Internet Assigned Numbers Authority (IANA).
@@ -28,7 +28,7 @@ const validator = ({ value, type, label }: IValidator) => {
       break;
     }
     case "password": {
-      charLength(8, 16);
+      charLengthLimit(8, 16);
 
       const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
       if (!reg.test(value))
@@ -38,7 +38,7 @@ const validator = ({ value, type, label }: IValidator) => {
       break;
     }
     case "handle": {
-      charLength(3, 16);
+      charLengthLimit(3, 16);
 
       const reg = /^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$/;
       if (!reg.test(value))
@@ -49,7 +49,7 @@ const validator = ({ value, type, label }: IValidator) => {
     }
 
     case "fullName": {
-      charLength(3, 64);
+      charLengthLimit(3, 64);
       const reg = /^[a-zA-Z]+([\ \'\.\-][a-zA-Z]+)*$/;
       if (!reg.test(value))
         throw {
