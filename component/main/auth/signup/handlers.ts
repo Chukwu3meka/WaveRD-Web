@@ -2,28 +2,38 @@ import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-export const onInputChange = async (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {
+// e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormStatus: Function)
+export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentError }: any) => {
   const { value, id } = e.target;
-  setValues((values: any) => ({ ...values, [id]: value }));
 
-  setFormError((values: any) => ({ ...values, [id]: { ...values[id], pristine: false, status: "loading" } })); // <= set component state to loading
+  setValues((values: any) => ({ ...values, [id]: value }));
+  setFormStatus((values: any) => ({ ...values, [id]: { ...values[id], pristine: false, status: "loading" } })); // <= set component state to loading
   try {
-    validator({ value, type: id as "email" | "password", label: id === "email" ? "Email Address" : "password" });
+    validator({ value, type: id, label: id === "email" ? "Email Address" : null });
 
     if (id === "email") {
-      setFormError((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
+      setFormStatus((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
 
       await fetcher({ api: "app", endpoint: "/profiles/emailTaken", method: "POST", payload: { email: value } })
         .then(async ({ payload: { emailTaken } }) => {
           await sleep(0.5);
-          setFormError((values: any) => ({ ...values, [id]: { status: emailTaken ? "invalid" : "valid", pristine: false, message: emailTaken ? "Email already in use" : null } }));
+          setFormStatus((values: any) => ({
+            ...values,
+            [id]: { status: emailTaken ? "invalid" : "valid", pristine: false, message: emailTaken ? "Email already in use" : null },
+          }));
+          setCurrentError(emailTaken ? "Email already in use" : null);
         })
-        .catch(() => setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Unable to validate mail" } })));
+        .catch(() => {
+          setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Unable to validate mail" } }));
+          setCurrentError("Unable to validate mail");
+        });
     } else {
-      setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
+      setCurrentError(null);
+      setFormStatus((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
     }
   } catch ({ message }) {
-    setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message } }));
+    setCurrentError(message);
+    setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message } }));
   }
 };
 
@@ -38,7 +48,7 @@ export const registerHandler = async ({ setValues, values, formError, enqueueSna
       payload: { email, handle, password, fullName },
     });
 
-    console.log(response);
+    console.log(values);
   } catch (error: any) {
     console.log(error.message);
   }

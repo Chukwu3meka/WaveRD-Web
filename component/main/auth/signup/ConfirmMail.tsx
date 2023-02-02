@@ -1,6 +1,6 @@
 import { Button, Paper, Typography } from "@mui/material";
 import Image from "next/image";
-import { AttentionSeeker, Fade } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import { confirmMailStyles } from ".";
 
 const ConfirmMail = () => {

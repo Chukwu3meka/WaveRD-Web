@@ -1,7 +1,7 @@
 interface IValidator {
   value: any;
   type: "email" | "password" | "handle" | "fullName";
-  label?: string;
+  label?: string | null;
 }
 
 const validator = ({ value, type, label }: IValidator) => {

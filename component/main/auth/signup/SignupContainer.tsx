@@ -10,7 +10,6 @@ import { Signup, handlers, ConfirmMail } from ".";
 import { sleep } from "@utils/handlers";
 import { setAuthAction } from "@store/actions";
 import Router from "next/router";
-import validateInput from "@utils/validator";
 
 const SignupContainer = (props: any) => {
   const { setAuthAction } = props,
@@ -25,18 +24,24 @@ const SignupContainer = (props: any) => {
     fullName: process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_TEST_FULL_NAME as string) : "",
   });
 
-  const [formError, setFormError] = useState<any>({
+  const [formStatus, setFormStatus] = useState<any>({
     email: { status: "invalid", pristine: true, message: "Email cannot be empty" },
     handle: { status: "invalid", pristine: true, message: "Handle cannot be empty" },
     password: { status: "invalid", pristine: true, message: "Password cannot be empty" },
     fullName: { status: "invalid", pristine: true, message: "Full Name cannot be empty" },
   }); // <= STATUS: valid, invalid, loading
 
-  const registerHandler = () => handlers.registerHandler({ setValues, values, formError, enqueueSnackbar });
-  const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
-  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues, setFormError);
+  const [currentError, setCurrentError] = useState(null);
 
-  return values.accountCreated ? <ConfirmMail /> : <Signup {...{ onInputChange, handleClickShowPassword, values, formError, registerHandler }} />;
+  const registerHandler = () => handlers.registerHandler({ setValues, values, formStatus, enqueueSnackbar });
+  const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setValues, setFormStatus, setCurrentError });
+
+  return values.accountCreated ? (
+    <ConfirmMail />
+  ) : (
+    <Signup {...{ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError }} />
+  );
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
