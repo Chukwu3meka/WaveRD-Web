@@ -12,7 +12,7 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formError, reg
     <Stack spacing={3} alignItems="center" p="40px 20px" component="form" noValidate autoComplete="off">
       <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
 
-      <Stack direction="row" width="100%" alignItems="center">
+      <Stack direction="row" width="100%" alignItems="center" position="relative">
         <TextField
           fullWidth
           id="fullName"
@@ -27,7 +27,7 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formError, reg
         <InputStatus value={values.fullName} status={formError.fullName.status} pristine={formError.fullName.pristine} />
       </Stack>
 
-      <Stack direction="row" width="100%" alignItems="center">
+      <Stack direction="row" width="100%" alignItems="center" position="relative">
         <TextField
           fullWidth
           id="email"
@@ -42,7 +42,7 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formError, reg
         <InputStatus value={values.email} status={formError.email.status} pristine={formError.email.pristine} />
       </Stack>
 
-      <Stack direction="row" width="100%" alignItems="center">
+      <Stack direction="row" width="100%" alignItems="center" position="relative">
         <TextField
           fullWidth
           id="handle"
@@ -57,7 +57,7 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formError, reg
         <InputStatus value={values.handle} status={formError.handle.status} pristine={formError.handle.pristine} />
       </Stack>
 
-      <Stack direction="row" width="100%" alignItems="center">
+      <Stack direction="row" width="100%" alignItems="center" position="relative">
         <FormControl fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
@@ -84,7 +84,13 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formError, reg
       <Box sx={{ textAlign: "right", width: "100%" }}>
         <AttentionSeeker effect="bounce">
           <Tooltip title={formError.status && formError.errorMessages}>
-            <LoadingButton onClick={registerHandler} size="large" disabled={!!formError.status} variant="outlined" endIcon={<RegisterIcon />} loading={!!values.buttonLoading}>
+            <LoadingButton
+              onClick={registerHandler}
+              size="large"
+              disabled={!!formError.status}
+              variant="outlined"
+              endIcon={<RegisterIcon />}
+              loading={!!values.buttonLoading}>
               <Typography sx={{ fontWeight: 900 }}>register</Typography>
             </LoadingButton>
           </Tooltip>
