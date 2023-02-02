@@ -1,22 +1,27 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  min-height: clamp(500px, calc(100vh - 185px), 21200px);
+  min-height: 500px;
+  height: calc(100vh - 70px);
+  border: 3px solid blue;
   & > aside {
     margin: 0;
     padding: 0;
     display: none;
   }
   & > main {
+    // @include quickFlex();
     @include quickFlex();
+    min-height: 100%;
     padding: 10px;
+    border: 3px solid red;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .layout {
     display: grid;
-    min-height: calc(100vh - 65px);
+    // min-height: calc(100vh - 65px);
     // height: clamp(400px, calc(100vh - 65px), 1500px);
     grid-template-columns: clamp(400px, 50%, 550px) auto;
     aside {

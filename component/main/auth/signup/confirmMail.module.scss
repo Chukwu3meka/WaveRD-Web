@@ -1,8 +1,8 @@
 @import "@source/scss/index.scss";
 
 .confirmMail {
-  width: clamp(300px, 100%, 600px);
   & > div {
+    width: clamp(300px, 100%, 600px);
     padding: 30px 10px;
     margin: 80px auto;
     transition: all 1.5s linear;
