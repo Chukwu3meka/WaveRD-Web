@@ -1,7 +1,6 @@
 import { Fade } from "react-awesome-reveal";
-
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Box, CircularProgress, IconButton } from "@mui/material";
+import { CircularProgress, IconButton } from "@mui/material";
 import { CheckCircle as ValidIcon, Error as InvalidIcon } from "@mui/icons-material";
 
 const InputStatus = ({ visible, status, loading }: any) =>
