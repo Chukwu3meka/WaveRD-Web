@@ -35,8 +35,8 @@ const SignupContainer = (props: any) => {
 
   const [currentError, setCurrentError] = useState(null);
 
-  const registerHandler = () => handlers.registerHandler({ setValues, values, formStatus, enqueueSnackbar });
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
+  const registerHandler = () => handlers.registerHandler({ setValues, values, formStatus, enqueueSnackbar, setCurrentError });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setValues, setFormStatus, setCurrentError });
 
   return values.accountCreated ? (

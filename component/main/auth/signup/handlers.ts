@@ -37,7 +37,7 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
   }
 };
 
-export const registerHandler = async ({ setValues, values, formStatus, enqueueSnackbar }: any) => {
+export const registerHandler = async ({ setValues, values, formStatus, enqueueSnackbar, setCurrentError }: any) => {
   // try {
   // const { email, handle, password, fullName } = values;
   // console.log(values);
@@ -51,13 +51,13 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
 
   const formErrorArray = Object.values(formStatus);
 
-  const notPristineAndValid = formErrorArray.every((x: any) => !x.pristine || x.status === "valid");
-
-  console.log(notPristineAndValid);
+  const notPristineAndValid = formErrorArray.every((x: any) => !x.pristine && x.status === "valid");
 
   // setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
   if (notPristineAndValid) {
+    console.log(notPristineAndValid);
+
     const { email, password } = values;
 
     // setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
@@ -67,12 +67,10 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
   } else {
     const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
 
-    // Inform user of regex error
-    enqueueSnackbar(invalidEntry, { variant: "error" });
+    setCurrentError(invalidEntry);
+
+    enqueueSnackbar("Kindly correct the mistakes in the registration form", { variant: "error" }); // <=  Inform user of regex error
     await sleep(0.2);
     setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
   }
-  // } catch (error: any) {
-  //   console.log(error.message);
-  // }
 };
