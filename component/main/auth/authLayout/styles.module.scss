@@ -3,18 +3,15 @@
 .layout {
   min-height: 500px;
   height: calc(100vh - 70px);
-  border: 3px solid blue;
   & > aside {
     margin: 0;
     padding: 0;
     display: none;
   }
   & > main {
-    // @include quickFlex();
     @include quickFlex();
     min-height: 100%;
     padding: 10px;
-    border: 3px solid red;
   }
 }
 

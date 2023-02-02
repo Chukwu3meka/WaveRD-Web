@@ -1,8 +1,7 @@
 @import "@source/scss/index.scss";
 
 .signup {
-  min-height: calc(100vh - 95px);
-  @include quickFlex($width: 100%);
+  width: 100%;
   & > form {
     width: clamp(300px, 100%, 600px);
     margin: 10px auto;
