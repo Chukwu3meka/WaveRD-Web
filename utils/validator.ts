@@ -23,7 +23,7 @@ const validator = ({ value, type, label }: IValidator) => {
 
       if (!reg.test(value))
         throw {
-          message: `${label} must start with alphanumeric and can only contain dot or dash in between alphanumeric, followed by an '@' symbol, then domain name followed by 2-3 characters as top-level domain (TLD); Sub domains are not allowed`,
+          message: `${label} must begin with alphanumeric characters and can only contain dots or dashes in between alphanumeric characters, followed by an '@' symbol, then the domain name followed by a 2-3 character top-level domain (TLD); Subdomains are not permitted.`,
         };
       break;
     }
@@ -33,7 +33,7 @@ const validator = ({ value, type, label }: IValidator) => {
       const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
       if (!reg.test(value))
         throw {
-          message: `${label} must be between 8 to 15 characters which contain at least one lowercase/uppercase, numeric digit, and special character`,
+          message: `${label} must have a length of 8 to 16 characters and include at least one lowercase and uppercase letter, one numeric digit, and one special character.`,
         };
       break;
     }
@@ -43,7 +43,7 @@ const validator = ({ value, type, label }: IValidator) => {
       const reg = /^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$/;
       if (!reg.test(value))
         throw {
-          message: `${label} must start with a letter or number and can only have underscore in between letters or numbers`,
+          message: `${label} must begin with a letter or number and may only contain an underscore between letters or numbers`,
         };
       break;
     }
@@ -53,13 +53,13 @@ const validator = ({ value, type, label }: IValidator) => {
       const reg = /^[a-zA-Z]+([\ \'\.\-][a-zA-Z]+)*$/;
       if (!reg.test(value))
         throw {
-          message: `${label} can have one or more letters, and zero or more occurrences of a dash, dot, space, or hyphen followed by one or more letters.`,
+          message: `${label} Can consist of one or more letters, with optional dashes, dots, spaces, or hyphens, as long as they are followed by one or more letters.`,
         };
       break;
     }
 
     default:
-      throw { message: "value not validated" };
+      throw { message: "Validation failed" };
   }
   // return true
 };
