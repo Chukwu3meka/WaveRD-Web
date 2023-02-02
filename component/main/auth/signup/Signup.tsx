@@ -5,7 +5,7 @@ import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Perso
 import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 
 import { signupStyles } from ".";
-import InputStatus from "@component/builder/InputStatus";
+import InputStatus from "@component/builder/inputStatus";
 
 const Signup = ({ onInputChange, handleClickShowPassword, values, formError, registerHandler }: any) => (
   <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>

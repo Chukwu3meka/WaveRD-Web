@@ -2,14 +2,28 @@ import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {
+export const onInputChange = async (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {
   const { value, id } = e.target;
   setValues((values: any) => ({ ...values, [id]: value }));
 
   setFormError((values: any) => ({ ...values, [id]: { ...values[id], pristine: false, status: "loading" } })); // <= set component state to loading
   try {
     validator({ value, type: id as "email" | "password", label: id === "email" ? "Email Address" : "password" });
-    setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
+
+    if (id === "email") {
+      setFormError((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
+
+      await fetcher({ api: "app", endpoint: "/profiles/emailTaken", method: "POST", payload: { email: value } })
+        .then(({ message, payload: { emailTaken }, success }) => {
+          console.log({ emailTaken });
+          if (emailTaken) setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
+        })
+        .catch(() => setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Email Taken" } })));
+
+      //       console.log(response);
+    } else {
+      setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
+    }
   } catch ({ message }) {
     setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message } }));
   }
@@ -27,7 +41,7 @@ export const registerHandler = async ({ setValues, values, formError, enqueueSna
     });
 
     console.log(response);
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.message);
   }
 

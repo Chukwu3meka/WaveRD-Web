@@ -4,7 +4,7 @@ import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login
 import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 
 import { SocialAuth, styles } from ".";
-import InputStatus from "@component/builder/InputStatus";
+import InputStatus from "@component/builder/inputStatus";
 
 const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
