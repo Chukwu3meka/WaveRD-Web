@@ -65,7 +65,7 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
     // http://app-api.localhost:5000/profiles/emailTaken
     //  accountCreated: true
   } else {
-    const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
+    const invalidEntry = formErrorArray.filter((x: any) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
     setCurrentError(invalidEntry);
 
     enqueueSnackbar("Kindly correct the mistakes in the registration form", { variant: "error" }); // <=  Inform user of regex error
