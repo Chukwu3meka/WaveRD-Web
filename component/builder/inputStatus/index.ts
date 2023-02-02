@@ -1,3 +1,4 @@
 import InputStatus from "./InputStatus";
+import InputStatusContainer from "./InputStatusContainer";
 
-export { InputStatus as default };
+export { InputStatus, InputStatusContainer as default };

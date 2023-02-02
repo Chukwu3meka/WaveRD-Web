@@ -14,13 +14,11 @@ export const onInputChange = async (e: React.FocusEvent<HTMLInputElement>, setVa
       setFormError((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
 
       await fetcher({ api: "app", endpoint: "/profiles/emailTaken", method: "POST", payload: { email: value } })
-        .then(({ message, payload: { emailTaken }, success }) => {
-          console.log({ emailTaken });
-          if (emailTaken) setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
+        .then(async ({ payload: { emailTaken } }) => {
+          await sleep(0.5);
+          setFormError((values: any) => ({ ...values, [id]: { status: emailTaken ? "invalid" : "valid", pristine: false, message: emailTaken ? "Email already in use" : null } }));
         })
-        .catch(() => setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Email Taken" } })));
-
-      //       console.log(response);
+        .catch(() => setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Unable to validate mail" } })));
     } else {
       setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
     }
