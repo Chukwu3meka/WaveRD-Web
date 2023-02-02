@@ -91,7 +91,7 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formStatus, re
       </Stack>
 
       <Fade direction="up" triggerOnce={true} style={{ width: "100%", display: currentError ? "inherit" : "none" }}>
-        <Alert severity="warning">
+        <Alert severity="warning" style={{ width: "100%" }}>
           <AlertTitle>Incorrect input</AlertTitle>
           {currentError}
         </Alert>

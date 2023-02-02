@@ -19,9 +19,13 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
           await sleep(0.5);
           setFormStatus((values: any) => ({
             ...values,
-            [id]: { status: emailTaken ? "invalid" : "valid", pristine: false, message: emailTaken ? "Email already in use" : null },
+            [id]: {
+              pristine: false,
+              status: emailTaken ? "invalid" : "valid",
+              message: emailTaken ? "Email already in use, Kindly use a different email address" : null,
+            },
           }));
-          setCurrentError(emailTaken ? "Email already in use" : null);
+          setCurrentError(emailTaken ? "Email already in use, Kindly use a different email address" : null);
         })
         .catch(() => {
           setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Unable to validate mail" } }));
