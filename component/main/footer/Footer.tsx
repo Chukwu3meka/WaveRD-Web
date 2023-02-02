@@ -17,7 +17,14 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               SoccerMASS
             </Typography>
 
-            <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/layout/soccermass.webp" />
+            <Image
+              src="/images/layout/soccermass.webp"
+              alt="SoccerMASS"
+              width={80}
+              height={80}
+              placeholder="blur"
+              blurDataURL="/images/layout/soccermass.webp"
+            />
 
             <Typography variant="subtitle2">Follow US</Typography>
 
@@ -48,7 +55,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="info">Learn More</label>
               <Link href="/info/advertise/">Advertise</Link>
-              <Link href="/info/contact/">Contact US</Link>
+              <Link href="/info/contact/">Contact Us</Link>
               <Link href="/info/terms/">Terms &amp; Conditions</Link>
               <Link href="/info/privacy/">Privacy Policy</Link>
               <Link href="/info/donate/">Support/Donation</Link>

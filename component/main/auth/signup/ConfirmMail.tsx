@@ -19,6 +19,7 @@ const ConfirmMail = () => {
           <Button fullWidth variant="outlined">
             Resend Email
           </Button>
+          &nbsp;
           <Button fullWidth variant="outlined">
             <Link href="/info/contact">Contact Us</Link>
           </Button>
