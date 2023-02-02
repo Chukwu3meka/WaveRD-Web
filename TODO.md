@@ -1,26 +1,21 @@
 # SoccerMASS TODOs
 
-> Ongoing
+> Ongoing Priority
 
 1. Migration to TypeScript is being carried out
 2. _builder_: contains most UI components used throughout the app
+3. Finalize Work on API Hub for public use
 
 ---
 
-> Priority
+> Client
 
-1. work on apihub home page
-2. work on auth redirect
+- work on auth redirect
+- work on auth (sigin, signup, reset password and verify pass) pages
 
 ---
 
-> Upcoming
+> Server
 
-- fix flickering in header @ home page
-
-1. work on auth(sigin, signup, reset password)
-2. create professional email template
-3. work on soccer manager complete signup
-
-reduce loader size
-rename app signin to sig/log in footer
+- add subdomains to admin
+- create professional email template
