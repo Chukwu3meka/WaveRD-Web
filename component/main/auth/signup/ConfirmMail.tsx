@@ -1,5 +1,6 @@
-import { Button, Paper, Typography } from "@mui/material";
+import { Button, Paper, Stack, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
 import { confirmMailStyles } from ".";
 
@@ -14,9 +15,14 @@ const ConfirmMail = () => {
         <div>
           <Image src="/images/layout/new-mail.png" alt="SoccermMASS Signup New Mail" fill />
         </div>
-        <Button fullWidth variant="outlined">
-          Resend Email
-        </Button>
+        <Stack direction="row">
+          <Button fullWidth variant="outlined">
+            Resend Email
+          </Button>
+          <Button fullWidth variant="outlined">
+            <Link href="/info/contact">Contact Us</Link>
+          </Button>
+        </Stack>
       </Paper>
     </Fade>
   );

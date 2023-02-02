@@ -21,5 +21,9 @@
       height: 170px;
       margin: auto;
     }
+    & > div:last-of-type {
+      width: 100%;
+      max-width: 600px;
+    }
   }
 }

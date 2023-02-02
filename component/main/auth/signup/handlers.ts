@@ -49,24 +49,23 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
   //   payload: { email, handle, password, fullName },
   // });
 
-  const formErrorArray = Object.values(formStatus);
+  const formErrorArray: any = Object.values(formStatus);
 
   const notPristineAndValid = formErrorArray.every((x: any) => !x.pristine && x.status === "valid");
 
-  // setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
+  setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
   if (notPristineAndValid) {
     console.log(notPristineAndValid);
 
     const { email, password } = values;
 
-    // setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
+    setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
 
     // http://app-api.localhost:5000/profiles/emailTaken
     //  accountCreated: true
   } else {
     const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
-
     setCurrentError(invalidEntry);
 
     enqueueSnackbar("Kindly correct the mistakes in the registration form", { variant: "error" }); // <=  Inform user of regex error
