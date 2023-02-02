@@ -37,41 +37,42 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
   }
 };
 
-export const registerHandler = async ({ setValues, values, formError, enqueueSnackbar }: any) => {
-  try {
-    const { email, handle, password, fullName } = values;
+export const registerHandler = async ({ setValues, values, formStatus, enqueueSnackbar }: any) => {
+  // try {
+  // const { email, handle, password, fullName } = values;
+  // console.log(values);
 
-    const response = await fetcher({
-      api: "app",
-      endpoint: "/profiles/emailTaken",
-      method: "POST",
-      payload: { email, handle, password, fullName },
-    });
+  // const response = await fetcher({
+  //   api: "app",
+  //   endpoint: "/profiles/emailTaken",
+  //   method: "POST",
+  //   payload: { email, handle, password, fullName },
+  // });
 
-    console.log(values);
-  } catch (error: any) {
-    console.log(error.message);
-  }
+  const formErrorArray = Object.values(formStatus);
 
-  // const formErrorArray = Object.values(formError);
+  const notPristineAndValid = formErrorArray.every((x: any) => !x.pristine || x.status === "valid");
 
-  // const notPristineAndValid = formErrorArray.every((x) => !x.pristine || x.status === "valid");
+  console.log(notPristineAndValid);
 
   // setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
-  // if (notPristineAndValid) {
-  //   const { email, password } = values;
+  if (notPristineAndValid) {
+    const { email, password } = values;
 
-  //   setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
+    // setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
 
-  //   // http://app-api.localhost:5000/profiles/emailTaken
-  //   //  accountCreated: true
-  // } else {
-  //   const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
+    // http://app-api.localhost:5000/profiles/emailTaken
+    //  accountCreated: true
+  } else {
+    const invalidEntry = formErrorArray.filter((x) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
 
-  //   // Inform user of regex error
-  //   enqueueSnackbar(invalidEntry, { variant: "error" });
-  //   await sleep(0.2);
-  //   setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
+    // Inform user of regex error
+    enqueueSnackbar(invalidEntry, { variant: "error" });
+    await sleep(0.2);
+    setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
+  }
+  // } catch (error: any) {
+  //   console.log(error.message);
   // }
 };
