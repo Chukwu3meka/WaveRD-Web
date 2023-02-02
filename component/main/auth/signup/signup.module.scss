@@ -1,9 +1,11 @@
 @import "@source/scss/index.scss";
 
 .signup {
-  width: clamp(300px, 100%, 600px);
+  min-height: calc(100vh - 95px);
+  @include quickFlex($width: 100%);
   & > form {
-    margin: 80px auto;
+    width: clamp(300px, 100%, 600px);
+    margin: 10px auto;
     transition: all 1.5s linear;
     @include boxShadow($br: 10px);
     box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
