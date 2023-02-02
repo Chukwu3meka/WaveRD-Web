@@ -22,18 +22,3 @@ export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
 };
 
 export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
-
-export const fetcher = ({ endpoint, method = "GET", payload }: any) => {
-  const API = `${process.env.SERVER_URL}/api${endpoint}`;
-  const apiCall = ["POST"].includes(method)
-    ? fetch(API, { method, body: JSON.stringify(payload), headers: new Headers({ "Content-Type": "application/json" }) })
-    : fetch(API, { method, headers: new Headers({ "Content-Type": "application/json" }) });
-  return apiCall
-    .then(async (response) => {
-      if (!response.ok) throw await response.json();
-      return response.json();
-    })
-    .catch((err) => {
-      throw err;
-    });
-};
