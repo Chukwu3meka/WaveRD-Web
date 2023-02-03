@@ -42,17 +42,6 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
 };
 
 export const registerHandler = async ({ setValues, values, formStatus, enqueueSnackbar, setCurrentError }: any) => {
-  // try {
-  // const { email, handle, password, fullName } = values;
-  // console.log(values);
-
-  // const response = await fetcher({
-  //   api: "app",
-  //   endpoint: "/profiles/emailTaken",
-  //   method: "POST",
-  //   payload: { email, handle, password, fullName },
-  // });
-
   const formErrorArray: any = Object.values(formStatus);
 
   const notPristineAndValid = formErrorArray.every((x: any) => !x.pristine && x.status === "valid");
@@ -61,13 +50,25 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
 
   if (notPristineAndValid) {
     console.log(notPristineAndValid);
+    const { email, handle, password, fullName } = values;
 
-    const { email, password } = values;
-
-    setValues((values: any) => ({ ...values, buttonLoading: false, accountCreated: true })); // deactivate botton loading
-
-    // http://app-api.localhost:5000/profiles/emailTaken
-    //  accountCreated: true
+    await fetcher({
+      api: "app",
+      endpoint: "/profiles/emailTaken",
+      method: "POST",
+      payload: { email, handle, password, fullName },
+    })
+      .then(() => {
+        //
+        setValues((values: any) => ({ ...values, accountCreated: true }));
+      })
+      .catch(() => {
+        //
+        setValues((values: any) => ({ ...values, accountCreated: true }));
+      })
+      .finally(() => {
+        setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
+      });
   } else {
     const invalidEntry = formErrorArray.filter((x: any) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
     setCurrentError(invalidEntry);
