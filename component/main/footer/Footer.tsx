@@ -67,7 +67,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               <a href="https://market.soccermass.com/">Market Place</a>
               <a href="https://space.soccermass.com/">Homes & Space</a>
               <a href="https://jobs.soccermass.com/">Hourly Jobs</a>
-              <a href="https://apihub.soccermass.com/">API Hub</a>
+              <a href="https://hub.soccermass.com/">API Hub</a>
             </div>
           </nav>
         </main>

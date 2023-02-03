@@ -18,11 +18,11 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // apihub
+      // hub
       ...domains.map(({ host, domain }) => ({
         source: "/:path*",
-        has: [{ type: "host", value: `apihub.${host}` }],
-        destination: `${domain}/apihub/:path*`,
+        has: [{ type: "host", value: `hub.${host}` }],
+        destination: `${domain}/hub/:path*`,
         permanent: false,
       })),
 

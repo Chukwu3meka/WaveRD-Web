@@ -12,7 +12,7 @@ const ApiHubIntro = () => (
   <div className={apiHubIntroStyles.apihub}>
     <Stack spacing={3} justifyContent="space-evenly">
       <div>
-        <Image src="/images/layout/intro-apihub.png" alt="SoccerMASS API HUB welcome image" fill />
+        <Image src="/images/layout/intro-hub.png" alt="SoccerMASS API HUB welcome image" fill />
       </div>
 
       <main>
@@ -55,7 +55,8 @@ const apihubFeatures = [
   {
     icon: <NetworkCheckIcon fontSize="inherit" />,
     title: "Improve Performance",
-    description: "Our Server is hosted on 'Render'; A reliable Cloud Provider to ensure 24/7 data availability and minimal response time with little to no down time",
+    description:
+      "Our Server is hosted on 'Render'; A reliable Cloud Provider to ensure 24/7 data availability and minimal response time with little to no down time",
   },
   {
     icon: <DataObjectIcon fontSize="inherit" />,
