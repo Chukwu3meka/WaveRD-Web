@@ -7,8 +7,8 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { styles } from ".";
 import theme from "@libs/theme";
-import FooterContainer from "@component/main/footer";
-import HeaderContainer from "@component/main/header";
+import FooterContainer from "@component/footer";
+import HeaderContainer from "@component/header";
 import BuilderLoading from "@component/builder/loading";
 import { ILayout } from "@interface/main/layout-interface";
 
@@ -37,7 +37,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
       <meta property="og:title" content={`SoccerMASS: Soccer Manager ${new Date().getFullYear()}`} />
       <meta
         property="og:description"
-        content="SoccerMASS is the No 1. Online Football Management Game and Fooftball data API Provider. Advanced formations and tactics, realistic transfer market and much more"
+        content="SoccerMASS leads the way as the top Online Football Management Game and provider of Football data APIs, offering cutting-edge formations, tactics, a lifelike transfer market and so much more."
       />
     </Head>
 

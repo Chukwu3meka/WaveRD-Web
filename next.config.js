@@ -26,11 +26,11 @@ const nextConfig = {
         permanent: false,
       })),
 
-      // game
+      // manager
       ...domains.map(({ host, domain }) => ({
         source: "/:path*",
-        has: [{ type: "host", value: `game.${host}` }],
-        destination: `${domain}/game/:path*`,
+        has: [{ type: "host", value: `manager.${host}` }],
+        destination: `${domain}/manager/:path*`,
         permanent: false,
       })),
     ];

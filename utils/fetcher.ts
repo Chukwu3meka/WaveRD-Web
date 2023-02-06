@@ -8,11 +8,12 @@ interface IFetcher {
 const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
   const devEnv = process.env.NODE_ENV === "development";
 
-  const subDomain = `${api}-api`;
+  // const subDomain = `${api}-api`;
   const protocol = devEnv ? "http" : "https";
   const domain = devEnv ? "localhost:5000" : "soccermass.com";
 
-  const URL = `${protocol}://${subDomain}.${domain}/api${endpoint}`;
+  // const URL = `${protocol}://${subDomain}.${domain}/api${endpoint}`;
+  const URL = `${protocol}://${api}.${domain}/api${endpoint}`;
 
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },

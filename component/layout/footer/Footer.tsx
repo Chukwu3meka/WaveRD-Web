@@ -47,7 +47,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                 </Link>
               )}
               <Link href="/auth/reset">Reset Password</Link>
-              <Link href="https://game.soccermass.com/">Football Manager</Link>
+              <Link href="https://manager.soccermass.com/">Football Manager</Link>
               {!authenticated && <Link href="/auth/signin">Signin/Login</Link>}
               {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
             </div>

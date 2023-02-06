@@ -1,6 +1,6 @@
 @import "@source/scss/index.scss";
 
-.gameIntro {
+.managerIntro {
   @include quickFlex($width: 100%, $dir: row, $align: stretch, $row: 70px, $column: 20px);
   flex-wrap: wrap;
   padding: 100px 10px;
@@ -33,7 +33,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  .gameIntro {
+  .managerIntro {
     & > div {
       max-width: calc(100vw / 2 - 30px);
       & > div {
@@ -44,7 +44,7 @@
 }
 
 @media screen and (min-width: 800px) {
-  .gameIntro {
+  .managerIntro {
     gap: 0;
     & > div:nth-of-type(1) {
       margin-right: -60px;
@@ -90,7 +90,7 @@
 }
 
 @media screen and (min-width: 911px) {
-  .gameIntro {
+  .managerIntro {
     & > div:nth-of-type(1) {
       margin-right: -60px;
     }
@@ -117,7 +117,7 @@
 }
 
 @media screen and (min-width: 1180px) {
-  .gameIntro {
+  .managerIntro {
     & > div:nth-of-type(1) {
       margin-right: -50px;
     }

@@ -22,7 +22,7 @@ The manager's responsibilities in a professional football club usually include (
 
 ## About SoccerMASS Web
 
-SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found here at [home](https://www.soccermass.com), [Manager](https://game.soccermass.com/) and [apihub](https://hub.soccermass.com/)
+SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found here at [home](https://www.soccermass.com), [Manager](https://manager.soccermass.com/) and [apihub](https://hub.soccermass.com/)
 
 > To learn more about this project, kindly contact the developer [😎 ChukwuEmeka Maduekwe](https://www.linkedin.com/in/chukwu3meka/):
 
