@@ -6,6 +6,6 @@ import ManagerIntro from "./ManagerIntro";
 import introStyles from "./intro.module.scss";
 import peaksStyles from "./peaks.module.scss";
 import apiHubIntroStyles from "./apiHubIntro.module.scss";
-import ManagerIntroStyles from "./managerIntro.module.scss";
+import managerIntroStyles from "./managerIntro.module.scss";
 
-export { Peaks, apiHubIntroStyles, peaksStyles, introStyles, ManagerIntroStyles, ApiHubIntro, Intro, ManagerIntro, Home as default };
+export { Peaks, apiHubIntroStyles, peaksStyles, introStyles, managerIntroStyles, ApiHubIntro, Intro, ManagerIntro, Home as default };

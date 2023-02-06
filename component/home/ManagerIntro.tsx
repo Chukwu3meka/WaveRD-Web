@@ -4,7 +4,7 @@ import { Paper, Button } from "@mui/material";
 
 import { managerIntroStyles } from ".";
 
-const managerIntro = () => (
+const ManagerIntro = () => (
   <div className={managerIntroStyles.managerIntro}>
     <Paper elevation={2}>
       <div>
@@ -70,4 +70,4 @@ const managerIntro = () => (
   </div>
 );
 
-export default managerIntro;
+export default ManagerIntro;
