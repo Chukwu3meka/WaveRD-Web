@@ -24,3 +24,5 @@ npm-debug.log*
 .git/
 
 next-env.d.ts
+
+trash/

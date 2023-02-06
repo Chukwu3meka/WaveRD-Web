@@ -19,3 +19,5 @@
 
 - add subdomains to admin
 - create professional email template
+
+<!-- Unleash your team's full potential with our innovative soccer management platform and powerful API solution. -->
