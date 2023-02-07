@@ -6,7 +6,8 @@ body {
 * {
   // -webkit-backface-visibility: hidden;
   // backface-visibility: hidden;
-  /* Change the white to any color */
+
+  /* Change the white to any color.......This is to remove blue background on chrome autofill for input */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
