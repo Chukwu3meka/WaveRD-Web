@@ -1,11 +1,9 @@
 import { connect } from "react-redux";
 
-import { AuthLayout } from ".";
+import { Layout } from ".";
 import { logoutAction } from "@store/actions";
 
-const AuthLayoutContainer = ({ component }: any) => {
-  return <AuthLayout component={component} />;
-};
+const AuthLayoutContainer = ({ component }: any) => <Layout component={component} />;
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
   mapDispatchToProps = { logoutAction };

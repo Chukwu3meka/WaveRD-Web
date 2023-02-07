@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import LayoutContainer from "@component/account/authLayout";
+import LayoutContainer from "@component/authManagement/layout";
 
 const Page = () => {
   const router = useRouter(),
