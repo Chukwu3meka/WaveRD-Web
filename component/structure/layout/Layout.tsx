@@ -7,9 +7,9 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { styles } from ".";
 import theme from "@libs/theme";
-import FooterContainer from "@component/footer";
-import HeaderContainer from "@component/header";
-import BuilderLoading from "@component/builder/loading";
+import FooterContainer from "@component/structure/footer";
+import HeaderContainer from "@component/structure/header";
+import BuilderLoading from "@component/templates/loading";
 import { ILayout } from "@interface/main/layout-interface";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }: ILayout) => (
