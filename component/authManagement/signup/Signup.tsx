@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 
 import { signupStyles } from ".";
-import InputStatus from "@component/builder/inputStatus";
+import InputStatus from "@component/templates/inputStatus";
 
 const Signup = ({ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError }: any) => (
   <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>

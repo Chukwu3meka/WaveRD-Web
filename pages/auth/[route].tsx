@@ -14,7 +14,7 @@ const Page = () => {
     // ? Verify that user has visited a valid auth route
     const { route } = router.query;
     if (["emailConfirmation", "forgotPassword", "passwordReset", "signin", "signup"].includes(route as string)) {
-      const AuthPage = dynamic(() => import(`@component/account/${route}`));
+      const AuthPage = dynamic(() => import(`@component/authManagement/${route}`));
       setComponent(<AuthPage />);
     } else {
       setInvalidRoute(true);

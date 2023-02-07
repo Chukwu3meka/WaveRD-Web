@@ -2,7 +2,7 @@ interface IFetcher {
   payload?: object | null;
   endpoint: string;
   method: "POST" | "GET";
-  api: "app" | "game" | "hub";
+  api: "accounts" | "game" | "hub";
 }
 
 const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {

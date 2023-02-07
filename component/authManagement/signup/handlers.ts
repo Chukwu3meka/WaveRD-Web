@@ -14,22 +14,22 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
     if (id === "email") {
       setFormStatus((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
 
-      await fetcher({ api: "app", endpoint: "/profiles/emailTaken", method: "POST", payload: { email: value } })
-        .then(async ({ payload: { emailTaken } }) => {
+      await fetcher({ api: "accounts", endpoint: "/personal/email_exists", method: "POST", payload: { email: value } })
+        .then(async ({ payload: { exists } }) => {
           await sleep(0.5);
           setFormStatus((values: any) => ({
             ...values,
             [id]: {
               pristine: false,
-              status: emailTaken ? "invalid" : "valid",
-              message: emailTaken ? "Email already in use, Kindly use a different email address" : null,
+              status: exists ? "invalid" : "valid",
+              message: exists ? "Email already in use, Kindly use a different email address" : null,
             },
           }));
-          setCurrentError(emailTaken ? "Email already in use, Kindly use a different email address" : null);
+          setCurrentError(exists ? "Email already in use, Kindly use a different email address" : null);
         })
-        .catch(() => {
-          setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: "Unable to validate mail" } }));
-          setCurrentError("Unable to validate mail");
+        .catch(({ message }) => {
+          setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message || "Unable to validate mail" } }));
+          setCurrentError(message || "Unable to validate mail");
         });
     } else {
       setCurrentError(null);
@@ -53,8 +53,8 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
     const { email, handle, password, fullName } = values;
 
     await fetcher({
-      api: "app",
-      endpoint: "/profiles/emailTaken",
+      api: "accounts",
+      endpoint: "/personal/add_account",
       method: "POST",
       payload: { email, handle, password, fullName },
     })

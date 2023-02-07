@@ -4,7 +4,7 @@ import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login
 import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 
 import { SocialAuth, styles } from ".";
-import InputStatus from "@component/builder/inputStatus";
+import InputStatus from "@component/templates/inputStatus";
 
 const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
@@ -64,7 +64,13 @@ const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPass
         <Box sx={{ textAlign: "right", width: "100%" }}>
           <AttentionSeeker effect="bounce">
             <Tooltip title={formError.status && formError.errorMessages}>
-              <LoadingButton onClick={loginHandler} size="large" disabled={!!formError.status} variant="outlined" endIcon={<LoginIcon />} loading={!!values.buttonLoading}>
+              <LoadingButton
+                onClick={loginHandler}
+                size="large"
+                disabled={!!formError.status}
+                variant="outlined"
+                endIcon={<LoginIcon />}
+                loading={!!values.buttonLoading}>
                 <Typography sx={{ fontWeight: 900 }}>Login</Typography>
               </LoadingButton>
             </Tooltip>
