@@ -17,7 +17,5 @@
 
 > Server
 
-- add subdomains to admin
-- create professional email template
-
+- add major european leaguseto home page
 <!-- Unleash your team's full potential with our innovative soccer management platform and powerful API solution. -->
