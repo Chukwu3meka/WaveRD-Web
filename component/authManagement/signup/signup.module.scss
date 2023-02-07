@@ -2,6 +2,9 @@
 
 .signup {
   width: 100%;
+
+  caret-color: $primary;
+
   & > form {
     width: clamp(300px, 100%, 600px);
     margin: 10px auto;

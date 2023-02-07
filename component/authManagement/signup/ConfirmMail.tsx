@@ -20,7 +20,7 @@ const ConfirmMail = () => {
 
         <Stack direction="row">
           <Button fullWidth variant="outlined">
-            Resend Email
+            <Link href="/auth/signin">Login</Link>
           </Button>
           &nbsp;
           <Button fullWidth variant="outlined">

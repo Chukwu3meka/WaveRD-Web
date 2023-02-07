@@ -37,12 +37,13 @@ const SignupContainer = (props: any) => {
 
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
   const registerHandler = () => handlers.registerHandler({ setValues, values, formStatus, enqueueSnackbar, setCurrentError });
+  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onBlurHandler({ e, setValues, setFormStatus, setCurrentError });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setValues, setFormStatus, setCurrentError });
 
   return values.accountCreated ? (
     <ConfirmMail />
   ) : (
-    <Signup {...{ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError }} />
+    <Signup {...{ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError, onBlurHandler }} />
   );
 };
 

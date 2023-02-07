@@ -49,7 +49,6 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
   setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
   if (notPristineAndValid) {
-    console.log(notPristineAndValid);
     const { email, handle, password, fullName } = values;
 
     await fetcher({
@@ -58,18 +57,12 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
       method: "POST",
       payload: { email, handle, password, fullName },
     })
-      .then(() => {
-        //
-        setValues((values: any) => ({ ...values, accountCreated: true }));
-      })
-      .catch(() => {
-        //
-        setValues((values: any) => ({ ...values, accountCreated: true }));
-      })
-      .finally(() => {
-        setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
-      });
+      .then(() => setValues((values: any) => ({ ...values, accountCreated: true })))
+      .catch(() => setValues((values: any) => ({ ...values, accountCreated: true })))
+      .finally(() => setValues((values: any) => ({ ...values, buttonLoading: false }))); // deactivate botton loading
   } else {
+    console.log(formErrorArray.filter((x: any) => x.message));
+
     const invalidEntry = formErrorArray.filter((x: any) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
     setCurrentError(invalidEntry);
 
@@ -77,4 +70,9 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
     await sleep(0.2);
     setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
   }
+};
+
+export const onBlurHandler = async ({ e, setValues, setFormStatus, setCurrentError }: any) => {
+  e.target.value = e.target.value.trim(); // trim empty spaces
+  await onInputChange({ e, setValues, setFormStatus, setCurrentError });
 };

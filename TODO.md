@@ -10,6 +10,7 @@
 
 > Client
 
+- add major european leaguseto home page
 - work on auth redirect
 - work on auth (sigin, signup, reset password and verify pass) pages
 
@@ -17,5 +18,5 @@
 
 > Server
 
-- add major european leaguseto home page
+- update db import in allRequests
 <!-- Unleash your team's full potential with our innovative soccer management platform and powerful API solution. -->
