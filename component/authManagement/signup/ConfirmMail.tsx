@@ -1,7 +1,8 @@
-import { Button, Paper, Stack, Typography } from "@mui/material";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
+import { Button, Paper, Stack, Typography } from "@mui/material";
+
 import { confirmMailStyles } from ".";
 
 const ConfirmMail = () => {
@@ -19,13 +20,13 @@ const ConfirmMail = () => {
         </div>
 
         <Stack direction="row">
-          <Button fullWidth variant="outlined">
-            <Link href="/auth/signin">Login</Link>
-          </Button>
+          <Link href="/auth/signin">
+            <Button variant="outlined">Login</Button>
+          </Link>
           &nbsp;
-          <Button fullWidth variant="outlined">
-            <Link href="/info/contact">Contact Us</Link>
-          </Button>
+          <Link href="/info/contact">
+            <Button variant="outlined">Contact Us</Button>
+          </Link>
         </Stack>
       </Paper>
     </Fade>

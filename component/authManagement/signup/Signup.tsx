@@ -8,10 +8,10 @@ import {
   Alert,
   Tooltip,
   TextField,
-  AlertTitle,
   Typography,
-  IconButton,
+  AlertTitle,
   InputLabel,
+  IconButton,
   FormControl,
   OutlinedInput,
   InputAdornment,
@@ -34,7 +34,7 @@ const Signup = ({ onInputChange, handleClickShowPassword, values, formStatus, re
           aria-describedby="fullName"
           label="Full Name"
           variant="outlined"
-          placeholder="lastname firstname"
+          placeholder="Firstname Lastname"
           onChange={onInputChange}
         />
         <InputStatus value={values.fullName} status={formStatus.fullName.status} pristine={formStatus.fullName.pristine} />

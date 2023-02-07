@@ -11,25 +11,25 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
   try {
     validator({ value, type: id, label: id === "email" ? "Email Address" : null });
 
-    if (id === "email") {
+    if (["handle", "email"].includes(id)) {
+      // Set loading for thess IDs
       setFormStatus((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
 
-      await fetcher({ api: "accounts", endpoint: "/personal/email_exists", method: "POST", payload: { email: value } })
+      await fetcher({ api: "accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
         .then(async ({ payload: { exists } }) => {
-          await sleep(0.5);
           setFormStatus((values: any) => ({
             ...values,
             [id]: {
               pristine: false,
               status: exists ? "invalid" : "valid",
-              message: exists ? "Email already in use, Kindly use a different email address" : null,
+              message: exists ? `${id} already in use, Kindly use something different` : null,
             },
           }));
-          setCurrentError(exists ? "Email already in use, Kindly use a different email address" : null);
+          setCurrentError(exists ? `${id} already in use, Kindly use something different` : null);
         })
         .catch(({ message }) => {
-          setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message || "Unable to validate mail" } }));
-          setCurrentError(message || "Unable to validate mail");
+          setFormStatus((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message || `Unable to validate ${id}` } }));
+          setCurrentError(message || `Unable to validate ${id}`);
         });
     } else {
       setCurrentError(null);
@@ -53,16 +53,14 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
 
     await fetcher({
       api: "accounts",
-      endpoint: "/personal/add_account",
       method: "POST",
+      endpoint: "/personal/add_account",
       payload: { email, handle, password, fullName },
     })
       .then(() => setValues((values: any) => ({ ...values, accountCreated: true })))
-      .catch(() => setValues((values: any) => ({ ...values, accountCreated: true })))
+      .catch(() => setValues((values: any) => ({ ...values, accountCreated: false })))
       .finally(() => setValues((values: any) => ({ ...values, buttonLoading: false }))); // deactivate botton loading
   } else {
-    console.log(formErrorArray.filter((x: any) => x.message));
-
     const invalidEntry = formErrorArray.filter((x: any) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
     setCurrentError(invalidEntry);
 
