@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import LayoutContainer from "@component/main/auth/authLayout";
+import LayoutContainer from "@component/account/authLayout";
 
 const Page = () => {
   const router = useRouter(),
@@ -14,7 +14,7 @@ const Page = () => {
     // ? Verify that user has visited a valid auth route
     const { route } = router.query;
     if (["emailConfirmation", "forgotPassword", "passwordReset", "signin", "signup"].includes(route as string)) {
-      const AuthPage = dynamic(() => import(`@component/main/auth/${route}`));
+      const AuthPage = dynamic(() => import(`@component/account/${route}`));
       setComponent(<AuthPage />);
     } else {
       setInvalidRoute(true);
