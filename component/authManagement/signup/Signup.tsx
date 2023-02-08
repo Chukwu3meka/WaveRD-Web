@@ -22,7 +22,7 @@ import InputStatus from "@component/templates/inputStatus";
 
 const Signup = ({ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError, onBlurHandler }: any) => (
   <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>
-    <Stack spacing={3} alignItems="center" p="40px 20px" component="form" noValidate autoComplete="off">
+    <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
       <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
       <Stack direction="row" width="100%" alignItems="center" position="relative">
         <TextField

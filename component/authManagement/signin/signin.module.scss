@@ -1,22 +1,13 @@
 @import "@source/scss/index.scss";
 
 .signin {
-  // will-change: transform;
-
-  //
-  // border: 3px solid red;
-  // position: relative;
-  padding: 10px;
-  max-width: 600px;
-  margin: 80px auto;
-  // // position: relative;
-  transition: all 1.5s linear;
-  // @include boxShadow($br: 10px);
-  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
-  background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 35) 10%);
-
+  caret-color: $primary;
+  margin: 10px auto;
+  padding: 30px 10px 20px;
+  transition: all 1.5s ease-in;
+  @include boxShadow($br: 10px);
+  width: clamp(300px, 100%, 520px);
+  background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
   & > .social {
     z-index: 2;
     padding: 10px;

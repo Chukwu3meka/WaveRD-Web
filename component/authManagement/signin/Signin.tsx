@@ -20,7 +20,7 @@ const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPass
         <span>or Signin with Email</span>
       </div>
 
-      <Stack spacing={3} alignItems="center" p={2} component="form" noValidate autoComplete="off">
+      <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
         <Stack direction="row" width="100%" alignItems="center">
           <TextField
             fullWidth
