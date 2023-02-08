@@ -3,7 +3,7 @@
 .signin {
   caret-color: $primary;
   margin: 10px auto;
-  padding: 30px 10px 20px;
+  padding: 10px 10px 20px;
   transition: all 1.5s ease-in;
   @include boxShadow($br: 10px);
   width: clamp(300px, 100%, 520px);
@@ -17,21 +17,22 @@
     @include quickFlex($dir: row, $wrap: wrap, $row: 20px);
     & > a {
       width: 100%;
-      font-weight: 700;
+      font-size: 1em;
+      font-weight: 600;
       min-width: 250px;
       padding: 18px 10px;
     }
   }
 
   & > .divider {
-    margin: 30px auto;
+    margin: 40px auto;
     position: relative;
     @include quickFlex($width: calc(100% - 20px));
     border-top: 1px solid darken($color: $lightGray, $amount: 10);
     & > span:first-of-type {
       width: 180px;
       position: absolute;
-      border-top: 2px solid white;
+      border-top: 2px solid lighten($secondary, 28);
     }
 
     & > span:last-of-type {
