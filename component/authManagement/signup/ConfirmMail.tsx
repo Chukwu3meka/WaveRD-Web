@@ -21,11 +21,15 @@ const ConfirmMail = () => {
 
         <Stack direction="row">
           <Link href="/auth/signin">
-            <Button variant="outlined">Login</Button>
+            <Button fullWidth variant="outlined">
+              Login
+            </Button>
           </Link>
           &nbsp;
           <Link href="/info/contact">
-            <Button variant="outlined">Contact Us</Button>
+            <Button fullWidth variant="outlined">
+              Contact Us
+            </Button>
           </Link>
         </Stack>
       </Paper>
