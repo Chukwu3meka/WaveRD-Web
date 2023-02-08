@@ -29,9 +29,9 @@ const SigninContainer = (props: any) => {
   }); // <= STATUS: valid, invalid, loading
 
   const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
-  const loginHandler = () => handlers.loginHandler({ setValues, values });
+  const loginHandler = () => handlers.loginHandler({ setValues, values, enqueueSnackbar });
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
-  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues, setFormError);
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues);
 
   return <Signin {...{ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }} />;
 };

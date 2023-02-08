@@ -1,3 +1,5 @@
+import fetcher from "@utils/fetcher";
+import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
 export const signinFormMouseMoveCapture = () => {
@@ -59,98 +61,36 @@ export const signinFormMouseMoveCapture = () => {
   signinRef.onmousemove = onMouseMoveHandler;
 };
 
-export const loginHandler = async ({ setValues, values }: any) => {
+export const loginHandler = async ({ setValues, values, enqueueSnackbar }: any) => {
   setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
-  const { email, password } = values;
-  const notificationResponse = { variant: "", message: "" };
+  const email = values.email.trim();
+  const password = values.password.trim();
 
-  console.log({ email, password });
+  try {
+    validator({ value: email, type: "email" });
+    validator({ value: password, type: "password" });
+  } catch (error) {
+    await sleep(0.2);
+    setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
+    return enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
+  }
 
-  // buttonLoading
-
-  // const basicAuth = Buffer.from(`${email}:${password}`).toString("base64"); // (Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii'))
-  // await services
-  //   .signin({ basicAuth })
-  //   .then(() => {
-  //     console.log("success");
-  //   })
-  //   .catch(() => {
-  //     console.log("error");
-  //   });
-
-  // await fetch("http://172.29.72.18/travels/api/partner/email/msg?status=FAILED")
-  //   .then(async (response) => {
-  //     if (!response.ok) throw await response.json();
-  //     const a = await response.json();
-  //     console.log({ response: a });
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // throw err;
-
-  // const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/api/partner/email/msg?status=FAILED`);
-
-  // console.log(data);
-
-  // await apiFetcher({ endpoint: "/partner/bookings", basicAuth })
-  //   ?.then((res) => {
-  //     if (!res) notificationResponse.variant = "Invalid Server Response, Kindly try again later";
-  //     notificationResponse.variant = "success";
-  //   })
-  //   .catch((err) => {
-  //     notificationResponse.variant = "error";
-  //     if (err.message === "Failed to fetch") {
-  //       notificationResponse.message = "Server can't be reached, Kindly try again later";
-  //     } else {
-  //       notificationResponse.message = "Invalid Username/Password";
-  //     }
-  //   });
-
-  // await fetcher("/auth/signin", { basicAuth })
-  //   .then((res) => {
-  //     if (res.status !== "success") notificationResponse.variant = "Invalid Server Response, Kindly try again later";
-  //     notificationResponse.variant = "success";
-  //   })
-  //   .catch((err) => {
-  //     notificationResponse.variant = "error";
-  //     if (err.message === "Failed to fetch") {
-  //       notificationResponse.message = "Server can't be reached, Kindly try again later";
-  //     } else {
-  //       notificationResponse.message = "Invalid Username/Password";
-  //     }
-  //   });
-
-  // if (notificationResponse.variant === "success") {
-  //   const authPersist = () => {
-  //     setAuthAction({ email, basicAuth });
-  //     enqueueSnackbar("Signed in successfully", { variant: "success" });
-  //   };
-
-  //   if (Router.asPath !== "/") {
-  //     await sleep(1);
-  //     Router.push("/").finally(() => authPersist());
-  //   } else {
-  //     authPersist();
-  //   }
-  // } else {
-  //   await sleep(0.5);
-  //   setValues((values: any) => ({ ...values, buttonLoading: false })); // activate botton loading
-  //   enqueueSnackbar(notificationResponse.message, { variant: "error" });
-  // }
-  setValues((values: any) => ({ ...values, buttonLoading: false })); // deactivate botton loading
+  await fetcher({
+    api: "accounts",
+    method: "POST",
+    endpoint: "/personal/auth",
+    payload: { email, password },
+  })
+    .then(() => {
+      // set redux auth store
+      enqueueSnackbar("Authenticated Successfully", { variant: "success" });
+    })
+    .catch(() => enqueueSnackbar("Invalid Email/Password", { variant: "error" }))
+    .finally(() => setValues((values: any) => ({ ...values, buttonLoading: false }))); // deactivate botton loading
 };
 
-export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormError: Function) => {
+export const onInputChange = (e: React.FocusEvent<HTMLInputElement>, setValues: Function) => {
   const { value, id } = e.target;
   setValues((values: any) => ({ ...values, [id]: value }));
-
-  setFormError((values: any) => ({ ...values, [id]: { ...values[id], pristine: false, status: "loading" } })); // <= set component state to loading
-  try {
-    validator({ value, type: id as "email" | "password", label: id === "email" ? "Email Address" : "password" });
-    setFormError((values: any) => ({ ...values, [id]: { status: "valid", pristine: false, message: null } }));
-  } catch ({ message }) {
-    setFormError((values: any) => ({ ...values, [id]: { status: "invalid", pristine: false, message: message } }));
-  }
 };
