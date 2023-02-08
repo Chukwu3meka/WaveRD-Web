@@ -5,11 +5,12 @@
   caret-color: $primary;
 
   & > form {
-    width: clamp(300px, 100%, 600px);
     margin: 10px auto;
-    @include boxShadow($br: 10px);
-    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
     padding: 30px 10px 20px;
+    transition: all 1.5s ease-in;
+    @include boxShadow($br: 10px);
+    width: clamp(300px, 100%, 520px);
+    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
     & > img {
       border-radius: 50%;
       animation: spin 4s alternate infinite;
