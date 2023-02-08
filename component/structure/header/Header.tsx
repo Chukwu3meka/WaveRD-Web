@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -42,7 +41,7 @@ const navLinks = [
 ];
 
 const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
-  <Fade direction="down" className={styles[displayHeader ? "header" : "headerHidden"]}>
+  <div className={styles[displayHeader ? "header" : "headerHidden"]}>
     <header>
       <div>
         <Link href="/">
@@ -99,7 +98,7 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
         )}
       </div>
     </header>
-  </Fade>
+  </div>
 );
 
 export default Header;
