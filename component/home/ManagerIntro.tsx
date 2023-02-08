@@ -17,7 +17,7 @@ const ManagerIntro = () => (
           alt="SoccerMASS Clubs"
         />
       </div>
-      <span>Signup and compete with other elite managers, take your team to the peak</span>
+      <span>Step up to the challenge and beat the best managers. Take charge and steer your team to victory by joining now.</span>
 
       <Link href="/auth/signup">
         <Button variant="contained" color="primary">
@@ -60,7 +60,7 @@ const ManagerIntro = () => (
           alt="SoccerMASS Clubs"
         />
       </div>
-      <span>Your Players are waiting for you, build your team, manage club finance and more </span>
+      <span>Assemble your team and manage club finances, your players are eager for your leadership.</span>
       <Link href="/auth/signin">
         <Button variant="contained" color="primary">
           signin

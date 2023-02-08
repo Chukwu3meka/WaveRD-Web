@@ -17,12 +17,12 @@ const Intro = () => (
         </Typography>
         <Typography variant="body2" fontSize={{ xs: "1.3em", sm: "1.5em", md: "1.7em", lg: "1.5em" }}>
           <a href={process.env.NEXT_PUBLIC_BASE_MANAGER!} rel="noopener noreferrer" target="_blank">
-            The home of Soccer Managers
+            Soccer Management Haven
           </a>
         </Typography>
         <Typography variant="subtitle1" fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.5em" }}>
           <a href={process.env.NEXT_PUBLIC_BASE_APIHUB!} rel="noopener noreferrer" target="_blank">
-            No. 1 Football API Provider
+            Leading Football Data API Source
           </a>
         </Typography>
       </div>
