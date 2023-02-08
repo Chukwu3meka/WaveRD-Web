@@ -2,21 +2,21 @@
 
 .layout {
   min-height: 500px;
-  height: calc(100vh - 70px);
   & > aside {
     margin: 0;
-    padding: 0;
     display: none;
   }
   & > main {
+    // border: 3px solid red;
     @include quickFlex();
-    min-height: 100%;
-    padding: 10px;
+    // min-height: calc(100% - 205px);
+    padding: 50px 0px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .layout {
+    height: calc(100vh - 75px);
     display: grid;
     // min-height: calc(100vh - 65px);
     // height: clamp(400px, calc(100vh - 65px), 1500px);

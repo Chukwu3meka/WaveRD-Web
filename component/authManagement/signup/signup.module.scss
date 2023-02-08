@@ -3,14 +3,13 @@
 .signup {
   width: 100%;
   caret-color: $primary;
+
   & > form {
     width: clamp(300px, 100%, 600px);
     margin: 10px auto;
-    transition: all 1.5s linear;
     @include boxShadow($br: 10px);
-    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
-    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 35) 10%);
-
+    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
+    padding: 30px 10px 20px;
     & > img {
       border-radius: 50%;
       animation: spin 4s alternate infinite;
@@ -21,4 +20,7 @@
       }
     }
   }
+}
+
+@media screen and (min-width: 560px) {
 }

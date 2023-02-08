@@ -11,7 +11,9 @@
   margin: 80px auto;
   // // position: relative;
   transition: all 1.5s linear;
-  @include boxShadow($br: 10px);
+  // @include boxShadow($br: 10px);
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
   background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 35) 10%);
 
