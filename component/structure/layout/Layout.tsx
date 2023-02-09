@@ -32,11 +32,14 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
       <meta property="og:image:type" content="image/png" />
       <meta name="theme-color" content={theme.palette.primary.main} />
       <meta property="og:url" content="https://www.soccermass.com/" />
-      <meta name="keywords" content="soccer manager, football manager" />
+      <meta name="keywords" content="soccer manager, soccer, soccermass, football manager, football" />
       <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
       <meta property="og:image" content="/images/layout/soccermass.webp" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="SoccerMASS: No 1. Free Online Soccer Manager" />
+      <meta
+        name="description"
+        content="SoccerMASS leads the way as the top Online Football Management Game and provider of Football data APIs, offering cutting-edge formations, tactics, a lifelike transfer market and so much more."
+      />
       <meta property="og:title" content={`SoccerMASS: Soccer Manager ${new Date().getFullYear()}`} />
       <meta
         property="og:description"
