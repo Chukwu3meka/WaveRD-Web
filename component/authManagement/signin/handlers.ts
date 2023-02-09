@@ -1,7 +1,6 @@
 import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
-import { setCookie } from "cookies-next";
 
 export const signinFormMouseMoveCapture = () => {
   const signinRef = document.getElementById("signin")!;

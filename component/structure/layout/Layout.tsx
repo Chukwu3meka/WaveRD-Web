@@ -15,7 +15,7 @@ import { ILayout } from "@interface/main/layout-interface";
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }: ILayout) => (
   <>
     <Head>
-      <title>SoccerMASS: No. 1 Soccer Manager and Football API Provider</title>
+      <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
       <link rel="manifest" href="/manifest.json" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

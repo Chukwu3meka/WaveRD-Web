@@ -12,12 +12,7 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
     validator({ value, type: id, label: id === "email" ? "Email Address" : null });
 
     if (["handle", "email"].includes(id)) {
-      // Set loading for thess IDs
       setFormStatus((values: any) => ({ ...values, [id]: { status: "loading", pristine: false, message: null } }));
-
-      // document.cookie = "key=value; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
-      document.cookie = "key=value; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; domain=localhost:3000";
-
       await fetcher({ api: "accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
         .then(async ({ payload: { exists } }) => {
           setFormStatus((values: any) => ({

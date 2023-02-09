@@ -17,6 +17,3 @@
 ---
 
 > Server
-
-- remove all process.env.CLIENT_BASE_URL in Server, let every client link point to live server
-<!-- Unleash your team's full potential with our innovative soccer management platform and powerful API solution. -->

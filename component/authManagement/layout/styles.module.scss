@@ -10,7 +10,7 @@
     // border: 3px solid red;
     @include quickFlex();
     // min-height: calc(100% - 205px);
-    padding: 50px 0px;
+    padding: 50px 20px;
   }
 }
 
@@ -20,7 +20,7 @@
     display: grid;
     // min-height: calc(100vh - 65px);
     // height: clamp(400px, calc(100vh - 65px), 1500px);
-    grid-template-columns: clamp(400px, 50%, 550px) auto;
+    grid-template-columns: clamp(600px, 50%, 550px) auto;
     aside {
       display: unset;
       background-image: url("/images/layout/soccermass.webp");
