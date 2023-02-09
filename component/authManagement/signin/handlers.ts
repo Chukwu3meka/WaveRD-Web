@@ -61,7 +61,7 @@ export const signinFormMouseMoveCapture = () => {
   signinRef.onmousemove = onMouseMoveHandler;
 };
 
-export const loginHandler = async ({ setValues, values, enqueueSnackbar }: any) => {
+export const loginHandler = async ({ setValues, values, enqueueSnackbar, setAuthAction }: any) => {
   setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
   const email = values.email.trim();
@@ -82,26 +82,10 @@ export const loginHandler = async ({ setValues, values, enqueueSnackbar }: any) 
     endpoint: "/personal/auth",
     payload: { email, password },
   })
-    .then(({ payload: { token } }) => {
-      // console.log(token);
+    .then(({ payload: { role, fullName, handle } }) => {
+      console.log({ role, fullName, handle });
 
-      // setCookie("SoccerMASS", token, {
-      //   path: "/",
-      //   httpOnly: true,
-      //   domain: ".localhost:5000",
-      //   secure: process.env.NODE === "production", // Setting a cookie without Secure will be rejected.
-      //   sameSite: process.env.NODE === "production" ? "strict" : "lax", // <= SameSite=None must be secure
-      //   expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
-      // secure: false,
-
-      // // domain: req.headers.origin?.replace("http://", ".")?.replace("https://", ".")?.replace(/:\d+/, ""),
-      // domain: req.headers.origin?.replace("http://", "")?.replace("https://", "")?.replace(/:\d+/, ""),
-
-      // // domain: `.${process.env.SERVER_DOMAIN}`,
-      // expires: nTimeFromNowFn({ context: "days", interval: 120 }),
-      // httpOnly: true,
-      // // signed: true,
-      // });
+      setAuthAction({ role, fullName, handle });
 
       // set redux auth store
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });

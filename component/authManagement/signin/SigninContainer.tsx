@@ -29,17 +29,14 @@ const SigninContainer = (props: any) => {
   }); // <= STATUS: valid, invalid, loading
 
   const signinFormMouseMoveCapture = handlers.signinFormMouseMoveCapture;
-  const loginHandler = () => handlers.loginHandler({ setValues, values, enqueueSnackbar });
   const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange(e, setValues);
+  const loginHandler = () => handlers.loginHandler({ setValues, values, enqueueSnackbar, setAuthAction });
 
   return <Signin {...{ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
-  mapDispatchToProps = {
-    //
-    // logoutAction,
-  };
+  mapDispatchToProps = { setAuthAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

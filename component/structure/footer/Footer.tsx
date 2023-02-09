@@ -43,11 +43,16 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               <Link href="/">Home</Link>
               {authenticated && (
                 <Link href="/auth/signin" onClick={logoutHandler()}>
-                  Logout
+                  Logout/signout
                 </Link>
               )}
               <Link href="/auth/reset">Reset Password</Link>
               <Link href="https://manager.soccermass.com/">Football Manager</Link>
+              {authenticated && (
+                <Link href="/profile/subscriptions" onClick={logoutHandler()}>
+                  Subscriptions
+                </Link>
+              )}
               {!authenticated && <Link href="/auth/signin">Signin/Login</Link>}
               {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
             </div>
