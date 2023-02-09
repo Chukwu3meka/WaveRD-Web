@@ -1,6 +1,7 @@
 import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
+import { setCookie } from "cookies-next";
 
 export const signinFormMouseMoveCapture = () => {
   const signinRef = document.getElementById("signin")!;
@@ -82,7 +83,27 @@ export const loginHandler = async ({ setValues, values, enqueueSnackbar }: any) 
     endpoint: "/personal/auth",
     payload: { email, password },
   })
-    .then(() => {
+    .then(({ payload: { token } }) => {
+      // console.log(token);
+
+      // setCookie("SoccerMASS", token, {
+      //   path: "/",
+      //   httpOnly: true,
+      //   domain: ".localhost:5000",
+      //   secure: process.env.NODE === "production", // Setting a cookie without Secure will be rejected.
+      //   sameSite: process.env.NODE === "production" ? "strict" : "lax", // <= SameSite=None must be secure
+      //   expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
+      // secure: false,
+
+      // // domain: req.headers.origin?.replace("http://", ".")?.replace("https://", ".")?.replace(/:\d+/, ""),
+      // domain: req.headers.origin?.replace("http://", "")?.replace("https://", "")?.replace(/:\d+/, ""),
+
+      // // domain: `.${process.env.SERVER_DOMAIN}`,
+      // expires: nTimeFromNowFn({ context: "days", interval: 120 }),
+      // httpOnly: true,
+      // // signed: true,
+      // });
+
       // set redux auth store
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });
     })

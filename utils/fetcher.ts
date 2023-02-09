@@ -17,8 +17,8 @@ const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
 
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },
-    credentials: "same-origin",
-    mode: "cors",
+    credentials: "include",
+    // mode: "cors",
     method,
   };
 

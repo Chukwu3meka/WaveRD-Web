@@ -55,10 +55,10 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="info">Learn More</label>
               <Link href="/info/advertise/">Advertise</Link>
-              <Link href="/info/contact/">Contact Us</Link>
               <Link href="/info/terms/">Terms &amp; Conditions</Link>
-              <Link href="/info/privacy/">Privacy Policy</Link>
+              <Link href="/info/contact/">Contact Us</Link>
               <Link href="/info/donate/">Support/Donation</Link>
+              <Link href="/info/privacy/">Privacy Policy</Link>
             </div>
 
             <div>
@@ -67,7 +67,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
               <a href="https://market.soccermass.com/">Market Place</a>
               <a href="https://space.soccermass.com/">Homes & Space</a>
               <a href="https://jobs.soccermass.com/">Hourly Jobs</a>
-              <a href="https://hub.soccermass.com/">API Hub</a>
+              <a href="https://apihub.soccermass.com/">API Hub</a>
             </div>
           </nav>
         </main>
