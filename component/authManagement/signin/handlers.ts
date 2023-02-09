@@ -83,11 +83,8 @@ export const loginHandler = async ({ setValues, values, enqueueSnackbar, setAuth
     payload: { email, password },
   })
     .then(({ payload: { role, fullName, handle } }) => {
-      console.log({ role, fullName, handle });
-
       setAuthAction({ role, fullName, handle });
 
-      // set redux auth store
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });
     })
     .catch(() => enqueueSnackbar("Invalid Email/Password", { variant: "error" }))

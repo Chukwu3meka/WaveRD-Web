@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 import { Layout, functions } from ".";
-import { setDeviceSizeAction } from "@store/actions";
+import { setAuthAction, setDeviceSizeAction } from "@store/actions";
 import createEmotionCache from "libs/createEmotionCache";
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -11,14 +11,15 @@ const clientSideEmotionCache = createEmotionCache();
 
 import { IHandlePageLoading, IHandleProtectedRoute, ILayoutContainer } from "@interface/main/layout-interface";
 
-const LayoutContainer = (props: ILayoutContainer) => {
+// const LayoutContainer = (props: ILayoutContainer) => {
+const LayoutContainer = (props: any) => {
   const router = useRouter(),
     [appReady, setAppReady] = useState(false),
     [lastScrollPos, setLastScrollPos] = useState(0),
     [displayHeader, setDisplayHeader] = useState(true),
     [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
-    { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache } = props;
+    { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache, setAuthAction } = props;
 
   useEffect(() => {
     if (!appReady) {
@@ -26,6 +27,7 @@ const LayoutContainer = (props: ILayoutContainer) => {
       handlePageLoading({ url: null, loading: false });
       window.addEventListener("resize", handleResize);
       handleResize(); // <= run handleResize on page load.
+      retrieveCookie();
     }
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -58,6 +60,7 @@ const LayoutContainer = (props: ILayoutContainer) => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
+  const retrieveCookie = () => functions.retrieveCookie({ setAuthAction });
   const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
   const handleScroll = () => functions.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
@@ -67,6 +70,6 @@ const LayoutContainer = (props: ILayoutContainer) => {
 };
 
 const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),
-  mapDispatchToProps = { setDeviceSizeAction };
+  mapDispatchToProps = { setDeviceSizeAction, setAuthAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutContainer);

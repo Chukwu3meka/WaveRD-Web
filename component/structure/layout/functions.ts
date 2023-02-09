@@ -1,5 +1,6 @@
 // import { sleep } from "@utils/clientFuncs";
 import { IHandleScroll, IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
+import fetcher from "@utils/fetcher";
 
 export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) => {
   const width = window.innerWidth,
@@ -17,7 +18,9 @@ export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHa
   }
 };
 
-export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
+// export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
+export const handleProtectedRoute = ({ route, authenticated }: any) => {
+  console.log({ route, authenticated });
   // console.log("useEffect fired!", { asPath: route });
 };
 
@@ -28,4 +31,18 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
     setDisplayHeader(true);
   }
   setLastScrollPos(window.scrollY);
+};
+
+export const retrieveCookie = async ({ setAuthAction }: any) => {
+  await fetcher({
+    api: "accounts",
+    method: "GET",
+    endpoint: "/personal/cookie",
+  })
+    .then(({ payload: { role, fullName, handle } }) => {
+      console.log({ role, fullName, handle });
+
+      setAuthAction({ role, fullName, handle });
+    })
+    .catch();
 };
