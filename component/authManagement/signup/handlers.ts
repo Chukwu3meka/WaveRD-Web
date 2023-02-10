@@ -42,12 +42,20 @@ export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentErr
 export const registerHandler = async ({ setValues, values, formStatus, enqueueSnackbar, setCurrentError }: any) => {
   const formErrorArray: any = Object.values(formStatus);
 
+  console.log({ formStatus });
+
   const notPristineAndValid = formErrorArray.every((x: any) => !x.pristine && x.status === "valid");
+
+  console.log({ notPristineAndValid });
 
   setValues((values: any) => ({ ...values, buttonLoading: true })); // activate botton loading
 
   if (notPristineAndValid) {
+    console.log(1, { values });
+
     const { email, handle, password, fullName } = values;
+
+    console.log({ email, handle, password, fullName });
 
     await fetcher({
       api: "accounts",
@@ -56,10 +64,24 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
       payload: { email, handle, password, fullName },
     })
       .then(() => setValues((values: any) => ({ ...values, accountCreated: true })))
-      .catch(() => setValues((values: any) => ({ ...values, accountCreated: false })))
+      .catch((e) => {
+        console.log(e);
+        setValues((values: any) => ({ ...values, accountCreated: false }));
+      })
       .finally(() => setValues((values: any) => ({ ...values, buttonLoading: false }))); // deactivate botton loading
   } else {
+    console.log(2, { values });
+
+    console.log(
+      formErrorArray,
+      formErrorArray.filter((x: any) => x.message),
+      formErrorArray.filter((x: any) => x.message)[0],
+      formErrorArray.filter((x: any) => x.message)[0]["message"]
+    );
     const invalidEntry = formErrorArray.filter((x: any) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
+
+    console.log({ invalidEntry });
+
     setCurrentError(invalidEntry);
 
     enqueueSnackbar("Kindly correct the mistakes in the registration form", { variant: "error" }); // <=  Inform user of regex error
