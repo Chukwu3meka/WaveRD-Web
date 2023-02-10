@@ -70,14 +70,11 @@ export const registerHandler = async ({ setValues, values, formStatus, enqueueSn
       })
       .finally(() => setValues((values: any) => ({ ...values, buttonLoading: false }))); // deactivate botton loading
   } else {
-    console.log(2, { values });
+    console.log(2, { values, formErrorArray });
+    console.log(formErrorArray.filter((x: any) => x.message));
+    console.log(formErrorArray.filter((x: any) => x.message)[0]);
+    console.log(formErrorArray.filter((x: any) => x.message)[0]["message"]);
 
-    console.log(
-      formErrorArray,
-      formErrorArray.filter((x: any) => x.message),
-      formErrorArray.filter((x: any) => x.message)[0],
-      formErrorArray.filter((x: any) => x.message)[0]["message"]
-    );
     const invalidEntry = formErrorArray.filter((x: any) => x.message)[0]["message"]; // ? cannot return undefined since it's notPristineAndValid
 
     console.log({ invalidEntry });
