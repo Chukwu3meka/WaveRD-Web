@@ -16,10 +16,10 @@
 
 @media screen and (min-width: 1200px) {
   .layout {
-    height: calc(100vh - 75px);
+    // height: calc(100vh - 75px);
     display: grid;
     // min-height: calc(100vh - 65px);
-    // height: clamp(400px, calc(100vh - 65px), 1500px);
+    height: clamp(calc(100vh - 65px), 100%, 2000px);
     grid-template-columns: clamp(600px, 50%, 550px) auto;
     aside {
       display: unset;
