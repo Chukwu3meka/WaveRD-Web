@@ -2,18 +2,18 @@
 
 // body {}
 
-* {
-  // -webkit-backface-visibility: hidden;
-  // backface-visibility: hidden;
+// * {
+// -webkit-backface-visibility: hidden;
+// backface-visibility: hidden;
 
-  /* Change the white to any color.......This is to remove blue background on chrome autofill for input */
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-  }
-}
+/* Change the white to any color.......This is to remove blue background on chrome autofill for input */
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//   -webkit-box-shadow: 0 0 0 30px white inset !important;
+// }
+// }
 
 //  {
 //   /* MAGIC HAPPENS HERE */

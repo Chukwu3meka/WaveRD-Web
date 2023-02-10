@@ -19,7 +19,11 @@
     // height: calc(100vh - 75px);
     display: grid;
     // min-height: calc(100vh - 65px);
-    height: clamp(calc(100vh - 65px), 100%, 2000px);
+    // min-height:     ;
+    // border: 3px solid red;
+    // min-height: none;
+    height: clamp(600px, 100%, 1500px);
+    // height: clamp(calc(100vh - 65px), 100%, 1500px);
     grid-template-columns: clamp(600px, 50%, 550px) auto;
     aside {
       display: unset;
