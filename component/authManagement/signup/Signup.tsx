@@ -1,123 +1,87 @@
 import Image from "next/image";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
+import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
-import {
-  Box,
-  Stack,
-  Alert,
-  Tooltip,
-  TextField,
-  Typography,
-  AlertTitle,
-  InputLabel,
-  IconButton,
-  FormControl,
-  OutlinedInput,
-  InputAdornment,
-} from "@mui/material";
 
-import { signupStyles } from ".";
-import InputStatus from "@component/templates/inputStatus";
+import { ConfirmMail, signupStyles } from ".";
 
-const Signup = ({ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError, onBlurHandler }: any) => (
-  <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>
-    <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
-      <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
-      <Stack direction="row" width="100%" alignItems="center" position="relative">
+const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, currentError, onBlurHandler }: any) =>
+  userForm.options.accountCreated ? (
+    <ConfirmMail />
+  ) : (
+    <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>
+      <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
+        <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
         <TextField
           fullWidth
           id="fullName"
+          error={!userForm.fullName.valid}
           onBlur={onBlurHandler}
-          disabled={values.buttonLoading}
-          value={values.fullName}
+          disabled={userForm.options.loading}
+          value={userForm.fullName.value}
           aria-describedby="fullName"
           label="Full Name"
           variant="outlined"
           placeholder="Firstname Lastname"
           onChange={onInputChange}
         />
-        <InputStatus value={values.fullName} status={formStatus.fullName.status} pristine={formStatus.fullName.pristine} />
-      </Stack>
-      <Stack direction="row" width="100%" alignItems="center" position="relative">
         <TextField
           fullWidth
           id="email"
           onBlur={onBlurHandler}
-          disabled={values.buttonLoading}
-          value={values.email}
+          disabled={userForm.options.loading}
+          value={userForm.email.value}
           aria-describedby="email"
+          error={!userForm.email.valid}
           label="Email Address"
           variant="outlined"
           placeholder="firstname.lastname@soccermass.com"
           onChange={onInputChange}
         />
-        <InputStatus value={values.email} status={formStatus.email.status} pristine={formStatus.email.pristine} />
-      </Stack>
-      <Stack direction="row" width="100%" alignItems="center" position="relative">
         <TextField
           fullWidth
           id="handle"
           onBlur={onBlurHandler}
-          disabled={values.buttonLoading}
-          value={values.handle}
+          disabled={userForm.options.loading}
+          value={userForm.handle.value}
           aria-describedby="handle"
           label="Handle"
+          error={!userForm.handle.valid}
           variant="outlined"
           placeholder="What would you like us to call you?"
           onChange={onInputChange}
         />
-        <InputStatus value={values.handle} status={formStatus.handle.status} pristine={formStatus.handle.pristine} />
-      </Stack>
-      <Stack direction="row" width="100%" alignItems="center" position="relative">
+
         <FormControl fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="password"
-            type={values.showPassword ? "text" : "password"}
-            value={values.password}
+            type={userForm.options.showPassword ? "text" : "password"}
+            value={userForm.password.value}
             onBlur={onBlurHandler}
-            disabled={values.buttonLoading}
+            disabled={userForm.options.loading}
             onChange={onInputChange}
             placeholder="Complex Password"
+            error={!userForm.password.valid}
             label="Password"
             endAdornment={
               <InputAdornment position="end">
                 <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
-                  {values.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </IconButton>
               </InputAdornment>
             }
           />
         </FormControl>
 
-        <InputStatus value={values.password} status={formStatus.password.status} pristine={formStatus.password.pristine} />
-      </Stack>
-
-      <Fade direction="up" triggerOnce={true} style={{ width: "100%", display: currentError ? "inherit" : "none" }}>
-        <Alert severity="warning" style={{ width: "100%" }}>
-          <AlertTitle>Incorrect input</AlertTitle>
-          {currentError}
-        </Alert>
-      </Fade>
-
-      <Box sx={{ textAlign: "right", width: "100%" }}>
         <AttentionSeeker effect="bounce">
-          <Tooltip title={formStatus.status && formStatus.errorMessages}>
-            <LoadingButton
-              onClick={registerHandler}
-              size="large"
-              disabled={!!formStatus.status}
-              variant="outlined"
-              endIcon={<RegisterIcon />}
-              loading={!!values.buttonLoading}>
-              <Typography sx={{ fontWeight: 900 }}>register</Typography>
-            </LoadingButton>
-          </Tooltip>
+          <LoadingButton onClick={registerHandler} size="large" variant="outlined" endIcon={<RegisterIcon />} loading={!!userForm.options.loading}>
+            <Typography sx={{ fontWeight: 900 }}>register</Typography>
+          </LoadingButton>
         </AttentionSeeker>
-      </Box>
-    </Stack>
-  </Fade>
-);
+      </Stack>
+    </Fade>
+  );
 
 export default Signup;

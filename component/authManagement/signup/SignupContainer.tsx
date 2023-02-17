@@ -6,27 +6,31 @@ import { Signup, handlers, ConfirmMail } from ".";
 const SignupContainer = () => {
   const { enqueueSnackbar } = useSnackbar();
 
+  const [userForm, setUserForm] = useState({
+    options: { showPassword: false, loading: false, accountCreated: false },
+    handle: { value: "Chukwu3meka", valid: true, info: "Handle cannot be empty" },
+    password: { value: "Password@1", valid: true, info: "Password cannot be empty" },
+    email: { value: "chukwuemeka@soccermass.com", valid: true, info: "Email cannot be empty" },
+    fullName: { value: "Chukwuemeka Maduekwe", valid: true, info: "Full Name cannot be empty" },
+  });
+
   const [values, setValues] = useState<any>({ showPassword: false, buttonLoading: false, email: "", handle: "", password: "", fullName: "" });
 
   const [formStatus, setFormStatus] = useState<any>({
-    email: { status: "invalid", pristine: true, message: "Email cannot be empty" },
-    handle: { status: "invalid", pristine: true, message: "Handle cannot be empty" },
-    password: { status: "invalid", pristine: true, message: "Password cannot be empty" },
-    fullName: { status: "invalid", pristine: true, message: "Full Name cannot be empty" },
+    email: { valid: true, message: "Email cannot be empty" },
+    handle: { valid: true, message: "Handle cannot be empty" },
+    password: { valid: true, message: "Password cannot be empty" },
+    fullName: { valid: true, message: "Full Name cannot be empty" },
   }); // <= STATUS: valid, invalid, loading
 
   const [currentError, setCurrentError] = useState(null);
 
-  const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword });
-  const registerHandler = () => handlers.registerHandler({ setValues, values, formStatus, enqueueSnackbar, setCurrentError });
-  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onBlurHandler({ e, setValues, setFormStatus, setCurrentError });
-  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setValues, setFormStatus, setCurrentError });
+  const handleClickShowPassword = () => setUserForm({ ...values, showPassword: !values.showPassword });
+  const registerHandler = () => handlers.registerHandler({ enqueueSnackbar, setUserForm, userForm });
+  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onBlurHandler({ e, setUserForm });
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
 
-  return values.accountCreated ? (
-    <ConfirmMail />
-  ) : (
-    <Signup {...{ onInputChange, handleClickShowPassword, values, formStatus, registerHandler, currentError, onBlurHandler }} />
-  );
+  return <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler, currentError, onBlurHandler }} />;
 };
 
 export default SignupContainer;
