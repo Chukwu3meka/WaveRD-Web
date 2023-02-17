@@ -44,5 +44,7 @@ export const retrieveCookie = async ({ setAuthAction }: any) => {
 
       setAuthAction({ role, fullName, handle });
     })
-    .catch();
+    .catch((err) => {
+      console.log(err);
+    });
 };

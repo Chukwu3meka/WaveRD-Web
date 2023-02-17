@@ -6,7 +6,7 @@ import validator from "@utils/validator";
 export const onInputChange = async ({ e, setValues, setFormStatus, setCurrentError }: any) => {
   const { value, id } = e.target;
 
-  setValues((values: any) => ({ ...values, [id]: value }));
+  setValues((values: any) => ({ ...values, [id]: id === "email" ? value : value.toLowerCase() }));
   setFormStatus((values: any) => ({ ...values, [id]: { ...values[id], pristine: false, status: "loading" } })); // <= set component state to loading
   try {
     validator({ value, type: id, label: id === "email" ? "Email Address" : null });

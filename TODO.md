@@ -13,7 +13,7 @@
 - add major european leaguseto home page
 - work on auth redirect
 - work on auth (sigin, signup, reset password and verify pass) pages
-- set header for ech page
+- set min page height
 
 ---
 

@@ -27,13 +27,16 @@ const LayoutContainer = (props: any) => {
       handlePageLoading({ url: null, loading: false });
       window.addEventListener("resize", handleResize);
       handleResize(); // <= run handleResize on page load.
-      retrieveCookie();
     }
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      if (!appReady) retrieveCookie(); // <= will run only once
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
     const authenticated = props.authStatus || false;
+
     if (appReady && authenticated !== authenticated) {
       setAuthenticated(authenticated);
       handleProtectedRoute({ route: location.pathname, authenticated });
