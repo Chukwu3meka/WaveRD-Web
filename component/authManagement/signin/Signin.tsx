@@ -30,14 +30,14 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
         />
 
         <FormControl fullWidth variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Admin Password</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             type={userForm.options.showPassword ? "text" : "password"}
             onChange={(e) => onInputChange(e)}
             disabled={userForm.options.loading}
-            placeholder="Complex Password"
+            placeholder="Password"
             value={userForm.password}
-            label="Admin Password"
+            label="Password"
             id="password"
             endAdornment={
               <InputAdornment position="end">

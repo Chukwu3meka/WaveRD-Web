@@ -15,7 +15,7 @@ const Social = () => (
       label="Sign in with Twitter"
       variant="outlined"
       color="primary"
-      href={`${process.env.NEXT_PUBLIC_BASE_SERVER}/auth/twitter`}
+      href={`http://localhost:5000/api/accounts/personal/twitter`}
     />
     <Chip
       icon={<GoogleIcon />}
@@ -25,7 +25,7 @@ const Social = () => (
       variant="outlined"
       color="primary"
       component="a"
-      href={`${process.env.NEXT_PUBLIC_BASE_SERVER}/auth/google`}
+      href={`http://localhost:5000/api/accounts/personal/google`}
     />
     <Chip
       sx={{ "&>svg": { color: "#4267B2 !important" } }}
@@ -35,7 +35,7 @@ const Social = () => (
       variant="outlined"
       color="primary"
       component="a"
-      href={`${process.env.NEXT_PUBLIC_BASE_SERVER}/auth/facebook`}
+      href={`http://localhost:5000/api/accounts/personal/facebook`}
     />
     {/* <SocialLink href={`http://127.0.0.1:5000/auth/twitter`} title="Continue with twitter" color="rgb(51, 133, 255)" /> */}
   </section>
