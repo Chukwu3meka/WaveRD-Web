@@ -41,7 +41,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
             id="password"
             endAdornment={
               <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword()} edge="end">
+                <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
                   {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </IconButton>
               </InputAdornment>

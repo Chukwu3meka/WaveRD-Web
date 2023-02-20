@@ -18,7 +18,6 @@ const SigninContainer = (props: ISigninContainer) => {
 
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
   const loginHandler = () => () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction });
-  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onBlurHandler({ e, setUserForm });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, showPassword: !values.options.showPassword }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler }} />;
