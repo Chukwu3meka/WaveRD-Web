@@ -1,17 +1,33 @@
+export interface ISignin {
+  userForm: IUserForm;
+  loginHandler: Function;
+  onInputChange: Function;
+  handleClickShowPassword: Function;
+}
+
 export interface ISigninContainer {
   setAuthAction: Function;
 }
 
-export interface ISignin {
-  onInputChange: Function;
-  handleClickShowPassword: Function;
-  values: any;
-  loginHandler: Function;
+export interface IUserForm {
+  email: string;
+  password: string;
+  options: IUserFormOptions;
+}
+
+interface IUserFormOptions {
+  loading: boolean;
+  showPassword: boolean;
+}
+
+export interface IOnInputChange {
+  setUserForm: Function;
+  e: React.FocusEvent<HTMLInputElement>;
 }
 
 export interface ILoginHandler {
-  setValues: Function;
-  values: any;
-  enqueueSnackbar: any;
+  userForm: IUserForm;
+  setUserForm: Function;
   setAuthAction: Function;
+  enqueueSnackbar: Function;
 }

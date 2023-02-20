@@ -6,7 +6,7 @@ import { Box, Stack, TextField, Typography, IconButton, InputLabel, FormControl,
 import { SocialAuth, styles } from ".";
 import { ISignin } from "@interface/auth/signin-interface";
 
-const Signin = ({ onInputChange, handleClickShowPassword, values, loginHandler }: ISignin) => (
+const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler }: ISignin) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div id="signin" className={styles.signin}>
       <SocialAuth />
@@ -21,10 +21,10 @@ const Signin = ({ onInputChange, handleClickShowPassword, values, loginHandler }
           fullWidth
           id="email"
           variant="outlined"
-          value={values.email}
+          value={userForm.email}
           label="Email Address"
           aria-describedby="email"
-          disabled={values.buttonLoading}
+          disabled={userForm.options.loading}
           onChange={(e) => onInputChange(e)}
           placeholder="firstname.lastname@soccermass.com"
         />
@@ -32,17 +32,17 @@ const Signin = ({ onInputChange, handleClickShowPassword, values, loginHandler }
         <FormControl fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Admin Password</InputLabel>
           <OutlinedInput
-            type={values.showPassword ? "text" : "password"}
+            type={userForm.options.showPassword ? "text" : "password"}
             onChange={(e) => onInputChange(e)}
-            disabled={values.buttonLoading}
+            disabled={userForm.options.loading}
             placeholder="Complex Password"
-            value={values.password}
+            value={userForm.password}
             label="Admin Password"
             id="password"
             endAdornment={
               <InputAdornment position="end">
                 <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword()} edge="end">
-                  {values.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </IconButton>
               </InputAdornment>
             }
@@ -56,8 +56,8 @@ const Signin = ({ onInputChange, handleClickShowPassword, values, loginHandler }
               variant="outlined"
               onClick={loginHandler()}
               endIcon={<LoginIcon />}
-              disabled={!!values.buttonLoading}
-              loading={!!values.buttonLoading}>
+              disabled={userForm.options.loading}
+              loading={userForm.options.loading}>
               <Typography sx={{ fontWeight: 900 }}>Login</Typography>
             </LoadingButton>
           </AttentionSeeker>

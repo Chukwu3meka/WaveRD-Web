@@ -8,11 +8,8 @@ export interface ISignup {
   onBlurHandler: Function;
 }
 
-export interface IUserForm extends IUserFormValues {
+export interface IUserForm {
   options: IUserFormOptions;
-}
-
-export interface IUserFormValues {
   email: IUserFormValuesData;
   handle: IUserFormValuesData;
   password: IUserFormValuesData;
@@ -25,11 +22,7 @@ interface IUserFormOptions {
   accountCreated: boolean;
 }
 
-interface IUserFormValuesData {
-  info: string;
-  value: string;
-  valid: boolean;
-}
+type IUserFormValuesData = { info: string; value: string; valid: boolean };
 
 export interface IValidateFormEntry {
   id: IValidator["type"];
