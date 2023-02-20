@@ -16,7 +16,14 @@ const ConfirmMail = () => {
         </Typography>
 
         <div>
-          <Image src="/images/layout/new-mail.png" alt="SoccermMASS Signup New Mail" fill />
+          <Image
+            src="/images/layout/new-mail.png"
+            alt="SoccermMASS Signup New Mail"
+            fill
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+          />
         </div>
 
         <Stack direction="row">
