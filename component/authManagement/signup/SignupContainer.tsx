@@ -18,7 +18,7 @@ const SignupContainer = () => {
   const registerHandler = () => handlers.registerHandler({ enqueueSnackbar, setUserForm, userForm });
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onBlurHandler({ e, setUserForm });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
-  const handleClickShowPassword = () => setUserForm((values) => ({ ...values, showPassword: !values.options.showPassword }));
+  const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }} />;
 };

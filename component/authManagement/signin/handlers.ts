@@ -6,8 +6,8 @@ import { ILoginHandler, IOnInputChange } from "@interface/auth/signin-interface"
 export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: ILoginHandler) => {
   setUserForm((userForm: any) => ({ ...userForm, buttonLoading: true })); // activate botton loading
 
-  const email = userForm.email.trim();
-  const password = userForm.password.trim();
+  const email = userForm.email.trim(),
+    password = userForm.password;
 
   try {
     validator({ value: email, type: "email" });
@@ -18,20 +18,18 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
     return enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
   }
 
-  console.log({ userForm });
-
-  // await fetcher({
-  //   api: "accounts",
-  //   method: "POST",
-  //   endpoint: "/personal/auth",
-  //   payload: { email, password },
-  // })
-  //   .then(({ payload: { role, fullName, handle } }) => {
-  //     setAuthAction({ role, fullName, handle });
-  //     enqueueSnackbar("Authenticated Successfully", { variant: "success" });
-  //   })
-  //   .catch(({ message }) => enqueueSnackbar(message || "Invalid Email/Password", { variant: "error" }))
-  //   .finally(() => setUserForm((userForm: any) => ({ ...userForm, buttonLoading: false }))); // deactivate botton loading
+  await fetcher({
+    api: "accounts",
+    method: "POST",
+    endpoint: "/personal/auth",
+    payload: { email, password },
+  })
+    .then(({ payload: { role, fullName, handle } }) => {
+      setAuthAction({ role, fullName, handle });
+      enqueueSnackbar("Authenticated Successfully", { variant: "success" });
+    })
+    .catch(({ message }) => enqueueSnackbar(message || "Invalid Email/Password", { variant: "error" }))
+    .finally(() => setUserForm((userForm: any) => ({ ...userForm, buttonLoading: false }))); // deactivate botton loading
 };
 
 export const onInputChange = async ({ e, setUserForm }: IOnInputChange) => {
