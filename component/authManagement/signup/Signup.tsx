@@ -5,8 +5,9 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
 
 import { ConfirmMail, signupStyles } from ".";
+import { ISignup } from "@interface/auth/signup-interface";
 
-const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, currentError, onBlurHandler }: any) =>
+const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) =>
   userForm.options.accountCreated ? (
     <ConfirmMail />
   ) : (
@@ -16,20 +17,20 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
         <TextField
           fullWidth
           id="fullName"
-          error={!userForm.fullName.valid}
-          onBlur={onBlurHandler}
-          disabled={userForm.options.loading}
-          value={userForm.fullName.value}
-          aria-describedby="fullName"
           label="Full Name"
           variant="outlined"
+          aria-describedby="fullName"
+          value={userForm.fullName.value}
           placeholder="Firstname Lastname"
-          onChange={onInputChange}
+          error={!userForm.fullName.valid}
+          onBlur={(e) => onBlurHandler(e)}
+          onChange={(e) => onInputChange(e)}
+          disabled={userForm.options.loading}
         />
         <TextField
           fullWidth
           id="email"
-          onBlur={onBlurHandler}
+          onBlur={(e) => onBlurHandler(e)}
           disabled={userForm.options.loading}
           value={userForm.email.value}
           aria-describedby="email"
@@ -37,12 +38,12 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
           label="Email Address"
           variant="outlined"
           placeholder="firstname.lastname@soccermass.com"
-          onChange={onInputChange}
+          onChange={(e) => onInputChange(e)}
         />
         <TextField
           fullWidth
           id="handle"
-          onBlur={onBlurHandler}
+          onBlur={(e) => onBlurHandler(e)}
           disabled={userForm.options.loading}
           value={userForm.handle.value}
           aria-describedby="handle"
@@ -50,7 +51,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
           error={!userForm.handle.valid}
           variant="outlined"
           placeholder="What would you like us to call you?"
-          onChange={onInputChange}
+          onChange={(e) => onInputChange(e)}
         />
 
         <FormControl fullWidth variant="outlined">
@@ -59,15 +60,15 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             id="password"
             type={userForm.options.showPassword ? "text" : "password"}
             value={userForm.password.value}
-            onBlur={onBlurHandler}
+            onBlur={(e) => onBlurHandler(e)}
             disabled={userForm.options.loading}
-            onChange={onInputChange}
+            onChange={(e) => onInputChange(e)}
             placeholder="Complex Password"
             error={!userForm.password.valid}
             label="Password"
             endAdornment={
               <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
+                <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
                   {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </IconButton>
               </InputAdornment>
@@ -76,7 +77,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
         </FormControl>
 
         <AttentionSeeker effect="bounce">
-          <LoadingButton onClick={registerHandler} size="large" variant="outlined" endIcon={<RegisterIcon />} loading={!!userForm.options.loading}>
+          <LoadingButton onClick={() => registerHandler()} size="large" variant="outlined" endIcon={<RegisterIcon />} loading={!!userForm.options.loading}>
             <Typography sx={{ fontWeight: 900 }}>register</Typography>
           </LoadingButton>
         </AttentionSeeker>

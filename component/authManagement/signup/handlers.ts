@@ -1,8 +1,10 @@
+import { IOnInputChange, IRegisterHandler, IValidateFormEntry } from "@interface/auth/signup-interface";
+import { IValidator } from "@interface/utils/validator-interface";
 import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-const validateFormEntry = async ({ id, value, setUserForm }: any) => {
+const validateFormEntry = async ({ id, value, setUserForm }: IValidateFormEntry) => {
   validator({ value, type: id, label: id === "email" ? "Email Address" : null });
 
   if (["handle", "email"].includes(id)) {
@@ -20,13 +22,12 @@ const validateFormEntry = async ({ id, value, setUserForm }: any) => {
   }
 };
 
-// e: React.FocusEvent<HTMLInputElement>, setValues: Function, setFormStatus: Function)
-export const onInputChange = async ({ e, setUserForm }: any) => {
+export const onInputChange = async ({ e, setUserForm }: IOnInputChange) => {
   const { value, id } = e.target;
 
   setUserForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
   try {
-    validator({ value, type: id, label: id === "email" ? "Email Address" : null });
+    validator({ value, type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
 
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
@@ -48,7 +49,7 @@ export const onInputChange = async ({ e, setUserForm }: any) => {
   }
 };
 
-export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm }: any) => {
+export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm }: IRegisterHandler) => {
   try {
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
@@ -56,7 +57,7 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm }
 
     // re-validate all values before registeration
     for (const [key, { value }] of Object.entries(userForm)) {
-      if (key !== "options") await validateFormEntry({ id: key, value, setUserForm }).then(() => (userData[key] = value));
+      if (key !== "options") await validateFormEntry({ id: <IValidator["type"]>key, value, setUserForm }).then(() => (userData[key] = value));
     }
 
     await fetcher({ method: "POST", api: "accounts", payload: userData, endpoint: "/personal/add_account" }).then(() =>

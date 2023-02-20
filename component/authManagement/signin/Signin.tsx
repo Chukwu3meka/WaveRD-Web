@@ -1,17 +1,14 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Box, Stack, Tooltip, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
+import { Box, Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 
 import { SocialAuth, styles } from ".";
+import { ISignin } from "@interface/auth/signin-interface";
 
-const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPassword, values, formError, loginHandler }: any) => (
+const Signin = ({ onInputChange, handleClickShowPassword, values, loginHandler }: ISignin) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
-    <div
-      id="signin"
-      className={styles.signin}
-      // onMouseMoveCapture={signinFormMouseMoveCapture}
-    >
+    <div id="signin" className={styles.signin}>
       <SocialAuth />
 
       <div className={styles.divider}>
@@ -23,48 +20,46 @@ const Signin = ({ signinFormMouseMoveCapture, onInputChange, handleClickShowPass
         <TextField
           fullWidth
           id="email"
-          disabled={values.buttonLoading}
-          value={values.email}
-          aria-describedby="email"
-          label="Email Address"
           variant="outlined"
+          value={values.email}
+          label="Email Address"
+          aria-describedby="email"
+          disabled={values.buttonLoading}
+          onChange={(e) => onInputChange(e)}
           placeholder="firstname.lastname@soccermass.com"
-          onChange={onInputChange}
         />
 
         <FormControl fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Admin Password</InputLabel>
           <OutlinedInput
-            id="password"
             type={values.showPassword ? "text" : "password"}
-            value={values.password}
+            onChange={(e) => onInputChange(e)}
             disabled={values.buttonLoading}
-            onChange={onInputChange}
             placeholder="Complex Password"
+            value={values.password}
+            label="Admin Password"
+            id="password"
             endAdornment={
               <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
+                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword()} edge="end">
                   {values.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </IconButton>
               </InputAdornment>
             }
-            label="Admin Password"
           />
         </FormControl>
 
         <Box sx={{ textAlign: "right", width: "100%" }}>
           <AttentionSeeker effect="bounce">
-            <Tooltip title={formError.status && formError.errorMessages}>
-              <LoadingButton
-                onClick={loginHandler}
-                size="large"
-                disabled={!!formError.status}
-                variant="outlined"
-                endIcon={<LoginIcon />}
-                loading={!!values.buttonLoading}>
-                <Typography sx={{ fontWeight: 900 }}>Login</Typography>
-              </LoadingButton>
-            </Tooltip>
+            <LoadingButton
+              size="large"
+              variant="outlined"
+              onClick={loginHandler()}
+              endIcon={<LoginIcon />}
+              disabled={!!values.buttonLoading}
+              loading={!!values.buttonLoading}>
+              <Typography sx={{ fontWeight: 900 }}>Login</Typography>
+            </LoadingButton>
           </AttentionSeeker>
         </Box>
       </Stack>

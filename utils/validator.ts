@@ -1,8 +1,4 @@
-interface IValidator {
-  value: any;
-  type: "email" | "password" | "handle" | "fullName";
-  label?: string | null;
-}
+import { IValidator } from "@interface/utils/validator-interface";
 
 const validator = ({ value, type, label }: IValidator) => {
   if (!label) label = type.charAt(0).toUpperCase() + type.slice(1);
