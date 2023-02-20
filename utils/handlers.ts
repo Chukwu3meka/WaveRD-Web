@@ -22,3 +22,5 @@ export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
 };
 
 export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
+
+export const capitalizeFirstLetter = (word: string) => word[0].toUpperCase() + word.slice(1);

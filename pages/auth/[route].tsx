@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import LayoutContainer from "@component/authManagement/layout";
 import Head from "next/head";
+import { capitalizeFirstLetter } from "@utils/handlers";
 
 const Page = () => {
   const router = useRouter(),
@@ -27,10 +28,10 @@ const Page = () => {
   ) : (
     <>
       <Head>
-        <title>{(route as string)?.toUpperCase()} Page - SoccerMASS</title>
+        <title>SoccerMASS {capitalizeFirstLetter(route as string)}</title>
+        <meta name="description" content={`SoccerMASS ${capitalizeFirstLetter(route as string)}`} />
+        <meta property="og:description" content={`SoccerMASS ${capitalizeFirstLetter(route as string)}`} />
         <meta name="keywords" content={`${route as string}, soccer manager, soccer, soccermass, football manager, football`} />
-        <meta name="description" content={`SoccerMASS Auth Page - ${route as string}`} />
-        <meta property="og:description" content={`SoccerMASS Auth Page - ${route as string}`} />
       </Head>
 
       <LayoutContainer component={component} />
