@@ -41,20 +41,22 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="soccermass-links">SoccerMASS</label>
               <Link href="/">Home</Link>
-              {authenticated && (
-                <Link href="/auth/signin" onClick={logoutHandler()}>
-                  Logout/signout
-                </Link>
-              )}
-              <Link href="/auth/reset">Reset Password</Link>
-              <Link href="https://manager.soccermass.com/">Football Manager</Link>
+              <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
+                Bug Report
+              </a>
+              <Link href="/auth/reset">PasswordReset</Link>
               {authenticated && (
                 <Link href="/profile/subscriptions" onClick={logoutHandler()}>
                   Subscriptions
                 </Link>
               )}
-              {!authenticated && <Link href="/auth/signin">Signin/Login</Link>}
-              {!authenticated && <Link href="/auth/signup">Signup/Register</Link>}
+              {authenticated && (
+                <Link href="/auth/signin" onClick={logoutHandler()}>
+                  Logout
+                </Link>
+              )}
+              {!authenticated && <Link href="/auth/signin">Login</Link>}
+              {!authenticated && <Link href="/auth/signup">Register</Link>}
             </div>
 
             <div>
@@ -69,9 +71,9 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="company">Domains</label>
               <a href="https://blog.soccermass.com/">Blogs</a>
-              <a href="https://market.soccermass.com/">Market Place</a>
               <a href="https://space.soccermass.com/">Homes & Space</a>
               <a href="https://jobs.soccermass.com/">Hourly Jobs</a>
+              <a href="https://manager.soccermass.com/">Soccer Manager</a>
               <a href="https://apihub.soccermass.com/">API Hub</a>
             </div>
           </nav>
