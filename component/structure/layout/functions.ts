@@ -1,6 +1,7 @@
 // import { sleep } from "@utils/clientFuncs";
 import { IHandleScroll, IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 import fetcher from "@utils/fetcher";
+import { deObfuscate } from "@utils/handlers";
 
 export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) => {
   const width = window.innerWidth,
@@ -34,17 +35,49 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
 };
 
 export const retrieveCookie = async ({ setAuthAction }: any) => {
-  await fetcher({
-    api: "accounts",
-    method: "GET",
-    endpoint: "/personal/cookie",
-  })
-    .then(({ payload: { role, fullName, handle } }) => {
-      console.log({ role, fullName, handle });
+  const params = Object.fromEntries(new URLSearchParams(location.search));
+  const { facebook, twitter, google, response } = params;
 
-      setAuthAction({ role, fullName, handle });
+  // console.log({ params });
+
+  // console.log({ facebook, twitter, google, response, j: router.query, a: window.location });
+
+  // const urlResponse = deObfuscate(decodeURIComponent(response as string));
+
+  const oAuthID = deObfuscate(decodeURIComponent(response as string));
+
+  // console.log({ urlResponse });
+
+  if (!facebook && !twitter && !google && response) {
+    fetcher({
+      api: "accounts",
+      endpoint: "/personal/oAuthSession",
+      method: "POST",
+      payload: { oAuthID },
     })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then(({ payload: { role, fullName, handle } }) => {
+        console.log({ role, fullName, handle });
+
+        setAuthAction({ role, fullName, handle });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // .catch(({ message }) => enqueueSnackbar(message || "Invalid Oauth", { variant: "error" }))
+    // .finally(() => setUserForm((userForm: any) => ({ ...userForm, buttonLoading: false }))); // deactivate botton loading
+  } else {
+    await fetcher({
+      api: "accounts",
+      method: "GET",
+      endpoint: "/personal/cookie",
+    })
+      .then(({ payload: { role, fullName, handle } }) => {
+        console.log({ role, fullName, handle });
+
+        setAuthAction({ role, fullName, handle });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };

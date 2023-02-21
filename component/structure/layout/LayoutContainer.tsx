@@ -9,9 +9,8 @@ import createEmotionCache from "libs/createEmotionCache";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-import { IHandlePageLoading, IHandleProtectedRoute, ILayoutContainer } from "@interface/main/layout-interface";
+import { IHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
-// const LayoutContainer = (props: ILayoutContainer) => {
 const LayoutContainer = (props: any) => {
   const router = useRouter(),
     [appReady, setAppReady] = useState(false),

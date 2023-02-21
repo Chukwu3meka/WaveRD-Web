@@ -41,22 +41,22 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="soccermass-links">SoccerMASS</label>
               <Link href="/">Home</Link>
+              {/* {authenticated && (
+                <Link href="/profile/subscriptions" onClick={logoutHandler()}>
+                Subscriptions
+                </Link>
+              )} */}
+              <Link href="/auth/reset">Password Reset</Link>
               <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
                 Bug Report
               </a>
-              <Link href="/auth/reset">PasswordReset</Link>
-              {authenticated && (
-                <Link href="/profile/subscriptions" onClick={logoutHandler()}>
-                  Subscriptions
-                </Link>
-              )}
               {authenticated && (
                 <Link href="/auth/signin" onClick={logoutHandler()}>
                   Logout
                 </Link>
               )}
-              {!authenticated && <Link href="/auth/signin">Login</Link>}
-              {!authenticated && <Link href="/auth/signup">Register</Link>}
+              {!authenticated && <Link href="/auth/signin">Login/Register</Link>}
+              <Link href="/auth/reset">Organization</Link>
             </div>
 
             <div>

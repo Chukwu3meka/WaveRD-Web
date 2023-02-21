@@ -23,4 +23,14 @@ export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
 
 export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
 
-export const capitalizeFirstLetter = (word: string) => word[0].toUpperCase() + word.slice(1);
+export const capitalizeFirstLetter = (word: string) => word && word[0].toUpperCase() + word.slice(1);
+
+// deobfuscate string
+export const deObfuscate = (phrase: string) => {
+  if (!phrase) return;
+  let r = "";
+  for (let i = 0; i < phrase.length / 2; i++) {
+    r += String.fromCharCode(parseInt(phrase.substr(i * 2, 2), 16) ^ 0x7f);
+  }
+  return r;
+};
