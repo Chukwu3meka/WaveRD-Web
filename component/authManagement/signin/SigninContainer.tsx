@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Signin, handlers } from ".";
 import { setAuthAction } from "@store/actions";
 import { ISigninContainer, IUserForm } from "@interface/auth/signin-interface";
-import fetcher from "@utils/fetcher";
 import { deObfuscate } from "@utils/handlers";
 
 const SigninContainer = (props: ISigninContainer) => {

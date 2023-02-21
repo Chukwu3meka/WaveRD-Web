@@ -57,8 +57,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                       ? "http://localhost:5000/api/accounts/personal/logout"
                       : "https://accounts.soccermass.com/api/personal/logout"
                   }
-                  rel="noopener noreferrer"
-                  target="_blank">
+                  rel="noopener noreferrer">
                   Logout
                 </a>
               )}
@@ -77,9 +76,12 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
 
             <div>
               <label htmlFor="company">Domains</label>
-              <a href="https://blog.soccermass.com/">Blogs</a>
-              <a href="https://space.soccermass.com/">Homes & Space</a>
-              <a href="https://jobs.soccermass.com/">Hourly Jobs</a>
+              {/* <a href="https://blog.soccermass.com/">Blogs</a> */}
+              <a href="https://soccermass.com/">Blogs</a>
+              {/* <a href="https://space.soccermass.com/">Homes & Space</a> */}
+              <a href="https://soccermass.com/">Homes & Space</a>
+              {/* <a href="https://jobs.soccermass.com/">Hourly Jobs</a> */}
+              <a href="https://soccermass.com/">Hourly Jobs</a>
               <a href="https://manager.soccermass.com/">Soccer Manager</a>
               <a href="https://apihub.soccermass.com/">API Hub</a>
             </div>

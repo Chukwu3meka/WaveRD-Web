@@ -89,12 +89,19 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
             </Button>
           </Link>
         )}
+
         {authenticated && (
-          <Link href="/auth/signin" onClick={logoutHandler()}>
-            <Button variant="outlined" size="small">
+          <Button variant="outlined" size="small">
+            <a
+              href={
+                process.env.NODE_ENV === "development"
+                  ? "http://localhost:5000/api/accounts/personal/logout"
+                  : "https://accounts.soccermass.com/api/personal/logout"
+              }
+              rel="noopener noreferrer">
               Logout
-            </Button>
-          </Link>
+            </a>
+          </Button>
         )}
       </div>
     </header>

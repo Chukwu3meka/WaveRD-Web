@@ -21,7 +21,12 @@ export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHa
 
 // export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
 export const handleProtectedRoute = ({ route, authenticated }: any) => {
-  const unProtectedRoutes = ["/", "/apihub", "/manager", "/auth/reset", "/auth/logout", "/", "/", "/"];
+  // const params = Object.fromEntries(new URLSearchParams(location.search));
+
+  const protectedRoutes = ["/auth/signin", "/auth/signup"];
+  const unProtectedRoutes = ["/", "/apihub", "/auth/reset", "/auth/signin", "/auth/signup", "/organization"];
+
+  if (authenticated && protectedRoutes.includes(route)) console.log({ protectedRoutes });
 
   console.log({ route, authenticated });
   // console.log("useEffect fired!", { asPath: route });

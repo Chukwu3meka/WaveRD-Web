@@ -54,7 +54,7 @@ const LayoutContainer = (props: any) => {
   }, [router]);
 
   useEffect(() => {
-    if (appReady) handleProtectedRoute({ route: router.asPath, authenticated: authenticated });
+    if (appReady) handleProtectedRoute({ route: location.pathname, authenticated: authenticated });
   }, [router.asPath]);
 
   useEffect(() => {

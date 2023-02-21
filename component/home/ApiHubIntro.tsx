@@ -12,7 +12,14 @@ const ApiHubIntro = () => (
   <div className={apiHubIntroStyles.apihub}>
     <Stack spacing={3} justifyContent="space-evenly">
       <div>
-        <Image src="/images/layout/intro-apihub.png" alt="SoccerMASS API HUB welcome image" fill />
+        <Image
+          src="/images/layout/intro-apihub.png"
+          alt="SoccerMASS API HUB welcome image"
+          fill
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+        />
       </div>
 
       <main>

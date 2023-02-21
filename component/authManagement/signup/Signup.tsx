@@ -85,7 +85,13 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               </Button>
             </Link>
 
-            <LoadingButton onClick={() => registerHandler()} size="large" variant="outlined" endIcon={<RegisterIcon />} loading={!!userForm.options.loading}>
+            <LoadingButton
+              onClick={() => registerHandler()}
+              size="large"
+              variant="contained"
+              color="primary"
+              endIcon={<RegisterIcon />}
+              loading={!!userForm.options.loading}>
               <Typography sx={{ fontWeight: 900 }}>register</Typography>
             </LoadingButton>
           </AttentionSeeker>
