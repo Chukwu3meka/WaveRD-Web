@@ -8,14 +8,16 @@ import { styles } from ".";
 const Social = () => (
   <section className={styles.social}>
     <Chip
-      component="a"
       sx={{ "&>svg": { color: "#1DA1F2 !important" } }}
       icon={<TwitterIcon />}
       clickable
       label="Sign in with Twitter"
       variant="outlined"
       color="primary"
-      href={`http://localhost:5000/api/accounts/personal/twitter`}
+      component="a"
+      href={
+        process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/personal/twitter` : `https://accounts.soccermass.com/api/personal/twitter`
+      }
     />
     <Chip
       icon={<GoogleIcon />}
@@ -25,7 +27,9 @@ const Social = () => (
       variant="outlined"
       color="primary"
       component="a"
-      href={`http://localhost:5000/api/accounts/personal/google`}
+      href={
+        process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/personal/google` : `https://accounts.soccermass.com/api/personal/google`
+      }
     />
     <Chip
       sx={{ "&>svg": { color: "#4267B2 !important" } }}
@@ -35,9 +39,12 @@ const Social = () => (
       variant="outlined"
       color="primary"
       component="a"
-      href={`http://localhost:5000/api/accounts/personal/facebook`}
+      href={
+        process.env.NODE_ENV === "development"
+          ? `http://localhost:5000/api/accounts/personal/facebook`
+          : `https://accounts.soccermass.com/api/personal/facebook`
+      }
     />
-    {/* <SocialLink href={`http://127.0.0.1:5000/auth/twitter`} title="Continue with twitter" color="rgb(51, 133, 255)" /> */}
   </section>
 );
 
