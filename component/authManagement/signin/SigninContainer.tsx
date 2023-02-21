@@ -27,7 +27,6 @@ const SigninContainer = (props: ISigninContainer) => {
     if (facebook || twitter || google) enqueueSnackbar(urlResponse, { variant: "error" }) && router.replace("/auth/signin");
   }, []);
 
-  // const oAuthLoginFn = () => handlers.oAuthLoginFn({ e, setUserForm });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
   const loginHandler = () => () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));

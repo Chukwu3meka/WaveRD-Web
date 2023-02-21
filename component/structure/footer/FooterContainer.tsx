@@ -5,6 +5,7 @@ import { Footer } from ".";
 import { useEffect, useState } from "react";
 import { IFooterContainer } from "@interface/main/footer-interface";
 import { logoutAction } from "@store/actions";
+import fetcher from "@utils/fetcher";
 
 const FooterContainer = (props: IFooterContainer) => {
   const { logoutAction } = props,
@@ -15,9 +16,10 @@ const FooterContainer = (props: IFooterContainer) => {
     setauthenticated(props.authenticated || false);
   }, [props.authenticated]);
 
-  const logoutHandler = () => () => {
+  const logoutHandler = () => async () => {
     if (authenticated) {
       logoutAction();
+      await fetcher({ api: "accounts", method: "GET", endpoint: "/personal/logout" });
     } else {
       enqueueSnackbar("You're not logged in yet", { variant: "info" });
     }

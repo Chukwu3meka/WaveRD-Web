@@ -51,9 +51,16 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                 Bug Report
               </a>
               {authenticated && (
-                <Link href="/auth/signin" onClick={logoutHandler()}>
+                <a
+                  href={
+                    process.env.NODE_ENV === "development"
+                      ? "http://localhost:5000/api/accounts/personal/logout"
+                      : "https://accounts.soccermass.com/api/personal/logout"
+                  }
+                  rel="noopener noreferrer"
+                  target="_blank">
                   Logout
-                </Link>
+                </a>
               )}
               {!authenticated && <Link href="/auth/signin">Login/Register</Link>}
               <Link href="/auth/reset">Organization</Link>
