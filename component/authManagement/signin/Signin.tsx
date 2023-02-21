@@ -1,10 +1,11 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Box, Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
+import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
 
 import { SocialAuth, styles } from ".";
 import { ISignin } from "@interface/auth/signin-interface";
+import Link from "next/link";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler }: ISignin) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
@@ -49,11 +50,18 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
           />
         </FormControl>
 
-        <Box sx={{ textAlign: "right", width: "100%" }}>
+        <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
           <AttentionSeeker effect="bounce">
+            <Link href="/auth/signup">
+              <Button variant="outlined" size="large">
+                register
+              </Button>
+            </Link>
+
             <LoadingButton
               size="large"
-              variant="outlined"
+              variant="contained"
+              color="primary"
               onClick={loginHandler()}
               endIcon={<LoginIcon />}
               disabled={userForm.options.loading}
@@ -61,7 +69,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
               <Typography sx={{ fontWeight: 900 }}>Login</Typography>
             </LoadingButton>
           </AttentionSeeker>
-        </Box>
+        </Stack>
       </Stack>
     </div>
   </Fade>

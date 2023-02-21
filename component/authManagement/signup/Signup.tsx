@@ -1,11 +1,12 @@
 import Image from "next/image";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
-import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
+import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
 
 import { ConfirmMail, signupStyles } from ".";
 import { ISignup } from "@interface/auth/signup-interface";
+import Link from "next/link";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) =>
   userForm.options.accountCreated ? (
@@ -76,11 +77,19 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
           />
         </FormControl>
 
-        <AttentionSeeker effect="bounce">
-          <LoadingButton onClick={() => registerHandler()} size="large" variant="outlined" endIcon={<RegisterIcon />} loading={!!userForm.options.loading}>
-            <Typography sx={{ fontWeight: 900 }}>register</Typography>
-          </LoadingButton>
-        </AttentionSeeker>
+        <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
+          <AttentionSeeker effect="bounce">
+            <Link href="/auth/signin">
+              <Button variant="outlined" size="large">
+                login
+              </Button>
+            </Link>
+
+            <LoadingButton onClick={() => registerHandler()} size="large" variant="outlined" endIcon={<RegisterIcon />} loading={!!userForm.options.loading}>
+              <Typography sx={{ fontWeight: 900 }}>register</Typography>
+            </LoadingButton>
+          </AttentionSeeker>
+        </Stack>
       </Stack>
     </Fade>
   );
