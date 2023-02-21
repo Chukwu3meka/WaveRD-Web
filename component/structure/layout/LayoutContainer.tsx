@@ -36,10 +36,15 @@ const LayoutContainer = (props: any) => {
   useEffect(() => {
     const authenticated = props.authStatus || false;
 
-    if (appReady && authenticated !== authenticated) {
+    if (appReady) {
       setAuthenticated(authenticated);
-      handleProtectedRoute({ route: location.pathname, authenticated });
+      handleProtectedRoute({ router, authenticated });
     }
+    // // if (appReady) retrieveCookie(); // <= will run only once
+    // if (appReady && authenticated !== props.authStatus) {
+    //   setAuthenticated(authenticated);
+    //   handleProtectedRoute({ router, authenticated });
+    // }
   }, [props.authStatus]);
 
   useEffect(() => {
@@ -54,7 +59,7 @@ const LayoutContainer = (props: any) => {
   }, [router]);
 
   useEffect(() => {
-    if (appReady) handleProtectedRoute({ route: location.pathname, authenticated: authenticated });
+    if (appReady) handleProtectedRoute({ router, authenticated });
   }, [router.asPath]);
 
   useEffect(() => {
@@ -66,7 +71,7 @@ const LayoutContainer = (props: any) => {
   const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
   const handleScroll = () => functions.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
-  const handleProtectedRoute = ({ route, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ route, authenticated });
+  const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ router, authenticated });
 
   return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }} />;
 };

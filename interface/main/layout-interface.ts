@@ -1,5 +1,6 @@
 import { AppProps } from "next/app";
 import { EmotionCache } from "@emotion/react";
+import { NextRouter } from "next/router";
 
 // export interface ILayoutContainer extends AppProps {
 //   store: any;
@@ -46,6 +47,6 @@ export interface IFunctionsHandlePageLoading extends IHandlePageLoading {
 }
 
 export interface IHandleProtectedRoute {
-  route: string;
+  router: NextRouter;
   authenticated: boolean;
 }
