@@ -14,8 +14,8 @@ const SigninContainer = (props: ISigninContainer) => {
     { enqueueSnackbar } = useSnackbar();
 
   const [userForm, setUserForm] = useState<IUserForm>({
-    password: "Password@1",
-    email: "chukwuemeka@soccermass.com",
+    password: "",
+    email: "",
     options: { showPassword: false, loading: false },
   });
 
