@@ -6,12 +6,12 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import { Intro, Support, Solutions, SearchPlayer } from ".";
+import { Welcome, Support, Solutions, SearchPlayer } from ".";
 
 const NoAuthHome = () => (
   <div className={styles.apihub}>
-    {/* <Intro />
-    <Solutions /> */}
+    <Welcome />
+    {/* <Solutions /> */}
     {/* <SearchPlayer
       searching={searching}
       playerDetails={playerDetails}
@@ -19,7 +19,7 @@ const NoAuthHome = () => (
       playerSearchOptions={playerSearchOptions}
       setSearchTermHandler={setSearchTermHandler}
     /> */}
-    <Support />
+    {/* <Support /> */}
   </div>
 );
 
