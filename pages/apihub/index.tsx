@@ -1,5 +1,5 @@
-const Page = () => {
-  return <div>API HUB index</div>;
-};
+import Home from "@component/apihub/home";
+
+const Page = () => <Home />;
 
 export default Page;
