@@ -5,12 +5,10 @@ import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
-import { styles } from ".";
 import theme from "@libs/theme";
-import FooterContainer from "@component/structure/footer";
-import HeaderContainer from "@component/structure/header";
 import BuilderLoading from "@component/templates/loading";
 import { ILayout } from "@interface/main/layout-interface";
+import { HeaderContainer, FooterContainer, styles } from ".";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }: ILayout) => (
   <>
