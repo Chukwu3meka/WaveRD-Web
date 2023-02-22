@@ -6,11 +6,11 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import { Welcome, Support, Solutions, SearchPlayer } from ".";
+import { WelcomeContainer, Support, Solutions, SearchPlayer } from ".";
 
 const NoAuthHome = () => (
   <div className={styles.apihub}>
-    <Welcome />
+    <WelcomeContainer />
     {/* <Solutions /> */}
     {/* <SearchPlayer
       searching={searching}
