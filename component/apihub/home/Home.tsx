@@ -12,7 +12,7 @@ const NoAuthHome = () => (
   <div className={styles.apihub}>
     <WelcomeContainer />
     <Peaks />
-    <Competitions />
+    {/* <Competitions /> */}
     {/* <Solutions /> */}
     {/* <SearchPlayer
       searching={searching}
