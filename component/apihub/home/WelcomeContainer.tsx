@@ -12,7 +12,7 @@ const WelcomeContainer = () => {
 
 export default WelcomeContainer;
 
-const carouselColors = ["#800080", "#1181A2", "#E0C31C", "#1e3952", "#307630"];
+const carouselColors = ["#800080", "#1181A2", "#E0C31C", "#9191A9", "#307630"];
 
 const dataCovered = [
   {
