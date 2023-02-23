@@ -1,15 +1,13 @@
 @import "@source/scss/index.scss";
 
 .peaks {
-  clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+  border: 3px solid red;
   margin-top: -100px;
-
+  padding: 80px 10px 0px;
   background: $textSecondary;
   background: white;
-  padding: 50px 10px;
-
   min-height: 300px;
-
   a,
   a:link {
     color: $warning;
@@ -25,22 +23,84 @@
     text-decoration-color: $warning;
   }
 
-  & .withoutImage > main {
+  & > .withoutImage > main {
     margin: auto;
+    max-width: 820px;
     text-align: center;
-    max-width: 800px;
     & > p:nth-of-type(1) {
       display: block;
-      margin: 10px auto 5px;
-      // border: 3px solid red;
       font-weight: 800;
       color: $primary;
-      font-size: 1.3em;
-      letter-spacing: 5px;
+      font-size: 1.4em;
+      letter-spacing: 3px;
     }
     & > p:nth-of-type(2) {
       color: #5e5e5e;
+      margin-top: 5px;
       text-align-last: right;
+    }
+  }
+
+  & > .rightImage {
+    max-width: 1500px;
+    @extend .withoutImage;
+    margin: 50px auto;
+    @include quickFlex($column: 20px, $wrap: wrap-reverse);
+    & > main {
+      @include quickFlex($dir: column);
+    }
+    & > figure {
+      position: relative;
+      width: clamp(270px, 100%, 610px);
+      margin: -20px 0 20px;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+  }
+
+  & > .leftImage {
+    @extend .rightImage;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .peaks {
+    padding: 120px 10px 0px;
+    margin-top: -120px;
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+
+    & > .withoutImage > main {
+      max-width: 620px;
+      & > p:nth-of-type(2) {
+        margin: 10px;
+      }
+    }
+    & > .rightImage > figure {
+      position: relative;
+      width: clamp(320px, 100%, 610px);
+      height: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .peaks {
+    margin-top: -250px;
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+    & > .withoutImage > main {
+      max-width: 220px;
+      & > p:nth-of-type(2) {
+        margin: 10px;
+      }
+    }
+    & > .rightImage > figure {
+      flex-wrap: nowrap;
+      position: relative;
+      margin: -20px 0 20px;
+      height: 320px;
+      width: clamp(120px, 100%, 610px);
     }
   }
 }

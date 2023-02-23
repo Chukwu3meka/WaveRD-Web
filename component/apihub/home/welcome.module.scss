@@ -32,8 +32,7 @@
 
 @media screen and (min-width: 720px) {
   .welcome {
-    padding: 100px 20px 150px;
-    // height: clamp(400px, calc(100vh + 475px), 1400px);
+    padding: 100px 20px 300px;
     @include quickFlex($justify: space-evenly, $align: stretch);
 
     & > section > * {
@@ -84,6 +83,7 @@
 
 @media screen and (min-width: 1200px) {
   .welcome {
+    height: clamp(400px, calc(100vh + 185px), 1400px);
     & > section:first-of-type {
       max-width: 700px;
     }
