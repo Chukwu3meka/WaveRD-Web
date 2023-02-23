@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button, Paper } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import Carousel from "nuka-carousel/lib/carousel";
+import { Typography, Button } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 import { welcomeStyles } from ".";
@@ -20,19 +19,17 @@ const Welcome = ({ setCurrColorFn, currColor, dataCovered }: IWelcome) => {
           adaptiveHeight={true}
           autoplayInterval={5000}
           afterSlide={(index: number) => setCurrColorFn(index)}>
-          {dataCovered.map(({ title, description, path }, index) => {
-            return (
-              <main key={index}>
-                <Typography color={currColor}>{title}</Typography>
-                <Typography color="rgb(6, 5, 27)">{description} </Typography>
-                <Link href={path}>
-                  <Button startIcon={<RemoveRedEyeIcon />} size="large" variant="contained" sx={{ backgroundColor: currColor }}>
-                    View Documentation
-                  </Button>
-                </Link>
-              </main>
-            );
-          })}
+          {dataCovered.map(({ title, description, path }, index) => (
+            <main key={index}>
+              <Typography color={currColor}>{title}</Typography>
+              <Typography color="#D4D4DE">{description} </Typography>
+              <Link href={path}>
+                <Button startIcon={<RemoveRedEyeIcon />} size="large" variant="contained" sx={{ backgroundColor: "rgb(30, 57, 82)", color: "#CCCCDC" }}>
+                  View Documentation
+                </Button>
+              </Link>
+            </main>
+          ))}
         </Carousel>
       </section>
       <section>
@@ -49,9 +46,9 @@ const Welcome = ({ setCurrColorFn, currColor, dataCovered }: IWelcome) => {
           adaptiveHeight={true}
           autoplayInterval={5000}>
           {new Array(5).fill("").map((_, index: number) => (
-            <figure key={index} style={{ filter: `drop-shadow(-5px 5px 10px #878787` }}>
+            <figure key={index}>
               <Image
-                src={`/images/apihub/welcome-${index + 1}.jpg`}
+                src={`/images/layout/apihub-welcome-${index + 1}.jpg`}
                 fill
                 sizes="(max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,
