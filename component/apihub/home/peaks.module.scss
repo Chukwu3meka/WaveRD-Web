@@ -1,8 +1,6 @@
 @import "@source/scss/index.scss";
 
-.transparent {
-  // clip-path: polygon(0 10%, 100% 100%, 100% 100%, 90% 100%);
-  // clip-path: polygon(0 0%, 100% 0, 100% 90%, 0% 100%);
+.peaks {
   clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
   margin-top: -100px;
 
@@ -10,27 +8,39 @@
   background: white;
   padding: 50px 10px;
 
-  height: 300px;
-  & > div:last-of-type {
-    max-width: 1200px;
-    margin: auto;
-    width: calc(100vw - 10px) !important;
+  min-height: 300px;
 
-    .peak {
-      min-height: 400px;
-      margin: auto;
-      padding: 50px 10px 10px;
-      @include quickFlex();
-      & > p {
-        // font-size: 1.2em;
-        // border: 3px solid red;
-        text-align: center;
-        color: $lightGray;
-        background: linear-gradient(to left, $secondary, $darkGray 100%);
-        background-position: 0 100%;
-        background-size: 100% 3px;
-        background-repeat: repeat-x;
-      }
+  a,
+  a:link {
+    color: $primary;
+    text-decoration: underline;
+    text-decoration-color: $loading;
+    text-underline-position: under; // to increase the gap between text and underlining in CSS
+    text-decoration-thickness: 2px;
+    font-weight: 700;
+    transition: all 1s ease-in;
+  }
+
+  a:hover {
+    text-decoration-color: $secondary;
+  }
+
+  & .withoutImage > main {
+    margin: auto;
+    text-align: center;
+    max-width: 800px;
+    & > p:nth-of-type(1) {
+      display: block;
+      margin: 10px auto 5px;
+      // border: 3px solid red;
+      font-weight: 800;
+      color: $highlight;
+      font-size: 1.3em;
+      letter-spacing: 5px;
+    }
+    & > p:nth-of-type(2) {
+      color: #5e5e5e;
+      text-align-last: right;
     }
   }
 }
