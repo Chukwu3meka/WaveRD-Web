@@ -1,0 +1,36 @@
+@import "@source/scss/index.scss";
+
+.transparent {
+  // clip-path: polygon(0 10%, 100% 100%, 100% 100%, 90% 100%);
+  // clip-path: polygon(0 0%, 100% 0, 100% 90%, 0% 100%);
+  clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+  margin-top: -100px;
+
+  background: $textSecondary;
+  background: white;
+  padding: 50px 10px;
+
+  height: 300px;
+  & > div:last-of-type {
+    max-width: 1200px;
+    margin: auto;
+    width: calc(100vw - 10px) !important;
+
+    .peak {
+      min-height: 400px;
+      margin: auto;
+      padding: 50px 10px 10px;
+      @include quickFlex();
+      & > p {
+        // font-size: 1.2em;
+        // border: 3px solid red;
+        text-align: center;
+        color: $lightGray;
+        background: linear-gradient(to left, $secondary, $darkGray 100%);
+        background-position: 0 100%;
+        background-size: 100% 3px;
+        background-repeat: repeat-x;
+      }
+    }
+  }
+}

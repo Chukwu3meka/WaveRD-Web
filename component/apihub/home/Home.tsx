@@ -1,4 +1,4 @@
-import { styles } from ".";
+import { Competitions, Peaks, styles } from ".";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -11,6 +11,8 @@ import { WelcomeContainer, Support, Solutions, SearchPlayer } from ".";
 const NoAuthHome = () => (
   <div className={styles.apihub}>
     <WelcomeContainer />
+    <Peaks />
+    <Competitions />
     {/* <Solutions /> */}
     {/* <SearchPlayer
       searching={searching}

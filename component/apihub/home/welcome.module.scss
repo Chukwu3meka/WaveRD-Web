@@ -2,7 +2,7 @@
 
 .welcome {
   max-width: 100vw;
-  padding: 50px 10px;
+  padding: 50px 10px 100px;
   background: linear-gradient(100deg, #908b8b -60%, rgb(30, 57, 82) 50%);
   & > section:first-of-type {
     max-width: calc(100vw - 20px);
@@ -32,8 +32,8 @@
 
 @media screen and (min-width: 720px) {
   .welcome {
-    padding: 100px 20px;
-    height: clamp(400px, calc(100vh - 75px), 1200px);
+    padding: 100px 20px 150px;
+    // height: clamp(400px, calc(100vh + 475px), 1400px);
     @include quickFlex($justify: space-evenly, $align: stretch);
 
     & > section > * {
