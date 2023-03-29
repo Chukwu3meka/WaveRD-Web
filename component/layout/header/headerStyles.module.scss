@@ -4,9 +4,9 @@
   background-color: #1b1e29;
   position: sticky;
   position: -webkit-sticky;
-  top: 10px; /* required */
+  top: 5px; /* required */
   display: block;
-  transition: top 0.5s ease-in;
+  transition: top 0.5s ease-in-out;
   z-index: 3;
   padding: 5px 20px;
   max-width: 1200px;
