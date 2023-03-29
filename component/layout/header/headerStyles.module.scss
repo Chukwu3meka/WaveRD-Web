@@ -3,18 +3,19 @@
 .header {
   background-color: #1b1e29;
   position: sticky;
-  // position: -webkit-sticky;
-  top: 5px; /* required */
+  position: -webkit-sticky;
+  top: 10px; /* required */
+  display: block;
   transition: top 0.5s ease-in;
   z-index: 3;
-  // box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
-  // -webkit-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
-  // -moz-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
   padding: 5px 20px;
   max-width: 1200px;
-  margin: auto auto -70px;
+  margin: -71px auto 0;
   border-radius: 70px / 100%;
-  // border: 3px solid red;
+  box-shadow: 0px 5px 8px 1px lighten($color: #1b1e29, $amount: 10);
+  -webkit-box-shadow: 0px 5px 8px 1px lighten($color: #1b1e29, $amount: 10);
+  -moz-box-shadow: 0px 5px 8px 1px lighten($color: #1b1e29, $amount: 10);
+
   & > header {
     max-width: 1200px;
     margin: auto;
@@ -40,9 +41,13 @@
 }
 
 .headerHidden {
+  // border: 3px solid red;
   @extend .header;
-  top: -70px;
-  transition: top 0.5s ease-out;
+  top: -71px;
+  // transition: top 0.5s ease-out;
+  box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
+  -webkit-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
+  -moz-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
 }
 
 @media screen and (min-width: 570px) {

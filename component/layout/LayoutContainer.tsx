@@ -15,7 +15,8 @@ const LayoutContainer = (props: any) => {
   const router = useRouter(),
     [appReady, setAppReady] = useState(false),
     [lastScrollPos, setLastScrollPos] = useState(0),
-    [displayHeader, setDisplayHeader] = useState(true),
+    // [displayHeader, setDisplayHeader] = useState(true),
+    [displayHeader, setDisplayHeader] = useState(false), // header is false on initial load
     [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
     { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache, setAuthAction } = props;

@@ -7,6 +7,7 @@ const Intro = () => (
   <Fade direction="down" triggerOnce={true}>
     <div className={introStyles.intro}>
       <div>
+      <div>
         <Typography variant="caption" fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "2.5em" }}>
           <a href={process.env.NEXT_PUBLIC_BASE_CLIENT!} rel="noopener noreferrer" target="_blank">
             Welcome to
@@ -25,6 +26,7 @@ const Intro = () => (
             Leading Football Data API Source
           </a>
         </Typography>
+      </div>
       </div>
     </div>
   </Fade>
