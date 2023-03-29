@@ -3,12 +3,12 @@ export interface IHeader {
   displayHeader: boolean;
   // thirdPartyAccounts: IThirdPartyAccounts[];
   authenticated: boolean;
-  relativeHeader: boolean;
+  relativeHeader: "dark" | "light" | null;
 }
 
 export interface IHeaderContainer {
   logoutAction: Function;
   displayHeader: boolean;
   authenticated: boolean;
-  relativeHeader: boolean;
+  relativeHeader: "dark" | "light" | null;
 }

@@ -19,7 +19,6 @@
   & > header {
     max-width: 1200px;
     margin: auto;
-    color: $textSecondary;
     padding: 10px;
     @include quickFlex($dir: row, $justify: space-between);
     & > div:first-of-type {
@@ -55,9 +54,12 @@
       margin-bottom: -5px;
       @include quickFlex($dir: row, $column: 20px);
       a {
-        color: white;
+        color: $textSecondary;
+        // color: $textPrimary;
         &:hover {
           color: $secondary;
+          // color: $text;
+          color: $primary;
           background: linear-gradient(to left, $secondary, $darkGray 100%);
           background-position: 0 100%;
           background-size: 100% 2px;
@@ -78,7 +80,6 @@
   .header > header {
     & > div:last-of-type {
       @include quickFlex($dir: row, $column: 10px);
-
       & > div:first-of-type {
         display: none;
       }
@@ -92,17 +93,29 @@
     padding-right: 15px;
     margin-right: 10px;
     @include quickFlex($dir: row);
-    & > a {
-      color: white;
-      &:hover {
-        color: $primary;
-      }
+  }
+}
+
+.relativeHeaderDark {
+  @extend .header;
+  background-color: transparent;
+  box-shadow: none;
+
+  header > div:nth-of-type(2) {
+    a {
+      color: $textSecondary;
     }
   }
 }
 
-.relativeHeader {
+.relativeHeaderLight {
   @extend .header;
   background-color: transparent;
   box-shadow: none;
+
+  header > div:nth-of-type(2) {
+    a {
+      color: $textPrimary;
+    }
+  }
 }

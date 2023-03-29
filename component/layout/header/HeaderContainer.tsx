@@ -8,7 +8,7 @@ import { logoutAction } from "@store/actions";
 import { IHeaderContainer } from "@interface/main/header-interface";
 
 const HeaderContainer = (props: IHeaderContainer) => {
-  const { logoutAction, displayHeader, relativeHeader } = props,
+  const { logoutAction, displayHeader, relativeHeader = null } = props,
     { enqueueSnackbar } = useSnackbar(),
     [authenticated, setauthenticated] = useState(false);
 
