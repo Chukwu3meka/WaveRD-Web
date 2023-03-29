@@ -5,44 +5,72 @@
     color: $lightGray;
     text-align: center;
     // height: calc(100vh + 70px) !important;
-    height: calc(100vh + 0px) !important;
-    @include quickFlex($dir: column);
-    clip-path: polygon(50% 0%, 70% 0, 100% 0, 100% 96%, 0 100%, 0 0, 30% 0);
-    background: radial-gradient(circle closest-corner at 50% 40%, transparent -50%, rgba($darkGray, 0.998) 50%),
-      url("/images/layout/intro-welcome.jpg") 50%/250% no-repeat;
-    & > div {
-      width: clamp(200px, calc(100% - 50px), 1200px);
+    height: 100vh;
+    // @include quickFlex();
+    display: grid;
+    grid-template-columns: auto 400px;
+
+    // width: clamp(200px, calc(100% - 50px), 1200px);
+    background: $darkGray;
+
+    // align-items: center;
+    padding: 50px;
+    & > div:first-of-type {
+      // height: max-content;
+      // position: relative;
+      // margin: auto;
+      z-index: 1;
+      padding: 10px 50px;
+      @include quickFlex($dir: column, $align: flex-start);
       border: 2px solid $textSecondary;
+      // height: max-content;
+      & > span {
+        margin-top: 20px;
+        @include quickFlex($column: 20px);
+      }
+      text-align: left;
+
+      border-radius: 0 70px 0 70px;
+    }
+
+    & > div:last-of-type {
+      // height: 100%;
+      // width: 100%;
+      margin-left: -200px;
+      // border: 2px solid red;
+      // clip-path: polygon(50% 0%, 70% 0, 100% 0, 100% 96%, 0 100%, 0 0, 30% 0);
+      background: radial-gradient(circle closest-corner at 50% 40%, transparent -50%, rgba($darkGray, 0.998) 50%),
+        url("/images/layout/intro-welcome.jpg") 50%/250% no-repeat;
     }
   }
 }
 
-@media screen and (min-width: 530px) {
-  .intro > div {
-    background: radial-gradient(circle closest-corner at 50% 37%, transparent -50%, rgba($darkGray, 0.998) 50%),
-      url("/images/layout/intro-welcome.jpg") 50%/190% no-repeat;
-  }
-}
+// @media screen and (min-width: 530px) {
+//   .intro > div {
+//     background: radial-gradient(circle closest-corner at 50% 37%, transparent -50%, rgba($darkGray, 0.998) 50%),
+//       url("/images/layout/intro-welcome.jpg") 50%/190% no-repeat;
+//   }
+// }
 
-@media screen and (min-width: 620px) {
-  .intro > div {
-    clip-path: polygon(50% 0%, 65% 0, 100% 0, 100% 95%, 0 100%, 0 0, 35% 0);
-    background: radial-gradient(circle closest-corner at 50% 30%, transparent -48%, rgba($darkGray, 0.998) 50%),
-      url("/images/layout/intro-welcome.jpg") 50%/160% no-repeat;
-  }
-}
+// @media screen and (min-width: 620px) {
+//   .intro > div {
+//     clip-path: polygon(50% 0%, 65% 0, 100% 0, 100% 95%, 0 100%, 0 0, 35% 0);
+//     background: radial-gradient(circle closest-corner at 50% 30%, transparent -48%, rgba($darkGray, 0.998) 50%),
+//       url("/images/layout/intro-welcome.jpg") 50%/160% no-repeat;
+//   }
+// }
 
-@media screen and (min-width: 860px) {
-  .intro > div {
-    clip-path: polygon(50% 0%, 60% 0, 100% 0, 100% 95%, 0 100%, 0 0, 40% 0);
-    background: radial-gradient(circle closest-corner at 50% 30%, transparent -58%, rgba($darkGray, 0.998) 50%),
-      url("/images/layout/intro-welcome.jpg") 50%/130% no-repeat;
-  }
-}
+// @media screen and (min-width: 860px) {
+//   .intro > div {
+//     clip-path: polygon(50% 0%, 60% 0, 100% 0, 100% 95%, 0 100%, 0 0, 40% 0);
+//     background: radial-gradient(circle closest-corner at 50% 30%, transparent -58%, rgba($darkGray, 0.998) 50%),
+//       url("/images/layout/intro-welcome.jpg") 50%/130% no-repeat;
+//   }
+// }
 
-@media screen and (min-width: 1220px) {
-  .intro > div {
-    background: radial-gradient(circle closest-corner at 50% 25%, transparent -55%, rgba($darkGray, 0.998) 50%),
-      url("/images/layout/intro-welcome.jpg") 50%/100% no-repeat;
-  }
-}
+// @media screen and (min-width: 1220px) {
+//   .intro > div {
+//     background: radial-gradient(circle closest-corner at 50% 25%, transparent -55%, rgba($darkGray, 0.998) 50%),
+//       url("/images/layout/intro-welcome.jpg") 50%/100% no-repeat;
+//   }
+// }

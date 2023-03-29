@@ -1,4 +1,5 @@
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
+import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
 
 import { introStyles } from ".";
@@ -7,26 +8,44 @@ const Intro = () => (
   <Fade direction="down" triggerOnce={true}>
     <div className={introStyles.intro}>
       <div>
-      <div>
-        <Typography variant="caption" fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "2.5em" }}>
-          <a href={process.env.NEXT_PUBLIC_BASE_CLIENT!} rel="noopener noreferrer" target="_blank">
-            Welcome to
-          </a>
-        </Typography>
-        <Typography variant="caption" fontSize={{ xs: "2.8em", sm: "2.89em", md: "2.7em", lg: "4em" }} fontWeight={900}>
-          SoccerMASS
-        </Typography>
-        <Typography variant="body2" fontSize={{ xs: "1.3em", sm: "1.5em", md: "1.7em", lg: "1.5em" }}>
-          <a href={process.env.NEXT_PUBLIC_BASE_MANAGER!} rel="noopener noreferrer" target="_blank">
+        <div>
+          <Typography fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "3.5em" }}>Welcome to</Typography>
+          <Typography fontSize={{ xs: "2.8em", sm: "2.89em", md: "2.7em", lg: "6em" }} fontWeight={900}>
+            <a href={process.env.NEXT_PUBLIC_BASE_CLIENT!} rel="noopener noreferrer" target="_blank">
+              SoccerMASS
+            </a>
+          </Typography>
+          {/* <Typography fontSize={{ xs: "1.3em", sm: "1.5em", md: "1.7em", lg: "1.5em" }}>
             Soccer Management Haven
-          </a>
-        </Typography>
-        <Typography variant="subtitle1" fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.5em" }}>
-          <a href={process.env.NEXT_PUBLIC_BASE_APIHUB!} rel="noopener noreferrer" target="_blank">
+          </Typography>
+          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.5em" }}>
             Leading Football Data API Source
-          </a>
-        </Typography>
-      </div>
+          </Typography> */}
+
+          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.3em" }}>
+            The ultimate destination for football enthusiasts and managers, designed to provide you with everything you need to stay ahead of the game.
+          </Typography>
+
+          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.3em" }}>
+            With our cutting-edge tools and in-depth insights, you can access real-time data. So join us today and experience the power of data-driven football
+            API like never before!
+          </Typography>
+
+          <span>
+            <Link href="/">
+              <Button size="large" variant="contained">
+                Soccer Manager
+              </Button>
+            </Link>
+
+            <Link href="/">
+              <Button size="large" variant="contained">
+                API Hub
+              </Button>
+            </Link>
+          </span>
+        </div>
+        <div />
       </div>
     </div>
   </Fade>

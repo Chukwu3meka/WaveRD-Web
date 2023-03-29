@@ -1,0 +1,102 @@
+@import "@source/scss/index.scss";
+
+.header {
+  background-color: #1b1e29;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 5px; /* required */
+  display: block;
+  transition: top 0.5s ease-in-out;
+  z-index: 3;
+  padding: 5px 20px;
+  max-width: 1200px;
+  margin: -71px auto 0;
+  border-radius: 70px / 100%;
+  box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+
+  & > header {
+    max-width: 1200px;
+    margin: auto;
+    color: $textSecondary;
+    padding: 10px;
+    @include quickFlex($dir: row, $justify: space-between);
+    & > div:first-of-type {
+      @include quickFlex($dir: row, $column: 10px, $width: 100%);
+      & > a > img {
+        border-radius: 50%;
+        margin-bottom: -5px;
+      }
+    }
+
+    & > div:nth-of-type(2) {
+      display: none;
+    }
+
+    & > div:last-of-type {
+      display: none;
+    }
+  }
+}
+
+.headerHidden {
+  @extend .header;
+  top: -71px;
+}
+
+@media screen and (min-width: 570px) {
+  .header > header {
+    & > div:first-of-type {
+      width: unset;
+    }
+
+    & > div:nth-of-type(2) {
+      margin-bottom: -5px;
+      @include quickFlex($dir: row, $column: 20px);
+      a {
+        color: white;
+        &:hover {
+          color: $secondary;
+          background: linear-gradient(to left, $secondary, $darkGray 100%);
+          background-position: 0 100%;
+          background-size: 100% 2px;
+          background-repeat: repeat-x;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 670px) {
+  .header > header > div:nth-of-type(2) {
+    column-gap: 40px;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .header > header {
+    & > div:last-of-type {
+      @include quickFlex($dir: row, $column: 10px);
+
+      & > div:first-of-type {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .header > header > div:last-of-type > div:first-of-type {
+    border-right: 1px solid darken($color: $lightGray, $amount: 70);
+    padding-right: 15px;
+    margin-right: 10px;
+    @include quickFlex($dir: row);
+    & > a {
+      color: white;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
