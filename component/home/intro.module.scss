@@ -4,7 +4,8 @@
   & > div {
     color: $lightGray;
     text-align: center;
-    height: calc(100vh + 70px) !important;
+    // height: calc(100vh + 70px) !important;
+    height: calc(100vh + 0px) !important;
     @include quickFlex($dir: column);
     clip-path: polygon(50% 0%, 70% 0, 100% 0, 100% 96%, 0 100%, 0 0, 30% 0);
     background: radial-gradient(circle closest-corner at 50% 40%, transparent -50%, rgba($darkGray, 0.998) 50%),
