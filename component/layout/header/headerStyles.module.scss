@@ -4,13 +4,17 @@
   background-color: #1b1e29;
   position: sticky;
   // position: -webkit-sticky;
-  top: 0; /* required */
+  top: 5px; /* required */
   transition: top 0.5s ease-in;
   z-index: 3;
-  box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
-  -webkit-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
-  -moz-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
-  padding: 5px 10px;
+  // box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
+  // -webkit-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
+  // -moz-box-shadow: 0px 5px 11px 1px lighten($color: #1b1e29, $amount: 10);
+  padding: 5px 20px;
+  max-width: 1200px;
+  margin: auto auto -70px;
+  border-radius: 70px / 100%;
+  // border: 3px solid red;
   & > header {
     max-width: 1200px;
     margin: auto;

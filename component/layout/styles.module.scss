@@ -31,6 +31,8 @@
     }
   }
   & > div:last-of-type {
+    // position: sticky;
+    // border: 3px solid red;
     min-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
