@@ -1,12 +1,14 @@
 export interface IHeader {
-  logoutHandler: Function;
+  // logoutHandler: Function;
   displayHeader: boolean;
   // thirdPartyAccounts: IThirdPartyAccounts[];
   authenticated: boolean;
+  relativeHeader: boolean;
 }
 
 export interface IHeaderContainer {
-  displayHeader: boolean;
   logoutAction: Function;
+  displayHeader: boolean;
   authenticated: boolean;
+  relativeHeader: boolean;
 }

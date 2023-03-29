@@ -9,39 +9,8 @@ import { styles } from ".";
 import { IHeader } from "@interface/main/header-interface";
 import thirdPartyAccounts from "@source/constants/thirdPartyAccounts";
 
-const SocialIcon = ({ account, link }: { account: string; link: string }) => {
-  let icon;
-
-  switch (account) {
-    case "Whatsapp":
-      icon = <WhatsAppIcon fontSize="inherit" />;
-      break;
-    case "Twitter":
-      icon = <TwitterIcon fontSize="inherit" />;
-      break;
-
-    case "Instagram":
-      icon = <InstagramIcon fontSize="inherit" />;
-      break;
-    default:
-      return <></>;
-  }
-
-  return (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px" }}>
-      {icon}
-    </IconButton>
-  );
-};
-
-const navLinks = [
-  { title: "Home", path: "/" },
-  { title: "API Hub", path: "/apihub" },
-  { title: "Manager", path: "/manager" },
-];
-
-const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
-  <div className={styles[displayHeader ? "header" : "headerHidden"]}>
+const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
+  <div className={styles[relativeHeader ? "relativeHeader" : displayHeader ? "header" : "headerHidden"]}>
     <header>
       <div>
         <Link href="/">
@@ -109,3 +78,34 @@ const Header = ({ logoutHandler, authenticated, displayHeader }: IHeader) => (
 );
 
 export default Header;
+
+const SocialIcon = ({ account, link }: { account: string; link: string }) => {
+  let icon;
+
+  switch (account) {
+    case "Whatsapp":
+      icon = <WhatsAppIcon fontSize="inherit" />;
+      break;
+    case "Twitter":
+      icon = <TwitterIcon fontSize="inherit" />;
+      break;
+
+    case "Instagram":
+      icon = <InstagramIcon fontSize="inherit" />;
+      break;
+    default:
+      return <></>;
+  }
+
+  return (
+    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px" }}>
+      {icon}
+    </IconButton>
+  );
+};
+
+const navLinks = [
+  { title: "Home", path: "/" },
+  { title: "API Hub", path: "/apihub" },
+  { title: "Manager", path: "/manager" },
+];
