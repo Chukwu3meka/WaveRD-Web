@@ -1,25 +1,24 @@
 @import "@source/scss/index.scss";
 
 .header {
-  background-color: #1b1e29;
   position: sticky;
   position: -webkit-sticky;
+  background-color: transparent;
   top: 5px; /* required */
   display: block;
   transition: top 0.5s ease-in-out;
   z-index: 3;
-  padding: 5px 20px;
-  max-width: 1200px;
   margin: calc(-#{$headerHeight}) auto 0;
-  border-radius: 70px / 100%;
-  box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
 
   & > header {
+    background-color: #1b1e29;
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 70px / 100%;
     max-width: 1200px;
     margin: auto;
-    padding: 10px;
+    padding: 15px 30px;
     @include quickFlex($dir: row, $justify: space-between);
     & > div:first-of-type {
       @include quickFlex($dir: row, $column: 10px, $width: 100%);
@@ -98,24 +97,34 @@
 
 .relativeHeaderDark {
   @extend .header;
-  background-color: transparent;
-  box-shadow: none;
 
-  header > div:nth-of-type(2) {
-    a {
-      color: $textSecondary;
+  margin: auto;
+  position: unset;
+
+  & > header {
+    background-color: transparent;
+    box-shadow: none;
+    & > div:nth-of-type(2) {
+      a {
+        color: $textSecondary;
+      }
     }
   }
 }
 
 .relativeHeaderLight {
   @extend .header;
-  background-color: transparent;
-  box-shadow: none;
 
-  header > div:nth-of-type(2) {
-    a {
-      color: $textPrimary;
+  margin: auto;
+  position: unset;
+
+  & > header {
+    box-shadow: none;
+    background-color: transparent;
+    & > div:nth-of-type(2) {
+      a {
+        color: $textPrimary;
+      }
     }
   }
 }

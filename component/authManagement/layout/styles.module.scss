@@ -2,66 +2,75 @@
 
 .layout {
   min-height: 500px;
-  & > aside {
-    margin: 0;
-    display: none;
+  // border: 3px solid red;
+
+  & > div:first-of-type {
+    border: 3px solid blue;
   }
-  & > main {
-    // border: 3px solid red;
-    @include quickFlex();
-    // min-height: calc(100% - 205px);
-    padding: 50px 20px;
+
+  & > div:last-of-type {
+    & > aside {
+      margin: 0;
+      display: none;
+    }
+    & > main {
+      @include quickFlex();
+      // min-height: calc(100% - 205px);
+      padding: 50px 20px;
+    }
   }
 }
 
 @media screen and (min-width: 1200px) {
   .layout {
-    // height: calc(100vh - 75px);
-    display: grid;
-    // min-height: calc(100vh - 65px);
-    // min-height:     ;
-    // border: 3px solid red;
-    // min-height: none;
     height: clamp(600px, 100%, 1500px);
-    // height: clamp(calc(100vh - 65px), 100%, 1500px);
-    grid-template-columns: clamp(600px, 50%, 550px) auto;
-    aside {
-      display: unset;
-      background-image: url("/images/layout/soccermass.webp");
-      background-size: 100% 100%;
-      position: relative;
-      overflow: hidden;
-      &::after {
-        content: "";
-        position: absolute;
-        background-color: $darkGray;
-        opacity: 0.4;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-      & > div {
-        // border: 3px solid red;
+    & > div:last-of-type {
+      // height: calc(100vh - 75px);
+      display: grid;
+      // min-height: calc(100vh - 65px);
+      // min-height:     ;
+      // border: 3px solid red;
+      // min-height: none;
+      // height: clamp(calc(100vh - 65px), 100%, 1500px);
+      grid-template-columns: clamp(600px, 50%, 550px) auto;
+      aside {
+        display: unset;
+        background-image: url("/images/layout/soccermass.webp");
+        background-size: 100% 100%;
         position: relative;
-        z-index: 1;
-        height: 100%;
-        & > div {
-          margin: auto;
+        overflow: hidden;
+        &::after {
+          content: "";
           position: absolute;
-          top: 45%;
-          transform: translateY(-50%);
-          color: darken($color: $textSecondary, $amount: 10);
-          font-size: 1.2em;
-          padding: 10px;
-          max-width: 450px;
-          * {
-            text-align: center;
-          }
+          background-color: $darkGray;
+          opacity: 0.4;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+        & > div {
+          // border: 3px solid red;
+          position: relative;
+          z-index: 1;
+          height: 100%;
+          & > div {
+            margin: auto;
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            color: darken($color: $textSecondary, $amount: 10);
+            font-size: 1.2em;
+            padding: 10px;
+            max-width: 450px;
+            * {
+              text-align: center;
+            }
 
-          ul {
-            padding: 0;
-            list-style: none;
+            ul {
+              padding: 0;
+              list-style: none;
+            }
           }
         }
       }

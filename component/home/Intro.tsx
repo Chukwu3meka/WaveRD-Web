@@ -1,3 +1,4 @@
+import { RelativeHeader } from "@component/layout/header";
 import { Typography, Button } from "@mui/material";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
@@ -7,6 +8,8 @@ import { introStyles } from ".";
 const Intro = () => (
   <Fade direction="down" triggerOnce={true}>
     <div className={introStyles.intro}>
+      <RelativeHeader theme="dark" />
+
       <div>
         <div>
           <Typography fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "3.5em" }}>Welcome to</Typography>

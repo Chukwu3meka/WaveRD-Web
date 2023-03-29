@@ -1,20 +1,23 @@
 @import "@source/scss/index.scss";
 
 .intro {
-  & > div {
+  background: $darkGray;
+  height: 100vh;
+
+  & > div:last-of-type {
     color: $lightGray;
     text-align: center;
     // height: calc(100vh + 70px) !important;
-    height: 100vh;
     // @include quickFlex();
     display: grid;
     grid-template-columns: auto 400px;
 
+    border: 3px solid red;
+
     // width: clamp(200px, calc(100% - 50px), 1200px);
-    background: $darkGray;
 
     // align-items: center;
-    padding-top: $headerHeight;
+    // padding-top: $headerHeight;
     & > div:first-of-type {
       // height: max-content;
       // position: relative;

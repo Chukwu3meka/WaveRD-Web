@@ -12,3 +12,7 @@ export interface IHeaderContainer {
   authenticated: boolean;
   relativeHeader: "dark" | "light" | null;
 }
+
+export interface IRelativeHeader {
+  theme: "dark" | "light";
+}

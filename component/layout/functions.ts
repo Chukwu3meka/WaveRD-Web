@@ -35,11 +35,14 @@ export const handleProtectedRoute = ({ router, authenticated }: any) => {
 };
 
 export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: IHandleScroll) => {
-  if (window.scrollY > lastScrollPos) {
+  if (window.scrollY > lastScrollPos || window.scrollY === 0) {
     setDisplayHeader(false);
   } else {
     setDisplayHeader(true);
   }
+
+  // console.log({ w: window.scrollY, lastScrollPos });
+
   setLastScrollPos(window.scrollY);
 };
 
