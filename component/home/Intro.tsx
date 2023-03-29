@@ -12,24 +12,18 @@ const Intro = () => (
 
       <div>
         <div>
-          <Typography fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "3.5em" }}>Welcome to</Typography>
-          <Typography fontSize={{ xs: "2.8em", sm: "2.89em", md: "2.7em", lg: "6em" }} fontWeight={900}>
+          <Typography fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "3em" }}>Welcome to</Typography>
+          <Typography fontSize={{ xs: "2.8em", sm: "2.89em", md: "2.7em", lg: "5em" }} fontWeight={900}>
             <a href={process.env.NEXT_PUBLIC_BASE_CLIENT!} rel="noopener noreferrer" target="_blank">
               SoccerMASS
             </a>
           </Typography>
-          {/* <Typography fontSize={{ xs: "1.3em", sm: "1.5em", md: "1.7em", lg: "1.5em" }}>
-            Soccer Management Haven
-          </Typography>
-          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.5em" }}>
-            Leading Football Data API Source
-          </Typography> */}
 
-          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.3em" }}>
+          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.2em" }}>
             The ultimate destination for football enthusiasts and managers, designed to provide you with everything you need to stay ahead of the game.
           </Typography>
 
-          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.3em" }}>
+          <Typography fontSize={{ xs: "1.1em", sm: "1.3em", md: "1.5em", lg: "1.2em" }} mt="10px" mb="20px">
             With our cutting-edge tools and in-depth insights, you can access real-time data. So join us today and experience the power of data-driven football
             API like never before!
           </Typography>

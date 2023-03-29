@@ -104,27 +104,16 @@
   & > header {
     background-color: transparent;
     box-shadow: none;
-    & > div:nth-of-type(2) {
-      a {
-        color: $textSecondary;
-      }
+    & > div:nth-of-type(2) > span > a {
+      color: $textSecondary;
     }
   }
 }
 
 .relativeHeaderLight {
-  @extend .header;
+  @extend .relativeHeaderDark;
 
-  margin: auto;
-  position: unset;
-
-  & > header {
-    box-shadow: none;
-    background-color: transparent;
-    & > div:nth-of-type(2) {
-      a {
-        color: $textPrimary;
-      }
-    }
+  & > header > div:nth-of-type(2) > span > a {
+    color: $textPrimary;
   }
 }

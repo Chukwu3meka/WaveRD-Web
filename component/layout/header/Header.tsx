@@ -33,7 +33,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
 
       <div>
         {navLinks.map(({ title, path }) => (
-          <Typography variant="subtitle2" key={title}>
+          <Typography component="span" variant="subtitle2" key={title}>
             <Link href={path}>{title}</Link>
           </Typography>
         ))}
