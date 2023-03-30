@@ -51,7 +51,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
         <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "left", vertical: "bottom" }}>
           <Provider store={store}>
             <main className={styles.layout}>
-              <HeaderContainer displayHeader={displayHeader} relativeHeader={false} />
+              <HeaderContainer displayHeader={displayHeader} relativeHeader={null} />
               <div>
                 {(!appReady || pageLoading) && <BuilderLoading />}
 
