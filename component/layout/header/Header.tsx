@@ -7,7 +7,7 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 
 import { styles } from ".";
 import { IHeader } from "@interface/main/header-interface";
-import thirdPartyAccounts from "@source/constants/thirdPartyAccounts";
+import socialAccounts from "@source/constants/socialAccounts";
 
 // const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
 const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color }: any) => (
@@ -41,10 +41,11 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
 
       <div>
         <div>
-          {thirdPartyAccounts
-            .filter((acc) => ["Twitter", "Instagram", "Whatsapp"].includes(acc[0]))
-            .map(([account, link = "https://soccermass.com/"]) => (
-              <SocialIcon key={account} account={account} link={link} />
+          {socialAccounts
+            // .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc[0]))
+            .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
+            .map(({ title, id, href }) => (
+              <SocialIcon key={id} account={title} link={href} />
             ))}
         </div>
 

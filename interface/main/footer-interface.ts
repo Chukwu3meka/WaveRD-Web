@@ -1,6 +1,6 @@
 export interface IFooter {
   logoutHandler: Function;
-  // thirdPartyAccounts: IThirdPartyAccounts[];
+  // socialAccounts: IsocialAccounts[];
   authenticated: boolean;
 }
 

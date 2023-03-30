@@ -5,7 +5,7 @@ import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 import { IFooter } from "@interface/main/footer-interface";
-import thirdPartyAccounts from "@source/constants/thirdPartyAccounts";
+import socialAccounts from "@source/constants/socialAccounts";
 
 const Footer = ({ logoutHandler, authenticated }: IFooter) => (
   <div className={styles.footer}>
@@ -29,9 +29,9 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <Typography variant="subtitle2">Follow US</Typography>
 
             <div>
-              {thirdPartyAccounts.map(([accounts, link = "https://soccermass.com/"]) => (
-                <a href={link} key={accounts} rel="noopener noreferrer" target="_blank">
-                  <Image src={`/images/social/${accounts.toLowerCase()}.png`} alt={`SoccerMASS ${accounts} page`} width={30} height={30} />
+              {socialAccounts.map(({ title, id, href, image }) => (
+                <a href={href} key={id} rel="noopener noreferrer" target="_blank">
+                  <Image src={image} alt={`SoccerMASS ${title} page`} width={30} height={30} />
                 </a>
               ))}
             </div>

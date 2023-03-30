@@ -1,7 +1,7 @@
 export interface IHeader {
   // logoutHandler: Function;
   displayHeader: boolean;
-  // thirdPartyAccounts: IThirdPartyAccounts[];
+  // socialAccounts: IsocialAccounts[];
   authenticated: boolean;
   relativeHeader: "dark" | "light" | null;
 }
