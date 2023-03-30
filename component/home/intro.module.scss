@@ -53,6 +53,9 @@
     background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type {
       max-width: 900px;
+      & > div:first-of-type {
+        padding: 20px 20px 20px 60px;
+      }
       & > div:last-of-type {
         border-radius: 50%;
         background: radial-gradient(circle closest-corner at 50% 50%, transparent -210%, $darkGray 65%),

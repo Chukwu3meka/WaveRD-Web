@@ -19,7 +19,7 @@ const Peaks = ({ slidesToShow }: { slidesToShow: number }) => {
     <div className={peaksStyles.transparent}>
       <div></div>
       <div>
-        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000}>
+        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000} dragging={false}>
           {competitions.map(({ id, image, title }) => (
             <div key={id} className={peaksStyles.firstImageCarousel}>
               <Image src={image} alt={`SoccerMASS ${title}`} width={70} height={70} />
@@ -27,11 +27,10 @@ const Peaks = ({ slidesToShow }: { slidesToShow: number }) => {
           ))}
         </Carousel>
 
-        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={1} autoplayInterval={2500}>
+        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={1} autoplayInterval={2500} dragging={false}>
           {peaksArray.map((peak) => (
             <div key={peak} className={peaksStyles.peak}>
-              {/* <Typography fontSize={{ xs: "1.7em", sm: "1.7em", md: "1.7em" }} fontWeight={600}> */}
-              <Typography fontSize="1.7em" fontWeight={600}>
+              <Typography fontSize={{ xs: "1.7em", sm: "1.9em", md: "2.1em" }} fontWeight={600}>
                 {peak}
               </Typography>
             </div>
@@ -39,13 +38,14 @@ const Peaks = ({ slidesToShow }: { slidesToShow: number }) => {
         </Carousel>
 
         <Carousel
+          speed={10000}
           autoplay={true}
+          dragging={false}
+          wrapAround={true}
           autoplayReverse={true}
           withoutControls={true}
-          wrapAround={true}
-          slidesToShow={slidesToShow}
           autoplayInterval={2000}
-          speed={10000}>
+          slidesToShow={slidesToShow}>
           {[...new Array(64)].map((_, i) => (
             <div key={i} className={peaksStyles.lastImageCarousel}>
               <Image
