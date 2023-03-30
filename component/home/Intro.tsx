@@ -13,6 +13,7 @@ const Intro = () => (
       <div>
         <div>
           <Typography fontSize={{ xs: "1.5em", sm: "1.89em", md: "1.5em", lg: "3em" }}>Welcome to</Typography>
+
           <Typography fontSize={{ xs: "2.8em", sm: "2.89em", md: "2.7em", lg: "5em" }} fontWeight={900}>
             <a href={process.env.NEXT_PUBLIC_BASE_CLIENT!} rel="noopener noreferrer" target="_blank">
               SoccerMASS
@@ -29,13 +30,13 @@ const Intro = () => (
           </Typography>
 
           <span>
-            <Link href="/">
+            <Link href="/manager">
               <Button size="large" variant="contained">
                 Soccer Manager
               </Button>
             </Link>
 
-            <Link href="/">
+            <Link href="/apihub">
               <Button size="large" variant="contained">
                 API Hub
               </Button>

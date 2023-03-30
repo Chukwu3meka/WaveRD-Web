@@ -1,38 +1,67 @@
 @import "@source/scss/index.scss";
 
 .intro {
-  // background: $darkGray;
-  height: 100vh;
-
+  height: clamp(400px, 100vh, 1200px);
+  // max-height: 700px;
   background: $darkGray;
   background: linear-gradient(45deg, rgba(74, 74, 74, 1) 0%, $darkGray 34%);
 
   & > div:last-of-type {
-    display: grid;
-    color: $lightGray;
-    text-align: center;
-    max-height: inherit;
+    margin: auto;
+    max-width: 1700px;
     padding: 20px 30px;
-    grid-template-columns: auto 400px;
-    height: calc(100vh - $headerHeight - 9px);
+
+    @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
+    // border: 3px solid yellow;
+
+    // display: grid;
+    // grid-template-columns: auto 400px;
+    height: calc(100% - $headerHeight - 9px);
+    position: relative;
     & > div:first-of-type {
+      // height: 1200px;
+
+      padding: 100px 10px;
+
       z-index: 1;
+      // position: relative;
+
+      // top: 0;
+      // bottom: 0;
+
+      // height: none;
+      height: 100%;
+      color: $lightGray;
       padding: 10px 50px;
+      border-radius: 0 70px 0 70px;
       @include quickFlex($dir: column, $align: flex-start);
       border: 2px solid darken($color: $textSecondary, $amount: 50);
+      // width: calc(100% - 300px);
+
+      & > * {
+        max-width: 900px;
+      }
+
       & > span {
         margin-top: 20px;
-        @include quickFlex($column: 20px);
+        @include quickFlex($column: 20px, $justify: flex-end, $width: 100%);
       }
-      text-align: left;
-
-      border-radius: 0 70px 0 70px;
+      // border: 3px solid green;
     }
 
     & > div:last-of-type {
-      margin-left: -200px;
-      background: radial-gradient(circle closest-corner at 50% 50%, transparent -40%, rgba($darkGray, 0.998) 65%),
-        url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
+      // border: 3px solid red;
+      // padding: 20px;
+      height: clamp(300px, 100%, 100vh);
+      // display: none;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0%, -50%);
+      // height: 300px;
+      width: 800px;
+      // margin-left: -200px;
+      background: radial-gradient(circle closest-corner at 53% 50%, transparent -60%, $darkGray 65%), url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
     }
   }
 }
