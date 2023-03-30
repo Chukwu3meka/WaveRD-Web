@@ -1,7 +1,7 @@
 @import "@source/scss/index.scss";
 
 .transparent {
-  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
 
   & > div:first-of-type {
     background-color: $darkGray;
@@ -33,13 +33,13 @@
     width: calc(100vw - 10px) !important;
 
     .peak {
-      min-height: 400px;
+      // min-height: 150px;
       margin: auto;
       padding: 50px 10px 10px;
       @include quickFlex();
+      border: 3px solid red;
       & > p {
         // font-size: 1.2em;
-        // border: 3px solid red;
         text-align: center;
         color: $lightGray;
         background: linear-gradient(to left, $secondary, $darkGray 100%);
