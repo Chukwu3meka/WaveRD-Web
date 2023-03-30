@@ -1,8 +1,8 @@
+import Script from "next/script";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import createEmotionCache from "libs/createEmotionCache";
 import createEmotionServer from "@emotion/server/create-instance";
-import Script from "next/script";
 
 export default class MyDocument extends Document {
   render() {

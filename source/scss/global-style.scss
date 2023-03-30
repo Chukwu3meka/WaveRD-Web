@@ -1,6 +1,8 @@
 @import "@source/scss/index.scss";
 
-// body {}
+// body {
+// border: 3px solid red;
+// }
 
 // * {
 // -webkit-backface-visibility: hidden;
@@ -39,4 +41,10 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: darken($color: $primary, $amount: 10);
+}
+
+// style the text that a user selects on a webpage.
+::selection {
+  color: $primary;
+  background-color: lighten($color: $secondary, $amount: 30);
 }
