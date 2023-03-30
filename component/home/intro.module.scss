@@ -3,9 +3,6 @@
 .intro {
   background: $darkGray;
   height: clamp(400px, 100vh, 1200px);
-  // background: linear-gradient(45deg, rgba(74, 74, 74, 1) 0%, $darkGray 34%);
-  // background: linear-gradient(45deg, rgba(74, 74, 74, 1) 0%, $darkGray 1000px);
-
   & > div:last-of-type {
     margin: auto;
     max-width: 1400px;
@@ -37,7 +34,7 @@
       right: -200px;
       width: 800px;
       position: absolute;
-      height: clamp(300px, 100%, 1200px);
+      height: clamp(300px, 100%, 800px);
       transform: translate(0%, -50%);
       background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, $darkGray 65%),
         url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
@@ -46,32 +43,18 @@
 }
 
 @media screen and (min-width: 530px) {
-  .intro {
-    // background: linear-gradient(45deg, rgba(74, 74, 74, 1) 0%, $darkGray 50px);
-    // background: $darkGray 34%;
-
-    & > div:last-of-type {
-      width: calc(100vw - 50px);
-      // min-width: 600px;
-      & > div:last-of-type {
-        // border-radius: 50%;
-        // height: clamp(300px, 100%, 500px);
-      }
-    }
+  .intro > div:last-of-type {
+    width: calc(100vw - 50px);
   }
 }
-// background: radial-gradient(circle closest-corner at 50% 50%, transparent -60%, $darkGray 65%), url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
 
 @media screen and (min-width: 880px) {
   .intro {
     background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type {
       max-width: 900px;
-      & > div:first-of-type > * {
-      }
       & > div:last-of-type {
         border-radius: 50%;
-        height: clamp(300px, 100%, 500px);
         background: radial-gradient(circle closest-corner at 50% 50%, transparent -210%, $darkGray 65%),
           url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
       }
@@ -81,24 +64,11 @@
 
 @media screen and (min-width: 1000px) {
   .intro {
-    background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type {
-      // max-width: 1000px;
       max-width: 1300px;
       width: calc(100% - 200px);
       & > div:first-of-type > * {
         max-width: 1000px;
-        // width: calc(100vw - 50px);
-
-        // border: 3px solid red;
-      }
-
-      & > div:last-of-type {
-        border-radius: 50%;
-        // height: clamp(300px, 100%, 500px);
-
-        border-radius: 50%;
-        height: clamp(300px, 100%, 600px);
       }
     }
   }
@@ -108,23 +78,9 @@
   .intro {
     background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type {
-      // max-width: 1000px;
       max-width: 1500px;
       & > div:first-of-type > * {
         max-width: 1100px;
-        // width: calc(100vw - 50px);
-
-        // border: 3px solid red;
-      }
-
-      & > div:last-of-type {
-        border-radius: 50%;
-        // height: clamp(300px, 100%, 500px);
-
-        border-radius: 50%;
-        height: clamp(300px, 100%, 600px);
-        background: radial-gradient(circle closest-corner at 50% 50%, transparent -210%, $darkGray 65%),
-          url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
       }
     }
   }
@@ -133,93 +89,8 @@
 @media screen and (min-width: 1700px) {
   .intro {
     background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
-    & > div:last-of-type {
-      // @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
-      // align-items: center;
-
-      // max-width: 1000px;
-      // max-width: 1500px;
-      // margin: auto;
-      // max-height: 700px;
-      // border: 3px solid red;
-      & > div:first-of-type {
-        // height: 700px;
-        // height: 100%;
-        // max-height: 700px;
-        & > * {
-          max-width: 1200px;
-          // width: calc(100vw - 50px);
-        }
-      }
-
-      & > div:last-of-type {
-        // border-radius: 10px;
-      }
+    & > div:last-of-type > div:first-of-type > * {
+      max-width: 1200px;
     }
   }
 }
-
-// @media screen and (min-width: 1200px) {
-//   .intro {
-//     background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
-//     & > div:last-of-type {
-//       & > div:first-of-type > * {
-//         max-width: 900px;
-//         max-width: 900px;
-//       }
-//       & > div:last-of-type {
-//         border-radius: 50%;
-//         height: clamp(300px, 100%, 500px);
-//         background: radial-gradient(circle closest-corner at 50% 50%, transparent -60%, $darkGray 65%),
-//           url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 1200px) {
-//   .intro {
-//     background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
-//     & > div:last-of-type {
-//       max-width: 1700px;
-//       & > div:first-of-type > * {
-//         max-width: 1700px;
-//       }
-//       & > div:last-of-type {
-//         border-radius: 50%;
-//         height: clamp(300px, 100%, 500px);
-//         background: radial-gradient(circle closest-corner at 50% 50%, transparent -60%, $darkGray 65%),
-//           url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
-//         // background: radial-gradient(circle closest-corner at 50% 50%, transparent -60%, $darkGray 65%),
-//         //   url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
-//       }
-//     }
-//   }
-// }
-
-//   .intro > div {
-//     background: radial-gradient(circle closest-corner at 50% 37%, transparent -50%, rgba($darkGray, 0.998) 50%),
-//       url("/images/layout/intro-welcome.jpg") 50%/190% no-repeat;
-//   }
-// @media screen and (min-width: 620px) {
-//   .intro > div {
-//     clip-path: polygon(50% 0%, 65% 0, 100% 0, 100% 95%, 0 100%, 0 0, 35% 0);
-//     background: radial-gradient(circle closest-corner at 50% 30%, transparent -48%, rgba($darkGray, 0.998) 50%),
-//       url("/images/layout/intro-welcome.jpg") 50%/160% no-repeat;
-//   }
-// }
-
-// @media screen and (min-width: 860px) {
-//   .intro > div {
-//     clip-path: polygon(50% 0%, 60% 0, 100% 0, 100% 95%, 0 100%, 0 0, 40% 0);
-//     background: radial-gradient(circle closest-corner at 50% 30%, transparent -58%, rgba($darkGray, 0.998) 50%),
-//       url("/images/layout/intro-welcome.jpg") 50%/130% no-repeat;
-//   }
-// }
-
-// @media screen and (min-width: 1220px) {
-//   .intro > div {
-//     background: radial-gradient(circle closest-corner at 50% 25%, transparent -55%, rgba($darkGray, 0.998) 50%),
-//       url("/images/layout/intro-welcome.jpg") 50%/100% no-repeat;
-//   }
-// }
