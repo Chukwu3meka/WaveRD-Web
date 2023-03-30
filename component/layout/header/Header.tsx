@@ -9,7 +9,8 @@ import { styles } from ".";
 import { IHeader } from "@interface/main/header-interface";
 import thirdPartyAccounts from "@source/constants/thirdPartyAccounts";
 
-const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
+// const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
+const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color }: any) => (
   <div
     className={
       styles[relativeHeader === "dark" ? "relativeHeaderDark" : relativeHeader === "light" ? "relativeHeaderLight" : displayHeader ? "header" : "headerHidden"]
@@ -20,11 +21,11 @@ const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
           <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={35} height={35} />
         </Link>
 
-        <Stack direction="row" component="a" href="https://soccermass.com/">
-          <Typography fontWeight={700} fontSize="1.7em" component="h1" color={relativeHeader === "light" ? "#404040" : "#f1f1f1"}>
+        <Stack direction="row" component="a" href="https://soccermass.com/" onMouseOver={swapColorFn} onMouseLeave={swapColorFn}>
+          <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
             Soccer
           </Typography>
-          <Typography fontWeight={700} fontSize="1.7em" component="h1" color="primary">
+          <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.last}>
             MASS
           </Typography>
         </Stack>

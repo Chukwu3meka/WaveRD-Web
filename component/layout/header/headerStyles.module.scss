@@ -20,8 +20,13 @@
     margin: auto;
     padding: 15px 30px;
     @include quickFlex($dir: row, $justify: space-between);
+
     & > div:first-of-type {
       @include quickFlex($dir: row, $column: 10px, $width: 100%);
+
+      & > a > span {
+        transition: color 0.2s linear;
+      }
       & > a > img {
         border-radius: 50%;
         margin-bottom: -5px;
@@ -41,6 +46,9 @@
 .headerHidden {
   @extend .header;
   top: -#{$headerHeight};
+  & > header {
+    border: none;
+  }
 }
 
 @media screen and (min-width: 570px) {
@@ -54,10 +62,8 @@
       @include quickFlex($dir: row, $column: 20px);
       a {
         color: $textSecondary;
-        // color: $textPrimary;
         &:hover {
           color: $secondary;
-          // color: $text;
           color: $primary;
           background: linear-gradient(to left, $secondary, $darkGray 100%);
           background-position: 0 100%;
@@ -97,7 +103,6 @@
 
 .relativeHeaderDark {
   @extend .header;
-
   margin: auto;
   position: unset;
 
@@ -112,6 +117,7 @@
 
 .relativeHeaderLight {
   @extend .relativeHeaderDark;
+  border-bottom: 2px solid $secondary;
 
   & > header > div:nth-of-type(2) > span > a {
     color: $textPrimary;
