@@ -21,8 +21,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
         </Link>
 
         <Stack direction="row" component="a" href="https://soccermass.com/">
-          {/* <Typography fontWeight={700} fontSize="1.7em" component="h1" color="white"> */}
-          <Typography fontWeight={700} fontSize="1.7em" component="h1" color="#f5f5f509">
+          <Typography fontWeight={700} fontSize="1.7em" component="h1" color={relativeHeader === "light" ? "#404040" : "#f1f1f1"}>
             Soccer
           </Typography>
           <Typography fontWeight={700} fontSize="1.7em" component="h1" color="primary">
