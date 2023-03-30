@@ -1,9 +1,12 @@
 import Carousel from "nuka-carousel";
 import { Typography } from "@mui/material";
 
-import { peaksStyles } from ".";
+import Image from "next/image";
 
-const Peaks = () => {
+import { peaksStyles } from ".";
+import { competitions } from "@source/constants/competitions";
+
+const Peaks = ({ slidesToShow }: { slidesToShow: number }) => {
   const peaksArray = [
     "No Player hoarding in any particular team",
     "Competitive transfer market",
@@ -16,25 +19,44 @@ const Peaks = () => {
     <div className={peaksStyles.transparent}>
       <div></div>
       <div>
+        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000}>
+          {competitions.map(({ id, image, title }) => (
+            <div key={id} className={peaksStyles.firstImageCarousel}>
+              <Image src={image} alt={`SoccerMASS ${title}`} width={70} height={70} />
+            </div>
+          ))}
+        </Carousel>
+
         <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={1} autoplayInterval={2500}>
           {peaksArray.map((peak) => (
             <div key={peak} className={peaksStyles.peak}>
-              <Typography fontSize={{ xs: "1.7em", sm: "2.3em", md: "2.5em" }} fontWeight={600}>
+              {/* <Typography fontSize={{ xs: "1.7em", sm: "1.7em", md: "1.7em" }} fontWeight={600}> */}
+              <Typography fontSize="1.7em" fontWeight={600}>
                 {peak}
               </Typography>
             </div>
           ))}
         </Carousel>
 
-        {/* <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={1} autoplayInterval={2500}>
-          {peaksArray.map((peak) => (
-            <div key={peak} className={peaksStyles.peak}>
-              <Typography fontSize={{ xs: "1.7em", sm: "2.3em", md: "2.5em" }} fontWeight={600}>
-                {peak}
-              </Typography>
+        <Carousel
+          autoplay={true}
+          autoplayReverse={true}
+          withoutControls={true}
+          wrapAround={true}
+          slidesToShow={slidesToShow}
+          autoplayInterval={2000}
+          speed={10000}>
+          {[...new Array(64)].map((_, i) => (
+            <div key={i} className={peaksStyles.lastImageCarousel}>
+              <Image
+                src={`/images/clubs/club${`${i + 1}`.padStart(6, "0")}.webp`}
+                alt={`SoccerMASS  club${`${i + 1}`.padStart(6, "0")}`}
+                width={70}
+                height={70}
+              />
             </div>
           ))}
-        </Carousel> */}
+        </Carousel>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import { RelativeHeader } from "@component/layout/header";
-import { ApiHubIntro, Intro, ManagerIntro, Peaks } from ".";
+import { ApiHubIntro, Intro, ManagerIntro, PeaksContainer } from ".";
 
 const NoAuthHome = () => (
   <>
     <Intro />
     <ManagerIntro />
-    <Peaks />
+    <PeaksContainer />
     <ApiHubIntro />
   </>
 );

@@ -31,22 +31,44 @@
     max-width: 1200px;
     margin: auto;
     width: calc(100vw - 10px) !important;
-
     .peak {
-      // min-height: 150px;
-      margin: auto;
-      padding: 50px 10px 10px;
-      @include quickFlex();
-      border: 3px solid red;
+      height: 100%;
+
+      @include quickFlex($align: stretch);
+      // border: 3px solid red;
+      // margin: 30px auto;
+      height: 100%;
       & > p {
-        // font-size: 1.2em;
+        // border: 3px solid red;
+        // padding: 15px 0;
+        z-index: 1;
+        position: relative;
+        height: max-content;
+        // margin: auto;
+        margin: auto;
+        width: max-content;
         text-align: center;
         color: $lightGray;
         background: linear-gradient(to left, $secondary, $darkGray 100%);
         background-position: 0 100%;
-        background-size: 100% 3px;
+        background-size: 100% 5px;
+        border-radius: 20px;
         background-repeat: repeat-x;
       }
+    }
+
+    .firstImageCarousel {
+      padding: 60px 0 20px;
+      @include quickFlex();
+      & > img {
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+      }
+    }
+    .lastImageCarousel {
+      @extend .firstImageCarousel;
+      padding: 20px 0 60px;
     }
   }
 }

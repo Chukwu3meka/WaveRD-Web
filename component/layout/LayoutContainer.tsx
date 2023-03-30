@@ -26,7 +26,7 @@ const LayoutContainer = (props: any) => {
       setAppReady(true);
       handlePageLoading({ url: null, loading: false });
       window.addEventListener("resize", handleResize);
-      handleResize(); // <= run handleResize on page load.
+      // handleResize(); // <= run handleResize on page load.
     }
     return () => {
       if (!appReady) retrieveCookie(); // <= will run only once

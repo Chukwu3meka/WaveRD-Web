@@ -4,10 +4,10 @@ import { removeErrorAction, catchErr } from "./error";
 export const setDeviceSizeAction = (payload: number) => {
   return async (dispatch: Dispatch) => {
     try {
-      dispatch({ type: "SET_DEVICE_WIDTH", payload });
-      await dispatch(removeErrorAction("SET_DEVICE_WIDTH"));
+      dispatch({ type: "SET_DEVICE_SIZE", payload });
+      await dispatch(removeErrorAction("SET_DEVICE_SIZE"));
     } catch (err) {
-      return catchErr(dispatch, err, "SET_DEVICE_WIDTH");
+      return catchErr(dispatch, err, "SET_DEVICE_SIZE");
     }
   };
 };

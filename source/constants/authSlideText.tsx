@@ -1,4 +1,4 @@
-export default [
+const authSlideText = [
   <>
     <h5>It's great to see you again</h5>
     <h2>We're glad you're here</h2>
@@ -55,3 +55,5 @@ export default [
     <h4>Copy and paste the OTP to verify ownership.</h4>
   </>,
 ];
+
+export default authSlideText;
