@@ -2,12 +2,6 @@
 
 .layout {
   min-height: 500px;
-  // border: 3px solid red;
-
-  & > div:first-of-type {
-    border: 3px solid blue;
-  }
-
   & > div:last-of-type {
     & > aside {
       margin: 0;
@@ -15,7 +9,6 @@
     }
     & > main {
       @include quickFlex();
-      // min-height: calc(100% - 205px);
       padding: 50px 20px;
     }
   }
@@ -25,13 +18,7 @@
   .layout {
     height: clamp(600px, 100%, 1500px);
     & > div:last-of-type {
-      // height: calc(100vh - 75px);
       display: grid;
-      // min-height: calc(100vh - 65px);
-      // min-height:     ;
-      // border: 3px solid red;
-      // min-height: none;
-      // height: clamp(calc(100vh - 65px), 100%, 1500px);
       grid-template-columns: clamp(600px, 50%, 550px) auto;
       aside {
         display: unset;
@@ -50,7 +37,6 @@
           left: 0;
         }
         & > div {
-          // border: 3px solid red;
           position: relative;
           z-index: 1;
           height: 100%;
