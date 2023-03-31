@@ -8,10 +8,10 @@ import { competitions } from "@source/constants/competitions";
 
 const Peaks = ({ slidesToShow }: { slidesToShow: number }) => {
   const peaksArray = [
-    "No Player hoarding in any particular team",
     "Competitive transfer market",
-    "Advanced tactics and formation",
+    "Managers can't hoard Star Players in a particular team",
     "Real match simulation",
+    "Advanced tactics and formation",
     "Players with rating over '89' are registered as Free agents",
   ];
 

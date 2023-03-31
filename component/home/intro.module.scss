@@ -2,7 +2,8 @@
 
 .intro {
   background: $darkGray;
-  height: clamp(400px, 100vh, 1200px);
+  // height: clamp(400px, 100vh, 1200px);
+  height: 100vh;
   & > div:last-of-type {
     margin: auto;
     max-width: 1400px;
