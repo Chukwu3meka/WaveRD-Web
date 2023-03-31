@@ -1,8 +1,78 @@
 @import "@source/scss/index.scss";
 
-// body {
-// border: 3px solid red;
-// }
+body {
+  margin: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Merienda", "Roboto Slab", serif;
+  -webkit-box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  // height: calc(100vh - 70px);
+  // overflow: hidden;
+
+  // height: calc(100vh - constant(safe-area-inset-top) - constant(safe-area-inset-bottom));
+
+  // border: 13px solid green;
+
+  a {
+    cursor: pointer;
+    color: $primary;
+    text-decoration: none;
+    transition: color 500ms ease-in;
+  }
+
+  a:hover {
+    color: darken($color: $primary, $amount: 5);
+    transition: color 300ms ease-out;
+  }
+
+  * {
+    outline: none;
+    // user-select: none; //disable select
+    // -moz-user-select: none; //disable select
+    // -webkit-user-select: none; //disable select
+    -webkit-tap-highlight-color: transparent;
+    img {
+      overflow: hidden;
+    }
+  }
+
+  // border: 3px solid red;
+  // box-sizing: border-box;
+
+  // margin: 0;
+  // padding: 0;
+  // width: 100vw;
+  // height: 100vh;
+  // font-size: 14px;
+  // overflow: hidden;
+  // box-sizing: border-box;
+  // // font-family: "Merienda", cursive;
+  // // -ms-overflow-style: none;
+  // -webkit-box-sizing: border-box;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+  // background: url("/images/layout/tactics.png") no-repeat center center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
+  // background: linear-gradient(to bottom right, color(pry), color(sec));
+  // background-color: darken($color: #1d1c2e, $amount: 0);
+  // background-color: color(dark);
+  // * {
+  //   outline: none;
+  //   user-select: none;
+  //   -moz-user-select: none;
+  //   -webkit-user-select: none;
+  //   -webkit-tap-highlight-color: transparent;
+  //   img {
+  //     overflow: hidden;
+  //   }
+  // }
+}
 
 // * {
 // -webkit-backface-visibility: hidden;

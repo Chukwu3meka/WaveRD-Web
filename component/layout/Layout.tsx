@@ -10,10 +10,11 @@ import BuilderLoading from "@component/templates/loading";
 import { ILayout } from "@interface/main/layout-interface";
 import { HeaderContainer, FooterContainer, styles } from ".";
 
-const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }: ILayout) => (
+const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable }: ILayout) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -50,7 +51,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
         <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "left", vertical: "bottom" }}>
           <Provider store={store}>
-            <main className={styles.layout}>
+            <main className={styles.layout} style={cssVariable}>
               <HeaderContainer displayHeader={displayHeader} relativeHeader={null} />
               <div>
                 {(!appReady || pageLoading) && <BuilderLoading />}

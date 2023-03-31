@@ -25,6 +25,7 @@ export interface ILayout {
   pageLoading: boolean;
   appReady: boolean;
   emotionCache: EmotionCache;
+  cssVariable: React.CSSProperties;
 }
 
 export interface IFunctionsHandleResize {

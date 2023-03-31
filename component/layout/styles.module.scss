@@ -1,43 +1,13 @@
 @import "@source/scss/index.scss";
 
-.layout {
-  margin: 0;
-  font-size: 16px;
-  box-sizing: border-box;
-  font-family: "Merienda", "Roboto Slab", serif;
-  -webkit-box-sizing: border-box;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  a {
-    cursor: pointer;
-    color: $primary;
-    text-decoration: none;
-    transition: color 500ms ease-in;
-  }
-
-  a:hover {
-    color: darken($color: $primary, $amount: 5);
-    transition: color 300ms ease-out;
-  }
-
-  * {
-    outline: none;
-    // user-select: none; //disable select
-    // -moz-user-select: none; //disable select
-    // -webkit-user-select: none; //disable select
-    -webkit-tap-highlight-color: transparent;
-    img {
-      overflow: hidden;
-    }
-  }
-  & > div:last-of-type {
-    // position: sticky;
-    // border: 3px solid red;
-    // padding-top: 70px;
-    min-height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: grid;
-    grid-template-rows: auto max-content;
-  }
+.layout > div:last-of-type {
+  // position: sticky;
+  // border: 3px solid red;
+  // padding-top: 70px;
+  // min-height: 100vh;
+  min-height: var(--visibleScreen);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto max-content;
 }

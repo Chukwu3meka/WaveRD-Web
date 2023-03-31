@@ -3,7 +3,7 @@
 .managerIntro {
   @include quickFlex($width: 100%, $dir: row, $align: stretch, $row: 70px, $column: 20px);
   flex-wrap: wrap;
-  padding: 100px 10px;
+  padding: 50px 20px;
   img {
     filter: brightness(80%) saturate(70%);
   }

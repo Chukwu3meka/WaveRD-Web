@@ -45,7 +45,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
             // .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc[0]))
             .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
             .map(({ title, id, href }) => (
-              <SocialIcon key={id} account={title} link={href} />
+              <SocialIcon key={id} account={title} link={href} color={color.social} />
             ))}
         </div>
 
@@ -84,7 +84,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
 
 export default Header;
 
-const SocialIcon = ({ account, link }: { account: string; link: string }) => {
+const SocialIcon = ({ account, link, color }: { account: string; link: string; color: string }) => {
   let icon;
 
   switch (account) {
@@ -103,7 +103,7 @@ const SocialIcon = ({ account, link }: { account: string; link: string }) => {
   }
 
   return (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px" }}>
+    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px", color }}>
       {icon}
     </IconButton>
   );

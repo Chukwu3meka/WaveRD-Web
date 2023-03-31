@@ -7,12 +7,12 @@
     background-color: $darkGray;
     background-image: url("/images/layout/background.jpg");
     background-position: center 130px;
-    background-size: calc(max(100%, 900px)) 100vh;
+    background-size: calc(max(100%, 900px)) var(--visibleScreen);
     background-repeat: no-repeat;
     z-index: -1;
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: var(--visibleScreen);
     bottom: 0px;
     margin: auto;
     &::after {

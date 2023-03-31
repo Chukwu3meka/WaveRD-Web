@@ -10,7 +10,11 @@ import { IHeaderContainer } from "@interface/main/header-interface";
 const HeaderContainer = (props: IHeaderContainer) => {
   const { logoutAction, displayHeader, relativeHeader = null } = props,
     { enqueueSnackbar } = useSnackbar(),
-    [color, setColor] = useState({ first: relativeHeader === "light" ? "#404040" : "#f1f1f1", last: "primary" }),
+    [color, setColor] = useState({
+      first: relativeHeader === "light" ? "#404040" : "#f1f1f1",
+      last: "primary",
+      social: relativeHeader === "light" ? "#404040" : "#f1f1f1",
+    }),
     [authenticated, setauthenticated] = useState(false);
 
   useEffect(() => {
@@ -25,7 +29,7 @@ const HeaderContainer = (props: IHeaderContainer) => {
     }
   };
 
-  const swapColorFn = () => setColor((color) => ({ first: color.last, last: color.first }));
+  const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
   return <Header {...{ logoutHandler, displayHeader, authenticated, relativeHeader, swapColorFn, color }} />;
 };

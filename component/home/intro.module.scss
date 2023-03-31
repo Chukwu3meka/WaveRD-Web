@@ -1,21 +1,38 @@
 @import "@source/scss/index.scss";
 
+// :root {
+//   --visibleScreen: calc(var(--visibleScreen, 1vh) * 100);
+// }
+
 .intro {
   background: $darkGray;
   // height: clamp(400px, 100vh, 1200px);
-  height: 100vh;
+  // height: 100vh;
+  // border: 3px solid blue;
+  padding: 0 10px 50px;
+
+  // height: var(--visibleScreen);
+  // overflow: hidden;
+
+  // height: 762px;
+  // height: var(--visibleScreen, 1vh);
+  height: var(--visibleScreen);
+  & > div:first-of-type {
+    padding: 10px 0;
+  }
+
   & > div:last-of-type {
     margin: auto;
     max-width: 1400px;
-    padding: 20px 5px;
     @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
     height: calc(100% - $headerHeight - 9px);
     position: relative;
     & > div:first-of-type {
       z-index: 1;
+      // border: 3px solid red;
       height: 100%;
       color: $lightGray;
-      padding: 10px;
+      padding: 10px 20px;
       border-radius: 0 70px 0 70px;
       @include quickFlex($dir: column, $align: flex-start);
       border: 2px solid darken($color: $textSecondary, $amount: 50);
@@ -28,6 +45,7 @@
         margin-top: 20px;
         @include quickFlex($column: 20px, $row: 20px, $justify: flex-end, $width: 100%, $wrap: wrap);
       }
+      // height: calc(100vh - 200px);
     }
 
     & > div:last-of-type {
@@ -55,7 +73,7 @@
     & > div:last-of-type {
       max-width: 900px;
       & > div:first-of-type {
-        padding: 20px 20px 20px 60px;
+        // padding: 20px 20px 20px 60px;
       }
       & > div:last-of-type {
         border-radius: 50%;

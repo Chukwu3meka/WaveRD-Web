@@ -1,17 +1,5 @@
 import { IAppUITableProps } from "@interface/builder/table-interface";
-import {
-  Box,
-  Paper,
-  Stack,
-  Table,
-  Skeleton,
-  TableRow,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableContainer,
-  TablePagination,
-} from "@mui/material";
+import { Box, Paper, Stack, Table, Skeleton, TableRow, TableBody, TableCell, TableHead, TableContainer, TablePagination } from "@mui/material";
 
 import { styles } from ".";
 
@@ -29,6 +17,7 @@ const AppUITable = ({
   <Box p={1}>
     <TableContainer
       component={Paper}
+      // var(--visibleScreen)
       sx={{ p: 0, maxHeight: "calc(100vh - 230px)", borderRadius: 2, width: activeEntry ? "calc(100% - 200px)" : "100%" }}>
       <Table aria-label="customized table" stickyHeader size="small" className={styles.table} ref={tableRef}>
         <TableHead>
@@ -36,10 +25,7 @@ const AppUITable = ({
             {customTableHead.map(
               ({ display, title, align = "left" }, index) =>
                 display && (
-                  <TableCell
-                    key={index}
-                    align={align}
-                    sx={{ fontFamily: '"Rubik Microbe", cursive', fontSize: "1em", letterSpacing: ".05em" }}>
+                  <TableCell key={index} align={align} sx={{ fontFamily: '"Rubik Microbe", cursive', fontSize: "1em", letterSpacing: ".05em" }}>
                     {title}
                   </TableCell>
                 )

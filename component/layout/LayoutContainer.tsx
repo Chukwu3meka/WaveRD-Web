@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, HTMLAttributes } from "react";
 
 import { Layout, functions } from ".";
 import { setAuthAction, setDeviceSizeAction } from "@store/actions";
@@ -15,10 +15,10 @@ const LayoutContainer = (props: any) => {
   const router = useRouter(),
     [appReady, setAppReady] = useState(false),
     [lastScrollPos, setLastScrollPos] = useState(0),
-    // [displayHeader, setDisplayHeader] = useState(true),
-    [displayHeader, setDisplayHeader] = useState(false), // header is false on initial load
     [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
+    [cssVariable, setCssVariable] = useState<React.CSSProperties>({}),
+    [displayHeader, setDisplayHeader] = useState(false), // header is false on initial load
     { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache, setAuthAction } = props;
 
   useEffect(() => {
@@ -27,6 +27,19 @@ const LayoutContainer = (props: any) => {
       handlePageLoading({ url: null, loading: false });
       window.addEventListener("resize", handleResize);
       // handleResize(); // <= run handleResize on page load.
+
+      // // set CSS Variables
+      setCssVariable((cssVariable) => ({
+        ...cssVariable,
+        "--visibleScreen": `${window.innerHeight}px`, // <= iPhone not returning the right screen height in VH
+        // "--visibleScreen": `200px`, // <= iPhone not returning the right screen height in VH
+        // "--pry": props.theme === "light" ? "#CCCCCC" : "#424242",
+        //   // "--sec": props.theme === "light" ? "#ffffff" : "#0D0D1A",
+        //   // "--dim": props.theme === "light" ? "#646362" : "#ffffffb3",
+        //   // "--opp": props.theme === "light" ? "#424242" : "#fff",
+      }));
+
+      // console.log(typeof { visibleScreen: window.innerHeight });
     }
     return () => {
       if (!appReady) retrieveCookie(); // <= will run only once
@@ -74,7 +87,7 @@ const LayoutContainer = (props: any) => {
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
   const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ router, authenticated });
 
-  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader }} />;
+  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),
