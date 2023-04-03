@@ -55,14 +55,12 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
               <HeaderContainer displayHeader={displayHeader} relativeHeader={null} />
               <div>
                 {(!appReady || pageLoading) && <BuilderLoading />}
-
                 {appReady && !pageLoading && (
                   <main>
                     <Component {...pageProps} />
                   </main>
                 )}
-
-                <FooterContainer />
+                {!pageLoading && <FooterContainer />}{" "}
               </div>
             </main>
           </Provider>

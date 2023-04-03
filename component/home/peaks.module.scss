@@ -28,7 +28,8 @@
   }
 
   & > div:last-of-type {
-    max-width: 1200px;
+    // max-width: 1200px;
+    max-width: 2000px;
     margin: auto;
     width: calc(100vw - 10px) !important;
     .peak {

@@ -10,6 +10,8 @@ const BuilderLoadingContainer = ({ height }: IBuilderLoadingContainer) => {
   const [colorScheme, setColorScheme] = useState<string[]>(["#dfefdf", "#bddebd", "#9ace9a", "#78bd78", "#56ac56"]);
 
   useEffect(() => {
+    console.log("loading");
+
     const timer = window.setInterval(() => {
       const movingColors: string[] = arrayRotate({ arr: colorScheme }) as string[];
       setTime((prevTime) => prevTime + 1); // <-- Change this line!

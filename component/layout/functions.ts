@@ -10,12 +10,15 @@ export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) =>
 };
 
 export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHandlePageLoading) => {
+  // Smoothly scroll to the top of the page on page load
+
   // if (url) console.log(`Switching page to ${url}`);
 
   if (loading) {
     setPageLoading(true);
   } else {
     setTimeout(() => setPageLoading(false), 2000);
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   }
 };
 

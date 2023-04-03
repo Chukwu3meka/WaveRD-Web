@@ -77,7 +77,7 @@
       }
       & > div:last-of-type {
         border-radius: 50%;
-        background: radial-gradient(circle closest-corner at 50% 50%, transparent -210%, $darkGray 65%),
+        background: radial-gradient(circle closest-corner at 50% 50%, transparent -150%, $darkGray 65%),
           url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
       }
     }

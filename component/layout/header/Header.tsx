@@ -33,7 +33,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
 
       <div>
         {navLinks.map(({ title, path }) => (
-          <Typography component="span" variant="subtitle2" key={title}>
+          <Typography component="a" variant="subtitle2" key={title} color="primary">
             <Link href={path}>{title}</Link>
           </Typography>
         ))}
@@ -42,7 +42,6 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
       <div>
         <div>
           {socialAccounts
-            // .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc[0]))
             .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
             .map(({ title, id, href }) => (
               <SocialIcon key={id} account={title} link={href} color={color.social} />
