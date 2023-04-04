@@ -8,10 +8,8 @@
       display: none;
     }
     & > main {
-      // border: 3px solid blue;
       padding: 0;
       @include quickFlex($width: 100%);
-      // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
     }
   }
 }

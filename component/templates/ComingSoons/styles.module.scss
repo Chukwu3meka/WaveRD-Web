@@ -1,0 +1,31 @@
+@import "@source/scss/index.scss";
+
+.loading {
+  @include quickFlex($dir: column, $width: 100%);
+  position: relative;
+  & > img {
+    border-radius: 100%;
+    animation: ball-spinner 1.5s infinite linear;
+  }
+  & > div {
+    margin-top: 10px;
+    @include quickFlex($dir: row);
+    column-gap: 5px;
+    & > .loading-block {
+      width: 30px;
+      height: 5px;
+      position: relative;
+      border-radius: 2px;
+      transition: background-color 0.2s ease-in;
+    }
+  }
+}
+
+@keyframes ball-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
