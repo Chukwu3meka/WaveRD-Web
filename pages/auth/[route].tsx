@@ -15,7 +15,7 @@ const Page = () => {
 
   useEffect(() => {
     // ? Verify that user has visited a valid auth route
-    if (["emailConfirmation", "forgotPassword", "passwordReset", "signin", "signup"].includes(route as string)) {
+    if (["emailConfirmation", "forgotPassword", "signin", "signup"].includes(route as string)) {
       const AuthPage = dynamic(() => import(`@component/authManagement/${route}`));
       setComponent(<AuthPage />);
     } else {

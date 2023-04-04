@@ -1,6 +1,7 @@
 @import "@source/scss/index.scss";
 
 .comingSoon {
+  background-color: $darkGray;
   background-image: radial-gradient(circle at bottom left, lighten($darkGray, 7), $darkGray 30%);
   min-height: var(--visibleScreen);
   background-image: url("/images/layout/background.jpg");
