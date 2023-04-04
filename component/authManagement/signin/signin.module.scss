@@ -2,16 +2,19 @@
 
 .signin {
   caret-color: $primary;
-  margin: 10px auto;
   padding: 10px 10px 20px;
   transition: all 1.5s ease-in;
   @include boxShadow($br: 10px);
-  width: clamp(300px, 100%, 520px);
   background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
+  width: 100vw;
+  & > * {
+    max-width: 520px;
+    margin: auto;
+  }
+
   & > .social {
     z-index: 2;
     padding: 10px;
-    max-width: 800px;
     position: relative;
     margin: 20px auto 15px;
     @include quickFlex($dir: row, $wrap: wrap, $row: 20px);
@@ -40,5 +43,13 @@
       position: absolute;
       color: darken($color: $textSecondary, $amount: 40);
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .signin {
+    margin: 10px auto;
+    width: clamp(300px, 100%, 520px);
+    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
   }
 }

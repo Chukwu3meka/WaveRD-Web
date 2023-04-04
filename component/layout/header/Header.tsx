@@ -33,7 +33,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
 
       <div>
         {navLinks.map(({ title, path }) => (
-          <Typography component="a" variant="subtitle2" key={title} color="primary">
+          <Typography variant="subtitle2" key={title} color="primary" fontWeight={700}>
             <Link href={path}>{title}</Link>
           </Typography>
         ))}

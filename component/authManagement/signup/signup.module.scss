@@ -3,24 +3,31 @@
 .signup {
   width: 100%;
   caret-color: $primary;
-  & > form {
-    margin: 10px auto;
-    padding: 30px 10px 20px;
-    transition: all 1.5s ease-in;
+  & > div {
     @include boxShadow($br: 10px);
-    width: clamp(300px, 100%, 520px);
     background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
-    & > img {
-      border-radius: 50%;
-      animation: spin 4s alternate infinite;
-      @keyframes spin {
-        100% {
-          transform: rotateY(360deg);
+
+    & > form {
+      padding: 30px 10px 20px;
+      transition: all 1.5s ease-in;
+      max-width: 520px;
+      margin: auto;
+      & > img {
+        border-radius: 50%;
+        animation: spin 4s alternate infinite;
+        @keyframes spin {
+          100% {
+            transform: rotateY(360deg);
+          }
         }
       }
     }
   }
 }
 
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 1200px) {
+  .signup > div {
+    margin: 10px auto;
+    width: clamp(300px, 100%, 520px);
+  }
 }
