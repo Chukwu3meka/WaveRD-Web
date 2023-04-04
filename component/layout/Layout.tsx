@@ -5,7 +5,7 @@ import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
-import theme from "@libs/theme";
+import theme from "@source/theme";
 import BuilderLoading from "@component/templates/loading";
 import { ILayout } from "@interface/main/layout-interface";
 import { HeaderContainer, FooterContainer, styles } from ".";

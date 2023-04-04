@@ -31,6 +31,8 @@ const muiTheme = createTheme({
     MuiOutlinedInput: iPhoneInputFix,
     MuiFormControl: iPhoneInputFix,
 
+    MuiTypography: { styleOverrides: { root: { lineHeight: "1.7em", letterSpacing: "0.01em" } } },
+
     MuiPaper: { styleOverrides: { root: { padding: 5, boxSizing: "border-box" } } },
 
     MuiTable: { styleOverrides: { root: { minWidth: 300 } } },

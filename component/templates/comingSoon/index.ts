@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import ComingSoon from "./ComingSoon";
-import ComingSoonContainer from "./ComingSoonContainer";
+import BuilderComingSoon from "./BuilderComingSoon";
+import BuilderComingSoonContainer from "./BuilderComingSoonContainer";
 
-export { styles, ComingSoon, ComingSoonContainer as default };
+export { styles, BuilderComingSoon, BuilderComingSoonContainer as default };

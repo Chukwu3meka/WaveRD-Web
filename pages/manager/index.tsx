@@ -1,5 +1,5 @@
-const Page = () => {
-  return <div>Soccer Manager index</div>;
-};
+import ComingSoon from "@component/templates/comingSoon";
+
+const Page = () => <ComingSoon />;
 
 export default Page;

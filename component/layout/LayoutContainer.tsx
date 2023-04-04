@@ -4,7 +4,7 @@ import { useState, useEffect, HTMLAttributes } from "react";
 
 import { Layout, functions } from ".";
 import { setAuthAction, setDeviceSizeAction } from "@store/actions";
-import createEmotionCache from "libs/createEmotionCache";
+import createEmotionCache from "@source/createEmotionCache";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -32,11 +32,6 @@ const LayoutContainer = (props: any) => {
       setCssVariable((cssVariable) => ({
         ...cssVariable,
         "--visibleScreen": `${window.innerHeight}px`, // <= iPhone not returning the right screen height in VH
-        // "--visibleScreen": `200px`, // <= iPhone not returning the right screen height in VH
-        // "--pry": props.theme === "light" ? "#CCCCCC" : "#424242",
-        //   // "--sec": props.theme === "light" ? "#ffffff" : "#0D0D1A",
-        //   // "--dim": props.theme === "light" ? "#646362" : "#ffffffb3",
-        //   // "--opp": props.theme === "light" ? "#424242" : "#fff",
       }));
 
       // console.log(typeof { visibleScreen: window.innerHeight });

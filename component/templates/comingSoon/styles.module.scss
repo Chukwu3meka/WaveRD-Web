@@ -1,31 +1,55 @@
 @import "@source/scss/index.scss";
 
-.loading {
-  @include quickFlex($dir: column, $width: 100%);
-  position: relative;
-  & > img {
-    border-radius: 100%;
-    animation: ball-spinner 1.5s infinite linear;
-  }
-  & > div {
-    margin-top: 10px;
-    @include quickFlex($dir: row);
-    column-gap: 5px;
-    & > .loading-block {
-      width: 30px;
-      height: 5px;
-      position: relative;
-      border-radius: 2px;
-      transition: background-color 0.2s ease-in;
-    }
-  }
-}
+.comingSoon {
+  background-image: radial-gradient(circle at bottom left, lighten($darkGray, 7), $darkGray 30%);
+  min-height: var(--visibleScreen);
+  background-image: url("/images/layout/background.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 
-@keyframes ball-spinner {
-  from {
-    transform: rotate(0deg);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Change the last value (0.5) to adjust the darkness */
+    // z-index: 1;
   }
-  to {
-    transform: rotate(360deg);
+
+  & > * {
+    position: relative;
+  }
+
+  & > * > main {
+    padding: 10px;
+    margin: auto;
+    // z-index: 1;
+    text-align: left;
+    margin-top: -20px;
+    @include quickFlex($dir: column, $width: 100%, $align: flex-start);
+    min-height: calc(var(--visibleScreen) - $headerHeight);
+    max-width: 1100px;
+
+    & > section {
+      margin: 40px auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 20px;
+      border-radius: 20px;
+      overflow: hidden;
+      & > span {
+        padding: 5px;
+        @include quickFlex($dir: column);
+        height: clamp(100px, calc(var(--visibleScreen) - 600px), 200px);
+        text-align: center;
+        background-color: rgba($primary, 0.5); /* lightened white with 80% transparency */
+        color: white;
+      }
+    }
   }
 }
