@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { BuilderLoading } from ".";
+import { ComingSoon } from ".";
 import { arrayRotate } from "@utils/handlers";
 
 import { IBuilderLoadingContainer } from "@interface/builder/loading-interface";
 
-const BuilderLoadingContainer = ({ height }: IBuilderLoadingContainer) => {
+const ComingSoonContainer = ({ height }: IBuilderLoadingContainer) => {
   const [time, setTime] = useState(0);
   const [colorScheme, setColorScheme] = useState<string[]>(["#dfefdf", "#bddebd", "#9ace9a", "#78bd78", "#56ac56"]);
 
@@ -22,7 +22,7 @@ const BuilderLoadingContainer = ({ height }: IBuilderLoadingContainer) => {
     };
   }, [time]);
 
-  return <BuilderLoading {...{ height, colorScheme }} />;
+  return <ComingSoon {...{ height, colorScheme }} />;
 };
 
-export default BuilderLoadingContainer;
+export default ComingSoonContainer;

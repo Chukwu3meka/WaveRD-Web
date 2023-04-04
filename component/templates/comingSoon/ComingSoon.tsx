@@ -5,7 +5,7 @@ import { styles } from ".";
 
 import { IBuilderLoading } from "@interface/builder/loading-interface";
 
-const BuilderLoading = ({ height, colorScheme }: IBuilderLoading) => (
+const ComingSoon = ({ height, colorScheme }: IBuilderLoading) => (
   <div>
     <Fade duration={2000}>
       {/* <main className={styles.loading} style={{ height: height || "clamp(500px, calc(100vh - 170px), 1200px)" }}> */}
@@ -21,4 +21,4 @@ const BuilderLoading = ({ height, colorScheme }: IBuilderLoading) => (
   </div>
 );
 
-export default BuilderLoading;
+export default ComingSoon;
