@@ -1,4 +1,4 @@
-import ComingSoon from "@component/templates/comingSoon";
+import ComingSoon from "@component/builder/comingSoon";
 
 const Page = () => <ComingSoon />;
 
