@@ -28,32 +28,27 @@
   }
 
   & > div:last-of-type {
-    // max-width: 1200px;
     max-width: 2000px;
     margin: auto;
-    width: calc(100vw - 10px) !important;
+    width: 100vw !important;
+    background-color: rgba($color: $darkGray, $alpha: 1);
+    position: relative;
     .peak {
       height: 100%;
-
       @include quickFlex($align: stretch);
-      // border: 3px solid red;
-      // margin: 30px auto;
-      height: 100%;
       & > p {
-        // border: 3px solid red;
-        // padding: 15px 0;
         z-index: 1;
-        position: relative;
-        height: max-content;
-        // margin: auto;
         margin: auto;
-        width: max-content;
-        text-align: center;
+        padding: 0 20px;
         color: $lightGray;
-        background: linear-gradient(to left, $secondary, $darkGray 100%);
-        background-position: 0 100%;
-        background-size: 100% 5px;
+        position: relative;
+        text-align: center;
+        width: max-content;
+        height: max-content;
         border-radius: 20px;
+        background: linear-gradient(to left, $secondary, $darkGray 100%);
+        background-size: 100% 5px;
+        background-position: 0 100%;
         background-repeat: repeat-x;
       }
     }
