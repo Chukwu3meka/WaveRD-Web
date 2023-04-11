@@ -1,5 +1,5 @@
-import Signin from "./Signin";
-import SigninContainer from "./SigninContainer";
+import ForgotPassword from "./ForgotPassword";
+import ForgotPasswordContainer from "./ForgotPasswordContainer";
 import styles from "./signinStyles.module.scss";
 
-export { Signin, styles, SigninContainer as default };
+export { ForgotPassword, styles, ForgotPasswordContainer as default };

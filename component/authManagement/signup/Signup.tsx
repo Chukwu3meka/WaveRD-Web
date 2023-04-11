@@ -1,12 +1,13 @@
+import Link from "next/link";
 import Image from "next/image";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
-import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
+import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Button, CircularProgress } from "@mui/material";
 
 import { ConfirmMail, signupStyles } from ".";
+
 import { ISignup } from "@interface/auth/signup-interface";
-import Link from "next/link";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) =>
   userForm.options.accountCreated ? (
@@ -29,32 +30,31 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             onChange={(e) => onInputChange(e)}
             disabled={userForm.options.loading}
           />
-          <TextField
-            fullWidth
-            id="email"
-            onBlur={(e) => onBlurHandler(e)}
-            disabled={userForm.options.loading}
-            value={userForm.email.value}
-            aria-describedby="email"
-            error={!userForm.email.valid}
-            label="Email Address"
-            variant="outlined"
-            placeholder="firstname.lastname@soccermass.com"
-            onChange={(e) => onInputChange(e)}
-          />
-          <TextField
-            fullWidth
-            id="handle"
-            onBlur={(e) => onBlurHandler(e)}
-            disabled={userForm.options.loading}
-            value={userForm.handle.value}
-            aria-describedby="handle"
-            label="Handle"
-            error={!userForm.handle.valid}
-            variant="outlined"
-            placeholder="What would you like us to call you?"
-            onChange={(e) => onInputChange(e)}
-          />
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
+            <OutlinedInput
+              id="email"
+              value={userForm.email.value}
+              onBlur={(e) => onBlurHandler(e)}
+              disabled={userForm.options.loading}
+              onChange={(e) => onInputChange(e)}
+              placeholder="firstname.lastname@soccermass.com"
+              error={!userForm.email.valid}
+              label="Email Address"
+              endAdornment={
+                userForm.email.validating ? (
+                  <InputAdornment position="end">
+                    <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
+                      <CircularProgress color="success" size={20} />
+                    </IconButton>
+                  </InputAdornment>
+                ) : (
+                  false
+                )
+              }
+            />
+          </FormControl>
 
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -74,6 +74,31 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
                     {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                   </IconButton>
                 </InputAdornment>
+              }
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">Handle</InputLabel>
+            <OutlinedInput
+              id="handle"
+              value={userForm.handle.value}
+              onBlur={(e) => onBlurHandler(e)}
+              disabled={userForm.options.loading}
+              onChange={(e) => onInputChange(e)}
+              placeholder="What would you like us to call you?"
+              error={!userForm.handle.valid}
+              label="Handle"
+              endAdornment={
+                userForm.handle.validating ? (
+                  <InputAdornment position="end">
+                    <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
+                      <CircularProgress color="success" size={20} />
+                    </IconButton>
+                  </InputAdornment>
+                ) : (
+                  false
+                )
               }
             />
           </FormControl>

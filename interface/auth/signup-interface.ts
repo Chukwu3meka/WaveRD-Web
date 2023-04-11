@@ -22,7 +22,7 @@ interface IUserFormOptions {
   accountCreated: boolean;
 }
 
-type IUserFormValuesData = { info: string; value: string; valid: boolean };
+type IUserFormValuesData = { info: string; value: string; valid: boolean; validating?: false };
 
 export interface IValidateFormEntry {
   id: IValidator["type"];
@@ -31,12 +31,15 @@ export interface IValidateFormEntry {
 }
 
 export interface IOnInputChange {
+  enqueueSnackbar: Function;
+  closeSnackbar: Function;
   e: React.FocusEvent<HTMLInputElement>;
   setUserForm: Function;
 }
 
 export interface IRegisterHandler {
   enqueueSnackbar: Function;
+  closeSnackbar: Function;
   setUserForm: Function;
   userForm: IUserForm;
 }

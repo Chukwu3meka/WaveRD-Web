@@ -22,7 +22,7 @@ const validateFormEntry = async ({ id, value, setUserForm }: IValidateFormEntry)
   }
 };
 
-export const onInputChange = async ({ e, setUserForm }: IOnInputChange) => {
+export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar }: IOnInputChange) => {
   const { value, id } = e.target;
 
   setUserForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
@@ -30,39 +30,38 @@ export const onInputChange = async ({ e, setUserForm }: IOnInputChange) => {
     validator({ value, type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
 
     if (["handle", "email"].includes(id)) {
-      setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
+      setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
 
-      await fetcher({ api: "accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
-        .then(async ({ payload: { exists } }) => {
-          if (exists) throw { message: `${id} already in use, Kindly use something different` };
-
-          setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
-        })
-        .catch(({ message }) => {
-          throw { message: message || `Unable to validate ${id}` };
-        });
+      await fetcher({ api: "accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } }).then(async ({ payload: { exists } }) => {
+        if (exists) throw { message: `${id} already in use, Kindly use something different` };
+        setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
+      });
     } else {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
     }
+
+    closeSnackbar(); // <= hide any error that have been shown previously
   } catch ({ message }: any) {
-    setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: false, info: message } }));
+    enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
+    setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false } }));
   }
 };
 
-export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm }: IRegisterHandler) => {
+export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, closeSnackbar }: IRegisterHandler) => {
   try {
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
     const userData: any = {};
 
-    // re-validate all values before registeration
-    for (const [key, { value }] of Object.entries(userForm)) {
+    for (const [key, { value }] of Object.entries(userForm)) { // <= re-validate all values before registeration
       if (key !== "options") await validateFormEntry({ id: <IValidator["type"]>key, value, setUserForm }).then(() => (userData[key] = value));
     }
 
     await fetcher({ method: "POST", api: "accounts", payload: userData, endpoint: "/personal/add_account" }).then(() =>
       setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }))
     );
+
+    closeSnackbar(); // <= hide any error that have been shown previously
   } catch ({ message }: any) {
     enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
   } finally {
@@ -71,7 +70,7 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm }
   }
 };
 
-export const onBlurHandler = async ({ e, setUserForm }: any) => {
+export const onBlurHandler = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar }: IOnInputChange) => {
   e.target.value = e.target.value.trim(); // trim empty spaces
-  await onInputChange({ e, setUserForm });
+  await onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar });
 };
