@@ -8,8 +8,11 @@
       display: none;
     }
     & > main {
-      padding: 0;
+      padding: 10px;
       @include quickFlex($width: 100%);
+      & > * {
+        width: 100%;
+      }
     }
   }
 }
@@ -61,10 +64,6 @@
           }
         }
       }
-      // & > main {
-      // padding: 50px 20px;
-      // background-color: #fff;
-      // }
     }
   }
 }
