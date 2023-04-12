@@ -6,7 +6,6 @@ import { styles } from ".";
 
 const Layout = ({ component }: any) => (
   <div className={styles.layout}>
-    <RelativeHeader theme="light" />
     <div>
       <aside>
         <div>
@@ -17,7 +16,10 @@ const Layout = ({ component }: any) => (
           </Carousel>
         </div>
       </aside>
-      <main>{component}</main>
+      <main>
+        <RelativeHeader theme="light" />
+        {component}
+      </main>
     </div>
   </div>
 );

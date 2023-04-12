@@ -18,6 +18,7 @@
     -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
     border-radius: 70px / 100%;
     max-width: 1200px;
+    // z-index: 1;
     margin: auto;
     padding: 10px 30px;
     @include quickFlex($dir: row, $justify: space-between);
@@ -107,6 +108,31 @@
   @extend .header;
   margin: auto;
   position: unset;
+
+  z-index: 2;
+
+  width: 100%;
+
+  // $width: width(&);
+  // padding: calc($width / 200px);
+
+  // width: 100px;
+
+  // @if calc(100vw) < calc(1000px) {
+  // } @else {
+  //   border: 3px solid green;
+  // }
+
+  // // width: 200px;
+  // @if width(&) > 300px {
+  //   // background-color: red;
+  //   border: 3px solid red;
+  // } @else {
+  //   border: 3px solid green;
+  // }
+
+  // @if width(".header") > 300px {
+  //   background-color: red;
 
   & > header {
     background-color: transparent;

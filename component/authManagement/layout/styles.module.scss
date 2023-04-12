@@ -8,11 +8,23 @@
       display: none;
     }
     & > main {
-      padding: 10px;
-      @include quickFlex($width: 100%);
-      & > * {
-        width: 100%;
+      display: grid;
+      grid-template-rows: $headerHeight auto;
+
+      & > *:last-of-type {
+        @include quickFlex($width: 100%);
+        padding: 10px;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .layout > div:last-of-type > main > *:first-of-type {
+    width: 100%;
+    max-width: 620px;
+    & > * > *:last-child {
+      display: none;
     }
   }
 }
@@ -23,7 +35,7 @@
     & > div:last-of-type {
       display: grid;
       grid-template-columns: clamp(600px, 50%, 550px) auto;
-      height: calc(100% - $headerHeight);
+      height: calc(100%);
       & > aside {
         display: unset;
         background-image: url("/images/layout/soccermass.webp");

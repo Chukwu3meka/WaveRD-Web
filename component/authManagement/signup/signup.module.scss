@@ -1,9 +1,13 @@
 @import "@source/scss/index.scss";
 
 .signup {
-  width: 100%;
-  caret-color: $primary;
+  // // & > * {
+  // border: 3px solid blue;
+  // // }
+  @include quickFlex($width: 100%);
+  padding: 10px;
   & > div {
+    width: 100%;
     @include boxShadow($br: 10px);
     background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
 
