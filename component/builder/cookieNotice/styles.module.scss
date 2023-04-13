@@ -1,0 +1,9 @@
+@import "@source/scss/index.scss";
+
+.cookieNotice {
+  @include quickFlex($dir: column, $width: 100%);
+
+  & > span:nth-of-type(1) {
+    margin-bottom: 10px;
+  }
+}

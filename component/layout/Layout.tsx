@@ -9,8 +9,9 @@ import theme from "@source/theme";
 import BuilderLoading from "@component/builder/loading";
 import { ILayout } from "@interface/main/layout-interface";
 import { HeaderContainer, FooterContainer, styles } from ".";
+import BuilderCookieNoticeContainer from "@component/builder/cookieNotice/BuilderCookieNoticeContainer";
 
-const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable }: ILayout) => (
+const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable, cookieNotice }: ILayout) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
@@ -58,6 +59,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
                 {appReady && !pageLoading && (
                   <main>
                     <Component {...pageProps} />
+                    {cookieNotice && <BuilderCookieNoticeContainer />}
                   </main>
                 )}
                 {!pageLoading && <FooterContainer />}{" "}

@@ -26,6 +26,7 @@ export interface ILayout {
   appReady: boolean;
   emotionCache: EmotionCache;
   cssVariable: React.CSSProperties;
+  cookieNotice: boolean;
 }
 
 export interface IFunctionsHandleResize {

@@ -1,7 +1,7 @@
 interface IFetcher {
   payload?: object | null;
   endpoint: string;
-  method: "POST" | "GET";
+  method: "POST" | "GET" | "PATCH";
   api: "accounts" | "game" | "hub";
 }
 
@@ -24,7 +24,7 @@ const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
     method,
   };
 
-  if (["POST"].includes(method)) {
+  if (["POST", "PATCH"].includes(method)) {
     if (!payload) throw { message: "No payload set" };
     fetchOptions.body = JSON.stringify(payload);
   }

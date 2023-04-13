@@ -17,6 +17,7 @@ const LayoutContainer = (props: any) => {
     [lastScrollPos, setLastScrollPos] = useState(0),
     [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
+    [cookieNotice, setCookieNotice] = useState<boolean>(false),
     [cssVariable, setCssVariable] = useState<React.CSSProperties>({}),
     [displayHeader, setDisplayHeader] = useState(false), // header is false on initial load
     { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache, setAuthAction } = props;
@@ -76,13 +77,13 @@ const LayoutContainer = (props: any) => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
-  const retrieveCookie = () => functions.retrieveCookie({ setAuthAction });
+  const retrieveCookie = () => functions.retrieveCookie({ setAuthAction, setCookieNotice });
   const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
   const handleScroll = () => functions.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
   const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ router, authenticated });
 
-  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable }} />;
+  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable, cookieNotice }} />;
 };
 
 const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),

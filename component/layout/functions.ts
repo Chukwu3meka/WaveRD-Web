@@ -1,7 +1,9 @@
-// import { sleep } from "@utils/clientFuncs";
-import { IHandleScroll, IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
+import { setCookie, getCookie } from "cookies-next";
+
 import fetcher from "@utils/fetcher";
 import { deObfuscate } from "@utils/handlers";
+
+import { IHandleScroll, IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
 export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) => {
   const width = window.innerWidth,
@@ -49,18 +51,34 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
   setLastScrollPos(window.scrollY);
 };
 
-export const retrieveCookie = async ({ setAuthAction }: any) => {
+export const retrieveCookie = async ({ setAuthAction, setCookieNotice }: any) => {
   const params = Object.fromEntries(new URLSearchParams(location.search)),
     { facebook, twitter, google, response } = params,
     oAuthID = deObfuscate(decodeURIComponent(response as string));
 
+  let cookiesNotice;
+
   if (!facebook && !twitter && !google && response) {
-    fetcher({ api: "accounts", endpoint: "/personal/oAuthSession", method: "POST", payload: { oAuthID } })
-      .then(({ payload: { role, fullName, handle } }) => setAuthAction({ role, fullName, handle }))
+    await fetcher({ api: "accounts", endpoint: "/personal/oAuthSession", method: "POST", payload: { oAuthID } })
+      .then(({ payload: { role, fullName, handle, allowedCookies } }) => {
+        setAuthAction({ role, fullName, handle });
+        cookiesNotice = !allowedCookies;
+      })
       .catch((err) => {});
   } else {
     await fetcher({ api: "accounts", method: "GET", endpoint: "/personal/cookie" })
-      .then(({ payload: { role, fullName, handle } }) => setAuthAction({ role, fullName, handle }))
+      .then(({ payload: { role, fullName, handle, allowedCookies } }) => {
+        setAuthAction({ role, fullName, handle });
+        cookiesNotice = !allowedCookies;
+      })
       .catch((err) => {});
+  }
+
+  if (cookiesNotice) {
+    const hasAllowedCookies = getCookie("has_allowed_cookie");
+
+    if (!hasAllowedCookies) setCookieNotice(true);
+
+    // save local hasAllowedCookies to database
   }
 };
