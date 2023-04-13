@@ -19,10 +19,9 @@
   }
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 1200px) and (max-width: 1480px) {
   .layout > div:last-of-type > main > *:first-of-type {
     width: 100%;
-    max-width: 620px;
     & > * > *:last-child {
       display: none;
     }
