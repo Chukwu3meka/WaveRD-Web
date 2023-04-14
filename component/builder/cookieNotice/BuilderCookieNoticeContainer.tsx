@@ -1,7 +1,7 @@
-import fetcher from "@utils/fetcher";
-import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useEffect, useState } from "react";
 
+import fetcher from "@utils/fetcher";
 import { BuilderCookieNotice } from ".";
 
 const BuilderCookieNoticeContainer = (props: any) => {
@@ -10,7 +10,6 @@ const BuilderCookieNoticeContainer = (props: any) => {
 
   useEffect(() => {
     setAuth(props.authStatus);
-
     return () => {
       setAuth(props.authStatus);
     };
@@ -19,12 +18,10 @@ const BuilderCookieNoticeContainer = (props: any) => {
   const closeDialogFn = async () => {
     setDisplayDialog(false);
 
-    if (auth) {
-      // ? Update record that user has allowed cookies
+    if (auth)
       await fetcher({ api: "accounts", method: "PATCH", endpoint: "/personal/cookieConsent", payload: { allowedCookies: true } })
         .then(() => {})
-        .catch((err) => {});
-    }
+        .catch((err) => {}); // ? Update record in database, that user has allowed cookies
   };
 
   return <BuilderCookieNotice displayDialog={displayDialog} closeDialogFn={closeDialogFn} />;

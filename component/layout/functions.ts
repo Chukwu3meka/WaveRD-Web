@@ -1,5 +1,3 @@
-import { setCookie, getCookie } from "cookies-next";
-
 import fetcher from "@utils/fetcher";
 import { deObfuscate } from "@utils/handlers";
 
@@ -56,29 +54,22 @@ export const retrieveCookie = async ({ setAuthAction, setCookieNotice }: any) =>
     { facebook, twitter, google, response } = params,
     oAuthID = deObfuscate(decodeURIComponent(response as string));
 
-  let cookiesNotice;
-
   if (!facebook && !twitter && !google && response) {
     await fetcher({ api: "accounts", endpoint: "/personal/oAuthSession", method: "POST", payload: { oAuthID } })
-      .then(({ payload: { role, fullName, handle, allowedCookies } }) => {
+      .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
+        console.log({ role, fullName, handle, cookieConsent }, 1);
         setAuthAction({ role, fullName, handle });
-        cookiesNotice = !allowedCookies;
+
+        if (!cookieConsent) setCookieNotice(true);
       })
       .catch((err) => {});
   } else {
     await fetcher({ api: "accounts", method: "GET", endpoint: "/personal/cookie" })
-      .then(({ payload: { role, fullName, handle, allowedCookies } }) => {
+      .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
+        console.log({ role, fullName, handle, cookieConsent }, 2);
         setAuthAction({ role, fullName, handle });
-        cookiesNotice = !allowedCookies;
+        if (!cookieConsent) setCookieNotice(true);
       })
       .catch((err) => {});
-  }
-
-  if (cookiesNotice) {
-    const hasAllowedCookies = getCookie("has_allowed_cookie");
-
-    if (!hasAllowedCookies) setCookieNotice(true);
-
-    // save local hasAllowedCookies to database
   }
 };
