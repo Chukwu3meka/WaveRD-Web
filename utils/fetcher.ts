@@ -15,6 +15,8 @@ const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
   // const URL = `${protocol}://${subDomain}.${domain}/api${endpoint}`;
   // const URL = `${protocol}://${api}.${domain}/api${endpoint}`;
 
+  console.log({ api, endpoint });
+
   const URL = devEnv ? `${protocol}://${domain}/api/${api}${endpoint}` : `${protocol}://${api}.${domain}/api${endpoint}`;
 
   const fetchOptions: any = {
