@@ -19,7 +19,7 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
   }
 
   await fetcher({
-    api: "accounts",
+    api: "srv-accounts",
     method: "POST",
     endpoint: "/personal/auth",
     payload: { email, password },
