@@ -25,12 +25,8 @@ const validator = ({ value, type, label }: IValidator) => {
     }
     case "password": {
       charLengthLimit(8, 16);
-
-      const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-      if (!reg.test(value))
-        throw {
-          message: `${label} must have a length of 8 to 16 characters and include at least one lowercase and uppercase letter, one numeric digit, and one special character.`,
-        };
+      const reg = /^(?=.*[A-Za-z])(?=.*\d).+$/;
+      if (!reg.test(value)) throw { message: `${label} must have at least one letter/number.` };
       break;
     }
     case "handle": {

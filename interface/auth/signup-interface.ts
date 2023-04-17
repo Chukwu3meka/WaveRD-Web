@@ -5,7 +5,6 @@ export interface ISignup {
   userForm: IUserForm;
   handleClickShowPassword: Function;
   registerHandler: Function;
-  onBlurHandler: Function;
 }
 
 export interface IUserForm {

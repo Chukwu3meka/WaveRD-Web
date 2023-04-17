@@ -8,7 +8,7 @@ const validateFormEntry = async ({ id, value, setUserForm }: IValidateFormEntry)
   validator({ value, type: id, label: id === "email" ? "Email Address" : null });
 
   if (["handle", "email"].includes(id)) {
-    await fetcher({ api: "accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
+    await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
       .then(async ({ payload: { exists } }) => {
         if (exists) throw { message: `${id} already in use, Kindly use something different` };
 
@@ -32,10 +32,12 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
 
-      await fetcher({ api: "accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } }).then(async ({ payload: { exists } }) => {
-        if (exists) throw { message: `${id} already in use, Kindly use something different` };
-        setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
-      });
+      await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } }).then(
+        async ({ payload: { exists } }) => {
+          if (exists) throw { message: `${id} already in use, Kindly use something different` };
+          setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
+        }
+      );
     } else {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
     }
@@ -53,11 +55,12 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
 
     const userData: any = {};
 
-    for (const [key, { value }] of Object.entries(userForm)) { // <= re-validate all values before registeration
+    for (const [key, { value }] of Object.entries(userForm)) {
+      // <= re-validate all values before registeration
       if (key !== "options") await validateFormEntry({ id: <IValidator["type"]>key, value, setUserForm }).then(() => (userData[key] = value));
     }
 
-    await fetcher({ method: "POST", api: "accounts", payload: userData, endpoint: "/personal/add_account" }).then(() =>
+    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/personal/add_account" }).then(() =>
       setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }))
     );
 
@@ -68,9 +71,4 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
     if (process.env.NODE_ENV === "development") await sleep(0.2);
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: false } }));
   }
-};
-
-export const onBlurHandler = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar }: IOnInputChange) => {
-  e.target.value = e.target.value.trim(); // trim empty spaces
-  await onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar });
 };

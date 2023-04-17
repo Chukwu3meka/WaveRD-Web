@@ -9,7 +9,7 @@ import { ConfirmMail, signupStyles } from ".";
 
 import { ISignup } from "@interface/auth/signup-interface";
 
-const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) =>
+const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler }: ISignup) =>
   userForm.options.accountCreated ? (
     <ConfirmMail />
   ) : (
@@ -26,7 +26,6 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             value={userForm.fullName.value}
             placeholder="Firstname Lastname"
             error={!userForm.fullName.valid}
-            onBlur={(e) => onBlurHandler(e)}
             onChange={(e) => onInputChange(e)}
             disabled={userForm.options.loading}
           />
@@ -36,7 +35,6 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             <OutlinedInput
               id="email"
               value={userForm.email.value}
-              onBlur={(e) => onBlurHandler(e)}
               disabled={userForm.options.loading}
               onChange={(e) => onInputChange(e)}
               placeholder="firstname.lastname@soccermass.com"
@@ -62,7 +60,6 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               id="password"
               type={userForm.options.showPassword ? "text" : "password"}
               value={userForm.password.value}
-              onBlur={(e) => onBlurHandler(e)}
               disabled={userForm.options.loading}
               onChange={(e) => onInputChange(e)}
               placeholder="Complex Password"
@@ -83,7 +80,6 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             <OutlinedInput
               id="handle"
               value={userForm.handle.value}
-              onBlur={(e) => onBlurHandler(e)}
               disabled={userForm.options.loading}
               onChange={(e) => onInputChange(e)}
               placeholder="What would you like us to call you?"
