@@ -10,6 +10,11 @@ import Link from "next/link";
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler }: ISignin) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div id="signin" className={styles.signin}>
+      <div className={styles.divider}>
+        <span />
+        <span>Social Signin</span>
+      </div>
+
       <SocialAuth />
 
       <div className={styles.divider}>

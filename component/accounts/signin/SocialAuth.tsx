@@ -11,7 +11,7 @@ const Social = () => (
       sx={{ "&>svg": { color: "#1DA1F2 !important" } }}
       icon={<TwitterIcon />}
       clickable
-      label="Twitter Signin"
+      label="Twitter"
       variant="outlined"
       color="primary"
       component="a"
@@ -23,7 +23,7 @@ const Social = () => (
       icon={<GoogleIcon />}
       sx={{ "&>svg": { color: "#DB4437 !important" } }}
       clickable
-      label="Google Signin"
+      label="Google"
       variant="outlined"
       color="primary"
       component="a"
@@ -35,7 +35,7 @@ const Social = () => (
       sx={{ "&>svg": { color: "#4267B2 !important" } }}
       icon={<FacebookIcon />}
       clickable
-      label="Facebook Signin"
+      label="Facebook"
       variant="outlined"
       color="primary"
       component="a"

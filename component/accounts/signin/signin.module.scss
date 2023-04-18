@@ -14,12 +14,13 @@
     position: relative;
     max-width: none;
     margin: 20px auto 15px;
-    @include quickFlex($dir: row, $wrap: wrap, $row: 20px, $column: 20px);
+    @include quickFlex($dir: row, $row: 20px, $column: 20px);
+    max-width: 520px;
     & > a {
       font-size: 1em;
       font-weight: 600;
-      min-width: 200px;
       padding: 18px 10px;
+      width: 100%;
     }
   }
 
