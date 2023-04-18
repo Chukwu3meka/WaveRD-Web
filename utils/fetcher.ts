@@ -17,8 +17,6 @@ const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
 
   const URL = devEnv ? `${protocol}://${api}.${domain}/api${endpoint}` : `${protocol}://${domain}/api/${api}${endpoint}`;
 
-  console.log({ URL });
-
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },
     /* credentials: "include", tells browser will include credentials in the request, 

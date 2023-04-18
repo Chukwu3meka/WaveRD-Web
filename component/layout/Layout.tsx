@@ -62,7 +62,8 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
                     {cookieNotice && <BuilderCookieNoticeContainer />}
                   </main>
                 )}
-                {!pageLoading && <FooterContainer />}{" "}
+                {!pageLoading && <FooterContainer />}
+                {/* <FooterContainer /> */}
               </div>
             </main>
           </Provider>

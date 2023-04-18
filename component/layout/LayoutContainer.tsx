@@ -24,16 +24,15 @@ const LayoutContainer = (props: any) => {
 
   useEffect(() => {
     if (!appReady) {
-      setAppReady(true);
-      handlePageLoading({ url: null, loading: false });
-      window.addEventListener("resize", handleResize);
-      // handleResize(); // <= run handleResize on page load.
-
-      // // set CSS Variables
+      // set CSS Variables
       setCssVariable((cssVariable) => ({
         ...cssVariable,
         "--visibleScreen": `${window.innerHeight}px`, // <= iPhone not returning the right screen height in VH
       }));
+      setAppReady(true);
+      handlePageLoading({ url: null, loading: false });
+      window.addEventListener("resize", handleResize);
+      // handleResize(); // <= run handleResize on page load.
 
       // console.log(typeof { visibleScreen: window.innerHeight });
     }
