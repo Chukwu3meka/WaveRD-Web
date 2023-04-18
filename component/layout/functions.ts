@@ -25,16 +25,19 @@ export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHa
 // export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
 export const handleProtectedRoute = ({ router, authenticated }: any) => {
   const route = location.pathname;
-  // const params = Object.fromEntries(new URLSearchParams(location.search));
 
-  const protectedRoutes = ["/auth/signin", "/auth/signup"];
-  const unProtectedRoutes = ["/", "/apihub", "/auth/reset", "/auth/signin", "/auth/signup", "/organization"];
+  const accountsRoute = ["/auth/signin", "/auth/signup"],
+    protectedRoutes = ["/manager"];
+  // publicRoutes = ["/", "/apihub", "/auth/reset", "/auth/signin", "/auth/signup", "/organization"];
 
-  if (authenticated && protectedRoutes.includes(route)) router.push("/");
-  if (authenticated && !unProtectedRoutes.includes(route)) router.push("/");
-
-  // console.log({ route, authenticated });
-  // console.log("useEffect fired!", { asPath: route });
+  if (authenticated && accountsRoute.includes(route)) {
+    router.push("/");
+    // Signout to access this page
+  }
+  if (!authenticated && protectedRoutes.includes(route)) {
+    router.push("/");
+    // Signin to access this page
+  }
 };
 
 export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: IHandleScroll) => {
@@ -43,8 +46,6 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
   } else {
     setDisplayHeader(true);
   }
-
-  // console.log({ w: window.scrollY, lastScrollPos });
 
   setLastScrollPos(window.scrollY);
 };
@@ -55,18 +56,16 @@ export const retrieveCookie = async ({ setAuthAction, setCookieNotice }: any) =>
     oAuthID = deObfuscate(decodeURIComponent(response as string));
 
   if (!facebook && !twitter && !google && response) {
-    await fetcher({ api: "accounts", endpoint: "/personal/oAuthSession", method: "POST", payload: { oAuthID } })
+    await fetcher({ api: "srv-accounts", endpoint: "/personal/oAuthSession", method: "POST", payload: { oAuthID } })
       .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
-        console.log({ role, fullName, handle, cookieConsent }, 1);
         setAuthAction({ role, fullName, handle });
 
         if (!cookieConsent) setCookieNotice(true);
       })
       .catch((err) => {});
   } else {
-    await fetcher({ api: "accounts", method: "GET", endpoint: "/personal/cookie" })
+    await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/personal/cookie" })
       .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
-        console.log({ role, fullName, handle, cookieConsent }, 2);
         setAuthAction({ role, fullName, handle });
         if (!cookieConsent) setCookieNotice(true);
       })

@@ -1,13 +1,12 @@
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
-import { useState, useEffect, HTMLAttributes } from "react";
+import { useState, useEffect } from "react";
 
 import { Layout, functions } from ".";
 import { setAuthAction, setDeviceSizeAction } from "@store/actions";
 import createEmotionCache from "@source/createEmotionCache";
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, shared for the whole session of the user in the browser.
 
 import { IHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
@@ -24,17 +23,14 @@ const LayoutContainer = (props: any) => {
 
   useEffect(() => {
     if (!appReady) {
-      // set CSS Variables
       setCssVariable((cssVariable) => ({
         ...cssVariable,
         "--visibleScreen": `${window.innerHeight}px`, // <= iPhone not returning the right screen height in VH
       }));
+
       setAppReady(true);
       handlePageLoading({ url: null, loading: false });
       window.addEventListener("resize", handleResize);
-      // handleResize(); // <= run handleResize on page load.
-
-      // console.log(typeof { visibleScreen: window.innerHeight });
     }
     return () => {
       if (!appReady) retrieveCookie(); // <= will run only once
@@ -49,11 +45,6 @@ const LayoutContainer = (props: any) => {
       setAuthenticated(authenticated);
       handleProtectedRoute({ router, authenticated });
     }
-    // // if (appReady) retrieveCookie(); // <= will run only once
-    // if (appReady && authenticated !== props.authStatus) {
-    //   setAuthenticated(authenticated);
-    //   handleProtectedRoute({ router, authenticated });
-    // }
   }, [props.authStatus]);
 
   useEffect(() => {
