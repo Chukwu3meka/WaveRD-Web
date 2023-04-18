@@ -23,7 +23,7 @@ const SigninContainer = (props: ISigninContainer) => {
     const { facebook, twitter, google, response } = router.query;
 
     const urlResponse = deObfuscate(decodeURIComponent(response as string));
-    if (facebook || twitter || google) enqueueSnackbar(urlResponse, { variant: "error" }) && router.replace("/auth/signin");
+    if (facebook || twitter || google) enqueueSnackbar(urlResponse, { variant: "error" }) && router.replace("/accounts/signin");
   }, []);
 
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });

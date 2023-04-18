@@ -102,7 +102,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
 
           <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
             <AttentionSeeker effect="bounce">
-              <Link href="/auth/signin">
+              <Link href="/accounts/signin">
                 <Button variant="outlined" size="large">
                   login
                 </Button>
