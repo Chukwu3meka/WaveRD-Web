@@ -19,7 +19,7 @@ const BuilderCookieNoticeContainer = (props: any) => {
     setDisplayDialog(false);
 
     if (auth)
-      await fetcher({ api: "accounts", method: "PATCH", endpoint: "/personal/cookieConsent", payload: { allowedCookies: true } })
+      await fetcher({ api: "srv-accounts", method: "PATCH", endpoint: "/personal/cookieConsent", payload: { allowedCookies: true } })
         .then(() => {})
         .catch((err) => {}); // ? Update record in database, that user has allowed cookies
   };
