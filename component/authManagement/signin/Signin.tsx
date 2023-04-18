@@ -17,7 +17,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
         <span>or Signin with Email</span>
       </div>
 
-      <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
+      <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
         <TextField
           fullWidth
           id="email"

@@ -7,29 +7,24 @@
   @include boxShadow($br: 10px);
   background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
   width: 100%;
-  // border: 3px solid blue;
-
-  & > * {
-    max-width: 520px;
-    margin: auto;
-  }
 
   & > .social {
     z-index: 2;
     padding: 10px;
     position: relative;
+    max-width: none;
     margin: 20px auto 15px;
-    @include quickFlex($dir: row, $wrap: wrap, $row: 20px);
+    @include quickFlex($dir: row, $wrap: wrap, $row: 20px, $column: 20px);
     & > a {
-      width: 100%;
       font-size: 1em;
       font-weight: 600;
-      min-width: 250px;
+      min-width: 200px;
       padding: 18px 10px;
     }
   }
 
   & > .divider {
+    max-width: 520px;
     margin: 40px auto;
     position: relative;
     @include quickFlex($width: calc(100% - 20px));
@@ -46,6 +41,7 @@
       color: darken($color: $textSecondary, $amount: 40);
     }
   }
+  // border: 3px solid blue;
 }
 
 @media screen and (min-width: 1200px) {
