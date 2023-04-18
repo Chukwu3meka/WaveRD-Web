@@ -2,7 +2,7 @@ import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 import { IValidator } from "@interface/utils/validator-interface";
-import { IOnInputChange, IRegisterHandler, IValidateFormEntry } from "@interface/auth/signup-interface";
+import { IOnInputChange, IRegisterHandler, IValidateFormEntry } from "@interface/accounts/signup-interface";
 
 const validateFormEntry = async ({ id, value, setUserForm }: IValidateFormEntry) => {
   validator({ value, type: id, label: id === "email" ? "Email Address" : null });

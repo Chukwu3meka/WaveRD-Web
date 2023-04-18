@@ -14,27 +14,13 @@
     <changefreq>yearly</changefreq>
     <priority>1.00</priority>
   </url>
-  <url>
-    <loc>https://www.soccermass.com/auth/signin</loc>
+  <!-- <url>
+    <loc>https://www.soccermass.com/accounts/reset</loc>
     <changefreq>yearly</changefreq>
     <image:image>
         <image:loc>https://www.soccermass.com/images/layout/soccermass.webp</image:loc>
     </image:image>
-  </url>
-  <url>
-    <loc>https://www.soccermass.com/auth/signup</loc>
-    <changefreq>yearly</changefreq>
-    <image:image>
-        <image:loc>https://www.soccermass.com/images/layout/soccermass.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.soccermass.com/auth/reset</loc>
-    <changefreq>yearly</changefreq>
-    <image:image>
-        <image:loc>https://www.soccermass.com/images/layout/soccermass.webp</image:loc>
-    </image:image>
-  </url>
+  </url> -->
   <!-- <url>
     <loc>https://www.soccermass.com/info/terms</loc>
     <changefreq>yearly</changefreq>

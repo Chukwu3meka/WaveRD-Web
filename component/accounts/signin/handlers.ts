@@ -1,7 +1,7 @@
 import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
-import { ILoginHandler, IOnInputChange } from "@interface/auth/signin-interface";
+import { ILoginHandler, IOnInputChange } from "@interface/accounts/signin-interface";
 
 export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: ILoginHandler) => {
   setUserForm((userForm: any) => ({ ...userForm, buttonLoading: true })); // activate botton loading

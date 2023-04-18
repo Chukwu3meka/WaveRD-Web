@@ -4,7 +4,7 @@ import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
 
 import { SocialAuth, styles } from ".";
-import { ISignin } from "@interface/auth/signin-interface";
+import { ISignin } from "@interface/accounts/signin-interface";
 import Link from "next/link";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler }: ISignin) => (
@@ -54,7 +54,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
 
         <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
           <AttentionSeeker effect="bounce">
-            <Link href="/auth/signup">
+            <Link href="/accounts/signup">
               <Button variant="outlined" size="large">
                 register
               </Button>

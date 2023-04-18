@@ -27,7 +27,7 @@ const ConfirmMail = () => {
         </div>
 
         <Stack direction="row">
-          <Link href="/auth/signin">
+          <Link href="/accounts/signin">
             <Button fullWidth variant="outlined">
               Login
             </Button>

@@ -46,7 +46,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                 Subscriptions
                 </Link>
               )} */}
-              <Link href="/auth/forgotPassword">Forgot Password</Link>
+              <Link href="/accounts/forgotPassword">Forgot Password</Link>
               <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
                 Bug Report
               </a>
@@ -61,7 +61,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                   Logout
                 </a>
               )}
-              {!authenticated && <Link href="/auth/signin">Login/Register</Link>}
+              {!authenticated && <Link href="/accounts/signin">Login/Register</Link>}
               <Link href="/organization">Organization</Link>
             </div>
 

@@ -26,9 +26,9 @@ export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHa
 export const handleProtectedRoute = ({ router, authenticated }: any) => {
   const route = location.pathname;
 
-  const accountsRoute = ["/auth/signin", "/auth/signup"],
+  const accountsRoute = ["/accounts/signin", "/accounts/signup"],
     protectedRoutes = ["/manager"];
-  // publicRoutes = ["/", "/apihub", "/auth/reset", "/auth/signin", "/auth/signup", "/organization"];
+  // publicRoutes = ["/", "/apihub", "/accounts/reset", "/accounts/signin", "/accounts/signup", "/organization"];
 
   if (authenticated && accountsRoute.includes(route)) {
     router.push("/");

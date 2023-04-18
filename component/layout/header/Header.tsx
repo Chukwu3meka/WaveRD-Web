@@ -49,14 +49,14 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
         </div>
 
         {!authenticated && (
-          <Link href="/auth/signin">
+          <Link href="/accounts/signin">
             <Button variant="outlined" size="small">
               Signin
             </Button>
           </Link>
         )}
         {!authenticated && (
-          <Link href="/auth/signup">
+          <Link href="/accounts/signup">
             <Button variant="contained" size="small" color="primary">
               Signup
             </Button>

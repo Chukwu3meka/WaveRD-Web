@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSnackbar } from "notistack";
 
 import { Signup, handlers } from ".";
-import { IUserForm } from "@interface/auth/signup-interface";
+import { IUserForm } from "@interface/accounts/signup-interface";
 
 const SignupContainer = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();

@@ -7,7 +7,7 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 
 import { ConfirmMail, signupStyles } from ".";
 
-import { ISignup } from "@interface/auth/signup-interface";
+import { ISignup } from "@interface/accounts/signup-interface";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler }: ISignup) =>
   userForm.options.accountCreated ? (
