@@ -28,7 +28,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
           disabled={userForm.options.loading}
           onChange={(e) => onInputChange(e)}
           placeholder="firstname.lastname@soccermass.com"
-          inputProps={{ autocomplete: "off", form: { autocomplete: "off" } }}
+          autoComplete="off"
         />
 
         <FormControl fullWidth variant="outlined">
@@ -41,7 +41,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
             value={userForm.password}
             label="Password"
             id="password"
-            inputProps={{ autocomplete: "off", form: { autocomplete: "off" } }}
+            inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
