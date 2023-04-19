@@ -16,7 +16,9 @@ const Social = () => (
       color="primary"
       component="a"
       href={
-        process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/personal/twitter` : `https://accounts.soccermass.com/api/personal/twitter`
+        process.env.NODE_ENV === "development"
+          ? `http://localhost:5000/api/accounts/personal/twitter`
+          : `https://srv-accounts.soccermass.com/api/personal/twitter`
       }
     />
     <Chip
@@ -28,7 +30,9 @@ const Social = () => (
       color="primary"
       component="a"
       href={
-        process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/personal/google` : `https://accounts.soccermass.com/api/personal/google`
+        process.env.NODE_ENV === "development"
+          ? `http://localhost:5000/api/accounts/personal/google`
+          : `https://srv-accounts.soccermass.com/api/personal/google`
       }
     />
     <Chip
@@ -42,7 +46,7 @@ const Social = () => (
       href={
         process.env.NODE_ENV === "development"
           ? `http://localhost:5000/api/accounts/personal/facebook`
-          : `https://accounts.soccermass.com/api/personal/facebook`
+          : `https://srv-accounts.soccermass.com/api/personal/facebook`
       }
     />
   </section>
