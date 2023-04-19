@@ -33,11 +33,12 @@ body {
   }
 
   * {
-    outline: none;
+    // outline: none;
     // user-select: none; //disable select
     // -moz-user-select: none; //disable select
     // -webkit-user-select: none; //disable select
-    -webkit-tap-highlight-color: transparent;
+    // -webkit-tap-highlight-color: transparent;
+    // -webkit-tap-highlight-color: transparent;
     img {
       overflow: hidden;
     }
@@ -66,16 +67,16 @@ body {
   // background: linear-gradient(to bottom right, color(pry), color(sec));
   // background-color: darken($color: #1d1c2e, $amount: 0);
   // background-color: color(dark);
-  // * {
-  //   outline: none;
-  //   user-select: none;
-  //   -moz-user-select: none;
-  //   -webkit-user-select: none;
-  //   -webkit-tap-highlight-color: transparent;
-  //   img {
-  //     overflow: hidden;
-  //   }
-  // }
+  * {
+    outline: none;
+    //   user-select: none;
+    //   -moz-user-select: none;
+    //   -webkit-user-select: none;
+    //   -webkit-tap-highlight-color: transparent;
+    img {
+      overflow: hidden;
+    }
+  }
 }
 
 // * {
@@ -119,6 +120,6 @@ body {
 
 // style the text that a user selects on a webpage.
 ::selection {
-  color: $primary;
-  background-color: lighten($color: $secondary, $amount: 30);
+  color: $textSecondary;
+  background-color: lighten($color: $primary, $amount: 0);
 }
