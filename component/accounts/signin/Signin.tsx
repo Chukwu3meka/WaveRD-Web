@@ -57,6 +57,10 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
           />
         </FormControl>
 
+        <Typography alignSelf="flex-start" sx={{ marginTop: "10px !important" }}>
+          <Link href="/accounts/forgotPassword">Forgot Password?</Link>
+        </Typography>
+
         <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
           <AttentionSeeker effect="bounce">
             <Link href="/accounts/signup">

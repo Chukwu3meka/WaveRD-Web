@@ -63,7 +63,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               value={userForm.password.value}
               disabled={userForm.options.loading}
               onChange={(e) => onInputChange(e)}
-              placeholder="Complex Password"
+              placeholder="Password"
               error={!userForm.password.valid}
               label="Password"
               endAdornment={
