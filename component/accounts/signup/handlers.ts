@@ -1,5 +1,5 @@
 import fetcher from "@utils/fetcher";
-import { sleep } from "@utils/handlers";
+import { capitalize, sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 import { IValidator } from "@interface/utils/validator-interface";
 import { IOnInputChange, IRegisterHandler, IValidateFormEntry } from "@interface/accounts/signup-interface";
@@ -34,7 +34,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
 
       await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } }).then(
         async ({ payload: { exists } }) => {
-          if (exists) throw { message: `${id} already in use, Kindly use something different` };
+          if (exists) throw { message: `${capitalize(id)} already in use, Kindly use something different` };
           setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
         }
       );
