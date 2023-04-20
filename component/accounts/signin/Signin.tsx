@@ -17,7 +17,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
 
       <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
 
-      <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
+      <Stack spacing={3} alignItems="center" component="form" noValidate margin="auto">
         <TextField
           fullWidth
           id="email"

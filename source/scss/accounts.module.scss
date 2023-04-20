@@ -4,6 +4,7 @@
   min-height: $minContentHeight;
   display: grid;
   grid-template-rows: $headerHeight auto;
+
   & > div:last-of-type {
     & > aside {
       display: none;
@@ -11,6 +12,9 @@
     & > main {
       @include quickFlex($width: 100%);
       padding: 10px;
+      & > * {
+        width: 100%;
+      }
     }
   }
 }
@@ -66,90 +70,4 @@
   }
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1480px) {
-  .layout > div:last-of-type > main > *:first-of-type {
-    width: 100%;
-    & > * > *:last-child {
-      display: none;
-    }
-  }
-}
-
-// .layout {
-//   min-height: $minContentHeight;
-//   & > div:last-of-type {
-//     & > aside {
-//       margin: 0;
-//       display: none;
-//     }
-//     & > main {
-//       display: grid;
-//       grid-template-rows: $headerHeight auto;
-
-//       & > *:last-of-type {
-//         @include quickFlex($width: 100%);
-//         padding: 10px;
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 1200px) {
-//   .layout {
-//     height: var(--visibleScreen);
-//     & > div:last-of-type {
-//       display: grid;
-//       grid-template-columns: clamp(600px, 50%, 550px) auto;
-//       height: calc(100%);
-//       & > aside {
-//         display: unset;
-//         background-image: url("/images/layout/soccermass.webp");
-//         background-size: 100% 100%;
-//         position: relative;
-//         overflow: hidden;
-//         &::after {
-//           content: "";
-//           position: absolute;
-//           background-color: $darkGray;
-//           opacity: 0.4;
-//           top: 0;
-//           right: 0;
-//           bottom: 0;
-//           left: 0;
-//         }
-//         & > div {
-//           position: relative;
-//           z-index: 1;
-//           height: 100%;
-//           & > div {
-//             margin: auto;
-//             position: absolute;
-//             top: 45%;
-//             transform: translateY(-50%);
-//             color: darken($color: $textSecondary, $amount: 10);
-//             font-size: 1.2em;
-//             padding: 10px;
-//             max-width: 450px;
-//             * {
-//               text-align: center;
-//             }
-
-//             ul {
-//               padding: 0;
-//               list-style: none;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
 // @media screen and (min-width: 1200px) and (max-width: 1480px) {
-//   .layout > div:last-of-type > main > *:first-of-type {
-//     width: 100%;
-//     & > * > *:last-child {
-//       display: none;
-//     }
-//   }
-// }

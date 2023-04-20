@@ -7,6 +7,11 @@
   background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
   width: 100%;
 
+  & > * {
+    max-width: 520px;
+    width: 100%;
+  }
+
   & > .social {
     z-index: 2;
     padding: 10px;
@@ -14,7 +19,6 @@
     max-width: none;
     margin: 20px auto 15px;
     @include quickFlex($dir: row, $row: 20px, $column: 20px);
-    max-width: 520px;
     & > a {
       font-size: 1em;
       font-weight: 600;
@@ -28,6 +32,5 @@
   .signin {
     margin: 10px auto;
     width: clamp(300px, 100%, 520px);
-    // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
   }
 }
