@@ -41,6 +41,7 @@ const Page = () => {
       </Head>
 
       <div className={styles.layout}>
+        <RelativeHeader theme="light" />
         <div>
           <aside>
             <div>
@@ -51,10 +52,7 @@ const Page = () => {
               </Carousel>
             </div>
           </aside>
-          <main>
-            <RelativeHeader theme="light" />
-            {component}
-          </main>
+          <main>{component}</main>
         </div>
       </div>
     </>
