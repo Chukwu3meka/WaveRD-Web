@@ -24,7 +24,7 @@
     @include quickFlex($dir: row, $justify: space-between);
 
     // border: 3px solid red;
-    & > div:first-of-type {
+    & > div:nth-of-type(1) {
       @include quickFlex($dir: row, $column: 10px, $width: 100%);
 
       & > a > span {
@@ -40,7 +40,7 @@
       display: none;
     }
 
-    & > div:last-of-type {
+    & > div:nth-of-type(3) {
       display: none;
     }
   }
@@ -56,7 +56,7 @@
 
 @media screen and (min-width: 570px) {
   .header > header {
-    & > div:first-of-type {
+    & > div:nth-of-type(1) {
       width: unset;
     }
 
@@ -86,9 +86,9 @@
 
 @media screen and (min-width: 780px) {
   .header > header {
-    & > div:last-of-type {
+    & > div:nth-of-type(3) {
       @include quickFlex($dir: row, $column: 10px);
-      & > div:first-of-type {
+      & > div:nth-of-type(1) {
         display: none;
       }
     }
@@ -96,7 +96,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-  .header > header > div:last-of-type > div:first-of-type {
+  .header > header > div:nth-of-type(3) > div:nth-of-type(1) {
     border-right: 1px solid darken($color: $lightGray, $amount: 70);
     padding-right: 15px;
     margin-right: 10px;
@@ -108,31 +108,8 @@
   @extend .header;
   margin: auto;
   position: unset;
-
   z-index: 2;
-
   width: 100%;
-
-  // $width: width(&);
-  // padding: calc($width / 200px);
-
-  // width: 100px;
-
-  // @if calc(100vw) < calc(1000px) {
-  // } @else {
-  //   border: 3px solid green;
-  // }
-
-  // // width: 200px;
-  // @if width(&) > 300px {
-  //   // background-color: red;
-  //   border: 3px solid red;
-  // } @else {
-  //   border: 3px solid green;
-  // }
-
-  // @if width(".header") > 300px {
-  //   background-color: red;
 
   & > header {
     background-color: transparent;
@@ -150,4 +127,46 @@
   & > header > div:nth-of-type(2) > span > a {
     color: $textPrimary;
   }
+}
+
+.titleOnlyDark {
+  @extend .relativeHeaderDark;
+}
+
+@media screen and (min-width: 1200px) {
+  .titleOnlyDark {
+    @extend .relativeHeaderDark;
+
+    & > header > div:nth-of-type(1) {
+      margin: auto;
+    }
+
+    & > header > div:nth-of-type(2),
+    & > header > div:nth-of-type(3) {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .titleOnlyDark {
+    & > header > div:nth-of-type(1) {
+      margin: unset;
+    }
+
+    & > header > div:nth-of-type(3) {
+      display: flex;
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .titleOnlyDark > header > div:nth-of-type(2) {
+    display: flex;
+  }
+}
+
+.titleOnlyLight {
+  @extend .titleOnlyDark;
+  @extend .relativeHeaderLight;
 }

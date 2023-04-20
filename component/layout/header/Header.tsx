@@ -10,10 +10,22 @@ import { IHeader } from "@interface/main/header-interface";
 import socialAccounts from "@source/constants/socialAccounts";
 
 // const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
-const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color }: any) => (
+const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
   <div
     className={
-      styles[relativeHeader === "dark" ? "relativeHeaderDark" : relativeHeader === "light" ? "relativeHeaderLight" : displayHeader ? "header" : "headerHidden"]
+      styles[
+        titleOnly === "dark"
+          ? "titleOnlyDark"
+          : titleOnly === "light"
+          ? "titleOnlyLight"
+          : relativeHeader === "dark"
+          ? "relativeHeaderDark"
+          : relativeHeader === "light"
+          ? "relativeHeaderLight"
+          : displayHeader
+          ? "header"
+          : "headerHidden"
+      ]
     }>
     <header>
       <div>

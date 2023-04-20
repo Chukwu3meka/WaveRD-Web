@@ -2,13 +2,13 @@
 
 .layout {
   min-height: $minContentHeight;
-  display: grid;
-  grid-template-rows: $headerHeight auto;
-
+  & > aside {
+    display: none;
+  }
   & > div:last-of-type {
-    & > aside {
-      display: none;
-    }
+    display: grid;
+    grid-template-rows: $headerHeight auto;
+
     & > main {
       @include quickFlex($width: 100%);
       padding: 10px;
@@ -22,47 +22,44 @@
 @media screen and (min-width: 1200px) {
   .layout {
     height: var(--visibleScreen);
-    & > div:last-of-type {
-      display: grid;
-      grid-template-columns: clamp(400px, 50%, 600px) auto;
-      height: calc(100%);
-      & > aside {
-        display: unset;
-        background-image: url("/images/layout/soccermass.webp");
-        background-size: 100% 100%;
+    display: grid;
+    grid-template-columns: clamp(400px, 50%, 600px) auto;
+    & > aside {
+      display: unset;
+      background-image: url("/images/layout/soccermass.webp");
+      background-size: 100% 100%;
+      position: relative;
+      overflow: hidden;
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: $darkGray;
+        opacity: 0.4;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      & > div {
         position: relative;
-        overflow: hidden;
-        &::after {
-          content: "";
-          position: absolute;
-          background-color: $darkGray;
-          opacity: 0.4;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-        }
+        z-index: 1;
+        height: 100%;
         & > div {
-          position: relative;
-          z-index: 1;
-          height: 100%;
-          & > div {
-            margin: auto;
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            color: darken($color: $textSecondary, $amount: 10);
-            font-size: 1.2em;
-            padding: 10px;
-            max-width: 450px;
-            * {
-              text-align: center;
-            }
+          margin: auto;
+          position: absolute;
+          top: 45%;
+          transform: translateY(-50%);
+          color: darken($color: $textSecondary, $amount: 10);
+          font-size: 1.2em;
+          padding: 10px;
+          max-width: 450px;
+          * {
+            text-align: center;
+          }
 
-            ul {
-              padding: 0;
-              list-style: none;
-            }
+          ul {
+            padding: 0;
+            list-style: none;
           }
         }
       }

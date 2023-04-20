@@ -11,11 +11,11 @@ import Divider from "@mui/material/Divider";
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler }: ISignin) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div id="signin" className={styles.signin}>
-      <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em" }}>Social Sign in</Divider>
+      <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em", marginX: "auto" }}>Social Sign in</Divider>
 
       <SocialAuth />
 
-      <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
+      <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em", marginX: "auto" }}>or Sign in with Email</Divider>
 
       <Stack spacing={3} alignItems="center" component="form" noValidate margin="auto">
         <TextField

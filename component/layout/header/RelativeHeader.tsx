@@ -1,7 +1,7 @@
 import HeaderContainer from ".";
 
-import { IRelativeHeader } from "@interface/main/header-interface";
+import { RelativeHeader } from "@interface/main/header-interface";
 
-const RelativeHeader = ({ theme }: IRelativeHeader) => <HeaderContainer {...{ displayHeader: true, relativeHeader: theme }} />;
+const RelativeHeader = ({ theme, titleOnly }: RelativeHeader) => <HeaderContainer {...{ displayHeader: true, relativeHeader: theme, titleOnly }} />;
 
 export default RelativeHeader;

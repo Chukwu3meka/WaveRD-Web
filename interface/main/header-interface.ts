@@ -6,13 +6,15 @@ export interface IHeader {
   relativeHeader: "dark" | "light" | null;
 }
 
-export interface IHeaderContainer {
+export interface HeaderContainer {
   logoutAction: Function;
   displayHeader: boolean;
   authenticated: boolean;
   relativeHeader: "dark" | "light" | null;
+  titleOnly: "dark" | "light" | null;
 }
 
-export interface IRelativeHeader {
+export interface RelativeHeader {
   theme: "dark" | "light";
+  titleOnly: "dark" | "light" | null;
 }
