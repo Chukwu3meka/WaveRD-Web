@@ -65,8 +65,8 @@ const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
 
 const validRoutes = [
-  { path: "signin", label: "Sign in" },
-  { path: "signup", label: "Sign up" },
+  { path: "signin", label: "Sign In" },
+  { path: "signup", label: "Sign Up" },
   { path: "forgotPassword", label: "Forgot Password" },
   // { path: "emailConfirmation", label: "Email Confirmation" },
 ];
