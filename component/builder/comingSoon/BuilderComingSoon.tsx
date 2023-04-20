@@ -9,7 +9,7 @@ import { Typography } from "@mui/material";
 
 const BuilderComingSoon = ({ timeLeft }: any) => (
   <div className={styles.comingSoon}>
-    <RelativeHeader theme="dark" />
+    <RelativeHeader theme="dark" titleOnly={null} />
 
     <Fade direction="right">
       <main>
