@@ -45,7 +45,7 @@ const validator = ({ value, type, label }: IValidator) => {
       const reg = /^[a-zA-Z]+([\ \'\.\-][a-zA-Z]+)*$/;
       if (!reg.test(value))
         throw {
-          message: `${label} Can consist of one or more letters, with optional dashes, dots, spaces, or hyphens, as long as they are followed by one or more letters.`,
+          message: `${label} can only have one or more letters, with optional dashes, dots, spaces, or hyphens, as long as they are followed by one or more letters.`,
         };
       break;
     }
