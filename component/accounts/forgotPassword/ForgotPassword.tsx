@@ -19,7 +19,7 @@ const Signin = ({ info, setInfo }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.forgotPassword}>
       <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
-        <Image src="/images/layout/password.png" alt="SoccerMASS" width={80} height={80} />
+        <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} />
 
         <Typography fontSize="1.3em" fontWeight={600}>
           Forgot Password
@@ -28,8 +28,6 @@ const Signin = ({ info, setInfo }: any) => (
         <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
           Kindly enter the email address associated with your account, and we'll send a link to reset your password
         </Typography>
-
-        {/* <Alert variant="outlined" severity="success"></Alert>        </Alert> */}
 
         <TextField
           fullWidth
