@@ -57,30 +57,30 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
           />
         </FormControl>
 
-        <Typography alignSelf="flex-start" sx={{ marginTop: "10px !important" }}>
-          <Link href="/accounts/forgotPassword">Forgot Password?</Link>
+        <Typography alignSelf="flex-end" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
+          <Link href="/accounts/forgotPassword">Forgot Password</Link>
         </Typography>
 
-        <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
-          <AttentionSeeker effect="bounce">
-            <Link href="/accounts/signup">
+        {/* <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}> */}
+        <AttentionSeeker effect="bounce">
+          {/* <Link href="/accounts/signup">
               <Button variant="outlined" size="large">
                 register
               </Button>
-            </Link>
+            </Link> */}
 
-            <LoadingButton
-              size="large"
-              variant="contained"
-              color="primary"
-              onClick={loginHandler()}
-              endIcon={<LoginIcon />}
-              disabled={userForm.options.loading}
-              loading={userForm.options.loading}>
-              <Typography sx={{ fontWeight: 900 }}>Login</Typography>
-            </LoadingButton>
-          </AttentionSeeker>
-        </Stack>
+          <LoadingButton
+            size="large"
+            variant="contained"
+            color="primary"
+            onClick={loginHandler()}
+            endIcon={<LoginIcon />}
+            disabled={userForm.options.loading}
+            loading={userForm.options.loading}>
+            <Typography sx={{ fontWeight: 900 }}>Login</Typography>
+          </LoadingButton>
+        </AttentionSeeker>
+        {/* </Stack> */}
       </Stack>
     </div>
   </Fade>

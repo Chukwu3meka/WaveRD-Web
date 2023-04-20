@@ -1,7 +1,7 @@
 @import "@source/scss/index.scss";
 
 .signin {
-  padding: 10px 10px 20px;
+  padding: 10px 50px 20px;
   transition: all 1.5s ease-in;
   @include boxShadow($br: 10px);
   background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
