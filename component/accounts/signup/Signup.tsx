@@ -17,7 +17,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
     <Fade direction="down" triggerOnce={true} className={signupStyles.signup}>
       <div>
         <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
-          <Image src="/images/layout/signup.png" alt="SoccerMASS" width={80} height={80} />
+          <Image src="/images/layout/signup.png" alt="SoccerMASS" width={150} height={120} />
 
           <TextField
             fullWidth

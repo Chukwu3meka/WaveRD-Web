@@ -10,7 +10,7 @@ const validateFormEntry = async ({ id, value, setUserForm }: IValidateFormEntry)
   if (["handle", "email"].includes(id)) {
     await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
       .then(async ({ payload: { exists } }) => {
-        if (exists) throw { message: `${id} already in use, Kindly use something different` };
+        if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
 
         setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
       })
@@ -34,7 +34,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
 
       await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } }).then(
         async ({ payload: { exists } }) => {
-          if (exists) throw { message: `${capitalize(id)} already in use, Kindly use something different` };
+          if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
           setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
         }
       );
