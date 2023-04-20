@@ -81,6 +81,10 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
           </LoadingButton>
         </AttentionSeeker>
         {/* </Stack> */}
+
+        <Typography sx={{ marginTop: "15px !important" }} fontSize={14}>
+          New to SoccerMASS? <Link href="/accounts/forgotPassword">Create Account</Link>
+        </Typography>
       </Stack>
     </div>
   </Fade>
