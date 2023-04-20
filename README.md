@@ -40,7 +40,8 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 4. In development we run a single command to reflect changes on file change, and to keep our app running all the time
    > `npm run dev`: to compile our typescript files and start our development server
 5. Verify Git remote URL by running `git remote -v`
-6. ...
+6. Client and Server share the same Validator to avoid conflict and aid debugging
+7. ...
 😉
 <!-- old gtag G-0BJL8GBSKY -->
 
