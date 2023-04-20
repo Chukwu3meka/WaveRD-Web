@@ -1,21 +1,17 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
+import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress } from "@mui/material";
 
 import { ISignin } from "@interface/accounts/signin-interface";
 import Link from "next/link";
 
 import { styles } from ".";
-import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
-import Collapse from "@mui/material/Collapse";
-import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-const Signin = ({ info, setInfo }: any) => (
+const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.forgotPassword}>
       <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
@@ -29,53 +25,39 @@ const Signin = ({ info, setInfo }: any) => (
           Kindly enter the email address associated with your account, and we'll send a link to reset your password
         </Typography>
 
-        {/* <FormControl fullWidth variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
-            <OutlinedInput
-              id="email"
-              value={userForm.email.value}
-              disabled={userForm.options.loading}
-              onChange={(e) => onInputChange(e)}
-              placeholder="firstname.lastname@soccermass.com"
-              error={!userForm.email.valid}
-              label="Email Address"
-              autoComplete="off"
-              endAdornment={
-                userForm.email.validating ? (
-                  <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
-                      <CircularProgress color="success" size={20} />
-                    </IconButton>
-                  </InputAdornment>
-                ) : (
-                  false
-                )
-              }
-            />
-          </FormControl> */}
-
-        {/* <TextField
-          fullWidth
-          id="email"
-          variant="outlined"
-          // value={userForm.email}
-          label="Email Address"
-          aria-describedby="email"
-          // disabled={userForm.options.loading}
-          // onChange={(e) => onInputChange(e)}
-          placeholder="firstname.lastname@soccermass.com"
-          autoComplete="off"
-        /> */}
+        <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
+          <OutlinedInput
+            id="email"
+            value={form.email.value}
+            disabled={form.options.loading}
+            onChange={(e) => onInputChange(e)}
+            placeholder="firstname.lastname@soccermass.com"
+            error={!form.email.valid}
+            label="Email Address"
+            autoComplete="off"
+            endAdornment={
+              form.email.validating ? (
+                <InputAdornment position="end">
+                  <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
+                    <CircularProgress color="success" size={20} />
+                  </IconButton>
+                </InputAdornment>
+              ) : (
+                false
+              )
+            }
+          />
+        </FormControl>
 
         <LoadingButton
           fullWidth
           size="large"
           variant="contained"
           color="primary"
-          // onClick={loginHandler()}
-          // disabled={userForm.options.loading}
-          // loading={userForm.options.loading}
-        >
+          onClick={() => resetPasswordHandler()}
+          disabled={form.options.loading}
+          loading={form.options.loading}>
           <Typography sx={{ fontWeight: 900 }}>Send Link</Typography>
         </LoadingButton>
 

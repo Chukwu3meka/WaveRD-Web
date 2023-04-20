@@ -1,5 +1,6 @@
+import * as handlers from "./handlers";
 import ForgotPassword from "./ForgotPassword";
-import ForgotPasswordContainer from "./ForgotPasswordContainer";
 import styles from "./forgotPassword.module.scss";
+import ForgotPasswordContainer from "./ForgotPasswordContainer";
 
-export { ForgotPassword, styles, ForgotPasswordContainer as default };
+export { ForgotPassword, handlers, styles, ForgotPasswordContainer as default };
