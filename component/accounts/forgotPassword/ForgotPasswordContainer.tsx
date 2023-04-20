@@ -9,7 +9,7 @@ import { useState } from "react";
 const ForgotPasswordContainer = (props: any) => {
   const [info, setInfo] = useState(true);
 
-  return <ForgotPassword info={info} setInfo={setInfo} />;
+  return process.env.NODE_ENV === "production" ? <ComingSoon /> : <ForgotPassword info={info} setInfo={setInfo} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
