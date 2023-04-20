@@ -7,7 +7,7 @@ import { IBuilderLoading } from "@interface/builder/loading-interface";
 
 const BuilderLoading = ({ height, colorScheme }: IBuilderLoading) => (
   <div>
-    <Fade duration={2000} style={{ height: "100%", minHeight: "300px" }}>
+    <Fade direction="right" style={{ height: "100%", minHeight: "300px" }}>
       <main className={styles.loading} style={{ height: height || "100%" }}>
         <Image src="/images/layout/ball.png" alt="SoccerMASS Loading ball" height={60} width={60} placeholder="blur" blurDataURL="/images/layout/ball.png" />
         <div>

@@ -8,7 +8,7 @@ import { logoutAction } from "@store/actions";
 import { HeaderContainer } from "@interface/main/header-interface";
 
 const HeaderContainer = (props: HeaderContainer) => {
-  const { logoutAction, displayHeader, relativeHeader = null, titleOnly = null } = props,
+  const { logoutAction, displayHeader, relativeHeader = null, titleOnly } = props,
     { enqueueSnackbar } = useSnackbar(),
     [color, setColor] = useState({
       first: relativeHeader === "light" ? "#404040" : "#f1f1f1",

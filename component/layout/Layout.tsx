@@ -10,6 +10,7 @@ import BuilderLoading from "@component/builder/loading";
 import { ILayout } from "@interface/main/layout-interface";
 import { HeaderContainer, FooterContainer, styles } from ".";
 import BuilderCookieNoticeContainer from "@component/builder/cookieNotice/BuilderCookieNoticeContainer";
+import { Fade } from "react-awesome-reveal";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable, cookieNotice }: ILayout) => (
   <>
@@ -53,7 +54,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
         <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
           <Provider store={store}>
             <main className={styles.layout} style={cssVariable}>
-              <HeaderContainer displayHeader={displayHeader} relativeHeader={null} />
+              <HeaderContainer displayHeader={displayHeader} relativeHeader={null} titleOnly={null} />
               <div>
                 {(!appReady || pageLoading) && <BuilderLoading />}
                 {appReady && !pageLoading && (

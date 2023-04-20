@@ -29,7 +29,32 @@ const Signin = ({ info, setInfo }: any) => (
           Kindly enter the email address associated with your account, and we'll send a link to reset your password
         </Typography>
 
-        <TextField
+        {/* <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
+            <OutlinedInput
+              id="email"
+              value={userForm.email.value}
+              disabled={userForm.options.loading}
+              onChange={(e) => onInputChange(e)}
+              placeholder="firstname.lastname@soccermass.com"
+              error={!userForm.email.valid}
+              label="Email Address"
+              autoComplete="off"
+              endAdornment={
+                userForm.email.validating ? (
+                  <InputAdornment position="end">
+                    <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
+                      <CircularProgress color="success" size={20} />
+                    </IconButton>
+                  </InputAdornment>
+                ) : (
+                  false
+                )
+              }
+            />
+          </FormControl> */}
+
+        {/* <TextField
           fullWidth
           id="email"
           variant="outlined"
@@ -40,7 +65,7 @@ const Signin = ({ info, setInfo }: any) => (
           // onChange={(e) => onInputChange(e)}
           placeholder="firstname.lastname@soccermass.com"
           autoComplete="off"
-        />
+        /> */}
 
         <LoadingButton
           fullWidth
