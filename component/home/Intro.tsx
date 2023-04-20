@@ -8,7 +8,7 @@ import { introStyles } from ".";
 const Intro = () => (
   <Fade direction="down" triggerOnce={true}>
     <div className={introStyles.intro}>
-      <RelativeHeader theme="dark" />
+      <RelativeHeader theme="dark" titleOnly={null} />
 
       <div>
         <div>
