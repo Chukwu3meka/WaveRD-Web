@@ -22,25 +22,6 @@
       width: 100%;
     }
   }
-
-  & > .divider {
-    max-width: 520px;
-    margin: 40px auto;
-    position: relative;
-    @include quickFlex($width: calc(100% - 20px));
-    border-top: 1px solid darken($color: $lightGray, $amount: 10);
-    & > span:first-of-type {
-      width: 180px;
-      position: absolute;
-      border-top: 2px solid lighten($secondary, 28);
-    }
-
-    & > span:last-of-type {
-      font-size: 0.8em;
-      position: absolute;
-      color: darken($color: $textSecondary, $amount: 40);
-    }
-  }
 }
 
 @media screen and (min-width: 1200px) {

@@ -6,21 +6,16 @@ import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, Outl
 import { SocialAuth, styles } from ".";
 import { ISignin } from "@interface/accounts/signin-interface";
 import Link from "next/link";
+import Divider from "@mui/material/Divider";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler }: ISignin) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div id="signin" className={styles.signin}>
-      <div className={styles.divider}>
-        <span />
-        <span>Social Sign in</span>
-      </div>
+      <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em" }}>Social Sign in</Divider>
 
       <SocialAuth />
 
-      <div className={styles.divider}>
-        <span />
-        <span>or Sign in with Email</span>
-      </div>
+      <Divider sx={{ my: 4, color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
 
       <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
         <TextField
@@ -61,14 +56,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
           <Link href="/accounts/forgotPassword">Forgot Password</Link>
         </Typography>
 
-        {/* <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}> */}
         <AttentionSeeker effect="bounce">
-          {/* <Link href="/accounts/signup">
-              <Button variant="outlined" size="large">
-                register
-              </Button>
-            </Link> */}
-
           <LoadingButton
             size="large"
             variant="contained"
@@ -77,13 +65,12 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
             endIcon={<LoginIcon />}
             disabled={userForm.options.loading}
             loading={userForm.options.loading}>
-            <Typography sx={{ fontWeight: 900 }}>Login</Typography>
+            <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
           </LoadingButton>
         </AttentionSeeker>
-        {/* </Stack> */}
 
-        <Typography sx={{ marginTop: "15px !important" }} fontSize={14}>
-          New to SoccerMASS? <Link href="/accounts/forgotPassword">Create Account</Link>
+        <Typography sx={{ marginTop: "35px !important" }} fontSize={14}>
+          New to SoccerMASS? <Link href="/accounts/signup">Create Account</Link>
         </Typography>
       </Stack>
     </div>
