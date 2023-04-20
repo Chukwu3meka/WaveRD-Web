@@ -1,7 +1,7 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  min-height: 500px;
+  min-height: $minContentHeight;
   & > div:last-of-type {
     & > aside {
       margin: 0;
@@ -15,15 +15,6 @@
         @include quickFlex($width: 100%);
         padding: 10px;
       }
-    }
-  }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1480px) {
-  .layout > div:last-of-type > main > *:first-of-type {
-    width: 100%;
-    & > * > *:last-child {
-      display: none;
     }
   }
 }
@@ -75,6 +66,15 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1480px) {
+  .layout > div:last-of-type > main > *:first-of-type {
+    width: 100%;
+    & > * > *:last-child {
+      display: none;
     }
   }
 }

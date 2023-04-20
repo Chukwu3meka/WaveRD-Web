@@ -1,7 +1,6 @@
 @import "@source/scss/index.scss";
 
 .signin {
-  caret-color: $primary;
   padding: 10px 10px 20px;
   transition: all 1.5s ease-in;
   @include boxShadow($br: 10px);
@@ -48,6 +47,6 @@
   .signin {
     margin: 10px auto;
     width: clamp(300px, 100%, 520px);
-    background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
+    // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
   }
 }

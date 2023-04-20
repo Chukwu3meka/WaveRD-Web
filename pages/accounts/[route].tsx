@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import Carousel from "nuka-carousel/lib/carousel";
 
 import { logoutAction } from "@store/actions";
+import styles from "@source/scss/accounts.module.scss";
 import { RelativeHeader } from "@component/layout/header";
 import authSlideText from "@source/constants/authSlideText";
-import styles from "@source/scss/accountStyles.module.scss";
 
 const Page = () => {
   const router = useRouter(),
