@@ -8,6 +8,7 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 import { ConfirmMail, signupStyles } from ".";
 
 import { ISignup } from "@interface/accounts/signup-interface";
+import Grid from "@mui/material/Grid";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler }: ISignup) =>
   userForm.options.accountCreated ? (
@@ -17,6 +18,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
       <div>
         <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off">
           <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={60} height={60} />
+
           <TextField
             fullWidth
             id="fullName"
@@ -55,70 +57,77 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             />
           </FormControl>
 
-          <FormControl fullWidth variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              id="password"
-              type={userForm.options.showPassword ? "text" : "password"}
-              value={userForm.password.value}
-              disabled={userForm.options.loading}
-              onChange={(e) => onInputChange(e)}
-              placeholder="Password"
-              error={!userForm.password.valid}
-              label="Password"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
-                    {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">Handle</InputLabel>
+                <OutlinedInput
+                  id="handle"
+                  value={userForm.handle.value}
+                  disabled={userForm.options.loading}
+                  onChange={(e) => onInputChange(e)}
+                  placeholder="What would you like us to call you?"
+                  error={!userForm.handle.valid}
+                  label="Handle"
+                  endAdornment={
+                    userForm.handle.validating ? (
+                      <InputAdornment position="end">
+                        <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
+                          <CircularProgress color="success" size={20} />
+                        </IconButton>
+                      </InputAdornment>
+                    ) : (
+                      false
+                    )
+                  }
+                />
+              </FormControl>
+            </Grid>
 
-          <FormControl fullWidth variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Handle</InputLabel>
-            <OutlinedInput
-              id="handle"
-              value={userForm.handle.value}
-              disabled={userForm.options.loading}
-              onChange={(e) => onInputChange(e)}
-              placeholder="What would you like us to call you?"
-              error={!userForm.handle.valid}
-              label="Handle"
-              endAdornment={
-                userForm.handle.validating ? (
-                  <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
-                      <CircularProgress color="success" size={20} />
-                    </IconButton>
-                  </InputAdornment>
-                ) : (
-                  false
-                )
-              }
-            />
-          </FormControl>
+            <Grid item xs={12} md={6}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                <OutlinedInput
+                  id="password"
+                  type={userForm.options.showPassword ? "text" : "password"}
+                  value={userForm.password.value}
+                  disabled={userForm.options.loading}
+                  onChange={(e) => onInputChange(e)}
+                  placeholder="Password"
+                  error={!userForm.password.valid}
+                  label="Password"
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+                        {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
 
-          <Stack direction="row" alignSelf="flex-end" spacing={2} sx={{ width: "max-content" }}>
-            <AttentionSeeker effect="bounce">
-              <Link href="/accounts/signin">
-                <Button variant="outlined" size="large">
-                  Sign in
-                </Button>
-              </Link>
+          <AttentionSeeker effect="bounce">
+            <LoadingButton
+              onClick={() => registerHandler()}
+              size="large"
+              variant="contained"
+              color="primary"
+              endIcon={<RegisterIcon />}
+              loading={!!userForm.options.loading}>
+              <Typography sx={{ fontWeight: 900 }}>Create Account</Typography>
+            </LoadingButton>
+          </AttentionSeeker>
 
-              <LoadingButton
-                onClick={() => registerHandler()}
-                size="large"
-                variant="contained"
-                color="primary"
-                endIcon={<RegisterIcon />}
-                loading={!!userForm.options.loading}>
-                <Typography sx={{ fontWeight: 900 }}>register</Typography>
-              </LoadingButton>
-            </AttentionSeeker>
-          </Stack>
+          <Typography sx={{ marginTop: "35px !important" }} fontSize={10} textAlign="center">
+            By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
+            <Link href="/info/privacy">Privacy Policy</Link>
+          </Typography>
+
+          <Typography sx={{ marginTop: "35px !important" }} fontSize={14}>
+            Already on SoccerMASS? <Link href="/accounts/signin">Sign in</Link>
+          </Typography>
         </Stack>
       </div>
     </Fade>

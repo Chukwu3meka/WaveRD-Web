@@ -24,7 +24,7 @@
     height: var(--visibleScreen);
     & > div:last-of-type {
       display: grid;
-      grid-template-columns: clamp(600px, 50%, 550px) auto;
+      grid-template-columns: clamp(600px, 70%, 800px) auto;
       height: calc(100%);
       & > aside {
         display: unset;

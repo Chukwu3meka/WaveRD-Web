@@ -2,19 +2,22 @@
 
 .signup {
   // // & > * {
-  // border: 3px solid blue;
   // // }
   @include quickFlex($width: 100%);
   padding: 10px;
+
+  // border: 3px solid blue;
+
   & > div {
-    width: 100%;
+    padding: 10px 50px;
+    max-width: 540px;
+    width: 100% !important;
     @include boxShadow($br: 10px);
     background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
 
     & > form {
       padding: 30px 10px 20px;
       transition: all 1.5s ease-in;
-      max-width: 520px;
       margin: auto;
       & > img {
         border-radius: 50%;

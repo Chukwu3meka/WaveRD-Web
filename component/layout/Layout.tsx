@@ -63,7 +63,6 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
                   </main>
                 )}
                 {!pageLoading && <FooterContainer />}
-                {/* <FooterContainer /> */}
               </div>
             </main>
           </Provider>
