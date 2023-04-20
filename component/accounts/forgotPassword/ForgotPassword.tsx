@@ -55,7 +55,7 @@ const Signin = ({ info, setInfo }: any) => (
         </LoadingButton>
 
         <Typography fontSize=".8em" textAlign="center">
-          <Link href="/info/privacy">
+          <Link href="/accounts/signin">
             <IconButton color="primary" sx={{ fontSize: "1.3em", mr: "-0px" }}>
               <ArrowBackIcon fontSize="inherit" />
             </IconButton>
