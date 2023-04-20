@@ -11,15 +11,25 @@ import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Signin = ({ info, setInfo }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.forgotPassword}>
-      <Stack spacing={3} alignItems="flex-end" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
-        <Alert variant="outlined" severity="success">
-          Please provide your email address. If it exists in our database, we will send you a link to reset your password via email. Once you receive the mail
-          to reset your password, kindly click on the link provided in the email. The link in the mail will become invalid after Three (3) hours
-        </Alert>
+      <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
+        <Image src="/images/layout/password.png" alt="SoccerMASS" width={80} height={80} />
+
+        <Typography fontSize="1.3em" fontWeight={600}>
+          Forgot Password
+        </Typography>
+
+        <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
+          Kindly enter the email address associated with your account, and we'll send a link to reset your password
+        </Typography>
+
+        {/* <Alert variant="outlined" severity="success"></Alert>        </Alert> */}
 
         <TextField
           fullWidth
@@ -35,6 +45,7 @@ const Signin = ({ info, setInfo }: any) => (
         />
 
         <LoadingButton
+          fullWidth
           size="large"
           variant="contained"
           color="primary"
@@ -44,6 +55,15 @@ const Signin = ({ info, setInfo }: any) => (
         >
           <Typography sx={{ fontWeight: 900 }}>Send Link</Typography>
         </LoadingButton>
+
+        <Typography fontSize=".8em" textAlign="center">
+          <Link href="/info/privacy">
+            <IconButton color="primary" sx={{ fontSize: "1.3em", mr: "-0px" }}>
+              <ArrowBackIcon fontSize="inherit" />
+            </IconButton>
+            Back to Sign in
+          </Link>
+        </Typography>
       </Stack>
     </div>
   </Fade>
