@@ -68,5 +68,6 @@ const validRoutes = [
   { path: "signin", label: "Sign In" },
   { path: "signup", label: "Sign Up" },
   { path: "forgotPassword", label: "Forgot Password" },
+  { path: "resetPassword", label: "Reset Password" },
   // { path: "emailConfirmation", label: "Email Confirmation" },
 ];
