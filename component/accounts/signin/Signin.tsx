@@ -12,14 +12,14 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     <div id="signin" className={styles.signin}>
       <div className={styles.divider}>
         <span />
-        <span>Social Signin</span>
+        <span>Social Sign in</span>
       </div>
 
       <SocialAuth />
 
       <div className={styles.divider}>
         <span />
-        <span>or Signin with Email</span>
+        <span>or Sign in with Email</span>
       </div>
 
       <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>

@@ -21,7 +21,7 @@ const ManagerIntro = () => (
 
       <Link href="/accounts/signup">
         <Button variant="contained" color="primary">
-          signup
+          Sign up
         </Button>
       </Link>
     </Paper>
@@ -63,7 +63,7 @@ const ManagerIntro = () => (
       <span>Assemble your team and manage club finances, your players are eager for your leadership.</span>
       <Link href="/accounts/signin">
         <Button variant="contained" color="primary">
-          signin
+          Sign in
         </Button>
       </Link>
     </Paper>

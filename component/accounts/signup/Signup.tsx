@@ -104,7 +104,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             <AttentionSeeker effect="bounce">
               <Link href="/accounts/signin">
                 <Button variant="outlined" size="large">
-                  login
+                  Sign in
                 </Button>
               </Link>
 

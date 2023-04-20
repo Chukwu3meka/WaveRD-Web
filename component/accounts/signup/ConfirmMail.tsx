@@ -29,7 +29,7 @@ const ConfirmMail = () => {
         <Stack direction="row">
           <Link href="/accounts/signin">
             <Button fullWidth variant="outlined">
-              Login
+              Sign in
             </Button>
           </Link>
           &nbsp;

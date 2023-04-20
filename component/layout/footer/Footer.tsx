@@ -61,7 +61,7 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
                   Logout
                 </a>
               )}
-              {!authenticated && <Link href="/accounts/signin">Login/Register</Link>}
+              {!authenticated && <Link href="/accounts/signin">Account Sign in</Link>}
               <Link href="/organization">Organization</Link>
             </div>
 
