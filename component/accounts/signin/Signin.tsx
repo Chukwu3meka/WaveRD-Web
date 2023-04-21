@@ -53,7 +53,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
         </FormControl>
 
         <Typography alignSelf="flex-end" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
-          <Link href="/accounts/forgotPassword">Forgot Password</Link>
+          <Link href="/accounts/forgot-password">Forgot Password</Link>
         </Typography>
 
         <AttentionSeeker effect="bounce">

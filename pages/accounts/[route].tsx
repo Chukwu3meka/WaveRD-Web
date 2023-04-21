@@ -20,10 +20,12 @@ const Page = () => {
 
   useEffect(() => {
     // ? Verify that user has visited a valid auth route
-    if (validRoutes.map(({ path }) => path).includes(route as string)) {
-      const AuthPage = dynamic(() => import(`@component/accounts/${route}`));
+    const isRouteValid = validRoutes.find((validRoute) => validRoute.path === route);
+
+    if (isRouteValid) {
+      const AuthPage = dynamic(() => import(`@component/accounts/${isRouteValid.component}`));
       setComponent(<AuthPage />);
-      setPageTitle(validRoutes.find(({ path }) => path === route)?.label || "");
+      setPageTitle(isRouteValid.title);
     } else {
       setInvalidRoute(true);
     }
@@ -65,9 +67,8 @@ const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
 
 const validRoutes = [
-  { path: "signin", label: "Sign In" },
-  { path: "signup", label: "Sign Up" },
-  { path: "forgotPassword", label: "Forgot Password" },
-  { path: "resetPassword", label: "Reset Password" },
-  // { path: "emailConfirmation", label: "Email Confirmation" },
+  { path: "signin", title: "Sign In", component: "signin" },
+  { path: "signup", title: "Sign Up", component: "signup" },
+  { path: "forgot-password", title: "Forgot Password", component: "forgotPassword" },
+  { path: "reset-password", title: "Reset Password", component: "resetPassword" },
 ];
