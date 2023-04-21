@@ -9,7 +9,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
 
   setUserForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
   try {
-    validator({ value, type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+    validator({ value: value.trim(), type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
 
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
@@ -26,7 +26,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
 
     closeSnackbar(); // <= hide any error that have been shown previously
   } catch ({ message }: any) {
-    enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
+    enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
     setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false } }));
   }
 };
@@ -40,9 +40,9 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
     /* re-validate all values before registeration */
     for (const [id, { value }] of Object.entries(userForm)) {
       if (id !== "options") {
-        validator({ value, type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+        validator({ value: value.trim(), type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
         setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
-        userData[id] = value; // <= append input to userdata if its valid
+        userData[id] = value.trim(); // <= append input to userdata if its valid
       }
     }
 
