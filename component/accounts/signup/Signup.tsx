@@ -122,7 +122,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             </LoadingButton>
           </AttentionSeeker>
 
-          <Typography fontSize={10} textAlign="center">
+          <Typography fontSize={10} textAlign="center" sx={{ margin: "35px auto -10px !important" }}>
             By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
             <Link href="/info/privacy">Privacy Policy</Link>
           </Typography>
