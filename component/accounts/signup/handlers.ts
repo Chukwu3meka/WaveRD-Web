@@ -4,24 +4,6 @@ import validator from "@utils/validator";
 import { IValidator } from "@interface/utils/validator-interface";
 import { IOnInputChange, IRegisterHandler, IValidateFormEntry } from "@interface/accounts/signup-interface";
 
-const validateFormEntry = async ({ id, value, setUserForm }: IValidateFormEntry) => {
-  validator({ value, type: id, label: id === "email" ? "Email Address" : null });
-
-  if (["handle", "email"].includes(id)) {
-    await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } })
-      .then(async ({ payload: { exists } }) => {
-        if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
-
-        setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
-      })
-      .catch(({ message }) => {
-        throw { message: message || `Unable to validate ${id}` };
-      });
-  } else {
-    setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
-  }
-};
-
 export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar }: IOnInputChange) => {
   const { value, id } = e.target;
 
@@ -55,9 +37,13 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
 
     const userData: any = {};
 
-    for (const [key, { value }] of Object.entries(userForm)) {
-      // <= re-validate all values before registeration
-      if (key !== "options") await validateFormEntry({ id: <IValidator["type"]>key, value, setUserForm }).then(() => (userData[key] = value));
+    /* re-validate all values before registeration */
+    for (const [id, { value }] of Object.entries(userForm)) {
+      if (id !== "options") {
+        validator({ value, type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+        setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
+        userData[id] = value; // <= append input to userdata if its valid
+      }
     }
 
     await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/personal/add_account" }).then(() =>
