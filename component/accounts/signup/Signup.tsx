@@ -46,7 +46,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               endAdornment={
                 userForm.email.validating ? (
                   <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
+                    <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
                       <CircularProgress color="success" size={20} />
                     </IconButton>
                   </InputAdornment>
@@ -73,7 +73,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
                     endAdornment={
                       userForm.handle.validating ? (
                         <InputAdornment position="end">
-                          <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" sx={{ ml: -1 }}>
+                          <IconButton aria-label="validating handle" edge="end" sx={{ ml: -1 }}>
                             <CircularProgress color="success" size={20} />
                           </IconButton>
                         </InputAdornment>
