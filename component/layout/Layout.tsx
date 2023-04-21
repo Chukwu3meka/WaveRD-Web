@@ -51,7 +51,7 @@ const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCac
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <SnackbarProvider maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+        <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
           <Provider store={store}>
             <main className={styles.layout} style={cssVariable}>
               <HeaderContainer displayHeader={displayHeader} relativeHeader={null} titleOnly={null} />
