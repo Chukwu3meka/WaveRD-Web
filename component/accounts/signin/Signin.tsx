@@ -1,12 +1,12 @@
+import Link from "next/link";
+import Divider from "@mui/material/Divider";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button, Box } from "@mui/material";
 
-import { Social, signinStyles as styles } from ".";
+import { Social } from ".";
 import { ISignin } from "@interface/accounts/signin-interface";
-import Link from "next/link";
-import Divider from "@mui/material/Divider";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: ISignin) => (
   <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
