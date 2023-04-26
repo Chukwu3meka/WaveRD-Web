@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
-import { Button, Paper, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
-import { confirmMailStyles } from ".";
+import { successStyles } from ".";
 
-const ConfirmMail = () => (
-  <Stack spacing={3} textAlign="center" alignItems="center" component="form" noValidate margin="auto" maxWidth={600} className={confirmMailStyles.confirmMail}>
-    <div className={confirmMailStyles.confirmMailImage}>
+const Success = () => (
+  <Stack spacing={3} textAlign="center" alignItems="center" component="form" noValidate margin="auto" maxWidth={600} className={successStyles.confirmMail}>
+    <div className={successStyles.successImage}>
       <Image
         src="/images/layout/verify-mail.png"
         alt="SoccermMASS Signup New Mail"
@@ -34,4 +33,4 @@ const ConfirmMail = () => (
   </Stack>
 );
 
-export default ConfirmMail;
+export default Success;
