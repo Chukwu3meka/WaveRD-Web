@@ -8,11 +8,11 @@
   & > div:last-of-type {
     display: grid;
     grid-template-rows: $headerHeight auto;
-
-    & > main {
-      @include quickFlex($width: 100%);
-      padding: 10px;
-      & > * {
+    & > div:last-of-type {
+      @include quickFlex();
+      background-image: radial-gradient(circle at bottom left, lighten($primary, 30), white 20%);
+      & > main {
+        padding: 30px 20px 50px;
         width: 100%;
       }
     }
@@ -21,7 +21,7 @@
 
 @media screen and (min-width: 1200px) {
   .layout {
-    height: var(--visibleScreen);
+    min-height: var(--visibleScreen);
     display: grid;
     grid-template-columns: clamp(400px, 50%, 600px) auto;
     & > aside {
@@ -64,7 +64,15 @@
         }
       }
     }
+
+    & > div:last-of-type > div:last-of-type {
+      background: none;
+      & > main {
+        @include boxShadow($br: 10px);
+        width: clamp(300px, 100%, 600px);
+        background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 20%);
+        padding: 50px;
+      }
+    }
   }
 }
-
-// @media screen and (min-width: 1200px) and (max-width: 1480px) {

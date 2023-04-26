@@ -1,0 +1,23 @@
+@import "@source/scss/index.scss";
+
+.social {
+  z-index: 2;
+  position: relative;
+  margin: 20px auto 15px;
+  @include quickFlex($dir: row, $row: 20px, $column: 20px);
+  & > a {
+    width: 100%;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 18px 10px;
+  }
+}
+
+.iconOnly {
+  // margin-top: 70px;
+  @extend .social;
+  justify-content: space-evenly;
+  & > * {
+    border: 3px double $secondary !important;
+  }
+}

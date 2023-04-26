@@ -10,6 +10,7 @@ import { logoutAction } from "@store/actions";
 import styles from "@source/scss/accounts.module.scss";
 import { RelativeHeader } from "@component/layout/header";
 import authSlideText from "@source/constants/authSlideText";
+import { Fade } from "react-awesome-reveal";
 
 const Page = () => {
   const router = useRouter(),
@@ -54,7 +55,9 @@ const Page = () => {
         </aside>
         <div>
           <RelativeHeader theme="light" titleOnly="light" />
-          <main>{component}</main>
+          <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
+            {component}
+          </Fade>
         </div>
       </div>
     </>

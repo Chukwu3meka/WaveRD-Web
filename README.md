@@ -49,3 +49,5 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 
 packagelock.json is needed for app to build on render
  -->
+<!-- // @media screen and (min-width: 1200px) and (max-width: 1480px) { -->
+<!--  -->
