@@ -1,7 +1,6 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  min-height: $minContentHeight;
   & > aside {
     display: none;
   }
@@ -13,7 +12,7 @@
       background-image: radial-gradient(circle at bottom left, lighten($primary, 30), white 20%);
       & > form {
         width: 100%;
-        padding: 30px 20px 50px;
+        padding: 30px 20px;
       }
     }
   }
@@ -23,7 +22,7 @@
   .layout {
     min-height: var(--visibleScreen);
     display: grid;
-    grid-template-columns: clamp(400px, 50%, 600px) auto;
+    grid-template-columns: clamp(400px, 50%, 800px) auto;
     & > aside {
       display: unset;
       background-image: url("/images/layout/soccermass.webp");
