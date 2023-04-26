@@ -1,0 +1,23 @@
+@import "@source/scss/index.scss";
+
+.verifiedImage {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  animation: rotation 10s infinite linear;
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  & > img {
+    border-radius: 50%;
+    border: 3px double $primary;
+  }
+}
