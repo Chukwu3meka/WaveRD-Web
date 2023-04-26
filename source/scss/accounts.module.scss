@@ -22,7 +22,7 @@
   .layout {
     min-height: var(--visibleScreen);
     display: grid;
-    grid-template-columns: clamp(400px, 50%, 800px) auto;
+    grid-template-columns: clamp(400px, 40%, 800px) auto;
     & > aside {
       display: unset;
       background-image: url("/images/layout/soccermass.webp");
