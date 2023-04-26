@@ -53,12 +53,12 @@ const Page = () => {
             </Carousel>
           </div>
         </aside>
-        <div>
+        <main>
           <RelativeHeader theme="light" titleOnly="light" />
           <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
             {component}
           </Fade>
-        </div>
+        </main>
       </div>
     </>
   );

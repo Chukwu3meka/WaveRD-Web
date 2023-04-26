@@ -5,15 +5,15 @@
   & > aside {
     display: none;
   }
-  & > div:last-of-type {
+  & > main:last-of-type {
     display: grid;
     grid-template-rows: $headerHeight auto;
     & > div:last-of-type {
       @include quickFlex();
       background-image: radial-gradient(circle at bottom left, lighten($primary, 30), white 20%);
-      & > main {
-        padding: 30px 20px 50px;
+      & > form {
         width: 100%;
+        padding: 30px 20px 50px;
       }
     }
   }
@@ -65,9 +65,9 @@
       }
     }
 
-    & > div:last-of-type > div:last-of-type {
+    & > main:last-of-type > div:last-of-type {
       background: none;
-      & > main {
+      & > form {
         @include boxShadow($br: 10px);
         width: clamp(300px, 100%, 600px);
         background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 20%);

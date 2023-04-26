@@ -12,12 +12,13 @@ const SigninContainer = (props: ISigninContainer) => {
   const router = useRouter(),
     { setAuthAction } = props,
     { enqueueSnackbar } = useSnackbar();
-  const [iconOnly, setIconOnly] = useState(false);
-  const [userForm, setUserForm] = useState<IUserForm>({
-    password: "",
-    email: "",
-    options: { showPassword: false, loading: false },
-  });
+
+  const [iconOnly, setIconOnly] = useState<boolean>(true),
+    [userForm, setUserForm] = useState<IUserForm>({
+      password: "",
+      email: "",
+      options: { showPassword: false, loading: false },
+    });
 
   useEffect(() => {
     const { facebook, twitter, google, response } = router.query;
@@ -26,7 +27,7 @@ const SigninContainer = (props: ISigninContainer) => {
   }, []);
 
   useEffect(() => {
-    setIconOnly(props.deviceWidth < 460);
+    setIconOnly((props.deviceWidth || window.innerWidth) < 460);
   }, [props.deviceWidth]);
 
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });

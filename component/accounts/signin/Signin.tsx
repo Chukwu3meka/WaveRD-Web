@@ -1,7 +1,7 @@
 import LoadingButton from "@mui/lab/LoadingButton";
-import { AttentionSeeker, Fade } from "react-awesome-reveal";
+import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button } from "@mui/material";
+import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button, Box } from "@mui/material";
 
 import { Social, signinStyles as styles } from ".";
 import { ISignin } from "@interface/accounts/signin-interface";
@@ -9,77 +9,65 @@ import Link from "next/link";
 import Divider from "@mui/material/Divider";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: ISignin) => (
-  <main id="signin" className={styles.signin}>
+  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600} className={styles.signin}>
     <Social iconOnly={iconOnly} />
 
-    <Divider
-      sx={{
-        color: "#8C8C8C",
-        fontSize: "0.8em",
-        marginX: "auto",
+    <Divider sx={{ color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
 
-        //
-      }}>
-      or Sign in with Email
-    </Divider>
+    <TextField
+      fullWidth
+      id="email"
+      variant="outlined"
+      value={userForm.email}
+      label="Email Address"
+      aria-describedby="email"
+      disabled={userForm.options.loading}
+      onChange={(e) => onInputChange(e)}
+      placeholder="firstname.lastname@soccermass.com"
+    />
 
-    <Stack spacing={3} alignItems="center" component="form" noValidate margin="auto">
-      <TextField
-        fullWidth
-        id="email"
-        variant="outlined"
-        value={userForm.email}
-        label="Email Address"
-        aria-describedby="email"
-        disabled={userForm.options.loading}
+    <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <OutlinedInput
+        type={userForm.options.showPassword ? "text" : "password"}
         onChange={(e) => onInputChange(e)}
-        placeholder="firstname.lastname@soccermass.com"
-        autoComplete="off"
+        disabled={userForm.options.loading}
+        placeholder="Password"
+        value={userForm.password}
+        label="Password"
+        id="password"
+        inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+              {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </IconButton>
+          </InputAdornment>
+        }
       />
+    </FormControl>
 
-      <FormControl fullWidth variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          type={userForm.options.showPassword ? "text" : "password"}
-          onChange={(e) => onInputChange(e)}
-          disabled={userForm.options.loading}
-          placeholder="Password"
-          value={userForm.password}
-          label="Password"
-          id="password"
-          inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
-                {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
+    <Typography alignSelf="flex-end" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
+      <Link href="/accounts/forgot-password">Forgot Password</Link>
+    </Typography>
 
-      <Typography alignSelf="flex-end" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
-        <Link href="/accounts/forgot-password">Forgot Password</Link>
-      </Typography>
+    <AttentionSeeker effect="bounce">
+      <LoadingButton
+        size="large"
+        variant="contained"
+        color="primary"
+        onClick={loginHandler()}
+        endIcon={<LoginIcon />}
+        disabled={userForm.options.loading}
+        loading={userForm.options.loading}>
+        <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
+      </LoadingButton>
+    </AttentionSeeker>
 
-      <AttentionSeeker effect="bounce">
-        <LoadingButton
-          size="large"
-          variant="contained"
-          color="primary"
-          onClick={loginHandler()}
-          endIcon={<LoginIcon />}
-          disabled={userForm.options.loading}
-          loading={userForm.options.loading}>
-          <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
-        </LoadingButton>
-      </AttentionSeeker>
-
-      <Typography sx={{ marginTop: "35px !important" }} fontSize={14}>
-        New to SoccerMASS? <Link href="/accounts/signup">Create Account</Link>
-      </Typography>
-    </Stack>
-  </main>
+    <Typography sx={{ marginTop: "35px !important" }} fontSize={14}>
+      New to SoccerMASS? <Link href="/accounts/signup">Create Account</Link>
+    </Typography>
+  </Stack>
 );
 
 export default Signin;

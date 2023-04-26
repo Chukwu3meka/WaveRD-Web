@@ -1,39 +1,16 @@
 @import "@source/scss/index.scss";
 
 .signin {
-  // padding: 0 10px 10px;
-  // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 10%);
-  // transition: all 1.5s ease-in;
-  // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), white 20%);
-  // width: 100%;
-  // padding: 10px 20px 30px;
-
-  // height: clamp(200px, calc(var(--visibleScreen) - $headerHeight), unset);
-  // height: clamp(200px, calc(var(--visibleScreen) - $headerHeight), unset);
-
   & > * {
-    max-width: 420px;
-    width: 100%;
-    // margin: unset !important;
-
+    // max-width: 420px;
+    // width: 100%;
     &:nth-child(2) {
-      margin: 50px auto 25px;
+      // border: 3px solid green;
+      // & > * {
+      //   border: 3px solid red;
+      //   display: block !important;
+      //   margin: 50px auto 25px;
+      // }
     }
-  }
-}
-
-// @media screen and (min-width: 580px) {
-//   .signin > .social {
-//     // margin: 20px auto 15px;
-//     flex-wrap: nowrap;
-//   }
-// }
-
-@media screen and (min-width: 1200px) {
-  .signin {
-    // margin: 10px auto;
-    // @include boxShadow($br: 10px);
-    // width: clamp(300px, 100%, 520px);
-    // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 20%);
   }
 }

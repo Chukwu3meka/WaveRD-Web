@@ -3,10 +3,12 @@ export interface ISignin {
   loginHandler: Function;
   onInputChange: Function;
   handleClickShowPassword: Function;
+  iconOnly: boolean;
 }
 
 export interface ISigninContainer {
   setAuthAction: Function;
+  deviceWidth: number;
 }
 
 export interface IUserForm {
@@ -30,4 +32,8 @@ export interface ILoginHandler {
   setUserForm: Function;
   setAuthAction: Function;
   enqueueSnackbar: Function;
+}
+
+export interface Social {
+  iconOnly: boolean;
 }

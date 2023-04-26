@@ -6,6 +6,34 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 
 import { socialStyles as styles } from ".";
 
+import { Social } from "@interface/accounts/signin-interface";
+
+const Social = ({ iconOnly }: Social) => (
+  <section className={styles[iconOnly ? "iconOnly" : "social"]}>
+    {authData.map(({ color, endpoint, Icon, label }) =>
+      iconOnly ? (
+        <IconButton key={label} aria-label="SoccerMASS oAuth Sign In" component="label" sx={{ color }}>
+          <Icon fontSize="large" />
+        </IconButton>
+      ) : (
+        <Chip
+          clickable
+          key={label}
+          component="a"
+          label={label}
+          icon={<Icon />}
+          color="primary"
+          href={endpoint}
+          variant="outlined"
+          sx={{ "&>svg": { color: `${color} !important` } }}
+        />
+      )
+    )}
+  </section>
+);
+
+export default Social;
+
 const authData = [
   {
     color: "#1DA1F2",
@@ -33,28 +61,3 @@ const authData = [
     label: "Facebook",
   },
 ];
-
-const SocialAuth = ({ iconOnly }) => (
-  <section className={styles[iconOnly ? "iconOnly" : "social"]}>
-    {authData.map(({ color, endpoint, Icon, label }) =>
-      iconOnly ? (
-        <IconButton aria-label="SoccerMASS oAuth Sign In" component="label" sx={{ color }}>
-          <Icon fontSize="large" />
-        </IconButton>
-      ) : (
-        <Chip
-          sx={{ "&>svg": { color: `${color} !important` } }}
-          icon={<Icon />}
-          clickable
-          label={label}
-          variant="outlined"
-          color="primary"
-          component="a"
-          href={endpoint}
-        />
-      )
-    )}
-  </section>
-);
-
-export default SocialAuth;
