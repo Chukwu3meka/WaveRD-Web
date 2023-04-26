@@ -4,11 +4,13 @@
   position: sticky;
   position: -webkit-sticky;
   background-color: transparent;
-  top: 10px; /* required */
+  top: 5px; /* required */
   display: block;
   transition: top 0.5s ease-in-out;
   z-index: 3;
   margin: calc(-#{$headerHeight}) auto 0;
+  // border: 3px solid red;
+  padding: 0 5px;
   & > header {
     // border: 3px solid red;
     // border: 3px solid red;

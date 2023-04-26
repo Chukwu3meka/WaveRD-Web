@@ -11,41 +11,37 @@ import Image from "next/image";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
+const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: any) => (
   <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
     <div className={styles.forgotPassword}>
       <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
         <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} />
 
         <Typography fontSize="1.3em" fontWeight={600}>
-          Forgot Password
+          Reset Password
         </Typography>
 
         <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
-          Kindly enter the email address associated with your account, and we'll send a link to reset your password
+          Please enter a new password to complete the password recovery process. The link sent to your email will expire after 3 hours
         </Typography>
 
         <FormControl fullWidth variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
-            id="email"
-            value={form.email.value}
+            id="password"
+            type={form.options.showPassword ? "text" : "password"}
+            value={form.password.value}
             disabled={form.options.loading}
             onChange={(e) => onInputChange(e)}
-            placeholder="firstname.lastname@soccermass.com"
-            error={!form.email.valid}
-            label="Email Address"
-            autoComplete="off"
+            placeholder="Password"
+            error={!form.password.valid}
+            label="Password"
             endAdornment={
-              form.email.validating ? (
-                <InputAdornment position="end">
-                  <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
-                    <CircularProgress color="success" size={20} />
-                  </IconButton>
-                </InputAdornment>
-              ) : (
-                false
-              )
+              <InputAdornment position="end">
+                <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+                  {form.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                </IconButton>
+              </InputAdornment>
             }
           />
         </FormControl>
