@@ -6,10 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { forgotPasswordStyles as styles } from ".";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
   <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+    <Image className={styles.rotation} src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
 
     <Typography fontSize="1.3em" fontWeight={600}>
       Forgot Password

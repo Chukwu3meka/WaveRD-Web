@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSnackbar } from "notistack";
 
-import { Signup, handlers } from ".";
+import { Signup, handlers, ConfirmMail } from ".";
 import { IUserForm } from "@interface/accounts/signup-interface";
 
 const SignupContainer = () => {
@@ -19,7 +19,7 @@ const SignupContainer = () => {
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
-  return <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler }} />;
+  return userForm.options.accountCreated ? <ConfirmMail /> : <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler }} />;
 };
 
 export default SignupContainer;
