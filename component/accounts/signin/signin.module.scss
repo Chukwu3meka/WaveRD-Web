@@ -1,16 +1,1 @@
 @import "@source/scss/index.scss";
-
-.signin {
-  & > * {
-    // max-width: 420px;
-    // width: 100%;
-    &:nth-child(2) {
-      // border: 3px solid green;
-      // & > * {
-      //   border: 3px solid red;
-      //   display: block !important;
-      //   margin: 50px auto 25px;
-      // }
-    }
-  }
-}

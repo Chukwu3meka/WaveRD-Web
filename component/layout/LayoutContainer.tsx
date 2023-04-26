@@ -25,7 +25,7 @@ const LayoutContainer = (props: any) => {
     if (!appReady) {
       setCssVariable((cssVariable) => ({
         ...cssVariable,
-        "--visibleScreen": `${window.innerHeight}px`, // <= iPhone not returning the right screen height in VH
+        "--visibleScreen": `${window.innerHeight + 2}px`, // <= iPhone not returning the right screen height in VH
       }));
 
       setAppReady(true);

@@ -9,7 +9,7 @@ import Link from "next/link";
 import Divider from "@mui/material/Divider";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: ISignin) => (
-  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600} className={styles.signin}>
+  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
     <Social iconOnly={iconOnly} />
 
     <Divider sx={{ color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
