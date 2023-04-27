@@ -13,6 +13,8 @@ const ResetPasswordContainer = (props: any) => {
 
   const [form, setForm] = useState<any>({
     options: { showPassword: false, loading: false, accountCreated: false },
+    newPassword: { value: "new Password@1", valid: true, info: "Password cannot be empty", validating: false },
+    tempPassword: { value: "temp Password@1", valid: true, info: "Password cannot be empty", validating: false },
   });
 
   const resetPasswordHandler = () => handlers.resetPasswordHandler({ enqueueSnackbar, setForm, form, closeSnackbar });

@@ -1,7 +1,7 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress } from "@mui/material";
+import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress, Box } from "@mui/material";
 
 import { ISignin } from "@interface/accounts/signin-interface";
 import Link from "next/link";
@@ -12,82 +12,82 @@ import Image from "next/image";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: any) => (
-  <main className={styles.forgotPassword}>
-    <Stack spacing={3} alignItems="center" component="form" noValidate autoComplete="off" margin="auto" maxWidth={520}>
-      <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} />
+  <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
+    <Box className={styles.rotation}>
+      <Image src="/images/layout/reset-password.png" alt="SoccerMASS" width={100} height={80} style={{ margin: "auto" }} />
+    </Box>
 
-      <Typography fontSize="1.3em" fontWeight={600}>
-        Reset Password
-      </Typography>
+    <Typography fontSize="1.3em" fontWeight={600}>
+      Reset Password
+    </Typography>
 
-      <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
-        Please input the temporary password that was sent to you in order to confirm the password reset. Your new password should be between 8 to 16 characters
-        and contain at least one letter and one number. The link sent to your email will expire after 3 hours
-      </Typography>
+    <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
+      Please enter the temporary password from the mail and a new password to complete the password recovery process. The link sent to your email will expire
+      after 3 hours
+    </Typography>
 
-      <FormControl fullWidth variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="password"
-          type={form.options.showPassword ? "text" : "password"}
-          value={form.password.value}
-          disabled={form.options.loading}
-          onChange={(e) => onInputChange(e)}
-          placeholder="Password"
-          error={!form.password.valid}
-          label="Password"
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
-                {form.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-
-      <FormControl fullWidth variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          type={userForm.options.showPassword ? "text" : "password"}
-          onChange={(e) => onInputChange(e)}
-          disabled={userForm.options.loading}
-          placeholder="Password"
-          value={userForm.password}
-          label="Password"
-          id="password"
-          inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
-                {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-
-      <LoadingButton
-        fullWidth
-        size="large"
-        variant="contained"
-        color="primary"
-        onClick={() => resetPasswordHandler()}
+    <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Temporary Password</InputLabel>
+      <OutlinedInput
+        id="password"
+        type={form.options.showPassword ? "text" : "password"}
+        value={form.tempPassword.value}
         disabled={form.options.loading}
-        loading={form.options.loading}>
-        <Typography sx={{ fontWeight: 900 }}>Send Link</Typography>
-      </LoadingButton>
+        onChange={(e) => onInputChange(e)}
+        placeholder="Temporary Password"
+        error={!form.tempPassword.valid}
+        label="Temporary Password"
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+              {form.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+    </FormControl>
 
-      <Typography fontSize=".8em" textAlign="center">
-        <Link href="/accounts/signin">
-          <IconButton color="primary" sx={{ fontSize: "1.3em", mr: "-0px" }}>
-            <ArrowBackIcon fontSize="inherit" />
-          </IconButton>
-          Back to Sign in
-        </Link>
-      </Typography>
-    </Stack>
-  </main>
+    <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">New Password</InputLabel>
+      <OutlinedInput
+        id="password"
+        type={form.options.showPassword ? "text" : "password"}
+        value={form.newPassword.value}
+        disabled={form.options.loading}
+        onChange={(e) => onInputChange(e)}
+        placeholder="New Password"
+        error={!form.newPassword.valid}
+        label="New Password"
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+              {form.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+    </FormControl>
+
+    <LoadingButton
+      fullWidth
+      size="large"
+      variant="contained"
+      color="primary"
+      onClick={() => resetPasswordHandler()}
+      disabled={form.options.loading}
+      loading={form.options.loading}>
+      <Typography sx={{ fontWeight: 900 }}>Reset Password</Typography>
+    </LoadingButton>
+
+    <Typography fontSize=".8em" textAlign="center">
+      <Link href="/accounts/signin">
+        <IconButton color="primary" sx={{ fontSize: "1.3em", mr: "-0px" }}>
+          <ArrowBackIcon fontSize="inherit" />
+        </IconButton>
+        Back to Sign in
+      </Link>
+    </Typography>
+  </Stack>
 );
 
 export default Signin;
