@@ -1,5 +1,5 @@
 import ComingSoon from "@component/builder/comingSoon";
 
-const Page = () => <ComingSoon />;
+const Page = () => <ComingSoon header />;
 
 export default Page;

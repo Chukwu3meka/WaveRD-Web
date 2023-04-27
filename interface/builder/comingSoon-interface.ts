@@ -1,5 +1,5 @@
 export interface BuilderComingSoonContainer {
-  header: boolean;
+  header?: boolean;
   minHeight?: string;
 }
 
