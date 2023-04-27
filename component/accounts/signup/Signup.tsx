@@ -1,18 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
+import Grid from "@mui/material/Grid";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
 
-import Grid from "@mui/material/Grid";
-
+import { signupStyles as styles } from ".";
 import { ISignup } from "@interface/accounts/signup-interface";
-import { signupStyles } from ".";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler }: ISignup) => (
   <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    <Image src="/images/layout/sign-up.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} className={signupStyles.rotation} />
+    <Image src="/images/layout/sign-up.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} className={styles.rotation} />
 
     <TextField
       fullWidth
