@@ -18,7 +18,7 @@ interface TimeLeft {
   seconds: number;
 }
 
-const BuilderComingSoonContainer = () => {
+const BuilderComingSoonContainer = ({ header }) => {
   const finishDate: Date = new Date("June 11 2023");
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -46,6 +46,6 @@ const BuilderComingSoonContainer = () => {
     };
   };
 
-  return <BuilderComingSoon timeLeft={timeLeft} />;
+  return <BuilderComingSoon timeLeft={timeLeft} header={header} />;
 };
 export default BuilderComingSoonContainer;

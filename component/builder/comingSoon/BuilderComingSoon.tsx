@@ -7,10 +7,9 @@ import { IBuilderLoading } from "@interface/builder/loading-interface";
 import { RelativeHeader } from "@component/layout/header";
 import { Typography } from "@mui/material";
 
-const BuilderComingSoon = ({ timeLeft }: any) => (
+const BuilderComingSoon = ({ timeLeft, header }: any) => (
   <div className={styles.comingSoon}>
-    <RelativeHeader theme="dark" titleOnly={null} />
-
+    {header ? <RelativeHeader theme="dark" titleOnly={null} /> : ""}
     <Fade direction="right">
       <main>
         <Typography color="#fff" fontSize="clamp(2em, 7vw, 4em)">

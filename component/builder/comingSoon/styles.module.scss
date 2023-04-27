@@ -4,6 +4,7 @@
   background-color: $darkGray;
   background-image: radial-gradient(circle at bottom left, lighten($darkGray, 7), $darkGray 30%);
   min-height: var(--visibleScreen);
+  height: 100%;
   background-image: url("/images/layout/background.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
