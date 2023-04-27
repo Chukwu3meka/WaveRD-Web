@@ -19,11 +19,7 @@ const ForgotPasswordContainer = (props: any) => {
   const resetPasswordHandler = () => handlers.resetPasswordHandler({ enqueueSnackbar, setForm, form, closeSnackbar });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setForm, enqueueSnackbar, closeSnackbar });
 
-  return process.env.NODE_ENV === "production" ? (
-    <ComingSoon />
-  ) : (
-    <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />
-  );
+  return <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

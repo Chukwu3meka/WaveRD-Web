@@ -3,20 +3,21 @@
 .verifiedImage {
   position: relative;
   width: 100%;
-  max-width: 200px;
-  height: 200px;
+  max-width: 120px;
+  height: 120px;
   animation: rotation 10s infinite linear;
 
   @keyframes rotation {
     from {
-      transform: rotate(0deg);
+      transform: rotateY(0deg);
     }
     to {
-      transform: rotate(360deg);
+      transform: rotateY(360deg);
     }
   }
 
   & > img {
+    padding: 10px;
     border-radius: 50%;
     border: 3px double $primary;
   }

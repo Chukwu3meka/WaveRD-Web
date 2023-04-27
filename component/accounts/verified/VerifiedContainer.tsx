@@ -1,5 +1,7 @@
+import { Verified } from ".";
+
 const VerifiedContainer = () => {
-  return <div>VerifiedContainer</div>;
+  return <Verified />;
 };
 
 export default VerifiedContainer;

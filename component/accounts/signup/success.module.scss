@@ -3,8 +3,8 @@
 .successImage {
   position: relative;
   width: 100%;
-  max-width: 200px;
-  height: 200px;
+  max-width: 150px;
+  height: 150px;
   animation: rotation 10s infinite linear;
 
   @keyframes rotation {
@@ -17,7 +17,11 @@
   }
 
   & > img {
+    height: 80% !important;
+    width: 80% !important;
+    margin: auto;
     border-radius: 50%;
     border: 3px double $primary;
+    padding: 10px;
   }
 }

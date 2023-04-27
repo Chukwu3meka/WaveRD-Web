@@ -21,7 +21,8 @@ const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
       </Typography>
 
       <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
-        Please enter a new password to complete the password recovery process. The link sent to your email will expire after 3 hours
+        Please input the temporary password that was sent to you in order to confirm the password reset. Your new password should be between 8 to 16 characters
+        and contain at least one letter and one number. The link sent to your email will expire after 3 hours
       </Typography>
 
       <FormControl fullWidth variant="outlined">
@@ -39,6 +40,27 @@ const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
             <InputAdornment position="end">
               <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
                 {form.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+
+      <FormControl fullWidth variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <OutlinedInput
+          type={userForm.options.showPassword ? "text" : "password"}
+          onChange={(e) => onInputChange(e)}
+          disabled={userForm.options.loading}
+          placeholder="Password"
+          value={userForm.password}
+          label="Password"
+          id="password"
+          inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+                {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
               </IconButton>
             </InputAdornment>
           }

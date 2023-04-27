@@ -12,7 +12,6 @@ const ResetPasswordContainer = (props: any) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [form, setForm] = useState<any>({
-    email: { value: "", valid: true, info: "Email cannot be empty" },
     options: { showPassword: false, loading: false, accountCreated: false },
   });
 

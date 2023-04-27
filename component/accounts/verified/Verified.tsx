@@ -4,12 +4,12 @@ import { Button, Stack, Typography } from "@mui/material";
 
 import { verifiedStyles } from ".";
 
-const verified = () => (
+const Verified = () => (
   <Stack spacing={3} textAlign="center" alignItems="center" component="form" noValidate margin="auto" maxWidth={600}>
     <div className={verifiedStyles.verifiedImage}>
       <Image
-        src="/images/layout/verify-mail.png"
-        alt="SoccermMASS Signup New Mail"
+        src="/images/layout/verified.png"
+        alt="SoccermMASS Account Verified"
         fill
         sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -18,19 +18,19 @@ const verified = () => (
     </div>
 
     <Typography fontSize="1.3em" fontWeight={600}>
-      Verify Your Email
+      Email Verified
     </Typography>
 
     <Typography variant="body2">
-      Great news! Your account has been created successfully. Kindly check your email for a message from us containing an activation link. By clicking the link,
-      you will verify your account and gain access to all the features and benefits of our platform. Thank you for choosing our services, and we look forward to
-      serving you.
+      We are delighted to inform you that your account has been successfully verified. You can now log in to our platform and start using our services. Thank
+      you for choosing our platform. We are confident that you will find our services beneficial and we look forward to serving you. If you have any questions
+      or concerns, please do not hesitate to contact us.
     </Typography>
 
-    <Button variant="contained" sx={{ "& > *": { color: "white" }, width: "clamp(200px, 100%, 520px)" }}>
+    <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
       <Link href="/accounts/signin">Sign in</Link>
     </Button>
   </Stack>
 );
 
-export default verified;
+export default Verified;

@@ -3,16 +3,18 @@ import Divider from "@mui/material/Divider";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Button, Box } from "@mui/material";
+import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
 
 import { Social } from ".";
 import { ISignin } from "@interface/accounts/signin-interface";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: ISignin) => (
-  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
+  <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
     <Social iconOnly={iconOnly} />
 
-    <Divider sx={{ color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
+    <Box width="100%">
+      <Divider sx={{ color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
+    </Box>
 
     <TextField
       fullWidth
@@ -47,7 +49,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
       />
     </FormControl>
 
-    <Typography alignSelf="flex-end" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
+    <Typography textAlign="right" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
       <Link href="/accounts/forgot-password">Forgot Password</Link>
     </Typography>
 
