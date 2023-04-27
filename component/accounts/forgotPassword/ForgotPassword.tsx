@@ -10,9 +10,9 @@ import { forgotPasswordStyles as styles } from ".";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
   <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
-    <Box className={styles.rotation}>
+    <div className={styles.rotation}>
       <Image src="/images/layout/forgot-password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
-    </Box>
+    </div>
 
     <Typography fontSize="1.3em" fontWeight={600}>
       Forgot Password

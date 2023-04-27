@@ -3,12 +3,16 @@
 .rotation {
   animation: rotation 5s infinite linear;
 
+  border: 3px solid red;
+
+  // transform-style: preserve-3d;
+
   @keyframes rotation {
     from {
-      transform: rotateY(0deg);
+      transform: perspective rotateY(0deg);
     }
     to {
-      transform: rotateY(360deg);
+      transform: perspective rotateY(360deg);
     }
   }
 }
