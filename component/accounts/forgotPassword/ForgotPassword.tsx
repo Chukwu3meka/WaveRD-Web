@@ -1,5 +1,5 @@
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress } from "@mui/material";
+import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress, Box } from "@mui/material";
 
 import Link from "next/link";
 
@@ -9,8 +9,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { forgotPasswordStyles as styles } from ".";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
-  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    <Image className={styles.rotation} src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+  <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
+    <Box className={styles.rotation}>
+      <Image src="/images/layout/forgot-password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+    </Box>
 
     <Typography fontSize="1.3em" fontWeight={600}>
       Forgot Password

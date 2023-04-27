@@ -1,11 +1,13 @@
 @import "@source/scss/index.scss";
 
-.successImage {
+.rotation {
   position: relative;
   width: 100%;
-  max-width: 150px;
-  height: 150px;
+  max-width: 120px !important;
+  height: 120px;
   animation: rotation 10s infinite linear;
+
+  // border: 3px solid red !important;
 
   @keyframes rotation {
     from {
@@ -17,11 +19,12 @@
   }
 
   & > img {
-    height: 80% !important;
-    width: 80% !important;
-    margin: auto;
+    //   height: 80% !important;
+    padding: 10px;
+    //   width: 80% !important;
+    //   margin: auto;
     border-radius: 50%;
     border: 3px double $primary;
-    padding: 10px;
+    //   padding: 10px;
   }
 }
