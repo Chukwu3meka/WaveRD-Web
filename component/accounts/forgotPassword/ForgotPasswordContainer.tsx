@@ -18,7 +18,7 @@ const ForgotPasswordContainer = (props: any) => {
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setForm, enqueueSnackbar, closeSnackbar });
 
   return process.env.NODE_ENV !== "production" ? (
-    <ComingSoon header={false} />
+    <ComingSoon header={false} minHeight="100%" />
   ) : (
     <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />
   );

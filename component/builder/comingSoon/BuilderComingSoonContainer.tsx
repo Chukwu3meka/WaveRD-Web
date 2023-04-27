@@ -1,30 +1,12 @@
-import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
-
-import { BuilderComingSoon, styles } from ".";
-
-import { IBuilderLoading } from "@interface/builder/loading-interface";
-import { RelativeHeader } from "@component/layout/header";
-import { Typography } from "@mui/material";
+import { BuilderComingSoon } from ".";
 
 import { useEffect, useState } from "react";
 import { fullDateFn } from "@utils/handlers";
+import { BuilderComingSoonContainer, TimeLeft } from "@interface/builder/comingSoon-interface";
 
-interface TimeLeft {
-  date: string;
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
-const BuilderComingSoonContainer = ({ header }) => {
-  const finishDate: Date = new Date("June 11 2023");
-
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  // const [pageDate, setFinishDate] = useState({
-  // });
+const BuilderComingSoonContainer = ({ header, minHeight = "var(--visibleScreen)" }: BuilderComingSoonContainer) => {
+  const finishDate: Date = new Date("June 11 2023"),
+    [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,6 +28,6 @@ const BuilderComingSoonContainer = ({ header }) => {
     };
   };
 
-  return <BuilderComingSoon timeLeft={timeLeft} header={header} />;
+  return <BuilderComingSoon timeLeft={timeLeft} header={header} minHeight={minHeight} />;
 };
 export default BuilderComingSoonContainer;

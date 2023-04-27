@@ -1,15 +1,15 @@
-import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 
-import { IBuilderLoading } from "@interface/builder/loading-interface";
 import { RelativeHeader } from "@component/layout/header";
 import { Typography } from "@mui/material";
+import { BuilderComingSoon } from "@interface/builder/comingSoon-interface";
 
-const BuilderComingSoon = ({ timeLeft, header }: any) => (
-  <div className={styles.comingSoon}>
+const BuilderComingSoon = ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
+  <div className={styles.comingSoon} style={{ minHeight }}>
     {header ? <RelativeHeader theme="dark" titleOnly={null} /> : ""}
+
     <Fade direction="right">
       <main>
         <Typography color="#fff" fontSize="clamp(2em, 7vw, 4em)">
