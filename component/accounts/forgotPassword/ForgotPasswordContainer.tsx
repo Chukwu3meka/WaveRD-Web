@@ -6,7 +6,7 @@ import { ForgotPassword, handlers } from ".";
 import { logoutAction } from "@store/actions";
 import ComingSoon from "@component/builder/comingSoon";
 
-const ForgotPasswordContainer = (props: any) => {
+const ForgotPasswordContainer = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [form, setForm] = useState<any>({

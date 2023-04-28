@@ -41,5 +41,3 @@ export const onBlurHandler = async ({ e, setUserForm }: IOnInputChange) => {
   e.target.value = e.target.value.trim(); // trim empty spaces
   await onInputChange({ e, setUserForm });
 };
-
-// export const oAuthLoginFn = async ({ e, setUserForm }: IOnInputChange) => {

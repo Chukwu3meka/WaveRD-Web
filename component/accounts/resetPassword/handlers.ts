@@ -1,7 +1,6 @@
 import fetcher from "@utils/fetcher";
-import { capitalize, sleep } from "@utils/handlers";
+import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
-import { IValidator } from "@interface/utils/validator-interface";
 
 export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: any) => {
   const { value, id } = e.target;

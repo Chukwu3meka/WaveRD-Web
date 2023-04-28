@@ -1,20 +1,13 @@
-import LoadingButton from "@mui/lab/LoadingButton";
-import { AttentionSeeker, Fade } from "react-awesome-reveal";
-import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress, Box } from "@mui/material";
-
-import { ISignin } from "@interface/accounts/signin-interface";
 import Link from "next/link";
-
-import { styles } from ".";
 import Image from "next/image";
-
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
+import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: any) => (
   <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
-    <Box className={styles.rotation}>
-      <Image src="/images/layout/reset-password.png" alt="SoccerMASS" width={100} height={80} style={{ margin: "auto" }} />
+    <Box>
+      <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
     </Box>
 
     <Typography fontSize="1.3em" fontWeight={600}>

@@ -1,21 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button, Stack, Typography } from "@mui/material";
-
-import { verifiedStyles } from ".";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 const Verified = () => (
-  <Stack spacing={3} textAlign="center" alignItems="center" component="form" noValidate margin="auto" maxWidth={600}>
-    <div className={verifiedStyles.verifiedImage}>
-      <Image
-        src="/images/layout/verified.png"
-        alt="SoccermMASS Account Verified"
-        fill
-        sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-      />
-    </div>
+  <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
+    <Box>
+      <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+    </Box>
 
     <Typography fontSize="1.3em" fontWeight={600}>
       Email Verified
