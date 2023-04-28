@@ -23,7 +23,7 @@
   }
 
   & > * > main {
-    padding: 10px;
+    padding: 20px 10px;
     margin: auto;
     // z-index: 1;
     text-align: left;
@@ -37,10 +37,11 @@
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      column-gap: 20px;
+      column-gap: 8px;
       border-radius: 20px;
       overflow: hidden;
       & > span {
+        // border: 3px solid red;
         padding: 5px;
         @include quickFlex($dir: column);
         height: clamp(100px, calc(var(--visibleScreen) - 600px), 200px);
