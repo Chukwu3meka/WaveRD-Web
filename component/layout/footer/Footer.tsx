@@ -41,49 +41,30 @@ const Footer = ({ logoutHandler, authenticated }: IFooter) => (
             <div>
               <label htmlFor="soccermass-links">SoccerMASS</label>
               <Link href="/">Home</Link>
-              {/* {authenticated && (
-                <Link href="/profile/subscriptions" onClick={logoutHandler()}>
-                Subscriptions
-                </Link>
-              )} */}
-              <Link href="/accounts/forgot-password">Forgot Password</Link>
               <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
                 Bug Report
               </a>
-              {authenticated && (
-                <a
-                  href={
-                    process.env.NODE_ENV === "development"
-                      ? "http://localhost:5000/api/accounts/personal/logout"
-                      : "https://accounts.soccermass.com/api/personal/logout"
-                  }
-                  rel="noopener noreferrer">
-                  Logout
-                </a>
-              )}
-              {!authenticated && <Link href="/accounts/signin">Account Sign in</Link>}
+              <Link href="/accounts/forgot-password">Forgot Password</Link>
               <Link href="/organization">Organization</Link>
+              <a href="https://apihub.soccermass.com/">API Hub</a>
             </div>
 
             <div>
               <label htmlFor="info">Learn More</label>
               <Link href="/info/advertise/">Advertise</Link>
+              <Link href="/info/advertise/">Cookie Policy</Link>
               <Link href="/info/terms/">Terms &amp; Conditions</Link>
-              <Link href="/info/contact/">Contact Us</Link>
-              <Link href="/info/donate/">Support/Donation</Link>
               <Link href="/info/privacy/">Privacy Policy</Link>
+              <Link href="/info/contact/">Contact Us</Link>
             </div>
 
             <div>
-              <label htmlFor="company">Domains</label>
-              {/* <a href="https://blog.soccermass.com/">Blogs</a> */}
-              <a href="https://soccermass.com/">Blogs</a>
-              {/* <a href="https://space.soccermass.com/">Homes & Space</a> */}
-              <a href="https://soccermass.com/">Homes & Space</a>
-              {/* <a href="https://jobs.soccermass.com/">Hourly Jobs</a> */}
-              <a href="https://soccermass.com/">Hourly Jobs</a>
+              <label htmlFor="company">Coming Soon</label>
+              <a href="https://soccermass.com/">Blog</a>
+              <a href="https://soccermass.com/">Translation</a>
               <a href="https://manager.soccermass.com/">Soccer Manager</a>
-              <a href="https://apihub.soccermass.com/">API Hub</a>
+              <a href="https://soccermass.com/">Homes & Space</a>
+              <a href="https://soccermass.com/">Hourly Jobs</a>
             </div>
           </nav>
         </main>
