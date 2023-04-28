@@ -10,7 +10,7 @@ import { ISignup } from "@interface/accounts/signup-interface";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler }: ISignup) => (
   <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    <Image src="/images/layout/sign-up.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+    <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
 
     <TextField
       fullWidth
