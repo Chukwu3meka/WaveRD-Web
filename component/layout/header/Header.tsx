@@ -78,11 +78,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
         {authenticated && (
           <Button variant="outlined" size="small">
             <a
-              href={
-                process.env.NODE_ENV === "development"
-                  ? "http://localhost:5000/api/accounts/personal/logout"
-                  : "https://accounts.soccermass.com/api/personal/logout"
-              }
+              href={process.env.NODE_ENV === "development" ? "http://localhost:5000/api/accounts/signout" : "https://accounts.soccermass.com/api/signout"}
               rel="noopener noreferrer">
               Logout
             </a>

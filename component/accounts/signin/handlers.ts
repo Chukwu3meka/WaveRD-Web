@@ -18,12 +18,7 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
     return enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
   }
 
-  await fetcher({
-    api: "srv-accounts",
-    method: "POST",
-    endpoint: "/personal/auth",
-    payload: { email, password },
-  })
+  await fetcher({ api: "srv-accounts", method: "POST", endpoint: "/signin", payload: { email, password } })
     .then(({ payload: { role, fullName, handle } }) => {
       setAuthAction({ role, fullName, handle });
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });

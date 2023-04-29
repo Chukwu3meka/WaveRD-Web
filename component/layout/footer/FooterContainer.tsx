@@ -19,7 +19,7 @@ const FooterContainer = (props: IFooterContainer) => {
   const logoutHandler = () => async () => {
     if (authenticated) {
       logoutAction();
-      await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/personal/logout" });
+      await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/signout" });
     } else {
       enqueueSnackbar("You're not logged in yet", { variant: "info" });
     }

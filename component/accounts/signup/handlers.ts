@@ -46,7 +46,7 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
       }
     }
 
-    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/personal/add_account" }).then(() =>
+    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/signup" }).then(() =>
       setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }))
     );
 
