@@ -9,10 +9,10 @@ const SignupContainer = () => {
 
   const [userForm, setUserForm] = useState<IUserForm>({
     options: { showPassword: false, loading: false, accountCreated: false },
-    email: { value: "chukwuemeka@soccermass.com", valid: true, info: "Email cannot be empty" },
-    fullName: { value: "Chukwuemeka Maduekwe", valid: true, info: "Full Name cannot be empty" },
-    handle: { value: "Chukwu3meka", valid: true, info: "Handle cannot be empty", validating: false },
-    password: { value: "Password@1", valid: true, info: "Password cannot be empty", validating: false },
+    email: { value: "", valid: true, info: "Email cannot be empty" },
+    fullName: { value: "", valid: true, info: "Full Name cannot be empty" },
+    handle: { value: "", valid: true, info: "Handle cannot be empty", validating: false },
+    password: { value: "", valid: true, info: "Password cannot be empty", validating: false },
   });
 
   const registerHandler = () => handlers.registerHandler({ enqueueSnackbar, setUserForm, userForm, closeSnackbar });

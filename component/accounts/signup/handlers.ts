@@ -14,12 +14,10 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
 
-      await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { [id]: value } }).then(
-        async ({ payload: { exists } }) => {
-          if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
-          setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
-        }
-      );
+      await fetcher({ api: "srv-accounts", endpoint: `/${id}_exists`, method: "POST", payload: { [id]: value } }).then(async ({ payload: { exists } }) => {
+        if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
+        setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
+      });
     } else {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
     }

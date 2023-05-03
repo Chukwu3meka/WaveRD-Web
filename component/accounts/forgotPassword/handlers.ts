@@ -11,12 +11,10 @@ export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar
 
     setForm((values: any) => ({ ...values, email: { ...values["email"], valid: true, info: null, validating: true } }));
 
-    await fetcher({ api: "srv-accounts", endpoint: `/personal/${id}_exists`, method: "POST", payload: { email: value } }).then(
-      async ({ payload: { exists } }) => {
-        if (exists) throw { message: `Email not available, Kindly use something different` };
-        setForm((values: any) => ({ ...values, email: { ...values["email"], valid: true, info: null, validating: false } }));
-      }
-    );
+    await fetcher({ api: "srv-accounts", endpoint: `/${id}_exists`, method: "POST", payload: { email: value } }).then(async ({ payload: { exists } }) => {
+      if (exists) throw { message: `Email not available, Kindly use something different` };
+      setForm((values: any) => ({ ...values, email: { ...values["email"], valid: true, info: null, validating: false } }));
+    });
 
     closeSnackbar(); // <= hide any error that have been shown previously
   } catch ({ message }: any) {
@@ -34,7 +32,7 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, clo
 
     validator({ value: email, type: "email", label: "Email Address" }); // <= re-validate all values before registeration
 
-    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/personal/forgot_password" }).then(() => {
+    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/forgot_password" }).then(() => {
       setForm({
         email: { value: "", valid: true, info: "Email cannot be empty" },
         options: { showPassword: false, loading: false, accountCreated: false },
