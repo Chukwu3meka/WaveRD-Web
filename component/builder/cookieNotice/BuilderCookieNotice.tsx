@@ -6,9 +6,7 @@ import Slide from "@mui/material/Slide";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import { TransitionProps } from "@mui/material/transitions";
-import { DialogContentText, DialogActions, DialogContent } from "@mui/material";
-
-import { styles } from ".";
+import { DialogContentText, DialogActions, DialogContent, SxProps } from "@mui/material";
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -19,15 +17,33 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BuilderCookieNotice = ({ displayDialog, closeDialogFn }: any) => (
-  <Dialog open={displayDialog} TransitionComponent={Transition} keepMounted onClose={closeDialogFn} aria-describedby="alert-dialog-slide-description">
-    <DialogContent className={styles.cookieNotice}>
+const dialogStyle: SxProps = (mobileDevice) =>
+  mobileDevice
+    ? {
+        "& .MuiDialog-container": {
+          alignItems: "flex-end",
+        },
+      }
+    : {
+        width: "clamp(300px, 70vw, 500px)",
+        margin: "auto",
+      };
+
+const BuilderCookieNotice = ({ displayDialog, closeDialogFn, mobileDevice }: any) => (
+  <Dialog
+    open={displayDialog}
+    TransitionComponent={Transition}
+    keepMounted
+    onClose={closeDialogFn}
+    aria-describedby="alert-dialog-slide-description"
+    sx={dialogStyle(mobileDevice)}>
+    <DialogContent>
       <DialogContentText id="alert-dialog-slide-description">
         <Image
           src="/images/layout/cookies-notice.png"
           alt="SoccerMASS Cookies Notice"
           height={190}
-          width={270}
+          width={250}
           placeholder="blur"
           blurDataURL="/images/layout/cookies-notice.png"
           style={{ display: "block", margin: "auto" }}
@@ -38,7 +54,7 @@ const BuilderCookieNotice = ({ displayDialog, closeDialogFn }: any) => (
         </span>
       </DialogContentText>
 
-      <DialogActions style={{ marginTop: "20px", flexWrap: "wrap" }}>
+      <DialogActions style={{ marginTop: "20px", flexWrap: "wrap", rowGap: 10 }}>
         <Button variant="outlined" sx={{ whiteSpace: "nowrap" }}>
           <Link href="/info/privacy">Learn more</Link>
         </Button>
