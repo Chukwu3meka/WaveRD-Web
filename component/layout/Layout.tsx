@@ -7,10 +7,10 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "@source/theme";
 import BuilderLoading from "@component/builder/loading";
-import { ILayout } from "@interface/main/layout-interface";
 import { HeaderContainer, FooterContainer, styles } from ".";
 import BuilderCookieNoticeContainer from "@component/builder/cookieNotice/BuilderCookieNoticeContainer";
-import { Fade } from "react-awesome-reveal";
+
+import { ILayout } from "@interface/main/layout-interface";
 
 const Layout = ({ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable, cookieNotice }: ILayout) => (
   <>

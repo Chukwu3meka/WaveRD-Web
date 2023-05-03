@@ -74,5 +74,6 @@ const validRoutes = [
   { path: "signup", title: "Sign Up", component: "signup" },
   { path: "forgot-password", title: "Forgot Password", component: "forgotPassword" },
   { path: "reset-password", title: "Reset Password", component: "resetPassword" },
-  { path: "verified", title: "Email Verified", component: "verified" },
+  { path: "email-verification-success", title: "Email Verification Success", component: "emailVerificationSuccess" },
+  { path: "email-verification-failed", title: "Email Verification Failed", component: "emailVerificationFailed" },
 ];
