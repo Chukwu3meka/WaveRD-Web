@@ -40,6 +40,7 @@ const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
       return response.json();
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
 };

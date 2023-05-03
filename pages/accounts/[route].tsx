@@ -55,7 +55,7 @@ const Page = () => {
         </aside>
         <main>
           <RelativeHeader theme="light" titleOnly="light" />
-          <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
+          <Fade direction="left" triggerOnce={true} style={{ perspective: "100px" }}>
             {component}
           </Fade>
         </main>
