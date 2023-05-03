@@ -51,24 +51,12 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
 };
 
 export const retrieveCookie = async ({ setAuthAction, setCookieNotice }: any) => {
-  const params = Object.fromEntries(new URLSearchParams(location.search)),
-    { facebook, twitter, google, response } = params,
-    oAuthID = deObfuscate(decodeURIComponent(response as string));
-
-  if (!facebook && !twitter && !google && response) {
-    await fetcher({ api: "srv-accounts", endpoint: "/personal/oAuthSession", method: "POST", payload: { oAuthID } })
-      .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
-        setAuthAction({ role, fullName, handle });
-
-        if (!cookieConsent) setCookieNotice(true);
-      })
-      .catch((err) => {});
-  } else {
-    await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/personal/cookie" })
-      .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
-        setAuthAction({ role, fullName, handle });
-        if (!cookieConsent) setCookieNotice(true);
-      })
-      .catch((err) => {});
-  }
+  await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/cookies" })
+    .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
+      setAuthAction({ role, fullName, handle });
+      if (!cookieConsent) setCookieNotice(true);
+    })
+    .catch(() => {});
 };
+
+export const notifyCookieUsage = async ({ setAuthAction, setCookieNotice }: any) => {};

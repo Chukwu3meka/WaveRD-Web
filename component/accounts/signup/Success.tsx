@@ -18,9 +18,11 @@ const Success = () => (
       serving you.
     </Typography>
 
-    <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
-      <Link href="/accounts/signin">Sign in</Link>
-    </Button>
+    <Link href="/accounts/signin">
+      <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
+        Sign in
+      </Button>
+    </Link>
   </Stack>
 );
 
