@@ -5,7 +5,7 @@ import { fullDateFn } from "@utils/handlers";
 import { BuilderComingSoonContainer, TimeLeft } from "@interface/builder/comingSoon-interface";
 
 const BuilderComingSoonContainer = ({ header = false, minHeight = "var(--visibleScreen)" }: BuilderComingSoonContainer) => {
-  const finishDate: Date = new Date("June 11 2023"),
+  const finishDate: Date = new Date("December 8 2023"),
     [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
