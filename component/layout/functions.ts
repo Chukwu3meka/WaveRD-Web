@@ -58,5 +58,3 @@ export const retrieveCookie = async ({ setAuthAction, setCookieNotice }: any) =>
     })
     .catch(() => {});
 };
-
-export const notifyCookieUsage = async ({ setAuthAction, setCookieNotice }: any) => {};

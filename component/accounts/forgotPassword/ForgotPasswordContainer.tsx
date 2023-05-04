@@ -11,7 +11,7 @@ const ForgotPasswordContainer = () => {
 
   const [form, setForm] = useState<any>({
     email: { value: "", valid: true, info: "Email cannot be empty" },
-    options: { showPassword: false, loading: false, accountCreated: false },
+    options: { loading: false },
   });
 
   const resetPasswordHandler = () => handlers.resetPasswordHandler({ enqueueSnackbar, setForm, form, closeSnackbar });
