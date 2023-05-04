@@ -4,7 +4,6 @@ import { useSnackbar } from "notistack";
 
 import { ForgotPassword, handlers } from ".";
 import { logoutAction } from "@store/actions";
-import ComingSoon from "@component/builder/comingSoon";
 
 const ForgotPasswordContainer = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -17,11 +16,7 @@ const ForgotPasswordContainer = () => {
   const resetPasswordHandler = () => handlers.resetPasswordHandler({ enqueueSnackbar, setForm, form, closeSnackbar });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setForm, enqueueSnackbar, closeSnackbar });
 
-  return process.env.NODE_ENV === "production" ? (
-    <ComingSoon header={false} minHeight="100%" />
-  ) : (
-    <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />
-  );
+  return <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />;
 };
 
 const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),

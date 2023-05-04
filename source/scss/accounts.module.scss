@@ -66,6 +66,7 @@
 
     & > main:last-of-type > div:last-of-type {
       background: none;
+      padding: 20px;
       & > form {
         @include boxShadow($br: 10px);
         width: clamp(300px, 100%, 600px);

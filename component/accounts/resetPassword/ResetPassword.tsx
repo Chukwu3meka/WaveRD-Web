@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
+import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: any) => (
@@ -15,27 +15,30 @@ const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
     </Typography>
 
     <Typography fontSize=".8em" textAlign="center" sx={{ marginTop: "5px !important" }}>
-      Please enter the temporary password from the mail and a new password to complete the password recovery process. The link sent to your email will expire
-      after 3 hours
+      Please enter your email and new password to complete the password recovery process. The link sent to your email will expire after 3 hours
     </Typography>
 
     <FormControl fullWidth variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">Temporary Password</InputLabel>
+      <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
       <OutlinedInput
-        id="password"
-        type={form.options.showPassword ? "text" : "password"}
-        value={form.tempPassword.value}
+        id="email"
+        value={form.email.value}
         disabled={form.options.loading}
         onChange={(e) => onInputChange(e)}
-        placeholder="Temporary Password"
-        error={!form.tempPassword.valid}
-        label="Temporary Password"
+        placeholder="firstname.lastname@soccermass.com"
+        error={!form.email.valid}
+        label="Email Address"
+        autoComplete="off"
         endAdornment={
-          <InputAdornment position="end">
-            <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
-              {form.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-            </IconButton>
-          </InputAdornment>
+          form.email.validating ? (
+            <InputAdornment position="end">
+              <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
+                <CircularProgress color="success" size={20} />
+              </IconButton>
+            </InputAdornment>
+          ) : (
+            false
+          )
         }
       />
     </FormControl>
@@ -45,11 +48,11 @@ const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
       <OutlinedInput
         id="password"
         type={form.options.showPassword ? "text" : "password"}
-        value={form.newPassword.value}
+        value={form.password.value}
         disabled={form.options.loading}
         onChange={(e) => onInputChange(e)}
         placeholder="New Password"
-        error={!form.newPassword.valid}
+        error={!form.password.valid}
         label="New Password"
         endAdornment={
           <InputAdornment position="end">

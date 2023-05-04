@@ -26,8 +26,7 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, clo
     validator({ value: email, type: "email", label: "Email Address" }); // <= re-validate all values before registeration
 
     await fetcher({ method: "POST", api: "srv-accounts", payload: { email }, endpoint: "/forgot-password" }).then(() => {
-      closeSnackbar(); // <= hide any error that have been shown previously
-      setForm({ email: { value: "", valid: true, info: "Email cannot be empty" } });
+      setForm((values: any) => ({ ...values, email: { value: "", valid: true, info: "Email cannot be empty" } }));
       enqueueSnackbar("Kindly check your email for password reset link", { variant: "success" }); // <=  Inform user of regex error
     });
   } catch ({ message }: any) {
