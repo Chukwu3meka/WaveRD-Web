@@ -2,9 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, CircularProgress, Box } from "@mui/material";
+import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, Box } from "@mui/material";
 
-const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
+import { ForgotPassword } from "@interface/accounts/forgotPassword-interface";
+
+const Signin = ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) => (
   <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -29,17 +31,6 @@ const Signin = ({ resetPasswordHandler, form, onInputChange }: any) => (
         error={!form.email.valid}
         label="Email Address"
         autoComplete="off"
-        endAdornment={
-          form.email.validating ? (
-            <InputAdornment position="end">
-              <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
-                <CircularProgress color="success" size={20} />
-              </IconButton>
-            </InputAdornment>
-          ) : (
-            false
-          )
-        }
       />
     </FormControl>
 

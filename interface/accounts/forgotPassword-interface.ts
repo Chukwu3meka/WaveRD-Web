@@ -1,33 +1,26 @@
-import { NextRouter } from "next/router";
-
-type ResetFormOptions = { loading: boolean; showPassword: boolean };
+type ResetFormOptions = { loading: boolean };
 type ResetFormEmail = { value: string; valid: boolean; info: string };
-type ResetFormPassword = { value: string; valid: boolean; info: string; validating: boolean };
 
-export interface ResetForm {
+export interface ForgotPasswordForm {
   email: ResetFormEmail;
-  password: ResetFormPassword;
   options: ResetFormOptions;
 }
 
-export interface ResetPassword {
-  form: ResetForm;
+export interface ForgotPassword {
   onInputChange: Function;
+  form: ForgotPasswordForm;
   resetPasswordHandler: Function;
-  handleClickShowPassword: Function;
 }
 
-export interface ResetPasswordOnInputChange {
+export interface ForgotPasswordOnInputChange {
   setForm: Function;
   enqueueSnackbar: Function;
   closeSnackbar: Function;
   e: React.FocusEvent<HTMLInputElement>;
 }
 
-export interface ResetPasswordHandler {
-  gear: string;
-  form: ResetForm;
-  router: NextRouter;
+export interface ForgotPasswordHandler {
+  form: ForgotPasswordForm;
   setForm: Function;
   enqueueSnackbar: Function;
 }

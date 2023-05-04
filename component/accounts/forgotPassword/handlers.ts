@@ -2,7 +2,9 @@ import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: any) => {
+import { ForgotPasswordHandler, ForgotPasswordOnInputChange } from "@interface/accounts/forgotPassword-interface";
+
+export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: ForgotPasswordOnInputChange) => {
   const { value, id } = e.target;
 
   setForm((values: any) => ({ ...values, email: { ...values.email, value: value.toLowerCase() } }));
@@ -18,7 +20,7 @@ export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar
   }
 };
 
-export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, closeSnackbar }: any) => {
+export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form }: ForgotPasswordHandler) => {
   try {
     const email = form.email.value;
     setForm((values: any) => ({ ...values, options: { loading: true } }));

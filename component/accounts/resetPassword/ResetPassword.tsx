@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import LoadingButton from "@mui/lab/LoadingButton";
+import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
-import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
 
 import { ResetPassword } from "@interface/accounts/resetPassword-interface";
 
