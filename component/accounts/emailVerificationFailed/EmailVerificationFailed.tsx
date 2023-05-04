@@ -19,7 +19,7 @@ const EmailVerificationFailed = () => (
     </Typography>
 
     <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
-      <Link href="/accounts/signin">Sign in</Link>
+      <Link href="/info/contact">Contact US</Link>
     </Button>
   </Stack>
 );
