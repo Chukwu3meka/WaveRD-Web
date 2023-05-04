@@ -1,4 +1,3 @@
-import Carousel from "nuka-carousel";
 import { Typography } from "@mui/material";
 
 import { peaksStyles } from ".";

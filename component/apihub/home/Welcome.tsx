@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Carousel from "nuka-carousel/lib/carousel";
+import Carousel from "nuka-carousel";
 import { Typography, Button } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 

@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Carousel from "nuka-carousel/lib/carousel";
+import Carousel from "nuka-carousel";
 
 import { logoutAction } from "@store/actions";
 import styles from "@source/scss/accounts.module.scss";
