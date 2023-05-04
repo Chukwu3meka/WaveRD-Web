@@ -1,9 +1,11 @@
-import { IValidator } from "@interface/utils/validator-interface";
 import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: any) => {
+import { IValidator } from "@interface/utils/validator-interface";
+import { ResetPasswordHandler, ResetPasswordOnInputChange } from "@interface/accounts/resetPassword-interface";
+
+export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: ResetPasswordOnInputChange) => {
   const { value, id } = e.target;
 
   setForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
@@ -19,7 +21,7 @@ export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar
   }
 };
 
-export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gear, router }: any) => {
+export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gear, router }: ResetPasswordHandler) => {
   try {
     setForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 

@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import LoadingButton from "@mui/lab/LoadingButton";
-import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
-import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 
-const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: any) => (
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
+import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
+
+import { ResetPassword } from "@interface/accounts/resetPassword-interface";
+
+const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPassword) => (
   <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -29,17 +32,6 @@ const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
         error={!form.email.valid}
         label="Email Address"
         autoComplete="off"
-        endAdornment={
-          form.email.validating ? (
-            <InputAdornment position="end">
-              <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
-                <CircularProgress color="success" size={20} />
-              </IconButton>
-            </InputAdornment>
-          ) : (
-            false
-          )
-        }
       />
     </FormControl>
 
