@@ -34,14 +34,16 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 
 ## Getting Started
 
-1. _Fork_ **SoccerMASS Web** [here](https://github.com/Chukwu3meka/SoccerMASS-Web.git)
-2. Now clone your remote branch, and run `npm install` or `npm i` for short; to install all packages
-3. If you don't have a gitignore file, create one and [run](https://sigalambigha.home.blog/2020/03/11/how-to-refresh-gitignore/) `git rm -r --cached .` to ensure git is tracking the right file, i.e files not listed in the new _.gitignore_
-4. In development we run a single command to reflect changes on file change, and to keep our app running all the time
-   > `npm run dev`: to compile our typescript files and start our development server
-5. Verify Git remote URL by running `git remote -v`
-6. Client and Server share the same Validator to avoid conflict and aid debugging
-7. ...
+- Migration to TypeScript is being carried out
+- _builder_: contains most UI components used throughout the app
+- _Fork_ **SoccerMASS Web** [here](https://github.com/Chukwu3meka/SoccerMASS-Web.git)
+- Now clone your remote branch, and run `npm install` or `npm i` for short; to install all packages
+- If you don't have a gitignore file, create one and [run](https://sigalambigha.home.blog/2020/03/11/how-to-refresh-gitignore/) `git rm -r --cached .` to ensure git is tracking the right file, i.e files not listed in the new _.gitignore_
+- In development we run a single command to reflect changes on file change, and to keep our app running all the time
+  > `npm run dev`: to compile our typescript files and start our development server
+- Verify Git remote URL by running `git remote -v`
+- Client and Server share the same Validator to avoid conflict and aid debugging
+- ...
 😉
 <!-- old gtag G-0BJL8GBSKY -->
 
