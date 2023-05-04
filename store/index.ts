@@ -30,7 +30,7 @@ export const initializeStore = (preloadedState: typeof store) => {
   return _store;
 };
 
-export function useStore(initialState: typeof store) {
+export function useStore(initialState: any) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
 }
