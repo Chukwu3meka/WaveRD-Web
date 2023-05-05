@@ -2,29 +2,20 @@ import { useMemo } from "react";
 import rootReducer from "./reducers";
 import { configureStore } from "@reduxjs/toolkit";
 
-// import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+// Define the type for the store state
+export type RootState = ReturnType<typeof rootReducer>;
 
-// import type { AppState, AppThunk } from '../../store'
-// import { fetchCount } from './counterAPI'
+let store: ReturnType<typeof initStore> | undefined;
 
-// export interface CounterState {
-//   value: number
-//   status: 'idle' | 'loading' | 'failed'
-// }
-
-// const initialState: CounterState = {
-//   value: 0,
-//   status: 'idle',
-// }
-
-let store: any;
-
-function initStore(initialState: typeof store) {
-  return configureStore({ reducer: rootReducer, preloadedState: initialState, devTools: true });
+function initStore(initialState: RootState) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState: initialState,
+    devTools: true,
+  });
 }
 
-// export const initializeStore = (preloadedState: typeof store) => {
-export const initializeStore = (preloadedState: any) => {
+export const initializeStore = (preloadedState: RootState) => {
   let _store = store ?? initStore(preloadedState);
 
   // After navigating to a page with an initial Redux state, merge that state
@@ -46,7 +37,44 @@ export const initializeStore = (preloadedState: any) => {
   return _store;
 };
 
-export function useStore(initialState: any = {}) {
+export function useStore(initialState: RootState) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
 }
+
+// import { useMemo } from "react";
+// import rootReducer from "./reducers";
+// import { configureStore } from "@reduxjs/toolkit";
+
+// let store: any;
+
+// function initStore(initialState: typeof store) {
+//   return configureStore({ reducer: rootReducer, preloadedState: initialState, devTools: true });
+// }
+
+// export const initializeStore = (preloadedState: typeof store) => {
+//   let _store = store ?? initStore(preloadedState);
+
+//   // After navigating to a page with an initial Redux state, merge that state
+//   // with the current state in the store, and create a new store
+//   if (preloadedState && store) {
+//     _store = initStore({
+//       ...store.getState(),
+//       ...preloadedState,
+//     });
+//     // Reset the current store
+//     store = undefined;
+//   }
+
+//   // For SSG and SSR always create a new store
+//   if (typeof window === "undefined") return _store;
+//   // Create the store once in the client
+//   if (!store) store = _store;
+
+//   return _store;
+// };
+
+// export function useStore(initialState: typeof store) {
+//   const store = useMemo(() => initializeStore(initialState), [initialState]);
+//   return store;
+// }
