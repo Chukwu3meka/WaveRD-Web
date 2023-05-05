@@ -15,8 +15,9 @@ function initStore(initialState: RootState) {
   });
 }
 
-export const initializeStore = (preloadedState: RootState) => {
-  let _store = store ?? initStore(preloadedState);
+export const initializeStore = (preloadedState?: RootState) => {
+  let _store = store ?? initStore(preloadedState ?? undefined);
+  // let _store = store ?? initStore(preloadedState);
 
   // After navigating to a page with an initial Redux state, merge that state
   // with the current state in the store, and create a new store
@@ -37,8 +38,13 @@ export const initializeStore = (preloadedState: RootState) => {
   return _store;
 };
 
-export function useStore(initialState: RootState) {
-  const store = useMemo(() => initializeStore(initialState), [initialState]);
+// export function useStore(initialState: RootState) {
+//   const store = useMemo(() => initializeStore(initialState), [initialState]);
+//   return store;
+// }
+
+export function useStore(initialState?: RootState) {
+  const store = useMemo(() => initializeStore(initialState ?? undefined), [initialState]);
   return store;
 }
 
