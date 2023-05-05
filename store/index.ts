@@ -2,13 +2,29 @@ import { useMemo } from "react";
 import rootReducer from "./reducers";
 import { configureStore } from "@reduxjs/toolkit";
 
+// import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+// import type { AppState, AppThunk } from '../../store'
+// import { fetchCount } from './counterAPI'
+
+// export interface CounterState {
+//   value: number
+//   status: 'idle' | 'loading' | 'failed'
+// }
+
+// const initialState: CounterState = {
+//   value: 0,
+//   status: 'idle',
+// }
+
 let store: any;
 
 function initStore(initialState: typeof store) {
   return configureStore({ reducer: rootReducer, preloadedState: initialState, devTools: true });
 }
 
-export const initializeStore = (preloadedState: typeof store) => {
+// export const initializeStore = (preloadedState: typeof store) => {
+export const initializeStore = (preloadedState: any) => {
   let _store = store ?? initStore(preloadedState);
 
   // After navigating to a page with an initial Redux state, merge that state
@@ -30,7 +46,7 @@ export const initializeStore = (preloadedState: typeof store) => {
   return _store;
 };
 
-export function useStore(initialState: any) {
+export function useStore(initialState: any = {}) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
 }
