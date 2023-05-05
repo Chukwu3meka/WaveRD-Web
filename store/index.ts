@@ -43,9 +43,14 @@ export const initializeStore = (preloadedState?: RootState) => {
 //   return store;
 // }
 
-export function useStore(initialState?: RootState) {
-  const store = useMemo(() => initializeStore(initialState ?? undefined), [initialState]);
+export function useStore(initialState?: any) {
+  // const store = useMemo(() => initializeStore(initialState ?? undefined), [initialState]);
+  // return store;
+
+  // export function useStore(initialState: typeof store) {
+  const store = useMemo(() => initializeStore(initialState || {}), [initialState]);
   return store;
+  // }
 }
 
 // import { useMemo } from "react";
