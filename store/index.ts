@@ -2,6 +2,12 @@ import { useMemo } from "react";
 import rootReducer from "./reducers";
 import { configureStore } from "@reduxjs/toolkit";
 
+import { combineReducers } from "redux";
+
+import auth from "./reducers/auth";
+import error from "./reducers/error";
+import layout from "./reducers/layout";
+
 // Define the type for the store state
 export type RootState = ReturnType<typeof rootReducer>;
 
@@ -9,7 +15,7 @@ let store: ReturnType<typeof initStore> | undefined;
 
 function initStore(initialState: RootState) {
   return configureStore({
-    reducer: rootReducer,
+    reducer: { error, layout, auth },
     preloadedState: initialState,
     devTools: true,
   });
