@@ -1,6 +1,3 @@
-import fetcher from "@utils/fetcher";
-import { deObfuscate } from "@utils/handlers";
-
 import { SetDeviceSizeAction } from "@interface/store/layout";
 import { IHandleScroll, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
@@ -44,6 +41,3 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
 
   setLastScrollPos(window.scrollY);
 };
-
-// export const retrieveCookie = async ({  setCookieNotice }: any) => {
-//   getCookieAction};
