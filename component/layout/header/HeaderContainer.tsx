@@ -8,10 +8,9 @@ import { HeaderContainer } from "@interface/main/header-interface";
 
 const HeaderContainer = (props: HeaderContainer & ConnectorProps) => {
   const { signoutAction, displayHeader, relativeHeader = null, titleOnly } = props,
-    { enqueueSnackbar } = useSnackbar(),
     [color, setColor] = useState({
-      first: relativeHeader === "light" ? "#404040" : "#f1f1f1",
       last: "primary",
+      first: relativeHeader === "light" ? "#404040" : "#f1f1f1",
       social: relativeHeader === "light" ? "#404040" : "#f1f1f1",
     }),
     [authenticated, setauthenticated] = useState(false);

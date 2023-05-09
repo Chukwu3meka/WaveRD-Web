@@ -10,7 +10,7 @@ import { IHeader } from "@interface/main/header-interface";
 import socialAccounts from "@source/constants/socialAccounts";
 
 // const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
-const Header = ({ relativeHeader, signoutAction, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
+const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
   <div
     className={
       styles[

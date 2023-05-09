@@ -23,7 +23,7 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
 
   await fetcher({ method: "POST", endpoint: "/accounts/signin", payload: { email, password } })
     .then(async ({ payload: { role, fullName, handle, cookieConsent } }) => {
-      await sleep(1);
+      await sleep(0.5);
       setAuthAction({ role, fullName, handle, cookieConsent });
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });
     })

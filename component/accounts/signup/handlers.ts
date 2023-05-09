@@ -45,7 +45,7 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
     }
 
     await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/signup" }).then(async () => {
-      await sleep(1);
+      await sleep(0.5);
       setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }));
     });
 

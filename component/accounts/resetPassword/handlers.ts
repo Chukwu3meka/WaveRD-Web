@@ -37,7 +37,7 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gea
     }
 
     await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/reset-password" }).then(async () => {
-      await sleep(1);
+      await sleep(0.5);
       enqueueSnackbar("Password reset successfully, You can now login with the new password", { variant: "success" });
       setForm({
         email: { value: "", valid: true, info: "Email cannot be empty" },
