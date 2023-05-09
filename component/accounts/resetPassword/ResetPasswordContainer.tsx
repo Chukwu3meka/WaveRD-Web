@@ -19,7 +19,7 @@ const ResetPasswordContainer = () => {
     password: { value: "", valid: true, info: "Password cannot be empty", validating: false },
   });
 
-  const resetPasswordHandler = () => handlers.resetPasswordHandler({ enqueueSnackbar, setForm, form, gear, router });
+  const resetPasswordHandler = () => handlers.resetPasswordHandler({ enqueueSnackbar, setForm, form, gear });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setForm, enqueueSnackbar, closeSnackbar });
   const handleClickShowPassword = () => setForm((values: any) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 

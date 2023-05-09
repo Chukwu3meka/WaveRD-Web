@@ -1,5 +1,3 @@
-import { NextRouter } from "next/router";
-
 type ResetFormOptions = { loading: boolean; showPassword: boolean };
 type ResetFormEmail = { value: string; valid: boolean; info: string };
 type ResetFormPassword = { value: string; valid: boolean; info: string; validating: boolean };
@@ -27,7 +25,6 @@ export interface ResetPasswordOnInputChange {
 export interface ResetPasswordHandler {
   gear: string;
   form: ResetForm;
-  router: NextRouter;
   setForm: Function;
   enqueueSnackbar: Function;
 }

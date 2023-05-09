@@ -21,7 +21,7 @@ export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar
   }
 };
 
-export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gear, router }: ResetPasswordHandler) => {
+export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gear }: ResetPasswordHandler) => {
   try {
     setForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
@@ -44,7 +44,6 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gea
         options: { showPassword: false, loading: false, accountCreated: false },
         password: { value: "", valid: true, info: "Password cannot be empty", validating: false },
       });
-      router.push("/accounts/signin");
     });
   } catch ({ message }: any) {
     enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
