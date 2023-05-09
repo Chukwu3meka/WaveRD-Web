@@ -30,7 +30,7 @@ const SigninContainer = (props: ISigninContainer & ConnectorProps) => {
   }, [props.deviceWidth]);
 
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
-  const loginHandler = () => () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction });
+  const loginHandler = () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }} />;

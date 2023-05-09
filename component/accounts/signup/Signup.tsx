@@ -114,7 +114,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
         variant="contained"
         color="primary"
         endIcon={<RegisterIcon />}
-        loading={!!userForm.options.loading}>
+        loading={userForm.options.loading}>
         <Typography sx={{ fontWeight: 900 }}>Create Account</Typography>
       </LoadingButton>
     </AttentionSeeker>

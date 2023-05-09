@@ -75,5 +75,5 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setPageLoading });
   const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => handlers.handleProtectedRoute({ router, authenticated });
 
-  return ready ? <Layout {...{ pageProps, Component, authenticated, pageLoading, ready, emotionCache, displayHeader, cssVariable, cookieNotice }} /> : <></>;
+  return ready ? <Layout {...{ pageProps, Component, authenticated, pageLoading, ready, emotionCache, displayHeader, cssVariable, cookieNotice }} /> : null;
 });

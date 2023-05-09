@@ -54,15 +54,8 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </Typography>
 
     <AttentionSeeker effect="bounce">
-      <LoadingButton
-        size="large"
-        variant="contained"
-        color="primary"
-        onClick={loginHandler()}
-        endIcon={<LoginIcon />}
-        disabled={userForm.options.loading}
-        loading={userForm.options.loading}>
-        <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
+      <LoadingButton onClick={() => loginHandler()} size="large" variant="contained" color="primary" endIcon={<LoginIcon />} loading={userForm.options.loading}>
+        <Typography sx={{ fontWeight: 900 }}>Create Account</Typography>
       </LoadingButton>
     </AttentionSeeker>
 

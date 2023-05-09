@@ -7,7 +7,9 @@ import { LoginHandler, IOnInputChange } from "@interface/accounts/signin-interfa
 export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: LoginHandler) => {
   for (const value of ["email", "password"]) if (!userForm[value].trim()) return enqueueSnackbar(`${capitalize(value)} cannot be empty`, { variant: "error" });
 
-  setUserForm((userForm: any) => ({ ...userForm, buttonLoading: true })); // activate botton loading
+  setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
+
+  const disableLoading = () => setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: false } }));
 
   const email = userForm.email.trim(),
     password = userForm.password;
@@ -17,8 +19,9 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
     validator({ value: password, type: "password" });
   } catch (error) {
     await sleep(0.2);
-    setUserForm((userForm: any) => ({ ...userForm, buttonLoading: false })); // deactivate botton loading
-    return enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
+    disableLoading();
+    enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
+    return;
   }
 
   await fetcher({ method: "POST", endpoint: "/accounts/signin", payload: { email, password } })
@@ -27,8 +30,11 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
       setAuthAction({ role, fullName, handle, cookieConsent });
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });
     })
-    .catch(({ message }) => enqueueSnackbar(message || "Invalid Email/Password", { variant: "error" }))
-    .finally(() => setUserForm((userForm: any) => ({ ...userForm, buttonLoading: false }))); // deactivate botton loading
+    .catch(async ({ message }) => {
+      await sleep(0.5);
+      enqueueSnackbar(message || "Invalid Email/Password", { variant: "error" });
+    })
+    .finally(() => disableLoading());
 };
 
 export const onInputChange = async ({ e, setUserForm }: IOnInputChange) => {

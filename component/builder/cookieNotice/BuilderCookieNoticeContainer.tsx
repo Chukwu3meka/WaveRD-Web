@@ -5,16 +5,16 @@ import { BuilderCookieNotice } from ".";
 import { connector } from "@store";
 
 export default connector((props: any) => {
-  const [auth, setAuth] = useState(false),
+  const [authenticated, setAuthenticated] = useState(false),
     [mobileDevice, setMobileDevice] = useState(true),
     [displayDialog, setDisplayDialog] = useState(true);
 
   useEffect(() => {
-    setAuth(props.authStatus);
+    setAuthenticated(props.auth);
     return () => {
-      setAuth(props.authStatus);
+      setAuthenticated(props.auth);
     };
-  }, [props.authStatus]);
+  }, [props.auth]);
 
   useEffect(() => {
     setMobileDevice(props.deviceWidth < 600);
@@ -23,14 +23,10 @@ export default connector((props: any) => {
     };
   }, [props.deviceWidth]);
 
-  const closeDialogFn = async () => {
+  const allowCookies = async () => {
     setDisplayDialog(false);
-
-    if (auth)
-      await fetcher({ method: "GET", endpoint: "/accounts/cookieConsent" })
-        .then(() => {})
-        .catch((err) => {}); // ? Update record in database, that user has allowed cookies
+    if (authenticated) await fetcher({ method: "GET", endpoint: "/accounts/cookieConsent" }).catch((err) => {});
   };
 
-  return <BuilderCookieNotice displayDialog={displayDialog} closeDialogFn={closeDialogFn} mobileDevice={mobileDevice} />;
+  return <BuilderCookieNotice displayDialog={displayDialog} allowCookies={allowCookies} mobileDevice={mobileDevice} />;
 });

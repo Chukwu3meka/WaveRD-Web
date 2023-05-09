@@ -29,12 +29,12 @@ const dialogStyle: SxProps = (mobileDevice) =>
         margin: "auto",
       };
 
-const BuilderCookieNotice = ({ displayDialog, closeDialogFn, mobileDevice }: any) => (
+const BuilderCookieNotice = ({ displayDialog, allowCookies, mobileDevice }: any) => (
   <Dialog
     open={displayDialog}
     TransitionComponent={Transition}
     keepMounted
-    onClose={closeDialogFn}
+    onClose={allowCookies}
     aria-describedby="alert-dialog-slide-description"
     sx={dialogStyle(mobileDevice)}>
     <DialogContent>
@@ -58,7 +58,7 @@ const BuilderCookieNotice = ({ displayDialog, closeDialogFn, mobileDevice }: any
         <Button variant="outlined" sx={{ whiteSpace: "nowrap" }}>
           <Link href="/info/privacy">Learn more</Link>
         </Button>
-        <Button variant="contained" sx={{ whiteSpace: "nowrap", color: "white" }} onClick={closeDialogFn}>
+        <Button variant="contained" sx={{ whiteSpace: "nowrap", color: "white" }} onClick={allowCookies}>
           Yes, I know
         </Button>
       </DialogActions>
