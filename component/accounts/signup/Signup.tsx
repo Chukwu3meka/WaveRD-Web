@@ -34,7 +34,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
         disabled={userForm.options.loading}
         onBlur={(e) => onBlurHandler(e)}
         onChange={(e) => onInputChange(e)}
-        placeholder="fullname@soccermass.com"
+        placeholder="firstname.lastname@soccermass.com"
         error={!userForm.email.valid}
         label="Email Address"
         autoComplete="off"

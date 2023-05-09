@@ -4,7 +4,7 @@ const socialAccounts: ISocialAccounts[] = [
   { id: "facebook", title: "Facebook", image: "/images/social/facebook.png", href: "https://web.facebook.com/soccermass" },
   { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/SoccerMASSinc/" },
   { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/SoccerMASSinc/" },
-  { id: "linkedIn", title: "LinkedIn", image: "/images/social/linkedIn.png", href: "https://www.linkedin.com/company/soccermass/" },
+  { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
   // {id:"soccermass",title:"SoccerMASS",image:"/images/social/soccermass.png",href: "https://www.soccermass.com/"],
   // {id:"pinterest",title:"Pinterest",image:"/images/social/pinterest.png",href: "https://www.pinterest.com/viewcrunch/"],
   { id: "github", title: "Github", image: "/images/social/github.png", href: "https://github.com/Chukwu3meka/SoccerMASS-Web/issues" },
