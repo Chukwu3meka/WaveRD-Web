@@ -1,16 +1,14 @@
 import Head from "next/head";
 import ErrorPage from "next/error";
 import dynamic from "next/dynamic";
-import { connect } from "react-redux";
+import Carousel from "nuka-carousel";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Carousel from "nuka-carousel";
+import { Fade } from "react-awesome-reveal";
 
-import { logoutAction } from "@store/actions";
 import styles from "@source/scss/accounts.module.scss";
 import { RelativeHeader } from "@component/layout/header";
 import authSlideText from "@source/constants/authSlideText";
-import { Fade } from "react-awesome-reveal";
 
 const Page = () => {
   const router = useRouter(),
@@ -64,10 +62,7 @@ const Page = () => {
   );
 };
 
-const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
-  mapDispatchToProps = { logoutAction };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default Page;
 
 const validRoutes = [
   { path: "signin", title: "Sign In", component: "signin" },

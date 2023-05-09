@@ -1,6 +1,8 @@
 import { AppProps } from "next/app";
-import { EmotionCache } from "@emotion/react";
 import { NextRouter } from "next/router";
+import { EmotionCache } from "@emotion/react";
+
+import { AuthState } from "@interface/store/auth";
 
 // export interface ILayoutContainer extends AppProps {
 //   store: any;
@@ -8,30 +10,26 @@ import { NextRouter } from "next/router";
 //   emotionCache?: EmotionCache;
 //   setDeviceSizeAction: Function;
 // }
-export interface ILayoutContainer {
+export interface LayoutContainer {
   pageProps: AppProps["pageProps"];
   Component: AppProps["Component"];
-  store: any;
   emotionCache?: EmotionCache;
   setDeviceSizeAction?: Function;
-  authStatus?: boolean;
+  auth: AuthState | null;
 }
 
 export interface ILayout {
   pageProps: AppProps["pageProps"];
   Component: AppProps["Component"];
-  store: any;
   displayHeader: boolean;
   pageLoading: boolean;
   appReady: boolean;
+  authenticated;
   emotionCache: EmotionCache;
   cssVariable: React.CSSProperties;
   cookieNotice: boolean;
 }
 
-export interface IFunctionsHandleResize {
-  setDeviceSizeAction: Function;
-}
 export interface IHandleScroll {
   window: Window;
   lastScrollPos: number;

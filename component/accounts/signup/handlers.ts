@@ -4,7 +4,7 @@ import { capitalize, sleep } from "@utils/handlers";
 import { IValidator } from "@interface/utils/validator-interface";
 import { IOnInputChange, IRegisterHandler } from "@interface/accounts/signup-interface";
 
-export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar }: IOnInputChange) => {
+export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur }: IOnInputChange) => {
   const { value, id } = e.target;
 
   setUserForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
@@ -14,7 +14,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
 
-      await fetcher({ api: "srv-accounts", endpoint: `/${id}_exists`, method: "POST", payload: { [id]: value } }).then(async ({ payload: { exists } }) => {
+      await fetcher({ endpoint: `/accounts/${id}_exists`, method: "POST", payload: { [id]: value } }).then(async ({ payload: { exists } }) => {
         if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
         setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
       });
@@ -24,7 +24,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
 
     closeSnackbar(); // <= hide any error that have been shown previously
   } catch ({ message }: any) {
-    enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
+    if (onBlur) enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
     setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false } }));
   }
 };
@@ -44,15 +44,15 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
       }
     }
 
-    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/signup" }).then(() =>
-      setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }))
-    );
+    await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/signup" }).then(async () => {
+      await sleep(1);
+      setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }));
+    });
 
     closeSnackbar(); // <= hide any error that have been shown previously
   } catch ({ message }: any) {
     enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
   } finally {
-    if (process.env.NODE_ENV === "development") await sleep(0.2);
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: false } }));
   }
 };

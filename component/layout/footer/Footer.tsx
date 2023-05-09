@@ -4,10 +4,9 @@ import { Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
-import { IFooter } from "@interface/main/footer-interface";
 import socialAccounts from "@source/constants/socialAccounts";
 
-const Footer = ({ logoutHandler, authenticated }: IFooter) => (
+const Footer = () => (
   <div className={styles.footer}>
     <Fade direction="right">
       <footer>

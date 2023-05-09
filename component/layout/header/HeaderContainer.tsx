@@ -1,14 +1,13 @@
-import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
 
 import { Header } from ".";
-import { useEffect, useState } from "react";
-import { logoutAction } from "@store/actions";
+import { connector, ConnectorProps } from "@store";
 
 import { HeaderContainer } from "@interface/main/header-interface";
 
-const HeaderContainer = (props: HeaderContainer) => {
-  const { logoutAction, displayHeader, relativeHeader = null, titleOnly } = props,
+const HeaderContainer = (props: HeaderContainer & ConnectorProps) => {
+  const { signoutAction, displayHeader, relativeHeader = null, titleOnly } = props,
     { enqueueSnackbar } = useSnackbar(),
     [color, setColor] = useState({
       first: relativeHeader === "light" ? "#404040" : "#f1f1f1",
@@ -18,23 +17,12 @@ const HeaderContainer = (props: HeaderContainer) => {
     [authenticated, setauthenticated] = useState(false);
 
   useEffect(() => {
-    setauthenticated(props.authenticated || false);
-  }, [props.authenticated]);
-
-  const logoutHandler = () => () => {
-    if (authenticated) {
-      logoutAction();
-    } else {
-      enqueueSnackbar("You're not logged in yet", { variant: "info" });
-    }
-  };
+    setauthenticated(!!props.auth || false);
+  }, [props.auth]);
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
-  return <Header {...{ logoutHandler, displayHeader, authenticated, relativeHeader, swapColorFn, color, titleOnly }} />;
+  return <Header {...{ signoutAction, displayHeader, authenticated, relativeHeader, swapColorFn, color, titleOnly }} />;
 };
 
-const mapStateToProps = (state: any) => ({ authenticated: state.auth.status }),
-  mapDispatchToProps = { logoutAction };
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default connector(HeaderContainer);

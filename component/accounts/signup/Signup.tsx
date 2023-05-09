@@ -8,7 +8,7 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 
 import { ISignup } from "@interface/accounts/signup-interface";
 
-const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler }: ISignup) => (
+const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) => (
   <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
     <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
 
@@ -21,6 +21,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
       value={userForm.fullName.value}
       placeholder="Firstname Lastname"
       error={!userForm.fullName.valid}
+      onBlur={(e) => onBlurHandler(e)}
       onChange={(e) => onInputChange(e)}
       disabled={userForm.options.loading}
     />
@@ -31,8 +32,9 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
         id="email"
         value={userForm.email.value}
         disabled={userForm.options.loading}
+        onBlur={(e) => onBlurHandler(e)}
         onChange={(e) => onInputChange(e)}
-        placeholder="firstname.lastname@soccermass.com"
+        placeholder="fullname@soccermass.com"
         error={!userForm.email.valid}
         label="Email Address"
         autoComplete="off"
@@ -60,6 +62,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               value={userForm.handle.value}
               disabled={userForm.options.loading}
               onChange={(e) => onInputChange(e)}
+              onBlur={(e) => onBlurHandler(e)}
               placeholder="What would you like us to call you?"
               error={!userForm.handle.valid}
               label="Handle"
@@ -87,6 +90,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               value={userForm.password.value}
               disabled={userForm.options.loading}
               onChange={(e) => onInputChange(e)}
+              onBlur={(e) => onBlurHandler(e)}
               placeholder="Password"
               error={!userForm.password.valid}
               label="Password"

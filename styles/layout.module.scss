@@ -1,0 +1,130 @@
+@import "@source/scss/index.scss";
+
+// html {
+// }
+
+body.layout {
+  border: 3px solid red;
+
+  margin: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Merienda", "Roboto Slab", serif;
+  -webkit-box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  line-height: "1.7em";
+  letter-spacing: "0.01em";
+  caret-color: $primary;
+
+  // height: calc(100vh - 70px);
+  // overflow: hidden;
+
+  // height: calc(100vh - constant(safe-area-inset-top) - constant(safe-area-inset-bottom));
+
+  // border: 13px solid green;
+
+  a {
+    cursor: pointer;
+    color: $primary;
+    text-decoration: none;
+    transition: color 500ms ease-in;
+  }
+
+  a:hover {
+    color: darken($color: $primary, $amount: 5);
+    transition: color 300ms ease-out;
+  }
+
+  * {
+    // outline: none;
+    // user-select: none; //disable select
+    // -moz-user-select: none; //disable select
+    // -webkit-user-select: none; //disable select
+    // -webkit-tap-highlight-color: transparent;
+    // -webkit-tap-highlight-color: transparent;
+    img {
+      overflow: hidden;
+    }
+  }
+
+  // border: 3px solid red;
+  // box-sizing: border-box;
+
+  // margin: 0;
+  // padding: 0;
+  // width: 100vw;
+  // height: 100vh;
+  // font-size: 14px;
+  // overflow: hidden;
+  // box-sizing: border-box;
+  // // font-family: "Merienda", cursive;
+  // // -ms-overflow-style: none;
+  // -webkit-box-sizing: border-box;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+  // background: url("/images/layout/tactics.png") no-repeat center center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
+  // background: linear-gradient(to bottom right, color(pry), color(sec));
+  // background-color: darken($color: #1d1c2e, $amount: 0);
+  // background-color: color(dark);
+  * {
+    outline: none;
+    //   user-select: none;
+    //   -moz-user-select: none;
+    //   -webkit-user-select: none;
+    //   -webkit-tap-highlight-color: transparent;
+    img {
+      overflow: hidden;
+    }
+  }
+
+  // * {
+  // -webkit-backface-visibility: hidden;
+  // backface-visibility: hidden;
+
+  /* Change the white to any color.......This is to remove blue background on chrome autofill for input */
+  // input:-webkit-autofill,
+  // input:-webkit-autofill:hover,
+  // input:-webkit-autofill:focus,
+  // input:-webkit-autofill:active {
+  //   -webkit-box-shadow: 0 0 0 30px white inset !important;
+  // }
+  // }
+
+  //  {
+  //   /* MAGIC HAPPENS HERE */
+  //   transform: translateZ(0);
+  //   -webkit-transform: translateZ(0);
+
+  //   backface-visibility: hidden;
+  //   -webkit-backface-visibility: hidden;
+  //   perspective: 1000;
+  //   -webkit-perspective: 1000;
+  // }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+    background: $darkGray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: $primary;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: darken($color: $primary, $amount: 10);
+  }
+
+  // style the text that a user selects on a webpage.
+  ::selection {
+    color: $textSecondary;
+    background-color: lighten($color: $primary, $amount: 0);
+  }
+}

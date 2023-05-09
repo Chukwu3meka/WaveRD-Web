@@ -1,9 +1,12 @@
 import fetcher from "@utils/fetcher";
-import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
-import { ILoginHandler, IOnInputChange } from "@interface/accounts/signin-interface";
+import { capitalize, sleep } from "@utils/handlers";
 
-export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: ILoginHandler) => {
+import { LoginHandler, IOnInputChange } from "@interface/accounts/signin-interface";
+
+export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: LoginHandler) => {
+  for (const value of ["email", "password"]) if (!userForm[value].trim()) return enqueueSnackbar(`${capitalize(value)} cannot be empty`, { variant: "error" });
+
   setUserForm((userForm: any) => ({ ...userForm, buttonLoading: true })); // activate botton loading
 
   const email = userForm.email.trim(),
@@ -18,8 +21,9 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
     return enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
   }
 
-  await fetcher({ api: "srv-accounts", method: "POST", endpoint: "/signin", payload: { email, password } })
-    .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
+  await fetcher({ method: "POST", endpoint: "/accounts/signin", payload: { email, password } })
+    .then(async ({ payload: { role, fullName, handle, cookieConsent } }) => {
+      await sleep(1);
       setAuthAction({ role, fullName, handle, cookieConsent });
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });
     })

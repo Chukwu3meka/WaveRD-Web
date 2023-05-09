@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
 import fetcher from "@utils/fetcher";
 import { BuilderCookieNotice } from ".";
+import { connector } from "@store";
 
-const BuilderCookieNoticeContainer = (props: any) => {
+export default connector((props: any) => {
   const [auth, setAuth] = useState(false),
     [mobileDevice, setMobileDevice] = useState(true),
     [displayDialog, setDisplayDialog] = useState(true);
@@ -27,18 +27,10 @@ const BuilderCookieNoticeContainer = (props: any) => {
     setDisplayDialog(false);
 
     if (auth)
-      await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/cookieConsent" })
+      await fetcher({ method: "GET", endpoint: "/accounts/cookieConsent" })
         .then(() => {})
         .catch((err) => {}); // ? Update record in database, that user has allowed cookies
   };
 
   return <BuilderCookieNotice displayDialog={displayDialog} closeDialogFn={closeDialogFn} mobileDevice={mobileDevice} />;
-};
-
-const mapStateToProps = (state: any) => ({
-    authStatus: state.auth.status,
-    deviceWidth: state.layout.deviceWidth,
-  }),
-  mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuilderCookieNoticeContainer);
+});

@@ -5,12 +5,12 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 
-import { styles } from ".";
+import styles from "./headerStyles.module.scss";
 import { IHeader } from "@interface/main/header-interface";
 import socialAccounts from "@source/constants/socialAccounts";
 
 // const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
-const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
+const Header = ({ relativeHeader, signoutAction, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
   <div
     className={
       styles[
@@ -78,9 +78,9 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
         {authenticated && (
           <Button variant="outlined" size="small">
             <a
-              href={process.env.NODE_ENV === "development" ? "http://localhost:5000/api/accounts/signout" : "https://accounts.soccermass.com/api/signout"}
+              href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
               rel="noopener noreferrer">
-              Logout
+              Sign out
             </a>
           </Button>
         )}

@@ -1,19 +1,15 @@
+import "@source/scss/global-style.scss";
+
 import { AppProps } from "next/app";
+import { Provider } from "react-redux";
 import { Analytics } from "@vercel/analytics/react";
 
-import "@source/scss/global-style.scss";
-import { useStore } from "@store/index";
+import { store } from "@store";
 import LayoutContainer from "@component/layout";
 
-const App = (props: AppProps) => {
-  const store = useStore(props.pageProps.initialReduxState);
-
-  return (
-    <>
-      <LayoutContainer {...{ ...props, store }} />
-      <Analytics />
-    </>
-  );
-};
-
-export default App;
+export default (props: AppProps) => (
+  <Provider store={store}>
+    <LayoutContainer {...{ ...props, store }} />
+    <Analytics />
+  </Provider>
+);

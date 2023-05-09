@@ -1,6 +1,8 @@
-const initialState: any = { status: false };
+import { AuthState } from "@interface/store/auth";
 
-const authReducer = (state = initialState, { payload, type }: { payload: any; type: any }) => {
+const initialState = null;
+
+const authReducer = (state: AuthState = initialState, { payload, type }: { payload: AuthState; type: string }) => {
   switch (type) {
     case "SET_AUTH":
       return payload;

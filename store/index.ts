@@ -1,97 +1,24 @@
-import { useMemo } from "react";
-import rootReducer from "./reducers";
 import { configureStore } from "@reduxjs/toolkit";
+import { connect, ConnectedProps } from "react-redux";
 
-import { combineReducers } from "redux";
+import * as actions from "./actions";
+import rootReducer from "./reducers";
 
-import auth from "./reducers/auth";
-import error from "./reducers/error";
-import layout from "./reducers/layout";
+export const store = configureStore({ reducer: rootReducer });
 
-// Define the type for the store state
-export type RootState = ReturnType<typeof rootReducer>;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
 
-let store: ReturnType<typeof initStore> | undefined;
+const mapState = (state: RootState) => ({
+  auth: state.auth,
+  error: state.error,
+  layout: state.layout,
+});
 
-function initStore(initialState: RootState) {
-  return configureStore({
-    reducer: { error, layout, auth },
-    preloadedState: initialState,
-    devTools: true,
-  });
-}
+const mapDispatch = actions;
 
-export const initializeStore = (preloadedState?: RootState) => {
-  let _store = store ?? initStore(preloadedState ?? undefined);
-  // let _store = store ?? initStore(preloadedState);
+export const connector = connect(mapState, mapDispatch);
 
-  // After navigating to a page with an initial Redux state, merge that state
-  // with the current state in the store, and create a new store
-  if (preloadedState && store) {
-    _store = initStore({
-      ...store.getState(),
-      ...preloadedState,
-    });
-    // Reset the current store
-    store = undefined;
-  }
-
-  // For SSG and SSR always create a new store
-  if (typeof window === "undefined") return _store;
-  // Create the store once in the client
-  if (!store) store = _store;
-
-  return _store;
-};
-
-// export function useStore(initialState: RootState) {
-//   const store = useMemo(() => initializeStore(initialState), [initialState]);
-//   return store;
-// }
-
-export function useStore(initialState?: any) {
-  // const store = useMemo(() => initializeStore(initialState ?? undefined), [initialState]);
-  // return store;
-
-  // export function useStore(initialState: typeof store) {
-  const store = useMemo(() => initializeStore(initialState || {}), [initialState]);
-  return store;
-  // }
-}
-
-// import { useMemo } from "react";
-// import rootReducer from "./reducers";
-// import { configureStore } from "@reduxjs/toolkit";
-
-// let store: any;
-
-// function initStore(initialState: typeof store) {
-//   return configureStore({ reducer: rootReducer, preloadedState: initialState, devTools: true });
-// }
-
-// export const initializeStore = (preloadedState: typeof store) => {
-//   let _store = store ?? initStore(preloadedState);
-
-//   // After navigating to a page with an initial Redux state, merge that state
-//   // with the current state in the store, and create a new store
-//   if (preloadedState && store) {
-//     _store = initStore({
-//       ...store.getState(),
-//       ...preloadedState,
-//     });
-//     // Reset the current store
-//     store = undefined;
-//   }
-
-//   // For SSG and SSR always create a new store
-//   if (typeof window === "undefined") return _store;
-//   // Create the store once in the client
-//   if (!store) store = _store;
-
-//   return _store;
-// };
-
-// export function useStore(initialState: typeof store) {
-//   const store = useMemo(() => initializeStore(initialState), [initialState]);
-//   return store;
-// }
+export type ConnectorProps = ConnectedProps<typeof connector>;

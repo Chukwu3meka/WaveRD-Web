@@ -38,19 +38,19 @@ const authData = [
   {
     color: "#1DA1F2",
     Icon: TwitterIcon,
-    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/twitter` : `https://srv-accounts.soccermass.com/api/twitter`,
+    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/v1/accounts/twitter` : `https://api.soccermass.com/v1/accounts/twitter`,
     label: "Twitter",
   },
   {
     color: "#DB4437",
     Icon: GoogleIcon,
-    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/google` : `https://srv-accounts.soccermass.com/api/google`,
+    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/v1/accounts/google` : `https://api.soccermass.com/v1/accounts/google`,
     label: "Google",
   },
   {
     color: "#4267B2",
     Icon: FacebookIcon,
-    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/api/accounts/facebook` : `https://srv-accounts.soccermass.com/api/facebook`,
+    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/v1/accounts/facebook` : `https://api.soccermass.com/v1/accounts/facebook`,
     label: "Facebook",
   },
 ];

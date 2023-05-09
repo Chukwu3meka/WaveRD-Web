@@ -1,13 +1,8 @@
 import fetcher from "@utils/fetcher";
 import { deObfuscate } from "@utils/handlers";
 
-import { IHandleScroll, IFunctionsHandleResize, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
-
-export const handleResize = ({ setDeviceSizeAction }: IFunctionsHandleResize) => {
-  const width = window.innerWidth,
-    height = window.innerHeight;
-  setDeviceSizeAction({ width, height });
-};
+import { SetDeviceSizeAction } from "@interface/store/layout";
+import { IHandleScroll, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
 export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHandlePageLoading) => {
   // Smoothly scroll to the top of the page on page load
@@ -50,11 +45,5 @@ export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastS
   setLastScrollPos(window.scrollY);
 };
 
-export const retrieveCookie = async ({ setAuthAction, setCookieNotice }: any) => {
-  await fetcher({ api: "srv-accounts", method: "GET", endpoint: "/cookies" })
-    .then(({ payload: { role, fullName, handle, cookieConsent } }) => {
-      setAuthAction({ role, fullName, handle });
-      if (!cookieConsent) setCookieNotice(true);
-    })
-    .catch(() => {});
-};
+// export const retrieveCookie = async ({  setCookieNotice }: any) => {
+//   getCookieAction};

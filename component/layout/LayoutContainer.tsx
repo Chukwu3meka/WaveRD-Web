@@ -1,51 +1,54 @@
-import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-import { Layout, functions } from ".";
-import { setAuthAction, setDeviceSizeAction } from "@store/actions";
+import { Layout, handlers } from ".";
 import createEmotionCache from "@source/createEmotionCache";
 
 const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, shared for the whole session of the user in the browser.
 
-import { IHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
+import { IHandlePageLoading, IHandleProtectedRoute, LayoutContainer } from "@interface/main/layout-interface";
 
-const LayoutContainer = (props: any) => {
+import { connector, ConnectorProps } from "@store";
+
+export default connector((props: LayoutContainer & ConnectorProps) => {
   const router = useRouter(),
-    [appReady, setAppReady] = useState(false),
+    [ready, setReady] = useState(false),
     [lastScrollPos, setLastScrollPos] = useState(0),
     [pageLoading, setPageLoading] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
     [cookieNotice, setCookieNotice] = useState<boolean>(false),
     [cssVariable, setCssVariable] = useState<React.CSSProperties>({}),
     [displayHeader, setDisplayHeader] = useState(false), // header is false on initial load
-    { pageProps, Component, store, setDeviceSizeAction, emotionCache = clientSideEmotionCache, setAuthAction } = props;
+    { pageProps, Component, setDeviceSizeAction, getCookieAction, emotionCache = clientSideEmotionCache } = props;
 
   useEffect(() => {
-    if (!appReady) {
+    // <= will run only once
+    if (!ready) {
       setCssVariable((cssVariable) => ({
         ...cssVariable,
         "--visibleScreen": `${window.innerHeight + 2}px`, // <= iPhone not returning the right screen height in VH
       }));
 
-      setAppReady(true);
+      setReady(true);
       handlePageLoading({ url: null, loading: false });
+      handleResize();
+      getCookieAction({ setCookieNotice });
       window.addEventListener("resize", handleResize);
     }
     return () => {
-      if (!appReady) retrieveCookie(); // <= will run only once
-      window.removeEventListener("resize", handleResize);
+      if (!ready) {
+        window.removeEventListener("resize", handleResize);
+      }
     };
   }, []);
 
   useEffect(() => {
-    const authenticated = props.authStatus || false;
-
-    if (appReady) {
-      setAuthenticated(authenticated);
-      handleProtectedRoute({ router, authenticated });
+    const authenticated = props.auth || false;
+    if (ready) {
+      setAuthenticated(!!authenticated);
+      handleProtectedRoute({ router, authenticated: !!authenticated });
     }
-  }, [props.authStatus]);
+  }, [props.auth]);
 
   useEffect(() => {
     router.events.on("routeChangeStart", (url: string) => handlePageLoading({ url, loading: true }));
@@ -59,7 +62,7 @@ const LayoutContainer = (props: any) => {
   }, [router]);
 
   useEffect(() => {
-    if (appReady) handleProtectedRoute({ router, authenticated });
+    if (ready) handleProtectedRoute({ router, authenticated: !!authenticated });
   }, [router.asPath]);
 
   useEffect(() => {
@@ -67,16 +70,10 @@ const LayoutContainer = (props: any) => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
-  const retrieveCookie = () => functions.retrieveCookie({ setAuthAction, setCookieNotice });
-  const handleResize = () => functions.handleResize({ setDeviceSizeAction: setDeviceSizeAction! });
-  const handleScroll = () => functions.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
-  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => functions.handlePageLoading({ url, loading, setPageLoading });
-  const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => functions.handleProtectedRoute({ router, authenticated });
+  const handleResize = () => setDeviceSizeAction({ deviceWidth: window.innerWidth, deviceHeight: window.innerHeight });
+  const handleScroll = () => handlers.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
+  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setPageLoading });
+  const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => handlers.handleProtectedRoute({ router, authenticated });
 
-  return <Layout {...{ pageProps, Component, store, pageLoading, appReady, emotionCache, displayHeader, cssVariable, cookieNotice }} />;
-};
-
-const mapStateToProps = (state: any) => ({ authStatus: state.auth.status }),
-  mapDispatchToProps = { setDeviceSizeAction, setAuthAction };
-
-export default connect(mapStateToProps, mapDispatchToProps)(LayoutContainer);
+  return ready ? <Layout {...{ pageProps, Component, authenticated, pageLoading, ready, emotionCache, displayHeader, cssVariable, cookieNotice }} /> : <></>;
+});

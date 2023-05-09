@@ -1,3 +1,5 @@
+import { SetAuthAction } from "@interface/store/auth";
+
 export interface ISignin {
   userForm: IUserForm;
   loginHandler: Function;
@@ -7,7 +9,6 @@ export interface ISignin {
 }
 
 export interface ISigninContainer {
-  setAuthAction: Function;
   deviceWidth: number;
 }
 
@@ -27,10 +28,10 @@ export interface IOnInputChange {
   e: React.FocusEvent<HTMLInputElement>;
 }
 
-export interface ILoginHandler {
+export interface LoginHandler {
   userForm: IUserForm;
   setUserForm: Function;
-  setAuthAction: Function;
+  setAuthAction: (SetAuthAction) => void;
   enqueueSnackbar: Function;
 }
 

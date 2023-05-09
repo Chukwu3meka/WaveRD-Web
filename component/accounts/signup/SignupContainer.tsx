@@ -16,10 +16,11 @@ const SignupContainer = () => {
   });
 
   const registerHandler = () => handlers.registerHandler({ enqueueSnackbar, setUserForm, userForm, closeSnackbar });
-  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar });
+  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: true });
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: false });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
-  return userForm.options.accountCreated ? <Success /> : <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler }} />;
+  return userForm.options.accountCreated ? <Success /> : <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }} />;
 };
 
 export default SignupContainer;

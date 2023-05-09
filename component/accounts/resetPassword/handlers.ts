@@ -36,7 +36,8 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gea
       }
     }
 
-    await fetcher({ method: "POST", api: "srv-accounts", payload: userData, endpoint: "/reset-password" }).then(() => {
+    await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/reset-password" }).then(async () => {
+      await sleep(1);
       enqueueSnackbar("Password reset successfully, You can now login with the new password", { variant: "success" });
       setForm({
         email: { value: "", valid: true, info: "Email cannot be empty" },
@@ -48,7 +49,6 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gea
   } catch ({ message }: any) {
     enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
   } finally {
-    if (process.env.NODE_ENV === "development") await sleep(0.2);
     setForm((values: any) => ({ ...values, options: { ...values.options, loading: false } }));
   }
 };

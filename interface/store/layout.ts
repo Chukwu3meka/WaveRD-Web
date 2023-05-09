@@ -3,3 +3,8 @@ export interface LayoutState {
   deviceHeight: number;
   activeRoute: string;
 }
+
+export interface SetDeviceSizeAction {
+  deviceWidth: number;
+  deviceHeight: number;
+}

@@ -1,14 +1,13 @@
-import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 import { Signin, handlers } from ".";
-import { setAuthAction } from "@store/actions";
 import { ISigninContainer, IUserForm } from "@interface/accounts/signin-interface";
 import { deObfuscate } from "@utils/handlers";
+import { connector, ConnectorProps } from "@store";
 
-const SigninContainer = (props: ISigninContainer) => {
+const SigninContainer = (props: ISigninContainer & ConnectorProps) => {
   const router = useRouter(),
     { setAuthAction } = props,
     { enqueueSnackbar } = useSnackbar();
@@ -37,7 +36,4 @@ const SigninContainer = (props: ISigninContainer) => {
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }} />;
 };
 
-const mapStateToProps = (state: any) => ({ authenticated: state.auth.status, deviceWidth: state.layout.deviceWidth }),
-  mapDispatchToProps = { setAuthAction };
-
-export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);
+export default connector(SigninContainer);

@@ -1,24 +1,32 @@
-import { Dispatch } from "redux";
+import fetcher from "@utils/fetcher";
+import { AppDispatch } from "@store";
 import { removeErrorAction, catchErr } from "./error";
 
-export const setAuthAction = (payload: object) => {
-  return async (dispatch: Dispatch) => {
-    try {
-      dispatch({ type: "SET_AUTH", payload: { status: true, ...payload } });
-      await dispatch(removeErrorAction("SET_1AUTH"));
-    } catch (err) {
-      return catchErr(dispatch, err, "SET_AUTH");
-    }
-  };
+import { GetCookieAction, SetAuthAction } from "@interface/store/auth";
+
+export const setAuthAction = (payload: SetAuthAction) => (dispatch: AppDispatch) => {
+  try {
+    dispatch({ type: "SET_AUTH", payload });
+    dispatch(removeErrorAction("SET_AUTH"));
+  } catch (err) {
+    catchErr(dispatch, err, "SET_AUTH");
+  }
 };
 
-export const logoutAction = () => {
-  return async (dispatch: Dispatch) => {
-    try {
-      dispatch({ type: "SET_AUTH", payload: { status: false } });
-      await dispatch(removeErrorAction("SET_AUTH"));
-    } catch (err) {
-      return catchErr(dispatch, err, "SET_AUTH");
-    }
-  };
+export const signoutAction = () => async (dispatch: AppDispatch) => {
+  try {
+    await fetcher({ method: "GET", endpoint: "/accounts/signout" });
+  } catch (err) {
+    catchErr(dispatch, err, "SIGNOUT");
+  }
+};
+
+export const getCookieAction = (payload: GetCookieAction) => async (dispatch: AppDispatch) => {
+  try {
+    const { setCookieNotice } = payload;
+    await fetcher({ method: "GET", endpoint: "/accounts/cookies" }).then(async ({ payload }) => {
+      dispatch(setAuthAction(payload));
+      setCookieNotice(!payload.cookieConsent);
+    });
+  } catch (err) {}
 };

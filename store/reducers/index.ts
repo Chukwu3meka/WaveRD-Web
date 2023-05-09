@@ -5,7 +5,7 @@ import error from "./error";
 import layout from "./layout";
 
 export default combineReducers({
+  auth,
   error,
   layout,
-  auth,
 });

@@ -1,21 +1,12 @@
 interface IFetcher {
-  payload?: object | null;
   endpoint: string;
+  payload?: object | null;
   method: "POST" | "GET" | "PATCH";
-  api: "srv-accounts" | "srv-manager" | "srv-apihub" | "srv-logs";
 }
 
-const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
-  const devEnv = process.env.NODE_ENV === "production";
-
-  // const subDomain = `${api}-api`;
-  const protocol = devEnv ? "https" : "http";
-  const domain = devEnv ? "soccermass.com" : "localhost:5000";
-
-  // const URL = `${protocol}://${subDomain}.${domain}/api${endpoint}`;
-  // const URL = `${protocol}://${api}.${domain}/api${endpoint}`;
-
-  const URL = devEnv ? `${protocol}://${api}.${domain}/api${endpoint}` : `${protocol}://${domain}/api/${api}${endpoint}`;
+const fetcher = async ({ endpoint, payload = null, method }: IFetcher) => {
+  const domain = process.env.NODE_ENV === "production" ? "https://api.soccermass.com" : "http://localhost:5000",
+    apiUrl = `${domain}/v1${endpoint}`;
 
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },
@@ -34,13 +25,14 @@ const fetcher = async ({ api, endpoint, payload = null, method }: IFetcher) => {
     if (!payload) throw { message: "No payload set" };
     fetchOptions.body = JSON.stringify(payload);
   }
-  return fetch(URL, fetchOptions)
+
+  return fetch(apiUrl, fetchOptions)
     .then(async (response) => {
       if (!response.ok) throw await response.json();
       return response.json();
     })
     .catch((err) => {
-      if (devEnv) console.log(err);
+      // if (process.env.NODE_ENV === "development") console.log(err);
       throw err;
     });
 };

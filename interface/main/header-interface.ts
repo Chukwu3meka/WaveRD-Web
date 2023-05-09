@@ -7,7 +7,6 @@ export interface IHeader {
 }
 
 export interface HeaderContainer {
-  logoutAction: Function;
   displayHeader: boolean;
   authenticated: boolean;
   relativeHeader: "dark" | "light" | null;

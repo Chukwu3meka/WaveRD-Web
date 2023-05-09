@@ -1,8 +1,8 @@
 import Layout from "./Layout";
 import FooterContainer from "./footer";
 import HeaderContainer from "./header";
-import * as functions from "./functions";
+import * as handlers from "./handlers";
 import styles from "./styles.module.scss";
 import LayoutContainer from "./LayoutContainer";
 
-export { functions, FooterContainer, HeaderContainer, styles, Layout, LayoutContainer as default };
+export { handlers, FooterContainer, HeaderContainer, styles, Layout, LayoutContainer as default };

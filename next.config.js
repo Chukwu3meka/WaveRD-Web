@@ -1,11 +1,11 @@
-const subDomains = ["apihub", "manager", "logs", "accounts"],
+const subDomains = ["apihub", "manager", "console", "accounts"],
   domains = [
     { host: "localhost", domain: "http://localhost:3000" },
     { host: "soccermass.com", domain: "https://soccermass.com" },
   ];
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   modularizeImports: {
     "@mui/icons-material": {
       transform: "@mui/icons-material/{{ member }}",

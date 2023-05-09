@@ -4,6 +4,7 @@ export interface ISignup {
   onInputChange: Function;
   userForm: IUserForm;
   handleClickShowPassword: Function;
+  onBlurHandler: Function;
   registerHandler: Function;
 }
 
@@ -34,6 +35,7 @@ export interface IOnInputChange {
   closeSnackbar: Function;
   e: React.FocusEvent<HTMLInputElement>;
   setUserForm: Function;
+  onBlur: boolean;
 }
 
 export interface IRegisterHandler {
