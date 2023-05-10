@@ -9,65 +9,42 @@ const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, sh
 import { IHandlePageLoading, IHandleProtectedRoute, LayoutContainer } from "@interface/main/layout-interface";
 
 import { connector, ConnectorProps } from "@store";
-import { BuilderCookieNotice } from "@component/builder/cookieNotice";
+import { BuilderCookieNotice } from "@component/shared/cookieNotice";
 import { AppProps } from "next/app";
+import { SetThemeAction } from "@interface/store/layout";
 
 export default connector((props: LayoutContainer & ConnectorProps) => {
   const router = useRouter(),
     [ready, setReady] = useState(false),
-    [lastScrollPos, setLastScrollPos] = useState(0),
+    [theme, setTheme] = useState(null),
+    [loading, setLoading] = useState(true),
+    [layout, setLayout] = useState(null),
+    [authenticated, setAuthenticated] = useState(false),
     [cookieNotice, setCookieNotice] = useState<boolean>(false),
-    { pageProps, Component, setDeviceSizeAction, getCookieAction, emotionCache = clientSideEmotionCache } = props;
-
-  const [layoutProps, setLayoutProps] = useState<{
-    pageLoading: boolean;
-    authenticated: boolean;
-    displayHeader: boolean; // <= header is false on initial load
-    cssVariable: React.CSSProperties;
-    Component: AppProps["Component"];
-    pageProps: AppProps["pageProps"];
-    emotionCache;
-    layout: "default" | "info" | "accounts";
-  }>({
-    emotionCache,
-    layout: "default",
-    cssVariable: {},
-    pageLoading: true,
-    authenticated: false,
-    displayHeader: false, // <= header is false on initial load
-    Component: Component,
-    pageProps: pageProps,
-  });
+    { pageProps, Component, setDeviceSizeAction, verifyCookieAction, emotionCache = clientSideEmotionCache, setDisplayHeaderAction } = props;
 
   useEffect(() => {
-    // <= will run only once
     if (!ready) {
-      setLayoutProps((values) => ({
-        ...values,
-        // iPhone not returning the right screen height in VH
-        cssVariable: { ...values.cssVariable, "--visibleScreen": `${window.innerHeight + 0}px` },
-      }));
-
-      setReady(true);
-      handlePageLoading({ url: null, loading: false });
-      handleResize();
-      getCookieAction({ setCookieNotice });
       window.addEventListener("resize", handleResize);
+      window.addEventListener("scroll", setDisplayHeaderAction);
+      verifyCookieAction({ setCookieNotice, setTheme, setReady, handlePageLoading });
     }
     return () => {
-      if (!ready) {
-        window.removeEventListener("resize", handleResize);
-      }
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", setDisplayHeaderAction);
     };
   }, []);
 
   useEffect(() => {
-    const authenticated = props.auth || false;
     if (ready) {
+      setAuthenticated(!!props.auth || false);
       handleProtectedRoute();
-      setLayoutProps((values) => ({ ...values, authenticated: !!authenticated }));
     }
   }, [props.auth]);
+
+  useEffect(() => {
+    if (ready) setTheme(props.layout.theme);
+  }, [props.layout.theme]);
 
   useEffect(() => {
     router.events.on("routeChangeStart", (url: string) => handlePageLoading({ url, loading: true }));
@@ -82,19 +59,23 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
 
   useEffect(() => {
     if (ready) handleProtectedRoute();
-    // if (ready) handleProtectedRoute({ router, authenticated: !!authenticated });
   }, [router.asPath]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
-
+  const handleProtectedRoute = () => handlers.handleProtectedRoute({ router, authenticated, setLayout });
   const handleResize = () => setDeviceSizeAction({ deviceWidth: window.innerWidth, deviceHeight: window.innerHeight });
-  const handleScroll = () => handlers.handleScroll({ window, lastScrollPos, setLayoutProps, setLastScrollPos });
-  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLayoutProps });
-  // const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => handlers.handleProtectedRoute({ router, authenticated });
-  const handleProtectedRoute = () => handlers.handleProtectedRoute({ router, authenticated: !!layoutProps.authenticated });
+  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading });
 
-  return ready ? <Layout {...layoutProps} /> : <p> </p>;
+  return ready ? (
+    <Layout
+      theme={theme}
+      layout={layout}
+      loading={loading}
+      Component={Component}
+      pageProps={pageProps}
+      emotionCache={emotionCache}
+      authenticated={authenticated}
+    />
+  ) : (
+    <p> </p>
+  );
 });

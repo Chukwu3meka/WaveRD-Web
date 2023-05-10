@@ -1,9 +1,11 @@
 @import "@source/scss/index.scss";
 
 .layout {
+  display: grid;
   overflow-y: auto;
   overflow-x: hidden;
-  display: grid;
-  grid-template-rows: auto max-content;
   min-height: var(--visibleScreen);
+  grid-template-rows: auto max-content;
+  background: var(--primary);
+  // background: linear-gradient(45deg, rgb(45, 45, 45) 0%, var(--primary) 34%);
 }

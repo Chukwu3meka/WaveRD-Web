@@ -5,18 +5,16 @@ import { Analytics } from "@vercel/analytics/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
-import theme from "@source/theme";
-import BuilderLoading from "@component/builder/loading";
-import { HeaderContainer, FooterContainer, AccountsLayout, styles, InfoLayout, DefaultLayout } from ".";
-import BuilderCookieNoticeContainer from "@component/builder/cookieNotice/BuilderCookieNoticeContainer";
+import muiTheme from "@source/muiTheme";
+import Loading from "@component/shared/loading";
+import { AccountsLayout, styles } from ".";
+import BuilderCookieNoticeContainer from "@component/shared/cookieNotice/BuilderCookieNoticeContainer";
 
 import { ILayout } from "@interface/main/layout-interface";
-import BuilderFooterContainer from "@component/builder/footer/BuilderFooterContainer";
-import BuilderHeaderContainer from "@component/builder/header/BuilderHeaderContainer";
+import BuilderFooterContainer from "@component/shared/footer/FooterContainer";
+import HeaderContainer from "@component/shared/header";
 
-// const Layout = ({ pageProps, Component, pageLoading, ready, emotionCache, displayHeader, authenticated, cssVariable, cookieNotice, children }: ILayout) => (
-// const Layout = ({ emotionCache, layoutProps, layout, authenticated, displayHeader }: any) => (
-const Layout = (layoutProps: any) => (
+const Layout = ({ loading, emotionCache, theme, displayHeader, authenticated, Component, layout, pageProps }: any) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
@@ -35,7 +33,7 @@ const Layout = (layoutProps: any) => (
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
       <meta property="og:image:type" content="image/png" />
-      <meta name="theme-color" content={theme.palette.primary.main} />
+      <meta name="theme-color" content={muiTheme(theme).palette.primary.main} />
       <meta property="og:url" content="https://www.soccermass.com/" />
       <meta name="keywords" content="soccer manager, soccer, soccermass, football manager, football" />
       <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
@@ -52,18 +50,16 @@ const Layout = (layoutProps: any) => (
       />
     </Head>
 
-    <CacheProvider value={layoutProps.emotionCache}>
-      <ThemeProvider theme={theme}>
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={muiTheme(theme)}>
         <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-          <BuilderHeaderContainer authenticated={layoutProps.authenticated} displayHeader={layoutProps.displayHeader} relativeHeader={null} titleOnly={null} />
-          <main className={styles.layout} style={layoutProps.cssVariable}>
-            {layoutProps.layout === "accounts" ? (
-              <AccountsLayout {...layoutProps} />
-            ) : layoutProps.layout === "info" ? (
-              <InfoLayout {...layoutProps} />
+          <HeaderContainer position="sticky" />
+          <main className={styles.layout}>
+            {layout === "accounts" ? (
+              <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
             ) : (
-              <DefaultLayout {...layoutProps} />
+              <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>
             )}
             <BuilderFooterContainer />
           </main>

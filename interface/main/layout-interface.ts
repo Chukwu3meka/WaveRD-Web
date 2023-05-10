@@ -14,8 +14,8 @@ export interface LayoutContainer {
   pageProps: AppProps["pageProps"];
   Component: AppProps["Component"];
   emotionCache?: EmotionCache;
-  setDeviceSizeAction?: Function;
-  auth: AuthState | null;
+  // setDeviceSizeAction?: Function;
+  // auth: AuthState | null;
 }
 
 export interface ILayout {

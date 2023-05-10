@@ -7,13 +7,9 @@ export interface IHeader {
 }
 
 export interface HeaderContainer {
-  displayHeader: boolean;
-  relativeHeader: "dark" | "light" | null;
-  titleOnly: "dark" | "light" | null;
-  authenticated?: boolean; // <= coming from redux store
-}
-
-export interface BuilderRelativeHeader {
-  theme: "dark" | "light";
-  titleOnly: "dark" | "light" | null;
+  position: "relative" | "sticky";
+  // displayHeader?: boolean;
+  // relativeHeader: "dark" | "light" | null;
+  // titleOnly: "dark" | "light" | null;
+  // authenticated?: boolean; // <= coming from redux store
 }

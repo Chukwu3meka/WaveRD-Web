@@ -3,6 +3,8 @@ import { AppDispatch } from "@store";
 import { removeErrorAction, catchErr } from "./error";
 
 import { GetCookieAction, SetAuthAction } from "@interface/store/auth";
+import { setCssThemeVar } from "@utils/handlers";
+import { setDeviceSizeAction, setThemeAction } from "./layout";
 
 export const setAuthAction = (payload: SetAuthAction) => (dispatch: AppDispatch) => {
   try {
@@ -21,12 +23,30 @@ export const signoutAction = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const getCookieAction = (payload: GetCookieAction) => async (dispatch: AppDispatch) => {
+export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch) => {
+  document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight + 0}px`); // <= iPhone not returning the right screen height in VH
+
   try {
-    const { setCookieNotice } = payload;
-    await fetcher({ method: "GET", endpoint: "/accounts/cookies" }).then(async ({ payload }) => {
-      dispatch(setAuthAction(payload));
-      setCookieNotice(!payload.cookieConsent);
-    });
+    const { setTheme, setReady, handlePageLoading } = payload;
+
+    const setThemeFn = (theme) => {
+      setTheme(theme);
+      setCssThemeVar(theme);
+      dispatch(setThemeAction(theme));
+    };
+
+    await fetcher({ method: "GET", endpoint: "/accounts/cookies" })
+      .then(async ({ payload }) => {
+        setThemeFn(payload.theme);
+        dispatch(setAuthAction(payload));
+      })
+      .catch(() => {
+        setThemeFn(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      })
+      .finally(() => {
+        dispatch(setDeviceSizeAction({ deviceWidth: window.innerWidth, deviceHeight: window.innerHeight }));
+        handlePageLoading({ url: null, loading: false });
+        setReady(true);
+      });
   } catch (err) {}
 };

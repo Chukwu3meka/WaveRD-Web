@@ -9,4 +9,5 @@ export type AuthState = SetAuthAction | null;
 
 export interface GetCookieAction {
   setCookieNotice: Function;
+  setTheme: Function;
 }

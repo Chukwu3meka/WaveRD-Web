@@ -4,6 +4,12 @@
   @include quickFlex($width: 100%, $dir: row, $align: stretch, $row: 70px, $column: 20px);
   flex-wrap: wrap;
   padding: 50px 20px;
+
+  // border: 3px solid red;
+
+  background: var(--primary);
+  background: #22272e;
+
   img {
     filter: brightness(80%) saturate(70%);
   }

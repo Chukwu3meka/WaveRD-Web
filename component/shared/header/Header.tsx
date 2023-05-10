@@ -9,32 +9,22 @@ import styles from "./styles.module.scss";
 
 import { IHeader } from "@interface/main/header-interface";
 import socialAccounts from "@source/constants/socialAccounts";
+import Menu from "@component/shared/menu";
 
-// const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
-const BuilderHeader = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
-  <div
-    className={
-      styles[
-        titleOnly === "dark"
-          ? "titleOnlyDark"
-          : titleOnly === "light"
-          ? "titleOnlyLight"
-          : relativeHeader === "dark"
-          ? "relativeHeaderDark"
-          : relativeHeader === "light"
-          ? "relativeHeaderLight"
-          : displayHeader
-          ? "header"
-          : "headerHidden"
-      ]
-    }>
-    <header>
-      <div>
-        <Link href="/">
-          <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={35} height={35} />
-        </Link>
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { Box } from "@mui/material";
 
-        <Stack direction="row" component="a" href="https://soccermass.com/" onMouseOver={swapColorFn} onMouseLeave={swapColorFn}>
+// const Header = ({ relative, authenticated, displayHeader }: IHeader) => (
+export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: any) => (
+  <div className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
+    <header id="header">
+      <Box>
+        <IconButton onClick={() => themeHandler(theme)}>
+          {theme === "light" ? <DarkModeOutlinedIcon color="primary" /> : <LightModeIcon color="primary" />}
+        </IconButton>
+
+        <Stack direction="row" component="a" href="/" onMouseOver={swapColorFn} onMouseLeave={swapColorFn}>
           <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
             Soccer
           </Typography>
@@ -42,36 +32,29 @@ const BuilderHeader = ({ relativeHeader, authenticated, displayHeader, swapColor
             MASS
           </Typography>
         </Stack>
-      </div>
+      </Box>
 
-      <div>
+      <Box display={visible.nav ? "flex" : "none"}>
         {navLinks.map(({ title, path }) => (
           <Typography variant="subtitle2" key={title} color="primary" fontWeight={700}>
             <Link href={path}>{title}</Link>
           </Typography>
         ))}
-      </div>
+      </Box>
 
-      <div>
-        <div>
+      <Box display={visible.auth ? "flex" : "none"}>
+        <Box display={visible.social ? "initial" : "none"}>
           {socialAccounts
             .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
             .map(({ title, id, href }) => (
               <SocialIcon key={id} account={title} link={href} color={color.social} />
             ))}
-        </div>
+        </Box>
 
         {!authenticated && (
           <Link href="/accounts/signin">
-            <Button variant="outlined" size="small">
-              Sign in
-            </Button>
-          </Link>
-        )}
-        {!authenticated && (
-          <Link href="/accounts/signup">
             <Button variant="contained" size="small" color="primary">
-              Sign up
+              Sign in
             </Button>
           </Link>
         )}
@@ -85,12 +68,10 @@ const BuilderHeader = ({ relativeHeader, authenticated, displayHeader, swapColor
             </a>
           </Button>
         )}
-      </div>
+      </Box>
     </header>
   </div>
 );
-
-export default BuilderHeader;
 
 const SocialIcon = ({ account, link, color }: { account: string; link: string; color: string }) => {
   let icon;

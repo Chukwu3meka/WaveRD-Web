@@ -1,9 +1,0 @@
-@import "@source/scss/index.scss";
-
-.layout > div:last-of-type {
-  min-height: var(--visibleScreen);
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: grid;
-  grid-template-rows: auto max-content;
-}

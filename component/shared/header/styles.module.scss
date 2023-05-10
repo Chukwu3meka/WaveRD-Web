@@ -1,0 +1,83 @@
+@import "@source/scss/index.scss";
+
+.stickyHeader {
+  position: sticky;
+  position: -webkit-sticky;
+  background-color: transparent;
+  top: 0px; /* required */
+  display: block;
+  transition: top 0.5s ease-in-out;
+  z-index: 3;
+  margin: calc(-#{$headerHeight}) auto 0;
+  padding: 5px 5px 0;
+  & > header {
+    max-width: 1500px;
+    background-color: #1b1e29;
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 70px / 100%;
+    margin: auto;
+    padding: 10px 30px;
+    // @include quickFlex($dir: row, $justify: space-between);
+    @include quickFlex($dir: row, $justify: space-evenly);
+    overflow: hidden;
+    & > div:nth-of-type(1) {
+      @include quickFlex($dir: row, $column: 10px);
+    }
+
+    & > div:nth-of-type(2) {
+      margin-bottom: -5px;
+      column-gap: 20px;
+      a {
+        color: $primary;
+        &:hover {
+          color: var(--contrast);
+          background: linear-gradient(to left, $secondary, var(--primary) 100%);
+          background-position: 0 100%;
+          background-size: 100% 2px;
+          background-repeat: repeat-x;
+        }
+      }
+    }
+
+    & > div:nth-of-type(3) {
+      column-gap: 10px;
+    }
+  }
+}
+
+.hiddenHeader {
+  @extend .stickyHeader;
+  top: -#{$headerHeight};
+  & > header {
+    border: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .stickyHeader > header > div:nth-of-type(3) > div:nth-of-type(1) {
+    border-right: 1px solid var(--secondary);
+    padding-right: 15px;
+    margin-right: 10px;
+    @include quickFlex($dir: row);
+  }
+}
+
+.relativeHeader {
+  @extend .stickyHeader;
+  margin: auto;
+  position: unset;
+  z-index: 2;
+  width: 100%;
+
+  border-bottom: 1px solid $primary;
+  & > header {
+    background-color: transparent;
+
+    box-shadow: none;
+    & > div:nth-of-type(2) > span > a {
+      color: $textSecondary;
+    }
+  }
+}

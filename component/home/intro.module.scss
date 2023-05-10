@@ -1,12 +1,10 @@
 @import "@source/scss/index.scss";
 
 .intro {
-  padding: 20px 10px;
-  background: $darkGray;
+  padding: 5px 10px 20px;
   min-height: var(--visibleScreen);
   display: grid;
   grid-template-rows: $headerHeight auto;
-  // border: 3px solid purple !important;
   & > div:last-of-type {
     @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
     padding: 20px 0;
@@ -14,16 +12,12 @@
     max-width: 1400px;
     height: 100%;
     position: relative;
-    // border: 3px solid red !important;
     & > div:first-of-type {
-      // border: 3px solid blue !important;
       z-index: 1;
-      // height: 100%;
-      color: $lightGray;
       padding: 10px 20px;
       border-radius: 0 70px 0 70px;
       @include quickFlex($dir: column, $align: flex-start);
-      border: 2px solid darken($color: $textSecondary, $amount: 50);
+      border: 2px solid var(--secondary);
 
       & > * {
         max-width: 700px;
@@ -42,7 +36,7 @@
       position: absolute;
       height: clamp(300px, 100%, 800px);
       transform: translate(0%, -50%);
-      background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, $darkGray 65%),
+      background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
         url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
     }
   }
@@ -56,12 +50,11 @@
 
 @media screen and (min-width: 880px) {
   .intro {
-    background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type {
       max-width: 900px;
       & > div:last-of-type {
         border-radius: 50%;
-        background: radial-gradient(circle closest-corner at 50% 50%, transparent -150%, $darkGray 65%),
+        background: radial-gradient(circle closest-corner at 50% 50%, transparent -150%, var(--primary) 65%),
           url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
       }
     }
@@ -82,7 +75,6 @@
 
 @media screen and (min-width: 1440px) {
   .intro {
-    background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type {
       max-width: 1500px;
       & > div:first-of-type > * {
@@ -94,7 +86,6 @@
 
 @media screen and (min-width: 1700px) {
   .intro {
-    background: linear-gradient(45deg, rgb(45, 45, 45) 0%, $darkGray 34%);
     & > div:last-of-type > div:first-of-type > * {
       max-width: 1200px;
     }

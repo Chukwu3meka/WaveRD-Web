@@ -1,18 +1,18 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  border: 3px solid red;
-  // height: max-content;
-  // min-height: ;
   & > aside {
     display: none;
   }
   & > div:last-of-type {
+    display: none;
     display: grid;
     grid-template-rows: $headerHeight auto;
+    // border: 3px solid red;
     & > div:last-of-type {
       @include quickFlex();
-      background-image: radial-gradient(circle at bottom left, lighten($primary, 30), white 20%);
+      // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), white 20%);
+      background-image: radial-gradient(circle at bottom left, var(--secondary), white 20%);
       & > form {
         width: 100%;
         padding: 40px 20px 70px;
@@ -73,7 +73,10 @@
       & > form {
         @include boxShadow($br: 10px);
         width: clamp(300px, 100%, 600px);
-        background-image: radial-gradient(circle at bottom left, lighten($primary, 30), lighten($secondary, 28) 20%);
+        // border: 3px solid blue;
+        // background-image: radial-gradient(circle at bottom left, $primary, lighten($secondary, 28) 20%);
+        background-image: radial-gradient(circle at bottom left, $primary, lighten($secondary, 28) 20%);
+        background-image: radial-gradient(circle at bottom left, lighten($primary, 30), var(--primary) 20%);
         padding: 50px;
       }
     }

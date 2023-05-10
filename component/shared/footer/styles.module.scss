@@ -1,9 +1,10 @@
 @import "@source/scss/index.scss";
 
 .footer {
-  background-color: $darkGray;
-  border: 3px solid $darkGray; // <= fix footer not displaying
-  border-top: 1px solid darken($color: $lightGray, $amount: 70);
+  background-color: var(--primary);
+  // border: 3px solid $darkGray; // <= fix footer not displaying
+  // border-top: 1px solid darken($color: $lightGray, $amount: 70);
+  border-top: 1px solid var(--secondary);
   & > * > footer {
     max-width: 1200px;
     margin: auto;

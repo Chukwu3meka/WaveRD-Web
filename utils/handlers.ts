@@ -1,3 +1,4 @@
+import { SetThemeAction } from "@interface/store/layout";
 import { IAgeGenerator, IArrayRotate } from "@interface/utils/clientsFuncs-interface";
 
 export const ageGenerator = ({ date }: IAgeGenerator) => {
@@ -72,4 +73,24 @@ export const fullDateFn = (dateString: Date) => {
   const formattedDate = `${dayOfWeek}, ${dayOfMonth}${suffix} ${monthOfYear} ${year}`;
 
   return formattedDate; // Output: "Sunday, 23rd May 2023"
+};
+
+export const setCssThemeVar = (theme: SetThemeAction) => {
+  if (theme === "dark") {
+    // document.documentElement.style.setProperty("--primary", "#06051b");
+    // document.documentElement.style.setProperty("--primary", "#4a4a4a");
+    // document.documentElement.style.setProperty("--secondary", "#adbac7");
+    document.documentElement.style.setProperty("--primary", "#22272e");
+    document.documentElement.style.setProperty("--secondary", "#4a4a4a");
+    document.documentElement.style.setProperty("--contrast", "#ffffff");
+    // document.documentElement.style.setProperty("--highContrast", "#ffffff");
+    // document.documentElement.style.setProperty("--lowContrast", "#C5C5C5");
+  } else {
+    document.documentElement.style.setProperty("--primary", "#ffffff");
+    document.documentElement.style.setProperty("--secondary", "#D5D5D5");
+    document.documentElement.style.setProperty("--contrast", "#06051b");
+    // document.documentElement.style.setProperty("--secondary", "#ededed");
+    // document.documentElement.style.setProperty("--highContrast", "#06051b");
+    // document.documentElement.style.setProperty("--lowContrast", "#C5C5C5");
+  }
 };

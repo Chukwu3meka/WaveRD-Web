@@ -2,13 +2,13 @@ import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 
-import { BuilderRelativeHeader } from "@component/builder/header";
+import { HeaderContainer } from "@component/shared/header";
 import { Typography } from "@mui/material";
-import { BuilderComingSoon } from "@interface/builder/comingSoon-interface";
+import { BuilderComingSoon } from "@interface/shared/comingSoon-interface";
 
 const BuilderComingSoon = ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
   <div className={styles.comingSoon} style={{ minHeight }}>
-    {header ? <BuilderRelativeHeader theme="dark" titleOnly={null} /> : ""}
+    {header ? <HeaderContainer theme="dark" titleOnly={null} /> : ""}
 
     <Fade direction="right">
       <main>

@@ -1,4 +1,4 @@
-import ComingSoon from "@component/builder/comingSoon";
+import ComingSoon from "@component/shared/comingSoon";
 
 const Page = () => <ComingSoon header={true} />;
 

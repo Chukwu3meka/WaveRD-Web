@@ -6,7 +6,7 @@ import { Fade } from "react-awesome-reveal";
 import { styles } from ".";
 import socialAccounts from "@source/constants/socialAccounts";
 
-const BuilderFooter = () => (
+export default () => (
   <div className={styles.footer}>
     <Fade direction="right">
       <footer>
@@ -96,5 +96,3 @@ const BuilderFooter = () => (
     </Fade>
   </div>
 );
-
-export default BuilderFooter;

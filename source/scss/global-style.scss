@@ -1,6 +1,11 @@
 @import "@source/scss/index.scss";
 
 body {
+  :root {
+    --theme: dark;
+    --visibleScreen: 10000px;
+  }
+
   margin: 0;
   font-size: 16px;
   box-sizing: border-box;

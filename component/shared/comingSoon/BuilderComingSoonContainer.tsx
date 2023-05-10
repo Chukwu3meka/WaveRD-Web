@@ -2,7 +2,7 @@ import { BuilderComingSoon } from ".";
 
 import { useEffect, useState } from "react";
 import { fullDateFn } from "@utils/handlers";
-import { BuilderComingSoonContainer, TimeLeft } from "@interface/builder/comingSoon-interface";
+import { BuilderComingSoonContainer, TimeLeft } from "@interface/shared/comingSoon-interface";
 
 const BuilderComingSoonContainer = ({ header = false, minHeight = "var(--visibleScreen)" }: BuilderComingSoonContainer) => {
   const finishDate: Date = new Date("December 8 2023"),
