@@ -4,11 +4,12 @@ import { styles } from ".";
 
 import HeaderContainer from "@component/shared/header";
 import { Typography } from "@mui/material";
+
 import { BuilderComingSoon } from "@interface/shared/comingSoon-interface";
 
-const BuilderComingSoon = ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
+export default ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
   <div className={styles.comingSoon} style={{ minHeight }}>
-    {header ? <HeaderContainer theme="dark" titleOnly={null} /> : ""}
+    {header ? <HeaderContainer position="relative" /> : ""}
 
     <Fade direction="right">
       <main>
@@ -49,5 +50,3 @@ const BuilderComingSoon = ({ timeLeft, header, minHeight }: BuilderComingSoon) =
     </Fade>
   </div>
 );
-
-export default BuilderComingSoon;
