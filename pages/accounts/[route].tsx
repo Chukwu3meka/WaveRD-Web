@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 import styles from "@source/scss/accounts.module.scss";
-import { HeaderContainer } from "@component/shared/header";
+import HeaderContainer from "@component/shared/header";
 import authSlideText from "@source/constants/authSlideText";
 
 const Page = () => {

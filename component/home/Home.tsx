@@ -1,4 +1,4 @@
-import { HeaderContainer } from "@component/shared/header";
+import HeaderContainer from "@component/shared/header";
 import { ApiHubIntro, Intro, ManagerIntro, PeaksContainer } from ".";
 
 const NoAuthHome = () => (

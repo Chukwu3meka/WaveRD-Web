@@ -2,7 +2,7 @@ import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 
-import { HeaderContainer } from "@component/shared/header";
+import HeaderContainer from "@component/shared/header";
 import { Typography } from "@mui/material";
 import { BuilderComingSoon } from "@interface/shared/comingSoon-interface";
 

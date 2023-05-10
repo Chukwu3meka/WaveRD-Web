@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu } from ".";
 import { connector, ConnectorProps } from "@store";
 
-import { HeaderContainer } from "@interface/main/header-interface";
+import HeaderContainer from "@interface/main/header-interface";
 import { SetThemeAction } from "@interface/store/layout";
 import { setCssThemeVar } from "@utils/handlers";
 
