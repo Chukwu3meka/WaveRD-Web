@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@libs/*": ["libs/*"],
       "@store": ["store/index"],
       "@utils/*": ["utils/*"],
       "@styles/*": ["styles/*"],
@@ -23,13 +22,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "component/global/provider/Provider.tsx"],
   "exclude": ["node_modules"]

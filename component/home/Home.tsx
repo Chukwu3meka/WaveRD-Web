@@ -1,4 +1,4 @@
-import { RelativeHeader } from "@component/layout/header";
+import { RelativeHeader } from "@component/builder/header";
 import { ApiHubIntro, Intro, ManagerIntro, PeaksContainer } from ".";
 
 const NoAuthHome = () => (

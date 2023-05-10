@@ -1,0 +1,9 @@
+@import "@source/scss/index.scss";
+
+.layout {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto max-content;
+  min-height: var(--visibleScreen);
+}

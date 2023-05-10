@@ -35,11 +35,26 @@ export const deObfuscate = (phrase: string) => {
   return r;
 };
 
-const getSuffix = (dayOfMonth: number): string => {
-  const suffixes: Record<number, string> = { 1: "st", 2: "nd", 3: "rd", 11: "th", 21: "st", 22: "nd", 23: "rd", 31: "st" };
-  const lastTwoDigits: number = dayOfMonth % 100;
-  const lastDigit: number = dayOfMonth % 10;
-  return suffixes[lastTwoDigits] || suffixes[lastDigit] || suffixes[0];
+const getSuffix = (number: number): string => {
+  // Handle special cases where the suffix is "th" (11th, 12th, 13th)
+  if (number >= 11 && number <= 13) {
+    return "th";
+  }
+
+  // Get the last digit of the number
+  const lastDigit = number % 10;
+
+  // Determine the suffix based on the last digit
+  switch (lastDigit) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
 };
 
 export const fullDateFn = (dateString: Date) => {

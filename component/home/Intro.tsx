@@ -1,4 +1,4 @@
-import { RelativeHeader } from "@component/layout/header";
+import { RelativeHeader } from "@component/builder/header";
 import { Typography, Button } from "@mui/material";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";

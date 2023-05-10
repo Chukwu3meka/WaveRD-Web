@@ -5,12 +5,13 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 
-import styles from "./headerStyles.module.scss";
+import styles from "./styles.module.scss";
+
 import { IHeader } from "@interface/main/header-interface";
 import socialAccounts from "@source/constants/socialAccounts";
 
 // const Header = ({ relativeHeader, authenticated, displayHeader }: IHeader) => (
-const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
+const BuilderHeader = ({ relativeHeader, authenticated, displayHeader, swapColorFn, color, titleOnly }: any) => (
   <div
     className={
       styles[
@@ -89,7 +90,7 @@ const Header = ({ relativeHeader, authenticated, displayHeader, swapColorFn, col
   </div>
 );
 
-export default Header;
+export default BuilderHeader;
 
 const SocialIcon = ({ account, link, color }: { account: string; link: string; color: string }) => {
   let icon;

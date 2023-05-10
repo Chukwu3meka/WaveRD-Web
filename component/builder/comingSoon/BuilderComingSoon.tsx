@@ -2,7 +2,7 @@ import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
 
-import { RelativeHeader } from "@component/layout/header";
+import { RelativeHeader } from "@component/builder/header";
 import { Typography } from "@mui/material";
 import { BuilderComingSoon } from "@interface/builder/comingSoon-interface";
 

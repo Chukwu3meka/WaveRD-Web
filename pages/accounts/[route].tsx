@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 import styles from "@source/scss/accounts.module.scss";
-import { RelativeHeader } from "@component/layout/header";
+import { RelativeHeader } from "@component/builder/header";
 import authSlideText from "@source/constants/authSlideText";
 
 const Page = () => {
@@ -41,7 +41,7 @@ const Page = () => {
         <meta name="keywords" content={`${pageTitle.toLowerCase()}, soccer manager, soccer, soccermass, football manager, football`} />
       </Head>
 
-      <div className={styles.layout}>
+      {/* <div className={styles.layout}>
         <aside>
           <div>
             <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>
@@ -53,11 +53,11 @@ const Page = () => {
         </aside>
         <main>
           <RelativeHeader theme="light" titleOnly="light" />
-          <Fade direction="left" triggerOnce={true} style={{ perspective: "100px" }}>
-            {component}
-          </Fade>
+          <Fade direction="left" triggerOnce={true} style={{ perspective: "100px" }}> */}
+      {component}
+      {/* </Fade>
         </main>
-      </div>
+      </div> */}
     </>
   );
 };

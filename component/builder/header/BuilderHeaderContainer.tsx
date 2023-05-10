@@ -1,12 +1,12 @@
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
-import { Header } from ".";
+import { BuilderHeader } from ".";
 import { connector, ConnectorProps } from "@store";
 
 import { HeaderContainer } from "@interface/main/header-interface";
 
-const HeaderContainer = (props: HeaderContainer & ConnectorProps) => {
+export default connector((props: HeaderContainer & ConnectorProps) => {
   const { signoutAction, displayHeader, relativeHeader = null, titleOnly } = props,
     [color, setColor] = useState({
       last: "primary",
@@ -21,7 +21,5 @@ const HeaderContainer = (props: HeaderContainer & ConnectorProps) => {
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
-  return <Header {...{ signoutAction, displayHeader, authenticated, relativeHeader, swapColorFn, color, titleOnly }} />;
-};
-
-export default connector(HeaderContainer);
+  return <BuilderHeader {...{ signoutAction, displayHeader, authenticated, relativeHeader, swapColorFn, color, titleOnly }} />;
+});

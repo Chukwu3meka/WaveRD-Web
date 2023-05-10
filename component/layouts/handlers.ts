@@ -1,15 +1,25 @@
 import { SetDeviceSizeAction } from "@interface/store/layout";
 import { IHandleScroll, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
 
-export const handlePageLoading = ({ url, loading, setPageLoading }: IFunctionsHandlePageLoading) => {
+// export const handlePageLoading = ({ url, loading, setPageLoading, setLayout }: IFunctionsHandlePageLoading) => {
+export const handlePageLoading = ({ url, loading, setLayoutProps }: any) => {
   // Smoothly scroll to the top of the page on page load
 
   // if (url) console.log(`Switching page to ${url}`);
 
+  // layout
+
   if (loading) {
-    setPageLoading(true);
+    setLayoutProps((values) => ({ ...values, pageLoading: true }));
   } else {
-    setTimeout(() => setPageLoading(false), 2000);
+    const path = location.pathname.split("/")[1];
+
+    // console.log({ path, s: location.pathname });
+
+    setTimeout(
+      () => setLayoutProps((values) => ({ ...values, pageLoading: false, layout: path === "accounts" ? "accounts" : path === "info" ? "info" : "default" })),
+      2000
+    );
     // window.scrollTo({ top: 0, behavior: "smooth" });
   }
 };
@@ -32,11 +42,12 @@ export const handleProtectedRoute = ({ router, authenticated }: any) => {
   }
 };
 
-export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: IHandleScroll) => {
+// export const handleScroll = ({ window, lastScrollPos, setDisplayHeader, setLastScrollPos }: IHandleScroll) => {
+export const handleScroll = ({ window, lastScrollPos, setLayoutProps, setLastScrollPos }: any) => {
   if (window.scrollY > lastScrollPos || window.scrollY === 0) {
-    setDisplayHeader(false);
+    setLayoutProps((values) => ({ ...values, displayHeader: false }));
   } else {
-    setDisplayHeader(true);
+    setLayoutProps((values) => ({ ...values, displayHeader: true }));
   }
 
   setLastScrollPos(window.scrollY);

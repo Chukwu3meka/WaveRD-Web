@@ -9,24 +9,43 @@ const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, sh
 import { IHandlePageLoading, IHandleProtectedRoute, LayoutContainer } from "@interface/main/layout-interface";
 
 import { connector, ConnectorProps } from "@store";
+import { BuilderCookieNotice } from "@component/builder/cookieNotice";
+import { AppProps } from "next/app";
 
 export default connector((props: LayoutContainer & ConnectorProps) => {
   const router = useRouter(),
     [ready, setReady] = useState(false),
     [lastScrollPos, setLastScrollPos] = useState(0),
-    [pageLoading, setPageLoading] = useState(true),
-    [authenticated, setAuthenticated] = useState(false),
     [cookieNotice, setCookieNotice] = useState<boolean>(false),
-    [cssVariable, setCssVariable] = useState<React.CSSProperties>({}),
-    [displayHeader, setDisplayHeader] = useState(false), // header is false on initial load
     { pageProps, Component, setDeviceSizeAction, getCookieAction, emotionCache = clientSideEmotionCache } = props;
+
+  const [layoutProps, setLayoutProps] = useState<{
+    pageLoading: boolean;
+    authenticated: boolean;
+    displayHeader: boolean; // <= header is false on initial load
+    cssVariable: React.CSSProperties;
+    Component: AppProps["Component"];
+    pageProps: AppProps["pageProps"];
+    emotionCache;
+    layout: "default" | "info" | "accounts";
+  }>({
+    emotionCache,
+    layout: "default",
+    cssVariable: {},
+    pageLoading: true,
+    authenticated: false,
+    displayHeader: false, // <= header is false on initial load
+    Component: Component,
+    pageProps: pageProps,
+  });
 
   useEffect(() => {
     // <= will run only once
     if (!ready) {
-      setCssVariable((cssVariable) => ({
-        ...cssVariable,
-        "--visibleScreen": `${window.innerHeight + 2}px`, // <= iPhone not returning the right screen height in VH
+      setLayoutProps((values) => ({
+        ...values,
+        // iPhone not returning the right screen height in VH
+        cssVariable: { ...values.cssVariable, "--visibleScreen": `${window.innerHeight + 0}px` },
       }));
 
       setReady(true);
@@ -45,8 +64,8 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   useEffect(() => {
     const authenticated = props.auth || false;
     if (ready) {
-      setAuthenticated(!!authenticated);
-      handleProtectedRoute({ router, authenticated: !!authenticated });
+      handleProtectedRoute();
+      setLayoutProps((values) => ({ ...values, authenticated: !!authenticated }));
     }
   }, [props.auth]);
 
@@ -62,7 +81,8 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   }, [router]);
 
   useEffect(() => {
-    if (ready) handleProtectedRoute({ router, authenticated: !!authenticated });
+    if (ready) handleProtectedRoute();
+    // if (ready) handleProtectedRoute({ router, authenticated: !!authenticated });
   }, [router.asPath]);
 
   useEffect(() => {
@@ -71,9 +91,10 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   });
 
   const handleResize = () => setDeviceSizeAction({ deviceWidth: window.innerWidth, deviceHeight: window.innerHeight });
-  const handleScroll = () => handlers.handleScroll({ window, lastScrollPos, setDisplayHeader, setLastScrollPos });
-  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setPageLoading });
-  const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => handlers.handleProtectedRoute({ router, authenticated });
+  const handleScroll = () => handlers.handleScroll({ window, lastScrollPos, setLayoutProps, setLastScrollPos });
+  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLayoutProps });
+  // const handleProtectedRoute = ({ router, authenticated }: IHandleProtectedRoute) => handlers.handleProtectedRoute({ router, authenticated });
+  const handleProtectedRoute = () => handlers.handleProtectedRoute({ router, authenticated: !!layoutProps.authenticated });
 
-  return ready ? <Layout {...{ pageProps, Component, authenticated, pageLoading, ready, emotionCache, displayHeader, cssVariable, cookieNotice }} /> : <p>.</p>;
+  return ready ? <Layout {...layoutProps} /> : <p> </p>;
 });
