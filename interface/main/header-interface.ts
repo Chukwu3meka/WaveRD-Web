@@ -13,7 +13,7 @@ export interface HeaderContainer {
   authenticated?: boolean; // <= coming from redux store
 }
 
-export interface RelativeHeader {
+export interface BuilderRelativeHeader {
   theme: "dark" | "light";
   titleOnly: "dark" | "light" | null;
 }

@@ -1,5 +1,5 @@
 import HeaderContainer from ".";
 
-import { RelativeHeader } from "@interface/main/header-interface";
+import { BuilderRelativeHeader } from "@interface/main/header-interface";
 
-export default ({ theme, titleOnly }: RelativeHeader) => <HeaderContainer {...{ displayHeader: true, relativeHeader: theme, titleOnly }} />;
+export default ({ theme, titleOnly }: BuilderRelativeHeader) => <HeaderContainer {...{ displayHeader: true, relativeHeader: theme, titleOnly }} />;

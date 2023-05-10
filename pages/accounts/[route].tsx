@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 import styles from "@source/scss/accounts.module.scss";
-import { RelativeHeader } from "@component/builder/header";
+import { BuilderRelativeHeader } from "@component/builder/header";
 import authSlideText from "@source/constants/authSlideText";
 
 const Page = () => {
@@ -52,7 +52,7 @@ const Page = () => {
           </div>
         </aside>
         <main>
-          <RelativeHeader theme="light" titleOnly="light" />
+          <BuilderRelativeHeader theme="light" titleOnly="light" />
           <Fade direction="left" triggerOnce={true} style={{ perspective: "100px" }}> */}
       {component}
       {/* </Fade>
