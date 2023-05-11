@@ -27,7 +27,7 @@ const Peaks = ({ slidesToShow }: { slidesToShow: number }) => {
           ))}
         </Carousel>
 
-        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={1} autoplayInterval={2500} dragging={false}>
+        <Carousel autoplay={true} withoutControls={true} wrapAround={true} adaptiveHeight slidesToShow={1} autoplayInterval={2500} dragging={false}>
           {peaksArray.map((peak) => (
             <div key={peak} className={peaksStyles.peak}>
               <Typography fontSize={{ xs: "1.7em", sm: "1.9em", md: "2.1em" }} fontWeight={600}>

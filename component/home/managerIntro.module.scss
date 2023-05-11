@@ -7,8 +7,7 @@
 
   // border: 3px solid red;
 
-  background: var(--primary);
-  background: #22272e;
+  // background: #22272e;
 
   img {
     filter: brightness(80%) saturate(70%);
@@ -20,7 +19,9 @@
     justify-content: space-between;
     width: 100%;
     max-width: 450px;
-    background-color: darken($color: $lightGray, $amount: 1);
+    // background-color: darken($color: $lightGray, $amount: 1);
+    background: var(--secondary);
+
     padding: 0 0 10px;
     text-align: center;
     overflow: hidden;
@@ -33,16 +34,19 @@
     & > span {
       padding: 10px 30px;
     }
+    transition: 1s all ease-in;
     &:hover {
-      background-color: lighten($color: $primary, $amount: 50);
+      // background-color: lighten($color: $primary, $amount: 50);
+      background: var(--primary);
+      // transition: 2s all ease-in;
     }
   }
   & > div:nth-of-type(1),
   & > div:nth-of-type(3) {
     border-radius: 10px 40px;
-    box-shadow: 0px 0px 18px -1px rgba(68, 139, 68, 0.76);
-    -webkit-box-shadow: 0px 0px 18px -1px rgba(68, 139, 68, 0.76);
-    -moz-box-shadow: 0px 0px 18px -1px rgba(68, 139, 68, 0.76);
+    box-shadow: 0px 0px 7px -1px rgba(68, 139, 68, 0.76);
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(68, 139, 68, 0.76);
+    -moz-box-shadow: 0px 0px 7px -1px rgba(68, 139, 68, 0.76);
   }
   & > div:nth-of-type(3) {
     border-radius: 40px 10px 40px 10px;

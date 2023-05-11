@@ -3,8 +3,11 @@
 .transparent {
   clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
 
+  // background-color: var(--primary);
+  // background-color: transparent;
+
   & > div:first-of-type {
-    background-color: $darkGray;
+    border: 3px solid red;
     background-image: url("/images/layout/background.jpg");
     background-position: center 130px;
     background-size: calc(max(100%, 900px)) var(--visibleScreen);
@@ -22,34 +25,39 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: $darkGray;
+      // background-color: $darkGray;
       opacity: 0.6;
     }
   }
 
   & > div:last-of-type {
+    display: none;
+    border: 3px solid red;
     max-width: 2000px;
     margin: auto;
     width: 100vw !important;
-    background-color: rgba($color: $darkGray, $alpha: 1);
     position: relative;
     .peak {
+      background: var(--secondary);
+
+      // background-color: rgba($color: $darkGray, $alpha: 1);
       height: 100%;
       @include quickFlex($align: stretch);
       & > p {
         z-index: 1;
         margin: auto;
         padding: 0 20px;
-        color: $lightGray;
+        // color: $lightGray;
         position: relative;
         text-align: center;
         width: max-content;
         height: max-content;
         border-radius: 20px;
-        background: linear-gradient(to left, $secondary, $darkGray 100%);
+        background: linear-gradient(to left, $secondary, var(--secondary) 100%);
         background-size: 100% 5px;
         background-position: 0 100%;
         background-repeat: repeat-x;
+        margin: 10px 5px;
       }
     }
 
