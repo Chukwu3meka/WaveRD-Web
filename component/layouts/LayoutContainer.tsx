@@ -76,6 +76,6 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
       authenticated={authenticated}
     />
   ) : (
-    <p> </p>
+    <p>.</p>
   );
 });
