@@ -65,8 +65,9 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   const handleResize = () => setDeviceSizeAction({ deviceWidth: window.innerWidth, deviceHeight: window.innerHeight });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading });
 
-  return ready ? (
+  return (
     <Layout
+      ready={ready}
       theme={theme}
       layout={layout}
       loading={loading}
@@ -75,7 +76,5 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
       emotionCache={emotionCache}
       authenticated={authenticated}
     />
-  ) : (
-    <p>.</p>
   );
 });

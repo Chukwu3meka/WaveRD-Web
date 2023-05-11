@@ -14,7 +14,7 @@ import { ILayout } from "@interface/main/layout-interface";
 import BuilderFooterContainer from "@component/shared/footer/FooterContainer";
 import HeaderContainer from "@component/shared/header";
 
-const Layout = ({ loading, emotionCache, theme, displayHeader, authenticated, Component, layout, pageProps }: any) => (
+const Layout = ({ loading, emotionCache, theme, displayHeader, authenticated, Component, layout, pageProps, ready }: any) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
@@ -50,23 +50,26 @@ const Layout = ({ loading, emotionCache, theme, displayHeader, authenticated, Co
       />
     </Head>
 
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={muiTheme(theme)}>
-        <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-          <HeaderContainer position="sticky" />
-          <main className={styles.layout}>
-            {layout === "accounts" ? (
-              <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
-            ) : (
-              <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>
-            )}
-            <BuilderFooterContainer />
-          </main>
-        </SnackbarProvider>
-      </ThemeProvider>
-    </CacheProvider>
-
+    {ready ? (
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={muiTheme(theme)}>
+          <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+            <HeaderContainer position="sticky" />
+            <main className={styles.layout}>
+              {layout === "accounts" ? (
+                <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
+              ) : (
+                <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>
+              )}
+              <BuilderFooterContainer />
+            </main>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </CacheProvider>
+    ) : (
+      <p>.</p>
+    )}
     {process.env.NODE_ENV === "production" && <Analytics />}
   </>
 );
