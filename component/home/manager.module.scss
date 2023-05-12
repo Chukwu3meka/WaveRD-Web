@@ -1,8 +1,8 @@
 @import "@source/scss/index.scss";
 
 .manager {
-  padding: 40px 0;
-  clip-path: polygon(0 2%, 100% 0, 100% 98%, 0% 100%);
+  padding: 0 0 40px;
+  clip-path: polygon(0 0%, 100% 0, 100% 98%, 0% 100%);
   background-color: var(--secondary);
   .carousel {
     margin: auto;
@@ -17,13 +17,13 @@
   }
 
   @media screen and (min-width: 620px) {
-    padding: 60px 0;
-    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%);
+    padding: 0 0 60px;
+    clip-path: polygon(0 0%, 100% 0, 100% 95%, 0% 100%);
   }
 
   @media screen and (min-width: 1200px) {
-    padding: 100px 0;
-    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+    padding: 0 0 100px;
+    clip-path: polygon(0 0%, 100% 0, 100% 90%, 0% 100%);
   }
 }
 

@@ -9,7 +9,7 @@ import { managerStyles as styles } from ".";
 
 export default ({ slidesToShow }: { slidesToShow: number }) => (
   <div className={styles.manager}>
-    <Box role="presentation" ml={2} mb={2}>
+    <Box role="presentation" pl={2} py={3}>
       <Breadcrumbs aria-label="breadcrumb" separator="›">
         <Typography color="text.secondary">SoccerMASS</Typography>
 

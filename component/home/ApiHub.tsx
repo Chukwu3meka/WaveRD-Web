@@ -10,7 +10,7 @@ import { apiHubStyles } from ".";
 
 export default () => (
   <div className={apiHubStyles.apihub}>
-    <Box role="presentation" ml={2} my={2}>
+    <Box role="presentation" pl={2} py={3}>
       <Breadcrumbs aria-label="breadcrumb" separator="›">
         <Typography color="text.secondary">SoccerMASS</Typography>
 
