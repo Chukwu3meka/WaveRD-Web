@@ -14,7 +14,7 @@ import { ILayout } from "@interface/main/layout-interface";
 import BuilderFooterContainer from "@component/shared/footer/FooterContainer";
 import HeaderContainer from "@component/shared/header";
 
-const Layout = ({ loading, emotionCache, theme, displayHeader, authenticated, Component, layout, pageProps, ready }: any) => (
+const Layout = ({ loading, emotionCache, theme, Component, layout, pageProps, ready }: any) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
@@ -33,7 +33,7 @@ const Layout = ({ loading, emotionCache, theme, displayHeader, authenticated, Co
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
       <meta property="og:image:type" content="image/png" />
-      <meta name="theme-color" content={muiTheme(theme).palette.primary.main} />
+      <meta name="theme-color" content={ready ? muiTheme(theme).palette.primary.main : "#ffffff"} />
       <meta property="og:url" content="https://www.soccermass.com/" />
       <meta name="keywords" content="soccer manager, soccer, soccermass, football manager, football" />
       <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
