@@ -8,7 +8,7 @@ import { Typography } from "@mui/material";
 import { BuilderComingSoon } from "@interface/shared/comingSoon-interface";
 
 export default ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
-  <div className={styles.comingSoon} style={{ minHeight }}>
+  <main className={styles.comingSoon} style={{ minHeight }}>
     {header ? <HeaderContainer position="relative" /> : ""}
 
     <Fade direction="right">
@@ -48,5 +48,5 @@ export default ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
         </Typography>
       </main>
     </Fade>
-  </div>
+  </main>
 );
