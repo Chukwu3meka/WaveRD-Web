@@ -1,11 +1,12 @@
-import { BuilderComingSoon } from ".";
-
 import { useEffect, useState } from "react";
+
+import { BuilderComingSoon } from ".";
 import { fullDateFn } from "@utils/handlers";
+
 import { BuilderComingSoonContainer, TimeLeft } from "@interface/shared/comingSoon-interface";
 
-const BuilderComingSoonContainer = ({ header = false, minHeight = "var(--visibleScreen)" }: BuilderComingSoonContainer) => {
-  const finishDate: Date = new Date("December 8 2023"),
+export default ({ header = false, minHeight = "var(--visibleScreen)" }: BuilderComingSoonContainer) => {
+  const finishDate: Date = new Date("August 15 2023"), // December 8
     [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
@@ -30,4 +31,3 @@ const BuilderComingSoonContainer = ({ header = false, minHeight = "var(--visible
 
   return <BuilderComingSoon timeLeft={timeLeft} header={header} minHeight={minHeight} />;
 };
-export default BuilderComingSoonContainer;
