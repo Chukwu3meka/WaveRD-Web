@@ -1,3 +1,9 @@
-import Home from "@component/home";
+import { ApiHub, Welcome, ManagerContainer } from "@component/home";
 
-export default () => <Home />;
+export default () => (
+  <>
+    <Welcome />
+    <ManagerContainer />
+    <ApiHub />
+  </>
+);

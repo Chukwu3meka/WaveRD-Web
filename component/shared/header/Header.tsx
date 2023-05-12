@@ -41,35 +41,39 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
         ))}
       </Box>
 
-      <Box display={visible.auth ? "flex" : "none"}>
-        <Box display={visible.social ? "initial" : "none"}>
-          {socialAccounts
-            .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
-            .map(({ title, id, href }) => (
-              <SocialIcon key={id} account={title} link={href} color={color.social} />
-            ))}
-        </Box>
+      {visible.mobile ? (
+        <Menu />
+      ) : (
+        <Box display="flex">
+          <Box>
+            {socialAccounts
+              .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
+              .map(({ title, id, href }) => (
+                <SocialIcon key={id} account={title} link={href} color={color.social} />
+              ))}
+          </Box>
 
-        <Box display={visible.auth ? "flex" : "none"}>
-          {!authenticated && (
-            <Link href="/accounts/signin">
-              <Button variant="contained" size="small" color="primary">
-                Sign in
+          <Box>
+            {!authenticated && (
+              <Link href="/accounts/signin">
+                <Button variant="contained" size="small" color="primary">
+                  Sign in
+                </Button>
+              </Link>
+            )}
+
+            {authenticated && (
+              <Button variant="outlined" size="small">
+                <a
+                  href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
+                  rel="noopener noreferrer">
+                  Sign out
+                </a>
               </Button>
-            </Link>
-          )}
-
-          {authenticated && (
-            <Button variant="outlined" size="small">
-              <a
-                href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
-                rel="noopener noreferrer">
-                Sign out
-              </a>
-            </Button>
-          )}
+            )}
+          </Box>
         </Box>
-      </Box>
+      )}
     </header>
   </div>
 );

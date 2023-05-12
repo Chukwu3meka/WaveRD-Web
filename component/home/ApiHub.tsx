@@ -1,15 +1,27 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Paper, Button, Typography, Stack, IconButton, Box } from "@mui/material";
+import { Breadcrumbs, Typography, Stack, IconButton, Box } from "@mui/material";
 
 import VpnLockIcon from "@mui/icons-material/VpnLock";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import NetworkCheckIcon from "@mui/icons-material/NetworkCheck";
 
-import { apiHubIntroStyles } from ".";
+import { apiHubStyles } from ".";
 
-const ApiHubIntro = () => (
-  <div className={apiHubIntroStyles.apihub}>
+export default () => (
+  <div className={apiHubStyles.apihub}>
+    <Box role="presentation" ml={2} my={2}>
+      <Breadcrumbs aria-label="breadcrumb" separator="›">
+        <Typography color="text.secondary">SoccerMASS</Typography>
+
+        <Typography color="text.secondary">Core</Typography>
+
+        <Link href="/apihub">
+          <Typography color="primary">API HUB</Typography>
+        </Link>
+      </Breadcrumbs>
+    </Box>
+
     <Stack spacing={3} justifyContent="space-evenly">
       <div>
         <Image
@@ -55,8 +67,6 @@ const ApiHubIntro = () => (
     </Stack>
   </div>
 );
-
-export default ApiHubIntro;
 
 const apihubFeatures = [
   {

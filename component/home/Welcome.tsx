@@ -3,15 +3,15 @@ import { Typography, Button } from "@mui/material";
 
 import HeaderContainer from "@component/shared/header";
 
-import { introStyles } from ".";
+import { welcomeStyles } from ".";
 
-const Intro = () => (
-  <div className={introStyles.intro}>
+export default () => (
+  <div className={welcomeStyles.intro}>
     <HeaderContainer position="relative" />
 
     <div>
       <div>
-        <Typography fontSize={{ xs: "1.4em", sm: "1.89em", md: "2.7em", lg: "3.3em", xl: "4em" }} color="textSecondary">
+        <Typography fontSize={{ xs: "1.4em", sm: "1.89em", md: "2.7em", lg: "3.3em", xl: "4em" }} color="text.secondary">
           Welcome to
         </Typography>
 
@@ -48,5 +48,3 @@ const Intro = () => (
     </div>
   </div>
 );
-
-export default Intro;

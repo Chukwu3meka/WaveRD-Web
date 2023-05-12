@@ -1,6 +1,7 @@
 @import "@source/scss/index.scss";
 
 .layout {
+  border: 3px solid red;
   & > aside {
     display: none;
   }

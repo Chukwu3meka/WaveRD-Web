@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Peaks from "./Peaks";
+import { useEffect, useState } from "react";
+
+import ManagerIntro from "./Manager";
 
 const PeaksContainer = (props: any) => {
   const [slidesToShow, setSlidesToShow] = useState(0);
@@ -23,7 +24,9 @@ const PeaksContainer = (props: any) => {
     handleResize(props.deviceWidth);
   }, [props.deviceWidth]);
 
-  return <Peaks slidesToShow={slidesToShow} />;
+  // return <Peaks slidesToShow={slidesToShow} />;
+
+  return <ManagerIntro slidesToShow={slidesToShow} />;
 };
 
 const mapStateToProps = (state: any) => ({ deviceWidth: state.layout.deviceWidth }),

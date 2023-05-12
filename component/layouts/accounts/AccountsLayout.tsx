@@ -27,10 +27,10 @@ export default ({ Component, pageProps, loading }: any) => (
       </div>
     </aside>
     <div>
-      <RelativeHeader position="relative" />
-      <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
+      {/* <RelativeHeader position="relative" /> */}
+      {/* <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
         {loading ? <Loading /> : <Component {...pageProps} />}
-      </Fade>
+      </Fade> */}
     </div>
   </main>
 );

@@ -11,7 +11,7 @@ import { setCssThemeVar } from "@utils/handlers";
 export default connector((props: HeaderContainer & ConnectorProps) => {
   const { position, setThemeAction } = props,
     [color, setColor] = useState({ first: "textSecondary", last: "primary" }),
-    [visible, setVisible] = useState({ nav: false, social: false, auth: false }),
+    [visible, setVisible] = useState({ nav: false, mobile: false }),
     [displayHeader, setDisplayHeader] = useState(null),
     [authenticated, setauthenticated] = useState(false);
 
@@ -31,7 +31,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
   useEffect(() => {
     const headerWidth = document.getElementById("header")?.offsetWidth;
-    setVisible({ nav: headerWidth > 920, social: headerWidth > 700, auth: headerWidth > 570 });
+    setVisible({ nav: headerWidth > 920, mobile: headerWidth < 600 });
   }, [props.layout.deviceWidth]);
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));

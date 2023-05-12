@@ -1,25 +1,46 @@
 @import "@source/scss/index.scss";
 
+.manager {
+  padding: 40px 0;
+  clip-path: polygon(0 2%, 100% 0, 100% 98%, 0% 100%);
+  background-color: var(--secondary);
+  .carousel {
+    margin: auto;
+    padding: 10px 0;
+    max-width: 2000px;
+    width: 100vw !important;
+    img {
+      border-radius: 50%;
+      background-color: #fff;
+      padding: 10px;
+    }
+  }
+
+  @media screen and (min-width: 620px) {
+    padding: 60px 0;
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%);
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 100px 0;
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+  }
+}
+
 .managerIntro {
   @include quickFlex($width: 100%, $dir: row, $align: stretch, $row: 70px, $column: 20px);
   flex-wrap: wrap;
   padding: 50px 20px;
-
-  // border: 3px solid red;
-
-  // background: #22272e;
 
   img {
     filter: brightness(80%) saturate(70%);
   }
 
   & > div {
-    // border: 3px solid red;
     @include quickFlex($dir: column);
     justify-content: space-between;
     width: 100%;
     max-width: 450px;
-    // background-color: darken($color: $lightGray, $amount: 1);
     background: var(--secondary);
 
     padding: 0 0 10px;
@@ -36,9 +57,7 @@
     }
     transition: 1s all ease-in;
     &:hover {
-      // background-color: lighten($color: $primary, $amount: 50);
       background: var(--primary);
-      // transition: 2s all ease-in;
     }
   }
   & > div:nth-of-type(1),
