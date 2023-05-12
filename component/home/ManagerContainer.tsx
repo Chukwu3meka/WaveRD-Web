@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
 import ManagerIntro from "./Manager";
+import { connector, ConnectorProps } from "@store";
 
-const PeaksContainer = (props: any) => {
+export default connector((props: ConnectorProps) => {
   const [slidesToShow, setSlidesToShow] = useState(0);
 
   const handleResize = (width: number) => {
@@ -21,15 +21,8 @@ const PeaksContainer = (props: any) => {
   };
 
   useEffect(() => {
-    handleResize(props.deviceWidth);
-  }, [props.deviceWidth]);
-
-  // return <Peaks slidesToShow={slidesToShow} />;
+    handleResize(props.layout.width);
+  }, [props.layout.width]);
 
   return <ManagerIntro slidesToShow={slidesToShow} />;
-};
-
-const mapStateToProps = (state: any) => ({ deviceWidth: state.layout.deviceWidth }),
-  mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PeaksContainer);
+});

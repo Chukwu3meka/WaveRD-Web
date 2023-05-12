@@ -7,7 +7,7 @@ import { ISigninContainer, IUserForm } from "@interface/accounts/signin-interfac
 import { deObfuscate } from "@utils/handlers";
 import { connector, ConnectorProps } from "@store";
 
-const SigninContainer = (props: ISigninContainer & ConnectorProps) => {
+export default connector((props: ISigninContainer & ConnectorProps) => {
   const router = useRouter(),
     { setAuthAction } = props,
     { enqueueSnackbar } = useSnackbar();
@@ -26,14 +26,12 @@ const SigninContainer = (props: ISigninContainer & ConnectorProps) => {
   }, []);
 
   useEffect(() => {
-    setIconOnly((props.deviceWidth || window.innerWidth) < 460);
-  }, [props.deviceWidth]);
+    setIconOnly(props.layout.width < 460);
+  }, [props.layout.width]);
 
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
   const loginHandler = () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }} />;
-};
-
-export default connector(SigninContainer);
+});

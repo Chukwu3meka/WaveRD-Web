@@ -22,8 +22,8 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
   }, [props.auth]);
 
   useEffect(() => {
-    setDisplayHeader(props.layout.displayHeader);
-  }, [props.layout.displayHeader]);
+    setDisplayHeader(props.layout.header);
+  }, [props.layout.header]);
 
   useEffect(() => {
     setTheme(props.layout.theme as SetThemeAction);
@@ -32,7 +32,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
   useEffect(() => {
     const headerWidth = document.getElementById("header")?.offsetWidth;
     setVisible({ nav: headerWidth > 920, mobile: headerWidth < 600 });
-  }, [props.layout.deviceWidth]);
+  }, [props.layout.width]);
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 

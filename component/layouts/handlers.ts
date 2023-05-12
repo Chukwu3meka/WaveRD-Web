@@ -16,8 +16,12 @@ export const handlePageLoading = ({ url, loading, setLoading }: any) => {
 };
 
 // export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
-export const handleProtectedRoute = ({ router, authenticated, setLayout }: any) => {
+export const handleProtectedRoute = ({ router, authenticated, setRoute }: any) => {
   const route = location.pathname;
+
+  setRoute(route);
+
+  // console.log({ route });
 
   const accountsRoute = ["/accounts/signin", "/accounts/signup"],
     protectedRoutes = ["/manager"];
@@ -32,14 +36,14 @@ export const handleProtectedRoute = ({ router, authenticated, setLayout }: any) 
     // Signin to access this page
   }
 
-  const path = location.pathname.split("/")[1];
+  // const path = location.pathname.split("/")[1];
 
-  console.log(path);
+  // console.log(path);
   // console.log({ path, s: location.pathname });
 
-  const layout = path === "accounts" ? "accounts" : path === "info" ? "info" : "default";
+  // const layout = path === "accounts" ? "accounts" : path === "info" ? "info" : "default";
 
-  setLayout(layout);
+  // setRoute(layout);
 };
 
 export const handleScroll = ({ setDisplayHeaderAction, setLastScrollPos }) => {

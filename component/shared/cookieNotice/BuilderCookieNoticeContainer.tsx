@@ -17,11 +17,11 @@ export default connector((props: any) => {
   }, [props.auth]);
 
   useEffect(() => {
-    setMobileDevice(props.deviceWidth < 600);
+    setMobileDevice(props.layout.width < 600);
     return () => {
-      setMobileDevice(props.deviceWidth < 600);
+      setMobileDevice(props.layout.width < 600);
     };
-  }, [props.deviceWidth]);
+  }, [props.layout.width]);
 
   const allowCookies = async () => {
     setDisplayDialog(false);

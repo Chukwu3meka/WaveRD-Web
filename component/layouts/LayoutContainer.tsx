@@ -18,16 +18,23 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     [ready, setReady] = useState(false),
     [theme, setTheme] = useState(null),
     [loading, setLoading] = useState(true),
-    [layout, setLayout] = useState(null),
+    [route, setRoute] = useState(null),
     [authenticated, setAuthenticated] = useState(false),
-    [cookieNotice, setCookieNotice] = useState<boolean>(false),
-    { pageProps, Component, setDeviceSizeAction, verifyCookieAction, emotionCache = clientSideEmotionCache, setDisplayHeaderAction } = props;
+    {
+      pageProps,
+      Component,
+      setDeviceSizeAction,
+      verifyCookieAction,
+      setActiveRouteAction,
+      emotionCache = clientSideEmotionCache,
+      setDisplayHeaderAction,
+    } = props;
 
   useEffect(() => {
     if (!ready) {
       window.addEventListener("resize", handleResize);
       window.addEventListener("scroll", setDisplayHeaderAction);
-      verifyCookieAction({ setCookieNotice, setTheme, setReady, handlePageLoading });
+      verifyCookieAction({ setRoute, setTheme, setReady, handlePageLoading });
     }
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -47,6 +54,10 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   }, [props.layout.theme]);
 
   useEffect(() => {
+    if (ready) setRoute(props.layout.route);
+  }, [props.layout.route]);
+
+  useEffect(() => {
     router.events.on("routeChangeStart", (url: string) => handlePageLoading({ url, loading: true }));
     router.events.on("routeChangeComplete", () => handlePageLoading({ url: null, loading: false }));
     router.events.on("routeChangeError", () => handlePageLoading({ url: null, loading: false }));
@@ -61,15 +72,15 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     if (ready) handleProtectedRoute();
   }, [router.asPath]);
 
-  const handleProtectedRoute = () => handlers.handleProtectedRoute({ router, authenticated, setLayout });
-  const handleResize = () => setDeviceSizeAction({ deviceWidth: window.innerWidth, deviceHeight: window.innerHeight });
+  const handleProtectedRoute = () => handlers.handleProtectedRoute({ router, authenticated, setRoute });
+  const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading });
 
   return (
     <Layout
       ready={ready}
       theme={theme}
-      layout={layout}
+      route={route}
       loading={loading}
       Component={Component}
       pageProps={pageProps}

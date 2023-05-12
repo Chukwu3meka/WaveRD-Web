@@ -1,14 +1,14 @@
 export interface LayoutState {
-  activeRoute: string;
+  route: string;
   theme: SetThemeAction;
-  displayHeader: boolean;
-  deviceWidth: SetDeviceSizeAction["deviceWidth"];
-  deviceHeight: SetDeviceSizeAction["deviceHeight"];
+  header: boolean;
+  width: SetDeviceSizeAction["width"];
+  height: SetDeviceSizeAction["height"];
 }
 
 export interface SetDeviceSizeAction {
-  deviceWidth: number;
-  deviceHeight: number;
+  width: number;
+  height: number;
 }
 
 export type SetThemeAction = "dark" | "light";

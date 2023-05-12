@@ -14,7 +14,7 @@ import { ILayout } from "@interface/main/layout-interface";
 import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
 
-const Layout = ({ loading, emotionCache, theme, Component, layout, pageProps, ready }: any) => (
+const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: any) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>
@@ -57,7 +57,7 @@ const Layout = ({ loading, emotionCache, theme, Component, layout, pageProps, re
           <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
             <HeaderContainer position="sticky" />
             <main className={styles.layout}>
-              {layout === "accounts" ? (
+              {route.startsWith("/accounts") ? (
                 <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
               ) : (
                 <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>

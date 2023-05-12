@@ -27,8 +27,8 @@ export default connector((props: any) => {
     setTheme(props.layout.theme as SetThemeAction);
     const divElement = document.getElementById("header");
     const width = divElement.offsetWidth;
-    console.log(props.layout.deviceWidth, width);
-  }, [props.layout.deviceWidth]);
+    // console.log(props.layout.deviceWidth, width);
+  }, [props.layout.width]);
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
