@@ -20,8 +20,8 @@
     border-radius: 70px / 100%;
     margin: auto;
     padding: 10px 30px;
-    // @include quickFlex($dir: row, $justify: space-between);
     @include quickFlex($dir: row, $justify: space-evenly);
+    @include quickFlex($dir: row, $justify: space-between);
     overflow: hidden;
     & > div:nth-of-type(1) {
       @include quickFlex($dir: row, $column: 10px);

@@ -19,11 +19,10 @@ import { Box } from "@mui/material";
 export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: any) => (
   <div className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
     <header id="header">
+      <IconButton onClick={() => themeHandler(theme)}>
+        {theme === "light" ? <DarkModeOutlinedIcon color="primary" /> : <LightModeIcon color="primary" />}
+      </IconButton>
       <Box>
-        <IconButton onClick={() => themeHandler(theme)}>
-          {theme === "light" ? <DarkModeOutlinedIcon color="primary" /> : <LightModeIcon color="primary" />}
-        </IconButton>
-
         <Stack direction="row" component="a" href="/" onMouseOver={swapColorFn} onMouseLeave={swapColorFn}>
           <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
             Soccer
@@ -51,23 +50,25 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
             ))}
         </Box>
 
-        {!authenticated && (
-          <Link href="/accounts/signin">
-            <Button variant="contained" size="small" color="primary">
-              Sign in
-            </Button>
-          </Link>
-        )}
+        <Box display={visible.auth ? "flex" : "none"}>
+          {!authenticated && (
+            <Link href="/accounts/signin">
+              <Button variant="contained" size="small" color="primary">
+                Sign in
+              </Button>
+            </Link>
+          )}
 
-        {authenticated && (
-          <Button variant="outlined" size="small">
-            <a
-              href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
-              rel="noopener noreferrer">
-              Sign out
-            </a>
-          </Button>
-        )}
+          {authenticated && (
+            <Button variant="outlined" size="small">
+              <a
+                href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
+                rel="noopener noreferrer">
+                Sign out
+              </a>
+            </Button>
+          )}
+        </Box>
       </Box>
     </header>
   </div>
