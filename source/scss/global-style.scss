@@ -76,43 +76,19 @@ body {
   // background-color: color(dark);
   * {
     outline: none;
-    //   user-select: none;
-    //   -moz-user-select: none;
-    //   -webkit-user-select: none;
-    //   -webkit-tap-highlight-color: transparent;
+    // user-select: none;
+    // -moz-user-select: none;
+    // -webkit-user-select: none;
+    // -webkit-tap-highlight-color: transparent;
     img {
       overflow: hidden;
     }
   }
 }
 
-// * {
-// -webkit-backface-visibility: hidden;
-// backface-visibility: hidden;
-
-/* Change the white to any color.......This is to remove blue background on chrome autofill for input */
-// input:-webkit-autofill,
-// input:-webkit-autofill:hover,
-// input:-webkit-autofill:focus,
-// input:-webkit-autofill:active {
-//   -webkit-box-shadow: 0 0 0 30px white inset !important;
-// }
-// }
-
-//  {
-//   /* MAGIC HAPPENS HERE */
-//   transform: translateZ(0);
-//   -webkit-transform: translateZ(0);
-
-//   backface-visibility: hidden;
-//   -webkit-backface-visibility: hidden;
-//   perspective: 1000;
-//   -webkit-perspective: 1000;
-// }
-
 ::-webkit-scrollbar {
   width: 3px;
-  background: $darkGray;
+  background: $dark;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -127,6 +103,6 @@ body {
 
 // style the text that a user selects on a webpage.
 ::selection {
-  color: $textSecondary;
+  color: var(--primary);
   background-color: lighten($color: $primary, $amount: 0);
 }

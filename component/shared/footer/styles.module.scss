@@ -2,8 +2,8 @@
 
 .footer {
   background-color: var(--primary);
-  // border: 3px solid $darkGray; // <= fix footer not displaying
-  // border-top: 1px solid darken($color: $lightGray, $amount: 70);
+  // border: 3px solid $dark; // <= fix footer not displaying
+  // border-top: 1px solid darken($color: $light, $amount: 70);
   border-top: 1px solid var(--secondary);
   & > * > footer {
     max-width: 1200px;
@@ -35,7 +35,7 @@
       & > nav {
         padding: 20px 0 0;
 
-        // // border-top: 1px solid darken($color: $lightGray, $amount: 70);
+        // // border-top: 1px solid darken($color: $light, $amount: 70);
         // border-top: 1px solid var(--secondary);
         // border-top: 3px solid red;
         @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 40px, $align: flex-start, $justify: space-evenly);
@@ -69,7 +69,7 @@
       padding: 20px 10px;
       border-top: 1px solid var(--secondary);
 
-      // border-top: 1px solid darken($color: $lightGray, $amount: 70);
+      // border-top: 1px solid darken($color: $light, $amount: 70);
       row-gap: 10px;
     }
   }

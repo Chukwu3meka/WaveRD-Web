@@ -50,7 +50,7 @@ export default connector((props: any) => {
       return;
     }
 
-    setMenuOpen((value) => open);
+    if (process.env.NODE_ENV === "development") setMenuOpen((value) => !value);
   };
 
   return (

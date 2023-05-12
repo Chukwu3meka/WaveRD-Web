@@ -7,7 +7,9 @@ import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, 
 import { ForgotPassword } from "@interface/accounts/forgotPassword-interface";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) => (
-  <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}>
+  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
+    {/* <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}> */}
+
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
     </Box>

@@ -18,6 +18,6 @@
   @extend .social;
   justify-content: space-evenly;
   & > * {
-    border: 3px double $secondary !important;
+    border: 3px double var(--primary) !important;
   }
 }

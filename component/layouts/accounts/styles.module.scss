@@ -1,26 +1,18 @@
 @import "@source/scss/index.scss";
 
 .layout {
-  border: 3px solid red;
   & > aside {
     display: none;
   }
   & > div:last-of-type {
-    display: none;
     display: grid;
     grid-template-rows: $headerHeight auto;
     & > div:last-of-type {
       @include quickFlex();
-      // background-image: radial-gradient(circle at bottom left, var(--secondary), var(--primary) 20%);
+      background: var(--secondary);
       & > form {
-        // border: 3px solid red;
-        width: 100%;
+        width: 100% !important;
         padding: 40px 20px 70px;
-        // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), var(--secondary) 20%) !important;
-        // background-image: radial-gradient(circle at bottom left, lighten($secondary, 10), var(--secondary) 10%) !important;
-        // background: var(--primary) !important;
-        background: var(--secondary) !important;
-        // background: red ;
       }
     }
   }
@@ -40,7 +32,7 @@
       &::after {
         content: "";
         position: absolute;
-        background-color: $darkGray;
+        background-color: $dark;
         opacity: 0.4;
         top: 0;
         right: 0;
@@ -56,7 +48,7 @@
           position: absolute;
           top: 45%;
           transform: translateY(-50%);
-          color: darken($color: $textSecondary, $amount: 10);
+          color: $light;
           font-size: 1.2em;
           padding: 10px;
           max-width: 450px;
@@ -73,14 +65,12 @@
     }
 
     & > div:last-of-type > div:last-of-type {
+      background: var(--primary);
       padding: 20px;
       & > form {
+        background: var(--secondary) !important;
         @include boxShadow($br: 10px);
         width: clamp(300px, 100%, 600px);
-        // border: 3px solid blue;
-        // background-image: radial-gradient(circle at bottom left, $primary, lighten($secondary, 28) 20%);
-        // background-image: radial-gradient(circle at bottom left, $primary, lighten($secondary, 28) 20%);
-        // background-image: radial-gradient(circle at bottom left, lighten($primary, 30), var(--primary) 20%);
         padding: 50px;
       }
     }

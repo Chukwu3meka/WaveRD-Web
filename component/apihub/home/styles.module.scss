@@ -1,7 +1,7 @@
 // @import "@source/scss/index.scss";
 
 // .home {
-//   background-color: $apihub-lightGray;
+//   background-color: $apihub-light;
 //   @include quickFlex($dir: column);
 // }
 
@@ -105,7 +105,7 @@
 //       letter-spacing: 5px;
 //     }
 //     & > p:nth-of-type(2) {
-//       color: $darkGray;
+//       color: $dark;
 //     }
 //     a {
 //       display: block;
@@ -135,7 +135,7 @@
 //       letter-spacing: 2px;
 //     }
 //     & > p:nth-of-type(2) {
-//       color: $darkGray;
+//       color: $dark;
 //       margin: 5px 0;
 //     }
 //   }
@@ -196,7 +196,7 @@
 // #sectionSix {
 //   width: 100%;
 //   padding: 50px 10px;
-//   background-image: repeating-radial-gradient(circle at 0 0, $apihub-primary, $apihub-secondary, $apihub-lightGray);
+//   background-image: repeating-radial-gradient(circle at 0 0, $apihub-primary, $apihub-secondary, $apihub-light);
 //   & > main:first-child {
 //     text-align: center;
 //     @include quickFlex($dir: column);

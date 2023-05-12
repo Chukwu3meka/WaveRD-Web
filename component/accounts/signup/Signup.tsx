@@ -9,7 +9,7 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 import { ISignup } from "@interface/accounts/signup-interface";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) => (
-  <Stack spacing={{ xs: 1, sm: 1, md: 3, lg: 3 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
+  <Stack spacing={{ xs: 1, sm: 2, md: 3, lg: 3 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
     <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
 
     <TextField

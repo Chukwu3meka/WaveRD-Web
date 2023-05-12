@@ -22,10 +22,12 @@ const Social = ({ iconOnly }: Social) => (
           component="a"
           label={label}
           icon={<Icon />}
-          color="primary"
           href={endpoint}
           variant="outlined"
-          sx={{ "&>svg": { color: `${color} !important` } }}
+          sx={{
+            color: `${color} !important`,
+            "&>svg": { color: `${color} !important` },
+          }}
         />
       )
     )}

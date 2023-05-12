@@ -74,10 +74,6 @@
   border-bottom: 1px solid $primary;
   & > header {
     background-color: transparent;
-
     box-shadow: none;
-    & > div:nth-of-type(2) > span > a {
-      color: $textSecondary;
-    }
   }
 }

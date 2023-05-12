@@ -112,7 +112,7 @@
       width: 250px;
       display: flex;
       align-self: center;
-      border: 7px solid darken($color: $lightGray, $amount: 1);
+      border: 7px solid darken($color: $light, $amount: 1);
       z-index: 1;
       border-radius: 100%;
       padding: 0;
@@ -122,10 +122,10 @@
         width: 100%;
         height: 200px;
         &:first-child {
-          border-bottom: 3px solid darken($color: $lightGray, $amount: 1);
+          border-bottom: 3px solid darken($color: $light, $amount: 1);
         }
         &:last-child {
-          border-top: 3px solid darken($color: $lightGray, $amount: 1);
+          border-top: 3px solid darken($color: $light, $amount: 1);
         }
       }
     }

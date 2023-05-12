@@ -2,7 +2,7 @@
 
 .transparent {
   & > div:first-of-type {
-    background-color: $darkGray;
+    background-color: $dark;
     background-image: url("/images/layout/background.jpg");
     background-position: center 130px;
     background-size: calc(max(100%, 900px)) 100vh;
@@ -20,7 +20,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: $darkGray;
+      background-color: $dark;
       opacity: 0.6;
     }
   }
@@ -39,8 +39,8 @@
         // font-size: 1.2em;
         // border: 3px solid red;
         text-align: center;
-        color: $lightGray;
-        background: linear-gradient(to left, $secondary, $darkGray 100%);
+        color: $light;
+        background: linear-gradient(to left, $secondary, $dark 100%);
         background-position: 0 100%;
         background-size: 100% 3px;
         background-repeat: repeat-x;
