@@ -21,7 +21,7 @@ export default ({ Component, pageProps, loading }: any) => (
     <div>
       <RelativeHeader position="relative" />
       <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
-        {loading ? <Loading /> : <Component {...pageProps} />}
+        {loading ? <Loading height="calc(var(--visibleScreen) - var(--headerHeight))" /> : <Component {...pageProps} />}
       </Fade>
     </div>
   </main>

@@ -4,14 +4,13 @@ import { IHandleScroll, IFunctionsHandlePageLoading, IHandleProtectedRoute } fro
 // export const handlePageLoading = ({ url, loading, setPageLoading, setLayout }: IFunctionsHandlePageLoading) => {
 export const handlePageLoading = ({ url, loading, setLoading }: any) => {
   // setLoading(false);
-  // Smoothly scroll to the top of the page on page load
   // if (url) console.log(`Switching page to ${url}`);
   // layout
+  window.scrollTo({ top: 0, behavior: "smooth" }); // <= Smoothly scroll to the top of the page on page load
   if (loading) {
     setLoading(true);
   } else {
     setTimeout(() => setLoading(false), 2000);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   }
 };
 

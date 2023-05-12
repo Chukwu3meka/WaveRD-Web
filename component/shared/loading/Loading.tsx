@@ -1,6 +1,6 @@
 import { styles } from ".";
 
-const Loading = ({ height }: any) => (
+export default ({ height }: any) => (
   <main className={styles.loading} style={{ height: height || "var(--visibleScreen)" }}>
     <div className={styles.spinner}>
       <div className={styles.item}></div>
@@ -9,5 +9,3 @@ const Loading = ({ height }: any) => (
     </div>
   </main>
 );
-
-export default Loading;
