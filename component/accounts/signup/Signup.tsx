@@ -9,7 +9,7 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 import { ISignup } from "@interface/accounts/signup-interface";
 
 const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) => (
-  <Stack spacing={{ xs: 1, sm: 2, md: 3, lg: 3 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
+  <Stack spacing={{ xs: 2, sm: 2, md: 3, lg: 3 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
     <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
 
     <TextField
@@ -119,7 +119,12 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
       </LoadingButton>
     </AttentionSeeker>
 
-    <Typography fontSize={10} textAlign="center" sx={{ margin: "20px auto -10px !important" }}>
+    <Typography
+      fontSize={10}
+      textAlign="center"
+      pt={2}
+      // sx={{ margin: "20px auto -10px !important" }}
+    >
       By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
       <Link href="/info/privacy">Privacy Policy</Link>
     </Typography>
