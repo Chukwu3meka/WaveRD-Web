@@ -8,10 +8,11 @@
   & > * > footer {
     max-width: 1200px;
     margin: auto;
-    color: $textSecondary;
+    // color: $textSecondary;
     text-align: center;
     padding: 40px 10px 20px;
     @include quickFlex($dir: column);
+
     & > main {
       @include quickFlex($dir: row, $width: 100%, $row: 20px, $justify: flex-start, $align: flex-start, $wrap: wrap);
       & > aside {
@@ -22,6 +23,10 @@
         }
         & > div {
           margin-top: 10px;
+          & > * > * {
+            border-radius: 50%;
+            border: 1px solid var(--secondary);
+          }
           & > a:not(:last-of-type) {
             margin-right: 10px;
           }
@@ -29,7 +34,10 @@
       }
       & > nav {
         padding: 20px 0 0;
-        border-top: 1px solid darken($color: $lightGray, $amount: 70);
+
+        // // border-top: 1px solid darken($color: $lightGray, $amount: 70);
+        // border-top: 1px solid var(--secondary);
+        // border-top: 3px solid red;
         @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 40px, $align: flex-start, $justify: space-evenly);
         & > div {
           @include quickFlex($dir: column, $width: max-content);
@@ -57,8 +65,11 @@
     & > section {
       @include quickFlex($dir: column, $width: 100%);
       margin-top: 20px;
+
       padding: 20px 10px;
-      border-top: 1px solid darken($color: $lightGray, $amount: 70);
+      border-top: 1px solid var(--secondary);
+
+      // border-top: 1px solid darken($color: $lightGray, $amount: 70);
       row-gap: 10px;
     }
   }

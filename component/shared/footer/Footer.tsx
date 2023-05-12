@@ -12,7 +12,7 @@ export default () => (
       <footer>
         <main>
           <aside>
-            <Typography fontWeight={700} fontSize="2.2em" component="h1">
+            <Typography fontWeight={700} fontSize="2.2em" component="h1" color="text.secondary">
               SoccerMASS
             </Typography>
 
@@ -38,7 +38,10 @@ export default () => (
 
           <nav>
             <div>
-              <label htmlFor="soccermass-links">SoccerMASS</label>
+              <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
+                SoccerMASS
+              </Typography>
+
               <Link href="/">Home</Link>
               <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
                 Bug Report
@@ -49,7 +52,10 @@ export default () => (
             </div>
 
             <div>
-              <label htmlFor="info">Learn More</label>
+              <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
+                Learn More
+              </Typography>
+
               <Link href="/info/advertise/">Advertise</Link>
               <Link href="/info/advertise/">Cookie Policy</Link>
               <Link href="/info/terms/">Terms &amp; Conditions</Link>
@@ -58,7 +64,10 @@ export default () => (
             </div>
 
             <div>
-              <label htmlFor="company">Coming Soon</label>
+              <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
+                Coming Soon
+              </Typography>
+
               <a href="https://soccermass.com/">Blog</a>
               <a href="https://soccermass.com/">Translation</a>
               <a href="https://manager.soccermass.com/">Soccer Manager</a>

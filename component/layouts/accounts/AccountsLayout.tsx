@@ -1,19 +1,11 @@
-import Head from "next/head";
-import ErrorPage from "next/error";
-import dynamic from "next/dynamic";
 import Carousel from "nuka-carousel";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 import RelativeHeader from "@component/shared/header";
+import Loading from "@component/shared/loading/Loading";
 import authSlideText from "@source/constants/authSlideText";
 
 import { styles } from ".";
-
-import BuilderFooterContainer from "@component/shared/footer/FooterContainer";
-import BuilderHeaderContainer from "@component/shared/header/HeaderContainer";
-import Loading from "@component/shared/loading/Loading";
 
 export default ({ Component, pageProps, loading }: any) => (
   <main className={styles.layout}>
@@ -27,10 +19,10 @@ export default ({ Component, pageProps, loading }: any) => (
       </div>
     </aside>
     <div>
-      {/* <RelativeHeader position="relative" /> */}
-      {/* <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
+      <RelativeHeader position="relative" />
+      <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
         {loading ? <Loading /> : <Component {...pageProps} />}
-      </Fade> */}
+      </Fade>
     </div>
   </main>
 );

@@ -11,7 +11,7 @@ import { AccountsLayout, styles } from ".";
 import BuilderCookieNoticeContainer from "@component/shared/cookieNotice/BuilderCookieNoticeContainer";
 
 import { ILayout } from "@interface/main/layout-interface";
-import BuilderFooterContainer from "@component/shared/footer/FooterContainer";
+import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
 
 const Layout = ({ loading, emotionCache, theme, Component, layout, pageProps, ready }: any) => (
@@ -62,7 +62,7 @@ const Layout = ({ loading, emotionCache, theme, Component, layout, pageProps, re
               ) : (
                 <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>
               )}
-              <BuilderFooterContainer />
+              <Footer />
             </main>
           </SnackbarProvider>
         </ThemeProvider>
