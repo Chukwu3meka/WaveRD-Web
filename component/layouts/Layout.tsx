@@ -2,6 +2,8 @@ import Head from "next/head";
 import { SnackbarProvider } from "notistack";
 import { CacheProvider } from "@emotion/react";
 import { Analytics } from "@vercel/analytics/react";
+
+import { Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -54,14 +56,14 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
         <CacheProvider value={emotionCache}>
           <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
             <HeaderContainer position="sticky" />
-            <main className={styles.layout}>
+            <Box className={styles.layout}>
               {route.startsWith("/accounts") ? (
                 <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
               ) : (
                 <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />
               )}
               <Footer />
-            </main>
+            </Box>
           </SnackbarProvider>
         </CacheProvider>
       </ThemeProvider>
