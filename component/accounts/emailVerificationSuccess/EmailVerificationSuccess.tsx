@@ -3,8 +3,7 @@ import Image from "next/image";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 const Verified = () => (
-  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    {/* <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}> */}
+  <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
     </Box>
@@ -19,9 +18,11 @@ const Verified = () => (
       or concerns, please do not hesitate to contact us.
     </Typography>
 
-    <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
-      <Link href="/accounts/signin">Sign in</Link>
-    </Button>
+    <Box>
+      <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
+        <Link href="/accounts/signin">Sign in</Link>
+      </Button>
+    </Box>
   </Stack>
 );
 

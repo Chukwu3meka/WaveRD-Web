@@ -7,9 +7,7 @@ import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, 
 import { ForgotPassword } from "@interface/accounts/forgotPassword-interface";
 
 const Signin = ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) => (
-  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    {/* <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}> */}
-
+  <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
     </Box>
@@ -22,7 +20,7 @@ const Signin = ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) =
       Kindly enter the email address associated with your account, and we'll send a link to reset your password
     </Typography>
 
-    <FormControl fullWidth variant="outlined">
+    <FormControl fullWidth variant="outlined" sx={{ margin: "20px auto 10px !important" }}>
       <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
       <OutlinedInput
         id="email"

@@ -7,7 +7,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import muiTheme from "@source/muiTheme";
 import Loading from "@component/shared/loading";
-import { AccountsLayout, styles } from ".";
+import { AccountsLayout, styles, DefaultLayout } from ".";
 import BuilderCookieNoticeContainer from "@component/shared/cookieNotice/BuilderCookieNoticeContainer";
 
 import { ILayout } from "@interface/main/layout-interface";
@@ -50,26 +50,26 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
       />
     </Head>
 
-    <CacheProvider value={emotionCache}>
-      <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-        <main className={styles.layout}>
-          {ready ? (
-            <ThemeProvider theme={muiTheme(theme)}>
-              <HeaderContainer position="sticky" />
-              <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+    {ready ? (
+      <ThemeProvider theme={muiTheme(theme)}>
+        <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CacheProvider value={emotionCache}>
+          <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+            <HeaderContainer position="sticky" />
+            <main className={styles.layout}>
               {route.startsWith("/accounts") ? (
                 <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
               ) : (
-                <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>
+                <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />
               )}
               <Footer />
-            </ThemeProvider>
-          ) : (
-            <p> . </p>
-          )}
-        </main>
-      </SnackbarProvider>
-    </CacheProvider>
+            </main>
+          </SnackbarProvider>
+        </CacheProvider>
+      </ThemeProvider>
+    ) : (
+      <p> . </p>
+    )}
     {process.env.NODE_ENV === "production" && <Analytics />}
   </>
 );
