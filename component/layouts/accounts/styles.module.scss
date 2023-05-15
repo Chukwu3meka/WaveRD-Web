@@ -12,10 +12,9 @@
       background: var(--secondary);
       min-height: calc(var(--visibleScreen) - var(--headerHeight) - 5px);
       & > form {
-        max-width: 520px;
+        max-width: 600px;
         margin: auto;
         text-align: center;
-        // border: 3px solid red;
         width: 100% !important;
         padding: 40px 20px 70px;
       }

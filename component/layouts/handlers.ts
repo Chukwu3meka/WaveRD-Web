@@ -3,10 +3,8 @@ import { IHandleScroll, IFunctionsHandlePageLoading, IHandleProtectedRoute } fro
 
 // export const handlePageLoading = ({ url, loading, setPageLoading, setLayout }: IFunctionsHandlePageLoading) => {
 export const handlePageLoading = ({ url, loading, setLoading }: any) => {
-  // setLoading(false);
   // if (url) console.log(`Switching page to ${url}`);
-  // layout
-  // window.scrollTo({ top: 0, behavior: "smooth" }); // <= Smoothly scroll to the top of the page on page load
+  window.scrollTo({ top: 0, behavior: "smooth" }); // <= Smoothly scroll to the top of the page on page load
   if (loading) {
     setLoading(true);
   } else {
@@ -20,47 +18,28 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute }: any) =
 
   setRoute(route);
 
-  // console.log({ route });
-
   const accountsRoute = ["/accounts/signin", "/accounts/signup"],
     protectedRoutes = ["/manager"];
   // publicRoutes = ["/", "/apihub", "/accounts/reset", "/accounts/signin", "/accounts/signup", "/organization"];
 
   if (authenticated && accountsRoute.includes(route)) {
-    router.push("/");
-    // Signout to access this page
+    router.push("/"); // Signout to access this page
   }
   if (!authenticated && protectedRoutes.includes(route)) {
-    router.push("/");
-    // Signin to access this page
+    router.push("/"); // Signin to access this page
   }
-
-  // const path = location.pathname.split("/")[1];
-
-  // console.log(path);
-  // console.log({ path, s: location.pathname });
-
-  // const layout = path === "accounts" ? "accounts" : path === "info" ? "info" : "default";
-
-  // setRoute(layout);
 };
 
-export const handleScroll = ({ setDisplayHeaderAction, setLastScrollPos }) => {
+export const handleScroll = ({ setDisplayHeaderAction }) => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  // const lastScrollTop = sessionStorage.getItem("lastScrollTop") || 0;
 
   const lastScrollTop = sessionStorage.getItem("lastScrollTop") || 0;
 
-  console.log({ scrollTop, lastScrollTop });
   if (scrollTop > +lastScrollTop - 5) {
-    console.log("down");
     setDisplayHeaderAction(false);
   } else {
     setDisplayHeaderAction(true);
-    console.log("up");
   }
-  console.log({ scrollTop });
 
   sessionStorage.setItem("lastScrollTop", scrollTop.toString());
-  // setLastScrollPos(scrollTop);
 };
