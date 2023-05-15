@@ -1,6 +1,6 @@
 import { Validator } from "@interface/utils/validatorInterface";
 
-const validator = ({ value, type, label }: IValidator) => {
+const validator = ({ value, type, label }: Validator) => {
   if (!label) label = type.charAt(0).toUpperCase() + type.slice(1);
 
   if (value === "" || value === undefined) throw { message: `${label} cannot be empty` };

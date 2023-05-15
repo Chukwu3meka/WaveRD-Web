@@ -10,7 +10,7 @@ export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar
 
   setForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
   try {
-    validator({ value: value.trim(), type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+    validator({ value: value.trim(), type: <Validator["type"]>id, label: id === "email" ? "Email Address" : null });
 
     setForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
 
