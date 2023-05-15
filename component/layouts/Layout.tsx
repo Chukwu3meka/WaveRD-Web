@@ -6,15 +6,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
 import muiTheme from "@source/muiTheme";
-import Loading from "@component/shared/loading";
-import { AccountsLayout, styles, DefaultLayout } from ".";
-import BuilderCookieNoticeContainer from "@component/shared/cookieNotice/BuilderCookieNoticeContainer";
-
-import { ILayout } from "@interface/main/layout-interface";
 import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
+import { AccountsLayout, styles, DefaultLayout } from ".";
 
-const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: any) => (
+import { Layout } from "@interface/components/layouts-interface";
+
+const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>

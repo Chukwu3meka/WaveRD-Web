@@ -2,16 +2,12 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 import { Layout, handlers } from ".";
+import { connector, ConnectorProps } from "@store";
 import createEmotionCache from "@source/createEmotionCache";
 
+import { HandlePageLoading, LayoutContainer } from "@interface/components/layouts-interface";
+
 const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, shared for the whole session of the user in the browser.
-
-import { IHandlePageLoading, IHandleProtectedRoute, LayoutContainer } from "@interface/main/layout-interface";
-
-import { connector, ConnectorProps } from "@store";
-import { BuilderCookieNotice } from "@component/shared/cookieNotice";
-import { AppProps } from "next/app";
-import { SetThemeAction } from "@interface/store/layout";
 
 export default connector((props: LayoutContainer & ConnectorProps) => {
   const router = useRouter(),
@@ -26,8 +22,8 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
       setDeviceSizeAction,
       verifyCookieAction,
       setActiveRouteAction,
-      emotionCache = clientSideEmotionCache,
       setDisplayHeaderAction,
+      emotionCache = clientSideEmotionCache,
     } = props;
 
   useEffect(() => {
@@ -72,9 +68,9 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     if (ready) handleProtectedRoute();
   }, [router.asPath]);
 
-  const handleProtectedRoute = (auth?: boolean) => handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute });
-  const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight });
-  const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading });
+  const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }),
+    handlePageLoading = ({ url, loading }: HandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading }),
+    handleProtectedRoute = (auth?: boolean) => handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute, setActiveRouteAction });
 
   return (
     <Layout

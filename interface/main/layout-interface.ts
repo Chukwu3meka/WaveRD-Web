@@ -10,13 +10,13 @@ import { AuthState } from "@interface/store/auth";
 //   emotionCache?: EmotionCache;
 //   setDeviceSizeAction: Function;
 // }
-export interface LayoutContainer {
-  pageProps: AppProps["pageProps"];
-  Component: AppProps["Component"];
-  emotionCache?: EmotionCache;
-  // setDeviceSizeAction?: Function;
-  // auth: AuthState | null;
-}
+// export interface LayoutContainer {
+//   pageProps: AppProps["pageProps"];
+//   Component: AppProps["Component"];
+//   emotionCache?: EmotionCache;
+//   // setDeviceSizeAction?: Function;
+//   // auth: AuthState | null;
+// }
 
 export interface ILayout {
   pageProps: AppProps["pageProps"];
@@ -37,14 +37,9 @@ export interface IHandleScroll {
   setLastScrollPos: Function;
 }
 
-export interface IHandlePageLoading {
-  url: null | string;
-  loading: boolean;
-}
-
-export interface IFunctionsHandlePageLoading extends IHandlePageLoading {
-  setPageLoading: Function;
-}
+// export interface IFunctionsHandlePageLoading extends IHandlePageLoading {
+//   setPageLoading: Function;
+// }
 
 export interface IHandleProtectedRoute {
   router: NextRouter;

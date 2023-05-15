@@ -6,8 +6,9 @@ import Loading from "@component/shared/loading/Loading";
 import authSlideText from "@source/constants/authSlideText";
 
 import { styles } from ".";
+import { SubLayout } from "@interface/components/layouts-interface";
 
-export default ({ Component, pageProps, loading }: any) => (
+export default ({ Component, pageProps, loading }: SubLayout) => (
   <main className={styles.layout}>
     <aside>
       <div>

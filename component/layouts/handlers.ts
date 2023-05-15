@@ -1,8 +1,6 @@
-import { SetDeviceSizeAction } from "@interface/store/layout";
-import { IHandleScroll, IFunctionsHandlePageLoading, IHandleProtectedRoute } from "@interface/main/layout-interface";
+import { HandlePageLoading, HandleProtectedRoute, HandleScroll } from "@interface/components/layouts-interface";
 
-// export const handlePageLoading = ({ url, loading, setPageLoading, setLayout }: IFunctionsHandlePageLoading) => {
-export const handlePageLoading = ({ url, loading, setLoading }: any) => {
+export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoading) => {
   // if (url) console.log(`Switching page to ${url}`);
   window.scrollTo({ top: 0, behavior: "smooth" }); // <= Smoothly scroll to the top of the page on page load
   if (loading) {
@@ -12,11 +10,11 @@ export const handlePageLoading = ({ url, loading, setLoading }: any) => {
   }
 };
 
-// export const handleProtectedRoute = ({ route }: IHandleProtectedRoute) => {
-export const handleProtectedRoute = ({ router, authenticated, setRoute }: any) => {
+export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiveRouteAction }: HandleProtectedRoute) => {
   const route = location.pathname;
 
   setRoute(route);
+  setActiveRouteAction(route);
 
   // console.log{route}
 
@@ -32,7 +30,7 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute }: any) =
   }
 };
 
-export const handleScroll = ({ setDisplayHeaderAction }) => {
+export const handleScroll = ({ setDisplayHeaderAction }: HandleScroll) => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
   const lastScrollTop = sessionStorage.getItem("lastScrollTop") || 0;
