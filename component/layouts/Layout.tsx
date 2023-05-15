@@ -50,26 +50,26 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
       />
     </Head>
 
-    {ready ? (
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={muiTheme(theme)}>
-          <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-            <HeaderContainer position="sticky" />
-            <main className={styles.layout}>
+    <CacheProvider value={emotionCache}>
+      <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+        <main className={styles.layout}>
+          {ready ? (
+            <ThemeProvider theme={muiTheme(theme)}>
+              <HeaderContainer position="sticky" />
+              <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               {route.startsWith("/accounts") ? (
                 <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
               ) : (
                 <main className={styles.layout}>{loading ? <Loading /> : <Component {...pageProps} />}</main>
               )}
               <Footer />
-            </main>
-          </SnackbarProvider>
-        </ThemeProvider>
-      </CacheProvider>
-    ) : (
-      <p>.</p>
-    )}
+            </ThemeProvider>
+          ) : (
+            <p> . </p>
+          )}
+        </main>
+      </SnackbarProvider>
+    </CacheProvider>
     {process.env.NODE_ENV === "production" && <Analytics />}
   </>
 );

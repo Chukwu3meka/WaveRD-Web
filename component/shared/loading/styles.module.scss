@@ -2,16 +2,10 @@
 
 .loading {
   --size: clamp(20px, 200px, 50vw);
-  --clr1: #448b44;
-  --clr2: #448b44;
-  --clr3: #448b44;
-  // --clr2: #b45c5c;
-  // --clr3: #eecd14;
-
   @include quickFlex();
 
   .spinner {
-    --animation-duration: 3000ms;
+    --animation-duration: 2500ms;
     position: relative;
     width: var(--size);
     height: var(--size);
@@ -22,11 +16,11 @@
       position: absolute;
       width: var(--item-size);
       height: var(--item-size);
-      border: 4px solid var(--clr-spinner);
+      border: 4px solid $primary;
+      animation-fill-mode: both; // Add this line to ensure the animation starts immediately
     }
 
     .item:nth-child(1) {
-      --clr-spinner: var(--clr1);
       top: 0;
       left: 0;
       animation: spinner3A var(--animation-duration) linear infinite;
@@ -60,7 +54,6 @@
     }
 
     .item:nth-child(2) {
-      --clr-spinner: var(--clr3);
       top: 0;
       left: var(--item-size);
       animation: spinner3B var(--animation-duration) linear infinite;
@@ -94,7 +87,6 @@
     }
 
     .item:nth-child(3) {
-      --clr-spinner: var(--clr2);
       top: var(--item-size);
       left: var(--item-size);
       animation: spinner3C var(--animation-duration) linear infinite;

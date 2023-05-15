@@ -15,6 +15,9 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { Box } from "@mui/material";
 
+import SignInIcon from "@mui/icons-material/Login";
+import SignOutIcon from "@mui/icons-material/Logout";
+
 // const Header = ({ relative, authenticated, displayHeader }: IHeader) => (
 export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: any) => (
   <div className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
@@ -56,14 +59,14 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
           <Box>
             {!authenticated && (
               <Link href="/accounts/signin">
-                <Button variant="contained" size="small" color="primary">
+                <Button variant="contained" size="small" color="primary" startIcon={<SignInIcon />}>
                   Sign in
                 </Button>
               </Link>
             )}
 
             {authenticated && (
-              <Button variant="outlined" size="small">
+              <Button variant="outlined" size="small" startIcon={<SignOutIcon />}>
                 <a
                   href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
                   rel="noopener noreferrer">
