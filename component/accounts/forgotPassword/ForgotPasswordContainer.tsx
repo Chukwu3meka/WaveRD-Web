@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useSnackbar } from "notistack";
 
 import { ForgotPassword, handlers } from ".";
+import { ForgotPasswordForm } from "@interface/components/accounts/forgotPasswordInterface";
 
-import { ForgotPasswordForm } from "@interface/accounts/forgotPassword-interface";
-
-const ForgotPasswordContainer = () => {
+export default () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [form, setForm] = useState<ForgotPasswordForm>({
@@ -18,5 +17,3 @@ const ForgotPasswordContainer = () => {
 
   return <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />;
 };
-
-export default ForgotPasswordContainer;

@@ -2,8 +2,8 @@ import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-import { IValidator } from "@interface/utils/validator-interface";
-import { ResetPasswordHandler, ResetPasswordOnInputChange } from "@interface/accounts/resetPassword-interface";
+import { Validator } from "@interface/utils/validatorInterface";
+import { ResetPasswordHandler, ResetPasswordOnInputChange } from "@interface/components/accounts/resetPasswordInterface";
 
 export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: ResetPasswordOnInputChange) => {
   const { value, id } = e.target;

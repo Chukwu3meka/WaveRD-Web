@@ -2,9 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
-const Success = () => (
-  <Stack spacing={3} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    {/* <Stack spacing={3} alignItems="center" textAlign="center" component="form" noValidate sx={{ "& > *": { width: "100%", maxWidth: "460px" } }}> */}
+export default () => (
+  <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
     </Box>
@@ -25,5 +24,3 @@ const Success = () => (
     </Link>
   </Stack>
 );
-
-export default Success;

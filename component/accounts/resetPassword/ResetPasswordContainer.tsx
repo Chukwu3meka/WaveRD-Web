@@ -4,9 +4,9 @@ import { useSnackbar } from "notistack";
 
 import { ResetPassword, handlers, InvalidLink } from ".";
 
-import { ResetForm } from "@interface/accounts/resetPassword-interface";
+import { ResetForm } from "@interface/components/accounts/resetPasswordInterface";
 
-const ResetPasswordContainer = () => {
+export default () => {
   const router = useRouter(),
     gear = (router.query.gear as string) || "", //  gear in reset email
     { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -27,5 +27,3 @@ const ResetPasswordContainer = () => {
     <ResetPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} handleClickShowPassword={handleClickShowPassword} />
   );
 };
-
-export default ResetPasswordContainer;

@@ -1,4 +1,4 @@
-import { IValidator } from "@interface/utils/validator-interface";
+import { Validator } from "@interface/utils/validatorInterface";
 
 const validator = ({ value, type, label }: IValidator) => {
   if (!label) label = type.charAt(0).toUpperCase() + type.slice(1);

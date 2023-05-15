@@ -2,7 +2,7 @@ import fetcher from "@utils/fetcher";
 import { sleep } from "@utils/handlers";
 import validator from "@utils/validator";
 
-import { ForgotPasswordHandler, ForgotPasswordOnInputChange } from "@interface/accounts/forgotPassword-interface";
+import { ForgotPasswordHandler, ForgotPasswordOnInputChange } from "@interface/components/accounts/forgotPasswordInterface";
 
 export const onInputChange = async ({ e, setForm, enqueueSnackbar, closeSnackbar }: ForgotPasswordOnInputChange) => {
   const { value, id } = e.target;

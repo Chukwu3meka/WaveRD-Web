@@ -12,7 +12,7 @@ import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
 import { AccountsLayout, styles, DefaultLayout } from ".";
 
-import { Layout } from "@interface/components/layouts-interface";
+import { Layout } from "@interface/components/layoutsInterface";
 
 const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
   <>

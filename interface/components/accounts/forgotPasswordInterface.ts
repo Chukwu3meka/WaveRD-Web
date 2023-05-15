@@ -1,3 +1,5 @@
+import { EnqueueSnackbar } from "notistack";
+
 type ResetFormOptions = { loading: boolean };
 type ResetFormEmail = { value: string; valid: boolean; info: string };
 
@@ -14,7 +16,7 @@ export interface ForgotPassword {
 
 export interface ForgotPasswordOnInputChange {
   setForm: Function;
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
   closeSnackbar: Function;
   e: React.FocusEvent<HTMLInputElement>;
 }
@@ -22,5 +24,5 @@ export interface ForgotPasswordOnInputChange {
 export interface ForgotPasswordHandler {
   form: ForgotPasswordForm;
   setForm: Function;
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
 }

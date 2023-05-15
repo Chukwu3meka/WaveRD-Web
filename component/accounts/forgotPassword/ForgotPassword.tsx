@@ -4,9 +4,9 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, Box } from "@mui/material";
 
-import { ForgotPassword } from "@interface/accounts/forgotPassword-interface";
+import { ForgotPassword } from "@interface/components/accounts/forgotPasswordInterface";
 
-const Signin = ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) => (
+export default ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -55,5 +55,3 @@ const Signin = ({ resetPasswordHandler, form, onInputChange }: ForgotPassword) =
     </Typography>
   </Stack>
 );
-
-export default Signin;

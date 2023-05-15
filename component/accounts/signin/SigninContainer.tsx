@@ -3,17 +3,18 @@ import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 import { Signin, handlers } from ".";
-import { ISigninContainer, IUserForm } from "@interface/accounts/signin-interface";
 import { deObfuscate } from "@utils/handlers";
 import { connector, ConnectorProps } from "@store";
 
-export default connector((props: ISigninContainer & ConnectorProps) => {
+import { SigninContainer, UserForm } from "@interface/components/accounts/signinInterface";
+
+export default connector((props: SigninContainer & ConnectorProps) => {
   const router = useRouter(),
     { setAuthAction } = props,
     { enqueueSnackbar } = useSnackbar();
 
   const [iconOnly, setIconOnly] = useState<boolean>(true),
-    [userForm, setUserForm] = useState<IUserForm>({
+    [userForm, setUserForm] = useState<UserForm>({
       password: "",
       email: "",
       options: { showPassword: false, loading: false },

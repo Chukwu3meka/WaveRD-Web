@@ -5,9 +5,9 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 
-import { ResetPassword } from "@interface/accounts/resetPassword-interface";
+import { ResetPassword } from "@interface/components/accounts/resetPasswordInterface";
 
-const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPassword) => (
+export default ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPassword) => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -77,5 +77,3 @@ const Signin = ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
     </Typography>
   </Stack>
 );
-
-export default Signin;

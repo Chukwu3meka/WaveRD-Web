@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
-const EmailVerificationFailed = () => (
+export default () => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -25,5 +25,3 @@ const EmailVerificationFailed = () => (
     </Box>
   </Stack>
 );
-
-export default EmailVerificationFailed;

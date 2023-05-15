@@ -1,35 +1,35 @@
 import { SetAuthAction } from "@interface/store/auth";
 
-export interface ISignin {
-  userForm: IUserForm;
+export interface Signin {
+  userForm: UserForm;
   loginHandler: Function;
   onInputChange: Function;
   handleClickShowPassword: Function;
   iconOnly: boolean;
 }
 
-export interface ISigninContainer {
+export interface SigninContainer {
   deviceWidth: number;
 }
 
-export interface IUserForm {
+export interface UserForm {
   email: string;
   password: string;
-  options: IUserFormOptions;
+  options: UserFormOptions;
 }
 
-interface IUserFormOptions {
+interface UserFormOptions {
   loading: boolean;
   showPassword: boolean;
 }
 
-export interface IOnInputChange {
+export interface OnInputChange {
   setUserForm: Function;
   e: React.FocusEvent<HTMLInputElement>;
 }
 
 export interface LoginHandler {
-  userForm: IUserForm;
+  userForm: UserForm;
   setUserForm: Function;
   setAuthAction: (SetAuthAction) => void;
   enqueueSnackbar: Function;

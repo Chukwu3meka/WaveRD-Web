@@ -1,15 +1,16 @@
 import fetcher from "@utils/fetcher";
 import validator from "@utils/validator";
 import { capitalize, sleep } from "@utils/handlers";
-import { IValidator } from "@interface/utils/validator-interface";
-import { IOnInputChange, IRegisterHandler } from "@interface/accounts/signup-interface";
 
-export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur }: IOnInputChange) => {
+import { Validator } from "@interface/utils/validatorInterface";
+import { OnInputChange, RegisterHandler } from "@interface/components/accounts/signupInterface";
+
+export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur }: OnInputChange) => {
   const { value, id } = e.target;
 
   setUserForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
   try {
-    validator({ value: value.trim(), type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+    validator({ value: value.trim(), type: <Validator["type"]>id, label: id === "email" ? "Email Address" : null });
 
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
@@ -29,7 +30,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
   }
 };
 
-export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, closeSnackbar }: IRegisterHandler) => {
+export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, closeSnackbar }: RegisterHandler) => {
   try {
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
@@ -38,7 +39,7 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
     /* re-validate all values before registeration */
     for (const [id, { value }] of Object.entries(userForm)) {
       if (id !== "options") {
-        validator({ value: value.trim(), type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+        validator({ value: value.trim(), type: <Validator["type"]>id, label: id === "email" ? "Email Address" : null });
         setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
         userData[id] = value.trim(); // <= append input to userdata if its valid
       }

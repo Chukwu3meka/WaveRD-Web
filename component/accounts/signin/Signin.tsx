@@ -6,9 +6,9 @@ import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
 
 import { Social } from ".";
-import { ISignin } from "@interface/accounts/signin-interface";
+import { Signin } from "@interface/components/accounts/signinInterface";
 
-const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: ISignin) => (
+export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: Signin) => (
   <Stack spacing={3} component="form" noValidate>
     <Social iconOnly={iconOnly} />
 
@@ -64,5 +64,3 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </Typography>
   </Stack>
 );
-
-export default Signin;

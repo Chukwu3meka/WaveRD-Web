@@ -2,7 +2,7 @@ import fetcher from "@utils/fetcher";
 import validator from "@utils/validator";
 import { capitalize, sleep } from "@utils/handlers";
 
-import { LoginHandler, IOnInputChange } from "@interface/accounts/signin-interface";
+import { LoginHandler, OnInputChange } from "@interface/components/accounts/signinInterface";
 
 export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: LoginHandler) => {
   for (const value of ["email", "password"]) if (!userForm[value].trim()) return enqueueSnackbar(`${capitalize(value)} cannot be empty`, { variant: "error" });
@@ -37,14 +37,12 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
     .finally(() => disableLoading());
 };
 
-export const onInputChange = async ({ e, setUserForm }: IOnInputChange) => {
+export const onInputChange = async ({ e, setUserForm }: OnInputChange) => {
   const { value, id } = e.target;
   setUserForm((userForm: any) => ({ ...userForm, [id]: value }));
 };
 
-export const onBlurHandler = async ({ e, setUserForm }: IOnInputChange) => {
+export const onBlurHandler = async ({ e, setUserForm }: OnInputChange) => {
   e.target.value = e.target.value.trim(); // trim empty spaces
   await onInputChange({ e, setUserForm });
 };
-
-// export const oAuthLoginFn = async ({ e, setUserForm }: IOnInputChange) => {

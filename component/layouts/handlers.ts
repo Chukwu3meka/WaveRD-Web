@@ -1,4 +1,4 @@
-import { HandlePageLoading, HandleProtectedRoute, HandleScroll } from "@interface/components/layouts-interface";
+import { HandlePageLoading, HandleProtectedRoute, HandleScroll } from "@interface/components/layoutsInterface";
 
 export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoading) => {
   // if (url) console.log(`Switching page to ${url}`);
