@@ -3,9 +3,9 @@ import { SnackbarProvider } from "notistack";
 import { CacheProvider } from "@emotion/react";
 import { Analytics } from "@vercel/analytics/react";
 
-import { Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
+import { Box, LinearProgress, Stack } from "@mui/material";
 
 import muiTheme from "@source/muiTheme";
 import Footer from "@component/shared/footer";
@@ -13,7 +13,6 @@ import HeaderContainer from "@component/shared/header";
 import { AccountsLayout, styles, DefaultLayout } from ".";
 
 import { Layout } from "@interface/components/layoutsInterface";
-import Loading from "@component/shared/loading";
 
 const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
   <>
@@ -69,7 +68,9 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
         </CacheProvider>
       </ThemeProvider>
     ) : (
-      <Loading />
+      <Stack sx={{ width: "100%", color: "green" }}>
+        <LinearProgress color="inherit" />
+      </Stack>
     )}
     {process.env.NODE_ENV === "production" && <Analytics />}
   </>
