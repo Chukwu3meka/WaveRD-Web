@@ -18,6 +18,8 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute }: any) =
 
   setRoute(route);
 
+  // console.log{route}
+
   const accountsRoute = ["/accounts/signin", "/accounts/signup"],
     protectedRoutes = ["/manager"];
   // publicRoutes = ["/", "/apihub", "/accounts/reset", "/accounts/signin", "/accounts/signup", "/organization"];

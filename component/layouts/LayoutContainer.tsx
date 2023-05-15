@@ -44,8 +44,8 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
 
   useEffect(() => {
     if (ready) {
-      setAuthenticated(!!props.auth || false);
-      handleProtectedRoute();
+      setAuthenticated(!!props.auth);
+      handleProtectedRoute(!!props.auth);
     }
   }, [props.auth]);
 
@@ -72,7 +72,7 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     if (ready) handleProtectedRoute();
   }, [router.asPath]);
 
-  const handleProtectedRoute = () => handlers.handleProtectedRoute({ router, authenticated, setRoute });
+  const handleProtectedRoute = (auth?: boolean) => handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute });
   const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight });
   const handlePageLoading = ({ url, loading }: IHandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading });
 
