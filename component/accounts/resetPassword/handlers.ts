@@ -30,7 +30,7 @@ export const resetPasswordHandler = async ({ enqueueSnackbar, setForm, form, gea
     /* re-validate all values before registeration */
     for (const [id, { value }] of Object.entries(form)) {
       if (id !== "options") {
-        validator({ value: value.trim(), type: <IValidator["type"]>id, label: id === "email" ? "Email Address" : null });
+        validator({ value: value.trim(), type: <Validator["type"]>id, label: id === "email" ? "Email Address" : null });
         setForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
         userData[id] = value.trim(); // <= append input to userdata if its valid
       }
