@@ -7,7 +7,7 @@ import { competitions } from "@source/constants/competitions";
 
 import { managerStyles as styles } from ".";
 
-export default ({ slidesToShow }: { slidesToShow: number }) => (
+export default ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWidth: number }) => (
   <div className={styles.manager}>
     <Box role="presentation" pl={2} py={3}>
       <Breadcrumbs aria-label="breadcrumb" separator="›">
@@ -21,13 +21,17 @@ export default ({ slidesToShow }: { slidesToShow: number }) => (
       </Breadcrumbs>
     </Box>
 
-    <Box className={styles.carousel}>
-      <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000} dragging={false}>
-        {competitions.map(({ id, image, title }) => (
-          <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
-        ))}
-      </Carousel>
-    </Box>
+    {deviceWidth > 620 ? (
+      <Box className={styles.carousel}>
+        <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000} dragging={false}>
+          {competitions.map(({ id, image, title }) => (
+            <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
+          ))}
+        </Carousel>
+      </Box>
+    ) : (
+      false
+    )}
 
     <div className={styles.managerIntro}>
       <Paper elevation={2}>
@@ -93,26 +97,30 @@ export default ({ slidesToShow }: { slidesToShow: number }) => (
       </Paper>
     </div>
 
-    <Box className={styles.carousel}>
-      <Carousel
-        speed={10000}
-        autoplay={true}
-        dragging={false}
-        wrapAround={true}
-        autoplayReverse={true}
-        withoutControls={true}
-        autoplayInterval={2000}
-        slidesToShow={slidesToShow}>
-        {[...new Array(64)].map((_, i) => (
-          <Image
-            key={i}
-            src={`/images/clubs/club${`${i + 1}`.padStart(6, "0")}.webp`}
-            alt={`SoccerMASS  club${`${i + 1}`.padStart(6, "0")}`}
-            width={70}
-            height={70}
-          />
-        ))}
-      </Carousel>
-    </Box>
+    {deviceWidth > 620 ? (
+      <Box className={styles.carousel}>
+        <Carousel
+          speed={10000}
+          autoplay={true}
+          dragging={false}
+          wrapAround={true}
+          autoplayReverse={true}
+          withoutControls={true}
+          autoplayInterval={2000}
+          slidesToShow={slidesToShow}>
+          {[...new Array(64)].map((_, i) => (
+            <Image
+              key={i}
+              src={`/images/clubs/club${`${i + 1}`.padStart(6, "0")}.webp`}
+              alt={`SoccerMASS  club${`${i + 1}`.padStart(6, "0")}`}
+              width={70}
+              height={70}
+            />
+          ))}
+        </Carousel>
+      </Box>
+    ) : (
+      false
+    )}
   </div>
 );

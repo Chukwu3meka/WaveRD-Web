@@ -4,7 +4,8 @@ import ManagerIntro from "./Manager";
 import { connector, ConnectorProps } from "@store";
 
 export default connector((props: ConnectorProps) => {
-  const [slidesToShow, setSlidesToShow] = useState(0);
+  const [deviceWidth, setDeviceWidth] = useState(0),
+    [slidesToShow, setSlidesToShow] = useState(0);
 
   const handleResize = (width: number) => {
     if (width <= 420) {
@@ -22,7 +23,8 @@ export default connector((props: ConnectorProps) => {
 
   useEffect(() => {
     handleResize(props.layout.width);
+    setDeviceWidth(props.layout.width);
   }, [props.layout.width]);
 
-  return <ManagerIntro slidesToShow={slidesToShow} />;
+  return <ManagerIntro slidesToShow={slidesToShow} deviceWidth={deviceWidth} />;
 });
