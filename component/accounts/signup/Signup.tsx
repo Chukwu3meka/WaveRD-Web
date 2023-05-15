@@ -6,9 +6,9 @@ import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
 
-import { ISignup } from "@interface/accounts/signup-interface";
+import { Signup } from "@interface/components/accounts/signupInterface";
 
-const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: ISignup) => (
+const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: Signup) => (
   <Stack spacing={{ xs: 2, sm: 2, md: 3, lg: 3 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
     <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
 

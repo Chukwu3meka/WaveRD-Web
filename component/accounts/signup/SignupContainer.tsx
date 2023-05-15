@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useSnackbar } from "notistack";
 
 import { Signup, handlers, Success } from ".";
-import { IUserForm } from "@interface/accounts/signup-interface";
+import { UserForm } from "@interface/components/accounts/signupInterface";
 
 const SignupContainer = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const [userForm, setUserForm] = useState<IUserForm>({
+  const [userForm, setUserForm] = useState<UserForm>({
     options: { showPassword: false, loading: false, accountCreated: false },
     email: { value: "", valid: true, info: "Email cannot be empty" },
     fullName: { value: "", valid: true, info: "Full Name cannot be empty" },
