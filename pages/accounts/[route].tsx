@@ -1,14 +1,8 @@
 import Head from "next/head";
 import ErrorPage from "next/error";
 import dynamic from "next/dynamic";
-import Carousel from "nuka-carousel";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Fade } from "react-awesome-reveal";
-
-import styles from "@source/scss/accounts.module.scss";
-import HeaderContainer from "@component/shared/header";
-import authSlideText from "@source/constants/authSlideText";
 
 const Page = () => {
   const router = useRouter(),
@@ -41,23 +35,7 @@ const Page = () => {
         <meta name="keywords" content={`${pageTitle.toLowerCase()}, soccer manager, soccer, soccermass, football manager, football`} />
       </Head>
 
-      {/* <div className={styles.layout}>
-        <aside>
-          <div>
-            <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>
-              {authSlideText.map((slideText: any) => (
-                <div key={slideText}>{slideText}</div>
-              ))}
-            </Carousel>
-          </div>
-        </aside>
-        <main>
-          <HeaderContainer theme="light" titleOnly="light" />
-          <Fade direction="left" triggerOnce={true} style={{ perspective: "100px" }}> */}
       {component}
-      {/* </Fade>
-        </main>
-      </div> */}
     </>
   );
 };
