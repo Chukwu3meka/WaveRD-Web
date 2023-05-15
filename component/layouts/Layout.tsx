@@ -13,6 +13,7 @@ import HeaderContainer from "@component/shared/header";
 import { AccountsLayout, styles, DefaultLayout } from ".";
 
 import { Layout } from "@interface/components/layoutsInterface";
+import Loading from "@component/shared/loading";
 
 const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
   <>
@@ -68,7 +69,7 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
         </CacheProvider>
       </ThemeProvider>
     ) : (
-      <p> . </p>
+      <Loading />
     )}
     {process.env.NODE_ENV === "production" && <Analytics />}
   </>

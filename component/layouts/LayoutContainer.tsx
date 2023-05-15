@@ -11,10 +11,10 @@ const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, sh
 
 export default connector((props: LayoutContainer & ConnectorProps) => {
   const router = useRouter(),
+    [route, setRoute] = useState(null),
     [ready, setReady] = useState(false),
     [theme, setTheme] = useState(null),
     [loading, setLoading] = useState(true),
-    [route, setRoute] = useState(null),
     [authenticated, setAuthenticated] = useState(false),
     {
       pageProps,
