@@ -5,7 +5,7 @@ import { styles } from ".";
 import HeaderContainer from "@component/shared/header";
 import { Typography } from "@mui/material";
 
-import { BuilderComingSoon } from "@interface/shared/comingSoon-interface";
+import { BuilderComingSoon } from "@interface/components/shared/comingSoonInterface";
 
 export default ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
   <main className={styles.comingSoon} style={{ minHeight }}>

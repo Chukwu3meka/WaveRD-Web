@@ -7,7 +7,7 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 
 import styles from "./styles.module.scss";
 
-import { IHeader } from "@interface/main/header-interface";
+import { Header } from "@interface/components/shared/headerInterface";
 import socialAccounts from "@source/constants/socialAccounts";
 import Menu from "./menu";
 
@@ -18,15 +18,14 @@ import { Box } from "@mui/material";
 import SignInIcon from "@mui/icons-material/Login";
 import SignOutIcon from "@mui/icons-material/Logout";
 
-// const Header = ({ relative, authenticated, displayHeader }: IHeader) => (
-export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: any) => (
+export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: Header) => (
   <div className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
     <header id="header">
       <IconButton onClick={() => themeHandler(theme)}>
         {theme === "light" ? <DarkModeOutlinedIcon color="primary" /> : <LightModeIcon color="primary" />}
       </IconButton>
       <Box>
-        <Stack direction="row" component="a" href="/" onMouseOver={swapColorFn} onMouseLeave={swapColorFn}>
+        <Stack direction="row" component="a" href="/" onMouseOver={() => swapColorFn} onMouseLeave={() => swapColorFn}>
           <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
             Soccer
           </Typography>
@@ -52,7 +51,7 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
             {socialAccounts
               .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
               .map(({ title, id, href }) => (
-                <SocialIcon key={id} account={title} link={href} color={color.social} />
+                <SocialIcon key={id} account={title} link={href} />
               ))}
           </Box>
 
@@ -81,7 +80,7 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
   </div>
 );
 
-const SocialIcon = ({ account, link, color }: { account: string; link: string; color: string }) => {
+const SocialIcon = ({ account, link }: { account: string; link: string }) => {
   let icon;
 
   switch (account) {
@@ -100,7 +99,7 @@ const SocialIcon = ({ account, link, color }: { account: string; link: string; c
   }
 
   return (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px", color }}>
+    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px" }}>
       {icon}
     </IconButton>
   );

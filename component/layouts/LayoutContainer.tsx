@@ -5,7 +5,7 @@ import { Layout, handlers } from ".";
 import { connector, ConnectorProps } from "@store";
 import createEmotionCache from "@source/createEmotionCache";
 
-import { HandlePageLoading, LayoutContainer } from "@interface/components/layoutsInterface";
+import { HandlePageLoading, LayoutContainer } from "@interface/components/layouts/layoutsInterface";
 
 const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, shared for the whole session of the user in the browser.
 

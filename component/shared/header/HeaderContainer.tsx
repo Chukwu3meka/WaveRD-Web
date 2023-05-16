@@ -1,17 +1,16 @@
-import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 import { Header } from ".";
+import { setCssThemeVar } from "@utils/handlers";
 import { connector, ConnectorProps } from "@store";
 
-import { HeaderContainer } from "@interface/main/header-interface";
 import { SetThemeAction } from "@interface/store/layout";
-import { setCssThemeVar } from "@utils/handlers";
+import { ColorState, HeaderContainer, VisibleState } from "@interface/components/shared/headerInterface";
 
 export default connector((props: HeaderContainer & ConnectorProps) => {
   const { position, setThemeAction } = props,
-    [color, setColor] = useState({ first: "textSecondary", last: "primary" }),
-    [visible, setVisible] = useState({ nav: false, mobile: false }),
+    [color, setColor] = useState<ColorState>({ first: "textSecondary", last: "primary" }),
+    [visible, setVisible] = useState<VisibleState>({ nav: false, mobile: false }),
     [displayHeader, setDisplayHeader] = useState(null),
     [authenticated, setauthenticated] = useState(false);
 
@@ -43,7 +42,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
     setThemeAction(newTheme);
 
-    // persist in database
+    // persist theme in database
   };
 
   return <Header {...{ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }} />;
