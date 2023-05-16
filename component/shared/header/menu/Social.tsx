@@ -43,6 +43,6 @@ const SocialIcon = ({ account, link, color }: { account: string; link: string; c
       {icon}
     </IconButton>
   ) : (
-    false
+    <></>
   );
 };
