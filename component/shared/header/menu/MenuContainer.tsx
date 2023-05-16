@@ -8,15 +8,29 @@ import { HeaderContainer } from "@interface/main/header-interface";
 import { SetThemeAction } from "@interface/store/layout";
 import { setCssThemeVar } from "@utils/handlers";
 
+const defaultProfile = {
+  name: "SoccerMASS",
+  handle: "API Hub and Soccer Manager",
+  image: "/images/layout/profile.webp",
+  auth: false,
+};
+
 export default connector((props: any) => {
   const { signoutAction, displayHeader, relativeHeader = null, titleOnly, setThemeAction } = props,
     [color, setColor] = useState({ first: "textSecondary", last: "primary" }),
     [authenticated, setauthenticated] = useState(false);
+  const [profile, setProfile] = useState(defaultProfile);
 
   const [theme, setTheme] = useState<SetThemeAction>("light");
 
   useEffect(() => {
-    setauthenticated(!!props.auth || false);
+    setauthenticated(!!props.auth);
+    if (props.auth) {
+      const { fullName: name, handle } = props.auth;
+      setProfile({ auth: true, handle, name, image: defaultProfile.image });
+    } else {
+      setProfile(defaultProfile);
+    }
   }, [props.auth]);
 
   useEffect(() => {
@@ -59,7 +73,7 @@ export default connector((props: any) => {
         toggleMenuOpen,
         iOS,
         menuOpen,
-
+        profile,
         signoutAction,
         displayHeader,
         authenticated,

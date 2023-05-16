@@ -9,7 +9,7 @@ import styles from "./styles.module.scss";
 
 import { IHeader } from "@interface/main/header-interface";
 import socialAccounts from "@source/constants/socialAccounts";
-import Menu from "@component/shared/menu";
+import Menu from "./menu";
 
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeIcon from "@mui/icons-material/LightMode";
