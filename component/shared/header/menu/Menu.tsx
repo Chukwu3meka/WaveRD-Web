@@ -102,9 +102,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, color, profile }
             />
           </Box>
           <Paper sx={{ width: "100%", pt: 5 }} elevation={2}>
-            <Stack direction="row" justifyContent="center">
-              <Social color={color} />
-            </Stack>
+            <Social color={color} />
             <section>
               <Typography component="span" variant="body2" fontSize=".7em">
                 ● All rights reserved. All trademarks are the property of their respective owners ●

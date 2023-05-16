@@ -1,18 +1,24 @@
+import {
+  Twitter as TwitterIcon,
+  WhatsApp as WhatsAppIcon,
+  LinkedIn as LinkedInIcon,
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+} from "@mui/icons-material";
 import Link from "next/link";
-import { IconButton } from "@mui/material";
-
-import TwitterIcon from "@mui/icons-material/Twitter";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { Stack, IconButton } from "@mui/material";
 
 import socialAccounts from "@source/constants/socialAccounts";
 
-export default ({ color }) =>
-  socialAccounts
-    .filter((acc) => ["twitter", "instagram", "whatsapp", "linkedin", "facebook"].includes(acc.id))
-    .map(({ title, id, href }) => <SocialIcon key={id} account={title} link={href} color={color.social} />);
+export default ({ color }) => (
+  <Stack direction="row" justifyContent="center">
+    {socialAccounts
+      .filter((acc) => ["twitter", "instagram", "whatsapp", "linkedin", "facebook"].includes(acc.id))
+      .map(({ title, id, href }) => (
+        <SocialIcon key={id} account={title} link={href} color={color.social} />
+      ))}
+  </Stack>
+);
 
 const SocialIcon = ({ account, link, color }: { account: string; link: string; color: string }) => {
   let icon;
@@ -35,7 +41,7 @@ const SocialIcon = ({ account, link, color }: { account: string; link: string; c
       break;
 
     default:
-      return false;
+      icon = <></>;
   }
 
   return icon ? (
