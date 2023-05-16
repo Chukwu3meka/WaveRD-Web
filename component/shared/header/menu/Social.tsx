@@ -10,17 +10,17 @@ import { Stack, IconButton } from "@mui/material";
 
 import socialAccounts from "@source/constants/socialAccounts";
 
-export default ({ color }) => (
+export default () => (
   <Stack direction="row" justifyContent="center">
     {socialAccounts
       .filter((acc) => ["twitter", "instagram", "whatsapp", "linkedin", "facebook"].includes(acc.id))
       .map(({ title, id, href }) => (
-        <SocialIcon key={id} account={title} link={href} color={color.social} />
+        <SocialIcon key={id} account={title} link={href} />
       ))}
   </Stack>
 );
 
-const SocialIcon = ({ account, link, color }: { account: string; link: string; color: string }) => {
+const SocialIcon = ({ account, link }: { account: string; link: string }) => {
   let icon;
 
   switch (account) {
@@ -45,7 +45,7 @@ const SocialIcon = ({ account, link, color }: { account: string; link: string; c
   }
 
   return icon ? (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "18px", color }}>
+    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "18px" }}>
       {icon}
     </IconButton>
   ) : (

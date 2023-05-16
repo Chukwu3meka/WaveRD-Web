@@ -16,7 +16,7 @@ import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } f
 
 import { styles, Social } from ".";
 
-export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, color, profile }: any) => (
+export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: any) => (
   <>
     <IconButton onClick={toggleMenuOpen(true)}>
       <MenuIcon color="action" />
@@ -102,7 +102,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, color, profile }
             />
           </Box>
           <Paper sx={{ width: "100%", pt: 5 }} elevation={2}>
-            <Social color={color} />
+            <Social />
             <section>
               <Typography component="span" variant="body2" fontSize=".7em">
                 ● All rights reserved. All trademarks are the property of their respective owners ●
