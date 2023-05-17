@@ -11,7 +11,9 @@ import {
   Instagram as InstagramIcon,
 } from "@mui/icons-material";
 
-export default ({ account, link }: { account: string; link: string }) => {
+import { Social } from "@interface/components/shared/socialInterface";
+
+export default ({ account, link }: Social) => {
   let icon;
 
   switch (account) {

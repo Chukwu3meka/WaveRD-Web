@@ -1,9 +1,11 @@
 import { Stack } from "@mui/material";
 
-import socialAccounts from "@source/constants/socialAccounts";
 import { Social } from ".";
+import socialAccounts from "@source/constants/socialAccounts";
 
-export default ({ filterParams }: { filterParams: string[] }) => (
+import { SocialContainer } from "@interface/components/shared/socialInterface";
+
+export default ({ filterParams }: SocialContainer) => (
   <Stack direction="row" justifyContent="center">
     {socialAccounts
       .filter((acc) => filterParams.includes(acc.id))
