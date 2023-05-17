@@ -57,7 +57,7 @@ export default () => (
               </Typography>
 
               <Link href="/info/advertise/">Advertise</Link>
-              <Link href="/info/advertise/">Cookie Policy</Link>
+              <Link href="/info/cookie/">Cookie Policy</Link>
               <Link href="/info/terms/">Terms &amp; Conditions</Link>
               <Link href="/info/privacy/">Privacy Policy</Link>
               <Link href="/info/contact/">Contact Us</Link>
@@ -68,8 +68,8 @@ export default () => (
                 Coming Soon
               </Typography>
 
-              <a href="https://soccermass.com/">Blog</a>
-              <a href="https://soccermass.com/">Translation</a>
+              <a href="https://blog.soccermass.com/">Blog</a>
+              <a href="https://translate.soccermass.com/">Translation</a>
               <a href="https://manager.soccermass.com/">Soccer Manager</a>
               <a href="https://soccermass.com/">Homes & Space</a>
               <a href="https://soccermass.com/">Hourly Jobs</a>
