@@ -30,7 +30,7 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiv
   }
 
   if (!authenticated && protectedRoutes.includes(route)) {
-    enqueueSnackbar("You need to be authenticated to access this route", { variant: "error" });
+    enqueueSnackbar("You need to be authenticated to access this page", { variant: "error" });
     // setTimeout(() => closeSnackbar(), 2500);
     router.push("/accounts/signin"); // Signin to access this page
   }
