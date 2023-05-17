@@ -1,9 +1,9 @@
-export interface BuilderComingSoonContainer {
+export interface ComingSoonContainer {
   header?: boolean;
   minHeight?: string;
 }
 
-export interface BuilderComingSoon extends BuilderComingSoonContainer {
+export interface ComingSoon extends ComingSoonContainer {
   timeLeft: TimeLeft;
 }
 

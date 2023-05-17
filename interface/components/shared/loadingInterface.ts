@@ -1,7 +1,7 @@
-export interface IBuilderLoadingContainer {
+export interface IValidatorLoadingContainer {
   height?: string;
 }
 
-export interface IBuilderLoading extends IBuilderLoadingContainer {
+export interface IValidatorLoading extends IValidatorLoadingContainer {
   colorScheme: string[];
 }

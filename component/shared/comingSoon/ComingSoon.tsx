@@ -3,9 +3,9 @@ import { Typography } from "@mui/material";
 import { styles } from ".";
 import HeaderContainer from "@component/shared/header";
 
-import { BuilderComingSoon } from "@interface/components/shared/comingSoonInterface";
+import { ComingSoon } from "@interface/components/shared/comingSoonInterface";
 
-export default ({ timeLeft, header, minHeight }: BuilderComingSoon) => (
+export default ({ timeLeft, header, minHeight }: ComingSoon) => (
   <main className={styles.comingSoon} style={{ minHeight }}>
     {header ? <HeaderContainer position="relative" /> : ""}
 
