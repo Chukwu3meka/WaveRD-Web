@@ -1,3 +1,3 @@
-import ComingSoon from "@component/shared/comingSoon";
+import ContactContainer from "@component/info/contact";
 
-export default () => <ComingSoon header={false} />;
+export default () => <ContactContainer />;
