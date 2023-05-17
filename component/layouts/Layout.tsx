@@ -1,8 +1,6 @@
 import Head from "next/head";
-import { SnackbarProvider } from "notistack";
 import { CacheProvider } from "@emotion/react";
 import { Analytics } from "@vercel/analytics/react";
-
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { Box, LinearProgress, Stack } from "@mui/material";
@@ -10,10 +8,9 @@ import { Box, LinearProgress, Stack } from "@mui/material";
 import muiTheme from "@source/muiTheme";
 import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
-import { AccountsLayout, styles, DefaultLayout } from ".";
+import { AccountsLayout, InfoLayout, styles, DefaultLayout } from ".";
 
 import { Layout } from "@interface/components/layouts/layoutsInterface";
-import InfoLayout from "./info/InfoLayout";
 
 const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
   <>
@@ -55,19 +52,17 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
       <ThemeProvider theme={muiTheme(theme)}>
         <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CacheProvider value={emotionCache}>
-          <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-            <HeaderContainer position="sticky" />
-            <Box className={styles.layout}>
-              {route.startsWith("/accounts/") ? (
-                <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
-              ) : route.startsWith("/info/") ? (
-                <InfoLayout Component={Component} pageProps={pageProps} loading={loading} />
-              ) : (
-                <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />
-              )}
-              <Footer />
-            </Box>
-          </SnackbarProvider>
+          <HeaderContainer position="sticky" />
+          <Box className={styles.layout}>
+            {route.startsWith("/accounts/") ? (
+              <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
+            ) : route.startsWith("/info/") ? (
+              <InfoLayout Component={Component} pageProps={pageProps} loading={loading} />
+            ) : (
+              <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />
+            )}
+            <Footer />
+          </Box>
         </CacheProvider>
       </ThemeProvider>
     ) : (

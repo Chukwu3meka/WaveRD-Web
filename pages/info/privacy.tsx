@@ -1,9 +1,9 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, Divider } from "@mui/material";
 
 export default () => (
   <Card sx={{ maxWidth: 1200, width: "calc(100% - 20px)", mx: "auto", my: 2 }}>
     <CardContent>
-      <Typography gutterBottom variant="h5" component="div">
+    <Typography gutterBottom variant="h5" component="h1" textAlign="center">
         Privacy Policy
       </Typography>
       <Typography variant="body2" color="text.secondary">
@@ -62,11 +62,12 @@ export default () => (
         This Terms of use and Conditions is effective as of Sunday, 24th May 2020 and will remain in effect except with respect to any changes in its provisions
         in the future, which will be in effect immediately after being posted on this page. We reserve the right, at our sole discretion, to modify, update or
         replace these Terms and Policy at any time and you should check the Terms and Policy periodically though we might send a “policy or terms update
-        notification to your mail”. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What
-        constitutes a material change will be determined at sole discretion. Your continued use of the Service after we post any modifications to the Privacy
-        Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If
-        we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent
-        notice on our website.
+        notification to your mail”.
+        <Divider sx={{ my: 3 }} />
+        If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will
+        be determined at sole discretion. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute
+        your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this
+        Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.
       </Typography>
 
       <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>

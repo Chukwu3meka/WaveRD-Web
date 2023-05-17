@@ -7,7 +7,7 @@ import { styles } from ".";
 import socialAccounts from "@source/constants/socialAccounts";
 
 export default () => (
-  <div className={styles.footer}>
+  <div className={`xOverflowHidden ${styles.footer}`}>
     <Fade direction="right">
       <footer>
         <main>

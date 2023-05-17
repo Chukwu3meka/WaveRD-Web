@@ -1,3 +1,4 @@
+import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
@@ -11,10 +12,11 @@ const clientSideEmotionCache = createEmotionCache(); // <= Client-side cache, sh
 
 export default connector((props: LayoutContainer & ConnectorProps) => {
   const router = useRouter(),
-    [ready, setReady] = useState(false),
     [theme, setTheme] = useState(null),
-    [loading, setLoading] = useState(true),
     [route, setRoute] = useState(null),
+    [ready, setReady] = useState(false),
+    [loading, setLoading] = useState(true),
+    { enqueueSnackbar, closeSnackbar } = useSnackbar(),
     [authenticated, setAuthenticated] = useState(false),
     {
       pageProps,
@@ -70,18 +72,8 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
 
   const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }),
     handlePageLoading = ({ url, loading }: HandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading }),
-    handleProtectedRoute = (auth?: boolean) => handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute, setActiveRouteAction });
+    handleProtectedRoute = (auth?: boolean) =>
+      handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute, setActiveRouteAction, enqueueSnackbar, closeSnackbar });
 
-  return (
-    <Layout
-      ready={ready}
-      theme={theme}
-      route={route}
-      loading={loading}
-      Component={Component}
-      pageProps={pageProps}
-      emotionCache={emotionCache}
-      authenticated={authenticated}
-    />
-  );
+  return <Layout ready={ready} theme={theme} route={route} loading={loading} Component={Component} pageProps={pageProps} emotionCache={emotionCache} />;
 });

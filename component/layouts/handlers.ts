@@ -10,15 +10,16 @@ export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoadin
   }
 };
 
-export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiveRouteAction }: HandleProtectedRoute) => {
+export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiveRouteAction, enqueueSnackbar, closeSnackbar }: HandleProtectedRoute) => {
   const route = location.pathname;
 
   setRoute(route);
   setActiveRouteAction(route);
 
-  console.log(route);
+  // console.log(route);
 
   // console.log{route}
+  // enqueueSnackbar("Error creating your account", { variant: "error" }); // <=  Inform user of regex error
 
   const accountsRoute = ["/accounts/signin", "/accounts/signup"],
     protectedRoutes = ["/manager"];
@@ -27,8 +28,11 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiv
   if (authenticated && accountsRoute.includes(route)) {
     router.push("/"); // Signout to access this page
   }
+
   if (!authenticated && protectedRoutes.includes(route)) {
-    router.push("/"); // Signin to access this page
+    enqueueSnackbar("You need to be authenticated to access this route", { variant: "error" });
+    // setTimeout(() => closeSnackbar(), 2500);
+    router.push("/accounts/signin"); // Signin to access this page
   }
 };
 

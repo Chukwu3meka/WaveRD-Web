@@ -45,6 +45,9 @@ body {
     // -moz-user-select: none; //disable select
     // -webkit-user-select: none; //disable select
     // -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline: none;
     // -webkit-tap-highlight-color: transparent;
     img {
       overflow: hidden;
@@ -60,10 +63,8 @@ body {
   // height: 100vh;
   // font-size: 14px;
   // overflow: hidden;
-  // box-sizing: border-box;
-  // // font-family: "Merienda", cursive;
-  // // -ms-overflow-style: none;
-  // -webkit-box-sizing: border-box;
+  // font-family: "Merienda", cursive;
+  // -ms-overflow-style: none;
   // -moz-osx-font-smoothing: grayscale;
   // -webkit-font-smoothing: antialiased;
   // background: url("/images/layout/tactics.png") no-repeat center center fixed;
@@ -74,16 +75,6 @@ body {
   // background: linear-gradient(to bottom right, color(pry), color(sec));
   // background-color: darken($color: #1d1c2e, $amount: 0);
   // background-color: color(dark);
-  * {
-    outline: none;
-    // user-select: none;
-    // -moz-user-select: none;
-    // -webkit-user-select: none;
-    // -webkit-tap-highlight-color: transparent;
-    img {
-      overflow: hidden;
-    }
-  }
 }
 
 ::-webkit-scrollbar {
@@ -105,4 +96,9 @@ body {
 ::selection {
   color: var(--primary);
   background-color: lighten($color: $primary, $amount: 0);
+}
+
+.xOverflowHidden {
+  max-width: 100vw;
+  overflow-x: hidden;
 }

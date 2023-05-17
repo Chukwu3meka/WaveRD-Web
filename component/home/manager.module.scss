@@ -4,11 +4,12 @@
   padding: 0 0 40px;
   clip-path: polygon(0 0%, 100% 0, 100% 98%, 0% 100%);
   background-color: var(--secondary);
+  max-width: 2000px;
+  margin: auto;
   .carousel {
-    margin: auto;
+    max-width: calc(100vw - 10px);
+    overflow: hidden;
     padding: 10px 0;
-    max-width: 2000px;
-    width: 100vw !important;
     img {
       border-radius: 50%;
       background-color: #fff;

@@ -1,6 +1,6 @@
 @import "@source/scss/index.scss";
 
-.intro {
+.welcome {
   padding: 5px 10px 20px;
   min-height: var(--visibleScreen);
   display: grid;
@@ -43,13 +43,13 @@
 }
 
 @media screen and (min-width: 530px) {
-  .intro > div:last-of-type {
+  .welcome > div:last-of-type {
     width: calc(100vw - 50px);
   }
 }
 
 @media screen and (min-width: 880px) {
-  .intro {
+  .welcome {
     & > div:last-of-type {
       max-width: 900px;
       & > div:last-of-type {
@@ -62,7 +62,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-  .intro {
+  .welcome {
     & > div:last-of-type {
       max-width: 1300px;
       width: calc(100% - 200px);
@@ -74,7 +74,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .intro {
+  .welcome {
     & > div:last-of-type {
       max-width: 1500px;
       & > div:first-of-type > * {
@@ -85,7 +85,7 @@
 }
 
 @media screen and (min-width: 1700px) {
-  .intro {
+  .welcome {
     & > div:last-of-type > div:first-of-type > * {
       max-width: 1200px;
     }

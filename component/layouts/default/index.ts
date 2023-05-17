@@ -1,3 +1,6 @@
 import DefaultLayout from "./DefaultLayout";
 
-export { DefaultLayout as default };
+import styles from "./styles.module.scss";
+
+
+export { styles, DefaultLayout as default };

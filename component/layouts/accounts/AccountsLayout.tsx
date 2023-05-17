@@ -9,7 +9,7 @@ import { styles } from ".";
 import { SubLayout } from "@interface/components/layouts/layoutsInterface";
 
 export default ({ Component, pageProps, loading }: SubLayout) => (
-  <main className={styles.subLayout}>
+  <main className={`xOverflowHidden ${styles.subLayout}`}>
     <aside>
       <div>
         <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>

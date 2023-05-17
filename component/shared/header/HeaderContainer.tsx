@@ -30,7 +30,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
   useEffect(() => {
     const headerWidth = document.getElementById("header")?.offsetWidth;
-    setVisible({ nav: headerWidth > 920, mobile: headerWidth < 600 });
+    setVisible({ nav: headerWidth > 1400, mobile: headerWidth < 600 });
   }, [props.layout.width]);
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));

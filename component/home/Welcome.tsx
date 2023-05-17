@@ -6,7 +6,7 @@ import HeaderContainer from "@component/shared/header";
 import { welcomeStyles } from ".";
 
 export default () => (
-  <div className={welcomeStyles.intro}>
+  <div className={`xOverflowHidden ${welcomeStyles.welcome}`}>
     <HeaderContainer position="relative" />
 
     <div>
