@@ -57,7 +57,7 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
           <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
             <HeaderContainer position="sticky" />
             <Box className={styles.layout}>
-              {route.startsWith("/accounts") ? (
+              {route.startsWith("/accounts/") ? (
                 <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
               ) : (
                 <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />

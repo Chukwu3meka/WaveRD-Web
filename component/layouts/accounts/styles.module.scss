@@ -23,7 +23,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .layout {
+  .subLayout {
     min-height: var(--visibleScreen);
     display: grid;
     grid-template-columns: clamp(400px, 40%, 800px) auto;

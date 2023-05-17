@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Menu } from ".";
 import { connector, ConnectorProps } from "@store";
+
 import { ProfileState } from "@interface/components/shared/menuInterface";
 
 const defaultProfile: ProfileState = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", image: "/images/layout/profile.webp", auth: false };
@@ -23,10 +24,7 @@ export default connector((props: ConnectorProps) => {
   }, [props.auth]);
 
   const toggleMenuOpen = (event: React.KeyboardEvent | React.MouseEvent) => {
-    console.log("dsfdfds");
-
     if (event && event.type === "keydown" && ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) return;
-
     setMenuOpen((status) => !status);
   };
 

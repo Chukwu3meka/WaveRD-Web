@@ -16,6 +16,8 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiv
   setRoute(route);
   setActiveRouteAction(route);
 
+  console.log(route);
+
   // console.log{route}
 
   const accountsRoute = ["/accounts/signin", "/accounts/signup"],
