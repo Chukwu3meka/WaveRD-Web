@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
 import { Login as SignInIcon, Logout as SignOutIcon, LightMode as LightModeIcon, DarkModeOutlined as DarkModeOutlinedIcon } from "@mui/icons-material";
 
-import Menu from "./menu";
+import Menu from "../menu";
 import SocialContainer from "../social/SocialContainer";
 
 import styles from "./styles.module.scss";

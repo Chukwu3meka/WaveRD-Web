@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 
 import { Menu } from ".";
 import { connector, ConnectorProps } from "@store";
+import { ProfileState } from "@interface/components/shared/menuInterface";
 
-const defaultProfile = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", image: "/images/layout/profile.webp", auth: false };
+const defaultProfile: ProfileState = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", image: "/images/layout/profile.webp", auth: false };
 
 export default connector((props: ConnectorProps) => {
-  const [menuOpen, setMenuOpen] = useState(!false),
-    [profile, setProfile] = useState(defaultProfile),
+  const [menuOpen, setMenuOpen] = useState(false),
+    [profile, setProfile] = useState<ProfileState>(defaultProfile),
     [authenticated, setauthenticated] = useState(false),
     iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -21,9 +22,12 @@ export default connector((props: ConnectorProps) => {
     }
   }, [props.auth]);
 
-  const toggleMenuOpen = (status: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+  const toggleMenuOpen = (event: React.KeyboardEvent | React.MouseEvent) => {
+    console.log("dsfdfds");
+
     if (event && event.type === "keydown" && ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) return;
-    setMenuOpen(status);
+
+    setMenuOpen((status) => !status);
   };
 
   return <Menu {...{ toggleMenuOpen, iOS, menuOpen, authenticated, profile }} />;

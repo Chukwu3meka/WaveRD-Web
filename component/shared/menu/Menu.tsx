@@ -1,6 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
-
 import {
   Menu as MenuIcon,
   HomeRounded as HomeIcon,
@@ -11,15 +8,20 @@ import {
   SportsEsportsOutlined as ManagerIcon,
   ConnectWithoutContactOutlined as ApiHubIcon,
 } from "@mui/icons-material";
+
+import Link from "next/link";
+import Image from "next/image";
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 import { styles } from ".";
 import SocialContainer from "@component/shared/social";
 
-export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: any) => (
+import { Menu } from "@interface/components/shared/menuInterface";
+
+export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu) => (
   <>
-    <IconButton onClick={toggleMenuOpen(true)}>
+    <IconButton onClick={(e) => toggleMenuOpen(e)}>
       <MenuIcon color="action" />
     </IconButton>
 
@@ -28,18 +30,18 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: any) 
       disableDiscovery={iOS}
       anchor={"right"}
       open={menuOpen}
-      onClose={toggleMenuOpen(false)}
-      onOpen={toggleMenuOpen(true)}>
+      onClose={(e) => toggleMenuOpen(e)}
+      onOpen={(e) => toggleMenuOpen(e)}>
       <Stack
         height="100%"
         justifyContent="space-between"
         sx={{ width: "clamp(250px, 100vw, 300px)", padding: 2, overflow: "hidden" }}
         role="presentation"
-        onKeyDown={toggleMenuOpen(false)}
+        onKeyDown={(e) => toggleMenuOpen(e)}
         className={styles.menu}>
         <Stack>
           <Box textAlign="center">
-            <IconButton onClick={toggleMenuOpen(true)}>
+            <IconButton onClick={(e) => toggleMenuOpen(e)}>
               <CloseSharpIcon color="disabled" />
             </IconButton>
           </Box>
@@ -68,7 +70,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: any) 
 
           <Divider sx={{ my: 4 }} />
           <Box>
-            <List onClick={toggleMenuOpen(false)}>
+            <List onClick={(e) => toggleMenuOpen(e)}>
               {navLinks
                 .filter((nav) => (authenticated ? !["signup", "signin"].includes(nav.id) : !["signout"].includes(nav.id)))
                 .flatMap(({ Icon, path, title, id }) => (
