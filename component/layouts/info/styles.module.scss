@@ -1,0 +1,82 @@
+@import "@source/scss/index.scss";
+
+.subLayout {
+  & > aside {
+    display: none;
+  }
+  & > div:last-of-type {
+    display: grid;
+    grid-template-rows: $headerHeight auto;
+    & > div:last-of-type {
+      @include quickFlex();
+      background: var(--secondary);
+      min-height: calc(var(--visibleScreen) - var(--headerHeight) - 5px);
+      & > form {
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+        width: 100% !important;
+        padding: 40px 20px 70px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .subLayout {
+    min-height: var(--visibleScreen);
+    display: grid;
+    grid-template-columns: clamp(400px, 40%, 800px) auto;
+    & > aside {
+      display: unset;
+      background-image: url("/images/layout/soccermass.webp");
+      background-size: 100% 100%;
+      position: relative;
+      overflow: hidden;
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: $dark;
+        opacity: 0.4;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      & > div {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        & > div {
+          margin: auto;
+          position: absolute;
+          top: 45%;
+          transform: translateY(-50%);
+          color: $light;
+          font-size: 1.2em;
+          padding: 10px;
+          max-width: 450px;
+          * {
+            text-align: center;
+          }
+
+          ul {
+            padding: 0;
+            list-style: none;
+          }
+        }
+      }
+    }
+
+    & > div:last-of-type > div:last-of-type {
+      background: var(--primary);
+      padding: 20px;
+      & > form {
+        background: var(--secondary) !important;
+        @include boxShadow($br: 10px);
+        width: clamp(300px, 100%, 600px);
+        padding: 50px;
+      }
+    }
+  }
+}
