@@ -1,8 +1,13 @@
 @import "@source/scss/index.scss";
 
 .comingSoon {
-  height: 100%;
+  // height: 100%;
+  border: 3px solid red;
   & > div:last-of-type {
+    // @include quickFlex($dir: column, $width: 100%, $height: calc(100% - $headerHeight - 3px));
+    @include quickFlex($dir: column, $width: 100%);
+    height: 100%;
+    border: 3px solid blue;
     background-color: var(--primary);
     background-image: radial-gradient(circle at bottom left, var(--secondary), var(--primary) 30%);
     background-image: url("/images/layout/background.jpg");
@@ -20,14 +25,13 @@
       // opacity: 0.8;
       // background-color: var(--primary); /* Change the last value (0.5) to adjust the darkness */
     }
-    @include quickFlex($dir: column, $width: 100%, $height: calc(100% - $headerHeight - 3px));
 
     & > main {
       position: relative;
       @include quickFlex($dir: column, $width: 100%, $align: flex-start);
       padding: 20px 10px;
       text-align: left;
-      margin-top: -20px;
+      // margin-top: -20px;
       max-width: 1100px;
 
       & > section {

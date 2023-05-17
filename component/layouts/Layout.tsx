@@ -13,6 +13,7 @@ import HeaderContainer from "@component/shared/header";
 import { AccountsLayout, styles, DefaultLayout } from ".";
 
 import { Layout } from "@interface/components/layouts/layoutsInterface";
+import InfoLayout from "./info/InfoLayout";
 
 const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
   <>
@@ -59,6 +60,8 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
             <Box className={styles.layout}>
               {route.startsWith("/accounts/") ? (
                 <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
+              ) : route.startsWith("/info/") ? (
+                <InfoLayout Component={Component} pageProps={pageProps} loading={loading} />
               ) : (
                 <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />
               )}
