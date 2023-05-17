@@ -1,22 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
+import { Login as SignInIcon, Logout as SignOutIcon, LightMode as LightModeIcon, DarkModeOutlined as DarkModeOutlinedIcon } from "@mui/icons-material";
+
+import Menu from "./menu";
+import SocialContainer from "../social/SocialContainer";
 
 import styles from "./styles.module.scss";
 
 import { Header } from "@interface/components/shared/headerInterface";
-import socialAccounts from "@source/constants/socialAccounts";
-import Menu from "./menu";
-
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import { Box } from "@mui/material";
-
-import SignInIcon from "@mui/icons-material/Login";
-import SignOutIcon from "@mui/icons-material/Logout";
 
 export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: Header) => (
   <div className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
@@ -47,13 +38,7 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
         <Menu />
       ) : (
         <Box display="flex">
-          <Box>
-            {socialAccounts
-              .filter((acc) => ["twitter", "instagram", "whatsapp"].includes(acc.id))
-              .map(({ title, id, href }) => (
-                <SocialIcon key={id} account={title} link={href} />
-              ))}
-          </Box>
+          <SocialContainer filterParams={["twitter", "instagram", "whatsapp"]} />
 
           <Box>
             {!authenticated && (
@@ -79,31 +64,6 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
     </header>
   </div>
 );
-
-const SocialIcon = ({ account, link }: { account: string; link: string }) => {
-  let icon;
-
-  switch (account) {
-    case "Whatsapp":
-      icon = <WhatsAppIcon fontSize="inherit" />;
-      break;
-    case "Twitter":
-      icon = <TwitterIcon fontSize="inherit" />;
-      break;
-
-    case "Instagram":
-      icon = <InstagramIcon fontSize="inherit" />;
-      break;
-    default:
-      return <></>;
-  }
-
-  return (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "16px" }}>
-      {icon}
-    </IconButton>
-  );
-};
 
 const navLinks = [
   { title: "Home", path: "/" },

@@ -1,5 +1,5 @@
 import Menu from "./Menu";
-import Social from "./Social";
+import Social from "../../social/Social";
 import MenuContainer from "./MenuContainer";
 import styles from "./styles.module.scss";
 

@@ -1,26 +1,17 @@
+import Link from "next/link";
+import { IconButton } from "@mui/material";
+
 import {
+  Call as PhoneIcon,
+  GitHub as GitHubIcon,
   Twitter as TwitterIcon,
   WhatsApp as WhatsAppIcon,
   LinkedIn as LinkedInIcon,
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
 } from "@mui/icons-material";
-import Link from "next/link";
-import { Stack, IconButton } from "@mui/material";
 
-import socialAccounts from "@source/constants/socialAccounts";
-
-export default () => (
-  <Stack direction="row" justifyContent="center">
-    {socialAccounts
-      .filter((acc) => ["twitter", "instagram", "whatsapp", "linkedin", "facebook"].includes(acc.id))
-      .map(({ title, id, href }) => (
-        <SocialIcon key={id} account={title} link={href} />
-      ))}
-  </Stack>
-);
-
-const SocialIcon = ({ account, link }: { account: string; link: string }) => {
+export default ({ account, link }: { account: string; link: string }) => {
   let icon;
 
   switch (account) {
@@ -38,6 +29,12 @@ const SocialIcon = ({ account, link }: { account: string; link: string }) => {
       break;
     case "LinkedIn":
       icon = <LinkedInIcon fontSize="inherit" />;
+      break;
+    case "GitHub":
+      icon = <GitHubIcon fontSize="inherit" />;
+      break;
+    case "Phone":
+      icon = <PhoneIcon fontSize="inherit" />;
       break;
 
     default:

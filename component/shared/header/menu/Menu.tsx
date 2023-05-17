@@ -14,7 +14,8 @@ import {
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } from "@mui/material";
 
-import { styles, Social } from ".";
+import { styles } from ".";
+import SocialContainer from "@component/shared/social";
 
 export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: any) => (
   <>
@@ -102,7 +103,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: any) 
             />
           </Box>
           <Paper sx={{ width: "100%", pt: 5 }} elevation={2}>
-            <Social />
+            <SocialContainer filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} />
             <section>
               <Typography component="span" variant="body2" fontSize=".7em">
                 ● All rights reserved. All trademarks are the property of their respective owners ●
