@@ -49,6 +49,7 @@ export default ({ Component, pageProps, loading, activeRoute }: any) => (
 const navLinks = [
   { label: "Privacy Policy", path: "/info/privacy" },
   { label: "Advertisement", path: "/info/advertise" },
-  { label: "Terms and Conditions", path: "/info/terms" },
+  { label: "Terms & Conditions", path: "/info/terms" },
   { label: "Cookie Policy", path: "/info/cookie" },
+  { label: "Contact Us", path: "/info/contact" },
 ];
