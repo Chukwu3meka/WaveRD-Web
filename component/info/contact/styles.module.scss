@@ -1,81 +1,36 @@
 @import "@source/scss/index.scss";
 
 .contact {
-  @include quickFlex($dir: column);
-  width: calc(100% - 10px);
-  padding: 20px 5px 10px;
-  text-align: center;
-  margin: 10px auto !important;
-  hr {
-    margin: -10px auto 50px;
-    width: 100%;
-    max-width: 200px;
-    border-color: color(primary);
-  }
-  & > div:nth-of-type(1) {
-    @include quickFlex($dir: row);
-    flex-wrap: wrap;
-    column-gap: 10px;
+  padding: 10px;
+  & > div.categories {
+    @include quickFlex($dir: row, $wrap: wrap, $column: 10px);
     & > div {
-      @include quickFlex($dir: column);
-      min-width: 200px;
-      max-width: 320px;
+      @include quickFlex($dir: column, $justify: stretch, $width: clamp(150px, 100%, 300px));
       margin: 10px auto;
       padding: 5px;
+      transition: 1s all ease;
       & > div {
-        width: 200px;
-        height: 200px;
+        width: 140px;
+        height: 140px;
         position: relative;
         margin: 10px auto;
         border-radius: 50%;
         overflow: hidden;
+        border: 5px solid var(--secondary);
       }
       & > button {
         margin: 15px auto;
       }
+
+      &:hover {
+        background-color: var(--secondary);
+      }
     }
   }
-  & > div:nth-of-type(2) {
-    margin: 10px 0;
-    & > div:first-of-type {
-      color: black;
-      background-color: var(--pry);
-      padding: 10px 10px 100px;
-      & > div {
-        text-align: left;
-      }
-    }
-    & > div:last-of-type {
-      margin-top: -80px;
-      & > div:nth-of-type(1) > div:nth-of-type(1) {
-        @include quickFlex($dir: column);
-        align-items: flex-start;
-        & > * {
-          margin: 5px initial;
-        }
-        & > div:nth-of-type(1) {
-          // border: 3px solid red;
-          text-align: left;
-          & > section {
-            & > * {
-              margin: 10px 5px;
-            }
-            @include quickFlex($dir: row);
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            padding: 10px;
-          }
-        }
-        & > button {
-          margin: 10px auto;
-        }
-      }
-      & > div:nth-of-type(2) {
-        margin-top: -60px;
-        width: 200px;
-        height: 420px;
-        position: relative;
-      }
-    }
+
+  & > div.contactForm {
+    margin-top: 40px;
+    width: 100%;
+    padding: 30px 20px;
   }
 }
