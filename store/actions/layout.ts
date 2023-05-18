@@ -1,7 +1,8 @@
 import { AppDispatch } from "@store";
 import { removeErrorAction, catchErr } from "./error";
 
-import { SetDeviceSizeAction, SetThemeAction } from "@interface/store/layout";
+import { SetDeviceSizeAction } from "@interface/store/layout";
+import { Theme } from "@interface/utils/constantsInterface";
 
 export const setDeviceSizeAction = (payload: SetDeviceSizeAction) => {
   return async (dispatch: AppDispatch) => {
@@ -25,7 +26,7 @@ export const setActiveRouteAction = (payload: string) => {
   };
 };
 
-export const setThemeAction = (payload: SetThemeAction) => {
+export const setThemeAction = (payload: Theme) => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch({ type: "SET_THEME", payload });

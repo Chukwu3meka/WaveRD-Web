@@ -4,7 +4,7 @@ import { Header } from ".";
 import { setCssThemeVar } from "@utils/handlers";
 import { connector, ConnectorProps } from "@store";
 
-import { SetThemeAction } from "@interface/store/layout";
+import { Theme } from "@interface/utils/constantsInterface";
 import { ColorState, HeaderContainer, VisibleState } from "@interface/components/shared/headerInterface";
 import fetcher from "@utils/fetcher";
 
@@ -15,7 +15,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
     [displayHeader, setDisplayHeader] = useState(null),
     [authenticated, setauthenticated] = useState(false);
 
-  const [theme, setTheme] = useState<SetThemeAction>("light");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     setauthenticated(!!props.auth || false);
@@ -26,7 +26,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
   }, [props.layout.header]);
 
   useEffect(() => {
-    setTheme(props.layout.theme as SetThemeAction);
+    setTheme(props.layout.theme as Theme);
   }, [props.layout.theme]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
-  const themeHandler = async (theme: SetThemeAction) => {
+  const themeHandler = async (theme: Theme) => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     setCssThemeVar(newTheme);

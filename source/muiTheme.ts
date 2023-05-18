@@ -1,4 +1,4 @@
-import { SetThemeAction } from "@interface/store/layout";
+import { Theme } from "@interface/utils/constantsInterface";
 import { createTheme } from "@mui/material/styles";
 
 const iPhoneInputFix = {
@@ -17,7 +17,7 @@ const iPhoneInputFix = {
 
 const inititalTheme = createTheme({});
 
-const muiTheme = (theme: SetThemeAction) => {
+const muiTheme = (theme: Theme) => {
   // const color = theme === "light" ? "#424242" : "#fffffa";
   // const background = theme === "light" ? "#fffffa" : "#14141e";
 

@@ -1,4 +1,4 @@
-import { SetThemeAction } from "@interface/store/layout";
+import { Theme } from "@interface/utils/constantsInterface";
 import { IAgeGenerator, IArrayRotate } from "@interface/utils/clientsFuncs-interface";
 
 export const ageGenerator = ({ date }: IAgeGenerator) => {
@@ -75,7 +75,7 @@ export const fullDateFn = (dateString: Date) => {
   return formattedDate; // Output: "Sunday, 23rd May 2023"
 };
 
-export const setCssThemeVar = (theme: SetThemeAction) => {
+export const setCssThemeVar = (theme: Theme) => {
   if (theme === "dark") {
     // document.documentElement.style.setProperty("--primary", "#06051b");
     // document.documentElement.style.setProperty("--primary", "#4a4a4a");

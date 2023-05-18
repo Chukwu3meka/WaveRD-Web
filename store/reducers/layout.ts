@@ -1,15 +1,14 @@
-import { LayoutState, SetThemeAction } from "@interface/store/layout";
-import { setThemeAction } from "store/actions";
+import { LayoutState } from "@interface/store/layout";
 
-const initialState = {
+const initialState: LayoutState = {
   header: false,
   route: "/",
   height: 0,
   width: 0,
-  theme: setThemeAction["light"],
+  theme: "light",
 };
 
-const layoutReducer = (state: LayoutState = initialState, { payload, type }: { payload: Partial<LayoutState>; type: string }) => {
+const layoutReducer = (state: LayoutState = initialState, { payload, type }: { payload: any; type: string }) => {
   switch (type) {
     case "SET_DEVICE_SIZE":
       return { ...state, ...payload };
