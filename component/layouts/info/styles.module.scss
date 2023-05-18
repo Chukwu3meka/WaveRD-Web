@@ -11,14 +11,17 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .subLayout > div:last-of-type {
-    display: grid;
-    grid-template-columns: clamp(200px, 30%, 250px) auto;
-    & > nav {
-      top: 0px;
-      display: block;
-      position: sticky;
-      height: max-content;
+  .subLayout {
+    min-height: var(--visibleScreen) !important;
+    & > div:last-of-type {
+      display: grid;
+      grid-template-columns: clamp(200px, 30%, 250px) auto;
+      & > nav {
+        top: 0px;
+        display: block;
+        position: sticky;
+        height: max-content;
+      }
     }
   }
 }

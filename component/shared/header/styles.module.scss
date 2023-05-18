@@ -8,8 +8,9 @@
   display: block;
   transition: top 0.5s ease-in-out;
   z-index: 3;
-  margin: calc(-#{$headerHeight}) auto 0;
+  margin: calc(-#{$headerHeight} + 5px) auto 0;
   padding: 0 10px;
+  border: 3px solid transparent; // ? Don't delete this; It affects header height
   & > header {
     max-width: 1500px;
     background-color: var(--primary);
@@ -42,6 +43,7 @@
     }
 
     & > div:nth-of-type(3) {
+      align-items: center;
       column-gap: 10px;
     }
   }
@@ -49,7 +51,7 @@
 
 .hiddenHeader {
   @extend .stickyHeader;
-  top: calc(-#{$headerHeight});
+  top: calc(-#{$headerHeight} + 5px);
   & > header {
     border: none;
   }
