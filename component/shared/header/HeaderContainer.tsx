@@ -43,7 +43,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
     setThemeAction(newTheme);
 
-    await fetcher({ method: "POST", payload: { theme: newTheme }, endpoint: "/accounts/theme" }).catch(() => {});
+    authenticated && (await fetcher({ method: "POST", payload: { theme: newTheme }, endpoint: "/accounts/theme" }).catch(() => {}));
   };
 
   return <Header {...{ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }} />;
