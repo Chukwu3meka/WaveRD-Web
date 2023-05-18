@@ -70,7 +70,8 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
         <LinearProgress color="inherit" />
       </Stack>
     )}
-    {process.env.NODE_ENV === "production" && <Analytics />}
+
+    <Analytics />
   </>
 );
 

@@ -6,7 +6,6 @@ import { SnackbarProvider } from "notistack";
 
 import { store } from "@store";
 import LayoutContainer from "@component/layouts";
-import createEmotionCache from "@source/createEmotionCache";
 
 export default (props: AppProps) => (
   <Provider store={store}>
