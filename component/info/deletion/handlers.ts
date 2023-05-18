@@ -1,6 +1,6 @@
 import fetcher from "@utils/fetcher";
 import validator from "@utils/validator";
-import { capitalize, sleep } from "@utils/handlers";
+import { sleep } from "@utils/handlers";
 
 import { Validator } from "@interface/utils/validatorInterface";
 import { OnInputChange, DeleteDataHandler } from "@interface/components/info/dataDeletion";

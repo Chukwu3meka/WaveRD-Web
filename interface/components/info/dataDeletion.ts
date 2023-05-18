@@ -1,12 +1,13 @@
 import { Validator } from "@interface/utils/validatorInterface";
 
-// export interface Signup {
-//   onInputChange: Function;
-//   userForm: UserForm;
-//   handleClickShowPassword: Function;
-//   onBlurHandler: Function;
-//   registerHandler: Function;
-// }
+export interface DataDeletion {
+  onInputChange: Function;
+  userForm: UserForm;
+  handleClickShowPassword: Function;
+  onBlurHandler: Function;
+  deleteDataHandler: Function;
+  authenticated: boolean;
+}
 
 export interface UserForm {
   options: UserFormOptions;
@@ -22,12 +23,6 @@ interface UserFormOptions {
   loading: boolean;
   showPassword: boolean;
   validate: boolean;
-}
-
-export interface ValidateFormEntry {
-  id: Validator["type"];
-  value: string;
-  setUserForm: Function;
 }
 
 export interface OnInputChange {

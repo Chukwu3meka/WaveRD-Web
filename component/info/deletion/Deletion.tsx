@@ -1,20 +1,12 @@
-import { Card, CardContent, Divider } from "@mui/material";
-
-import Link from "next/link";
-import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
-import {
-  Visibility as VisibilityIcon,
-  VisibilityOff as VisibilityOffIcon,
-  DeleteForever as DeleteForeverIcon,
-  PersonAddAlt1 as RegisterIcon,
-} from "@mui/icons-material";
-import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
-import { Signup } from "@interface/components/accounts/signupInterface";
+import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, DeleteForever as DeleteForeverIcon } from "@mui/icons-material";
+import { TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Card, CardContent, Divider } from "@mui/material";
 
-export default ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler, authenticated }: any) => (
+import { DataDeletion } from "@interface/components/info/dataDeletion";
+
+export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, onBlurHandler, authenticated }: DataDeletion) => (
   <Card sx={{ width: "calc(100% - 20px)", mx: "auto", my: 2 }} component="main">
     <CardContent>
       <Typography gutterBottom variant="h5" component="h1" textAlign="center">
@@ -84,17 +76,6 @@ export default ({ onInputChange, userForm, handleClickShowPassword, registerHand
                   error={!userForm.email.valid}
                   label="Email Address"
                   autoComplete="off"
-                  endAdornment={
-                    userForm.email.validating ? (
-                      <InputAdornment position="end">
-                        <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
-                          <CircularProgress color="success" size={20} />
-                        </IconButton>
-                      </InputAdornment>
-                    ) : (
-                      false
-                    )
-                  }
                 />
               </FormControl>
             </Grid>
@@ -111,17 +92,6 @@ export default ({ onInputChange, userForm, handleClickShowPassword, registerHand
                   placeholder="What would you like us to call you?"
                   error={!userForm.handle.valid}
                   label="Handle"
-                  endAdornment={
-                    userForm.handle.validating ? (
-                      <InputAdornment position="end">
-                        <IconButton aria-label="validating handle" edge="end" sx={{ ml: -1 }}>
-                          <CircularProgress color="success" size={20} />
-                        </IconButton>
-                      </InputAdornment>
-                    ) : (
-                      false
-                    )
-                  }
                 />
               </FormControl>
             </Grid>
@@ -170,7 +140,7 @@ export default ({ onInputChange, userForm, handleClickShowPassword, registerHand
             <Grid item xs={12} md={12} sx={{ textAlign: "right" }}>
               <AttentionSeeker effect="bounce">
                 <LoadingButton
-                  onClick={() => registerHandler()}
+                  onClick={() => deleteDataHandler()}
                   size="large"
                   variant="contained"
                   color="primary"

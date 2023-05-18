@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import { useSnackbar } from "notistack";
+import { useState, useEffect } from "react";
 
 import { Deletion, handlers } from ".";
 import { connector, ConnectorProps } from "@store";
+
 import { UserForm } from "@interface/components/info/dataDeletion";
 
 export default connector((props: ConnectorProps) => {
@@ -21,10 +22,10 @@ export default connector((props: ConnectorProps) => {
     password: { value: "", valid: true, info: "Password cannot be empty", validate: true },
   });
 
-  const registerHandler = () => handlers.deleteDataHandler({ enqueueSnackbar, setUserForm, userForm });
+  const deleteDataHandler = () => handlers.deleteDataHandler({ enqueueSnackbar, setUserForm, userForm });
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: true });
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: false });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
-  return <Deletion {...{ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler, authenticated }} />;
+  return <Deletion {...{ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, onBlurHandler, authenticated }} />;
 });
