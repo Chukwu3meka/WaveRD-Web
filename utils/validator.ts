@@ -50,8 +50,8 @@ const validator = ({ value, type, label }: Validator) => {
     case "comment": {
       charLengthLimit(20, 700);
 
-      const reg = /^[a-zA-Z0-9,.!? ]$/;
-      if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, exclamation and question mark.` };
+      const reg = /^[a-zA-Z0-9.,'!? ]+$/;
+      if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, apostrophe, exclamation and question mark.` };
       break;
     }
 

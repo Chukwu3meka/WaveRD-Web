@@ -5,9 +5,13 @@ import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
-import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
+import {
+  Visibility as VisibilityIcon,
+  VisibilityOff as VisibilityOffIcon,
+  DeleteForever as DeleteForeverIcon,
+  PersonAddAlt1 as RegisterIcon,
+} from "@mui/icons-material";
 import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
-
 import { Signup } from "@interface/components/accounts/signupInterface";
 
 export default ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler, authenticated }: any) => (
@@ -148,6 +152,7 @@ export default ({ onInputChange, userForm, handleClickShowPassword, registerHand
 
             <Grid item xs={12} md={12}>
               <TextField
+                id="comment"
                 fullWidth
                 label="Comment"
                 variant="outlined"
@@ -160,6 +165,20 @@ export default ({ onInputChange, userForm, handleClickShowPassword, registerHand
                 multiline
                 placeholder="We are sorry to hear that you are deleting your account. We value your membership and would like to know if there is anything we can do to improve your experience. Please let us know what we can do to better serve you by visiting our contact us page."
               />
+            </Grid>
+
+            <Grid item xs={12} md={12} sx={{ textAlign: "right" }}>
+              <AttentionSeeker effect="bounce">
+                <LoadingButton
+                  onClick={() => registerHandler()}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                  endIcon={<DeleteForeverIcon />}
+                  loading={userForm.options.loading}>
+                  <Typography sx={{ fontWeight: 900 }}>Delete Account</Typography>
+                </LoadingButton>
+              </AttentionSeeker>
             </Grid>
           </Grid>
         </>

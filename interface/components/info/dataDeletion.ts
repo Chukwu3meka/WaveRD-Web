@@ -1,28 +1,28 @@
 import { Validator } from "@interface/utils/validatorInterface";
 
-export interface Signup {
-  onInputChange: Function;
-  userForm: UserForm;
-  handleClickShowPassword: Function;
-  onBlurHandler: Function;
-  registerHandler: Function;
-}
+// export interface Signup {
+//   onInputChange: Function;
+//   userForm: UserForm;
+//   handleClickShowPassword: Function;
+//   onBlurHandler: Function;
+//   registerHandler: Function;
+// }
 
 export interface UserForm {
   options: UserFormOptions;
   email: UserFormValuesData;
   handle: UserFormValuesData;
   password: UserFormValuesData;
-  fullName: UserFormValuesData;
+  comment: UserFormValuesData;
 }
+
+type UserFormValuesData = { info: string; value: string; valid: boolean; validate: boolean };
 
 interface UserFormOptions {
   loading: boolean;
   showPassword: boolean;
-  accountCreated: boolean;
+  validate: boolean;
 }
-
-type UserFormValuesData = { info: string; value: string; valid: boolean; validating: boolean };
 
 export interface ValidateFormEntry {
   id: Validator["type"];
@@ -38,9 +38,8 @@ export interface OnInputChange {
   onBlur: boolean;
 }
 
-export interface RegisterHandler {
-  enqueueSnackbar: Function;
-  closeSnackbar: Function;
-  setUserForm: Function;
+export interface DeleteDataHandler {
   userForm: UserForm;
+  setUserForm: Function;
+  enqueueSnackbar: Function;
 }
