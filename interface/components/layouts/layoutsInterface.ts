@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import { NextRouter } from "next/router";
 import { EmotionCache } from "@emotion/react";
 import { EnqueueSnackbar } from "notistack";
+import { store } from "@store";
 
 export interface LayoutContainer {
   pageProps: AppProps["pageProps"];
@@ -42,4 +43,8 @@ export interface SubLayout {
   Component: AppProps["Component"];
   pageProps: AppProps["pageProps"];
   loading: boolean;
+}
+
+export interface InfoLayout extends SubLayout {
+  activeRoute: string;
 }

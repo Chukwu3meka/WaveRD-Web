@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Carousel from "nuka-carousel";
 import { Fade } from "react-awesome-reveal";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 
@@ -7,9 +6,9 @@ import { styles } from ".";
 import RelativeHeader from "@component/shared/header";
 import Loading from "@component/shared/loading/Loading";
 
-import { SubLayout } from "@interface/components/layouts/layoutsInterface";
+import { InfoLayout } from "@interface/components/layouts/layoutsInterface";
 
-export default ({ Component, pageProps, loading, activeRoute }: any) => (
+export default ({ Component, pageProps, loading, activeRoute }: InfoLayout) => (
   <main className={styles.subLayout}>
     <RelativeHeader position="relative" />
     <div>
@@ -38,4 +37,5 @@ const navLinks = [
   { label: "Terms & Conditions", path: "/info/terms" },
   { label: "Cookie Policy", path: "/info/cookie" },
   { label: "Advertisement", path: "/info/advertise" },
+  { label: "Data Deletion", path: "/info/deletion" },
 ];

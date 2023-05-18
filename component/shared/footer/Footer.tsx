@@ -57,10 +57,10 @@ export default () => (
               </Typography>
 
               <Link href="/info/advertise/">Advertise</Link>
-              <Link href="/info/cookie/">Cookie Policy</Link>
-              <Link href="/info/terms/">Terms &amp; Conditions</Link>
               <Link href="/info/privacy/">Privacy Policy</Link>
+              <Link href="/info/terms/">Terms &amp; Conditions</Link>
               <Link href="/info/contact/">Contact Us</Link>
+              <Link href="/info/deletion/">Data Deletion</Link>
             </div>
 
             <div>

@@ -13,9 +13,5 @@ export default connector((props: SubLayout & ConnectorProps) => {
     setActiveRoute(props.layout.route);
   }, [props.layout.route]);
 
-  useEffect(() => {
-    console.log(`activeRoute updated to ${activeRoute}`);
-  }, [activeRoute]);
-
   return <InfoLayout activeRoute={activeRoute} Component={Component} pageProps={pageProps} loading={loading} />;
 });
