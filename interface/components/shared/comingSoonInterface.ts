@@ -1,6 +1,7 @@
 export interface ComingSoonContainer {
   header?: boolean;
   minHeight?: string;
+  finishDate?: Date;
 }
 
 export interface ComingSoon extends ComingSoonContainer {
