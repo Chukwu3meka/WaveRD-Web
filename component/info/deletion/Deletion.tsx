@@ -6,7 +6,7 @@ import { TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInp
 
 import { DataDeletion } from "@interface/components/info/dataDeletion";
 
-export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, onBlurHandler, authenticated }: DataDeletion) => (
+export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, authenticated }: DataDeletion) => (
   <Card sx={{ width: "calc(100% - 20px)", mx: "auto", my: 2 }} component="main">
     <CardContent>
       <Typography gutterBottom variant="h5" component="h1" textAlign="center">
@@ -70,8 +70,8 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
                   id="email"
                   value={userForm.email.value}
                   disabled={userForm.options.loading}
-                  onBlur={(e) => onBlurHandler(e)}
-                  onChange={(e) => onInputChange(e)}
+                  onBlur={(e) => onInputChange(e, true)}
+                  onChange={(e) => onInputChange(e, false)}
                   placeholder="firstname.lastname@soccermass.com"
                   error={!userForm.email.valid}
                   label="Email Address"
@@ -87,8 +87,8 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
                   id="handle"
                   value={userForm.handle.value}
                   disabled={userForm.options.loading}
-                  onChange={(e) => onInputChange(e)}
-                  onBlur={(e) => onBlurHandler(e)}
+                  onChange={(e) => onInputChange(e, false)}
+                  onBlur={(e) => onInputChange(e, true)}
                   placeholder="What would you like us to call you?"
                   error={!userForm.handle.valid}
                   label="Handle"
@@ -104,8 +104,8 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
                   type={userForm.options.showPassword ? "text" : "password"}
                   value={userForm.password.value}
                   disabled={userForm.options.loading}
-                  onChange={(e) => onInputChange(e)}
-                  onBlur={(e) => onBlurHandler(e)}
+                  onChange={(e) => onInputChange(e, false)}
+                  onBlur={(e) => onInputChange(e, true)}
                   placeholder="Password"
                   error={!userForm.password.valid}
                   label="Password"
@@ -129,8 +129,8 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
                 error={!userForm.comment.valid}
                 value={userForm.comment.value}
                 disabled={userForm.options.loading}
-                onChange={(e) => onInputChange(e)}
-                onBlur={(e) => onBlurHandler(e)}
+                onChange={(e) => onInputChange(e, false)}
+                onBlur={(e) => onInputChange(e, true)}
                 minRows={5}
                 multiline
                 placeholder="We are sorry to hear that you are deleting your account. We value your membership and would like to know if there is anything we can do to improve your experience. Please let us know what we can do to better serve you by visiting our contact us page."

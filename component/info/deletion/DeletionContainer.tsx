@@ -23,9 +23,9 @@ export default connector((props: ConnectorProps) => {
   });
 
   const deleteDataHandler = () => handlers.deleteDataHandler({ enqueueSnackbar, setUserForm, userForm });
-  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: true });
-  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: false });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>, onBlur: boolean) =>
+    handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur });
 
-  return <Deletion {...{ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, onBlurHandler, authenticated }} />;
+  return <Deletion {...{ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, authenticated }} />;
 });

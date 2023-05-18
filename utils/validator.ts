@@ -37,6 +37,7 @@ const validator = ({ value, type, label }: Validator) => {
       break;
     }
 
+    case "name":
     case "fullName": {
       charLengthLimit(3, 64);
       const reg = /^[a-zA-Z]+([\ \'\.\-][a-zA-Z]+)*$/;

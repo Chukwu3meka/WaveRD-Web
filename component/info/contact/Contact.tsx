@@ -1,9 +1,10 @@
-import { Grid, Paper, Select, Hidden, Button, MenuItem, TextField, Typography, InputLabel, FormControl, FormHelperText, Box, Stack } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { TextField, Typography, InputLabel, FormControl, OutlinedInput, Select, Button, MenuItem, Paper, Stack } from "@mui/material";
+
 import { styles } from ".";
-import Link from "next/link";
 import Image from "next/image";
 
-const Contact = ({ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }) => (
+const Contact = ({ sectionHandler, setValues, contact, values, submitHandler, commentRef, supportTeam, userForm, onInputChange, contactPrefHandler }: any) => (
   <main className={styles.contact}>
     <div className={styles.categories}>
       {supportTeam.map(({ supportType, image, description, buttonType }) => (
@@ -22,7 +23,7 @@ const Contact = ({ contactLinks, sectionHandler, setValues, values, submitHandle
     <Paper elevation={2} className={styles.contactForm}>
       <Stack spacing={2}>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={6} md={2}>
             <FormControl fullWidth>
               <InputLabel id="section-id">Category</InputLabel>
               <Select labelId="section-id" id="section" value={values.section} onChange={sectionHandler} label="Section">
@@ -34,23 +35,67 @@ const Contact = ({ contactLinks, sectionHandler, setValues, values, submitHandle
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={4}>
+
+          <Grid item xs={12} sm={6} md={4}>
             <TextField
               fullWidth
-              label="eMail"
-              value={values?.email}
-              placeholder="We'll reach out to you soon"
-              onChange={(e) => setValues({ ...values, email: e.target.value })}
+              id="name"
+              label="Full Name"
+              variant="outlined"
+              aria-describedby="name"
+              value={userForm.name.value}
+              placeholder="How should we address you"
+              error={!userForm.name.valid}
+              onBlur={(e) => onInputChange(e, true)}
+              onChange={(e) => onInputChange(e, false)}
+              disabled={userForm.options.loading}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              fullWidth
-              label="Name"
-              value={values?.name}
-              placeholder="How do we address you"
-              onChange={(e) => setValues({ ...values, name: e.target.value })}
-            />
+
+          <Grid item xs={12} sm={6} md={2}>
+            <FormControl fullWidth>
+              <InputLabel id="contact-preference">Preference</InputLabel>
+              <Select
+                labelId="contact-preference"
+                id="contact-preference"
+                value={userForm.options.contact}
+                label="Preference"
+                onChange={(e) => contactPrefHandler(e)}>
+                <MenuItem value="email">Email</MenuItem>
+                <MenuItem value="whatsapp">WhatsApp</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <FormControl fullWidth variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">{contact[userForm.options.contact]}</InputLabel>
+              <OutlinedInput
+                id="contact"
+                value={userForm.contact.value}
+                disabled={userForm.options.loading}
+                onBlur={(e) => onInputChange(e, true)}
+                onChange={(e) => onInputChange(e, false)}
+                placeholder="How do we reach you"
+                label={contact[userForm.options.contact]}
+                autoComplete="off"
+              />
+            </FormControl>
+
+            {/* <FormControl fullWidth variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
+              <OutlinedInput
+                id="contact"
+                value={userForm.contact.value}
+                disabled={userForm.options.loading}
+                onBlur={(e) => onInputChange(e, true)}
+                onChange={(e) => onInputChange(e, false)}
+                placeholder="firstname.lastname@soccermass.com"
+                error={!userForm.contact.valid}
+                label="Email Address"
+                autoComplete="off"
+              />
+            </FormControl> */}
           </Grid>
         </Grid>
 

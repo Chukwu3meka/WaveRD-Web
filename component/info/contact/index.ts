@@ -1,5 +1,6 @@
 import Contact from "./Contact";
-import ContactContainer from "./ContactContainer";
+import * as handlers from "./handlers";
 import styles from "./styles.module.scss";
+import ContactContainer from "./ContactContainer";
 
-export { Contact, ContactContainer as default, styles };
+export { Contact, handlers, ContactContainer as default, styles };

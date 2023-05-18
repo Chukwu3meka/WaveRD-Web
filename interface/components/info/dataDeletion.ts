@@ -1,10 +1,7 @@
-import { Validator } from "@interface/utils/validatorInterface";
-
 export interface DataDeletion {
   onInputChange: Function;
   userForm: UserForm;
   handleClickShowPassword: Function;
-  onBlurHandler: Function;
   deleteDataHandler: Function;
   authenticated: boolean;
 }

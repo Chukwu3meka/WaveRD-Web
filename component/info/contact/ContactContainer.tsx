@@ -6,6 +6,13 @@ import { Contact } from ".";
 import { Router, useRouter } from "next/router";
 import ComingSoon from "@component/shared/comingSoon";
 
+import { connector, ConnectorProps } from "@store";
+
+import { UserForm } from "@interface/components/info/dataDeletion";
+
+import { handlers } from ".";
+import { SelectChangeEvent } from "@mui/material/Select";
+
 const contactLinks = [
   { title: "ViewCrunch Services", path: "/company" },
   { title: "Reporting a user", path: "/info/faq?id=Reporting-a-user" },
@@ -35,11 +42,17 @@ const supportTeam = [
   },
 ];
 
-export default (props) => {
+export default connector((props: ConnectorProps) => {
+  const [authenticated, setAuthenticated] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   const router = useRouter(),
     commentRef = useRef(null),
-    { enqueueSnackbar } = useSnackbar(),
     [values, setValues] = useState({ email: "", name: "", comment: "", section: "others" });
+
+  useEffect(() => {
+    setAuthenticated(!!props.auth);
+  }, [props.auth]);
 
   const sectionHandler = ({ target: { value } }) => {
     setValues({ ...values, section: value });
@@ -61,9 +74,30 @@ export default (props) => {
     }
   };
 
+  const [userForm, setUserForm] = useState<any>({
+    options: { showPassword: false, loading: false, validate: false, contact: "email" },
+    contact: { value: "", valid: true, info: "Contact cannot be empty", validate: true },
+    name: { value: "", valid: true, info: "Handle cannot be empty", validate: true },
+    comment: { value: "", valid: true, info: "Comment cannot be empty", validate: true },
+    password: { value: "", valid: true, info: "Password cannot be empty", validate: true },
+  });
+
+  const deleteDataHandler = () => handlers.deleteDataHandler({ enqueueSnackbar, setUserForm, userForm });
+  const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>, onBlur: boolean) =>
+    handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur });
+
+  const contactPrefHandler = (e: SelectChangeEvent) =>
+    setUserForm((values) => ({ ...values, options: { ...values.options, contact: e.target.value as string } }));
+
   return process.env.NODE_ENV === "production" ? (
     <ComingSoon header={true} />
   ) : (
-    <Contact {...{ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }} />
+    <Contact {...{ sectionHandler, setValues, contact, values, submitHandler, commentRef, supportTeam, userForm, onInputChange, contactPrefHandler }} />
   );
+});
+
+const contact = {
+  email: "Email Address",
+  whatsapp: "WhatsApp",
 };
