@@ -1,83 +1,169 @@
 import { Card, CardContent, Divider } from "@mui/material";
 
-import { Grid, Paper, Select, Hidden, Button, MenuItem, TextField, Typography, InputLabel, FormControl, FormHelperText, Box, Stack } from "@mui/material";
-import { styles } from ".";
 import Link from "next/link";
 import Image from "next/image";
+import Grid from "@mui/material/Grid";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { AttentionSeeker } from "react-awesome-reveal";
+import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
+import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
 
-const Contact = ({ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }) => (
-  <main className={styles.contact}>
-    <Card sx={{ maxWidth: 1200, width: "calc(100% - 20px)", mx: "auto", my: 2 }}>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h1" textAlign="center">
-          Privacy Policy
-        </Typography>
+import { Signup } from "@interface/components/accounts/signupInterface";
 
-        <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
-          DATA DELETION INSTRUCTION
-        </Typography>
+export default ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler, authenticated }: any) => (
+  <Card sx={{ width: "calc(100% - 20px)", mx: "auto", my: 2 }} component="main">
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="h1" textAlign="center">
+        DATA DELETION INSTRUCTION
+      </Typography>
 
-        <Typography variant="body2" color="text.secondary">
-          We only use Email for authentication (Signin purpose only) across social platforms(Twitter, Facebook and Google). To maintain a highly competitive
-          online gaming experience, after a certain period of inactivity (currently 21 days) on our site, your profile and its data will be deleted by one of
-          our moderators, with no way to recover your account.
-        </Typography>
-      </CardContent>
-    </Card>
+      <Typography variant="body2" color="text.secondary">
+        We only use Email for authentication (Signin purpose only) across social platforms(Twitter, Facebook and Google). To maintain a highly competitive
+        online gaming experience, after a certain period of inactivity (currently 21 days) on our site, your profile and its data will be deleted by one of our
+        moderators, with no way to recover your account.
+      </Typography>
 
-    <Paper elevation={2} className={styles.contactForm}>
-      <Stack spacing={2}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={4}>
-            <FormControl fullWidth>
-              <InputLabel id="section-id">Category</InputLabel>
-              <Select labelId="section-id" id="section" value={values.section} onChange={sectionHandler} label="Section">
-                <MenuItem value="others">Others</MenuItem>
-                <MenuItem value="advertising">Advertising</MenuItem>
-                <MenuItem value="technical">Technical</MenuItem>
-                <MenuItem value="suggestion">Suggestion</MenuItem>
-                <MenuItem value="service">Digital Service</MenuItem>
-              </Select>
-            </FormControl>
+      <Divider sx={{ my: 3 }} />
+
+      <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
+        What is data deletion?
+      </Typography>
+
+      <Typography variant="body2" color="text.secondary">
+        Data deletion is the process of removing personal information from a website or online service. This can be done for a variety of reasons, such as when
+        a user requests that their data be deleted, when a user's account is deactivated or deleted, or when a website or online service is no longer in use.
+      </Typography>
+
+      <Typography variant="body2" color="text.secondary">
+        Once you delete your data from a website, it is usually removed from the website's servers. However, it is important to note that your data may not be
+        completely deleted immediately. In some cases, your data may be stored in backup or archive files for a period of time. Additionally, we may retain
+        certain pieces of your data, such as your previous login details or other logs, for the purpose of preventing abuse and improving our sites.
+      </Typography>
+      <Typography variant="body2" color="text.secondary"></Typography>
+
+      <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
+        Why should I delete my data from websites?
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        There are a few reasons why you might want to delete your data from websites. For example, you may want to delete your data if you are concerned about
+        your privacy or if you no longer use the website. Additionally, deleting your data can help to protect you from identity theft and other forms of fraud.
+      </Typography>
+
+      <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
+        How can I protect my data from being deleted?
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        - Be careful about what information you share online.
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        - Use strong passwords and security measures.
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        - checking for regular security updates from you relating to my account.
+      </Typography>
+
+      {authenticated && (
+        <>
+          <Divider sx={{ my: 3 }} />
+
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={4}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
+                <OutlinedInput
+                  id="email"
+                  value={userForm.email.value}
+                  disabled={userForm.options.loading}
+                  onBlur={(e) => onBlurHandler(e)}
+                  onChange={(e) => onInputChange(e)}
+                  placeholder="firstname.lastname@soccermass.com"
+                  error={!userForm.email.valid}
+                  label="Email Address"
+                  autoComplete="off"
+                  endAdornment={
+                    userForm.email.validating ? (
+                      <InputAdornment position="end">
+                        <IconButton aria-label="validating email" edge="end" sx={{ ml: -1 }}>
+                          <CircularProgress color="success" size={20} />
+                        </IconButton>
+                      </InputAdornment>
+                    ) : (
+                      false
+                    )
+                  }
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">Handle</InputLabel>
+                <OutlinedInput
+                  id="handle"
+                  value={userForm.handle.value}
+                  disabled={userForm.options.loading}
+                  onChange={(e) => onInputChange(e)}
+                  onBlur={(e) => onBlurHandler(e)}
+                  placeholder="What would you like us to call you?"
+                  error={!userForm.handle.valid}
+                  label="Handle"
+                  endAdornment={
+                    userForm.handle.validating ? (
+                      <InputAdornment position="end">
+                        <IconButton aria-label="validating handle" edge="end" sx={{ ml: -1 }}>
+                          <CircularProgress color="success" size={20} />
+                        </IconButton>
+                      </InputAdornment>
+                    ) : (
+                      false
+                    )
+                  }
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                <OutlinedInput
+                  id="password"
+                  type={userForm.options.showPassword ? "text" : "password"}
+                  value={userForm.password.value}
+                  disabled={userForm.options.loading}
+                  onChange={(e) => onInputChange(e)}
+                  onBlur={(e) => onBlurHandler(e)}
+                  placeholder="Password"
+                  error={!userForm.password.valid}
+                  label="Password"
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+                        {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} md={12}>
+              <TextField
+                fullWidth
+                label="Comment"
+                variant="outlined"
+                error={!userForm.comment.valid}
+                value={userForm.comment.value}
+                disabled={userForm.options.loading}
+                onChange={(e) => onInputChange(e)}
+                onBlur={(e) => onBlurHandler(e)}
+                minRows={5}
+                multiline
+                placeholder="We are sorry to hear that you are deleting your account. We value your membership and would like to know if there is anything we can do to improve your experience. Please let us know what we can do to better serve you by visiting our contact us page."
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              fullWidth
-              label="eMail"
-              value={values?.email}
-              placeholder="We'll reach out to you soon"
-              onChange={(e) => setValues({ ...values, email: e.target.value })}
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              fullWidth
-              label="Name"
-              value={values?.name}
-              placeholder="How do we address you"
-              onChange={(e) => setValues({ ...values, name: e.target.value })}
-            />
-          </Grid>
-        </Grid>
-
-        <TextField
-          fullWidth
-          label="Comment"
-          variant="outlined"
-          value={values?.comment}
-          minRows={5}
-          multiline
-          inputRef={commentRef}
-          placeholder={values?.section === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
-          onChange={(e) => setValues({ ...values, comment: e.target.value })}
-        />
-
-        <Button color="primary" variant="contained" onClick={submitHandler}>
-          Submit
-        </Button>
-      </Stack>
-    </Paper>
-  </main>
+        </>
+      )}
+    </CardContent>
+  </Card>
 );
-
-export default Contact;

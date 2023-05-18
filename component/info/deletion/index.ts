@@ -1,5 +1,5 @@
 import Deletion from "./Deletion";
+import * as handlers from "./handlers";
 import DeletionContainer from "./DeletionContainer";
-import styles from "./styles.module.scss";
 
-export { Deletion, DeletionContainer as default, styles };
+export { Deletion, handlers, DeletionContainer as default };

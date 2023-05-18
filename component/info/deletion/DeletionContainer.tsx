@@ -1,69 +1,30 @@
-import { connect } from "react-redux";
+import { useState, useEffect } from "react";
 import { useSnackbar } from "notistack";
-import { useState, useRef, useEffect } from "react";
 
-import { Deletion } from ".";
-import { Router, useRouter } from "next/router";
-import ComingSoon from "@component/shared/comingSoon";
+import { Deletion, handlers } from ".";
+import { UserForm } from "@interface/components/accounts/signupInterface";
+import { connector, ConnectorProps } from "@store";
 
-const contactLinks = [
-  { title: "ViewCrunch Services", path: "/company" },
-  { title: "Reporting a user", path: "/info/faq?id=Reporting-a-user" },
-  { title: "Advertisement and Pricing", path: "/info/advertise" },
-  { title: "Visit Our FAQ section", path: "/info/faq" },
-  { title: "Signing In", path: "/info/faq?id=Signing-In" },
-];
+export default connector((props: ConnectorProps) => {
+  const [authenticated, setAuthenticated] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-const supportTeam = [
-  {
-    supportType: "Technical Support",
-    image: "/images/layout/support.png",
-    description: "Already using SoccerMASS and experiencing issues on our platform",
-    buttonType: "technical",
-  },
-  {
-    supportType: "Advertising",
-    image: "/images/layout/advertise.png",
-    description: "Having a pricing question or need help managing your ads",
-    buttonType: "advertising",
-  },
-  {
-    supportType: "Others",
-    image: "/images/layout/others.png",
-    description: "Evaluating our service? Not related to Technical support or Advertising",
-    buttonType: "others",
-  },
-];
+  useEffect(() => {
+    setAuthenticated(!!props.auth);
+  }, [props.auth]);
 
-export default (props) => {
-  const router = useRouter(),
-    commentRef = useRef(null),
-    { enqueueSnackbar } = useSnackbar(),
-    [values, setValues] = useState({ email: "", name: "", comment: "", section: "others" });
+  const [userForm, setUserForm] = useState({
+    options: { showPassword: false, loading: false },
+    email: { value: "", valid: true, info: "Email cannot be empty" },
+    handle: { value: "", valid: true, info: "Handle cannot be empty", validating: false },
+    password: { value: "", valid: true, info: "Password cannot be empty", validating: false },
+    comment: { value: "", valid: true, info: "Comment cannot be empty", validating: false },
+  });
 
-  const sectionHandler = ({ target: { value } }) => {
-    setValues({ ...values, section: value });
-    // scroll to comment on section change
-    setTimeout(() => commentRef.current.focus(), 100);
-  };
+  const registerHandler = () => handlers.registerHandler({ enqueueSnackbar, setUserForm, userForm, closeSnackbar });
+  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: true });
+  const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur: false });
+  const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
-  const submitHandler = async () => {
-    if (values.name && values.email && values.comment) {
-      // const status = await fetcher("/api/info/contactus", values);
-      // if (!status) return enqueueSnackbar(`Please, Try again. Server unable to handle request.`, { variant: "error" });
-      // setValues({ email: "", name: "", comment: "", section: "others" });
-      // enqueueSnackbar(`Submitted successful, We'll get in touch soon`, { variant: "success" });
-      // } else {
-      //   enqueueSnackbar(`Network connectivity issue.`, { variant: "warning" });
-      // }
-    } else {
-      enqueueSnackbar(`All fields are mandatory.`, { variant: "warning" });
-    }
-  };
-
-  return process.env.NODE_ENV === "production" ? (
-    <ComingSoon header={true} />
-  ) : (
-    <Deletion {...{ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }} />
-  );
-};
+  return <Deletion {...{ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler, authenticated }} />;
+});
