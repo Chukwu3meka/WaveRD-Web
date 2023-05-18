@@ -47,4 +47,10 @@ export interface SubLayout {
 
 export interface InfoLayout extends SubLayout {
   activeRoute: string;
+  deviceWidth: number;
+  autoCompleteHandler: Function;
+}
+export interface NavLinks {
+  label: string;
+  path: string;
 }
