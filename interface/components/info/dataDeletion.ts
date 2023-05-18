@@ -1,3 +1,5 @@
+import { EnqueueSnackbar } from "notistack";
+
 export interface DataDeletion {
   onInputChange: Function;
   userForm: UserForm;
@@ -23,7 +25,7 @@ interface UserFormOptions {
 }
 
 export interface OnInputChange {
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
   closeSnackbar: Function;
   e: React.FocusEvent<HTMLInputElement>;
   setUserForm: Function;
@@ -33,5 +35,5 @@ export interface OnInputChange {
 export interface DeleteDataHandler {
   userForm: UserForm;
   setUserForm: Function;
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
 }

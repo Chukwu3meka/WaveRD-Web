@@ -58,4 +58,6 @@ const navLinks: NavLinks[] = [
   { label: "Cookie Policy", path: "/info/cookie" },
   { label: "Advertisement", path: "/info/advertise" },
   { label: "Data Deletion", path: "/info/deletion" },
+  { label: "Pricing", path: "/info/pricing" },
+  { label: "FAQ Section", path: "/info/faq" },
 ];

@@ -1,14 +1,17 @@
-import Grid from "@mui/material/Grid";
-import { TextField, Typography, InputLabel, FormControl, OutlinedInput, Select, Button, MenuItem, Paper, Stack } from "@mui/material";
+import Image from "next/image";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { AttentionSeeker } from "react-awesome-reveal";
+import { Grid, TextField, Typography, InputLabel, FormControl, OutlinedInput, Select, MenuItem, Paper, Stack } from "@mui/material";
 
 import { styles } from ".";
-import Image from "next/image";
 
-const Contact = ({ sectionHandler, setValues, contact, values, submitHandler, commentRef, supportTeam, userForm, onInputChange, contactPrefHandler }: any) => (
+import { ContactUS } from "@interface/components/info/contactUs";
+
+const Contact = ({ sectionHandler, contactPreference, categories, submitHandler, commentRef, userForm, onInputChange, contactPrefHandler }: ContactUS) => (
   <main className={styles.contact}>
     <div className={styles.categories}>
       {supportTeam.map(({ supportType, image, description, buttonType }) => (
-        <Paper elevation={2} key={supportType} onClick={() => sectionHandler({ target: { value: buttonType } })}>
+        <Paper elevation={2} key={supportType} onClick={() => sectionHandler(buttonType)}>
           <Image src={image} alt={`SoccerMASS Contact Us - ${supportType}`} width={140} height={140} />
 
           <Typography variant="h6">{supportType}</Typography>
@@ -25,13 +28,13 @@ const Contact = ({ sectionHandler, setValues, contact, values, submitHandler, co
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={2}>
             <FormControl fullWidth>
-              <InputLabel id="section-id">Category</InputLabel>
-              <Select labelId="section-id" id="section" value={values.section} onChange={sectionHandler} label="Section">
-                <MenuItem value="others">Others</MenuItem>
-                <MenuItem value="advertising">Advertising</MenuItem>
-                <MenuItem value="technical">Technical</MenuItem>
-                <MenuItem value="suggestion">Suggestion</MenuItem>
-                <MenuItem value="service">Digital Service</MenuItem>
+              <InputLabel id="category">Category</InputLabel>
+              <Select labelId="category" id="category" value={userForm.category.value} onChange={(e) => sectionHandler(e.target.value)} label="Category">
+                {categories.map(({ value, label }) => (
+                  <MenuItem key={label} value={value}>
+                    {label}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
           </Grid>
@@ -40,7 +43,7 @@ const Contact = ({ sectionHandler, setValues, contact, values, submitHandler, co
             <TextField
               fullWidth
               id="name"
-              label="Full Name"
+              label="Name"
               variant="outlined"
               aria-describedby="name"
               value={userForm.name.value}
@@ -69,54 +72,67 @@ const Contact = ({ sectionHandler, setValues, contact, values, submitHandler, co
 
           <Grid item xs={12} sm={6} md={4}>
             <FormControl fullWidth variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">{contact[userForm.options.contact]}</InputLabel>
+              <InputLabel htmlFor="outlined-adornment-password">{contactPreference[userForm.options.contact]}</InputLabel>
               <OutlinedInput
+                error={!userForm.contact.valid}
                 id="contact"
                 value={userForm.contact.value}
                 disabled={userForm.options.loading}
                 onBlur={(e) => onInputChange(e, true)}
                 onChange={(e) => onInputChange(e, false)}
                 placeholder="How do we reach you"
-                label={contact[userForm.options.contact]}
+                label={contactPreference[userForm.options.contact]}
                 autoComplete="off"
               />
             </FormControl>
-
-            {/* <FormControl fullWidth variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
-              <OutlinedInput
-                id="contact"
-                value={userForm.contact.value}
-                disabled={userForm.options.loading}
-                onBlur={(e) => onInputChange(e, true)}
-                onChange={(e) => onInputChange(e, false)}
-                placeholder="firstname.lastname@soccermass.com"
-                error={!userForm.contact.valid}
-                label="Email Address"
-                autoComplete="off"
-              />
-            </FormControl> */}
           </Grid>
         </Grid>
 
         <TextField
+          inputRef={commentRef}
+          placeholder={userForm.category.value === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
+          id="comment"
           fullWidth
           label="Comment"
           variant="outlined"
-          value={values?.comment}
+          error={!userForm.comment.valid}
+          value={userForm.comment.value}
+          disabled={userForm.options.loading}
+          onChange={(e) => onInputChange(e, false)}
+          onBlur={(e) => onInputChange(e, true)}
           minRows={5}
           multiline
-          inputRef={commentRef}
-          placeholder={values?.section === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
-          onChange={(e) => setValues({ ...values, comment: e.target.value })}
         />
 
-        <Button color="primary" variant="contained" onClick={submitHandler}>
-          Submit
-        </Button>
+        <AttentionSeeker effect="bounce">
+          <LoadingButton onClick={() => submitHandler()} size="large" variant="contained" color="primary" loading={userForm.options.loading}>
+            <Typography sx={{ fontWeight: 900 }}>Submit</Typography>
+          </LoadingButton>
+        </AttentionSeeker>
       </Stack>
     </Paper>
   </main>
 );
 
 export default Contact;
+
+const supportTeam = [
+  {
+    supportType: "Technical Support",
+    image: "/images/layout/support.png",
+    description: "Already using SoccerMASS and experiencing issues on our platform",
+    buttonType: "technical",
+  },
+  {
+    supportType: "Advertising",
+    image: "/images/layout/advertise.png",
+    description: "Having a pricing question or need help managing your ads",
+    buttonType: "advertising",
+  },
+  {
+    supportType: "Others",
+    image: "/images/layout/others.png",
+    description: "Evaluating our service? Not related to Technical support or Advertising",
+    buttonType: "others",
+  },
+];

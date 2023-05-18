@@ -1,8 +1,7 @@
 import { AppProps } from "next/app";
 import { NextRouter } from "next/router";
-import { EmotionCache } from "@emotion/react";
 import { EnqueueSnackbar } from "notistack";
-import { store } from "@store";
+import { EmotionCache } from "@emotion/react";
 
 export interface LayoutContainer {
   pageProps: AppProps["pageProps"];

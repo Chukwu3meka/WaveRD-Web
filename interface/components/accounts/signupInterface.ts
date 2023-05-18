@@ -1,3 +1,5 @@
+import { EnqueueSnackbar } from "notistack";
+
 import { Validator } from "@interface/utils/validatorInterface";
 
 export interface Signup {
@@ -31,7 +33,7 @@ export interface ValidateFormEntry {
 }
 
 export interface OnInputChange {
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
   closeSnackbar: Function;
   e: React.FocusEvent<HTMLInputElement>;
   setUserForm: Function;
@@ -39,7 +41,7 @@ export interface OnInputChange {
 }
 
 export interface RegisterHandler {
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
   closeSnackbar: Function;
   setUserForm: Function;
   userForm: UserForm;

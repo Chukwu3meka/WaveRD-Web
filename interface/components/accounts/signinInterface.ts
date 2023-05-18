@@ -1,3 +1,5 @@
+import { EnqueueSnackbar } from "notistack";
+
 import { SetAuthAction } from "@interface/store/auth";
 
 export interface Signin {
@@ -32,7 +34,7 @@ export interface LoginHandler {
   userForm: UserForm;
   setUserForm: Function;
   setAuthAction: (SetAuthAction) => void;
-  enqueueSnackbar: Function;
+  enqueueSnackbar: EnqueueSnackbar;
 }
 
 export interface Social {

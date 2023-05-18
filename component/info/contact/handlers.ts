@@ -3,14 +3,31 @@ import validator from "@utils/validator";
 import { sleep } from "@utils/handlers";
 
 import { Validator } from "@interface/utils/validatorInterface";
-import { OnInputChange, DeleteDataHandler } from "@interface/components/info/dataDeletion";
+import { OnInputChange, ContactPrefHandler, SubmitHandler } from "@interface/components/info/contactUs";
 
-export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnackbar, onBlur }: OnInputChange) => {
+// maduekwepedro@gmail.com
+
+export const contactPrefHandler = ({ e, userForm, contactPreference, setUserForm, enqueueSnackbar, closeSnackbar }: ContactPrefHandler) => {
+  const preference: string = e.target.value;
+  setUserForm((values) => ({ ...values, options: { ...values.options, contact: preference } }));
+  try {
+    validator({ value: userForm.contact.value.trim(), type: <Validator["type"]>preference, label: contactPreference[preference] });
+    setUserForm((values) => ({ ...values, contact: { ...values.contact, valid: true } }));
+    closeSnackbar(); // <= hide any error that have been shown previously
+  } catch ({ message }) {
+    enqueueSnackbar(message || "Contact is invalid", { variant: "error" }); // <=  Inform user of regex error
+    setUserForm((values) => ({ ...values, contact: { ...values.contact, valid: false } }));
+  }
+};
+
+export const onInputChange = async ({ e, contactPreference, setUserForm, enqueueSnackbar, userForm, closeSnackbar, onBlur }: OnInputChange) => {
   const { value, id } = e.target;
+
+  const validatorId = id === "contact" ? userForm.options.contact : id;
 
   setUserForm((values: any) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
   try {
-    validator({ value: value.trim(), type: <Validator["type"]>id, label: id === "email" ? "Email Address" : null });
+    validator({ value: value.trim(), type: <Validator["type"]>validatorId, label: validatorId !== id ? contactPreference[validatorId] : null });
 
     setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
 
@@ -21,31 +38,37 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
   }
 };
 
-export const deleteDataHandler = async ({ enqueueSnackbar, setUserForm, userForm }: DeleteDataHandler) => {
+export const submitHandler = async ({ enqueueSnackbar, setUserForm, userForm, contactPreference, categories }: SubmitHandler) => {
   try {
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
-    const userData: any = {};
+    const userData: any = {
+      category: userForm.category.value,
+      preference: userForm.options.contact,
+    };
 
     /* re-validate all values before registeration */
     for (const [id, { value, validate }] of Object.entries(userForm)) {
       if (validate) {
-        validator({ value: value.trim(), type: <Validator["type"]>id, label: id === "email" ? "Email Address" : null });
+        const validatorId = id === "contact" ? userForm.options.contact : id;
+        // maduekwepedro@gmail.com
+        validator({ value: value.trim(), type: <Validator["type"]>validatorId, label: validatorId !== id ? contactPreference[validatorId] : null });
         setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null } }));
         userData[id] = value.trim(); // <= append input to userdata if its valid
       }
     }
 
-    // await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
-    await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/data-deletion" }).then(async () => {
+    console.log({ userData });
+    // // await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
+    await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
       await sleep(0.5);
 
       setUserForm({
-        options: { showPassword: false, loading: false, validate: false },
-        email: { value: "", valid: true, info: "Email cannot be empty", validate: true },
-        handle: { value: "", valid: true, info: "Handle cannot be empty", validate: true },
+        name: { value: "", valid: true, info: "Handle cannot be empty", validate: true },
+        options: { loading: false, contact: "email", validate: false, section: "others" },
+        contact: { value: "", valid: true, info: "Contact cannot be empty", validate: true },
         comment: { value: "", valid: true, info: "Comment cannot be empty", validate: true },
-        password: { value: "", valid: true, info: "Password cannot be empty", validate: true },
+        category: { value: categories[0].value, valid: true, info: "Category cannot be empty", validate: false },
       });
 
       enqueueSnackbar("Data deletion initiated, Kindly check your mail for the next step", { variant: "success" }); // <=  Inform user of regex error

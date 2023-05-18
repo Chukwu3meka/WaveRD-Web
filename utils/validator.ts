@@ -48,6 +48,17 @@ const validator = ({ value, type, label }: Validator) => {
       break;
     }
 
+    case "whatsapp": {
+      charLengthLimit(5, 17);
+      const reg = /^(?:\+|0{0,2})\d{1,3}\s?\d{3}\s?\d{3}\s?\d{4}$/;
+
+      if (!reg.test(value))
+        throw {
+          message: `${label} must be a valid phone number.`,
+        };
+      break;
+    }
+
     case "comment": {
       charLengthLimit(20, 700);
 
