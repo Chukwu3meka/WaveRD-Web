@@ -6,6 +6,7 @@ import { connector, ConnectorProps } from "@store";
 
 import { SetThemeAction } from "@interface/store/layout";
 import { ColorState, HeaderContainer, VisibleState } from "@interface/components/shared/headerInterface";
+import fetcher from "@utils/fetcher";
 
 export default connector((props: HeaderContainer & ConnectorProps) => {
   const { position, setThemeAction } = props,
@@ -35,14 +36,14 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
-  const themeHandler = (theme: SetThemeAction) => {
+  const themeHandler = async (theme: SetThemeAction) => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     setCssThemeVar(newTheme);
 
     setThemeAction(newTheme);
 
-    // persist theme in database
+    await fetcher({ method: "POST", payload: { theme }, endpoint: "/accounts/theme" }).catch(() => {});
   };
 
   return <Header {...{ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }} />;
