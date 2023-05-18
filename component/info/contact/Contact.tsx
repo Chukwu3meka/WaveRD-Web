@@ -8,13 +8,9 @@ const Contact = ({ contactLinks, sectionHandler, setValues, values, submitHandle
     <div className={styles.categories}>
       {supportTeam.map(({ supportType, image, description, buttonType }) => (
         <Paper elevation={2} key={supportType} onClick={() => sectionHandler({ target: { value: buttonType } })}>
-          <div>
-            <Image src={image} fill alt="SoccerMASS Contact Us" />
-          </div>
+          <Image src={image} alt={`SoccerMASS Contact Us - ${supportType}`} width={140} height={140} />
 
-          <Typography variant="h6">
-            <b>{supportType}</b>
-          </Typography>
+          <Typography variant="h6">{supportType}</Typography>
 
           <Typography variant="body2" color="textSecondary">
             {description}

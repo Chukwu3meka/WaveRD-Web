@@ -6,11 +6,14 @@ export default () => (
       <Typography gutterBottom variant="h5" component="h1" textAlign="center">
         Cookie Policy
       </Typography>
+
       <Typography variant="body2" color="text.secondary">
         SoccerMASS uses cookies on its website to provide you with a better user experience. Cookies are small files that are stored on your computer's hard
         drive when you visit a website. They are used to store information such as name, handle, authentication details etc to reduce load time and to remember
         your browsing preferences for our site such as theme.
       </Typography>
+
+      <Divider sx={{ my: 3 }} />
 
       <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
         SoccerMASS uses cookies for the following purposes:
@@ -47,8 +50,6 @@ export default () => (
         using a social provider, we will collect your email address from that provider. We will use this email address to verify your identity and to update
         your account on SoccerMASS. We will not share your email address with any third party.
       </Typography>
-
-      <Divider sx={{ my: 3 }} />
 
       <Typography variant="body2" color="text.secondary">
         You can choose to not sign in to SoccerMASS using a social provider. If you do, you will need to create an account using your email address and

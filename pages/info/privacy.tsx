@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, Divider } from "@mui/material";
 export default () => (
   <Card sx={{ maxWidth: 1200, width: "calc(100% - 20px)", mx: "auto", my: 2 }}>
     <CardContent>
-    <Typography gutterBottom variant="h5" component="h1" textAlign="center">
+      <Typography gutterBottom variant="h5" component="h1" textAlign="center">
         Privacy Policy
       </Typography>
       <Typography variant="body2" color="text.secondary">
@@ -13,6 +13,8 @@ export default () => (
         with certain personally identifiable information that can be used to contact or identify you. Personally, identifiable information may include, but is
         not limited to your name which we don’t ask for but your handle(username) as a way of reference to a particular manager.
       </Typography>
+
+      <Divider sx={{ my: 3 }} />
 
       <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
         DATA COLLECTION
@@ -45,16 +47,6 @@ export default () => (
       </Typography>
 
       <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
-        DATA DELETION INSTRUCTION
-      </Typography>
-
-      <Typography variant="body2" color="text.secondary">
-        We only use Email for authentication (Signin purpose only) across social platforms(Twitter, Facebook and Google). To maintain a highly competitive
-        online gaming experience, after a certain period of inactivity (currently 21 days) on our site, your profile and its data will be deleted by one of our
-        moderators, with no way to recover your account.
-      </Typography>
-
-      <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
         CHANGES TO TERMS OF USE AND CONDITIONS
       </Typography>
 
@@ -63,7 +55,9 @@ export default () => (
         in the future, which will be in effect immediately after being posted on this page. We reserve the right, at our sole discretion, to modify, update or
         replace these Terms and Policy at any time and you should check the Terms and Policy periodically though we might send a “policy or terms update
         notification to your mail”.
-        <Divider sx={{ my: 3 }} />
+      </Typography>
+
+      <Typography variant="body2" color="text.secondary">
         If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will
         be determined at sole discretion. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute
         your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this

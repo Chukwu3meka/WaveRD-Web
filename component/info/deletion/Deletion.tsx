@@ -1,3 +1,5 @@
+import { Card, CardContent, Divider } from "@mui/material";
+
 import { Grid, Paper, Select, Hidden, Button, MenuItem, TextField, Typography, InputLabel, FormControl, FormHelperText, Box, Stack } from "@mui/material";
 import { styles } from ".";
 import Link from "next/link";
@@ -5,23 +7,23 @@ import Image from "next/image";
 
 const Contact = ({ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }) => (
   <main className={styles.contact}>
-    <div className={styles.categories}>
-      {supportTeam.map(({ supportType, image, description, buttonType }) => (
-        <Paper elevation={2} key={supportType} onClick={() => sectionHandler({ target: { value: buttonType } })}>
-          <div>
-            <Image src={image} fill alt="SoccerMASS Contact Us" />
-          </div>
+    <Card sx={{ maxWidth: 1200, width: "calc(100% - 20px)", mx: "auto", my: 2 }}>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h1" textAlign="center">
+          Privacy Policy
+        </Typography>
 
-          <Typography variant="h6">
-            <b>{supportType}</b>
-          </Typography>
+        <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
+          DATA DELETION INSTRUCTION
+        </Typography>
 
-          <Typography variant="body2" color="textSecondary">
-            {description}
-          </Typography>
-        </Paper>
-      ))}
-    </div>
+        <Typography variant="body2" color="text.secondary">
+          We only use Email for authentication (Signin purpose only) across social platforms(Twitter, Facebook and Google). To maintain a highly competitive
+          online gaming experience, after a certain period of inactivity (currently 21 days) on our site, your profile and its data will be deleted by one of
+          our moderators, with no way to recover your account.
+        </Typography>
+      </CardContent>
+    </Card>
 
     <Paper elevation={2} className={styles.contactForm}>
       <Stack spacing={2}>

@@ -3,8 +3,10 @@ import { accountsRoute, protectedRoutes } from "@utils/constants/routes";
 
 export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoading) => {
   // if (url) console.log(`Switching page to ${url}`);
+
   window.scrollTo({ top: 0, behavior: "smooth" }); // <= Smoothly scroll to the top of the page on page load
-  if (loading) {
+
+  if (loading && !url.startsWith("/info/")) {
     setLoading(true);
   } else {
     setTimeout(() => setLoading(false), 2000);
