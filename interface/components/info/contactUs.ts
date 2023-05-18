@@ -14,7 +14,7 @@ export interface ContactUS {
   contactPrefHandler: Function;
   categories: Categories[];
   submitHandler: Function;
-  commentRef: React.Ref<any>;
+  categoryRef: React.Ref<any>;
   userForm: UserForm;
   onInputChange: Function;
 }
@@ -24,7 +24,6 @@ export interface UserForm {
   name: UserFormValuesData;
   contact: UserFormValuesData;
   comment: UserFormValuesData;
-  category: UserFormValuesData;
 }
 
 type UserFormValuesData = { info: string; value: string; valid: boolean; validate: boolean };
@@ -34,6 +33,7 @@ interface UserFormOptions {
   loading: boolean;
   contact: "email" | "whatsapp";
   validate: boolean;
+  category: string;
 }
 
 export interface ContactPrefHandler {

@@ -26,12 +26,12 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
 
   await fetcher({ method: "POST", endpoint: "/accounts/signin", payload: { email, password } })
     .then(async ({ payload: { role, fullName, handle, cookieConsent } }) => {
-      await sleep(0.5);
+      await sleep(0.3);
       setAuthAction({ role, fullName, handle, cookieConsent });
       enqueueSnackbar("Authenticated Successfully", { variant: "success" });
     })
     .catch(async ({ message }) => {
-      await sleep(0.5);
+      await sleep(0.3);
       enqueueSnackbar(message || "Invalid Email/Password", { variant: "error" });
     })
     .finally(() => disableLoading());

@@ -5,8 +5,6 @@ import { sleep } from "@utils/handlers";
 import { Validator } from "@interface/utils/validatorInterface";
 import { OnInputChange, ContactPrefHandler, SubmitHandler } from "@interface/components/info/contactUs";
 
-// maduekwepedro@gmail.com
-
 export const contactPrefHandler = ({ e, userForm, contactPreference, setUserForm, enqueueSnackbar, closeSnackbar }: ContactPrefHandler) => {
   const preference: string = e.target.value;
   setUserForm((values) => ({ ...values, options: { ...values.options, contact: preference } }));
@@ -43,7 +41,7 @@ export const submitHandler = async ({ enqueueSnackbar, setUserForm, userForm, co
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
     const userData: any = {
-      category: userForm.category.value,
+      category: userForm.options.category,
       preference: userForm.options.contact,
     };
 
@@ -58,20 +56,18 @@ export const submitHandler = async ({ enqueueSnackbar, setUserForm, userForm, co
       }
     }
 
-    console.log({ userData });
     // // await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
     await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
-      await sleep(0.5);
+      await sleep(0.3);
 
       setUserForm({
         name: { value: "", valid: true, info: "Handle cannot be empty", validate: true },
-        options: { loading: false, contact: "email", validate: false, section: "others" },
         contact: { value: "", valid: true, info: "Contact cannot be empty", validate: true },
         comment: { value: "", valid: true, info: "Comment cannot be empty", validate: true },
-        category: { value: categories[0].value, valid: true, info: "Category cannot be empty", validate: false },
+        options: { loading: false, contact: "email", validate: false, category: categories[0].value },
       });
 
-      enqueueSnackbar("Data deletion initiated, Kindly check your mail for the next step", { variant: "success" }); // <=  Inform user of regex error
+      enqueueSnackbar("Message sent successfully, We'll get in touch soon", { variant: "success" }); // <=  Inform user of regex error
     });
   } catch ({ message }: any) {
     enqueueSnackbar(message || "Error initiating account deletion", { variant: "error" }); // <=  Inform user of regex error

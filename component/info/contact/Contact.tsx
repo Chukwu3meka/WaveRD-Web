@@ -7,12 +7,12 @@ import { styles } from ".";
 
 import { ContactUS } from "@interface/components/info/contactUs";
 
-const Contact = ({ sectionHandler, contactPreference, categories, submitHandler, commentRef, userForm, onInputChange, contactPrefHandler }: ContactUS) => (
+const Contact = ({ sectionHandler, contactPreference, categories, submitHandler, categoryRef, userForm, onInputChange, contactPrefHandler }: ContactUS) => (
   <main className={styles.contact}>
     <div className={styles.categories}>
       {supportTeam.map(({ supportType, image, description, buttonType }) => (
         <Paper elevation={2} key={supportType} onClick={() => sectionHandler(buttonType)}>
-          <Image src={image} alt={`SoccerMASS Contact Us - ${supportType}`} width={140} height={140} />
+          <Image src={image} alt={`SoccerMASS Contact Us - ${supportType}`} width={100} height={100} />
 
           <Typography variant="h6">{supportType}</Typography>
 
@@ -29,7 +29,7 @@ const Contact = ({ sectionHandler, contactPreference, categories, submitHandler,
           <Grid item xs={12} sm={6} md={2}>
             <FormControl fullWidth>
               <InputLabel id="category">Category</InputLabel>
-              <Select labelId="category" id="category" value={userForm.category.value} onChange={(e) => sectionHandler(e.target.value)} label="Category">
+              <Select labelId="category" id="category" value={userForm.options.category} onChange={(e) => sectionHandler(e.target.value)} label="Category">
                 {categories.map(({ value, label }) => (
                   <MenuItem key={label} value={value}>
                     {label}
@@ -89,8 +89,8 @@ const Contact = ({ sectionHandler, contactPreference, categories, submitHandler,
         </Grid>
 
         <TextField
-          inputRef={commentRef}
-          placeholder={userForm.category.value === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
+          inputRef={categoryRef}
+          placeholder={userForm.options.category === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
           id="comment"
           fullWidth
           label="Comment"
@@ -118,16 +118,16 @@ export default Contact;
 
 const supportTeam = [
   {
-    supportType: "Technical Support",
-    image: "/images/layout/support.png",
-    description: "Already using SoccerMASS and experiencing issues on our platform",
-    buttonType: "technical",
-  },
-  {
     supportType: "Advertising",
     image: "/images/layout/advertise.png",
     description: "Having a pricing question or need help managing your ads",
     buttonType: "advertising",
+  },
+  {
+    supportType: "Technical Support",
+    image: "/images/layout/support.png",
+    description: "Already using SoccerMASS and experiencing issues on our platform",
+    buttonType: "technical",
   },
   {
     supportType: "Others",

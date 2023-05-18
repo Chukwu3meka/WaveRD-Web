@@ -5,7 +5,7 @@
   & > div.categories {
     @include quickFlex($dir: row, $wrap: wrap, $column: 10px);
     & > div {
-      @include quickFlex($dir: column, $justify: stretch, $width: clamp(150px, 100%, 300px));
+      @include quickFlex($dir: column, $justify: stretch, $width: clamp(120px, 30vw, 300px));
       margin: 10px auto;
       padding: 5px;
       transition: 1s all ease;
