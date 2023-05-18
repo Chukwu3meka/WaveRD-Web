@@ -33,10 +33,7 @@ const validator = ({ value, type, label }: Validator) => {
       charLengthLimit(3, 16);
 
       const reg = /^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$/;
-      if (!reg.test(value))
-        throw {
-          message: `${label} must begin with a letter or number and may only contain an underscore between letters or numbers`,
-        };
+      if (!reg.test(value)) throw { message: `${label} must begin with a letter or number and may only contain an underscore between letters or numbers` };
       break;
     }
 
@@ -47,6 +44,14 @@ const validator = ({ value, type, label }: Validator) => {
         throw {
           message: `${label} can only have one or more letters, with optional dashes, dots, spaces, or hyphens, as long as they are followed by one or more letters.`,
         };
+      break;
+    }
+
+    case "comment": {
+      charLengthLimit(20, 700);
+
+      const reg = /^[a-zA-Z0-9,.!? ]$/;
+      if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, exclamation and question mark.` };
       break;
     }
 
