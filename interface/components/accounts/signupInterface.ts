@@ -24,7 +24,7 @@ interface UserFormOptions {
   accountCreated: boolean;
 }
 
-type UserFormValuesData = { info: string; value: string; valid: boolean; validating: boolean };
+type UserFormValuesData = { info: string; value: string; valid: boolean; validating?: boolean };
 
 export interface ValidateFormEntry {
   id: Validator["type"];
