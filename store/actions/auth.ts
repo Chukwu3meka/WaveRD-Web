@@ -38,7 +38,7 @@ export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch
     };
 
     //localhost:3000/accounts/signin#_=_
-    http: await fetcher({ method: "GET", endpoint: "/accounts/cookies" })
+    http: await fetcher({ method: "GET", endpoint: "/accounts/details" })
       .then(async ({ payload }) => {
         setThemeFn(payload.theme);
         dispatch(setAuthAction(payload));

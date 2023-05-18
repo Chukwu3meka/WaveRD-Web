@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { Header } from ".";
+import fetcher from "@utils/fetcher";
 import { setCssThemeVar } from "@utils/handlers";
 import { connector, ConnectorProps } from "@store";
 
 import { Theme } from "@interface/utils/constantsInterface";
 import { ColorState, HeaderContainer, VisibleState } from "@interface/components/shared/headerInterface";
-import fetcher from "@utils/fetcher";
 
 export default connector((props: HeaderContainer & ConnectorProps) => {
   const { position, setThemeAction } = props,
@@ -43,7 +43,7 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
     setThemeAction(newTheme);
 
-    await fetcher({ method: "POST", payload: { theme }, endpoint: "/accounts/theme" }).catch(() => {});
+    await fetcher({ method: "POST", payload: { theme: newTheme }, endpoint: "/accounts/theme" }).catch(() => {});
   };
 
   return <Header {...{ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }} />;
