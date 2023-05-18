@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import { useState, useRef, useEffect } from "react";
 
-import { Contact } from ".";
+import { Deletion } from ".";
 import { Router, useRouter } from "next/router";
 import ComingSoon from "@component/shared/comingSoon";
 
@@ -64,6 +64,6 @@ export default (props) => {
   return process.env.NODE_ENV === "production" ? (
     <ComingSoon header={true} />
   ) : (
-    <Contact {...{ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }} />
+    <Deletion {...{ contactLinks, sectionHandler, setValues, values, submitHandler, commentRef, supportTeam }} />
   );
 };

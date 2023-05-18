@@ -1,5 +1,5 @@
-import Contact from "./Contact";
-import ContactContainer from "./ContactContainer";
+import Deletion from "./Deletion";
+import DeletionContainer from "./DeletionContainer";
 import styles from "./styles.module.scss";
 
-export { Contact, ContactContainer as default, styles };
+export { Deletion, DeletionContainer as default, styles };

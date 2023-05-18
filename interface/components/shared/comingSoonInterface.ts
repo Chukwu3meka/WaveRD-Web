@@ -5,6 +5,8 @@ export interface ComingSoonContainer {
 }
 
 export interface ComingSoon extends ComingSoonContainer {
+  header: boolean;
+  minHeight: string;
   timeLeft: TimeLeft;
 }
 
