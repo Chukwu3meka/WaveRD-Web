@@ -32,7 +32,7 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     if (!ready) {
       window.addEventListener("resize", handleResize);
       window.addEventListener("scroll", setDisplayHeaderAction);
-      verifyCookieAction({ setRoute, setTheme, setReady, handlePageLoading });
+      verifyCookieAction({ setRoute, setTheme, setReady, handlePageLoading, router, enqueueSnackbar });
     }
     return () => {
       window.removeEventListener("resize", handleResize);

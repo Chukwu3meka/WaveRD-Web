@@ -3,7 +3,7 @@ import { Fade } from "react-awesome-reveal";
 
 import RelativeHeader from "@component/shared/header";
 import Loading from "@component/shared/loading/Loading";
-import authSlideText from "@source/constants/authSlideText";
+import authSlideText from "@utils/constants/authSlideText";
 
 import { styles } from ".";
 import { SubLayout } from "@interface/components/layouts/layoutsInterface";

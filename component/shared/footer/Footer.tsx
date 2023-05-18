@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
-import socialAccounts from "@source/constants/socialAccounts";
+import socialAccounts from "@utils/constants/socialAccounts";
 
 export default () => (
   <div className={`xOverflowHidden ${styles.footer}`}>

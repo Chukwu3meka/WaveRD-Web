@@ -1,4 +1,5 @@
 import { HandlePageLoading, HandleProtectedRoute, HandleScroll } from "@interface/components/layouts/layoutsInterface";
+import { accountsRoute, protectedRoutes } from "@utils/constants/routes";
 
 export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoading) => {
   // if (url) console.log(`Switching page to ${url}`);
@@ -21,19 +22,22 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiv
   // console.log{route}
   // enqueueSnackbar("Error creating your account", { variant: "error" }); // <=  Inform user of regex error
 
-  const accountsRoute = ["/accounts/signin", "/accounts/signup"],
-    protectedRoutes = ["/manager"];
-  // publicRoutes = ["/", "/apihub", "/accounts/reset", "/accounts/signin", "/accounts/signup", "/organization"];
+  // console.log({ route, authenticated });
 
-  if (authenticated && accountsRoute.includes(route)) {
-    router.push("/"); // Signout to access this page
-  }
+  // console.log(route, accountsRoute);
 
-  if (!authenticated && protectedRoutes.includes(route)) {
-    enqueueSnackbar("You need to be authenticated to access this page", { variant: "error" });
-    // setTimeout(() => closeSnackbar(), 2500);
-    router.push("/accounts/signin"); // Signin to access this page
-  }
+  if (authenticated) for (const route of accountsRoute) if (location.pathname.startsWith(route)) router.push("/"); // Signout to access this page
+  if (!authenticated) for (const route of protectedRoutes) if (location.pathname.startsWith(route)) router.push("/accounts/signin"); // Signin to access this page
+
+  // if (authenticated && accountsRoute.includes(route)) {
+  //   router.push("/"); // Signout to access this page
+  // }
+
+  // if (!authenticated && protectedRoutes.includes(route)) {
+  //   enqueueSnackbar("You need to be authenticated to access this page", { variant: "error" });
+  //   // setTimeout(() => closeSnackbar(), 2500);
+  //   router.push("/accounts/signin"); // Signin to access this page
+  // }
 };
 
 export const handleScroll = ({ setDisplayHeaderAction }: HandleScroll) => {

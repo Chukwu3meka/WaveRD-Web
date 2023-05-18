@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 
 import { Social } from ".";
-import socialAccounts from "@source/constants/socialAccounts";
+import socialAccounts from "@utils/constants/socialAccounts";
 
 import { SocialContainer } from "@interface/components/shared/socialInterface";
 

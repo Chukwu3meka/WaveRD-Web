@@ -3,7 +3,7 @@ import Image from "next/image";
 import Carousel from "nuka-carousel";
 import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
 
-import { competitions } from "@source/constants/competitions";
+import { competitions } from "@utils/constants/competitions";
 
 import { managerStyles as styles } from ".";
 
