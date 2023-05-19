@@ -52,8 +52,8 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
       <ThemeProvider theme={muiTheme(theme)}>
         <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CacheProvider value={emotionCache}>
-          <HeaderContainer position="sticky" />
           <Box className={styles.layout}>
+            <HeaderContainer position="sticky" />
             {route.startsWith("/accounts/") ? (
               <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
             ) : route.startsWith("/info/") ? (

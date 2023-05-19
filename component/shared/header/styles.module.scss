@@ -1,17 +1,31 @@
 @import "@source/scss/index.scss";
 
 .stickyHeader {
+  // position: sticky;
   position: sticky;
-  position: -webkit-sticky;
+  // position: -webkit-sticky;
   background-color: transparent;
-  top: 5px; /* required */
-  display: block;
+  // top: 5px; /* required */
+  top: 0; /* required */
+  left: 0;
+  right: 0;
+  // border: 3px solid blue !important;
+  // display: block;
   transition: top 0.5s ease-in-out;
+  // transition: 0.5s all ease;
+  padding: 5px 10px 10px;
   z-index: 3;
-  margin: calc(-#{$headerHeight} + 5px) auto 0;
-  padding: 0 10px;
-  border: 3px solid transparent; // ? Don't delete this; It affects header height
+  // height: var(--headerHeight);
+  // margin: calc(-#{$headerHeight}) auto 0;
+  // border: 3px solid transparent; // ? Don't delete this; It affects header height
+  // border: 3px solid red !important;
+  // padding: 5px 10px 10px;
+  // border: 3px solid yellow !important;
+
   & > header {
+    // background-color: var(--primary);
+    // border: 3px solid blue !important  ;
+    // border: 3px solid blue !important;
     max-width: 1500px;
     background-color: var(--primary);
     box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
@@ -45,37 +59,78 @@
     & > div:nth-of-type(3) {
       align-items: center;
       column-gap: 10px;
+      & > div:nth-of-type(1) {
+        border-right: 1px solid var(--secondary);
+
+        // padding-right: 15px;
+        // margin-right: 10px;
+        // @include quickFlex($dir: row);
+      }
     }
-  }
-}
-
-.hiddenHeader {
-  @extend .stickyHeader;
-  top: calc(-#{$headerHeight} + 5px);
-  & > header {
-    border: none;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .stickyHeader > header > div:nth-of-type(3) > div:nth-of-type(1) {
-    border-right: 1px solid var(--secondary);
-    padding-right: 15px;
-    margin-right: 10px;
-    @include quickFlex($dir: row);
   }
 }
 
 .relativeHeader {
   @extend .stickyHeader;
-  margin: auto;
-  position: unset;
-  z-index: 2;
-  width: 100%;
+  // border: 3px solid green !important;
+  // margin: auto;
+
+  // position: unset;
+  position: relative;
+  // z-index: 2;
+  // width: 100%;
+  padding: 0;
+
+  // border: 3px solid yellow !important;
+
+  // border: 3px solid blue !important;
 
   border-bottom: 1px solid $primary;
   & > header {
     background-color: transparent;
     box-shadow: none;
+  }
+}
+
+.hiddenHeader {
+  @extend .stickyHeader;
+  // position: unset;
+  // position: sticky;
+  // margin-top: calc(-1 * var(--headerHeight) - 10px);
+  // margin-top: calc(-1 * var(--headerHeight) - 15px);
+  // top: -20000px !important;
+  // position: sticky;
+  // top: -20px;
+  // position: fixed;
+  // top: -180px;
+  // bottom: -180px;
+  // margin-top: -90px;
+  // z-index: -20;
+  // top: calc(-1 * var(--headerHeight) + -1 * var(--headerHeight) - 10px);
+  // border: 3px solid red !important;
+  // display: ;
+  // position: absolute;
+  // display: none;
+  position: relative;
+  // top: -86px;
+  top: calc(-1 * var(--headerHeight) - 15px);
+  // top: 100vh;
+  // height: 0 !important;
+  // overflow: hidden;
+  // visibility: hidden;
+  // z-index: 3;
+  transition: none;
+  // // top: calc(-#{$headerHeight} - 505px);
+  // border: 3px solid red !important;
+  // position: fixed;
+  // top: 0;
+  // display: none;
+  // visibility: hidden;
+  // top: calc(-#{$headerHeight} - 10px);
+  // top: calc(-var(--headerHeight) - 10px);
+  // top: calc(-#{var(--headerHeight)} - 200px);
+  // top: -1000px !important;
+  & > header {
+    // border: none;
   }
 }

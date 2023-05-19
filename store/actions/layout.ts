@@ -37,19 +37,20 @@ export const setThemeAction = (payload: Theme) => {
   };
 };
 
-export const setDisplayHeaderAction = () => {
+export const setDisplayHeaderAction = (payload: boolean) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const scrollTop: number = window.scrollY,
-        lastScrollTop: number = +sessionStorage.getItem("lastScrollTop") || 0;
+      dispatch({ type: "SET_DISPLAY_HEADER", payload });
+      // const scrollTop: number = window.scrollY,
+      //   lastScrollTop: number = +sessionStorage.getItem("lastScrollTop") || 0;
 
-      if (window.scrollY > lastScrollTop || window.scrollY <= 50) {
-        dispatch({ type: "SET_DISPLAY_HEADER", payload: false });
-      } else {
-        dispatch({ type: "SET_DISPLAY_HEADER", payload: true });
-      }
+      // if (window.scrollY > lastScrollTop || window.scrollY <= 50) {
+      //   dispatch({ type: "SET_DISPLAY_HEADER", payload: false });
+      // } else {
+      //   dispatch({ type: "SET_DISPLAY_HEADER", payload: true });
+      // }
 
-      sessionStorage.setItem("lastScrollTop", scrollTop.toString());
+      // sessionStorage.setItem("lastScrollTop", scrollTop.toString());
 
       dispatch(removeErrorAction("SET_DISPLAY_HEADER"));
     } catch (err) {

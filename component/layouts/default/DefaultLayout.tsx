@@ -7,7 +7,7 @@ import { styles } from ".";
 
 export default ({ Component, pageProps, loading }: SubLayout) => (
   <main className={styles.subLayout}>
-    <HeaderContainer position="sticky" />
+    <HeaderContainer position="relative" />
     {loading ? <Loading /> : <Component {...pageProps} />}
   </main>
 );

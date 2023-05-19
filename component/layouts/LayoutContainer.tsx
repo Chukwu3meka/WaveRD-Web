@@ -28,15 +28,45 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
       emotionCache = clientSideEmotionCache,
     } = props;
 
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    // const handleScroll = () => {
+    //   const currentScrollPos = window.pageYOffset;
+
+    //   // Check if user has scrolled to the bottom or top of the page
+    //   const isBottomOfPage = window.innerHeight + currentScrollPos >= document.body.offsetHeight;
+    //   const isScrolledUpOrTop = currentScrollPos < prevScrollPos;
+
+    //   if (isBottomOfPage || isScrolledUpOrTop) {
+    //     setIsVisible(true); // Make header visible
+
+    //     console.log("visible");
+    //   } else {
+    //     console.log("not visible");
+    //     setIsVisible(false); // Hide header
+    //   }
+
+    //   setPrevScrollPos(currentScrollPos);
+    // };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
   useEffect(() => {
     if (!ready) {
       window.addEventListener("resize", handleResize);
-      window.addEventListener("scroll", setDisplayHeaderAction);
+      // window.addEventListener("scroll", setDisplayHeaderAction);
       verifyCookieAction({ setRoute, setTheme, setReady, handlePageLoading, router, enqueueSnackbar });
     }
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", setDisplayHeaderAction);
+      // window.removeEventListener("scroll", setDisplayHeaderAction);
     };
   }, []);
 
@@ -72,6 +102,7 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
 
   const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }),
     handlePageLoading = ({ url, loading }: HandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading }),
+    handleScroll = () => handlers.handleScroll({ prevScrollPos, setPrevScrollPos, setDisplayHeaderAction }),
     handleProtectedRoute = (auth?: boolean) =>
       handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute, setActiveRouteAction, enqueueSnackbar, closeSnackbar });
 

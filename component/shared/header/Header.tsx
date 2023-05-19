@@ -10,13 +10,13 @@ import styles from "./styles.module.scss";
 import { Header } from "@interface/components/shared/headerInterface";
 
 export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: Header) => (
-  <div className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
+  <div className={styles[position === "relative" ? "relativeHeader" : !displayHeader ? "hiddenHeader" : "stickyHeader"]}>
     <header id="header">
       <IconButton onClick={() => themeHandler(theme)}>
         {theme === "light" ? <DarkModeOutlinedIcon color="primary" /> : <LightModeIcon color="primary" />}
       </IconButton>
       <Box>
-        <Stack direction="row" component="a" href="/" onMouseOver={() => swapColorFn} onMouseLeave={() => swapColorFn}>
+        <Stack direction="row" component="a" href="/" onMouseOver={() => swapColorFn()} onMouseLeave={() => swapColorFn()}>
           <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
             Soccer
           </Typography>

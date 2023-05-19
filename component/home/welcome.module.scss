@@ -1,93 +1,86 @@
 @import "@source/scss/index.scss";
 
 .welcome {
+  // & > div:last-of-type {
   padding: 5px 10px 20px;
-  min-height: var(--visibleScreen);
-  display: grid;
-  grid-template-rows: $headerHeight auto;
-  & > div:last-of-type {
-    @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
-    padding: 20px 0;
-    margin: auto;
-    max-width: 1400px;
-    height: 100%;
-    position: relative;
-    & > div:first-of-type {
-      z-index: 1;
-      padding: 10px 20px;
-      border-radius: 0 70px 0 70px;
-      @include quickFlex($dir: column, $align: flex-start);
-      border: 2px solid var(--secondary);
+  min-height: calc(var(--visibleScreen) - var(--headerHeight));
+  // display: grid;
+  // grid-template-rows: $headerHeight auto;
 
-      & > * {
-        max-width: 700px;
-      }
+  @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
+  padding: 20px 0;
+  margin: auto;
+  max-width: 1400px;
+  // height: 100%;
+  position: relative;
+  & > div:first-of-type {
+    z-index: 1;
+    padding: 10px 20px;
+    border-radius: 0 70px 0 70px;
+    @include quickFlex($dir: column, $align: flex-start);
+    border: 2px solid var(--secondary);
 
-      & > span {
-        margin-top: 20px;
-        @include quickFlex($column: 20px, $row: 20px, $justify: flex-end, $width: 100%, $wrap: wrap);
-      }
+    & > * {
+      max-width: 700px;
     }
 
-    & > div:last-of-type {
-      top: 50%;
-      right: -200px;
-      width: 800px;
-      position: absolute;
-      height: clamp(300px, 100%, 800px);
-      transform: translate(0%, -50%);
-      background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
-        url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
+    & > span {
+      margin-top: 20px;
+      @include quickFlex($column: 20px, $row: 20px, $justify: flex-end, $width: 100%, $wrap: wrap);
     }
   }
+
+  & > div:last-of-type {
+    top: 50%;
+    right: -200px;
+    width: 800px;
+    position: absolute;
+    height: clamp(300px, 100%, 800px);
+    transform: translate(0%, -50%);
+    background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
+      url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
+  }
+  // }
 }
 
 @media screen and (min-width: 530px) {
-  .welcome > div:last-of-type {
+  .welcome {
     width: calc(100vw - 50px);
   }
 }
 
 @media screen and (min-width: 880px) {
   .welcome {
+    max-width: 900px;
     & > div:last-of-type {
-      max-width: 900px;
-      & > div:last-of-type {
-        border-radius: 50%;
-        background: radial-gradient(circle closest-corner at 50% 50%, transparent -150%, var(--primary) 65%),
-          url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
-      }
+      border-radius: 50%;
+      background: radial-gradient(circle closest-corner at 50% 50%, transparent -150%, var(--primary) 65%),
+        url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
     }
   }
 }
 
 @media screen and (min-width: 1000px) {
   .welcome {
-    & > div:last-of-type {
-      max-width: 1300px;
-      width: calc(100% - 200px);
-      & > div:first-of-type > * {
-        max-width: 1000px;
-      }
+    max-width: 1300px;
+    width: calc(100% - 200px);
+    & > div:first-of-type > * {
+      max-width: 1000px;
     }
   }
 }
 
 @media screen and (min-width: 1440px) {
   .welcome {
-    & > div:last-of-type {
-      max-width: 1500px;
-      & > div:first-of-type > * {
-        max-width: 1100px;
-      }
+    max-width: 1500px;
+    & > div:first-of-type > * {
+      max-width: 1100px;
     }
   }
 }
 
 @media screen and (min-width: 1700px) {
-  .welcome {
-    & > div:last-of-type > div:first-of-type > * {
-      max-width: 1200px;
-    }
+  .welcome > div:first-of-type > * {
+    max-width: 1200px;
   }
 }

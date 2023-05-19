@@ -6,7 +6,7 @@
   }
   & > div:last-of-type {
     display: grid;
-    grid-template-rows: $headerHeight auto;
+    grid-template-rows: var(--headerHeight) auto;
     & > div:last-of-type {
       @include quickFlex();
       background: var(--secondary);

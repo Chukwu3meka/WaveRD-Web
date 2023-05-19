@@ -25,8 +25,8 @@ export const signoutAction = () => async (dispatch: AppDispatch) => {
 };
 
 export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch) => {
-  document.documentElement.style.setProperty("--headerHeight", "75px");
-  document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight + 0}px`); // <= iPhone not returning the right screen height in VH
+  document.documentElement.style.setProperty("--headerHeight", "66.24px");
+  document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <= iPhone not returning the right screen height in VH
 
   try {
     const { setTheme, setReady, handlePageLoading, setRoute, router, enqueueSnackbar } = payload;
