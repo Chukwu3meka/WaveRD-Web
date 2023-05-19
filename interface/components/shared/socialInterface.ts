@@ -1,8 +1,10 @@
 export interface SocialContainer {
+  fontSize?: string;
   filterParams: string[];
 }
 
 export interface Social {
-  account: string;
   link: string;
+  account: string;
+  fontSize: string;
 }

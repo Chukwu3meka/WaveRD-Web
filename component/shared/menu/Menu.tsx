@@ -15,7 +15,7 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui
 import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 import { styles } from ".";
-import SocialContainer from "@component/shared/social";
+import Social from "@component/shared/social";
 
 import { Menu } from "@interface/components/shared/menuInterface";
 
@@ -35,14 +35,14 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
       <Stack
         height="100%"
         justifyContent="space-between"
-        sx={{ width: "clamp(300px, 100vw, 600px)", padding: 2, overflow: "hidden" }}
+        sx={{ width: "clamp(300px, calc(100vw - 10px), 600px)", padding: 2, overflow: "hidden" }}
         role="presentation"
         onKeyDown={(e) => toggleMenuOpen(e)}
         className={styles.menu}>
         <Stack>
-          <Box textAlign="center">
+          <Box textAlign="center" mb={2}>
             <IconButton onClick={(e) => toggleMenuOpen(e)}>
-              <CloseSharpIcon color="disabled" />
+              <CloseSharpIcon color="disabled" fontSize="large" />
             </IconButton>
           </Box>
 
@@ -105,13 +105,13 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
             />
           </Box>
           <Paper sx={{ width: "100%", pt: 5 }} elevation={2}>
-            <SocialContainer filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} />
+            <Social filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} fontSize="24px" />
             <section>
-              <Typography component="span" variant="body2" fontSize=".7em">
+              <Typography component="span" variant="body2" fontSize=".8em">
                 ● All rights reserved. All trademarks are the property of their respective owners ●
               </Typography>
 
-              <Typography component="span" variant="body2" fontSize=".8em">
+              <Typography component="span" variant="body2" fontSize=".9em">
                 ©SoccerMASS 2018 ~ {new Date().getFullYear()}
               </Typography>
             </section>

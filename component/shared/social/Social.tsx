@@ -13,7 +13,7 @@ import {
 
 import { Social } from "@interface/components/shared/socialInterface";
 
-export default ({ account, link }: Social) => {
+export default ({ account, link, fontSize }: Social) => {
   let icon;
 
   switch (account) {
@@ -44,7 +44,7 @@ export default ({ account, link }: Social) => {
   }
 
   return icon ? (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize: "18px" }}>
+    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize }}>
       {icon}
     </IconButton>
   ) : (
