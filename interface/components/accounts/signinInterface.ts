@@ -1,6 +1,7 @@
 import { EnqueueSnackbar } from "notistack";
 
 import { SetAuthAction } from "@interface/store/auth";
+import { NextRouter } from "next/router";
 
 export interface Signin {
   userForm: UserForm;
@@ -31,6 +32,7 @@ export interface OnInputChange {
 }
 
 export interface LoginHandler {
+  router: NextRouter;
   userForm: UserForm;
   setUserForm: Function;
   setAuthAction: (SetAuthAction) => void;

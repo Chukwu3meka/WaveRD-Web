@@ -19,8 +19,21 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiv
   setRoute(route);
   setActiveRouteAction(route);
 
-  if (authenticated) for (const route of accountsRoute) if (location.pathname.startsWith(route)) router.push("/"); // Signout to access this page
-  if (!authenticated) for (const route of protectedRoutes) if (location.pathname.startsWith(route)) router.push("/accounts/signin"); // Signin to access this page
+  if (authenticated)
+    for (const route of accountsRoute)
+      if (location.pathname.startsWith(route))
+        enqueueSnackbar("You need to sign out to access this route", {
+          variant: "error",
+          onEntered: () => router.push(router.query && router.query.redirect ? (router.query.redirect as string) : "/"),
+        });
+
+  if (!authenticated)
+    for (const route of protectedRoutes)
+      if (location.pathname.startsWith(route))
+        enqueueSnackbar("You need to be authenticated to access this route", {
+          variant: "error",
+          onEntered: () => router.push(`/accounts/signin?redirect=${route}`),
+        });
 };
 
 export const handleScroll = ({ prevScrollPos, setPrevScrollPos, setDisplayHeaderAction }: HandleScroll) => {

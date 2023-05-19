@@ -49,20 +49,21 @@
   }
 }
 
-.relativeHeader {
-  @extend .stickyHeader;
-  position: relative;
-  padding: 0;
-  border-bottom: 1px solid $primary;
-  & > header {
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
-
 .hiddenHeader {
   @extend .stickyHeader;
   position: relative;
   top: calc(-1 * var(--headerHeight) - 10px);
   transition: none;
+}
+
+.relativeHeader {
+  @extend .stickyHeader;
+  position: relative;
+  padding: 0;
+  border-bottom: 1px solid $primary;
+  background-color: transparent;
+  & > header {
+    background-color: transparent;
+    box-shadow: none;
+  }
 }

@@ -31,7 +31,7 @@ export default connector((props: SigninContainer & ConnectorProps) => {
   }, [props.layout.width]);
 
   const onInputChange = (e: React.FocusEvent<HTMLInputElement>) => handlers.onInputChange({ e, setUserForm });
-  const loginHandler = () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction });
+  const loginHandler = () => handlers.loginHandler({ setUserForm, userForm, enqueueSnackbar, setAuthAction, router });
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }} />;

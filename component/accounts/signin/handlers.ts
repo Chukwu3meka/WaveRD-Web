@@ -3,8 +3,9 @@ import validator from "@utils/validator";
 import { capitalize, sleep } from "@utils/handlers";
 
 import { LoginHandler, OnInputChange } from "@interface/components/accounts/signinInterface";
+import { redirect } from "next/dist/server/api-utils";
 
-export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction }: LoginHandler) => {
+export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, setAuthAction, router }: LoginHandler) => {
   for (const value of ["email", "password"]) if (!userForm[value].trim()) return enqueueSnackbar(`${capitalize(value)} cannot be empty`, { variant: "error" });
 
   setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
