@@ -28,8 +28,15 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
   await fetcher({ method: "POST", endpoint: "/accounts/signin", payload: { email, password } })
     .then(async ({ payload: { role, fullName, handle, cookieConsent } }) => {
       await sleep(0.3);
-      setAuthAction({ role, fullName, handle, cookieConsent });
-      enqueueSnackbar("Authenticated Successfully", { variant: "success" });
+
+      const initialRoute = router.query ? router.query.redirect || "" : "";
+
+      router.push("/").then(() => {
+        setAuthAction({ role, fullName, handle, cookieConsent });
+        enqueueSnackbar("Authenticated Successfully", { variant: "success" });
+
+        if (initialRoute) router.push(initialRoute as string);
+      });
     })
     .catch(async ({ message }) => {
       await sleep(0.3);

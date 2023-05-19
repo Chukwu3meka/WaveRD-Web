@@ -1,5 +1,5 @@
-import { HandlePageLoading, HandleProtectedRoute, HandleScroll } from "@interface/components/layouts/layoutsInterface";
-import { accountsRoute, protectedRoutes } from "@utils/constants/routes";
+import { HandlePageLoading, RoutesHandler, HandleScroll } from "@interface/components/layouts/layoutsInterface";
+import { logoutRoutes, protectedRoutes } from "@utils/constants/routes";
 
 export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoading) => {
   // if (url) console.log(`Switching page to ${url}`);
@@ -13,23 +13,26 @@ export const handlePageLoading = ({ url, loading, setLoading }: HandlePageLoadin
   }
 };
 
-export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiveRouteAction, enqueueSnackbar, closeSnackbar }: HandleProtectedRoute) => {
-  const route = location.pathname;
+export const routesHandler = ({ router, authenticated, setRoute, setActiveRouteAction, enqueueSnackbar }: RoutesHandler) => {
+  const route = location.pathname,
+    notHomePage = !!route.split("/")[1];
 
   setRoute(route);
   setActiveRouteAction(route);
 
-  if (authenticated)
-    for (const route of accountsRoute)
-      if (location.pathname.startsWith(route))
+  console.log({ notHomePage, authenticated, route });
+
+  if (notHomePage && authenticated)
+    for (const path of logoutRoutes)
+      if (route.startsWith(path))
         enqueueSnackbar("You need to sign out to access this route", {
           variant: "error",
           onEntered: () => router.push(router.query && router.query.redirect ? (router.query.redirect as string) : "/"),
         });
 
-  if (!authenticated)
-    for (const route of protectedRoutes)
-      if (location.pathname.startsWith(route))
+  if (notHomePage && !authenticated)
+    for (const path of protectedRoutes)
+      if (route.startsWith(path))
         enqueueSnackbar("You need to be authenticated to access this route", {
           variant: "error",
           onEntered: () => router.push(`/accounts/signin?redirect=${route}`),

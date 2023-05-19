@@ -5,7 +5,7 @@ import { removeErrorAction, catchErr } from "./error";
 import { SetAuthAction } from "@interface/store/auth";
 import { setCssThemeVar } from "@utils/handlers";
 import { setActiveRouteAction, setDeviceSizeAction, setThemeAction } from "./layout";
-import { accountsRoute, protectedRoutes } from "@utils/constants/routes";
+import { logoutRoutes, protectedRoutes } from "@utils/constants/routes";
 
 export const setAuthAction = (payload: SetAuthAction) => (dispatch: AppDispatch) => {
   try {
@@ -37,16 +37,35 @@ export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch
       dispatch(setThemeAction(theme));
     };
 
-    //localhost:3000/accounts/signin#_=_
-    http: await fetcher({ method: "GET", endpoint: "/accounts/details" })
+    const route = location.pathname,
+      notHomePage = !!route.split("/")[1],
+      darkTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    console.log({ notHomePage });
+
+    setThemeFn(darkTheme ? "dark" : "light");
+
+    await fetcher({ method: "GET", endpoint: "/accounts/details" })
       .then(async ({ payload }) => {
         setThemeFn(payload.theme);
         dispatch(setAuthAction(payload));
-        for (const route of accountsRoute) if (location.pathname.startsWith(route)) router.push("/"); // Signout to access this page
+
+        if (notHomePage)
+          for (const path of logoutRoutes)
+            if (route.startsWith(path))
+              enqueueSnackbar("You need to sign out to access this route", {
+                variant: "error",
+                onEntered: () => router.push(router.query && router.query.redirect ? (router.query.redirect as string) : "/"),
+              });
       })
       .catch(() => {
-        setThemeFn(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        for (const route of protectedRoutes) if (location.pathname.startsWith(route)) router.push("/accounts/signin"); // Signin to access this page
+        if (notHomePage)
+          for (const path of protectedRoutes)
+            if (route.startsWith(path))
+              enqueueSnackbar("You need to be authenticated to access this route", {
+                variant: "error",
+                onEntered: () => router.push(`/accounts/signin?redirect=${route}`),
+              });
       })
       .finally(() => {
         dispatch(setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }));

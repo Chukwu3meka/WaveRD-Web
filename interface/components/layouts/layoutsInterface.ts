@@ -25,13 +25,12 @@ export interface HandlePageLoading {
   setLoading?: Function;
 }
 
-export interface HandleProtectedRoute {
+export interface RoutesHandler {
   router: NextRouter;
   authenticated: boolean;
   setRoute: Function;
   setActiveRouteAction;
   enqueueSnackbar: EnqueueSnackbar;
-  closeSnackbar: Function;
 }
 
 export interface HandleScroll {

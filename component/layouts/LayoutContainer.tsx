@@ -15,10 +15,10 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     [theme, setTheme] = useState(null),
     [route, setRoute] = useState(null),
     [ready, setReady] = useState(false),
-    [loading, setLoading] = useState(true),
+    { enqueueSnackbar } = useSnackbar(),
     emotionCache = clientSideEmotionCache,
+    [loading, setLoading] = useState(true),
     [prevScrollPos, setPrevScrollPos] = useState(0),
-    { enqueueSnackbar, closeSnackbar } = useSnackbar(),
     [authenticated, setAuthenticated] = useState(false),
     { pageProps, Component, setDeviceSizeAction, verifyCookieAction, setActiveRouteAction, setDisplayHeaderAction } = props;
 
@@ -42,7 +42,7 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   useEffect(() => {
     if (ready) {
       setAuthenticated(!!props.auth);
-      handleProtectedRoute(!!props.auth);
+      routesHandler(!!props.auth);
     }
   }, [props.auth]);
 
@@ -66,14 +66,14 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
   }, [router]);
 
   useEffect(() => {
-    if (ready) handleProtectedRoute();
+    if (ready) routesHandler(!!props.auth || authenticated);
   }, [router.asPath]);
 
   const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }),
     handlePageLoading = ({ url, loading }: HandlePageLoading) => handlers.handlePageLoading({ url, loading, setLoading }),
     handleScroll = () => handlers.handleScroll({ prevScrollPos, setPrevScrollPos, setDisplayHeaderAction }),
-    handleProtectedRoute = (auth?: boolean) =>
-      handlers.handleProtectedRoute({ router, authenticated: auth || authenticated, setRoute, setActiveRouteAction, enqueueSnackbar, closeSnackbar });
+    routesHandler = (auth?: boolean) =>
+      handlers.routesHandler({ router, authenticated: auth || authenticated, setRoute, setActiveRouteAction, enqueueSnackbar });
 
   return <Layout ready={ready} theme={theme} route={route} loading={loading} Component={Component} pageProps={pageProps} emotionCache={emotionCache} />;
 });
