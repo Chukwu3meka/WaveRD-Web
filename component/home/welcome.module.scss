@@ -1,9 +1,9 @@
-@import "@source/scss/index.scss";
+@import "@styles/scss/index.scss";
 
 .welcome {
   @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
   min-height: calc(var(--visibleScreen) - var(--headerHeight));
-  padding: 10px 20px;
+  padding: 20px;
   margin: auto;
   max-width: 1400px;
   position: relative;

@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { Box, LinearProgress, Stack } from "@mui/material";
 
-import muiTheme from "@source/muiTheme";
+import muiTheme from "@styles/muiTheme";
 import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
 import { AccountsLayout, InfoLayout, styles, DefaultLayout } from ".";
