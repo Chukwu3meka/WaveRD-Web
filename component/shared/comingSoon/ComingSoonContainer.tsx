@@ -8,7 +8,7 @@ import { ComingSoonContainer, TimeLeft } from "@interface/components/shared/comi
 export default ({ header = false, minHeight, finishDate = new Date("August 15 2023") }: ComingSoonContainer) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  minHeight = header ? "var(--visibleScreen)" : "calc(var(--visibleScreen) - var(--headerHeight))";
+  minHeight ??= header ? "var(--visibleScreen)" : "calc(var(--visibleScreen) - var(--headerHeight))";
 
   useEffect(() => {
     const timer = setInterval(() => {
