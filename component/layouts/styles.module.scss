@@ -5,7 +5,6 @@
   background: var(--primary);
   min-height: var(--visibleScreen);
   grid-template-rows: auto max-content auto;
-  // background: linear-gradient(45deg, rgb(45, 45, 45) 0%, var(--primary) 34%);
 
   & > main {
     min-height: 400px;

@@ -3,10 +3,8 @@ import HeaderContainer from "@component/shared/header/HeaderContainer";
 
 import { SubLayout } from "@interface/components/layouts/layoutsInterface";
 
-import { styles } from ".";
-
 export default ({ Component, pageProps, loading }: SubLayout) => (
-  <main className={styles.subLayout}>
+  <main>
     <HeaderContainer position="relative" />
     {loading ? <Loading /> : <Component {...pageProps} />}
   </main>

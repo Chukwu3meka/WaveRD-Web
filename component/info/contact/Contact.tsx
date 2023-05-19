@@ -24,92 +24,94 @@ const Contact = ({ sectionHandler, contactPreference, categories, submitHandler,
     </div>
 
     <Paper elevation={2} className={styles.contactForm}>
-      <Stack spacing={2}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={2}>
-            <FormControl fullWidth>
-              <InputLabel id="category">Category</InputLabel>
-              <Select labelId="category" id="category" value={userForm.options.category} onChange={(e) => sectionHandler(e.target.value)} label="Category">
-                {categories.map(({ value, label }) => (
-                  <MenuItem key={label} value={value}>
-                    {label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <TextField
-              fullWidth
-              id="name"
-              label="Name"
-              variant="outlined"
-              aria-describedby="name"
-              value={userForm.name.value}
-              placeholder="How should we address you"
-              error={!userForm.name.valid}
-              onBlur={(e) => onInputChange(e, true)}
-              onChange={(e) => onInputChange(e, false)}
-              disabled={userForm.options.loading}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={2}>
-            <FormControl fullWidth>
-              <InputLabel id="contact-preference">Preference</InputLabel>
-              <Select
-                labelId="contact-preference"
-                id="contact-preference"
-                value={userForm.options.contact}
-                label="Preference"
-                onChange={(e) => contactPrefHandler(e)}>
-                <MenuItem value="email">Email</MenuItem>
-                <MenuItem value="whatsapp">WhatsApp</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <FormControl fullWidth variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">{contactPreference[userForm.options.contact]}</InputLabel>
-              <OutlinedInput
-                error={!userForm.contact.valid}
-                id="contact"
-                value={userForm.contact.value}
-                disabled={userForm.options.loading}
-                onBlur={(e) => onInputChange(e, true)}
-                onChange={(e) => onInputChange(e, false)}
-                placeholder="How do we reach you"
-                label={contactPreference[userForm.options.contact]}
-                autoComplete="off"
-              />
-            </FormControl>
-          </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6} md={2}>
+          <FormControl fullWidth>
+            <InputLabel id="category">Category</InputLabel>
+            <Select labelId="category" id="category" value={userForm.options.category} onChange={(e) => sectionHandler(e.target.value)} label="Category">
+              {categories.map(({ value, label }) => (
+                <MenuItem key={label} value={value}>
+                  {label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
 
-        <TextField
-          inputRef={categoryRef}
-          placeholder={userForm.options.category === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
-          id="comment"
-          fullWidth
-          label="Comment"
-          variant="outlined"
-          error={!userForm.comment.valid}
-          value={userForm.comment.value}
-          disabled={userForm.options.loading}
-          onChange={(e) => onInputChange(e, false)}
-          onBlur={(e) => onInputChange(e, true)}
-          minRows={5}
-          multiline
-        />
+        <Grid item xs={12} sm={6} md={4}>
+          <TextField
+            fullWidth
+            id="name"
+            label="Name"
+            variant="outlined"
+            aria-describedby="name"
+            value={userForm.name.value}
+            placeholder="How should we address you"
+            error={!userForm.name.valid}
+            onBlur={(e) => onInputChange(e, true)}
+            onChange={(e) => onInputChange(e, false)}
+            disabled={userForm.options.loading}
+          />
+        </Grid>
 
-        <AttentionSeeker effect="bounce">
-          <LoadingButton onClick={() => submitHandler()} size="large" variant="contained" color="primary" loading={userForm.options.loading}>
-            <Typography sx={{ fontWeight: 900 }}>Submit</Typography>
-          </LoadingButton>
-        </AttentionSeeker>
-      </Stack>
+        <Grid item xs={12} sm={6} md={2}>
+          <FormControl fullWidth>
+            <InputLabel id="contact-preference">Preference</InputLabel>
+            <Select
+              labelId="contact-preference"
+              id="contact-preference"
+              value={userForm.options.contact}
+              label="Preference"
+              onChange={(e) => contactPrefHandler(e)}>
+              <MenuItem value="email">Email</MenuItem>
+              <MenuItem value="whatsapp">WhatsApp</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">{contactPreference[userForm.options.contact]}</InputLabel>
+            <OutlinedInput
+              error={!userForm.contact.valid}
+              id="contact"
+              value={userForm.contact.value}
+              disabled={userForm.options.loading}
+              onBlur={(e) => onInputChange(e, true)}
+              onChange={(e) => onInputChange(e, false)}
+              placeholder="How do we reach you"
+              label={contactPreference[userForm.options.contact]}
+              autoComplete="off"
+            />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+          <TextField
+            inputRef={categoryRef}
+            placeholder={userForm.options.category === "service" ? "What product will you like us to work on?" : "What will you like to tell us?"}
+            id="comment"
+            fullWidth
+            label="Comment"
+            variant="outlined"
+            error={!userForm.comment.valid}
+            value={userForm.comment.value}
+            disabled={userForm.options.loading}
+            onChange={(e) => onInputChange(e, false)}
+            onBlur={(e) => onInputChange(e, true)}
+            minRows={5}
+            multiline
+          />
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{ textAlign: "right" }}>
+          <AttentionSeeker effect="bounce">
+            <LoadingButton onClick={() => submitHandler()} size="large" variant="contained" color="primary" loading={userForm.options.loading}>
+              <Typography sx={{ fontWeight: 900 }}>Submit</Typography>
+            </LoadingButton>
+          </AttentionSeeker>
+        </Grid>
+      </Grid>
     </Paper>
   </main>
 );
