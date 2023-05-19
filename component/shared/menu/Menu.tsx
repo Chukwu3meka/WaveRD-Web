@@ -35,7 +35,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
       <Stack
         height="100%"
         justifyContent="space-between"
-        sx={{ width: "clamp(250px, 100vw, 300px)", padding: 2, overflow: "hidden" }}
+        sx={{ width: "clamp(300px, 100vw, 600px)", padding: 2, overflow: "hidden" }}
         role="presentation"
         onKeyDown={(e) => toggleMenuOpen(e)}
         className={styles.menu}>
