@@ -35,6 +35,8 @@ export interface HandleProtectedRoute {
 }
 
 export interface HandleScroll {
+  prevScrollPos: number;
+  setPrevScrollPos: Function;
   setDisplayHeaderAction: Function;
 }
 
