@@ -16,59 +16,28 @@ export default connector((props: LayoutContainer & ConnectorProps) => {
     [route, setRoute] = useState(null),
     [ready, setReady] = useState(false),
     [loading, setLoading] = useState(true),
+    emotionCache = clientSideEmotionCache,
+    [prevScrollPos, setPrevScrollPos] = useState(0),
     { enqueueSnackbar, closeSnackbar } = useSnackbar(),
     [authenticated, setAuthenticated] = useState(false),
-    {
-      pageProps,
-      Component,
-      setDeviceSizeAction,
-      verifyCookieAction,
-      setActiveRouteAction,
-      setDisplayHeaderAction,
-      emotionCache = clientSideEmotionCache,
-    } = props;
-
-  const [isVisible, setIsVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-
-  useEffect(() => {
-    // const handleScroll = () => {
-    //   const currentScrollPos = window.pageYOffset;
-
-    //   // Check if user has scrolled to the bottom or top of the page
-    //   const isBottomOfPage = window.innerHeight + currentScrollPos >= document.body.offsetHeight;
-    //   const isScrolledUpOrTop = currentScrollPos < prevScrollPos;
-
-    //   if (isBottomOfPage || isScrolledUpOrTop) {
-    //     setIsVisible(true); // Make header visible
-
-    //     console.log("visible");
-    //   } else {
-    //     console.log("not visible");
-    //     setIsVisible(false); // Hide header
-    //   }
-
-    //   setPrevScrollPos(currentScrollPos);
-    // };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollPos]);
+    { pageProps, Component, setDeviceSizeAction, verifyCookieAction, setActiveRouteAction, setDisplayHeaderAction } = props;
 
   useEffect(() => {
     if (!ready) {
       window.addEventListener("resize", handleResize);
-      // window.addEventListener("scroll", setDisplayHeaderAction);
       verifyCookieAction({ setRoute, setTheme, setReady, handlePageLoading, router, enqueueSnackbar });
     }
     return () => {
       window.removeEventListener("resize", handleResize);
-      // window.removeEventListener("scroll", setDisplayHeaderAction);
     };
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
 
   useEffect(() => {
     if (ready) {

@@ -19,31 +19,11 @@ export const handleProtectedRoute = ({ router, authenticated, setRoute, setActiv
   setRoute(route);
   setActiveRouteAction(route);
 
-  // console.log(route);
-
-  // console.log{route}
-  // enqueueSnackbar("Error creating your account", { variant: "error" }); // <=  Inform user of regex error
-
-  // console.log({ route, authenticated });
-
-  // console.log(route, accountsRoute);
-
   if (authenticated) for (const route of accountsRoute) if (location.pathname.startsWith(route)) router.push("/"); // Signout to access this page
   if (!authenticated) for (const route of protectedRoutes) if (location.pathname.startsWith(route)) router.push("/accounts/signin"); // Signin to access this page
-
-  // if (authenticated && accountsRoute.includes(route)) {
-  //   router.push("/"); // Signout to access this page
-  // }
-
-  // if (!authenticated && protectedRoutes.includes(route)) {
-  //   enqueueSnackbar("You need to be authenticated to access this page", { variant: "error" });
-  //   // setTimeout(() => closeSnackbar(), 2500);
-  //   router.push("/accounts/signin"); // Signin to access this page
-  // }
 };
 
-// export const handleScroll = ({ setDisplayHeaderAction }: HandleScroll) => {
-export const handleScroll = ({ prevScrollPos, setPrevScrollPos, setDisplayHeaderAction }: any) => {
+export const handleScroll = ({ prevScrollPos, setPrevScrollPos, setDisplayHeaderAction }: HandleScroll) => {
   const currentScrollPos = window.pageYOffset,
     scrolledUp = currentScrollPos < prevScrollPos,
     closeToRelativeHeader = currentScrollPos > 66.24 * 2,

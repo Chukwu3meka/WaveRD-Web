@@ -1,13 +1,8 @@
 import Link from "next/link";
 import { Typography, Button } from "@mui/material";
 
-import HeaderContainer from "@component/shared/header";
-
 import { welcomeStyles } from ".";
 
-{
-  /* <HeaderContainer position="relative" /> */
-}
 export default () => (
   <div className={`xOverflowHidden ${welcomeStyles.welcome}`}>
     <div>

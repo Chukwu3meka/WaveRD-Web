@@ -5,26 +5,12 @@
   background: var(--primary);
   min-height: var(--visibleScreen);
   grid-template-rows: auto max-content auto;
-  // // background: linear-gradient(45deg, rgb(45, 45, 45) 0%, var(--primary) 34%);
-
-  // // padding: 0 0 1px;
-
-  // & > :nth-child(1) {
-  //   border: 3px solid red;
-  // }
-  // & > :nth-child(2) {
-  //   border: 3px solid green;
-  // }
-  // & > :nth-child(3) {
-  //   border: 3px solid blue;
-  // }
+  // background: linear-gradient(45deg, rgb(45, 45, 45) 0%, var(--primary) 34%);
 
   & > main {
+    min-height: 400px;
     position: relative;
     top: -86.04px;
-    // margin-bottom: -85.04px;
     margin-bottom: -85px;
-    // bottom: 160px;
-    min-height: 400px;
   }
 }

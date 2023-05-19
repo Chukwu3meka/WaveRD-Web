@@ -1,25 +1,19 @@
 @import "@source/scss/index.scss";
 
 .welcome {
-  // & > div:last-of-type {
-  padding: 5px 10px 20px;
-  min-height: calc(var(--visibleScreen) - var(--headerHeight));
-  // display: grid;
-  // grid-template-rows: $headerHeight auto;
-
   @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
-  padding: 20px 0;
+  min-height: calc(var(--visibleScreen) - var(--headerHeight));
+  padding: 10px 20px;
   margin: auto;
   max-width: 1400px;
-  // height: 100%;
   position: relative;
+  border: 3px solid red;
   & > div:first-of-type {
     z-index: 1;
     padding: 10px 20px;
     border-radius: 0 70px 0 70px;
     @include quickFlex($dir: column, $align: flex-start);
     border: 2px solid var(--secondary);
-
     & > * {
       max-width: 700px;
     }
@@ -40,7 +34,6 @@
     background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
       url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
   }
-  // }
 }
 
 @media screen and (min-width: 530px) {
