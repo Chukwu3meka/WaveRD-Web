@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Stack } from "@mui/material";
 
 import { styles } from ".";
 import HeaderContainer from "@component/shared/header";
@@ -10,13 +10,15 @@ export default ({ timeLeft, header, minHeight }: ComingSoon) => (
     {header ? <HeaderContainer position="relative" /> : ""}
 
     <div>
-      <Typography color="#fff" fontSize="clamp(2em, 7vw, 4em)">
-        Coming soon.
-      </Typography>
+      <Stack>
+        <Typography color="#fff" fontSize="clamp(2em, 7vw, 4em)">
+          Coming soon.
+        </Typography>
 
-      <Typography color="#fff" fontSize="1em" mt={-1}>
-        {timeLeft.date}
-      </Typography>
+        <Typography color="#fff" fontSize="1em">
+          {timeLeft.date}
+        </Typography>
+      </Stack>
 
       <section>
         <span>
