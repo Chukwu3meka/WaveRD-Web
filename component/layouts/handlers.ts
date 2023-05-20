@@ -20,8 +20,6 @@ export const routesHandler = ({ router, authenticated, setRoute, setActiveRouteA
   setRoute(route);
   setActiveRouteAction(route);
 
-  console.log({ notHomePage, authenticated, route });
-
   if (notHomePage && authenticated)
     for (const path of logoutRoutes)
       if (route.startsWith(path))

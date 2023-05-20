@@ -31,10 +31,6 @@ export default connector((props: HeaderContainer & ConnectorProps) => {
 
   useEffect(() => {
     const headerWidth = document.getElementById("header")?.offsetWidth;
-
-    // console.log({ headerWidth });
-
-    // setVisible({ nav: headerWidth > 1400, mobile: headerWidth < 600 });
     setVisible({ nav: headerWidth > 850, mobile: headerWidth < 600 });
   }, [props.layout.width]);
 

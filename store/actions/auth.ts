@@ -41,8 +41,6 @@ export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch
       notHomePage = !!route.split("/")[1],
       darkTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    console.log({ notHomePage });
-
     setThemeFn(darkTheme ? "dark" : "light");
 
     await fetcher({ method: "GET", endpoint: "/accounts/details" })
