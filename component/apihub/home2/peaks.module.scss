@@ -5,14 +5,14 @@
   border: 3px solid red;
   margin-top: -100px;
   padding: 80px 10px 0px;
-  background: $textSecondary;
+  // background: $textSecondary;
   background: white;
   min-height: 300px;
   a,
   a:link {
-    color: $warning;
+    // color: $warning;
     text-decoration: underline;
-    text-decoration-color: $loading;
+    // text-decoration-color: $loading;
     text-underline-position: under; // to increase the gap between text and underlining in CSS
     text-decoration-thickness: 2px;
     font-weight: 700;
@@ -20,7 +20,7 @@
   }
 
   a:hover {
-    text-decoration-color: $warning;
+    // text-decoration-color:  $warning;
   }
 
   & > .withoutImage > main {

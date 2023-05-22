@@ -5,8 +5,10 @@
   min-height: calc(var(--visibleScreen) - var(--headerHeight));
   padding: 20px;
   margin: auto;
-  max-width: 1400px;
+  // max-width: 1400px;
   position: relative;
+  width: 100%;
+  border: 3px solid blue;
   & > div:first-of-type {
     z-index: 1;
     padding: 10px 20px;
@@ -32,6 +34,7 @@
     transform: translate(0%, -50%);
     background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
       url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
+    border: 3px solid blue;
   }
 }
 
@@ -55,6 +58,7 @@
 @media screen and (min-width: 1000px) {
   .welcome {
     max-width: 1300px;
+    border: 3px solid blue;
     width: calc(100% - 200px);
     & > div:first-of-type > * {
       max-width: 1000px;
