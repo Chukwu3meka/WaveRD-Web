@@ -3,11 +3,12 @@
 .stickyHeader {
   position: sticky;
   background-color: transparent;
-  top: 5px;
+  top: 0;
+  top: 0;
   left: 0;
   right: 0;
   transition: top 0.5s ease-in-out;
-  padding: 5px 10px 10px;
+  padding: 5px 10px;
   z-index: 3;
   & > header {
     max-width: 1500px;
@@ -17,15 +18,13 @@
     -moz-box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
     border-radius: 70px / 100%;
     margin: auto;
-    padding: 10px 30px;
-    @include quickFlex($dir: row, $justify: space-evenly);
+    padding: 15px 30px 10px;
     @include quickFlex($dir: row, $justify: space-between);
     overflow: hidden;
     & > div:nth-of-type(1) {
       @include quickFlex($dir: row, $column: 10px);
     }
     & > div:nth-of-type(2) {
-      margin-bottom: -5px;
       column-gap: 20px;
       a {
         color: $primary;
@@ -52,7 +51,7 @@
 .hiddenHeader {
   @extend .stickyHeader;
   position: relative;
-  top: calc(-1 * var(--headerHeight) - 10px);
+  top: calc(-1 * 85.84px);
   transition: none;
 }
 

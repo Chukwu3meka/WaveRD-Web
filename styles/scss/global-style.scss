@@ -1,10 +1,16 @@
 @import "@styles/scss/index.scss";
 
 body {
-  :root {
-    --theme: dark;
-    --visibleScreen: 10000px;
-  }
+  // :root {
+  //   --theme: dark;
+  //   --visibleScreen: 10000px;
+  // }
+
+  // position: relative;
+
+  // top: 0;
+
+  margin-top: -150px;
 
   margin: 0;
   font-size: 16px;
@@ -18,7 +24,13 @@ body {
   letter-spacing: "0.01em";
   caret-color: $primary;
 
-  // border: 3px solid red;
+  // & > * {
+  //   border: 3px solid blue;
+  //   & > * {
+  //     // margin-top: -15px !important;
+  //     border: 3px solid green;
+  //   }
+  // }
 
   // height: calc(100vh - 70px);
   // overflow: hidden;

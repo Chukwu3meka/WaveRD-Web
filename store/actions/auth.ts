@@ -25,8 +25,12 @@ export const signoutAction = () => async (dispatch: AppDispatch) => {
 };
 
 export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch) => {
-  // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 2px)");
-  document.documentElement.style.setProperty("--headerHeight", "calc(66.24px - 0px)");
+  // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 1px)");
+  // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 0px)");
+  // document.documentElement.style.setProperty("--headerHeight", "71.04px");
+  document.documentElement.style.setProperty("--headerHeight", "70px");
+
+  // document.documentElement.style.setProperty("--headerHeight", "85.84px");
   document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <= iPhone not returning the right screen height in VH
 
   try {
