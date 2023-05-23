@@ -1,0 +1,13 @@
+@import "@styles/scss/index.scss";
+
+div.intro {
+  margin: auto;
+  margin-top: 15px;
+  background-color: var(--secondary);
+}
+
+figure.image {
+  height: 500px;
+  position: relative;
+  width: clamp(200px, 100%, 500px);
+}
