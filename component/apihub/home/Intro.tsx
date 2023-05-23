@@ -19,9 +19,9 @@ export default () => (
             and many more APIs
           </Typography>
 
-          <Link href="/apihub/documentation">
+          <Link href="/apihub/endpoints">
             <Button size="large" variant="contained" color="success">
-              View Documentation
+              View Endpoints
             </Button>
           </Link>
         </Stack>

@@ -16,7 +16,7 @@ const fetcher = async ({ endpoint, payload = null, method }: IFetcher) => {
        to allow the response to be received by the client. */
     credentials: "include",
     /* mode: "cors", This involves sending a preflight OPTIONS request to the server to check whether the server allows the requested access, 
-       and then sending the actual request if the server responds with the appropriate CORS headers.*/
+       and then sending the actual request if the server responds with the appropriate CORS headers. */
     mode: "cors",
     method,
   };

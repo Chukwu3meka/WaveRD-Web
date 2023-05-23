@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import { Grid, Stack, Typography } from "@mui/material";
 
 import { peaksStyles as styles } from ".";
@@ -17,7 +16,7 @@ export default () => (
           of things. Quickly customize your API with players, clubs, photos, schedules, leagues, and more to make your site a place users love to visit over and
           over again.
         </Typography>
-        <Link href="/apihub/documentation">See all features</Link>
+        <Link href="/apihub/endpoints">See all features</Link>
       </Stack>
 
       <Stack p={1} my={10}>
@@ -29,7 +28,7 @@ export default () => (
               other API wherever you want. Look like a professional webmaster without a data worries. We’ll make you look good. Select from dozens of stunning
               sports-API to begin creating a truly unique sports app for your organization.
             </Typography>
-            <Link href="/apihub/documentation">See all features</Link>
+            <Link href="/apihub/endpoints">See all features</Link>
           </Grid>
           <Grid item xs={12} md={4}>
             <figure className={styles.peakImage}>
@@ -52,7 +51,7 @@ export default () => (
               Have more than one team? You’ll need more than one API. Quickly create and customize separate pages for all your squads so users can have fast
               access to schedules, news, stats, scores, and more. Improve Performance through APIs
             </Typography>
-            <Link href="/apihub/documentation">See all features</Link>
+            <Link href="/apihub/endpoints">See all features</Link>
           </Grid>
         </Grid>
       </Stack>
