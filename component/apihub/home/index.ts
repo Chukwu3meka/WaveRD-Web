@@ -1,4 +1,6 @@
 import Intro from "./Intro";
 import introStyles from "./intro.module.scss";
+import Peaks from "./Peaks";
+import peaksStyles from "./peaks.module.scss";
 
-export { Intro, introStyles };
+export { Peaks, peaksStyles, Intro, introStyles };

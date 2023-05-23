@@ -40,6 +40,7 @@ body {
   // border: 13px solid green;
 
   a {
+    // border: 3px solid red;
     cursor: pointer;
     color: $primary;
     text-decoration: none;
@@ -47,7 +48,8 @@ body {
   }
 
   a:hover {
-    color: darken($color: $primary, $amount: 5);
+    // color: darken($color: $primary, $amount: 5);
+    color: darken($color: $secondary, $amount: 10);
     transition: color 300ms ease-out;
   }
 

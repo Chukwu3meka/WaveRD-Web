@@ -6,8 +6,9 @@ import { introStyles as styles } from ".";
 
 export default () => (
   <div className={styles.intro}>
-    <Grid container spacing={2} alignItems="center" overflow="hidden">
-      <Grid item xs={12} md={6}>
+    <Grid container spacing={2} alignItems="center" overflow="hidden" sx={{ maxWidth: "1200px" }}>
+      <Grid item md={1}></Grid>
+      <Grid item xs={12} md={7}>
         <Stack spacing={2} p={5}>
           <Typography fontSize="2em">SoccerMASS API Hub</Typography>
           <Typography fontSize=".9em" color="primary">
@@ -26,11 +27,12 @@ export default () => (
         </Stack>
       </Grid>
 
-      <Grid item md={6} display={{ xs: "none", sm: "none", md: "initial" }}>
+      <Grid item md={3} display={{ xs: "none", sm: "none", md: "initial" }}>
         <figure className={styles.image}>
           <Image src="/images/layout/apihub-intro.png" alt="SoccerMASS API Hub" fill />
         </figure>
       </Grid>
+      <Grid item md={2}></Grid>
     </Grid>
   </div>
 );

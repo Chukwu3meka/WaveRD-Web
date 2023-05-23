@@ -1,14 +1,55 @@
 @import "@styles/scss/index.scss";
 
-div.peaks {
+main.peaks {
   margin: auto;
-  margin-top: 15px;
-  max-width: 1200px;
-  background-color: var(--secondary);
+
+  padding: 50px 10px;
+
+  & > section {
+    max-width: 1100px;
+    // border: 3px solid red;
+    margin: auto;
+  }
 }
 
-figure.image {
-  height: 500px;
+// * {
+//   a,
+//   a:link {
+//     // box-shadow: 0 2px 0 $highlight;
+//     // cursor: pointer !important;
+//   }
+//   a:hover {
+//     box-shadow: 0 2px 0 $secondary;
+//     // background-color: #ce0606;
+//   }
+// }
+
+.peakImage {
   position: relative;
-  width: clamp(200px, 100%, 500px);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 250px;
+  max-width: 500px;
+  margin: auto;
+  // border: 3px solid red;
+  // padding: 10px;
+
+  // max-width: 700px;
+  // @include quickFlex($dir: column);
+  // padding: 70px 10px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  // & > * {  }
 }
+
+// .leftImage {
+//   max-width: 700px;
+//   // @include quickFlex($dir: column);
+//   padding: 70px 10px;
+// }
+
+// position: relative;
