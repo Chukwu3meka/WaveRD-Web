@@ -11,7 +11,7 @@ export default () => (
       <Grid item xs={12} md={7}>
         <Stack spacing={2} p={5}>
           <Typography fontSize="2em">SoccerMASS API Hub</Typography>
-          <Typography fontSize=".9em" color="primary">
+          <Typography fontSize=".9em" color="primary" fontWeight={700}>
             Connect with your community
           </Typography>
           <Typography fontSize="1.1em">
