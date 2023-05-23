@@ -16,7 +16,7 @@ export default () => (
           </Typography>
           <Typography fontSize="1.1em">
             Showcase your unique brand and engage with your users through a bold and easy-to-manage API. We offer Player, Club, Country, Competition, Referee
-            and many more APIs
+            and many more APIs coupled with our Full-text search capabilities via API calls
           </Typography>
 
           <Link href="/apihub/endpoints">
