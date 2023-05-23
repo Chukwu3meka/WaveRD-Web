@@ -3,9 +3,6 @@ import { Typography, Button } from "@mui/material";
 
 import { welcomeStyles } from ".";
 
-{
-  /* <div className={`xOverflowHidden ${welcomeStyles.welcome}`}> */
-}
 export default () => (
   <div className={welcomeStyles.welcome}>
     <main>

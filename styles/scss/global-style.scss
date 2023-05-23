@@ -97,8 +97,3 @@ body {
   color: var(--primary);
   background-color: lighten($color: $primary, $amount: 0);
 }
-
-.xOverflowHidden {
-  max-width: 100vw;
-  overflow-x: hidden;
-}

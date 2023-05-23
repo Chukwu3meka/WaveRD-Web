@@ -7,7 +7,7 @@ import { styles } from ".";
 import socialAccounts from "@utils/constants/socialAccounts";
 
 export default () => (
-  <div className={`xOverflowHidden ${styles.footer}`}>
+  <div className={styles.footer} style={{ maxWidth: "100vw", overflowX: "hidden" }}>
     <Fade direction="right">
       <footer>
         <main>
