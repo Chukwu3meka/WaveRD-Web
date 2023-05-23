@@ -42,6 +42,13 @@
         <image:loc>https://www.soccermass.com/images/layout/intro-apihub.png</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.soccermass.com/apihub/documentation</loc>
+    <!-- <changefreq>weekly</changefreq> -->
+    <image:image>
+        <image:loc>https://www.soccermass.com/images/layout/intro-apihub.png</image:loc>
+    </image:image>
+  </url>
   <!-- <url>
     <loc>https://www.soccermass.com/info/terms</loc>
     <changefreq>yearly</changefreq>
