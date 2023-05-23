@@ -1,82 +1,36 @@
 @import "@styles/scss/index.scss";
 
 .welcome {
-  @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
+  @include quickFlex($dir: row, $justify: center, $align: stretch, $width: calc(100vw - 5px));
   min-height: calc(var(--visibleScreen) - var(--headerHeight));
-  padding: 20px;
-  margin: auto;
-  // max-width: 1400px;
-  position: relative;
-  width: 100%;
-  border: 3px solid blue;
-  & > div:first-of-type {
-    z-index: 1;
-    padding: 10px 20px;
-    border-radius: 0 70px 0 70px;
-    @include quickFlex($dir: column, $align: flex-start);
-    border: 2px solid var(--secondary);
-    & > * {
-      max-width: 700px;
-    }
-
-    & > span {
-      margin-top: 20px;
-      @include quickFlex($column: 20px, $row: 20px, $justify: flex-end, $width: 100%, $wrap: wrap);
-    }
-  }
-
-  & > div:last-of-type {
-    top: 50%;
-    right: -200px;
-    width: 800px;
-    position: absolute;
-    height: clamp(300px, 100%, 800px);
-    transform: translate(0%, -50%);
-    background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
-      url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
-    border: 3px solid blue;
-  }
-}
-
-@media screen and (min-width: 530px) {
-  .welcome {
-    width: calc(100vw - 50px);
-  }
-}
-
-@media screen and (min-width: 880px) {
-  .welcome {
-    max-width: 900px;
-    & > div:last-of-type {
-      border-radius: 50%;
-      background: radial-gradient(circle closest-corner at 50% 50%, transparent -150%, var(--primary) 65%),
-        url("/images/layout/intro-welcome.jpg") 50%/120% no-repeat;
-    }
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .welcome {
-    max-width: 1300px;
-    border: 3px solid blue;
-    width: calc(100% - 200px);
-    & > div:first-of-type > * {
-      max-width: 1000px;
-    }
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .welcome {
-    max-width: 1500px;
-    & > div:first-of-type > * {
-      max-width: 1100px;
-    }
-  }
-}
-
-@media screen and (min-width: 1700px) {
-  .welcome > div:first-of-type > * {
+  overflow: hidden;
+  & > main {
+    @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
+    padding: 20px;
+    position: relative;
     max-width: 1200px;
+    & > aside {
+      z-index: 1;
+      @include quickFlex($dir: column, $align: flex-start);
+      padding: 10px 20px;
+      border-radius: 0 70px 0 70px;
+      border: 2px solid var(--secondary);
+      & > span {
+        margin-top: 20px;
+        @include quickFlex($column: 20px, $row: 20px, $justify: flex-end, $width: 100%, $wrap: wrap);
+      }
+    }
+
+    & > figure {
+      top: 50%;
+      right: -200px;
+      width: 800px;
+      position: absolute;
+      height: clamp(300px, 100%, 800px);
+      transform: translate(0%, -50%);
+      background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary) 65%),
+        url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
+      // // border: 3px solid blue;
+    }
   }
 }
