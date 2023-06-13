@@ -1,9 +1,12 @@
 @import "@styles/scss/index.scss";
 
-div.intro {
+main.endpoints {
+  padding: 10px;
+  max-width: 1200px;
   margin: auto;
-  margin-top: 15px;
-  background-color: var(--secondary);
+  // border: 3px solid red;
+  // margin-top: 15px;
+  // background-color: var(--secondary);
 }
 
 figure.image {
