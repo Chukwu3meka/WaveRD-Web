@@ -17,7 +17,7 @@ import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility
 import FlagIcon from "@mui/icons-material/Flag";
 import PublicIcon from "@mui/icons-material/Public";
 
-export default ({ apis }) => {
+export default ({ apis, showEndpoints, toggleShowEndpointsFn }) => {
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -28,12 +28,12 @@ export default ({ apis }) => {
     <List sx={{ width: "100%", maxWidth: 360, position: "sticky", top: "10px" }} component="nav" aria-labelledby="nested-list-subheader">
       {apis.map(({ label, id, endpoints, icon }) => (
         <>
-          <ListItemButton onClick={() => handleClick(id)}>
+          <ListItemButton onClick={() => toggleShowEndpointsFn(id)}>
             <ListItemIcon>{icon} </ListItemIcon>
             <ListItemText primary={label} />
-            {open ? <ExpandLess /> : <ExpandMore />}
+            {showEndpoints[id] ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={showEndpoints[id]} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {endpoints.map(({ label }) => (
                 <ListItemButton sx={{ pl: 6 }}>
@@ -44,48 +44,6 @@ export default ({ apis }) => {
           </Collapse>
         </>
       ))}
-
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <SettingsAccessibilityIcon />
-        </ListItemIcon>
-        <ListItemText primary="Football Players" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <EmojiEventsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Competitions" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <PublicIcon />
-        </ListItemIcon>
-        <ListItemText primary="Football Country" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
     </List>
   );
 };
