@@ -25,7 +25,7 @@ export default function Navigation({ apis, showEndpoints, toggleShowEndpointsFn 
   };
 
   return (
-    <List sx={{ width: "100%", maxWidth: 360, position: "sticky", top: "10px" }} component="nav" aria-labelledby="nested-list-subheader">
+    <List component="nav" aria-labelledby="nested-list-subheader" sx={{ width: "100%" }}>
       {apis.map(({ label, id, endpoints, icon }) => (
         <>
           <ListItemButton onClick={() => toggleShowEndpointsFn(id)}>
