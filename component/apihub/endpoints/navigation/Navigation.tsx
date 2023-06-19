@@ -17,7 +17,7 @@ import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility
 import FlagIcon from "@mui/icons-material/Flag";
 import PublicIcon from "@mui/icons-material/Public";
 
-export default ({ apis, showEndpoints, toggleShowEndpointsFn }) => {
+export default function Navigation({ apis, showEndpoints, toggleShowEndpointsFn }) {
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -46,4 +46,4 @@ export default ({ apis, showEndpoints, toggleShowEndpointsFn }) => {
       ))}
     </List>
   );
-};
+}

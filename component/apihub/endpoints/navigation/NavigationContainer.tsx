@@ -1,11 +1,11 @@
-import { Nav } from "..";
+import { Navigation } from "..";
 
 import { Groups as ClubsIcon, SettingsAccessibility as PlayersIcon, EmojiEvents as CompetitionsIcon, Public as CountriesIcon } from "@mui/icons-material";
 import { useState } from "react";
 
 import * as React from "react";
 
-export default function NavContainer() {
+export default function NavigationContainer() {
   const apis = [
     {
       id: "footballClubs",
@@ -46,5 +46,5 @@ export default function NavContainer() {
     setShowEndpoints((showEndpoints) => ({ ...showEndpoints, [id]: !showEndpoints[id] }));
   };
 
-  return <Nav apis={apis} showEndpoints={showEndpoints} toggleShowEndpointsFn={toggleShowEndpointsFn} />;
+  return <Navigation apis={apis} showEndpoints={showEndpoints} toggleShowEndpointsFn={toggleShowEndpointsFn} />;
 }

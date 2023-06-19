@@ -1,7 +1,7 @@
 import { connector, ConnectorProps } from "@store";
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-import { styles, NavigationContainer, EndpointContainer } from ".";
+import Endpoints, { styles, NavigationContainer, EndpointContainer } from ".";
 
 export default connector((props: ConnectorProps) => {
   const [showEndpoints, setShowEndpoints] = useState(false);
@@ -15,16 +15,5 @@ export default connector((props: ConnectorProps) => {
     setShowEndpoints(props.layout.width >= 620);
   }, [props.layout.width]);
 
-  return (
-    <main className={styles.endpoints}>
-      <Grid container spacing={3}>
-        <Grid item sm={4}>
-          {showEndpoints ? <NavigationContainer /> : false}
-        </Grid>
-        <Grid item sm={8}>
-          <EndpointContainer />
-        </Grid>
-      </Grid>
-    </main>
-  );
+  return <Endpoints showEndpoints />;
 });
