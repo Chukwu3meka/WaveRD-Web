@@ -1,41 +1,36 @@
 import * as React from "react";
-import { TextField, Autocomplete } from "@mui/material";
+import { TextField, Autocomplete, Box } from "@mui/material";
 import { styled, lighten, darken } from "@mui/system";
 
-const GroupHeader = styled("div")(({ theme }) => ({
-  top: "-8px",
-  position: "sticky",
-  padding: "4px 10px",
-  color: theme.palette.primary.main,
-  backgroundColor: theme.palette.mode === "light" ? lighten(theme.palette.primary.light, 0.85) : darken(theme.palette.primary.main, 0.7),
-}));
-
-const GroupItems = styled("ul")({
-  padding: 0,
-});
-
-export default function RenderGroup({ top100Films }) {
-  const options = top100Films.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
-    return {
-      firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
-      ...option,
-    };
-  });
-
+export default function Search({ countries }) {
   return (
     <Autocomplete
-      id="grouped-demo"
-      options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
-      groupBy={(option) => option.firstLetter}
-      getOptionLabel={(option) => option.title}
+      id="country-select-demo"
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="With categories" />}
-      renderGroup={(params) => (
-        <li key={params.key}>
-          <GroupHeader>{params.group}</GroupHeader>
-          <GroupItems>{params.children}</GroupItems>
-        </li>
+      options={countries}
+      autoHighlight
+      getOptionLabel={(option) => option.label}
+      renderOption={(props, option) => (
+        <Box component="li" sx={{ "& > img": { mr: 2, flexShrink: 0 } }} {...props}>
+          <img
+            loading="lazy"
+            width="20"
+            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+            srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+            alt=""
+          />
+          {option.label} ({option.code}) +{option.phone}
+        </Box>
+      )}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Choose a country"
+          inputProps={{
+            ...params.inputProps,
+            autoComplete: "new-password", // disable autocomplete and autofill
+          }}
+        />
       )}
     />
   );

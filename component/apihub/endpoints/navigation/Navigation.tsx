@@ -1,10 +1,10 @@
-import * as React from "react";
+import { Fragment, useState } from "react";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
+import { Collapse, Box } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import SendIcon from "@mui/icons-material/Send";
@@ -18,7 +18,7 @@ import FlagIcon from "@mui/icons-material/Flag";
 import PublicIcon from "@mui/icons-material/Public";
 
 export default function Navigation({ apis, showEndpoints, toggleShowEndpointsFn }) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   const handleClick = () => {
     setOpen(!open);
@@ -27,7 +27,7 @@ export default function Navigation({ apis, showEndpoints, toggleShowEndpointsFn 
   return (
     <List component="nav" aria-labelledby="nested-list-subheader" sx={{ width: "100%" }}>
       {apis.map(({ label, id, endpoints, icon }) => (
-        <>
+        <Fragment key={id}>
           <ListItemButton onClick={() => toggleShowEndpointsFn(id)}>
             <ListItemIcon>{icon} </ListItemIcon>
             <ListItemText primary={label} />
@@ -36,13 +36,13 @@ export default function Navigation({ apis, showEndpoints, toggleShowEndpointsFn 
           <Collapse in={showEndpoints[id]} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {endpoints.map(({ label }) => (
-                <ListItemButton sx={{ pl: 6 }}>
+                <ListItemButton key={label} sx={{ pl: 6 }}>
                   <ListItemText primary={label} />
                 </ListItemButton>
               ))}
             </List>
           </Collapse>
-        </>
+        </Fragment>
       ))}
     </List>
   );
