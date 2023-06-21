@@ -7,8 +7,8 @@ export default function ({ showEndpoints }: any) {
     <main className={styles.endpoints}>
       <Grid container spacing={3}>
         <Grid item sm={4}>
-          <Stack alignItems="center" sx={{ maxWidth: 360, position: "sticky", top: "10px" }}>
-            <figure>
+          <Stack alignItems="center" sx={{ maxWidth: 360, position: "sticky", top: "85px" }}>
+            {/* <figure>
               <Image
                 src="/images/layout/intro-apihub.png"
                 alt="SoccerMASS API HUB welcome image"
@@ -17,7 +17,7 @@ export default function ({ showEndpoints }: any) {
               (max-width: 1200px) 50vw,
               33vw"
               />
-            </figure>
+            </figure> */}
             <SearchContainer />
             {showEndpoints ? <NavigationContainer /> : false}
           </Stack>
