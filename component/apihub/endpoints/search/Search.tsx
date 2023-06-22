@@ -1,20 +1,21 @@
-import * as React from "react";
-import { TextField, Autocomplete, Box, Divider, Stack, Typography } from "@mui/material";
-import { styled, lighten, darken } from "@mui/system";
-import { SearchProps } from "@interface/apihub/endpoints-interface";
+// dependencies
 import Ellipsis from "@component/shared/ellipsis";
+import { TextField, Autocomplete, Divider, Stack, Typography } from "@mui/material";
+
+// interface
+import { SearchProps, SearchResult } from "@interface/apihub/endpoints-interface";
 
 export default function Search({ searchResult, onInputChange, onValueChange, value, inputValue }: SearchProps) {
   return (
     <Autocomplete
       fullWidth
-      value={value}
+      value={value as unknown as SearchResult}
       onChange={(e, newValue) => onValueChange(newValue)}
       inputValue={inputValue}
       onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
       id="country-select-demo"
       autoHighlight
-      options={searchResult}
+      options={searchResult as SearchResult[]}
       getOptionLabel={(option) => option.title}
       renderOption={(props, { title, category, description, id }) => (
         <Stack key={id} component="li" mb={1} {...props}>

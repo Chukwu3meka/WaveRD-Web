@@ -8,7 +8,7 @@ export interface SearchResult {
 type CategoryTypes = "Club" | "Player" | "Country" | "Competition";
 
 export interface SearchProps {
-  searchResult: SearchResult[];
+  searchResult: SearchResult[] | SearchProps["value"];
 
   onInputChange: Function;
   onValueChange: Function;

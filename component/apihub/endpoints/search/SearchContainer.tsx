@@ -1,7 +1,12 @@
+// dependencies
 import { Search } from "..";
-
 import { useState } from "react";
+
+// interfaces
 import { SearchProps, SearchResult } from "@interface/apihub/endpoints-interface";
+
+// services
+import { searchEndpoints } from "services";
 
 function SearchContainer() {
   const [value, setValue] = useState<SearchProps["value"]>(null);
@@ -9,10 +14,15 @@ function SearchContainer() {
 
   const onValueChange = (newValue) => {
     setValue(newValue);
+    // update value here
   };
 
-  const onInputChange = (newInputValue) => {
+  const onInputChange = async (newInputValue) => {
     setInputValue(newInputValue);
+
+    console.log({ newInputValue });
+
+    await searchEndpoints;
   };
 
   return <Search searchResult={searchResult} onValueChange={onValueChange} onInputChange={onInputChange} value={value} inputValue={inputValue} />;
