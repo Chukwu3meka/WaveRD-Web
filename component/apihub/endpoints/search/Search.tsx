@@ -2,47 +2,35 @@ import * as React from "react";
 import { TextField, Autocomplete, Box, Divider, Stack, Typography } from "@mui/material";
 import { styled, lighten, darken } from "@mui/system";
 import { SearchProps } from "@interface/apihub/endpoints-interface";
+import Ellipsis from "@component/shared/ellipsis";
 
 export default function Search({ searchResult, onInputChange, onValueChange, value, inputValue }: SearchProps) {
   return (
     <Autocomplete
       fullWidth
       value={value}
-      onChange={onValueChange}
+      onChange={(e, newValue) => onValueChange(newValue)}
       inputValue={inputValue}
-      onInputChange={onInputChange}
+      onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
       id="country-select-demo"
-      // sx={{ width: '100%' }}
-
+      autoHighlight
       options={searchResult}
-      // renderInput={(params) => <TextField {...params} label="Controllable" />}
-      //
-      // options={searchResult}
-      // autoHighlight
-      // getOptionLabel={(option) => option.title}
+      getOptionLabel={(option) => option.title}
       renderOption={(props, { title, category, description, id }) => (
-        <Stack key={id} component="li" sx={{ "& > img": { mr: 2, flexShrink: 0 } }} {...props}>
-          {/* <img
-            loading="lazy"
-            width="20"
-            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-            alt=""
-          /> */}
-          <Stack direction="row" justifyContent="space-between">
-            <Typography noWrap>{title}</Typography>
-            <Typography color="text.secondary">{category}</Typography>
+        <Stack key={id} component="li" mb={1} {...props}>
+          <Stack direction="row" justifyContent="space-between" alignItems="flex-end" spacing={1} sx={{ width: "100%" }}>
+            <Typography maxWidth="80%" noWrap sx={{ textTransform: "uppercase" }}>
+              {title}
+            </Typography>
+            <Typography maxWidth="20%" noWrap color="text.secondary" fontSize=".8em" sx={{ textTransform: "lowercase" }}>
+              {category}
+            </Typography>
           </Stack>
-          <Divider component="li" />
+          <Divider sx={{ width: "90%", my: 1, alignSelf: "flex-end" }} />
 
-          <Typography
-            sx={{ mt: 0.5, ml: 2 }}
-            color="text.secondary"
-            display="block"
-            variant="caption"
-            sx={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", textOverflow: "ellipsis" }}>
+          <Ellipsis sx={{ mt: 0.5, ml: 2 }} maxLines={2} color="text.secondary" display="block" variant="caption">
             {description}
-          </Typography>
+          </Ellipsis>
         </Stack>
       )}
       renderInput={(params) => (

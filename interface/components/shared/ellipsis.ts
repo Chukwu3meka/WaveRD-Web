@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
-import { Typography } from "@mui/material";
+import { ReactNode, ComponentType } from "react";
+import { TypographyProps } from "@mui/material/Typography";
 
-type TypographyProp = typeof Typography;
-
-export interface EllipsisProps extends TypographyProp {
-  clamp: number;
+// export interface EllipsisProps extends ComponentType<TypographyProps> {
+export interface EllipsisProps extends TypographyProps {
   children: ReactNode;
+  maxLines: number;
 }
