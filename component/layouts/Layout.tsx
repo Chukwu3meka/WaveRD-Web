@@ -10,9 +10,9 @@ import Footer from "@component/shared/footer";
 import HeaderContainer from "@component/shared/header";
 import { AccountsLayout, InfoLayout, styles, DefaultLayout } from ".";
 
-import { Layout } from "@interface/components/layouts/layoutsInterface";
+import { LayoutProps } from "@interface/components/layouts/layoutsInterface";
 
-const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: Layout) => (
+const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, ready }: LayoutProps) => (
   <>
     <Head>
       <title>SoccerMASS: The Leading Soccer Management Solution and Football API Supplier.</title>

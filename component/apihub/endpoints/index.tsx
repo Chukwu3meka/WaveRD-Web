@@ -1,8 +1,19 @@
-import EndpointContainer from "./endpoint/EndpointContainer";
-import NavContainer from "./nav/NavContainer";
+// endpoint
 import Endpoint from "./endpoint/Endpoint";
-import Endpoints from "./Endpoints";
-import Nav from "./nav/Nav";
+import EndpointContainer from "./endpoint/EndpointContainer";
+
+// navigation
+import Navigation from "./navigation/Navigation";
+import NavigationContainer from "./navigation/NavigationContainer";
+
+// search
+import Search from "./search/Search";
+import SearchContainer from "./search/SearchContainer";
+
+// endpoints
 import styles from "./endpoint.module.scss";
 
-export { styles, Endpoint, EndpointContainer, Nav, NavContainer, Endpoints as default };
+import Endpoints from "./Endpoints";
+import EndpointsContainer from "./EndpointsContainer";
+
+export { styles, Endpoint, EndpointContainer, Navigation, NavigationContainer, Endpoints, Search, SearchContainer, EndpointsContainer as default };

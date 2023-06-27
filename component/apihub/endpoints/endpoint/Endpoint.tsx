@@ -1,99 +1,30 @@
-import * as React from "react";
-import ListSubheader from "@mui/material/ListSubheader";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import SendIcon from "@mui/icons-material/Send";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import GroupsIcon from "@mui/icons-material/Groups";
-import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
-import FlagIcon from "@mui/icons-material/Flag";
-import PublicIcon from "@mui/icons-material/Public";
+import React from "react";
+import { Tabs, Tab, Box } from "@mui/material";
+import { Description, Snippet, Response } from ".";
+import DataNotFound from "@component/shared/dataNotFound";
+import TabPanel, { a11yProps } from "@component/shared/tabPanel";
 
-export default () => {
-  const [open, setOpen] = React.useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
+function Endpoint({ endpoint, copyToCLipboardHandler, currentTab, handleTabChange, theme }) {
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }} component="nav" aria-labelledby="nested-list-subheader">
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <GroupsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Football Clubs" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <SettingsAccessibilityIcon />
-        </ListItemIcon>
-        <ListItemText primary="Football Players" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <EmojiEventsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Competitions" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <PublicIcon />
-        </ListItemIcon>
-        <ListItemText primary="Football Country" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-    </List>
+    <Box sx={{ width: "100%", height: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs value={currentTab} onChange={handleTabChange} aria-label="endpoint">
+          <Tab label="Description" {...a11yProps(0)} />
+          <Tab label="Code Snippet" {...a11yProps(1)} />
+          <Tab label="API Response" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={currentTab} index={0}>
+        {endpoint ? <Description handleTabChange={handleTabChange} title={endpoint.title} description={endpoint.description} /> : <DataNotFound />}
+      </TabPanel>
+      <TabPanel value={currentTab} index={1}>
+        {endpoint ? <Snippet snippet={endpoint.snippet} copyToCLipboardHandler={copyToCLipboardHandler} theme={theme} /> : <DataNotFound />}
+      </TabPanel>
+      <TabPanel value={currentTab} index={2}>
+        {endpoint ? <Response response={endpoint.response} handleTabChange={handleTabChange} theme={theme} /> : <DataNotFound />}
+      </TabPanel>
+    </Box>
   );
-};
+}
+
+export default Endpoint;

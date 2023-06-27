@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 
 import { peaksStyles as styles } from ".";
 
@@ -21,16 +21,18 @@ export default () => (
 
       <Stack p={1} my={10}>
         <Grid container spacing={2} alignItems="stretch" direction={{ xs: "column-reverse", sm: "column-reverse", md: "row" }}>
-          <Grid item xs={12} md={8}>
-            <Typography fontSize="1.3em">Create robust App</Typography>
-            <Typography textAlign="justify" color="text.secondary" my={1}>
-              If you can send an email, you can have an API connected website. Click and update content in an instant. Drag-and-drop stats, schedules, news, and
-              other API wherever you want. Look like a professional webmaster without a data worries. We’ll make you look good. Select from dozens of stunning
-              sports-API to begin creating a truly unique sports app for your organization.
-            </Typography>
-            <Link href="/apihub/endpoints">See all features</Link>
+          <Grid item xs={12} md={7}>
+            <Box maxWidth={600}>
+              <Typography fontSize="1.3em">Create robust App</Typography>
+              <Typography textAlign="justify" color="text.secondary" my={1}>
+                If you can send an email, you can have an API connected website. Click and update content in an instant. Drag-and-drop stats, schedules, news,
+                and other API wherever you want. Look like a professional webmaster without a data worries. We’ll make you look good. Select from dozens of
+                stunning sports-API to begin creating a truly unique sports app for your organization.
+              </Typography>
+              <Link href="/apihub/endpoints">See all features</Link>
+            </Box>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={5}>
             <figure className={styles.peakImage}>
               <Image src="/images/layout/apihub-clubs.webp" alt="Intoe" fill />
             </figure>
@@ -39,19 +41,21 @@ export default () => (
       </Stack>
 
       <Stack p={1}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={4}>
+        <Grid container direction="row" spacing={2} alignItems="center">
+          <Grid item xs={12} md={5}>
             <figure className={styles.peakImage}>
               <Image src="/images/layout/apihub-players.jpg" alt="Intoe" fill />
             </figure>
           </Grid>
-          <Grid item xs={12} md={8}>
-            <Typography fontSize="1.3em">Massive data to fetch</Typography>
-            <Typography textAlign="justify" color="text.secondary" my={1}>
-              Have more than one team? You’ll need more than one API. Quickly create and customize separate pages for all your squads so users can have fast
-              access to schedules, news, stats, scores, and more. Improve Performance through APIs
-            </Typography>
-            <Link href="/apihub/endpoints">See all features</Link>
+          <Grid item xs={12} md={7}>
+            <Box maxWidth={600} ml="auto">
+              <Typography fontSize="1.3em">Massive data to fetch</Typography>
+              <Typography textAlign="justify" color="text.secondary" my={1}>
+                Have more than one team? You’ll need more than one API. Quickly create and customize separate pages for all your squads so users can have fast
+                access to schedules, news, stats, scores, and more. Improve Performance through APIs
+              </Typography>
+              <Link href="/apihub/endpoints">See all features</Link>
+            </Box>
           </Grid>
         </Grid>
       </Stack>

@@ -1,0 +1,28 @@
+@import "@styles/scss/index.scss";
+
+.error {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid var(--dim);
+  @include quickFlex($dir: column);
+  margin: 10px auto;
+  width: fit-content;
+  & > span {
+    @include quickFlex($dir: column);
+    & > *:first-child {
+      margin: 0 !important;
+    }
+    h6 {
+      position: relative;
+      top: -13px;
+      font-size: 1.3em;
+    }
+  }
+  & > *:nth-child(2) {
+    position: relative;
+    top: -13px;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+}
