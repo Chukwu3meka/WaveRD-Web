@@ -1,50 +1,56 @@
 import { Navigation } from "..";
 
 import { Groups as ClubsIcon, SettingsAccessibility as PlayersIcon, EmojiEvents as CompetitionsIcon, Public as CountriesIcon } from "@mui/icons-material";
-import { useState } from "react";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
+import fetcher from "@utils/fetcher";
 
-export default function NavigationContainer() {
-  const apis = [
-    {
-      id: "footballClubs",
-      label: "Football Clubs",
-      icon: <ClubsIcon />,
-      endpoints: [
-        { label: "Get Clubs", id: "get-clubs" },
-        { label: "Get Clubs by ID", id: "get-clubs-by-id" },
-        { label: "Search Club", id: "search-clubs" },
-      ],
-    },
-    {
-      id: "footballPlayers",
-      label: "Football Players",
-      icon: <PlayersIcon />,
-      endpoints: [],
-    },
-    {
-      id: "footballCompetitions",
-      label: "Football Competitions",
-      icon: <CompetitionsIcon />,
-      endpoints: [],
-    },
-    {
-      id: "footballCountries",
-      label: "Football Countries",
-      icon: <CountriesIcon />,
-      endpoints: [],
-    },
-  ];
+const staticApis = {
+  "football-clubs": { title: "Football Clubs", icon: <ClubsIcon /> },
+  "football-players": { title: "Football Players", icon: <PlayersIcon /> },
+  "football-countries": { title: "Football Countries", icon: <CountriesIcon /> },
+  "football-competitions": { title: "Football Competitions", icon: <CompetitionsIcon /> },
+};
 
-  const [showEndpoints, setShowEndpoints] = useState({
-    footballClubs: false,
-    footballPlayers: false,
-  });
+export default function NavigationContainer({ getEndpoint }) {
+  const [apis, setApis] = useState([]);
+
+  const [showEndpoints, setShowEndpoints] = useState({ "football-clubs": false, "football-players": false });
 
   const toggleShowEndpointsFn = (id) => {
+    console.log(id);
     setShowEndpoints((showEndpoints) => ({ ...showEndpoints, [id]: !showEndpoints[id] }));
   };
 
-  return <Navigation apis={apis} showEndpoints={showEndpoints} toggleShowEndpointsFn={toggleShowEndpointsFn} />;
+  useEffect(() => {
+    const getEndpointsByCategory = async () => {
+      await fetcher({ endpoint: `/apihub/endpoints`, method: "GET" })
+        .then(({ success, payload }) => {
+          if (success) {
+            for (const [category, endpoints] of Object.entries(payload)) {
+              console.log(category, endpoints);
+              setApis((apis) =>
+                [
+                  ...apis,
+                  staticApis[category]
+                    ? {
+                        endpoints,
+                        id: category,
+                        icon: staticApis[category].icon,
+                        title: staticApis[category].title,
+                      }
+                    : [],
+                ].flatMap((x) => x)
+              );
+            }
+          }
+        })
+
+        .catch((err) => {});
+    };
+
+    getEndpointsByCategory();
+  }, []);
+
+  return <Navigation apis={apis} showEndpoints={showEndpoints} getEndpoint={getEndpoint} toggleShowEndpointsFn={toggleShowEndpointsFn} />;
 }

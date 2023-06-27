@@ -1,29 +1,32 @@
+import ErrorContainer from "@component/shared/error";
+import Loading from "@component/shared/loading";
 import { Grid, Stack } from "@mui/material";
-import Image from "next/image";
 import { styles, NavigationContainer, EndpointContainer, SearchContainer } from ".";
 
-export default function ({ showEndpoints }: any) {
+export default function ({ getEndpoint, endpoint, status }: any) {
   return (
     <main className={styles.endpoints}>
       <Grid container spacing={3}>
-        <Grid item sm={4}>
-          <Stack alignItems="center" sx={{ maxWidth: 360, position: "sticky", top: "85px" }}>
-            {/* <figure>
-              <Image
-                src="/images/layout/intro-apihub.png"
-                alt="SoccerMASS API HUB welcome image"
-                fill
-                sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-              />
-            </figure> */}
-            <SearchContainer />
-            {showEndpoints ? <NavigationContainer /> : false}
+        <Grid item xs={12} sm={12} md={4}>
+          <Stack alignItems="center" spacing={2} sx={{ position: "sticky", top: "85px" }}>
+            <SearchContainer getEndpoint={getEndpoint} />
+            <NavigationContainer getEndpoint={getEndpoint} />
           </Stack>
         </Grid>
-        <Grid item sm={8}>
-          <EndpointContainer />
+        <Grid item xs={12} sm={12} md={8}>
+          {status.loading ? (
+            <Loading height="100%" />
+          ) : status.error ? (
+            <p>"Error"</p>
+          ) : endpoint ? (
+            <EndpointContainer endpoint={endpoint} />
+          ) : (
+            <ErrorContainer
+              title="Endpoint not selected"
+              description="Select an endpoint from the side pane to display its API Documentation, Code Snippte, and Sample Response. Alternatively you can search endpoints using the search box."
+              style={{ height: "100%" }}
+            />
+          )}
         </Grid>
       </Grid>
     </main>

@@ -9,7 +9,7 @@ export interface LayoutContainer {
   emotionCache?: EmotionCache;
 }
 
-export interface Layout {
+export interface LayoutProps {
   loading: boolean;
   theme: "dark" | "light";
   Component: AppProps["Component"];
