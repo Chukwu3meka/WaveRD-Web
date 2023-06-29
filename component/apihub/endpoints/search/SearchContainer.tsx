@@ -17,7 +17,7 @@ function SearchContainer({ getEndpoint }) {
   const onInputChange = async (newInputValue) => {
     setInputValue(newInputValue);
     if (newInputValue?.length)
-      await fetcher({ endpoint: `/apihub/endpoints/search?q=${newInputValue}`, method: "GET" })
+      await fetcher({ endpoint: `/apihub/endpoints/search?query=${newInputValue}`, method: "GET" })
         .then(({ success, payload }) => {
           if (success && Array.isArray(payload) && payload.length) setSearchResult(payload);
         })
