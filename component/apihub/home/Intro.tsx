@@ -5,8 +5,10 @@ import { Grid, Typography, Button, Stack } from "@mui/material";
 import { introStyles as styles } from ".";
 
 export default () => (
-  <div className={styles.intro}>
-    <Grid container spacing={2} alignItems="center" overflow="hidden" sx={{ maxWidth: "1200px" }}>
+  <div className={styles.networkMesh}>
+    dsfdsfdsfdsfd<p>dsfdsfds</p>
+    {/* <div className={styles.intro} */}
+    {/* <Grid container spacing={2} alignItems="center" overflow="hidden" sx={{ maxWidth: "1200px" }}>
       <Grid item md={1}></Grid>
       <Grid item xs={12} md={7}>
         <Stack spacing={2} p={5}>
@@ -33,6 +35,6 @@ export default () => (
         </figure>
       </Grid>
       <Grid item md={2}></Grid>
-    </Grid>
+    </Grid> */}
   </div>
 );
