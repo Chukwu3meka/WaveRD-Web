@@ -1,9 +1,8 @@
 import { Navigation } from "..";
-
 import { Groups as ClubsIcon, SettingsAccessibility as PlayersIcon, EmojiEvents as CompetitionsIcon, Public as CountriesIcon } from "@mui/icons-material";
 
-import { useEffect, useState } from "react";
 import fetcher from "@utils/fetcher";
+import { useEffect, useState } from "react";
 
 const staticApis = {
   "football-clubs": { title: "Football Clubs", icon: <ClubsIcon /> },
@@ -27,8 +26,7 @@ export default function NavigationContainer({ getEndpoint }) {
       await fetcher({ endpoint: `/apihub/endpoints`, method: "GET" })
         .then(({ success, payload }) => {
           if (success) {
-            for (const [category, endpoints] of Object.entries(payload)) {
-              console.log(category, endpoints);
+            for (const [category, endpoints] of Object.entries(payload))
               setApis((apis) =>
                 [
                   ...apis,
@@ -42,7 +40,6 @@ export default function NavigationContainer({ getEndpoint }) {
                     : [],
                 ].flatMap((x) => x)
               );
-            }
           }
         })
 
