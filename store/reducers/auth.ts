@@ -2,11 +2,11 @@ import { AuthState } from "@interface/store/auth";
 
 const initialState = null;
 
-// const authReducer = (state: AuthState = initialState, { payload, type }: { payload: Partial<AuthState>; type: string }) => {
-const authReducer = (state: AuthState = initialState, { payload, type }: { payload: any; type: string }) => {
+// const authReducer = (state: AuthState = initialState, { data, type }: { data: Partial<AuthState>; type: string }) => {
+const authReducer = (state: AuthState = initialState, { data, type }: { data: any; type: string }) => {
   switch (type) {
     case "SET_AUTH":
-      return payload;
+      return data;
     default:
       return state;
   }

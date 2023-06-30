@@ -25,8 +25,8 @@ export const loginHandler = async ({ setUserForm, userForm, enqueueSnackbar, set
     return;
   }
 
-  await fetcher({ method: "POST", endpoint: "/accounts/signin", payload: { email, password } })
-    .then(async ({ payload: { role, fullName, handle, cookieConsent } }) => {
+  await fetcher({ method: "POST", endpoint: "/accounts/signin", data: { email, password } })
+    .then(async ({ data: { role, fullName, handle, cookieConsent } }) => {
       await sleep(0.3);
 
       const initialRoute = router.query ? router.query.redirect || "" : "";

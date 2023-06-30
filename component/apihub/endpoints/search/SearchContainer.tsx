@@ -1,9 +1,8 @@
-// dependencies
 import { Search } from "..";
+
 import { useState } from "react";
 import fetcher from "@utils/fetcher";
 
-// interfaces
 import { SearchProps, SearchResult } from "@interface/apihub/endpoints-interface";
 
 function SearchContainer({ getEndpoint }) {
@@ -11,16 +10,18 @@ function SearchContainer({ getEndpoint }) {
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
     [inputValue, setInputValue] = useState<SearchProps["inputValue"]>("");
 
-  const onValueChange = (newValue) => setValue(newValue);
+  const onValueChange = (newValue) => {
+    setValue(newValue);
+  };
 
   const onInputChange = async (newInputValue) => {
     setInputValue(newInputValue);
-
-    await fetcher({ endpoint: `/apihub/search-endpoints?phrase=${newInputValue}`, method: "GET" })
-      .then(({ success, payload }) => {
-        if (success && Array.isArray(payload)) setSearchResult(payload);
-      })
-      .catch((err) => setSearchResult([]));
+    if (newInputValue?.length)
+      await fetcher({ endpoint: `/apihub/endpoints/search?query=${newInputValue}`, method: "GET" })
+        .then(({ success, data }) => {
+          if (success && Array.isArray(data) && data.length) setSearchResult(data);
+        })
+        .catch((err) => setSearchResult([]));
   };
 
   const isOptionEqualToValue = (option, value) => {

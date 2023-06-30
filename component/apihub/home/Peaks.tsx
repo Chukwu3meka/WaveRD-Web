@@ -7,19 +7,7 @@ import { peaksStyles as styles } from ".";
 export default () => (
   <main className={styles.peaks}>
     <section>
-      <Stack alignItems="center" maxWidth={600} m="auto">
-        <Typography fontSize="1.3em" fontWeight={600}>
-          Shift your focus to UI/UX
-        </Typography>
-        <Typography textAlign="justify" color="text.secondary" my={1}>
-          Great first impressions lead to lasting relationships, that’s why we make it easy to put your best in app logi and UI while we focus on the data side
-          of things. Quickly customize your API with players, clubs, photos, schedules, leagues, and more to make your site a place users love to visit over and
-          over again.
-        </Typography>
-        <Link href="/apihub/endpoints">See all features</Link>
-      </Stack>
-
-      <Stack p={1} my={10}>
+      <Stack p={1}>
         <Grid container spacing={2} alignItems="stretch" direction={{ xs: "column-reverse", sm: "column-reverse", md: "row" }}>
           <Grid item xs={12} md={7}>
             <Box maxWidth={600}>
@@ -40,7 +28,7 @@ export default () => (
         </Grid>
       </Stack>
 
-      <Stack p={1}>
+      <Stack p={1} my={10}>
         <Grid container direction="row" spacing={2} alignItems="center">
           <Grid item xs={12} md={5}>
             <figure className={styles.peakImage}>
@@ -56,6 +44,27 @@ export default () => (
               </Typography>
               <Link href="/apihub/endpoints">See all features</Link>
             </Box>
+          </Grid>
+        </Grid>
+      </Stack>
+
+      <Stack p={1}>
+        <Grid container direction="row" spacing={2} alignItems="center">
+          <Grid item xs={12} md={7}>
+            <Box maxWidth={600} ml="auto">
+              <Typography fontSize="1.3em">Shift your focus to UI/UX</Typography>
+              <Typography textAlign="justify" color="text.secondary" my={1}>
+                Great first impressions lead to lasting relationships, that’s why we make it easy to put your best in app logi and UI while we focus on the data
+                side of things. Quickly customize your API with players, clubs, photos, schedules, leagues, and more to make your site a place users love to
+                visit over and over again.
+              </Typography>
+              <Link href="/apihub/endpoints">See all features</Link>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <figure className={styles.peakImage}>
+              <Image src="/images/layout/others.png" alt="Intoe" fill />
+            </figure>
           </Grid>
         </Grid>
       </Stack>

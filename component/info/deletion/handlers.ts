@@ -36,8 +36,8 @@ export const deleteDataHandler = async ({ enqueueSnackbar, setUserForm, userForm
       }
     }
 
-    // await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
-    await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/data-deletion" }).then(async () => {
+    // await fetcher({ method: "POST", data: userData, endpoint: "/console/contact-us" }).then(async () => {
+    await fetcher({ method: "POST", data: userData, endpoint: "/accounts/data-deletion" }).then(async () => {
       await sleep(0.3);
 
       setUserForm({

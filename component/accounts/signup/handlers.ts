@@ -15,7 +15,7 @@ export const onInputChange = async ({ e, setUserForm, enqueueSnackbar, closeSnac
     if (["handle", "email"].includes(id)) {
       setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: true } }));
 
-      await fetcher({ endpoint: `/accounts/${id}_exists`, method: "POST", payload: { [id]: value } }).then(async ({ payload: { exists } }) => {
+      await fetcher({ endpoint: `/accounts/${id}_exists`, method: "POST", data: { [id]: value } }).then(async ({ data: { exists } }) => {
         if (exists) throw { message: `${capitalize(id)} not available, Kindly use something different` };
         setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
       });
@@ -45,7 +45,7 @@ export const registerHandler = async ({ enqueueSnackbar, setUserForm, userForm, 
       }
     }
 
-    await fetcher({ method: "POST", payload: userData, endpoint: "/accounts/signup" }).then(async () => {
+    await fetcher({ method: "POST", data: userData, endpoint: "/accounts/signup" }).then(async () => {
       await sleep(0.3);
       setUserForm((values: any) => ({ ...values, options: { ...values.options, accountCreated: true } }));
     });
