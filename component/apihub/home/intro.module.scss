@@ -5,10 +5,10 @@ div.intro {
   background-color: var(--secondary);
   text-align: center;
   margin-top: 0px;
-  min-height: calc(var(--visibleScreen) - 50px);
+  min-height: 500px;
   @include quickFlex();
+  padding: 20px;
   & > div {
-    // margin: auto;
     max-width: 1200px;
   }
 }
