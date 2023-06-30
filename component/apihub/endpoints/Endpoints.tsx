@@ -1,6 +1,6 @@
 import Loading from "@component/shared/loading";
 import ErrorContainer from "@component/shared/error";
-import { Grid, Stack } from "@mui/material";
+import { Grid, Stack, Box } from "@mui/material";
 import { styles, NavigationContainer, EndpointContainer, SearchContainer } from ".";
 import id from "date-fns/esm/locale/id/index.js";
 
@@ -8,15 +8,17 @@ export default function ({ getEndpoint, endpoint, status }: any) {
   return (
     <main className={styles.endpoints}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={12} md={4} lg={3}>
           <Stack alignItems="center" spacing={2} sx={{ position: "sticky", top: "85px" }}>
             <SearchContainer getEndpoint={getEndpoint} />
             <NavigationContainer getEndpoint={getEndpoint} />
           </Stack>
         </Grid>
-        <Grid item xs={12} sm={12} md={9}>
+        <Grid item xs={12} sm={12} md={8} lg={9}>
           {status.loading ? (
-            <Loading height="100%" />
+            <Box minHeight={100} alignItems="center">
+              <Loading />
+            </Box>
           ) : status.error ? (
             <p>"Error"</p>
           ) : endpoint ? (

@@ -17,7 +17,6 @@ export default function NavigationContainer({ getEndpoint }) {
   const [showEndpoints, setShowEndpoints] = useState({ "football-clubs": false, "football-players": false });
 
   const toggleShowEndpointsFn = (id) => {
-    console.log(id);
     setShowEndpoints((showEndpoints) => ({ ...showEndpoints, [id]: !showEndpoints[id] }));
   };
 
