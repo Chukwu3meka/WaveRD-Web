@@ -24,9 +24,9 @@ export default function NavigationContainer({ getEndpoint }) {
   useEffect(() => {
     const getEndpointsByCategory = async () => {
       await fetcher({ endpoint: `/apihub/endpoints`, method: "GET" })
-        .then(({ success, payload }) => {
+        .then(({ success, data }) => {
           if (success) {
-            for (const [category, endpoints] of Object.entries(payload))
+            for (const [category, endpoints] of Object.entries(data))
               setApis((apis) =>
                 [
                   ...apis,

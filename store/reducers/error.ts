@@ -1,19 +1,19 @@
 // import { uniqueArray } from "@utils/clientFuncs";
 
-const errorReducers = (state = [], { type, payload }: { type: string; payload: any }) => {
+const errorReducers = (state = [], { type, data }: { type: string; data: any }) => {
   switch (type) {
     case "ADD_ERROR":
-    // return uniqueArray([payload, ...state]);
+    // return uniqueArray([data, ...state]);
     case "REMOVE_ERROR": {
-      if (payload === "all") {
+      if (data === "all") {
         return [];
-      } else if (typeof payload === "object") {
-        state = payload.forEach((payload: string) => {
-          state.filter((x) => x !== payload);
+      } else if (typeof data === "object") {
+        state = data.forEach((data: string) => {
+          state.filter((x) => x !== data);
         });
         return state || [];
       } else {
-        return state.filter((x) => x !== payload) || [];
+        return state.filter((x) => x !== data) || [];
       }
     }
     default:

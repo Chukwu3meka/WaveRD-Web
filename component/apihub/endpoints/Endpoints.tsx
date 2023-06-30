@@ -2,6 +2,7 @@ import Loading from "@component/shared/loading";
 import ErrorContainer from "@component/shared/error";
 import { Grid, Stack } from "@mui/material";
 import { styles, NavigationContainer, EndpointContainer, SearchContainer } from ".";
+import id from "date-fns/esm/locale/id/index.js";
 
 export default function ({ getEndpoint, endpoint, status }: any) {
   return (

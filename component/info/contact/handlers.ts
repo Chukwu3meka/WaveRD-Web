@@ -56,8 +56,8 @@ export const submitHandler = async ({ enqueueSnackbar, setUserForm, userForm, co
       }
     }
 
-    // // await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
-    await fetcher({ method: "POST", payload: userData, endpoint: "/console/contact-us" }).then(async () => {
+    // // await fetcher({ method: "POST", data: userData, endpoint: "/console/contact-us" }).then(async () => {
+    await fetcher({ method: "POST", data: userData, endpoint: "/console/contact-us" }).then(async () => {
       await sleep(0.3);
 
       setUserForm({

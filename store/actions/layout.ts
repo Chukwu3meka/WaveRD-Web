@@ -4,10 +4,10 @@ import { removeErrorAction, catchErr } from "./error";
 import { SetDeviceSizeAction } from "@interface/store/layout";
 import { Theme } from "@interface/utils/constantsInterface";
 
-export const setDeviceSizeAction = (payload: SetDeviceSizeAction) => {
+export const setDeviceSizeAction = (data: SetDeviceSizeAction) => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch({ type: "SET_DEVICE_SIZE", payload });
+      dispatch({ type: "SET_DEVICE_SIZE", data });
       await dispatch(removeErrorAction("SET_DEVICE_SIZE"));
     } catch (err) {
       return catchErr(dispatch, err, "SET_DEVICE_SIZE");
@@ -15,10 +15,10 @@ export const setDeviceSizeAction = (payload: SetDeviceSizeAction) => {
   };
 };
 
-export const setActiveRouteAction = (payload: string) => {
+export const setActiveRouteAction = (data: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch({ type: "SET_ACTIVE_ROUTE", payload });
+      dispatch({ type: "SET_ACTIVE_ROUTE", data });
       await dispatch(removeErrorAction("SET_ACTIVE_ROUTE"));
     } catch (err) {
       return catchErr(dispatch, err, "SET_ACTIVE_ROUTE");
@@ -26,10 +26,10 @@ export const setActiveRouteAction = (payload: string) => {
   };
 };
 
-export const setThemeAction = (payload: Theme) => {
+export const setThemeAction = (data: Theme) => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch({ type: "SET_THEME", payload });
+      dispatch({ type: "SET_THEME", data });
       await dispatch(removeErrorAction("SET_THEME"));
     } catch (err) {
       return catchErr(dispatch, err, "SET_THEME");
@@ -37,17 +37,17 @@ export const setThemeAction = (payload: Theme) => {
   };
 };
 
-export const setDisplayHeaderAction = (payload: boolean) => {
+export const setDisplayHeaderAction = (data: boolean) => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch({ type: "SET_DISPLAY_HEADER", payload });
+      dispatch({ type: "SET_DISPLAY_HEADER", data });
       // const scrollTop: number = window.scrollY,
       //   lastScrollTop: number = +sessionStorage.getItem("lastScrollTop") || 0;
 
       // if (window.scrollY > lastScrollTop || window.scrollY <= 50) {
-      //   dispatch({ type: "SET_DISPLAY_HEADER", payload: false });
+      //   dispatch({ type: "SET_DISPLAY_HEADER", data: false });
       // } else {
-      //   dispatch({ type: "SET_DISPLAY_HEADER", payload: true });
+      //   dispatch({ type: "SET_DISPLAY_HEADER", data: true });
       // }
 
       // sessionStorage.setItem("lastScrollTop", scrollTop.toString());

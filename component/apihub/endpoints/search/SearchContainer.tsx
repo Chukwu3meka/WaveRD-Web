@@ -18,8 +18,8 @@ function SearchContainer({ getEndpoint }) {
     setInputValue(newInputValue);
     if (newInputValue?.length)
       await fetcher({ endpoint: `/apihub/endpoints/search?query=${newInputValue}`, method: "GET" })
-        .then(({ success, payload }) => {
-          if (success && Array.isArray(payload) && payload.length) setSearchResult(payload);
+        .then(({ success, data }) => {
+          if (success && Array.isArray(data) && data.length) setSearchResult(data);
         })
         .catch((err) => setSearchResult([]));
   };

@@ -18,9 +18,9 @@ function EndpointsContainer(props) {
     setStatus((status) => ({ ...status, loading: true, error: false }));
 
     await fetcher({ endpoint: `/apihub/endpoints/${id}`, method: "GET" })
-      .then(({ success, payload }) => {
+      .then(({ success, data }) => {
         if (success) {
-          setEndpoint(payload);
+          setEndpoint(data);
           setStatus((status) => ({ ...status, error: false }));
         }
       })

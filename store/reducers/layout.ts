@@ -8,16 +8,16 @@ const initialState: LayoutState = {
   theme: "light",
 };
 
-const layoutReducer = (state: LayoutState = initialState, { payload, type }: { payload: any; type: string }) => {
+const layoutReducer = (state: LayoutState = initialState, { data, type }: { data: any; type: string }) => {
   switch (type) {
     case "SET_DEVICE_SIZE":
-      return { ...state, ...payload };
+      return { ...state, ...data };
     case "SET_ACTIVE_ROUTE":
-      return { ...state, route: payload };
+      return { ...state, route: data };
     case "SET_THEME":
-      return { ...state, theme: payload };
+      return { ...state, theme: data };
     case "SET_DISPLAY_HEADER":
-      return { ...state, header: payload };
+      return { ...state, header: data };
     default:
       return state;
   }

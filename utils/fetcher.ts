@@ -1,10 +1,10 @@
 interface IFetcher {
   endpoint: string;
-  payload?: object | null;
+  data?: object | null;
   method: "POST" | "GET" | "PATCH";
 }
 
-const fetcher = async ({ endpoint, payload = null, method }: IFetcher) => {
+const fetcher = async ({ endpoint, data = null, method }: IFetcher) => {
   const domain = process.env.NODE_ENV === "production" ? "https://api.soccermass.com" : "http://localhost:5000",
     apiUrl = `${domain}/v1${endpoint}`;
 
@@ -22,8 +22,8 @@ const fetcher = async ({ endpoint, payload = null, method }: IFetcher) => {
   };
 
   if (["POST", "PATCH"].includes(method)) {
-    if (!payload) throw { message: "No payload set" };
-    fetchOptions.body = JSON.stringify(payload);
+    if (!data) throw { message: "No data set" };
+    fetchOptions.body = JSON.stringify(data);
   }
 
   return fetch(apiUrl, fetchOptions)

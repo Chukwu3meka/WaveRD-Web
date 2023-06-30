@@ -7,9 +7,9 @@ import { setCssThemeVar } from "@utils/handlers";
 import { setActiveRouteAction, setDeviceSizeAction, setThemeAction } from "./layout";
 import { logoutRoutes, protectedRoutes } from "@utils/constants/routes";
 
-export const setAuthAction = (payload: SetAuthAction) => (dispatch: AppDispatch) => {
+export const setAuthAction = (data: SetAuthAction) => (dispatch: AppDispatch) => {
   try {
-    dispatch({ type: "SET_AUTH", payload });
+    dispatch({ type: "SET_AUTH", data });
     dispatch(removeErrorAction("SET_AUTH"));
   } catch (err) {
     catchErr(dispatch, err, "SET_AUTH");
@@ -24,7 +24,7 @@ export const signoutAction = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch) => {
+export const verifyCookieAction = (data: any) => async (dispatch: AppDispatch) => {
   // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 1px)");
   // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 0px)");
   // document.documentElement.style.setProperty("--headerHeight", "71.04px");
@@ -34,7 +34,7 @@ export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch
   document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <= iPhone not returning the right screen height in VH
 
   try {
-    const { setTheme, setReady, handlePageLoading, setRoute, router, enqueueSnackbar } = payload;
+    const { setTheme, setReady, handlePageLoading, setRoute, router, enqueueSnackbar } = data;
 
     const setThemeFn = (theme) => {
       setTheme(theme);
@@ -49,9 +49,9 @@ export const verifyCookieAction = (payload: any) => async (dispatch: AppDispatch
     setThemeFn(darkTheme ? "dark" : "light");
 
     await fetcher({ method: "GET", endpoint: "/accounts/details" })
-      .then(async ({ payload }) => {
-        setThemeFn(payload.theme);
-        dispatch(setAuthAction(payload));
+      .then(async ({ data }) => {
+        setThemeFn(data.theme);
+        dispatch(setAuthAction(data));
 
         if (notHomePage)
           for (const path of logoutRoutes)
