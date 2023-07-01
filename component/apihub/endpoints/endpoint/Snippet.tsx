@@ -11,11 +11,7 @@ const CodeSnippet = ({ copyToCLipboardHandler, snippet, theme }) => (
     </Typography>
 
     <Box sx={{ maxWidth: "calc(100vw - 25px)", overflowX: "auto" }}>
-      <SyntaxHighlighter
-        showLineNumbers
-        language="javascript"
-        style={theme === "dark" ? darcula : docco}
-        customStyle={{ borderRadius: "10px", wordBreak: "break", worWwrap: "break-word", overfloWwrap: "break-word", whiteSpace: "pre-wrap" }}>
+      <SyntaxHighlighter showLineNumbers language="javascript" style={theme === "dark" ? darcula : docco} customStyle={{ borderRadius: "10px" }}>
         {snippet}
       </SyntaxHighlighter>
     </Box>
