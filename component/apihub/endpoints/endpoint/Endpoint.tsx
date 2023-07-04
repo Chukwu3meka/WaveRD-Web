@@ -1,10 +1,10 @@
 import React from "react";
 import { Tabs, Tab, Box } from "@mui/material";
-import { Description, Snippet, Response } from ".";
 import DataNotFound from "@component/shared/dataNotFound";
+import { Description, SnippetsContainer, Response } from ".";
 import TabPanel, { a11yProps } from "@component/shared/tabPanel";
 
-function Endpoint({ endpoint, copyToCLipboardHandler, currentTab, handleTabChange, theme }) {
+function Endpoint({ endpoint, currentTab, handleTabChange, theme }) {
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -15,13 +15,13 @@ function Endpoint({ endpoint, copyToCLipboardHandler, currentTab, handleTabChang
         </Tabs>
       </Box>
       <TabPanel value={currentTab} index={0}>
-        {endpoint ? <Description handleTabChange={handleTabChange} title={endpoint.title} description={endpoint.description} /> : <DataNotFound />}
+        {endpoint ? <Description title={endpoint.title} description={endpoint.description} /> : <DataNotFound />}
       </TabPanel>
       <TabPanel value={currentTab} index={1}>
-        {endpoint ? <Snippet snippet={endpoint.snippet} copyToCLipboardHandler={copyToCLipboardHandler} theme={theme} /> : <DataNotFound />}
+        {endpoint ? <SnippetsContainer snippets={endpoint.snippets} theme={theme} /> : <DataNotFound />}
       </TabPanel>
       <TabPanel value={currentTab} index={2}>
-        {endpoint ? <Response response={endpoint.response} handleTabChange={handleTabChange} theme={theme} /> : <DataNotFound />}
+        {endpoint ? <Response response={endpoint.response} theme={theme} /> : <DataNotFound />}
       </TabPanel>
     </Box>
   );

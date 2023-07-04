@@ -1,18 +1,12 @@
-import { connector, ConnectorProps } from "@store";
-import { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
-import { Endpoints } from ".";
+import { useState } from "react";
 import { connect } from "react-redux";
+
+import { Endpoints } from ".";
 import fetcher from "@utils/fetcher";
 
 function EndpointsContainer(props) {
   const [endpoint, setEndpoint] = useState(null);
   const [status, setStatus] = useState({ loading: false, error: false });
-  // const [showEndpoints, setShowEndpoints] = useState(false);
-
-  // useEffect(() => {
-  //   setShowEndpoints(props.width > 620);
-  // }, [props.width]);
 
   const getEndpoint = async (id) => {
     setStatus((status) => ({ ...status, loading: true, error: false }));
