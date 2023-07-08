@@ -1,4 +1,4 @@
-import { Alert, Box, Typography, Divider } from "@mui/material";
+import { Alert, Box, Typography } from "@mui/material";
 
 const Description = ({ title, description }) => (
   <Box py={2}>
