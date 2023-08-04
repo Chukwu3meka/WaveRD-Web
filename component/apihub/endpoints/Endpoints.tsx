@@ -1,5 +1,6 @@
-import Loading from "@component/shared/loading";
 import { Grid, Stack, Box } from "@mui/material";
+
+import Loading from "@component/shared/loading";
 import ErrorContainer from "@component/shared/error";
 import { styles, NavigationContainer, EndpointContainer, SearchContainer } from ".";
 
