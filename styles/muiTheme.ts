@@ -18,14 +18,8 @@ const iPhoneInputFix = {
 const inititalTheme = createTheme({});
 
 const muiTheme = (theme: Theme) => {
-  // const color = theme === "light" ? "#424242" : "#fffffa";
-  // const background = theme === "light" ? "#fffffa" : "#14141e";
-
   return createTheme({
-    typography: {
-      fontFamily: '"Merienda", "Roboto Slab", serif',
-      // allVariants: { color }
-    },
+    typography: { fontFamily: '"Merienda", "Roboto Slab", serif' },
 
     palette: {
       mode: theme,
@@ -42,16 +36,7 @@ const muiTheme = (theme: Theme) => {
 
       MuiTypography: { styleOverrides: { root: { lineHeight: "1.7em", letterSpacing: "0.01em" } } },
 
-      MuiPaper: {
-        styleOverrides: {
-          root: {
-            padding: 5,
-            boxSizing: "border-box",
-
-            // color, background
-          },
-        },
-      },
+      MuiPaper: { styleOverrides: { root: { padding: 5, boxSizing: "border-box" } } },
 
       MuiTable: { styleOverrides: { root: { minWidth: 300 } } },
 
@@ -59,15 +44,7 @@ const muiTheme = (theme: Theme) => {
         styleOverrides: { head: { backgroundColor: inititalTheme.palette.common.black, color: inititalTheme.palette.common.white }, body: { fontSize: 14 } },
       },
 
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            fontWeight: "900",
-            letterSpacing: ".2em",
-            // color
-          },
-        },
-      },
+      MuiButton: { styleOverrides: { root: { fontWeight: "900", letterSpacing: ".2em" } } },
 
       MuiTableRow: {
         styleOverrides: {

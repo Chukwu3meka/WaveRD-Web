@@ -22,7 +22,7 @@ export default connector((props: SubLayout & ConnectorProps) => {
 
   const autoCompleteHandler = (newValue: NavLinks) => {
     if (newValue) {
-      router.push(newValue.path);
+      // router.push(newValue.path);
       setActiveRoute(newValue.path);
     }
   };

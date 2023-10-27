@@ -4,12 +4,10 @@
   display: grid;
   background: var(--primary);
   min-height: var(--visibleScreen);
-  grid-template-rows: auto max-content auto;
+  grid-template-rows: max-content auto max-content;
 
   & > main {
     min-height: 400px;
     position: relative;
-    top: -86.04px;
-    margin-bottom: -85px;
   }
 }

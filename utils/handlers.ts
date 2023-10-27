@@ -97,3 +97,20 @@ export const setCssThemeVar = (theme: Theme) => {
     // document.documentElement.style.setProperty("--lowContrast", "#C5C5C5");
   }
 };
+
+export const getQueryParams = (url: string, param: string) => {
+  const queryParams = {};
+  const queryString = url.split("?")[1];
+
+  if (queryString) {
+    const keyValuePairs = queryString.split("&");
+    keyValuePairs.forEach((pair) => {
+      const [key, value] = pair.split("=");
+      queryParams[key] = decodeURIComponent(value);
+    });
+  }
+
+  const paramValue = queryParams[param];
+
+  return paramValue || null;
+};

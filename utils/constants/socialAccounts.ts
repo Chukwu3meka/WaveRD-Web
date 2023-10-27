@@ -4,7 +4,7 @@ const socialAccounts: ISocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
   { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/in/chukwu3meka/" },
   // { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/SoccerMASSinc/" },
-  { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/chukwu3meka13" },
+  { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/_chukwu3meka" },
   // { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/SoccerMASSinc/" },
   { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/Chukwu3meka/" },
   // {id:"soccermass",title:"SoccerMASS",image:"/images/social/soccermass.png",href: "https://www.soccermass.com/"],

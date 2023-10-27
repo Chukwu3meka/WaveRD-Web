@@ -9,7 +9,7 @@ import { styles } from ".";
 import { SubLayout } from "@interface/components/layouts/layoutsInterface";
 
 export default ({ Component, pageProps, loading }: SubLayout) => (
-  <main className={styles.subLayout} style={{ maxWidth: "100vw", overflowX: "hidden" }}>
+  <main className={styles.subLayout}>
     <aside>
       <div>
         <Carousel wrapAround={true} slidesToShow={1} autoplay={true} withoutControls={true} adaptiveHeight={true} autoplayInterval={5000}>
@@ -19,6 +19,7 @@ export default ({ Component, pageProps, loading }: SubLayout) => (
         </Carousel>
       </div>
     </aside>
+
     <div>
       <RelativeHeader position="relative" />
       <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>

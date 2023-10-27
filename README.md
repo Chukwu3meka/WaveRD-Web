@@ -1,6 +1,6 @@
 # SoccerMASS Web ✨
 
-SoccerMASS: No. 1 free online football manager for advanced soccer management. The title of manager is almost exclusively used in British football. In most other European countries in which professional football is played, the person responsible for the direction of a team is awarded the position of coach or "trainer"
+SoccerMASS is a free online football manager for advanced soccer management. The title of manager is almost exclusively used in British football. In most other European countries in which professional football is played, the person responsible for the direction of a team is awarded the position of coach or "trainer"
 
 ## Responsibilities ⚡
 

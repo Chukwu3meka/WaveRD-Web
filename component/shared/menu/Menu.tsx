@@ -52,9 +52,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
             </Box>
 
             <Box>
-              <Typography
-                variant="h6"
-                sx={{ overflow: "hidden", textOverflow: "ellipsis", display: "-webkit-box", WebkitLineClamp: "1", WebkitBoxOrient: "vertical" }}>
+              <Typography variant="h6" sx={{ overflow: "hidden", textOverflow: "ellipsis", display: "-webkit-box", WebkitLineClamp: "1", WebkitBoxOrient: "vertical" }}>
                 {profile.name}
               </Typography>
               <Typography
@@ -124,14 +122,9 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
 
 const navLinks = [
   { id: "home", title: "Home", Icon: HomeIcon, path: "/" },
-  { id: "apihub", title: "API Hub", Icon: ApiHubIcon, path: "/apihub" },
-  { id: "manager", title: "Manager", Icon: ManagerIcon, path: "/manager" },
-  { id: "signup", title: "Sign Up", Icon: SignUpIcon, path: "/accounts/signup" },
-  { id: "signin", title: "Sign In", Icon: SignInIcon, path: "/accounts/signin" },
-  {
-    id: "signout",
-    title: "Sign Out",
-    Icon: SignOutIcon,
-    path: process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout",
-  },
+  { id: "apihub", title: "Football API Hub", Icon: ApiHubIcon, path: "/apihub" },
+  { id: "manager", title: "Soccer Manager", Icon: ManagerIcon, path: "/manager" },
+  { id: "signup", title: "Register/Create an Account", Icon: SignUpIcon, path: "/accounts/signup" },
+  { id: "signin", title: "Login to your Account", Icon: SignInIcon, path: "/accounts/signin" },
+  { id: "signout", title: "Sign Out from SoccerMASS", Icon: SignOutIcon, path: `${process.env.API_URL}/api/v1/accounts/signout` },
 ];

@@ -1,28 +1,27 @@
 import Link from "next/link";
 import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
-import { Login as SignInIcon, Logout as SignOutIcon, LightMode as LightModeIcon, DarkModeOutlined as DarkModeOutlinedIcon } from "@mui/icons-material";
+import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkModeOutlined as DarkIcon } from "@mui/icons-material";
 
 import Menu from "../menu";
-import SocialContainer from "../social/SocialContainer";
-
 import styles from "./styles.module.scss";
+import SocialContainer from "../social/SocialContainer";
 
 import { Header } from "@interface/components/shared/headerInterface";
 
 export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: Header) => (
-  <div className={styles[position === "relative" ? "relativeHeader" : !displayHeader ? "hiddenHeader" : "stickyHeader"]}>
-    <header id="header">
-      <IconButton onClick={() => themeHandler(theme)}>
-        {theme === "light" ? <DarkModeOutlinedIcon color="primary" /> : <LightModeIcon color="primary" />}
-      </IconButton>
+  <header id="header" className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
+    <main>
+      <IconButton onClick={() => themeHandler(theme)}>{theme === "light" ? <DarkIcon color="primary" /> : <LightIcon color="primary" />}</IconButton>
       <Box>
-        <Stack direction="row" component="a" href="/" onMouseOver={() => swapColorFn()} onMouseLeave={() => swapColorFn()}>
-          <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
-            Soccer
-          </Typography>
-          <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.last}>
-            MASS
-          </Typography>
+        <Stack direction="row" onMouseOver={() => swapColorFn()} onMouseLeave={() => swapColorFn()}>
+          <Link href="/">
+            <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
+              Soccer
+            </Typography>
+            <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.last}>
+              MASS
+            </Typography>
+          </Link>
         </Stack>
       </Box>
 
@@ -43,26 +42,24 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
           <Box>
             {!authenticated && (
               <Link href="/accounts/signin">
-                <Button variant="contained" size="small" color="primary" startIcon={<SignInIcon />}>
+                <Button variant="contained" color="primary" startIcon={<LoginIcon />}>
                   Sign in
                 </Button>
               </Link>
             )}
 
             {authenticated && (
-              <Button variant="outlined" size="small" startIcon={<SignOutIcon />}>
-                <a
-                  href={process.env.NODE_ENV === "development" ? "http://localhost:5000/v1/accounts/signout" : "https://api.soccermass.com/v1/accounts/signout"}
-                  rel="noopener noreferrer">
+              <a href={`${process.env.API_URL}/v1/accounts/signout`} rel="noopener noreferrer">
+                <Button variant="outlined" startIcon={<LogOutIcon />}>
                   Sign out
-                </a>
-              </Button>
+                </Button>
+              </a>
             )}
           </Box>
         </Box>
       )}
-    </header>
-  </div>
+    </main>
+  </header>
 );
 
 const navLinks = [

@@ -9,24 +9,9 @@ import { socialStyles as styles } from ".";
 import { Social } from "@interface/components/accounts/signinInterface";
 
 const authData = [
-  {
-    color: "#1DA1F2",
-    Icon: TwitterIcon,
-    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/v1/accounts/twitter` : `https://api.soccermass.com/v1/accounts/twitter`,
-    label: "Twitter",
-  },
-  {
-    color: "#DB4437",
-    Icon: GoogleIcon,
-    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/v1/accounts/google` : `https://api.soccermass.com/v1/accounts/google`,
-    label: "Google",
-  },
-  {
-    color: "#4267B2",
-    Icon: FacebookIcon,
-    endpoint: process.env.NODE_ENV === "development" ? `http://localhost:5000/v1/accounts/facebook` : `https://api.soccermass.com/v1/accounts/facebook`,
-    label: "Facebook",
-  },
+  { color: "#1DA1F2", Icon: TwitterIcon, endpoint: `${process.env.API_URL}/v1/accounts/twitter`, label: "Twitter" },
+  { color: "#DB4437", Icon: GoogleIcon, endpoint: `${process.env.API_URL}/v1/accounts/google`, label: "Google" },
+  { color: "#4267B2", Icon: FacebookIcon, endpoint: `${process.env.API_URL}/v1/accounts/facebook`, label: "Facebook" },
 ];
 
 export default ({ iconOnly }: Social) => (
@@ -45,10 +30,7 @@ export default ({ iconOnly }: Social) => (
           icon={<Icon />}
           href={endpoint}
           variant="outlined"
-          sx={{
-            color: `${color} !important`,
-            "&>svg": { color: `${color} !important` },
-          }}
+          sx={{ background: color, color: `#fff !important`, "&>svg": { color: `#fff !important` } }}
         />
       )
     )}

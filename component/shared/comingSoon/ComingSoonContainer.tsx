@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { ComingSoon } from ".";
 import { fullDateFn } from "@utils/handlers";
 
-import { ComingSoonContainer, TimeLeft } from "@interface/components/shared/comingSoonInterface";
+import { ComingSoonContainer as IComingSoonContainer, TimeLeft } from "@interface/components/shared/comingSoonInterface";
 
-export default ({ header = false, minHeight, finishDate = new Date("August 15 2023") }: ComingSoonContainer) => {
+const ComingSoonContainer = ({ header = false, minHeight, finishDate = new Date("January 1 2024") }: IComingSoonContainer) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   minHeight ??= header ? "var(--visibleScreen)" : "calc(var(--visibleScreen) - var(--headerHeight))";
@@ -32,3 +32,5 @@ export default ({ header = false, minHeight, finishDate = new Date("August 15 20
 
   return <ComingSoon timeLeft={timeLeft} header={header} minHeight={minHeight} />;
 };
+
+export default ComingSoonContainer;

@@ -5,8 +5,8 @@ interface IFetcher {
 }
 
 const fetcher = async ({ endpoint, data = null, method }: IFetcher) => {
-  const domain = process.env.NODE_ENV === "production" ? "https://api.soccermass.com" : "http://localhost:5000",
-    apiUrl = `${domain}/v1${endpoint}`;
+  const WEB_URL = process.env.API_URL,
+    api_url = `${WEB_URL}/v1${endpoint}`;
 
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },
@@ -26,7 +26,7 @@ const fetcher = async ({ endpoint, data = null, method }: IFetcher) => {
     fetchOptions.body = JSON.stringify(data);
   }
 
-  return fetch(apiUrl, fetchOptions)
+  return fetch(api_url, fetchOptions)
     .then(async (response) => {
       if (!response.ok) throw await response.json();
       return response.json();

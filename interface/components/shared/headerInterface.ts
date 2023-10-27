@@ -1,3 +1,6 @@
+import { AuthState } from "@interface/store/auth";
+import { LayoutState } from "@interface/store/layout";
+
 export interface Header {
   position: "relative" | "sticky";
   authenticated: boolean;
@@ -10,6 +13,11 @@ export interface Header {
 }
 
 export interface HeaderContainer {
+  auth: AuthState;
+  setThemeAction: Function;
+  width: LayoutState["width"];
+  theme: LayoutState["theme"];
+  header: LayoutState["header"];
   position: "relative" | "sticky";
 }
 

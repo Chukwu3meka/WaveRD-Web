@@ -5,6 +5,7 @@
   position: relative;
   margin: 20px auto 15px;
   @include quickFlex($dir: row, $row: 20px, $column: 20px);
+
   & > a {
     width: 100%;
     font-size: 1em;

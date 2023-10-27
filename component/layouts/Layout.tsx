@@ -35,6 +35,7 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
       <meta property="og:url" content="https://www.soccermass.com/" />
       <meta name="keywords" content="soccer manager, soccer, soccermass, football manager, football" />
       <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
+      <meta httpEquiv="Content-Type" content="text/javascript" />
       <meta property="og:image" content="/images/layout/soccermass.webp" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
@@ -54,13 +55,15 @@ const Layout = ({ loading, emotionCache, theme, Component, route, pageProps, rea
         <CacheProvider value={emotionCache}>
           <Box className={styles.layout}>
             <HeaderContainer position="sticky" />
-            {route.startsWith("/accounts/") ? (
+
+            {route && route.startsWith("/accounts/") ? (
               <AccountsLayout Component={Component} pageProps={pageProps} loading={loading} />
-            ) : route.startsWith("/info/") ? (
+            ) : route && route.startsWith("/info/") ? (
               <InfoLayout Component={Component} pageProps={pageProps} loading={loading} />
             ) : (
               <DefaultLayout Component={Component} pageProps={pageProps} loading={loading} />
             )}
+
             <Footer />
           </Box>
         </CacheProvider>

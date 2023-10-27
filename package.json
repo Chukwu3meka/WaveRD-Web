@@ -2,13 +2,15 @@
   "name": "soccermass",
   "version": "1.0.3",
   "description": "SoccerMASS: Football Manager and Football API Provider",
+  "proxy": "http://localhost:8081",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
     "export": "next export",
     "type-check": "tsc",
-    "clean": "rm -rf package-lock.json node_modules/ && npm install --force"
+    "clean": "rm -rf package-lock.json node_modules/ && npm install",
+    "clean-force": "rm -rf package-lock.json node_modules/ && npm install --force"
   },
   "keywords": [
     "SoccerMASS",
@@ -32,7 +34,6 @@
     "@mui/styles": "^5.12.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@vercel/analytics": "^1.0.1",
-    "cookies-next": "^2.1.1",
     "date-fns": "^2.30.0",
     "eslint-config-next": "^13.4.0",
     "jwt-decode": "^3.1.2",

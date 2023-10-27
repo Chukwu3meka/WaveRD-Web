@@ -1,11 +1,10 @@
-import { Typography, Stack } from "@mui/material";
-
 import { styles } from ".";
+import { Typography, Stack } from "@mui/material";
 import HeaderContainer from "@component/shared/header";
 
-import { ComingSoon } from "@interface/components/shared/comingSoonInterface";
+import { ComingSoon as IComingSoon } from "@interface/components/shared/comingSoonInterface";
 
-export default ({ timeLeft, header, minHeight }: ComingSoon) => (
+const ComingSoon = ({ timeLeft, header, minHeight }: IComingSoon) => (
   <main className={styles.comingSoon} style={{ minHeight }}>
     {header ? <HeaderContainer position="relative" /> : ""}
 
@@ -40,11 +39,13 @@ export default ({ timeLeft, header, minHeight }: ComingSoon) => (
       </section>
 
       <Typography color="#fff" mt={3}>
-        We apologize for the inconvenience, the page you're trying to access is not available at this time. We're currently working on making some improvements
-        and updates to the page, so please bear with us while we make it better. Rest assured, we're doing everything we can to get the page up and running as
-        soon as possible. We appreciate your patience and understanding while we work through this process. In the meantime, feel free to explore other parts of
-        our website. Thank you for your understanding and support!
+        We apologize for the inconvenience, the page you're trying to access is not available at this time. We're currently working on making some improvements and
+        updates to the page, so please bear with us while we make it better. Rest assured, we're doing everything we can to get the page up and running as soon as
+        possible. We appreciate your patience and understanding while we work through this process. In the meantime, feel free to explore other parts of our website.
+        Thank you for your understanding and support!
       </Typography>
     </div>
   </main>
 );
+
+export default ComingSoon;
