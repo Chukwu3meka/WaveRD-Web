@@ -1,5 +1,4 @@
 import { Search } from "..";
-
 import { useState } from "react";
 import fetcher from "@utils/fetcher";
 
@@ -10,9 +9,7 @@ function SearchContainer({ getEndpoint }) {
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
     [inputValue, setInputValue] = useState<SearchProps["inputValue"]>("");
 
-  const onValueChange = (newValue) => {
-    setValue(newValue);
-  };
+  const onValueChange = (newValue) => setValue(newValue);
 
   const onInputChange = async (newInputValue) => {
     setInputValue(newInputValue);

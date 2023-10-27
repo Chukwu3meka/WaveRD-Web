@@ -3,13 +3,15 @@ import Divider from "@mui/material/Divider";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
+import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, Alert } from "@mui/material";
 
 import { Social } from ".";
 import { Signin } from "@interface/components/accounts/signinInterface";
 
-export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly }: Signin) => (
+export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: Signin) => (
   <Stack spacing={3} component="form" noValidate>
+    {authenticated && <Alert>You're already logged in !!!</Alert>}
+
     <Social iconOnly={iconOnly} />
 
     <Box width="100%">
@@ -31,13 +33,13 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     <FormControl fullWidth variant="outlined">
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
       <OutlinedInput
-        type={userForm.options.showPassword ? "text" : "password"}
-        onChange={(e) => onInputChange(e)}
-        disabled={userForm.options.loading}
+        id="password"
+        label="Password"
         placeholder="Password"
         value={userForm.password}
-        label="Password"
-        id="password"
+        disabled={userForm.options.loading}
+        onChange={(e) => onInputChange(e)}
+        type={userForm.options.showPassword ? "text" : "password"}
         inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
         endAdornment={
           <InputAdornment position="end">
@@ -54,7 +56,7 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </Typography>
 
     <AttentionSeeker effect="bounce">
-      <LoadingButton onClick={() => loginHandler()} size="large" variant="contained" color="primary" endIcon={<LoginIcon />} loading={userForm.options.loading}>
+      <LoadingButton fullWidth size="large" color="primary" variant="contained" endIcon={<LoginIcon />} onClick={() => loginHandler()} loading={userForm.options.loading}>
         <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
       </LoadingButton>
     </AttentionSeeker>

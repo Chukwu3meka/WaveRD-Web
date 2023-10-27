@@ -2,17 +2,12 @@
 
 .footer {
   background-color: var(--primary);
-  // border: 3px solid $dark; // <= fix footer not displaying
-  // border-top: 1px solid darken($color: $light, $amount: 70);
-  border-top: 1px solid var(--secondary);
-  // overflow-y: auto;
-
+  border-top: 5px double var(--secondary);
   & > * > footer {
-    max-width: 1200px;
     margin: auto;
-    // color: $textSecondary;
+    padding: 10px;
+    max-width: 1200px;
     text-align: center;
-    padding: 40px 10px 20px;
     @include quickFlex($dir: column);
 
     & > main {
@@ -36,10 +31,6 @@
       }
       & > nav {
         padding: 20px 0 0;
-
-        // // border-top: 1px solid darken($color: $light, $amount: 70);
-        // border-top: 1px solid var(--secondary);
-        // border-top: 3px solid red;
         @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 40px, $align: flex-start, $justify: space-evenly);
         & > div {
           @include quickFlex($dir: column, $width: max-content);
@@ -65,14 +56,10 @@
       }
     }
     & > section {
-      @include quickFlex($dir: column, $width: 100%);
-      margin-top: 20px;
-
-      padding: 20px 10px;
+      margin-top: 10px;
+      padding-top: 10px;
       border-top: 1px solid var(--secondary);
-
-      // border-top: 1px solid darken($color: $light, $amount: 70);
-      row-gap: 10px;
+      @include quickFlex($dir: column, $width: 100%);
     }
   }
 }

@@ -24,20 +24,21 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
       onBlur={(e) => onBlurHandler(e)}
       onChange={(e) => onInputChange(e)}
       disabled={userForm.options.loading}
+      inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
     />
 
     <FormControl fullWidth variant="outlined">
       <InputLabel htmlFor="outlined-adornment-password">Email Address</InputLabel>
       <OutlinedInput
         id="email"
+        label="Email Address"
         value={userForm.email.value}
-        disabled={userForm.options.loading}
+        error={!userForm.email.valid}
         onBlur={(e) => onBlurHandler(e)}
         onChange={(e) => onInputChange(e)}
+        disabled={userForm.options.loading}
         placeholder="firstname.lastname@soccermass.com"
-        error={!userForm.email.valid}
-        label="Email Address"
-        autoComplete="off"
+        inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
         endAdornment={
           userForm.email.validating ? (
             <InputAdornment position="end">
@@ -59,13 +60,14 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             <InputLabel htmlFor="outlined-adornment-password">Handle</InputLabel>
             <OutlinedInput
               id="handle"
-              value={userForm.handle.value}
-              disabled={userForm.options.loading}
-              onChange={(e) => onInputChange(e)}
-              onBlur={(e) => onBlurHandler(e)}
-              placeholder="What would you like us to call you?"
-              error={!userForm.handle.valid}
               label="Handle"
+              value={userForm.handle.value}
+              error={!userForm.handle.valid}
+              onBlur={(e) => onBlurHandler(e)}
+              onChange={(e) => onInputChange(e)}
+              disabled={userForm.options.loading}
+              placeholder="What would you like us to call you?"
+              inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
               endAdornment={
                 userForm.handle.validating ? (
                   <InputAdornment position="end">
@@ -86,14 +88,15 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
             <OutlinedInput
               id="password"
-              type={userForm.options.showPassword ? "text" : "password"}
-              value={userForm.password.value}
-              disabled={userForm.options.loading}
-              onChange={(e) => onInputChange(e)}
-              onBlur={(e) => onBlurHandler(e)}
-              placeholder="Password"
-              error={!userForm.password.valid}
               label="Password"
+              placeholder="Password"
+              value={userForm.password.value}
+              error={!userForm.password.valid}
+              onBlur={(e) => onBlurHandler(e)}
+              onChange={(e) => onInputChange(e)}
+              disabled={userForm.options.loading}
+              type={!userForm.password.value && userForm.options.showPassword ? "text" : "password"}
+              inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
@@ -109,6 +112,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
 
     <AttentionSeeker effect="bounce">
       <LoadingButton
+        fullWidth
         onClick={() => registerHandler()}
         size="large"
         variant="contained"
@@ -119,12 +123,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
       </LoadingButton>
     </AttentionSeeker>
 
-    <Typography
-      fontSize={10}
-      textAlign="center"
-      pt={2}
-      // sx={{ margin: "20px auto -10px !important" }}
-    >
+    <Typography fontSize={10} textAlign="center" pt={2}>
       By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
       <Link href="/info/privacy">Privacy Policy</Link>
     </Typography>

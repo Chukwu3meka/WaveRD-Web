@@ -3,10 +3,11 @@
     "baseUrl": "./",
     "paths": {
       "@utils/*": ["utils/*"],
-      "@store": ["store/index"],
       "@styles/*": ["styles/*"],
+      "@store": ["store/index"],
       "@interface/*": ["interface/*"],
-      "@component/*": ["component/*"]
+      "@component/*": ["component/*"],
+      "@store-actions": ["store/actions/index"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

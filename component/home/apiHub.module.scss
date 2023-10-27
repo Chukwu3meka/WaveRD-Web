@@ -8,12 +8,11 @@
     height: 100%;
     flex-direction: column;
     & > div:first-of-type {
-      padding: 0 20px 100px;
       position: relative;
-      margin: 50px auto 20px;
       min-height: 300px;
-      width: 100%;
-      max-width: 500px;
+      padding: 0 20px 100px;
+      margin: 50px auto 20px;
+      width: clamp(10px, 500px, calc(100vw - 50px));
     }
 
     & > main:first-of-type {

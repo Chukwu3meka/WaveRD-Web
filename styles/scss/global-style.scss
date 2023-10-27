@@ -1,17 +1,6 @@
 @import "@styles/scss/index.scss";
 
 body {
-  // :root {
-  //   --theme: dark;
-  //   --visibleScreen: 10000px;
-  // }
-
-  // position: relative;
-
-  // top: 0;
-
-  margin-top: -150px;
-
   margin: 0;
   font-size: 16px;
   box-sizing: border-box;
@@ -23,24 +12,7 @@ body {
   line-height: "1.7em";
   letter-spacing: "0.01em";
   caret-color: $primary;
-
-  // & > * {
-  //   border: 3px solid blue;
-  //   & > * {
-  //     // margin-top: -15px !important;
-  //     border: 3px solid green;
-  //   }
-  // }
-
-  // height: calc(100vh - 70px);
-  // overflow: hidden;
-
-  // height: calc(100vh - constant(safe-area-inset-top) - constant(safe-area-inset-bottom));
-
-  // border: 13px solid green;
-
   a {
-    // border: 3px solid red;
     cursor: pointer;
     color: $primary;
     text-decoration: none;
@@ -48,47 +20,15 @@ body {
   }
 
   a:hover {
-    // color: darken($color: $primary, $amount: 5);
-    color: darken($color: $secondary, $amount: 10);
     transition: color 300ms ease-out;
+    color: darken($color: $secondary, $amount: 10);
   }
 
   * {
-    // outline: none;
-    // user-select: none; //disable select
-    // -moz-user-select: none; //disable select
-    // -webkit-user-select: none; //disable select
-    // -webkit-tap-highlight-color: transparent;
+    outline: none;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    outline: none;
-    // -webkit-tap-highlight-color: transparent;
-    img {
-      overflow: hidden;
-    }
   }
-
-  // border: 3px solid red;
-  // box-sizing: border-box;
-
-  // margin: 0;
-  // padding: 0;
-  // width: 100vw;
-  // height: 100vh;
-  // font-size: 14px;
-  // overflow: hidden;
-  // font-family: "Merienda", cursive;
-  // -ms-overflow-style: none;
-  // -moz-osx-font-smoothing: grayscale;
-  // -webkit-font-smoothing: antialiased;
-  // background: url("/images/layout/tactics.png") no-repeat center center fixed;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  // background: linear-gradient(to bottom right, color(pry), color(sec));
-  // background-color: darken($color: #1d1c2e, $amount: 0);
-  // background-color: color(dark);
 }
 
 ::-webkit-scrollbar {
@@ -111,4 +51,13 @@ body {
 ::selection {
   color: var(--primary);
   background-color: lighten($color: $primary, $amount: 0);
+}
+
+// Forcefully remove input background colour for Chrome autocomplete/autofill?
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  box-shadow: inset 0 0 20px 20px transparent !important;
 }

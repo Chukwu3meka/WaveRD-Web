@@ -16,14 +16,7 @@ export default () => (
               SoccerMASS
             </Typography>
 
-            <Image
-              src="/images/layout/soccermass.webp"
-              alt="SoccerMASS"
-              width={80}
-              height={80}
-              placeholder="blur"
-              blurDataURL="/images/layout/soccermass.webp"
-            />
+            <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/layout/soccermass.webp" />
 
             <Typography variant="subtitle2">Follow US</Typography>
 
@@ -78,7 +71,7 @@ export default () => (
         </main>
 
         <section>
-          <Typography component="span" variant="body2" fontSize=".8em">
+          <Typography component="span" variant="body2" fontSize=".8em" color="text.secondary">
             Powered with 💗 by&nbsp;
             <a href="https://mongodb.com/" rel="noopener noreferrer" target="_blank">
               MongoDB
@@ -93,7 +86,7 @@ export default () => (
             </a>
           </Typography>
 
-          <Typography component="span" variant="body2" fontSize=".9em">
+          <Typography component="span" variant="body2" fontSize=".8em" color="text.secondary">
             ● All rights reserved. All trademarks are the property of their respective owners ●
           </Typography>
 

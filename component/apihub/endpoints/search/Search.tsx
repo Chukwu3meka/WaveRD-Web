@@ -8,10 +8,10 @@ export default function Search({ searchResult, onInputChange, onValueChange, val
     <Autocomplete
       fullWidth
       value={value}
-      onChange={(e, newValue) => onValueChange(newValue)}
-      inputValue={inputValue}
-      onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
       options={searchResult}
+      inputValue={inputValue}
+      onChange={(e, newValue) => onValueChange(newValue)}
+      onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
       filterOptions={(options) => options} // Return all options without filtering
       isOptionEqualToValue={(option, value) => isOptionEqualToValue(option, value)}
       getOptionLabel={(option) => (typeof option === "string" ? inputValue : option.title)}

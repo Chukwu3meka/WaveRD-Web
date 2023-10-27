@@ -1,121 +1,23 @@
 @import "@styles/scss/index.scss";
 
 .loading {
-  --size: clamp(20px, 200px, 50vw);
-  @include quickFlex();
+  @include quickFlex($width: 100%);
 
-  .spinner {
-    --animation-duration: 2500ms;
-    position: relative;
-    width: var(--size);
-    height: var(--size);
-    transform: rotate(45deg);
+  span {
+    cursor: none;
+    animation: spin 1s ease-in-out infinite;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
 
-    .item {
-      --item-size: calc(var(--size) / 2.5);
-      position: absolute;
-      width: var(--item-size);
-      height: var(--item-size);
-      border: 4px solid $primary;
-      animation-fill-mode: both; // Add this line to ensure the animation starts immediately
-    }
+    border-bottom: 4px solid $primary;
 
-    .item:nth-child(1) {
-      top: 0;
-      left: 0;
-      animation: spinner3A var(--animation-duration) linear infinite;
-
-      @keyframes spinner3A {
-        0%,
-        8.33%,
-        16.66%,
-        100% {
-          transform: translate(0%, 0%);
-        }
-
-        24.99%,
-        33.32%,
-        41.65% {
-          transform: translate(100%, 0%);
-        }
-
-        49.98%,
-        58.31%,
-        66.64% {
-          transform: translate(100%, 100%);
-        }
-
-        74.97%,
-        83.30%,
-        91.63% {
-          transform: translate(0%, 100%);
-        }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
-    }
-
-    .item:nth-child(2) {
-      top: 0;
-      left: var(--item-size);
-      animation: spinner3B var(--animation-duration) linear infinite;
-
-      @keyframes spinner3B {
-        0%,
-        8.33%,
-        91.63%,
-        100% {
-          transform: translate(0%, 0%);
-        }
-
-        16.66%,
-        24.99%,
-        33.32% {
-          transform: translate(0%, 100%);
-        }
-
-        41.65%,
-        49.98%,
-        58.31% {
-          transform: translate(-100%, 100%);
-        }
-
-        66.64%,
-        74.97%,
-        83.30% {
-          transform: translate(-100%, 0%);
-        }
-      }
-    }
-
-    .item:nth-child(3) {
-      top: var(--item-size);
-      left: var(--item-size);
-      animation: spinner3C var(--animation-duration) linear infinite;
-
-      @keyframes spinner3C {
-        0%,
-        83.30%,
-        91.63%,
-        100% {
-          transform: translate(0, 0);
-        }
-
-        8.33%,
-        16.66%,
-        24.99% {
-          transform: translate(-100%, 0);
-        }
-
-        33.32%,
-        41.65%,
-        49.98% {
-          transform: translate(-100%, -100%);
-        }
-
-        58.31%,
-        66.64%,
-        74.97% {
-          transform: translate(0, -100%);
-        }
+      100% {
+        transform: rotate(360deg);
       }
     }
   }

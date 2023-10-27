@@ -32,17 +32,17 @@ export interface ValidateFormEntry {
   setUserForm: Function;
 }
 
-export interface OnInputChange {
-  enqueueSnackbar: EnqueueSnackbar;
-  closeSnackbar: Function;
-  e: React.FocusEvent<HTMLInputElement>;
-  setUserForm: Function;
-  onBlur: boolean;
-}
+// export interface OnInputChange {
+//   enqueueSnackbar: EnqueueSnackbar;
+//   closeSnackbar: Function;
+//   e: React.FocusEvent<HTMLInputElement>;
+//   setUserForm: Function;
+//   onBlur: boolean;
+// }
 
-export interface RegisterHandler {
-  enqueueSnackbar: EnqueueSnackbar;
-  closeSnackbar: Function;
-  setUserForm: Function;
-  userForm: UserForm;
-}
+// export interface RegisterHandler {
+//   enqueueSnackbar: EnqueueSnackbar;
+//   closeSnackbar: Function;
+//   setUserForm: Function;
+//   userForm: UserForm;
+// }

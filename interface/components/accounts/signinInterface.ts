@@ -5,6 +5,7 @@ import { NextRouter } from "next/router";
 
 export interface Signin {
   userForm: UserForm;
+  authenticated: boolean;
   loginHandler: Function;
   onInputChange: Function;
   handleClickShowPassword: Function;
@@ -12,7 +13,9 @@ export interface Signin {
 }
 
 export interface SigninContainer {
+  auth: boolean;
   deviceWidth: number;
+  setAuthAction?: Function;
 }
 
 export interface UserForm {

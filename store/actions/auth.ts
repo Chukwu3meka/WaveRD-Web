@@ -5,7 +5,7 @@ import { removeErrorAction, catchErr } from "./error";
 import { SetAuthAction } from "@interface/store/auth";
 import { setCssThemeVar } from "@utils/handlers";
 import { setActiveRouteAction, setDeviceSizeAction, setThemeAction } from "./layout";
-import { logoutRoutes, protectedRoutes } from "@utils/constants/routes";
+import { protectedRoutes } from "@utils/constants/routes";
 
 export const setAuthAction = (data: SetAuthAction) => (dispatch: AppDispatch) => {
   try {
@@ -25,57 +25,40 @@ export const signoutAction = () => async (dispatch: AppDispatch) => {
 };
 
 export const verifyCookieAction = (data: any) => async (dispatch: AppDispatch) => {
-  // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 1px)");
-  // document.documentElement.style.setProperty("--headerHeight", "calc(66.24px + 0px)");
-  // document.documentElement.style.setProperty("--headerHeight", "71.04px");
-  document.documentElement.style.setProperty("--headerHeight", "70px");
-
-  // document.documentElement.style.setProperty("--headerHeight", "85.84px");
-  document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <= iPhone not returning the right screen height in VH
-
-  try {
-    const { setTheme, setReady, handlePageLoading, setRoute, router, enqueueSnackbar } = data;
-
-    const setThemeFn = (theme) => {
-      setTheme(theme);
-      setCssThemeVar(theme);
-      dispatch(setThemeAction(theme));
-    };
-
-    const route = location.pathname,
-      notHomePage = !!route.split("/")[1],
-      darkTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    setThemeFn(darkTheme ? "dark" : "light");
-
-    await fetcher({ method: "GET", endpoint: "/accounts/details" })
-      .then(async ({ data }) => {
-        setThemeFn(data.theme);
-        dispatch(setAuthAction(data));
-
-        if (notHomePage)
-          for (const path of logoutRoutes)
-            if (route.startsWith(path))
-              enqueueSnackbar("You need to sign out to access this route", {
-                variant: "error",
-                onEntered: () => router.push(router.query && router.query.redirect ? (router.query.redirect as string) : "/"),
-              });
-      })
-      .catch(() => {
-        if (notHomePage)
-          for (const path of protectedRoutes)
-            if (route.startsWith(path))
-              enqueueSnackbar("You need to be authenticated to access this route", {
-                variant: "error",
-                onEntered: () => router.push(`/accounts/signin?redirect=${route}`),
-              });
-      })
-      .finally(() => {
-        dispatch(setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }));
-        dispatch(setActiveRouteAction(location.pathname));
-        handlePageLoading({ url: null, loading: false });
-        setRoute(location.pathname);
-        setReady(true);
-      });
-  } catch (err) {}
+  // document.documentElement.style.setProperty("--headerHeight", "70px");
+  // // ? iPhone not returning the right screen height in VH
+  // document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`);
+  // try {
+  //   const route = location.pathname,
+  //     { setRoute, setTheme, setReady, handlePageLoading, router, enqueueSnackbar, setAuthenticated } = data;
+  //   const setThemeFn = (theme) => {
+  //     setTheme(theme);
+  //     setCssThemeVar(theme);
+  //     dispatch(setThemeAction(theme));
+  //   };
+  //   await fetcher({ method: "GET", endpoint: "/accounts/details" })
+  //     .then(async ({ data }) => {
+  //       setAuthenticated(true);
+  //       setThemeFn(data.theme);
+  //       dispatch(setAuthAction(data));
+  //     })
+  //     .catch(() => {
+  //       setAuthenticated(false);
+  //       const darkTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  //       setThemeFn(darkTheme ? "dark" : "light");
+  //       if (protectedRoutes.includes(route)) {
+  //         enqueueSnackbar("Kindly signin to access this route", {
+  //           variant: "error",
+  //           onEntered: () => router.push(`/accounts/signin?redirect=${route}`),
+  //         });
+  //       }
+  //     })
+  //     .finally(() => {
+  //       dispatch(setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight }));
+  //       dispatch(setActiveRouteAction(location.pathname));
+  //       handlePageLoading({ url: null, loading: false });
+  //       setRoute(location.pathname);
+  //       setReady(true);
+  //     });
+  // } catch (err) {}
 };

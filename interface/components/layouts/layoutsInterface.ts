@@ -2,11 +2,23 @@ import { AppProps } from "next/app";
 import { NextRouter } from "next/router";
 import { EnqueueSnackbar } from "notistack";
 import { EmotionCache } from "@emotion/react";
+import { Theme } from "@interface/utils/constantsInterface";
+import { AuthState } from "@interface/store/auth";
 
 export interface LayoutContainer {
   pageProps: AppProps["pageProps"];
   Component: AppProps["Component"];
   emotionCache?: EmotionCache;
+  theme: Theme;
+  route: string;
+  auth: AuthState;
+  // loading: boolean;
+
+  setDeviceSizeAction: Function;
+  setActiveRouteAction: Function;
+  setDisplayHeaderAction: Function;
+  setThemeAction: Function;
+  setAuthAction: Function;
 }
 
 export interface LayoutProps {
@@ -22,7 +34,8 @@ export interface LayoutProps {
 export interface HandlePageLoading {
   url: string;
   loading: boolean;
-  setLoading?: Function;
+  // setLoading?: Function;
+  status: "error" | "complete" | "start";
 }
 
 export interface RoutesHandler {
