@@ -4,7 +4,7 @@
   z-index: 2;
   position: relative;
   margin: 20px auto 15px;
-  @include quickFlex($dir: row, $row: 20px, $column: 20px);
+  @include quickFlex($column: 20px);
 
   & > a {
     width: 100%;
@@ -15,6 +15,7 @@
 }
 
 .iconOnly {
+  @include quickFlex($dir: column, $row: 20px);
   width: 100%;
   @extend .social;
   justify-content: space-evenly;

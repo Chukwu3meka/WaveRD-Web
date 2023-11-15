@@ -118,7 +118,7 @@ const LayoutContainer = (props: ILayoutContainer) => {
       const pathname = url?.split("?")[0],
         redirectTarget = getQueryParams(url, "redirect");
 
-      setLoading(true);
+      if (!pathname.startsWith("/info/")) setLoading(true);
 
       if (!authenticated && protectedRoutes.includes(pathname)) {
         router.events.emit("routeChangeError");

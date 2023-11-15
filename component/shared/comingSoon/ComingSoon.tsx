@@ -4,14 +4,14 @@ import HeaderContainer from "@component/shared/header";
 
 import { ComingSoon as IComingSoon } from "@interface/components/shared/comingSoonInterface";
 
-const ComingSoon = ({ timeLeft, header, minHeight }: IComingSoon) => (
+const ComingSoon = ({ timeLeft, header, minHeight, title }: IComingSoon) => (
   <main className={styles.comingSoon} style={{ minHeight }}>
     {header ? <HeaderContainer position="relative" /> : ""}
 
     <div>
       <Stack>
         <Typography color="#fff" fontSize="clamp(2em, 7vw, 4em)">
-          Coming soon.
+          {title} Coming soon.
         </Typography>
 
         <Typography color="#fff" fontSize="1em">

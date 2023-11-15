@@ -14,9 +14,9 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
       </Typography>
 
       <Typography variant="body2" color="text.secondary">
-        We only use Email for authentication (Signin purpose only) across social platforms(Twitter, Facebook and Google). To maintain a highly competitive
-        online gaming experience, after a certain period of inactivity (currently 21 days) on our site, your profile and its data will be deleted by one of our
-        moderators, with no way to recover your account.
+        We only use Email for authentication (Signin purpose only) across social platforms(Twitter, Facebook and Google). To maintain a highly competitive online gaming
+        experience, after a certain period of inactivity (currently 21 days) on our site, your profile and its data will be deleted by one of our moderators, with no way
+        to recover your account.
       </Typography>
 
       <Divider sx={{ my: 3 }} />
@@ -26,14 +26,14 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
       </Typography>
 
       <Typography variant="body2" color="text.secondary">
-        Data deletion is the process of removing personal information from a website or online service. This can be done for a variety of reasons, such as when
-        a user requests that their data be deleted, when a user's account is deactivated or deleted, or when a website or online service is no longer in use.
+        Data deletion is the process of removing personal information from a website or online service. This can be done for a variety of reasons, such as when a user
+        requests that their data be deleted, when a user's account is deactivated or deleted, or when a website or online service is no longer in use.
       </Typography>
 
       <Typography variant="body2" color="text.secondary">
-        Once you delete your data from a website, it is usually removed from the website's servers. However, it is important to note that your data may not be
-        completely deleted immediately. In some cases, your data may be stored in backup or archive files for a period of time. Additionally, we may retain
-        certain pieces of your data, such as your previous login details or other logs, for the purpose of preventing abuse and improving our sites.
+        Once you delete your data from a website, it is usually removed from the website's servers. However, it is important to note that your data may not be completely
+        deleted immediately. In some cases, your data may be stored in backup or archive files for a period of time. Additionally, we may retain certain pieces of your
+        data, such as your previous login details or other logs, for the purpose of preventing abuse and improving our sites.
       </Typography>
       <Typography variant="body2" color="text.secondary"></Typography>
 
@@ -41,8 +41,8 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
         Why should I delete my data from websites?
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        There are a few reasons why you might want to delete your data from websites. For example, you may want to delete your data if you are concerned about
-        your privacy or if you no longer use the website. Additionally, deleting your data can help to protect you from identity theft and other forms of fraud.
+        There are a few reasons why you might want to delete your data from websites. For example, you may want to delete your data if you are concerned about your
+        privacy or if you no longer use the website. Additionally, deleting your data can help to protect you from identity theft and other forms of fraud.
       </Typography>
 
       <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>
@@ -60,7 +60,9 @@ export default ({ onInputChange, userForm, handleClickShowPassword, deleteDataHa
 
       {authenticated && (
         <>
-          <Divider sx={{ my: 5 }} />
+          <Divider textAlign="left" sx={{ my: 5 }}>
+            Request Account deletion
+          </Divider>
 
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
