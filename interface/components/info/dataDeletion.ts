@@ -23,17 +23,3 @@ interface UserFormOptions {
   showPassword: boolean;
   validate: boolean;
 }
-
-export interface OnInputChange {
-  enqueueSnackbar: EnqueueSnackbar;
-  closeSnackbar: Function;
-  e: React.FocusEvent<HTMLInputElement>;
-  setUserForm: Function;
-  onBlur: boolean;
-}
-
-export interface DeleteDataHandler {
-  userForm: UserForm;
-  setUserForm: Function;
-  enqueueSnackbar: EnqueueSnackbar;
-}

@@ -4,7 +4,7 @@
   "description": "SoccerMASS: Football Manager and Football API Provider",
   "proxy": "http://localhost:8081",
   "scripts": {
-    "dev": "next dev",
+    "web": "next dev",
     "start": "next start",
     "build": "next build",
     "export": "next export",

@@ -5,7 +5,7 @@ import { fullDateFn } from "@utils/handlers";
 
 import { ComingSoonContainer as IComingSoonContainer, TimeLeft } from "@interface/components/shared/comingSoonInterface";
 
-const ComingSoonContainer = ({ header = false, minHeight, finishDate = new Date("January 1 2024") }: IComingSoonContainer) => {
+const ComingSoonContainer = ({ header = false, minHeight, finishDate = new Date("January 1 2024"), title }: IComingSoonContainer) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   minHeight ??= header ? "var(--visibleScreen)" : "calc(var(--visibleScreen) - var(--headerHeight))";
@@ -30,7 +30,7 @@ const ComingSoonContainer = ({ header = false, minHeight, finishDate = new Date(
     };
   };
 
-  return <ComingSoon timeLeft={timeLeft} header={header} minHeight={minHeight} />;
+  return <ComingSoon timeLeft={timeLeft} header={header} minHeight={minHeight} title={title} />;
 };
 
 export default ComingSoonContainer;

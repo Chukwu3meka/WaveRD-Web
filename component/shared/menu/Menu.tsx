@@ -126,5 +126,5 @@ const navLinks = [
   { id: "manager", title: "Soccer Manager", Icon: ManagerIcon, path: "/manager" },
   { id: "signup", title: "Register/Create an Account", Icon: SignUpIcon, path: "/accounts/signup" },
   { id: "signin", title: "Login to your Account", Icon: SignInIcon, path: "/accounts/signin" },
-  { id: "signout", title: "Sign Out from SoccerMASS", Icon: SignOutIcon, path: `${process.env.API_URL}/api/v1/accounts/signout` },
+  { id: "signout", title: "Sign Out from SoccerMASS", Icon: SignOutIcon, path: `${process.env.API_URL}/v1/accounts/signout` },
 ];

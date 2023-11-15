@@ -1,13 +1,13 @@
+import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { Menu } from ".";
-import { connector, ConnectorProps } from "@store";
 
 import { ProfileState } from "@interface/components/shared/menuInterface";
 
 const defaultProfile: ProfileState = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", image: "/images/layout/profile.webp", auth: false };
 
-export default connector((props: ConnectorProps) => {
+const MenuContainer = (props) => {
   const [menuOpen, setMenuOpen] = useState(false),
     [profile, setProfile] = useState<ProfileState>(defaultProfile),
     [authenticated, setauthenticated] = useState(false),
@@ -29,4 +29,9 @@ export default connector((props: ConnectorProps) => {
   };
 
   return <Menu {...{ toggleMenuOpen, iOS, menuOpen, authenticated, profile }} />;
-});
+};
+
+const mapStateToProps = (state) => ({ auth: state.auth }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);
