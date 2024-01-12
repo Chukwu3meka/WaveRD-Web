@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+import "/styles/globals.scss";
+
+import { Button } from "@mui/material";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import Providers from "utils/components/shared/Providers";
+
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
-
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-// or `v1X-appRouter` if you are using Next.js v1X
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +17,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
-        {children}
+        <Providers>
+          <Button variant="contained" color="primary">
+            Click me
+          </Button>
+          {children}
+
+          {/*  */}
+        </Providers>
       </body>
     </html>
   );

@@ -1,0 +1,19 @@
+@import "./variables.scss";
+
+@mixin quickFlex($width: initial, $height: initial, $dir: row, $justify: center, $align: center, $wrap: nowrap, $column: 0, $row: 0) {
+  display: flex;
+  width: $width;
+  height: $height;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  column-gap: $column;
+  row-gap: $row;
+}
+
+@mixin boxShadow($br: 5px) {
+  background: #fff;
+  border-radius: $br;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px -2px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px, rgba(0, 0, 0, 0.09) 0px 5px 12px 4px;
+}

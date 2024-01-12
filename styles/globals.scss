@@ -1,0 +1,80 @@
+@import "./index.scss";
+
+body {
+  margin: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Merienda", "Roboto Slab", serif;
+  -webkit-box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  line-height: "1.7em";
+  letter-spacing: "0.01em";
+  caret-color: $primary-color;
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  }
+
+  a {
+    cursor: pointer;
+    color: $primary-color;
+    text-decoration: none;
+    transition: color 500ms ease-in;
+  }
+
+  a:hover {
+    transition: color 300ms ease-out;
+    color: darken($color: $secondary-color, $amount: 10);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  background: $dark-color;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: $primary-color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: darken($color: $primary-color, $amount: 10);
+}
+
+// style the text that a user selects on a webpage.
+::selection {
+  color: var(--primary-color);
+  background-color: lighten($color: $primary-color, $amount: 0);
+}
+
+// Forcefully remove input background colour for Chrome autocomplete/autofill?
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  box-shadow: inset 0 0 20px 20px transparent !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
