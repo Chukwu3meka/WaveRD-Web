@@ -1,0 +1,87 @@
+@import "styles/index.scss";
+
+.footer {
+  background-color: var(--primary);
+  border-top: 5px double var(--secondary);
+  & > * > footer {
+    margin: auto;
+    padding: 10px;
+    max-width: 1200px;
+    text-align: center;
+    @include quickFlex($dir: column);
+
+    & > main {
+      @include quickFlex($dir: row, $width: 100%, $row: 20px, $justify: flex-start, $align: flex-start, $wrap: wrap);
+      & > aside {
+        @include quickFlex($dir: column, $width: 100%);
+        & > img {
+          margin: 10px auto;
+          border-radius: 50%;
+        }
+        & > div {
+          margin-top: 10px;
+          & > * > * {
+            border-radius: 50%;
+            border: 1px solid var(--secondary);
+          }
+          & > a:not(:last-of-type) {
+            margin-right: 10px;
+          }
+        }
+      }
+      & > nav {
+        padding: 20px 0 0;
+        @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 40px, $align: flex-start, $justify: space-evenly);
+        & > div {
+          @include quickFlex($dir: column, $width: max-content);
+          align-items: flex-start;
+          & > label {
+            font-size: 1.2em;
+            font-weight: 800;
+            margin: 0 0 10px;
+          }
+          & > a {
+            text-align: left;
+            display: block;
+            font-size: 0.86em;
+            &:not(:last-of-type) {
+              margin-bottom: 10px;
+            }
+          }
+
+          &:last-of-type {
+            display: none;
+          }
+        }
+      }
+    }
+    & > section {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--secondary);
+      @include quickFlex($dir: column, $width: 100%);
+    }
+  }
+}
+
+@media screen and (min-width: 520px) {
+  .footer > * > footer > main > nav > div:last-of-type {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .footer > * > footer > main {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    & > aside {
+      width: initial;
+      align-items: flex-start;
+    }
+    & > nav {
+      padding: 15px 0 0;
+      border-top: none;
+      width: initial;
+    }
+  }
+}

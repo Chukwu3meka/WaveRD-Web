@@ -15,9 +15,14 @@
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
     "@mui/material-nextjs": "^5.15.3",
+    "axios": "^1.6.5",
     "next": "14.0.4",
+    "notistack": "^3.0.1",
+    "nuka-carousel": "^7.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-awesome-reveal": "^4.2.7",
+    "react-dom": "^18",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",

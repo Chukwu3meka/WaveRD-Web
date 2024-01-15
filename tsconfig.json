@@ -19,13 +19,13 @@
       }
     ],
     "paths": {
-      "utils/*": ["./*"],
-      "styles/*": ["./*"],
-      "services": ["./*"],
-      "interfaces/*": ["./*"],
-      "components/*": ["./*"]
+      "utils/*": ["./utils/*"],
+      "styles/*": ["./styles/*"],
+      "services/*": ["./services/*"],
+      "interfaces/*": ["./interfaces/*"],
+      "components/*": ["./components/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/layouts/slide-text/slides/index.tss"],
   "exclude": ["node_modules"]
 }

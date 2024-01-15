@@ -1,0 +1,79 @@
+@import "styles/index.scss";
+
+header.relativeHeader {
+  padding: 5px 10px;
+  @include quickFlex();
+  max-width: calc(100vw - 3px);
+  border-bottom: 1px solid $primary;
+  backdrop-filter: blur(2px); /* Apply a blur effect to the background */
+  background: rgba(var(--primary), 0.7); /* Semi-transparent black background to create a blur effect */
+
+  & > main {
+    background-color: transparent;
+    padding: 10px 20px;
+    max-width: 1500px;
+    border-radius: 65px / 100%;
+    margin: auto;
+    @include quickFlex($dir: row, $justify: space-between, $width: 100%);
+    overflow: hidden;
+
+    & > div:nth-of-type(1) {
+      @include quickFlex($dir: row, $column: 10px);
+      & > * > * > * {
+        // delay color swith in header title => Soccer MASS
+        transition: color 0.6s ease-in-out;
+      }
+    }
+
+    & > div:nth-of-type(2) {
+      column-gap: 20px;
+      a {
+        color: $primary;
+        &:hover {
+          color: var(--contrast);
+          background: linear-gradient(to left, $secondary, var(--primary) 100%);
+          background-position: 0 100%;
+          background-size: 100% 2px;
+          background-repeat: repeat-x;
+        }
+      }
+    }
+
+    & > div:nth-of-type(3) {
+      align-items: center;
+      column-gap: 10px;
+      & > div:nth-of-type(1) {
+        border-right: 1px solid var(--secondary);
+      }
+    }
+  }
+}
+
+header.stickyHeader {
+  @extend .relativeHeader;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-bottom: none;
+  transition: top 0.5s linear;
+
+  & > main {
+    padding: 12px 20px;
+    background-color: var(--primary);
+    box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
+    -webkit-box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
+    -moz-box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
+  }
+}
+
+header.hiddenHeader {
+  @extend .stickyHeader;
+  top: calc((-1 * var(--headerHeight)) - 15px);
+
+  @media screen and (min-width: 525px) {
+    top: calc(-1 * var(--headerHeight));
+  }
+}

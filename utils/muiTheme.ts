@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { Theme } from "utils/interfaces/components/layout.interfaces";
+import { Theme } from "interfaces/store/layout.interfaces";
 
 // const iPhoneInputFix = {
 //   styleOverrides: {

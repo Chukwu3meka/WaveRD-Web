@@ -1,0 +1,41 @@
+@import "/styles/index.scss";
+
+aside.slides {
+  background-image: url("/images/layout/soccermass.webp");
+  background-size: 100% 100%;
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: $dark-color;
+    opacity: 0.4;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  & > div {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    & > div {
+      margin: auto;
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      color: $light-color;
+      font-size: 1.2em;
+      padding: 10px;
+      max-width: 450px;
+      * {
+        text-align: center;
+      }
+
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+    }
+  }
+}
