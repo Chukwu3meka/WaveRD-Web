@@ -1,6 +1,6 @@
-import { ISocialAccounts } from "interfaces/utils/constants.interface";
+import { ICompetition, ISocialAccounts } from "interfaces/utils/constants.interface";
 
-const socialAccounts: ISocialAccounts[] = [
+export const socialAccounts: ISocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
   { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/in/chukwu3meka/" },
   // { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/SoccerMASSinc/" },
@@ -17,4 +17,15 @@ const socialAccounts: ISocialAccounts[] = [
   { id: "facebook", title: "Facebook", image: "/images/social/facebook.png", href: "https://web.facebook.com/Chukwu3meka" },
 ];
 
-export default socialAccounts;
+export const defaultTheme = "light";
+
+export const competitions: ICompetition[] = [
+  { title: "Bundesliga", id: "bundesliga", image: "/images/competitions/bundesliga.png" },
+  { title: "Champions League", id: "championsLeague", image: "/images/competitions/champions-league.png" },
+  { title: "Eredivisie", id: "eredivisie", image: "/images/competitions/eredivisie.png" },
+  { title: "Europa League", id: "europaLeague", image: "/images/competitions/europa-league.png" },
+  { title: "La Liga", id: "laLiga", image: "/images/competitions/la-liga.png" },
+  { title: "Ligue 1", id: "ligue1", image: "/images/competitions/ligue-1.png" },
+  { title: "Premier League", id: "premierLeague", image: "/images/competitions/premier-league.png" },
+  { title: "Serie A", id: "serieA", image: "/images/competitions/serie-a.png" },
+];

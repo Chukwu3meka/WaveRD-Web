@@ -5,8 +5,8 @@ import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkM
 import styles from "./styles.module.scss";
 import SocialContainer from "../../shared/social/SocialContainer";
 
-import { Menu } from "./mobile-menu";
-import { Header } from "interfaces/components/shared.interface";
+import MenuContainer from "./mobile-menu";
+import { Header } from "interfaces/components/layout.interface";
 
 export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: Header) => (
   <header id="header" className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
@@ -34,7 +34,7 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
       </Box>
 
       {visible.mobile ? (
-        <Menu />
+        <MenuContainer />
       ) : (
         <Box display="flex">
           <SocialContainer filterParams={["twitter", "instagram", "whatsapp"]} />

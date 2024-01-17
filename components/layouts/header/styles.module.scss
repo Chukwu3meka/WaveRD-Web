@@ -4,9 +4,9 @@ header.relativeHeader {
   padding: 5px 10px;
   @include quickFlex();
   max-width: calc(100vw - 3px);
-  border-bottom: 1px solid $primary;
+  border-bottom: 1px solid $primary-color;
   backdrop-filter: blur(2px); /* Apply a blur effect to the background */
-  background: rgba(var(--primary), 0.7); /* Semi-transparent black background to create a blur effect */
+  background: rgba(var(--primary-color), 0.7); /* Semi-transparent black background to create a blur effect */
 
   & > main {
     background-color: transparent;
@@ -28,10 +28,10 @@ header.relativeHeader {
     & > div:nth-of-type(2) {
       column-gap: 20px;
       a {
-        color: $primary;
+        color: $primary-color;
         &:hover {
-          color: var(--contrast);
-          background: linear-gradient(to left, $secondary, var(--primary) 100%);
+          color: var(--contrast-color);
+          background: linear-gradient(to left, $secondary-color, var(--primary-color) 100%);
           background-position: 0 100%;
           background-size: 100% 2px;
           background-repeat: repeat-x;
@@ -43,7 +43,7 @@ header.relativeHeader {
       align-items: center;
       column-gap: 10px;
       & > div:nth-of-type(1) {
-        border-right: 1px solid var(--secondary);
+        border-right: 1px solid var(--secondary-color);
       }
     }
   }
@@ -62,10 +62,10 @@ header.stickyHeader {
 
   & > main {
     padding: 12px 20px;
-    background-color: var(--primary);
-    box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
-    -webkit-box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
-    -moz-box-shadow: 0px 5px 9px 0px rgba($dark, 0.75);
+    background-color: var(--primary-color);
+    box-shadow: 0px 5px 9px 0px rgba($dark-color, 0.75);
+    -webkit-box-shadow: 0px 5px 9px 0px rgba($dark-color, 0.75);
+    -moz-box-shadow: 0px 5px 9px 0px rgba($dark-color, 0.75);
   }
 }
 

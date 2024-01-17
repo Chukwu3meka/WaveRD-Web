@@ -5,8 +5,8 @@ export type LayoutContext = {
   deviceSize: DeviceSize;
   setDeviceSize: React.Dispatch<React.SetStateAction<DeviceSize>>;
 
-  // route: string;
-  // header: boolean;
+  displayHeader: boolean;
+  setDisplayHeader: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type Theme = "dark" | "light";

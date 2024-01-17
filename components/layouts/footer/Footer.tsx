@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
-import socialAccounts from "utils/constants";
+import { socialAccounts } from "utils/constants";
 
 export default () => (
   <div className={styles.footer} style={{ maxWidth: "100vw", overflowX: "hidden" }}>

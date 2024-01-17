@@ -1,0 +1,188 @@
+@import "styles/index.scss";
+
+.manager {
+  padding: 0 0 40px;
+  clip-path: polygon(0 0%, 100% 0, 100% 98%, 0% 100%);
+  background-color: var(--secondary-color);
+  max-width: 2000px;
+  margin: auto;
+  .carousel {
+    max-width: calc(100vw - 10px);
+    overflow: hidden;
+    padding: 10px 0;
+    img {
+      border-radius: 50%;
+      background-color: #fff;
+      padding: 10px;
+    }
+  }
+
+  @media screen and (min-width: 620px) {
+    padding: 0 0 60px;
+    clip-path: polygon(0 0%, 100% 0, 100% 95%, 0% 100%);
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 0 0 100px;
+    clip-path: polygon(0 0%, 100% 0, 100% 90%, 0% 100%);
+  }
+}
+
+.managerIntro {
+  @include quickFlex($width: 100%, $dir: row, $align: stretch, $row: 70px, $column: 20px);
+  flex-wrap: wrap;
+  padding: 50px 20px;
+
+  img {
+    filter: brightness(80%) saturate(70%);
+  }
+
+  & > div {
+    @include quickFlex($dir: column);
+    justify-content: space-between;
+    width: 100%;
+    max-width: 450px;
+    background: var(--secondary-color);
+
+    padding: 0 0 10px;
+    text-align: center;
+    overflow: hidden;
+    & > div {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 270px;
+    }
+    & > span {
+      padding: 10px 30px;
+    }
+    transition: 1s all ease-in;
+    &:hover {
+      background: var(--primary-color);
+    }
+  }
+  & > div:nth-of-type(1),
+  & > div:nth-of-type(3) {
+    border-radius: 10px 40px;
+    box-shadow: 0px 0px 7px -1px rgba(68, 139, 68, 0.76);
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(68, 139, 68, 0.76);
+    -moz-box-shadow: 0px 0px 7px -1px rgba(68, 139, 68, 0.76);
+  }
+  & > div:nth-of-type(3) {
+    border-radius: 40px 10px 40px 10px;
+  }
+  & > div:nth-of-type(2) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .managerIntro {
+    & > div {
+      max-width: calc(100vw / 2 - 30px);
+      & > div {
+        height: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .managerIntro {
+    gap: 0;
+    & > div:nth-of-type(1) {
+      margin-right: -60px;
+    }
+    & > div:nth-of-type(3) {
+      margin-left: -60px;
+    }
+
+    & > div:nth-of-type(1),
+    & > div:nth-of-type(3) {
+      max-width: 300px;
+      & > div {
+        height: 180px;
+      }
+      & > span {
+        padding: 20px 46px 5px;
+      }
+    }
+
+    & > div:nth-of-type(2) {
+      height: 290px;
+      width: 250px;
+      display: flex;
+      align-self: center;
+      border: 7px solid darken($color: $light-color, $amount: 1);
+      z-index: 1;
+      border-radius: 100%;
+      padding: 0;
+
+      & > div {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        &:first-child {
+          border-bottom: 3px solid darken($color: $light-color, $amount: 1);
+        }
+        &:last-child {
+          border-top: 3px solid darken($color: $light-color, $amount: 1);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 911px) {
+  .managerIntro {
+    & > div:nth-of-type(1) {
+      margin-right: -60px;
+    }
+    & > div:nth-of-type(3) {
+      margin-left: -60px;
+    }
+
+    & > div:nth-of-type(1),
+    & > div:nth-of-type(3) {
+      max-width: 340px;
+      & > div {
+        height: 180px;
+      }
+      & > span {
+        padding: 20px 46px 5px;
+      }
+    }
+
+    & > div:nth-of-type(2) {
+      height: 280px;
+      width: 280px;
+    }
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .managerIntro {
+    & > div:nth-of-type(1) {
+      margin-right: -50px;
+    }
+    & > div:nth-of-type(3) {
+      margin-left: -50px;
+    }
+
+    & > div:nth-of-type(1),
+    & > div:nth-of-type(3) {
+      max-width: 400px;
+      & > div {
+        height: 260px;
+      }
+      & > span {
+        padding: 25px 30px;
+      }
+    }
+
+    & > div:nth-of-type(2) {
+      height: 350px;
+      width: 340px;
+    }
+  }
+}

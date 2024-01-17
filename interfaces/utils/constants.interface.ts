@@ -4,3 +4,9 @@ export interface ISocialAccounts {
   image: string;
   href: string;
 }
+
+export interface ICompetition {
+  image: string;
+  title: string;
+  id: string;
+}

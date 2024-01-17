@@ -16,7 +16,7 @@ import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } f
 
 import { styles } from ".";
 import { Menu } from "interfaces/components/layout.interface";
-import { Social } from "components/shared/social";
+import SocialContainer from "components/shared/social";
 // import Social from "@component/shared/social";
 
 // import { Menu } from "@interface/components/shared/menuInterface";
@@ -80,7 +80,7 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
                         <ListItemIcon>
                           <Icon />
                         </ListItemIcon>
-                        <ListItemText primary={title} sx={{ color: "var(--contrast)" }} />
+                        <ListItemText primary={title} sx={{ color: "var(--contrast-color)" }} />
                       </ListItemButton>
                     </ListItem>
                   </Link>
@@ -99,13 +99,14 @@ export default ({ toggleMenuOpen, iOS, menuOpen, authenticated, profile }: Menu)
               style={{
                 position: "relative",
                 zIndex: 5,
-                border: "5px solid var(--primary)",
+                border: "5px solid var(--primary-color)",
                 borderRadius: "50%",
               }}
             />
           </Box>
           <Paper sx={{ width: "100%", pt: 5 }} elevation={2}>
-            <Social filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} fontSize="24px" />
+            <SocialContainer filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} fontSize="24px" />
+
             <section>
               <Typography component="span" variant="body2" fontSize=".8em">
                 ● All rights reserved. All trademarks are the property of their respective owners ●

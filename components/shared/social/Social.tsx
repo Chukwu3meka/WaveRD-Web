@@ -10,8 +10,9 @@ import {
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
 } from "@mui/icons-material";
+import { Social } from "interfaces/components/shared.interface";
 
-import { Social } from "@interface/components/shared/socialInterface";
+// import { Social } from "@interface/components/shared/socialInterface";
 
 export default ({ account, link, fontSize }: Social) => {
   let icon;

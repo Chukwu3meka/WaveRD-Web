@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+"use client";
 
 import { Menu } from ".";
+import { useEffect, useState } from "react";
 
 // import { ProfileState } from "@interface/components/shared/menuInterface";
 

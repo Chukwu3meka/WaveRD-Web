@@ -77,24 +77,13 @@ export const fullDateFn = (dateString: Date) => {
 
 export const setCssThemeVar = (theme: Theme) => {
   if (theme === "dark") {
-    // document.documentElement.style.setProperty("--primary", "#06051b");
-    // document.documentElement.style.setProperty("--primary", "#4a4a4a");
-    // document.documentElement.style.setProperty("--secondary", "#adbac7");
-    document.documentElement.style.setProperty("--primary", "#22272e");
-    // document.documentElement.style.setProperty("--secondary", "#4a4a4a");
-    document.documentElement.style.setProperty("--secondary", "#30353C");
-    // document.documentElement.style.setProperty("--highlight", "#30353C");
-    document.documentElement.style.setProperty("--contrast", "#D8D8D8");
-    // do document.documentElement.style.setProperty("--highContrast", "#ffffff");
-    // document.documentElement.style.setProperty("--lowContrast", "#C5C5C5");
+    document.documentElement.style.setProperty("--primary-color", "#22272e");
+    document.documentElement.style.setProperty("--secondary-color", "#30353C");
+    document.documentElement.style.setProperty("--contrast-color", "#D8D8D8");
   } else {
-    document.documentElement.style.setProperty("--primary", "#ffffff");
-    // document.documentElement.style.setProperty("--secondary", "#D5D5D5");
-    document.documentElement.style.setProperty("--secondary", "#E9E9E9");
-    document.documentElement.style.setProperty("--contrast", "#06051b");
-    // document.documentElement.style.setProperty("--secondary", "#ededed");
-    // document.documentElement.style.setProperty("--highContrast", "#06051b");
-    // document.documentElement.style.setProperty("--lowContrast", "#C5C5C5");
+    document.documentElement.style.setProperty("--primary-color", "#ffffff");
+    document.documentElement.style.setProperty("--secondary-color", "#E9E9E9");
+    document.documentElement.style.setProperty("--contrast-color", "#06051b");
   }
 };
 

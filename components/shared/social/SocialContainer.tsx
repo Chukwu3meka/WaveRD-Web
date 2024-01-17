@@ -1,9 +1,8 @@
 import { Stack } from "@mui/material";
 
 import { Social } from ".";
-import socialAccounts from "@utils/constants/socialAccounts";
-
-import { SocialContainer } from "@interface/components/shared/socialInterface";
+import { SocialContainer } from "interfaces/components/shared.interface";
+import { socialAccounts } from "utils/constants";
 
 export default ({ filterParams, fontSize = "18px" }: SocialContainer) => (
   <Stack direction="row" justifyContent="center">

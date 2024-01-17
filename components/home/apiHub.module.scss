@@ -1,0 +1,29 @@
+@import "styles/index.scss";
+
+.apihub {
+  padding: 0 10px 30px;
+  & > div:last-of-type {
+    margin: auto;
+    max-width: 1200px;
+    height: 100%;
+    flex-direction: column;
+    & > div:first-of-type {
+      position: relative;
+      min-height: 300px;
+      padding: 0 20px 100px;
+      margin: 50px auto 20px;
+      width: clamp(10px, 500px, calc(100vw - 50px));
+    }
+
+    & > main:first-of-type {
+      margin: auto;
+      max-width: 700px;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .apihub > div:last-of-type {
+    flex-direction: row;
+  }
+}

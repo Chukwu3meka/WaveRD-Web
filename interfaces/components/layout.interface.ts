@@ -13,11 +13,11 @@ export interface Header {
 }
 
 export interface HeaderContainer {
-  auth: Details;
-  setThemeAction: Function;
-  width: number;
-  theme: Theme;
-  header: number;
+  // auth: Details;
+  // setThemeAction: Function;
+  // width: number;
+  // theme: Theme;
+  // header: number;
   position: "relative" | "sticky";
 }
 

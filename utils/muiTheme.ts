@@ -17,7 +17,7 @@ import { Theme } from "interfaces/store/layout.interfaces";
 
 const inititalTheme = createTheme({});
 
-const muiTheme = (theme: Theme) => {
+export default function muiTheme(theme: Theme) {
   return createTheme({
     // typography: { fontFamily: '"Merienda", "Roboto Slab", serif' },
 
@@ -50,5 +50,4 @@ const muiTheme = (theme: Theme) => {
       // },
     },
   });
-};
-export default muiTheme;
+}
