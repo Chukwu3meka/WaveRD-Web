@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 import { LinearProgress, Stack } from "@mui/material";
 import { useStoreContext } from "components/providers/StoreContext";
-import { URL as authServiceURL, getDetails } from "services/auth.service";
+import { URL as accountsServiceURL, getDetails } from "services/accounts.service";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 import HeaderContainer from "../header";
@@ -14,7 +14,7 @@ export default function GlobalLayout({ children }: ReactChildren) {
     useSwrOptions = { shouldRetryOnError: false },
     { setDisplayHeader, setDeviceSize } = useStoreContext().layout,
     [prevScrollPos, setPrevScrollPos] = useState(0),
-    { data, isLoading } = useSWR(authServiceURL, getDetails, useSwrOptions);
+    { data, isLoading } = useSWR(accountsServiceURL, getDetails, useSwrOptions);
 
   useEffect(() => {
     // Set relative (not sticky) header height
@@ -45,21 +45,14 @@ export default function GlobalLayout({ children }: ReactChildren) {
 
   function handleScroll() {
     const w = window,
-      // yScrollPosition = w.pageYOffset, // <= deprecated,
       yScrollPosition = w.scrollY,
       pageTopReached = yScrollPosition < 81,
       scrollingToPageTop = yScrollPosition < prevScrollPos,
       areaHeight = Math.round(w.innerHeight + yScrollPosition) + 2,
-      pageBottomReached = areaHeight >= document.body.offsetHeight;
+      pageBottomReached = areaHeight >= document.body.offsetHeight,
+      displayHeader = !pageTopReached && (scrollingToPageTop || pageBottomReached);
 
-    if (!pageTopReached && (scrollingToPageTop || pageBottomReached)) {
-      console.log(true);
-      setDisplayHeader(true);
-    } else {
-      console.log(false);
-      setDisplayHeader(false);
-    }
-
+    setDisplayHeader(displayHeader);
     setPrevScrollPos(yScrollPosition);
   }
 
@@ -74,9 +67,6 @@ export default function GlobalLayout({ children }: ReactChildren) {
     <>
       <HeaderContainer position="sticky" />
       {children}
-      {/* <Link href="/">home</Link>
-      <Link href="/accounts">accounts</Link>
-      <Link href="/accounts/signin">signin</Link> */}
     </>
   );
 }

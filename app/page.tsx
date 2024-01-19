@@ -1,14 +1,13 @@
-import { ApiHub, Welcome } from "components/home";
+import { ApiHub, ManagerContainer, Welcome } from "components/home";
 import Footer from "components/layouts/footer";
 import HeaderContainer from "components/layouts/header";
-// import ApiHub from "components/home/ApiHub";
 
 export default function Home() {
   return (
     <main>
       <HeaderContainer position="relative" />
       <Welcome />
-      {/* <ManagerContainer /> */}
+      <ManagerContainer />
       <ApiHub />
       <Footer />
     </main>

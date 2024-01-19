@@ -3,13 +3,14 @@
 import ClientProviders from ".";
 import { defaultTheme } from "utils/constants";
 import { setCssThemeVar } from "utils/helpers";
+import SnackbarProvider from "./SnackbarProvider";
 import { createContext, useContext, useState } from "react";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
-import { Details, UserContext } from "interfaces/store/user.interfaces";
 import { DeviceSize, LayoutContext, Theme } from "interfaces/store/layout.interfaces";
+import { Details, SnackbarContext, UserContext } from "interfaces/store/user.interfaces";
 
-type StoreContext = { layout: LayoutContext; user: UserContext };
+type StoreContext = { layout: LayoutContext; user: UserContext; snackbar: SnackbarContext };
 const StoreContext = createContext<StoreContext | null>(null);
 
 export default function StoreContextProvider({ children }: ReactChildren) {
@@ -17,6 +18,7 @@ export default function StoreContextProvider({ children }: ReactChildren) {
     [displayHeader, setDisplayHeader] = useState(false),
     [authenticated, setAuthenticated] = useState<boolean>(false),
     [userDetails, setUserDetails] = useState<Details | null>(null),
+    [snackbarMessage, setSnackbarMessage] = useState<React.ReactNode>(null),
     [deviceSize, setDeviceSize] = useState<DeviceSize>({ height: 0, width: 0 });
 
   function setDetails(user: Details) {
@@ -37,8 +39,10 @@ export default function StoreContextProvider({ children }: ReactChildren) {
     <StoreContext.Provider
       value={{
         user: { details: userDetails, setDetails, authenticated },
+        snackbar: { message: snackbarMessage, setMessage: setSnackbarMessage },
         layout: { setTheme, theme, deviceSize, setDeviceSize, displayHeader, setDisplayHeader },
       }}>
+      <SnackbarProvider />
       <ClientProviders>{children}</ClientProviders>
     </StoreContext.Provider>
   );

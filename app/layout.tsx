@@ -1,6 +1,6 @@
 import "/styles/globals.scss";
 
-import { Inter } from "next/font/google";
+import { Merienda, Roboto_Slab } from "next/font/google";
 import GlobalLayout from "components/layouts/global";
 import StoreContextProvider from "components/providers/StoreContext";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
@@ -8,7 +8,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Metadata } from "next";
 import { ReactChildren } from "interfaces/components/shared.interface";
 
-const inter = Inter({ subsets: ["latin"] });
+const merienda = Merienda({ subsets: ["latin"] });
+const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SoccerMASS",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: ReactChildren) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${merienda.className}  ${robotoSlab.className}`}>
         <StoreContextProvider>
           <GlobalLayout>
             <AppRouterCacheProvider>{children}</AppRouterCacheProvider>

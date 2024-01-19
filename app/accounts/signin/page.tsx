@@ -1,9 +1,7 @@
-export default function Home() {
-  return (
-    <main>
-      himmm
-      {/*  */}
-      {/* <p style={{ height: "1000px" }}>sadsa</p> */}
-    </main>
-  );
+"use client";
+
+import SigninContainer from "components/accounts/signin";
+
+export default function signin() {
+  return <SigninContainer />;
 }

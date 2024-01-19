@@ -1,22 +1,20 @@
 "use client";
 
 import muiTheme from "utils/muiTheme";
-import { SnackbarProvider } from "notistack";
 import { useStoreContext } from "./StoreContext";
 import { SWRConfig, SWRConfiguration } from "swr";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ReactChildren } from "interfaces/components/shared.interface";
 
 const swrConfigOptions: SWRConfiguration = {};
 
-export default function ClientProviders({ children }: { children: React.ReactNode }) {
+export default function ClientProviders({ children }: ReactChildren) {
   const { theme } = useStoreContext().layout;
 
   return (
     <ThemeProvider theme={muiTheme(theme)}>
       <CssBaseline /> {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <SnackbarProvider maxSnack={2} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-        <SWRConfig value={swrConfigOptions}>{children}</SWRConfig>
-      </SnackbarProvider>
+      <SWRConfig value={swrConfigOptions}>{children}</SWRConfig>
     </ThemeProvider>
   );
 }

@@ -1,0 +1,32 @@
+@import "/styles/index.scss";
+
+.social {
+  z-index: 2;
+  position: relative;
+  margin: 20px auto 15px;
+  @include quickFlex($column: 20px);
+
+  & > a {
+    width: 100%;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 18px 10px;
+  }
+}
+
+.iconOnly {
+  @include quickFlex($dir: row, $column: 20px);
+  width: 100%;
+  @extend .social;
+  justify-content: space-evenly;
+
+  & > * {
+    border: 3px double var(--primary-color) !important;
+    width: 70px !important;
+    border-radius: 50%;
+
+    & > * {
+      margin: -20px !important;
+    }
+  }
+}

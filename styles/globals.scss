@@ -27,7 +27,10 @@ body {
   //   position: relative;
   // }
 
-  a {
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
     cursor: pointer;
     color: $primary-color;
     text-decoration: none;

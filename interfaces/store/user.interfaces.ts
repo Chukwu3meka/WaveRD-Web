@@ -1,5 +1,6 @@
 import { Theme } from "./layout.interfaces";
 
+export type Role = "admin" | "user";
 export interface UserContext {
   setDetails: Function;
   details: null | Details;
@@ -17,4 +18,7 @@ export type Details = {
   theme?: Theme;
 };
 
-export type Role = "admin" | "user";
+export type SnackbarContext = {
+  message: React.ReactNode;
+  setMessage: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+};
