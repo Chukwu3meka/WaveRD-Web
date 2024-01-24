@@ -1,27 +1,19 @@
-import { Theme } from "interfaces/store/layout.interfaces";
-import { Details } from "interfaces/store/user.interfaces";
+import { Profile } from "interfaces/store/user.interfaces";
 
-export interface Header {
-  position: "relative" | "sticky";
+export type theme = "dark" | "light";
+export interface HeaderProps {
   authenticated: boolean;
-  displayHeader: boolean;
   swapColorFn: Function;
   color: ColorState;
   theme: theme;
   themeHandler: Function;
   visible: VisibleState;
+  className: "relativeHeader" | "stickyHeader" | "hiddenHeader";
 }
 
-export interface HeaderContainer {
-  // auth: Details;
-  // setThemeAction: Function;
-  // width: number;
-  // theme: Theme;
-  // header: number;
+export interface HeaderContainerProps {
   position: "relative" | "sticky";
 }
-
-export type theme = "dark" | "light";
 
 export interface ColorState {
   first: "textSecondary" | "primary";
@@ -33,17 +25,9 @@ export interface VisibleState {
   mobile: boolean;
 }
 
-export interface Menu {
-  toggleMenuOpen: Function;
+export interface MenuProps {
   iOS: boolean;
+  profile: Profile;
   menuOpen: boolean;
-  authenticated: boolean;
-  profile: ProfileState;
-}
-
-export interface ProfileState {
-  name: string;
-  handle: string;
-  image: string;
-  auth: boolean;
+  toggleMenuOpen: Function;
 }

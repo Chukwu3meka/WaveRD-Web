@@ -1,17 +1,13 @@
+import { ChangeEventHandler, MouseEventHandler } from "react";
+
 export interface Signin {
   userForm: UserForm;
-  authenticated: boolean;
-  loginHandler: Function;
-  onInputChange: Function;
-  handleClickShowPassword: Function;
   iconOnly: boolean;
+  authenticated: boolean;
+  loginHandler: MouseEventHandler<HTMLButtonElement>;
+  onInputChange: ChangeEventHandler<HTMLInputElement>;
+  handleClickShowPassword: MouseEventHandler<HTMLButtonElement>;
 }
-
-// export interface SigninContainer {
-//   auth: boolean;
-//   deviceWidth: number;
-//   setAuthAction?: Function;
-// }
 
 export interface UserForm {
   email: string;
@@ -24,19 +20,6 @@ interface UserFormOptions {
   showPassword: boolean;
 }
 
-export interface OnInputChange {
-  setUserForm: Function;
-  e: React.FocusEvent<HTMLInputElement>;
-}
-
-// export interface LoginHandler {
-//   router: NextRouter;
-//   userForm: UserForm;
-//   setUserForm: Function;
-//   setAuthAction: (SetAuthAction) => void;
-//   // enqueueSnackbar: EnqueueSnackbar;
-// }
-
-export interface Social {
+export interface SocialSignin {
   iconOnly: boolean;
 }

@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 
 import { styles } from ".";
-import { socialAccounts } from "utils/constants";
+import { SOCIAL_ACCOUNTS } from "utils/constants";
 
 export default () => (
   <div className={styles.footer} style={{ maxWidth: "100vw", overflowX: "hidden" }}>
@@ -23,7 +23,7 @@ export default () => (
             <Typography variant="subtitle2">Follow US</Typography>
 
             <div>
-              {socialAccounts.map(({ title, id, href, image }) => (
+              {SOCIAL_ACCOUNTS.map(({ title, id, href, image }) => (
                 <a href={href} key={id} rel="noopener noreferrer" target="_blank">
                   <Image src={image} alt={`SoccerMASS ${title} page`} width={30} height={30} />
                 </a>

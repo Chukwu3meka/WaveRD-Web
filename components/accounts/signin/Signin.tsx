@@ -1,5 +1,4 @@
-// "use client";
-
+import { Social } from ".";
 import Link from "next/link";
 import Divider from "@mui/material/Divider";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -7,7 +6,6 @@ import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, Alert } from "@mui/material";
 
-import { Social } from ".";
 import { Signin } from "interfaces/components/accounts.interfaces";
 
 export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: Signin) => (
@@ -28,7 +26,7 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
       label="Email Address"
       aria-describedby="email"
       disabled={userForm.options.loading}
-      onChange={(e) => onInputChange(e)}
+      onChange={onInputChange}
       placeholder="firstname.lastname@soccermass.com"
     />
 
@@ -40,12 +38,12 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
         placeholder="Password"
         value={userForm.password}
         disabled={userForm.options.loading}
-        onChange={(e) => onInputChange(e)}
+        onChange={onInputChange}
         type={userForm.options.showPassword ? "text" : "password"}
         inputProps={{ autoComplete: "off", form: { autoComplete: "off" } }}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+            <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
               {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
             </IconButton>
           </InputAdornment>
@@ -58,7 +56,15 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </Typography>
 
     <AttentionSeeker effect="bounce">
-      <LoadingButton fullWidth size="large" color="primary" variant="contained" endIcon={<LoginIcon />} onClick={() => loginHandler()} loading={userForm.options.loading}>
+      <LoadingButton
+        fullWidth
+        size="large"
+        color="primary"
+        variant="contained"
+        endIcon={<LoginIcon />}
+        disabled={authenticated}
+        onClick={loginHandler}
+        loading={userForm.options.loading}>
         <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
       </LoadingButton>
     </AttentionSeeker>

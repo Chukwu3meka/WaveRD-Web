@@ -1,7 +1,7 @@
-// "use client";
+"use client";
 
-import { useRouter } from "next/navigation";
-// import { useSnackbar } from "notistack";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 import { Signin } from ".";
@@ -12,53 +12,42 @@ import validator from "utils/validator";
 // import { deObfuscate } from "@utils/handlers";
 // // import { connector, ConnectorProps } from "@store";
 
-// import { SigninContainer as SigninContainerInterface, UserForm } from "@interface/components/accounts/signinInterface";
-
-// import fetcher from "@utils/fetcher";
-// import validator from "@utils/validator";
-// import { capitalize, sleep } from "@utils/handlers";
-
-// import { LoginHandler, OnInputChange } from "@interface/components/accounts/signinInterface";
-// import { setDetails } from "store/actions";
-// import { connect } from "react-redux";
+import { signinService } from "services/accounts.service";
+import { OAUTH_PROVIDERS } from "utils/constants";
+import { AxiosError } from "axios";
+import { ApiResponse } from "interfaces/services/shared.interface";
 
 const defaultFormValues: UserForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 
-// export default connector((props: SigninContainer & ConnectorProps) => {
-const SigninContainer = () => {
+export default function SigninContainer() {
   const router = useRouter(),
-    { setDetails, authenticated } = useStoreContext().user,
-    { deviceSize } = useStoreContext().layout,
-    { setMessage } = useStoreContext().snackbar,
+    searchParams = useSearchParams(),
+    { enqueueSnackbar } = useSnackbar(),
+    resParam = searchParams.get("response"),
     [iconOnly, setIconOnly] = useState(true),
-    // [authenticated, setAuthenticated] = useState(false),
-    [userForm, setUserForm] = useState(defaultFormValues);
+    { deviceSize } = useStoreContext().layout,
+    { setProfile, authenticated } = useStoreContext().user,
+    [userForm, setUserForm] = useState<UserForm>(defaultFormValues),
+    oAuthMessage = resParam && deObfuscate(decodeURIComponent(resParam as string));
 
-  useEffect(() => {
-    setMessage("error occured");
-    // // Handle Social oAuth
-    // const { facebook, twitter, google, response } = router.query;
-    // const urlResponse = deObfuscate(decodeURIComponent(response as string));
-    // if (facebook || twitter || google) {
-    //   // setMessage(urlResponse, { variant: "error" })
-    //   //  router.replace("/accounts/signin");
-    // }
-  }, []);
-
-  // useEffect(() => {
-  //   setAuthenticated(!!props.auth);
-  // }, [props.auth]);
+  if (oAuthMessage) {
+    for (const provider of OAUTH_PROVIDERS) {
+      if (searchParams.get(provider)) enqueueSnackbar(oAuthMessage, { variant: "error" });
+    }
+  }
 
   useEffect(() => {
     setIconOnly(deviceSize.width < 460);
   }, [deviceSize.width]);
 
   const loginHandler = async () => {
+    if (authenticated) return;
+
     const email = userForm.email.trim(),
       password = userForm.password;
 
-    // if (!email.trim()) return setMessage(`Email cannot be empty`, { variant: "error" });
-    // if (!password) return setMessage(`Email cannot be empty`, { variant: "error" });
+    if (!email.trim()) return enqueueSnackbar(`Email cannot be empty`, { variant: "error" });
+    if (!password) return enqueueSnackbar(`Email cannot be empty`, { variant: "error" });
 
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
@@ -68,26 +57,27 @@ const SigninContainer = () => {
       validator({ value: email, type: "email" });
       validator({ value: password, type: "password" });
 
-      // await fetcher({ method: "POST", endpoint: "/accounts/signin", data: { email, password } })
-      //   .then(async ({ data: { role, fullName, handle, cookieConsent } }) => {
-      //     const redirectTarget = router.query && router.query.redirect;
+      await signinService({ email, password })
+        .then(async ({ data }) => {
+          setProfile(data);
 
-      //     setDetails({ role, fullName, handle, cookieConsent });
-      //     // setMessage("Authenticated Successfully", { variant: "success" });
+          enqueueSnackbar("Authenticated Successfully", { variant: "success" });
 
-      //     if (redirectTarget && typeof redirectTarget === "string") return router.push(redirectTarget);
+          const redirectTarget = searchParams.get("redirect");
+          if (redirectTarget && typeof redirectTarget === "string") return router.push(redirectTarget);
 
-      //     router.push("/");
-      //   })
-      //   .catch(async ({ message }) => {
-      //     await sleep(0.2);
-      //     // setMessage(message || "Invalid Email/Password", { variant: "error" });
-      //   })
-      //   .finally(() => disableLoading());
+          router.push("/");
+        })
+        .catch(({ response }: AxiosError<ApiResponse>) => {
+          const message = response ? response.data.message : "Invalid Email/Password";
+          console.log({ message });
+
+          enqueueSnackbar(message, { variant: "error" });
+        })
+        .finally(() => disableLoading());
     } catch (error) {
-      await sleep(0.2);
       disableLoading();
-      // setMessage("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
+      enqueueSnackbar("Invalid Email/Password", { variant: "error" }); // <=  Don't inform user of regex error
     }
   };
 
@@ -99,6 +89,4 @@ const SigninContainer = () => {
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }} />;
-};
-
-export default SigninContainer;
+}

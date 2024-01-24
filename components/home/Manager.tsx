@@ -3,9 +3,8 @@ import Image from "next/image";
 import Carousel from "nuka-carousel";
 import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
 
-
 import { managerStyles as styles } from ".";
-import { competitions } from "utils/constants";
+import { COMPETITIONS } from "utils/constants";
 
 export default ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWidth: number }) => (
   <div className={styles.manager}>
@@ -24,7 +23,7 @@ export default ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWid
     {deviceWidth > 620 ? (
       <Box className={styles.carousel}>
         <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000} dragging={false}>
-          {competitions.map(({ id, image, title }) => (
+          {COMPETITIONS.map(({ id, image, title }) => (
             <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
           ))}
         </Carousel>
@@ -109,13 +108,7 @@ export default ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWid
           autoplayInterval={2000}
           slidesToShow={slidesToShow}>
           {[...new Array(64)].map((_, i) => (
-            <Image
-              key={i}
-              src={`/images/clubs/club${`${i + 1}`.padStart(6, "0")}.webp`}
-              alt={`SoccerMASS  club${`${i + 1}`.padStart(6, "0")}`}
-              width={70}
-              height={70}
-            />
+            <Image key={i} src={`/images/clubs/club${`${i + 1}`.padStart(6, "0")}.webp`} alt={`SoccerMASS  club${`${i + 1}`.padStart(6, "0")}`} width={70} height={70} />
           ))}
         </Carousel>
       </Box>

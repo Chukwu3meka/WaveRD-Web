@@ -2,23 +2,18 @@ import { Theme } from "./layout.interfaces";
 
 export type Role = "admin" | "user";
 export interface UserContext {
-  setDetails: Function;
-  details: null | Details;
+  setProfile: Function;
+  profile: null | Profile;
   // setDetails: React.Dispatch<React.SetStateAction<null | Details>>;
 
   authenticated: boolean;
   // setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export type Details = {
+export type Profile = {
   role: Role;
   name: string;
+  theme: Theme;
   handle: string;
-
-  theme?: Theme;
-};
-
-export type SnackbarContext = {
-  message: React.ReactNode;
-  setMessage: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+  avatar: string;
 };

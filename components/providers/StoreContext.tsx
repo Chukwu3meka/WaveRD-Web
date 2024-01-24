@@ -1,29 +1,27 @@
 "use client";
 
 import ClientProviders from ".";
-import { defaultTheme } from "utils/constants";
+import { INIT_THEME } from "utils/constants";
 import { setCssThemeVar } from "utils/helpers";
-import SnackbarProvider from "./SnackbarProvider";
 import { createContext, useContext, useState } from "react";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 import { DeviceSize, LayoutContext, Theme } from "interfaces/store/layout.interfaces";
-import { Details, SnackbarContext, UserContext } from "interfaces/store/user.interfaces";
+import { Profile, UserContext } from "interfaces/store/user.interfaces";
 
-type StoreContext = { layout: LayoutContext; user: UserContext; snackbar: SnackbarContext };
+type StoreContext = { layout: LayoutContext; user: UserContext };
 const StoreContext = createContext<StoreContext | null>(null);
 
 export default function StoreContextProvider({ children }: ReactChildren) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme),
+  const [theme, setTheme] = useState<Theme>(INIT_THEME),
     [displayHeader, setDisplayHeader] = useState(false),
     [authenticated, setAuthenticated] = useState<boolean>(false),
-    [userDetails, setUserDetails] = useState<Details | null>(null),
-    [snackbarMessage, setSnackbarMessage] = useState<React.ReactNode>(null),
+    [profile, setProfile1] = useState<Profile | null>(null),
     [deviceSize, setDeviceSize] = useState<DeviceSize>({ height: 0, width: 0 });
 
-  function setDetails(user: Details) {
-    setUserDetails(user);
-    setAuthenticated(!user);
+  function setProfile2(user: Profile) {
+    setProfile1(user);
+    setAuthenticated(!!user);
 
     const matchMedia = window.matchMedia,
       userTheme = user && user.theme && user.theme,
@@ -38,11 +36,9 @@ export default function StoreContextProvider({ children }: ReactChildren) {
   return (
     <StoreContext.Provider
       value={{
-        user: { details: userDetails, setDetails, authenticated },
-        snackbar: { message: snackbarMessage, setMessage: setSnackbarMessage },
+        user: { profile, setProfile: setProfile2, authenticated },
         layout: { setTheme, theme, deviceSize, setDeviceSize, displayHeader, setDisplayHeader },
       }}>
-      <SnackbarProvider />
       <ClientProviders>{children}</ClientProviders>
     </StoreContext.Provider>
   );

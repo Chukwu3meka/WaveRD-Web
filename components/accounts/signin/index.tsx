@@ -1,5 +1,5 @@
 import Signin from "./Signin";
-import Social from "./Social";
+import Social from "./SocialSignin";
 import SigninContainer from "./SigninContainer";
 
 import socialStyles from "./social.module.scss";

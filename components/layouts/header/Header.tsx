@@ -1,15 +1,14 @@
 import Link from "next/link";
+import MenuContainer from "./mobile-menu";
+import styles from "./styles.module.scss";
+import SocialContainer from "../../shared/social/SocialContainer";
 import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
 import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkModeOutlined as DarkIcon } from "@mui/icons-material";
 
-import styles from "./styles.module.scss";
-import SocialContainer from "../../shared/social/SocialContainer";
+import { HeaderProps } from "interfaces/components/layout.interface";
 
-import MenuContainer from "./mobile-menu";
-import { Header } from "interfaces/components/layout.interface";
-
-export default ({ position, authenticated, displayHeader, swapColorFn, color, theme, themeHandler, visible }: Header) => (
-  <header id="header" className={styles[position === "relative" ? "relativeHeader" : displayHeader ? "stickyHeader" : "hiddenHeader"]}>
+export default ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible }: HeaderProps) => (
+  <header id="header" className={styles[className]}>
     <main>
       <IconButton onClick={() => themeHandler(theme)}>{theme === "light" ? <DarkIcon color="primary" /> : <LightIcon color="primary" />}</IconButton>
       <Box>
@@ -49,7 +48,7 @@ export default ({ position, authenticated, displayHeader, swapColorFn, color, th
             )}
 
             {authenticated && (
-              <a href={`${process.env.API_URL}/v1/accounts/signout`} rel="noopener noreferrer">
+              <a href={`${process.env.API_URL}/accounts/signout`} rel="noopener noreferrer">
                 <Button variant="outlined" startIcon={<LogOutIcon />}>
                   Sign out
                 </Button>

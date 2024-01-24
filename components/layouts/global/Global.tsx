@@ -1,20 +1,19 @@
 "use client";
 
 import useSWR from "swr";
+import HeaderContainer from "../header";
 import { useEffect, useState } from "react";
 import { LinearProgress, Stack } from "@mui/material";
+import { authService } from "services/accounts.service";
 import { useStoreContext } from "components/providers/StoreContext";
-import { URL as accountsServiceURL, getDetails } from "services/accounts.service";
-
 import { ReactChildren } from "interfaces/components/shared.interface";
-import HeaderContainer from "../header";
 
 export default function GlobalLayout({ children }: ReactChildren) {
-  const { setDetails } = useStoreContext().user,
+  const { setProfile } = useStoreContext().user,
     useSwrOptions = { shouldRetryOnError: false },
-    { setDisplayHeader, setDeviceSize } = useStoreContext().layout,
     [prevScrollPos, setPrevScrollPos] = useState(0),
-    { data, isLoading } = useSWR(accountsServiceURL, getDetails, useSwrOptions);
+    { setDisplayHeader, setDeviceSize } = useStoreContext().layout,
+    { data, isLoading } = useSWR("details", authService, useSwrOptions);
 
   useEffect(() => {
     // Set relative (not sticky) header height
@@ -29,7 +28,7 @@ export default function GlobalLayout({ children }: ReactChildren) {
   }, []);
 
   useEffect(() => {
-    setDetails(data);
+    setProfile(data);
   }, [isLoading]);
 
   useEffect(() => {
