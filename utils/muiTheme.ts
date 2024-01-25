@@ -1,3 +1,5 @@
+// "use client";
+
 import { createTheme } from "@mui/material/styles";
 import { Theme } from "interfaces/store/layout.interfaces";
 
