@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,9 +12,9 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.4",
+    "@mui/icons-material": "^5.15.6",
     "@mui/lab": "^5.0.0-alpha.161",
-    "@mui/material": "^5.15.4",
+    "@mui/material": "^5.15.6",
     "@mui/material-nextjs": "^5.15.3",
     "axios": "^1.6.5",
     "next": "14.0.4",

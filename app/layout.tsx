@@ -1,7 +1,6 @@
-import "/styles/globals.scss";
+import "styles/globals.scss";
 
 import { Merienda, Roboto_Slab } from "next/font/google";
-import GlobalLayout from "components/layouts/global";
 import StoreContextProvider from "components/providers/StoreContext";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
@@ -20,11 +19,9 @@ export default function RootLayout({ children }: ReactChildren) {
   return (
     <html lang="en">
       <body className={`${merienda.className}  ${robotoSlab.className}`}>
-        <StoreContextProvider>
-          <GlobalLayout>
-            <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
-          </GlobalLayout>
-        </StoreContextProvider>
+        <AppRouterCacheProvider>
+          <StoreContextProvider>{children}</StoreContextProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
