@@ -1,39 +1,51 @@
 "use client";
 
-import ClientProviders from ".";
-import { INIT_THEME } from "utils/constants";
+import { ClientProviders } from ".";
 import { setCssThemeVar } from "utils/helpers";
-import { createContext, useContext, useState } from "react";
+import { INIT_PROFILE } from "utils/constants";
+import { LinearProgress, Stack } from "@mui/material";
+import { createContext, useContext, useEffect, useState } from "react";
 
-import { ReactChildren } from "interfaces/components/shared.interface";
-import { DeviceSize, LayoutContext, Theme } from "interfaces/store/layout.interfaces";
-import { Profile, UserContext } from "interfaces/store/user.interfaces";
+import { Profile } from "interfaces/store/user.interfaces";
+import { DeviceSize, Theme } from "interfaces/store/layout.interfaces";
+import { StoreContext, StoreContextProviderProps } from "interfaces/components/providers.interface";
 
-type StoreContext = { layout: LayoutContext; user: UserContext };
 const StoreContext = createContext<StoreContext | null>(null);
 
-export default function StoreContextProvider({ children }: ReactChildren) {
-  const [theme, setTheme] = useState<Theme>(INIT_THEME),
+export default function StoreContextProvider({ children, profile: rootProfile }: StoreContextProviderProps) {
+  const [isLoading, setIsLoading] = useState(true),
     [displayHeader, setDisplayHeader] = useState(false),
+    [theme, setTheme] = useState<Theme>(INIT_PROFILE.theme),
     [authenticated, setAuthenticated] = useState<boolean>(false),
-    [profile, setProfile1] = useState<Profile | null>(null),
+    [profile, setProfile1] = useState<Profile | null>(rootProfile),
     [deviceSize, setDeviceSize] = useState<DeviceSize>({ height: 0, width: 0 });
 
-  function setProfile2(user: Profile) {
-    setProfile1(user);
-    setAuthenticated(!!user);
+  useEffect(() => {
+    initSoccerMASS();
+  }, [rootProfile]);
 
-    const matchMedia = window.matchMedia,
-      userTheme = user && user.theme && user.theme,
-      { innerWidth: width, innerHeight: height } = window,
-      theme = matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  function initSoccerMASS() {
+    const media = window && window.matchMedia,
+      darkMode = media && media("(prefers-color-scheme: dark)").matches;
 
-    setTheme(userTheme || theme);
-    setDeviceSize({ width, height });
-    setCssThemeVar(userTheme || theme);
+    setIsLoading(false);
+    setProfile2(rootProfile || { ...INIT_PROFILE, theme: darkMode ? "dark" : "light" });
   }
 
-  return (
+  function setProfile2(profile: Profile | null) {
+    const newTheme = profile ? profile.theme : theme;
+
+    setTheme(newTheme);
+    setProfile1(profile);
+    setCssThemeVar(newTheme);
+    setAuthenticated(!!profile);
+  }
+
+  return isLoading ? (
+    <Stack sx={{ width: "100%", color: "green" }}>
+      <LinearProgress color="inherit" />
+    </Stack>
+  ) : (
     <StoreContext.Provider
       value={{
         user: { profile, setProfile: setProfile2, authenticated },

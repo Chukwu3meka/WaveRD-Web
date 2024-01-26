@@ -1,7 +1,11 @@
-import { Theme } from "interfaces/store/layout.interfaces";
-import { IAgeGenerator, IArrayRotate } from "interfaces/utils/helpers.interface";
+// import stylesVariables from "styles/variables.module.scss";
+import axios from "axios";
+import stylesVariables from "../styles/variables.module.scss";
 
-export const ageGenerator = ({ date }: IAgeGenerator) => {
+import { Theme } from "interfaces/store/layout.interfaces";
+import { AgeGenerator, ArrayRotate } from "interfaces/utils/helpers.interface";
+
+export const ageGenerator = ({ date }: AgeGenerator) => {
   const todaysDate: number = Number(new Date()),
     birthDate: number = Number(new Date(date));
 
@@ -10,7 +14,7 @@ export const ageGenerator = ({ date }: IAgeGenerator) => {
   return;
 };
 
-export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
+export const arrayRotate = ({ arr, reverse = false }: ArrayRotate) => {
   if (!arr.length) throw { message: "Array is empty" };
 
   if (reverse) {
@@ -24,7 +28,7 @@ export const arrayRotate = ({ arr, reverse = false }: IArrayRotate) => {
 
 export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
 
-export const capitalize = (word: string) => word && word[0].toUpperCase() + word.slice(1);
+// export const capitalize = (word: string) => word && word[0].toUpperCase() + word.slice(1);
 
 // deobfuscate string
 export const deObfuscate = (phrase: string) => {
@@ -77,14 +81,14 @@ export const fullDateFn = (dateString: Date) => {
 
 export const setCssThemeVar = (theme: Theme) => {
   if (theme === "dark") {
-    document.documentElement.style.setProperty("--primary-color", "#22272e");
-    document.documentElement.style.setProperty("--secondary-color", "#30353C");
-    document.documentElement.style.setProperty("--contrast-color", "#D8D8D8");
+    document.documentElement.style.setProperty("--theme", "dark");
+    document.documentElement.style.setProperty("--primary-color", stylesVariables.darkThemePrimaryColor);
+    document.documentElement.style.setProperty("--secondary-color", stylesVariables.darkThemeSecondaryColor);
+    document.documentElement.style.setProperty("--contrast-color", stylesVariables.darkThemeContrastColor);
   } else {
-    document.documentElement.style.setProperty("--primary-color", "#ffffff");
-    document.documentElement.style.setProperty("--secondary-color", "#E9E9E9");
-    document.documentElement.style.setProperty("--contrast-color", "#06051b");
+    document.documentElement.style.setProperty("--theme", "light");
+    document.documentElement.style.setProperty("--primary-color", stylesVariables.lightThemePrimaryColor);
+    document.documentElement.style.setProperty("--secondary-color", stylesVariables.lightThemeSecondaryColor);
+    document.documentElement.style.setProperty("--contrast-color", stylesVariables.lightThemeContrastColor);
   }
 };
-
-//

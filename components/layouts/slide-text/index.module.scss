@@ -20,6 +20,8 @@ aside.slides {
     z-index: 1;
     height: 100%;
     & > div {
+      // border: 3px solid red;
+      line-height: 1.7em;
       margin: auto;
       position: absolute;
       top: 45%;

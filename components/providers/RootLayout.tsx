@@ -1,35 +1,29 @@
 "use client";
 
-import useSWR from "swr";
-import HeaderContainer from "../header";
+import { Fade } from "react-awesome-reveal";
 import { useEffect, useState } from "react";
-import { LinearProgress, Stack } from "@mui/material";
-import { authService } from "services/accounts.service";
+import HeaderContainer from "../layouts/header";
 import { useStoreContext } from "components/providers/StoreContext";
+
 import { ReactChildren } from "interfaces/components/shared.interface";
 
-export default function GlobalLayout({ children }: ReactChildren) {
-  const { setProfile } = useStoreContext().user,
-    useSwrOptions = { shouldRetryOnError: false },
+export default function RootLayout({ children }: ReactChildren) {
+  const [header, setHeader] = useState(false),
     [prevScrollPos, setPrevScrollPos] = useState(0),
-    { setDisplayHeader, setDeviceSize } = useStoreContext().layout,
-    { data, isLoading } = useSWR("details", authService, useSwrOptions);
+    { setDisplayHeader, setDeviceSize } = useStoreContext().layout;
 
   useEffect(() => {
-    // Set relative (not sticky) header height
-    document.documentElement.style.setProperty("--headerHeight", "77px");
-    // --visibleScreen: to fix wrong VH in  iPhone
-    document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`);
+    setHeader(true);
+
+    document.documentElement.style.setProperty("--headerHeight", "77px"); // <= Set relative (not sticky) header height
+    document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <=  --visibleScreen: to fix wrong VH in  iPhone
 
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    setProfile(data);
-  }, [isLoading]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -55,17 +49,13 @@ export default function GlobalLayout({ children }: ReactChildren) {
     setPrevScrollPos(yScrollPosition);
   }
 
-  if (isLoading)
-    return (
-      <Stack sx={{ width: "100%", color: "green" }}>
-        <LinearProgress color="inherit" />
-      </Stack>
-    );
-
   return (
     <>
-      <HeaderContainer position="sticky" />
-      {children}
+      {header ? <HeaderContainer position="sticky" /> : <></>}
+
+      <Fade direction="down" triggerOnce={true} big={true} duration={2500} style={{ perspective: "100px" }}>
+        {children}
+      </Fade>
     </>
   );
 }

@@ -6,16 +6,14 @@ import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, Alert } from "@mui/material";
 
-import { Signin } from "interfaces/components/accounts.interfaces";
+import { SigninProps } from "interfaces/components/accounts.interfaces";
 
-export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: Signin) => (
+export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: SigninProps) => (
   <Stack spacing={3} component="form" noValidate>
-    {authenticated && <Alert>You're already logged in !!!</Alert>}
-
-    <Social iconOnly={iconOnly} />
+    {authenticated ? <Alert>You're already logged in !!!</Alert> : <Social iconOnly={iconOnly} />}
 
     <Box width="100%">
-      <Divider sx={{ color: "#8C8C8C", fontSize: "0.8em" }}>or Sign in with Email</Divider>
+      <Divider sx={{ color: "#8C8C8C", fontSize: "0.8em" }}>Sign in with Email/Password</Divider>
     </Box>
 
     <TextField

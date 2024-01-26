@@ -1,0 +1,30 @@
+$primary-color: rgb(68, 139, 68);
+$secondary-color: rgb(141, 202, 141);
+$dark-color: #000000;
+$light-color: #ffffff;
+$highlight-color: #e2ad26;
+
+$dark-theme-primary-color: #22272e;
+$dark-theme-secondary-color: #30353c;
+$dark-theme-contrast-color: #d8d8d8;
+
+$light-theme-primary-color: #ffffff;
+// $light-theme-secondary-color: #e9e9e9;
+$light-theme-secondary-color: #f7f7f7;
+$light-theme-contrast-color: #06051b;
+
+:export {
+  darkColor: $dark-color;
+  lightColor: $light-color;
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  highlightColor: $highlight-color;
+
+  darkThemePrimaryColor: $dark-theme-primary-color;
+  darkThemeSecondaryColor: $dark-theme-secondary-color;
+  darkThemeContrastColor: $dark-theme-contrast-color;
+
+  lightThemePrimaryColor: $light-theme-primary-color;
+  lightThemeSecondaryColor: $light-theme-secondary-color;
+  lightThemeContrastColor: $light-theme-contrast-color;
+}

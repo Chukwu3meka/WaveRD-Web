@@ -8,3 +8,15 @@ export interface signinPayload {
 export interface themePayload {
   theme: Theme;
 }
+
+export interface existsPayload {
+  variant: "handle" | "email";
+  data: string;
+}
+
+export interface signupPayload {
+  email?: string;
+  handle?: string;
+  fullName?: string;
+  password?: string;
+}

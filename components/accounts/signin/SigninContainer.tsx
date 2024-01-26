@@ -1,23 +1,20 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { Signin } from ".";
+import { AxiosError } from "axios";
+import validator from "utils/validator";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
-
-import { Signin } from ".";
-import { UserForm } from "interfaces/components/accounts.interfaces";
-import { useStoreContext } from "components/providers/StoreContext";
-import { deObfuscate, sleep } from "utils/helpers";
-import validator from "utils/validator";
-// import { deObfuscate } from "@utils/handlers";
-// // import { connector, ConnectorProps } from "@store";
-
-import { signinService } from "services/accounts.service";
+import { deObfuscate } from "utils/helpers";
 import { OAUTH_PROVIDERS } from "utils/constants";
-import { AxiosError } from "axios";
-import { ApiResponse } from "interfaces/services/shared.interface";
+import { signinService } from "services/accounts.service";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useStoreContext } from "components/providers/StoreContext";
 
-const defaultFormValues: UserForm = { password: "", email: "", options: { showPassword: false, loading: false } };
+import { ApiResponse } from "interfaces/services/shared.interface";
+import { SigninForm } from "interfaces/components/accounts.interfaces";
+
+const defaultFormValues: SigninForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 
 export default function SigninContainer() {
   const router = useRouter(),
@@ -27,7 +24,7 @@ export default function SigninContainer() {
     [iconOnly, setIconOnly] = useState(true),
     { deviceSize } = useStoreContext().layout,
     { setProfile, authenticated } = useStoreContext().user,
-    [userForm, setUserForm] = useState<UserForm>(defaultFormValues),
+    [userForm, setUserForm] = useState<SigninForm>(defaultFormValues),
     oAuthMessage = resParam && deObfuscate(decodeURIComponent(resParam as string));
 
   if (oAuthMessage) {
@@ -70,7 +67,6 @@ export default function SigninContainer() {
         })
         .catch(({ response }: AxiosError<ApiResponse>) => {
           const message = response ? response.data.message : "Invalid Email/Password";
-          console.log({ message });
 
           enqueueSnackbar(message, { variant: "error" });
         })

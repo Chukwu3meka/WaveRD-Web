@@ -5,8 +5,8 @@ import muiTheme from "utils/muiTheme";
 import { ThemeProvider } from "@mui/system";
 import { SnackbarProvider } from "notistack";
 import { useStoreContext } from "./StoreContext";
+import { RootLayout } from "components/providers";
 import { SWRConfig, SWRConfiguration } from "swr";
-import GlobalLayout from "components/layouts/global";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 
@@ -19,7 +19,7 @@ export default function ClientProviders({ children }: ReactChildren) {
     <ThemeProvider theme={muiTheme(theme)}>
       <SnackbarProvider TransitionComponent={Zoom} maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
         <SWRConfig value={swrConfigOptions}>
-          <GlobalLayout>{children}</GlobalLayout>
+          <RootLayout>{children}</RootLayout>
         </SWRConfig>
       </SnackbarProvider>
     </ThemeProvider>

@@ -1,6 +1,8 @@
 // "use client";
 
 import { createTheme } from "@mui/material/styles";
+import stylesVariables from "styles/variables.module.scss";
+
 import { Theme } from "interfaces/store/layout.interfaces";
 
 // const iPhoneInputFix = {
@@ -25,8 +27,8 @@ export default function muiTheme(theme: Theme) {
 
     palette: {
       mode: theme,
-      primary: { main: "rgb(68, 139, 68)" },
-      secondary: { main: "rgb(141, 202, 141)" },
+      primary: { main: stylesVariables.primaryColor || "#fffff" },
+      secondary: { main: stylesVariables.secondaryColor || "#fffff" },
     },
 
     components: {

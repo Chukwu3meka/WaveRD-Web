@@ -1,8 +1,8 @@
-export interface IAgeGenerator {
+export interface AgeGenerator {
   date: any;
 }
 
-export interface IArrayRotate {
+export interface ArrayRotate {
   arr: (string | number)[];
   reverse?: boolean;
 }

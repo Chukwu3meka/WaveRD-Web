@@ -1,26 +1,29 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { existsPayload, signinPayload, signupPayload, themePayload } from "interfaces/services/accounts.interface";
 
-import { Theme } from "interfaces/store/layout.interfaces";
-import { signinPayload, themePayload } from "interfaces/services/accounts.interface";
-import { ApiResponse } from "interfaces/services/shared.interface";
-
-export const URL = "/accounts";
-
-export const service = axios.create({
-  baseURL: process.env.API_URL + URL,
-});
+import { service, baseServiceUrl } from ".";
+const baseURL = baseServiceUrl.accountsService;
 
 export const authService = async () => {
-  const response = await service.get("/details");
+  const response = await service.get(baseURL + "/profile");
   return response.data;
 };
 
 export const themeService = async (payload: themePayload) => {
-  const response = await service.post("/theme", payload);
+  const response = await service.post(baseURL + "/theme", payload);
   return response.data;
 };
 
 export const signinService = async (payload: signinPayload) => {
-  const response = await service.post("/signin", payload);
+  const response = await service.post(baseURL + "/signin", payload);
+  return response.data;
+};
+
+export const existsService = async ({ data, variant }: existsPayload) => {
+  const response = await service.post(baseURL + `${variant}_exists`, { [variant]: data });
+  return response.data;
+};
+
+export const signupService = async (payload: signupPayload) => {
+  const response = await service.post(baseURL + "/signup", payload);
   return response.data;
 };
