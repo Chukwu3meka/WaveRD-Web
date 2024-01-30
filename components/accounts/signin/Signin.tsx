@@ -50,18 +50,19 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </FormControl>
 
     <Typography textAlign="right" sx={{ margin: "10px 0 -5px !important" }} fontSize={14}>
-      <Link href="/accounts/forgot-password">Forgot Password</Link>
+      <Link href="/accounts/password-reset">Forgot Password?</Link>
     </Typography>
 
     <AttentionSeeker effect="bounce">
       <LoadingButton
         fullWidth
         size="large"
+        type="submit"
         color="primary"
         variant="contained"
         endIcon={<LoginIcon />}
         disabled={authenticated}
-        onClick={loginHandler}
+        onClick={(e) => loginHandler(e)}
         loading={userForm.options.loading}>
         <Typography sx={{ fontWeight: 900 }}>Sign in</Typography>
       </LoadingButton>

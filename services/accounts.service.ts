@@ -1,4 +1,4 @@
-import { existsPayload, signinPayload, signupPayload, themePayload } from "interfaces/services/accounts.interface";
+import { ConfPassResetService, ExistsPayload, InitPassResetService, SigninPayload, SignupPayload, ThemePayload } from "interfaces/services/accounts.interface";
 
 import { service, baseServiceUrl } from ".";
 const baseURL = baseServiceUrl.accountsService;
@@ -8,22 +8,32 @@ export const authService = async () => {
   return response.data;
 };
 
-export const themeService = async (payload: themePayload) => {
+export const themeService = async (payload: ThemePayload) => {
   const response = await service.post(baseURL + "/theme", payload);
   return response.data;
 };
 
-export const signinService = async (payload: signinPayload) => {
+export const signinService = async (payload: SigninPayload) => {
   const response = await service.post(baseURL + "/signin", payload);
   return response.data;
 };
 
-export const existsService = async ({ data, variant }: existsPayload) => {
-  const response = await service.post(baseURL + `${variant}_exists`, { [variant]: data });
+export const existsService = async ({ data, variant }: ExistsPayload) => {
+  const response = await service.post(baseURL + `/${variant}_exists`, { [variant]: data });
   return response.data;
 };
 
-export const signupService = async (payload: signupPayload) => {
+export const signupService = async (payload: SignupPayload) => {
   const response = await service.post(baseURL + "/signup", payload);
+  return response.data;
+};
+
+export const initPassResetService = async (payload: InitPassResetService) => {
+  const response = await service.post(baseURL + "/initiate-password-reset", payload);
+  return response.data;
+};
+
+export const confPassResetService = async (payload: ConfPassResetService) => {
+  const response = await service.post(baseURL + "/confirm-password-reset", payload);
   return response.data;
 };

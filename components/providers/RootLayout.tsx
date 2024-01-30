@@ -6,6 +6,7 @@ import HeaderContainer from "../layouts/header";
 import { useStoreContext } from "components/providers/StoreContext";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
+import { HEADER_HEIGHT } from "utils/constants";
 
 export default function RootLayout({ children }: ReactChildren) {
   const [header, setHeader] = useState(false),
@@ -14,8 +15,7 @@ export default function RootLayout({ children }: ReactChildren) {
 
   useEffect(() => {
     setHeader(true);
-
-    document.documentElement.style.setProperty("--headerHeight", "77px"); // <= Set relative (not sticky) header height
+    document.documentElement.style.setProperty("--headerHeight", `${HEADER_HEIGHT}px`); // <= Set relative (not sticky) header height
     document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <=  --visibleScreen: to fix wrong VH in  iPhone
 
     window.addEventListener("resize", handleResize);

@@ -1,6 +1,6 @@
 import { Theme } from "./layout.interfaces";
 
-export type Role = "admin" | "user";
+export type Role = "admin" | "user" | "dummy";
 export interface UserContext {
   setProfile: Function;
   profile: null | Profile;

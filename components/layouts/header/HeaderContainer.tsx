@@ -8,7 +8,7 @@ import { themeService } from "services/accounts.service";
 import { useStoreContext } from "components/providers/StoreContext";
 
 import { Theme } from "interfaces/store/layout.interfaces";
-import { ColorState, HeaderContainerProps, VisibleState } from "interfaces/components/layout.interface";
+import { ColorState, HeaderContainerProps, VisibleState } from "interfaces/components/layouts.interface";
 
 export default function HeaderContainer({ position }: HeaderContainerProps) {
   const { enqueueSnackbar } = useSnackbar(),

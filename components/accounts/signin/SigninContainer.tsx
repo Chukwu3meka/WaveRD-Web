@@ -4,7 +4,7 @@ import { Signin } from ".";
 import { AxiosError } from "axios";
 import validator from "utils/validator";
 import { useSnackbar } from "notistack";
-import { useEffect, useState } from "react";
+import { FocusEvent, useEffect, useState } from "react";
 import { deObfuscate } from "utils/helpers";
 import { OAUTH_PROVIDERS } from "utils/constants";
 import { signinService } from "services/accounts.service";
@@ -37,13 +37,15 @@ export default function SigninContainer() {
     setIconOnly(deviceSize.width < 460);
   }, [deviceSize.width]);
 
-  const loginHandler = async () => {
+  const loginHandler = async (e: FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
     if (authenticated) return;
 
     const email = userForm.email.trim(),
-      password = userForm.password;
+      password = userForm.password.trim();
 
-    if (!email.trim()) return enqueueSnackbar(`Email cannot be empty`, { variant: "error" });
+    if (!email) return enqueueSnackbar(`Email cannot be empty`, { variant: "error" });
     if (!password) return enqueueSnackbar(`Email cannot be empty`, { variant: "error" });
 
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
@@ -69,6 +71,7 @@ export default function SigninContainer() {
           const message = response ? response.data.message : "Invalid Email/Password";
 
           enqueueSnackbar(message, { variant: "error" });
+          setUserForm((values: any) => ({ ...values, password: "" }));
         })
         .finally(() => disableLoading());
     } catch (error) {

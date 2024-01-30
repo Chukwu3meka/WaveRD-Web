@@ -1,10 +1,9 @@
 @import "styles/index.scss";
 
 .welcome {
-  @include quickFlex($dir: row, $justify: center, $align: stretch, $width: calc(100vw - 5px));
+  @include quickFlex($dir: row, $justify: center, $align: stretch);
   min-height: calc(var(--visibleScreen) - var(--headerHeight));
   overflow: hidden;
-  // border: 3px solid red;
   & > main {
     @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
     padding: 20px;

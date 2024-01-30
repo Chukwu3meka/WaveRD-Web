@@ -5,7 +5,7 @@ import SocialContainer from "../../shared/social/SocialContainer";
 import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
 import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkModeOutlined as DarkIcon } from "@mui/icons-material";
 
-import { HeaderProps } from "interfaces/components/layout.interface";
+import { HeaderProps } from "interfaces/components/layouts.interface";
 
 export default ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible }: HeaderProps) => (
   <header id="header" className={styles[className]}>

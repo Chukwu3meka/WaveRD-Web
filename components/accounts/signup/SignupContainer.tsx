@@ -1,32 +1,36 @@
-import { useState } from "react";
+"use client";
+
+import { AxiosError } from "axios";
 import { Signup, Success } from ".";
 import { useSnackbar } from "notistack";
-import { SigninFormKeys, SignupForm } from "interfaces/components/accounts.interfaces";
-import { Validator } from "interfaces/utils/validator.interface";
 import validator from "utils/validator";
 import { capitalize } from "@mui/material";
+import { FocusEvent, useState } from "react";
 import { existsService, signupService } from "services/accounts.service";
-import { existsPayload, signupPayload } from "interfaces/services/accounts.interface";
-import { AxiosError } from "axios";
+
 import { ApiResponse } from "interfaces/services/shared.interface";
+import { ExistsPayload, SignupPayload } from "interfaces/services/accounts.interface";
+import { SigninFormKeys, SignupForm } from "interfaces/components/accounts.interfaces";
 
 const initUserForm: SignupForm = {
   email: { value: "", valid: true, info: "Email cannot be empty" },
-  fullName: { value: "", valid: true, info: "Full Name cannot be empty" },
+  name: { value: "", valid: true, info: "Full Name cannot be empty" },
   options: { showPassword: false, loading: false, accountCreated: false },
   handle: { value: "", valid: true, info: "Handle cannot be empty", validating: false },
   password: { value: "", valid: true, info: "Password cannot be empty", validating: false },
 };
 
 const SignupContainer = () => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar(),
+    [userForm, setUserForm] = useState<SignupForm>(initUserForm);
 
-  const [userForm, setUserForm] = useState<SignupForm>(initUserForm);
-  const registerHandler = async () => {
+  const registerHandler = async (e: FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
     try {
       setUserForm((values: SignupForm) => ({ ...values, options: { ...values.options, loading: true } }));
 
-      const userData: signupPayload = {};
+      const userData: SignupPayload = { email: "", name: "", handle: "", password: "" };
 
       /* re-validate all values before registeration */
       for (const [tempId, { value, valid, info: message }] of Object.entries(userForm)) {
@@ -34,7 +38,7 @@ const SignupContainer = () => {
 
         if (id !== "options") {
           if (!valid) throw { message };
-          userData[id] = value.trim(); // <= append input to userdata if its valid
+          userData[id] = value; // <= append input to userdata if its valid
         }
       }
 
@@ -54,13 +58,14 @@ const SignupContainer = () => {
   };
 
   const valueChangeFn = async (e: React.FocusEvent<HTMLInputElement>, onBlur: boolean) => {
-    const { value, id: tempId } = e.target;
-    const id = tempId as SigninFormKeys;
+    const tempValue = e.target.value,
+      id = e.target.id as SigninFormKeys,
+      value = onBlur ? tempValue.trim() : tempValue;
 
     if (id === "options") return;
 
     // ? Don't revalidate input if user has not made change to previous value
-    if (onBlur && value.trim() === userForm[id].value) {
+    if (onBlur && userForm[id].value) {
       // ?  Notify user if onBlur when there's an error with the value
       if (!userForm[id].valid) return enqueueSnackbar(userForm[id].info, { variant: "error" });
 
@@ -70,12 +75,12 @@ const SignupContainer = () => {
     setUserForm((values) => ({ ...values, [id]: { ...values[id], value: id === "email" ? value.toLowerCase() : value } }));
 
     try {
-      validator({ value: value.trim(), type: id, label: id === "email" ? "Email Address" : null });
+      validator({ value: value, type: id, label: id === "email" ? "Email Address" : null });
 
       if (["handle", "email"].includes(id)) {
         setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: false, info: `Validating ${capitalize(id)}`, validating: true } }));
 
-        await existsService({ data: value, variant: id as existsPayload["variant"] })
+        await existsService({ data: value, variant: id as ExistsPayload["variant"] })
           .then(async ({ data: { exists } }) => {
             if (exists) throw { message: `${capitalize(id)} not available, Kindly use a different ${capitalize(id)}` };
             setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));

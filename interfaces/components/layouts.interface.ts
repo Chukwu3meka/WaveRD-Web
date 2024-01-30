@@ -31,3 +31,7 @@ export interface MenuProps {
   menuOpen: boolean;
   toggleMenuOpen: Function;
 }
+
+export interface SlidesProp {
+  layout: "accounts";
+}

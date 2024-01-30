@@ -14,16 +14,16 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
 
     <TextField
       fullWidth
-      id="fullName"
-      label="Full Name"
+      id="name"
+      label="Name"
       variant="outlined"
-      aria-describedby="fullName"
-      value={userForm.fullName.value}
-      placeholder="Firstname Lastname"
+      aria-describedby="name"
+      value={userForm.name.value}
+      placeholder="Firstname Middlename Lastname"
       onBlur={(e) => onBlurHandler(e)}
       onChange={(e) => onInputChange(e)}
       disabled={userForm.options.loading}
-      error={!userForm.fullName.valid && !userForm.fullName.validating}
+      error={!userForm.name.valid && !userForm.name.validating}
       inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
     />
 
@@ -94,8 +94,9 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               onBlur={(e) => onBlurHandler(e)}
               onChange={(e) => onInputChange(e)}
               disabled={userForm.options.loading}
+              // type={!userForm.password.value && userForm.options.showPassword ? "text" : "password"}
+              type={userForm.options.showPassword ? "text" : "password"}
               error={!userForm.password.valid && !userForm.password.validating}
-              type={!userForm.password.value && userForm.options.showPassword ? "text" : "password"}
               inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
               endAdornment={
                 <InputAdornment position="end">
@@ -113,17 +114,18 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
     <AttentionSeeker effect="bounce">
       <LoadingButton
         fullWidth
-        onClick={() => registerHandler()}
         size="large"
-        variant="contained"
+        type="submit"
         color="primary"
+        variant="contained"
         endIcon={<RegisterIcon />}
+        onClick={(e) => registerHandler(e)}
         loading={userForm.options.loading}>
         <Typography sx={{ fontWeight: 900 }}>Create Account</Typography>
       </LoadingButton>
     </AttentionSeeker>
 
-    <Typography fontSize={10} textAlign="center" pt={2}>
+    <Typography fontSize={10.9} textAlign="center" pt={2}>
       By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
       <Link href="/info/privacy">Privacy Policy</Link>
     </Typography>

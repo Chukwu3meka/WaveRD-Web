@@ -16,7 +16,7 @@ import SocialContainer from "components/shared/social";
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } from "@mui/material";
 
-import { MenuProps } from "interfaces/components/layout.interface";
+import { MenuProps } from "interfaces/components/layouts.interface";
 
 const navLinks = [
   { id: "home", title: "Home", Icon: HomeIcon, path: "/" },

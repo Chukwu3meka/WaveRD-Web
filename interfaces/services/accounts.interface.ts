@@ -1,22 +1,30 @@
 import { Theme } from "interfaces/store/layout.interfaces";
 
-export interface signinPayload {
+export interface SigninPayload {
   email: string;
   password: string;
 }
 
-export interface themePayload {
+export interface ThemePayload {
   theme: Theme;
 }
 
-export interface existsPayload {
+export interface ExistsPayload {
   variant: "handle" | "email";
   data: string;
 }
 
-export interface signupPayload {
-  email?: string;
-  handle?: string;
-  fullName?: string;
-  password?: string;
+export interface SignupPayload {
+  email: string;
+  handle: string;
+  name: string;
+  password: string;
+}
+
+export interface InitPassResetService {
+  email: string;
+}
+export interface ConfPassResetService {
+  email: string;
+  password: string;
 }

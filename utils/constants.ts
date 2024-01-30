@@ -18,7 +18,7 @@ export const SOCIAL_ACCOUNTS: ISocialAccounts[] = [
   { id: "facebook", title: "Facebook", image: "/images/social/facebook.png", href: "https://web.facebook.com/Chukwu3meka" },
 ];
 
-export const INIT_PROFILE: Profile = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", avatar: "/images/layout/profile.webp", role: "user", theme: "light" };
+export const INIT_PROFILE: Profile = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", avatar: "/images/layout/profile.webp", role: "dummy", theme: "light" };
 
 export const OAUTH_PROVIDERS = ["facebook", "twitter", "google"];
 
@@ -32,3 +32,6 @@ export const COMPETITIONS: ICompetition[] = [
   { title: "Premier League", id: "premierLeague", image: "/images/COMPETITIONS/premier-league.png" },
   { title: "Serie A", id: "serieA", image: "/images/COMPETITIONS/serie-a.png" },
 ];
+
+export const GEAR_LENGTH = 300;
+export const HEADER_HEIGHT = 71.6;

@@ -26,7 +26,8 @@ export default ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
         id="email"
         value={form.email.value}
         disabled={form.options.loading}
-        onChange={(e) => onInputChange(e)}
+        onBlur={(e) => onInputChange(e, true)}
+        onChange={(e) => onInputChange(e, false)}
         placeholder="firstname.lastname@soccermass.com"
         error={!form.email.valid}
         label="Email Address"
@@ -41,7 +42,8 @@ export default ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
         type={form.options.showPassword ? "text" : "password"}
         value={form.password.value}
         disabled={form.options.loading}
-        onChange={(e) => onInputChange(e)}
+        onBlur={(e) => onInputChange(e, true)}
+        onChange={(e) => onInputChange(e, false)}
         placeholder="New Password"
         error={!form.password.valid}
         label="New Password"
@@ -60,7 +62,8 @@ export default ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
       size="large"
       variant="contained"
       color="primary"
-      onClick={() => resetPasswordHandler()}
+      type="submit"
+      onClick={(e) => resetPasswordHandler(e)}
       disabled={form.options.loading}
       loading={form.options.loading}>
       <Typography sx={{ fontWeight: 900 }}>Reset Password</Typography>

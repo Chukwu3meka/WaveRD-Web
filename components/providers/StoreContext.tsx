@@ -32,13 +32,13 @@ export default function StoreContextProvider({ children, profile: rootProfile }:
     setProfile2(rootProfile || { ...INIT_PROFILE, theme: darkMode ? "dark" : "light" });
   }
 
-  function setProfile2(profile: Profile | null) {
+  function setProfile2(profile: Profile) {
     const newTheme = profile ? profile.theme : theme;
 
     setTheme(newTheme);
     setProfile1(profile);
     setCssThemeVar(newTheme);
-    setAuthenticated(!!profile);
+    setAuthenticated(profile.role !== "dummy");
   }
 
   return isLoading ? (

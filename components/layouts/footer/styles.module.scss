@@ -3,7 +3,7 @@
 .footer {
   background-color: var(--primary-color);
   border-top: 5px double var(--secondary-color);
-  & > * > footer {
+  & > footer {
     margin: auto;
     padding: 10px;
     max-width: 1200px;
@@ -65,13 +65,13 @@
 }
 
 @media screen and (min-width: 520px) {
-  .footer > * > footer > main > nav > div:last-of-type {
+  .footer > footer > main > nav > div:last-of-type {
     display: flex;
   }
 }
 
 @media screen and (min-width: 760px) {
-  .footer > * > footer > main {
+  .footer > footer > main {
     flex-wrap: nowrap;
     justify-content: space-between;
     & > aside {

@@ -81,3 +81,7 @@ export interface Social {
   account: string;
   fontSize: string;
 }
+
+export interface NotFoundProps {
+  height?: string;
+}
