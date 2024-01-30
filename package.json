@@ -18,6 +18,7 @@
     "@mui/material": "^5.15.6",
     "@mui/material-nextjs": "^5.15.3",
     "@mui/system": "^5.15.6",
+    "@vercel/speed-insights": "^1.0.9",
     "axios": "^1.6.5",
     "next": "14.0.4",
     "notistack": "^3.0.1",
