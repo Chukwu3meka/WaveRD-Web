@@ -48,7 +48,7 @@ export default ({ className, authenticated, swapColorFn, color, theme, themeHand
             )}
 
             {authenticated && (
-              <a href={`${process.env.ACCOUNTS_URL}/accounts/signout`} rel="noopener noreferrer">
+              <a href={`${process.env.API_URL}/accounts/signout`} rel="noopener noreferrer">
                 <Button variant="outlined" startIcon={<LogOutIcon />}>
                   Sign out
                 </Button>
