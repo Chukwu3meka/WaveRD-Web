@@ -1,3 +1,5 @@
+"use client";
+
 import { Social } from ".";
 import Link from "next/link";
 import Divider from "@mui/material/Divider";
