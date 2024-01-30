@@ -3,11 +3,26 @@ import { Grid, Stack, Box } from "@mui/material";
 import Loading from "@component/shared/loading";
 import ErrorContainer from "@component/shared/error";
 import { styles, NavigationContainer, EndpointContainer, SearchContainer } from ".";
+import Image from "next/image";
 
 export default function ({ getEndpoint, endpoint, status }: any) {
   return (
     <main className={styles.endpoints}>
       <Grid container spacing={3}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <div className="intro">
+            <div>
+              <Image
+                src="/images/layout/intro-apihub.png"
+                alt="SoccerMASS API HUB welcome image"
+                fill
+                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              />
+            </div>
+          </div>
+        </Grid>
         <Grid item xs={12} sm={12} md={4} lg={3}>
           <Stack alignItems="center" spacing={2} sx={{ position: "sticky", top: "85px" }}>
             <SearchContainer getEndpoint={getEndpoint} />

@@ -5,6 +5,7 @@
       "@utils/*": ["utils/*"],
       "@styles/*": ["styles/*"],
       "@store": ["store/index"],
+      "@services": ["services"],
       "@interface/*": ["interface/*"],
       "@component/*": ["component/*"],
       "@store-actions": ["store/actions/index"]

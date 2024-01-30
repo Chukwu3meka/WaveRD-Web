@@ -13,7 +13,7 @@ const nextConfig = {
 
   env: {
     WEB_URL: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
-    API_URL: process.env.NODE_ENV === "production" ? "https://api.soccermass.com" : "http://localhost:8081",
+    API_URL: process.env.NODE_ENV === "production" ? "https://api.soccermass.com" : "http://localhost:8081/api/v1",
   },
 
   async redirects() {

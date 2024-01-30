@@ -14,17 +14,28 @@ import { HandlePageLoading, LayoutContainer as ILayoutContainer } from "@interfa
 
 const emotionCache = createEmotionCache(); // <= Client-side cache, shared for the whole session of the user in the browser.
 
+import useSWR from "swr";
+import { authService } from "@services";
+
 const LayoutContainer = (props: ILayoutContainer) => {
   let authenticated = false;
 
   const router = useRouter(),
     [route, setRoute] = useState(""),
     [theme, setTheme] = useState(null),
-    { enqueueSnackbar } = useSnackbar(),
     [ready, setReady] = useState(false),
+    { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(true),
     [prevScrollPos, setPrevScrollPos] = useState(0),
     { pageProps, Component, setDeviceSizeAction, setActiveRouteAction, setDisplayHeaderAction, setThemeAction, setAuthAction } = props;
+
+  // const {
+  //   data: { data: authDetails },
+  //   error: authDetailsError,
+  //   isLoading: authDetailsIsLoading,
+  // } = useSWR(authService.authServiceUrl, authService.getDetails);
+
+  // console.log({ authDetails, authDetailsError, authDetailsIsLoading });
 
   useEffect(() => {
     const handleResize = () => setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight });

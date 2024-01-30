@@ -15,11 +15,18 @@
 }
 
 .iconOnly {
-  @include quickFlex($dir: column, $row: 20px);
+  @include quickFlex($dir: row, $column: 20px);
   width: 100%;
   @extend .social;
   justify-content: space-evenly;
+
   & > * {
     border: 3px double var(--primary) !important;
+    width: 70px !important;
+    border-radius: 50%;
+
+    & > * {
+      margin: -20px !important;
+    }
   }
 }

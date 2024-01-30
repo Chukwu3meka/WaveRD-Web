@@ -6,7 +6,7 @@ interface IFetcher {
 
 const fetcher = async ({ endpoint, data = null, method }: IFetcher) => {
   const WEB_URL = process.env.API_URL,
-    api_url = `${WEB_URL}/v1${endpoint}`;
+    api_url = `${WEB_URL}/api/v1${endpoint}`;
 
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },

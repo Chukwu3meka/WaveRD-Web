@@ -16,15 +16,14 @@ const authData = [
 
 export default ({ iconOnly }: Social) => (
   <section className={styles[iconOnly ? "iconOnly" : "social"]}>
-    {authData.map(
-      ({ color, endpoint, Icon, label }) => (
-        // iconOnly ? (
-        //   <a href={endpoint}>
-        //     <IconButton key={label} aria-label="SoccerMASS oAuth Sign In" component="label" sx={{ color }}>
-        //       <Icon fontSize="large" />
-        //     </IconButton>
-        //   </a>
-        // ) : (
+    {authData.map(({ color, endpoint, Icon, label }) =>
+      iconOnly ? (
+        <a href={endpoint} key={label}>
+          <IconButton aria-label="SoccerMASS oAuth Sign In" component="label" sx={{ color }}>
+            <Icon fontSize="large" />
+          </IconButton>
+        </a>
+      ) : (
         <Chip
           clickable
           key={label}
@@ -36,7 +35,6 @@ export default ({ iconOnly }: Social) => (
           sx={{ background: color, color: `#fff !important`, "&>svg": { color: `#fff !important` } }}
         />
       )
-      // )
     )}
   </section>
 );
