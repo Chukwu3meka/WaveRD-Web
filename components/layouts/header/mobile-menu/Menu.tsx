@@ -27,7 +27,7 @@ const navLinks = [
   { id: "signout", title: "Sign Out from SoccerMASS", Icon: SignOutIcon, path: `${process.env.API_URL}/accounts/signout` },
 ];
 
-export default function Menu({ toggleMenuOpen, iOS, menuOpen, profile }: MenuProps) {
+export default function Menu({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuProps) {
   return (
     <>
       <IconButton onClick={(e) => toggleMenuOpen(e)}>
@@ -79,7 +79,7 @@ export default function Menu({ toggleMenuOpen, iOS, menuOpen, profile }: MenuPro
             <Box>
               <List onClick={(e) => toggleMenuOpen(e)}>
                 {navLinks
-                  .filter((nav) => (!!profile ? !["signup", "signin"].includes(nav.id) : !["signout"].includes(nav.id)))
+                  .filter((nav) => (authenticated ? !["signup", "signin"].includes(nav.id) : !["signout"].includes(nav.id)))
                   .flatMap(({ Icon, path, title, id }) => (
                     <Link key={id} href={path}>
                       <ListItem disablePadding sx={{ textAlign: "center" }}>

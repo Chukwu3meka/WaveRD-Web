@@ -30,6 +30,7 @@ export interface MenuProps {
   iOS: boolean;
   profile: Profile;
   menuOpen: boolean;
+  authenticated: boolean;
   toggleMenuOpen: Function;
 }
 

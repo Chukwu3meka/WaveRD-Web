@@ -45,10 +45,9 @@ const HeaderContainer = ({ position }: HeaderContainerProps) => {
   };
 
   const signoutHandler = () => {
-    console.log("clear axios cookie");
-
     setProfile(INIT_PROFILE);
     setAxiosCookieInterceptor("");
+    enqueueSnackbar("Opps!!! Clearing your cache...", { variant: "info" });
 
     window.location.href = `${process.env.API_URL}/accounts/signout`;
   };

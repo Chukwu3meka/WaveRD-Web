@@ -16,8 +16,8 @@ export default function StoreContextProvider({ children, profile: rootProfile }:
   const [isLoading, setIsLoading] = useState(true),
     [displayHeader, setDisplayHeader] = useState(false),
     [theme, setTheme] = useState<Theme>(INIT_PROFILE.theme),
+    [profile, setProfile1] = useState<Profile>(rootProfile),
     [authenticated, setAuthenticated] = useState<boolean>(false),
-    [profile, setProfile1] = useState<Profile | null>(rootProfile),
     [deviceSize, setDeviceSize] = useState<DeviceSize>({ height: 0, width: 0 });
 
   useEffect(() => {

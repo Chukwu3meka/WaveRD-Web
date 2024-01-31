@@ -3,7 +3,7 @@ import { Theme } from "./layout.interfaces";
 export type Role = "admin" | "user" | "dummy";
 export interface UserContext {
   setProfile: Function;
-  profile: null | Profile;
+  profile: Profile;
   // setDetails: React.Dispatch<React.SetStateAction<null | Details>>;
 
   authenticated: boolean;
