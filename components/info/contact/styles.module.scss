@@ -1,0 +1,33 @@
+@import "@styles/scss/index.scss";
+
+.contact {
+  padding: 10px;
+  & > div.categories {
+    @include quickFlex($dir: row, $wrap: wrap, $column: 10px);
+    & > div {
+      @include quickFlex($dir: column, $justify: stretch, $width: clamp(120px, 30vw, 300px));
+      margin: auto;
+      padding: 20px 10px;
+      transition: 1s all ease;
+      cursor: pointer;
+      text-align: center;
+      & > img {
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid var(--secondary);
+      }
+
+      &:hover {
+        background-color: var(--secondary);
+      }
+    }
+  }
+
+  & > div.contactForm {
+    @include quickFlex();
+    min-height: 400px;
+    margin-top: 40px;
+    width: 100%;
+    padding: 30px 20px;
+  }
+}

@@ -36,3 +36,15 @@ export interface MenuProps {
 export interface SlidesProp {
   layout: "accounts";
 }
+
+export interface InfoLayoutProps {
+  activeRoute: string;
+  deviceWidth: number;
+  children: React.ReactNode;
+  autoCompleteHandler: Function;
+}
+
+export interface InfoLinks {
+  label: string;
+  path: string;
+}

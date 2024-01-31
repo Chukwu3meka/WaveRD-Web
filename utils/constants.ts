@@ -35,3 +35,8 @@ export const COMPETITIONS: ICompetition[] = [
 
 export const GEAR_LENGTH = 300;
 export const HEADER_HEIGHT = 71.6;
+
+export const CONTACT_PREFERENCE = {
+  email: "Email Address",
+  whatsapp: "WhatsApp Number",
+};

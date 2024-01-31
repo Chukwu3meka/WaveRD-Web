@@ -127,7 +127,7 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
 
     <Typography fontSize={10.9} textAlign="center" pt={2}>
       By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
-      <Link href="/info/privacy">Privacy Policy</Link>
+      <Link href="/info/privacy-policy">Privacy Policy</Link>
     </Typography>
 
     <Typography fontSize={14}>

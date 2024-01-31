@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "components/layouts/footer";
 import Header from "components/layouts/header";
 import NotFound from "components/shared/not-found";
