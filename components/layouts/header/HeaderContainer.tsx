@@ -9,10 +9,12 @@ import { useStoreContext } from "components/providers/StoreContext";
 
 import { Theme } from "interfaces/store/layout.interfaces";
 import { ColorState, HeaderContainerProps, VisibleState } from "interfaces/components/layouts.interface";
+import { setAxiosCookieInterceptor } from "services/index";
+import { INIT_PROFILE } from "utils/constants";
 
-export default function HeaderContainer({ position }: HeaderContainerProps) {
+const HeaderContainer = ({ position }: HeaderContainerProps) => {
   const { enqueueSnackbar } = useSnackbar(),
-    { authenticated } = useStoreContext().user,
+    { setProfile, authenticated } = useStoreContext().user,
     { displayHeader, setTheme, theme, deviceSize } = useStoreContext().layout,
     [visible, setVisible] = useState<VisibleState>({ nav: false, mobile: false }),
     [color, setColor] = useState<ColorState>({ first: "textSecondary", last: "primary" }),
@@ -42,5 +44,16 @@ export default function HeaderContainer({ position }: HeaderContainerProps) {
     }
   };
 
-  return <Header {...{ className, authenticated, swapColorFn, color, theme, themeHandler, visible }} />;
-}
+  const signoutHandler = () => {
+    console.log("clear axios cookie");
+
+    setProfile(INIT_PROFILE);
+    setAxiosCookieInterceptor("");
+
+    window.location.href = `${process.env.API_URL}/accounts/signout`;
+  };
+
+  return <Header {...{ className, authenticated, swapColorFn, color, theme, themeHandler, visible, signoutHandler }} />;
+};
+
+export default HeaderContainer;

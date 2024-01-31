@@ -1,10 +1,17 @@
+import { service, baseServiceUrl } from ".";
 import { ConfPassResetService, ExistsPayload, InitPassResetService, SigninPayload, SignupPayload, ThemePayload } from "interfaces/services/accounts.interface";
 
-import { service, baseServiceUrl } from ".";
 const baseURL = baseServiceUrl.accountsService;
 
 export const authService = async () => {
-  const response = await service.get(baseURL + "/profile");
+  const response = await service.get(
+    baseURL + "/profile"
+    // {
+    // Add a random query parameter
+    // params: { noCache: new Date().getTime() },
+    // headers: { "Cache-Control": "no-cache" },
+    // }
+  );
   return response.data;
 };
 

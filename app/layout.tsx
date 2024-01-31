@@ -21,21 +21,23 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: ReactChildren) {
-  let axiosCookies = "";
+  const SSID = cookies().get("SSID"),
+    cookie = SSID ? `${SSID?.name}=${SSID?.value};` : null;
 
-  cookies()
-    .getAll()
-    .forEach(({ name: cookieName, value: cookieValue }) => {
-      axiosCookies += `${cookieName}=${cookieValue};`;
-    });
+  let profile = null;
 
-  setAxiosCookieInterceptor(axiosCookies);
+  if (cookie) {
+    setAxiosCookieInterceptor(cookie);
 
-  const profile = await authService()
-    .then(({ data, success }) => {
-      return success ? data : null;
-    })
-    .catch(() => null);
+    profile = await authService()
+      .then(({ data, success }) => {
+        return success ? data : null;
+      })
+      .catch(() => {
+        setAxiosCookieInterceptor(null);
+        return null;
+      });
+  }
 
   return (
     <html lang="en">

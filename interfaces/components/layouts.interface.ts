@@ -4,6 +4,7 @@ export type theme = "dark" | "light";
 export interface HeaderProps {
   authenticated: boolean;
   swapColorFn: Function;
+  signoutHandler: Function;
   color: ColorState;
   theme: theme;
   themeHandler: Function;

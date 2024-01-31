@@ -25,6 +25,8 @@ export default function StoreContextProvider({ children, profile: rootProfile }:
   }, [rootProfile]);
 
   function initSoccerMASS() {
+    console.log("Initializing SoccerMASS");
+
     const media = window && window.matchMedia,
       darkMode = media && media("(prefers-color-scheme: dark)").matches;
 
@@ -38,7 +40,7 @@ export default function StoreContextProvider({ children, profile: rootProfile }:
     setTheme(newTheme);
     setProfile1(profile);
     setCssThemeVar(newTheme);
-    setAuthenticated(profile.role !== "dummy");
+    setAuthenticated(profile && profile.role !== "dummy");
   }
 
   return isLoading ? (

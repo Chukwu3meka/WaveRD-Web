@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const service = axios.create({
-  // withCredentials: true,
+  withCredentials: true,
   baseURL: process.env.API_URL,
 });
 
@@ -20,11 +20,11 @@ export const baseServiceUrl = {
 //   }
 // );
 
-export const setAxiosCookieInterceptor = (axiosCookies: string) => {
+export const setAxiosCookieInterceptor = (cookies: string | null) => {
   service.interceptors.request.use(
     (config) => {
       // Set the cookie in the request header
-      config.headers.Cookie = axiosCookies;
+      config.headers.Cookie = cookies;
       return config;
     },
     (error) => {

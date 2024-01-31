@@ -7,7 +7,7 @@ import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkM
 
 import { HeaderProps } from "interfaces/components/layouts.interface";
 
-export default ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible }: HeaderProps) => (
+export default ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible, signoutHandler }: HeaderProps) => (
   <header id="header" className={styles[className]}>
     <main>
       <IconButton onClick={() => themeHandler(theme)}>{theme === "light" ? <DarkIcon color="primary" /> : <LightIcon color="primary" />}</IconButton>
@@ -48,8 +48,8 @@ export default ({ className, authenticated, swapColorFn, color, theme, themeHand
             )}
 
             {authenticated && (
-              <a href={`${process.env.API_URL}/accounts/signout`} rel="noopener noreferrer">
-                <Button variant="outlined" startIcon={<LogOutIcon />}>
+              <a href="#" rel="noopener noreferrer">
+                <Button variant="outlined" startIcon={<LogOutIcon />} onClick={() => signoutHandler()}>
                   Sign out
                 </Button>
               </a>
