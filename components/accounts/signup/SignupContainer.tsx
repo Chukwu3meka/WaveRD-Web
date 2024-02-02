@@ -6,6 +6,8 @@ import { useSnackbar } from "notistack";
 import validator from "utils/validator";
 import { capitalize } from "@mui/material";
 import { FocusEvent, useState } from "react";
+import { getSystemTheme } from "utils/helpers";
+import { INIT_PROFILE } from "utils/constants";
 import { existsService, signupService } from "services/accounts.service";
 
 import { ApiResponse } from "interfaces/services/shared.interface";
@@ -30,9 +32,8 @@ const SignupContainer = () => {
     try {
       setUserForm((values: SignupForm) => ({ ...values, options: { ...values.options, loading: true } }));
 
-      const userData: SignupPayload = { email: "", name: "", handle: "", password: "" };
-
       /* re-validate all values before registeration */
+      const userData: SignupPayload = { email: "", name: "", handle: "", password: "", theme: INIT_PROFILE.theme };
       for (const [tempId, { value, valid, info: message }] of Object.entries(userForm)) {
         const id = tempId as SigninFormKeys;
 
@@ -41,6 +42,10 @@ const SignupContainer = () => {
           userData[id] = value; // <= append input to userdata if its valid
         }
       }
+
+      // get current system theme
+      const theme = getSystemTheme();
+      userData.theme = theme;
 
       await signupService(userData)
         .then(async () => {

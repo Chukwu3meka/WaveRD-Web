@@ -19,6 +19,7 @@ export interface SignupPayload {
   handle: string;
   name: string;
   password: string;
+  theme: string;
 }
 
 export interface InitPassResetService {
