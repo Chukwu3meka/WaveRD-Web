@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Typography } from "@mui/material";
 import { SOCIAL_ACCOUNTS } from "utils/constants";
 
-export default () => (
+const Footer = () => (
   <div className={styles.footer} style={{ maxWidth: "100vw", overflowX: "hidden" }}>
     <footer>
       <main>
@@ -97,3 +97,5 @@ export default () => (
     </footer>
   </div>
 );
+
+export default Footer;

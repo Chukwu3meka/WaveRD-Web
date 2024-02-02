@@ -13,7 +13,7 @@ const authData = [
   { color: "#4267B2", Icon: FacebookIcon, endpoint: `${process.env.API_URL}/accounts/facebook`, label: "Facebook" },
 ];
 
-export default ({ iconOnly }: SocialSignin) => (
+const SocialSignin = ({ iconOnly }: SocialSignin) => (
   <section className={styles[iconOnly ? "iconOnly" : "social"]}>
     {authData.map(({ color, endpoint, Icon, label }) =>
       iconOnly ? (
@@ -37,3 +37,5 @@ export default ({ iconOnly }: SocialSignin) => (
     )}
   </section>
 );
+
+export default SocialSignin;

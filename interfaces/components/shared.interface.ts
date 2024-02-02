@@ -71,7 +71,7 @@ export interface ReactChildren {
   children: React.ReactNode;
 }
 
-export interface SocialContainer {
+export interface SocialContainerProps {
   fontSize?: string;
   filterParams: string[];
 }

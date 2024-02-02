@@ -10,7 +10,6 @@
     grid-template-rows: var(--headerHeight) auto;
 
     & > div:last-of-type {
-      padding: 30px 15px;
       @include quickFlex();
       background: var(--secondary-color);
 

@@ -5,7 +5,7 @@ import { Fade } from "react-awesome-reveal";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 
-export default function Accounts({ children }: ReactChildren) {
+const Accounts = ({ children }: ReactChildren) => {
   return (
     <div>
       <Header position="relative" />
@@ -15,4 +15,6 @@ export default function Accounts({ children }: ReactChildren) {
       </Fade>
     </div>
   );
-}
+};
+
+export default Accounts;

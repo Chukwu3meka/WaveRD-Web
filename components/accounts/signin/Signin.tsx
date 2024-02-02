@@ -10,8 +10,8 @@ import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, Outl
 
 import { SigninProps } from "interfaces/components/accounts.interfaces";
 
-export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: SigninProps) => (
-  <Stack spacing={3} component="form" noValidate>
+const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: SigninProps) => (
+  <Stack spacing={2} component="form" noValidate>
     {authenticated ? <Alert>You're already logged in !!!</Alert> : <Social iconOnly={iconOnly} />}
 
     <Box width="100%">
@@ -75,3 +75,5 @@ export default ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </Typography>
   </Stack>
 );
+
+export default Signin;

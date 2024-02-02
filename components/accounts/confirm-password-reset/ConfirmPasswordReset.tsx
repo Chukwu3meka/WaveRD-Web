@@ -6,7 +6,7 @@ import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Arrow
 
 import { ResetPasswordProp } from "interfaces/components/accounts.interfaces";
 
-export default ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPasswordProp) => (
+const ConfirmPasswordReset = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPasswordProp) => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -79,3 +79,5 @@ export default ({ resetPasswordHandler, form, onInputChange, handleClickShowPass
     </Typography>
   </Stack>
 );
+
+export default ConfirmPasswordReset;

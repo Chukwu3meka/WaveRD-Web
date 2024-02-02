@@ -2,7 +2,7 @@
 
 import { InfoLayout } from ".";
 import { useEffect, useState } from "react";
-import { useStoreContext } from "components/providers/StoreContext";
+import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 import { InfoLinks } from "interfaces/components/layouts.interface";

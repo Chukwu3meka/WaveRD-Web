@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   title: "SoccerMASS: Email Verification",
 };
 
-const EmailVerificationPage = () => <EmailVerification />;
-
-export default EmailVerificationPage;
+export default function EmailVerificationPage() {
+  return <EmailVerification />;
+}

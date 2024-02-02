@@ -57,7 +57,7 @@ const SignupContainer = () => {
     }
   };
 
-  const valueChangeFn = async (e: React.FocusEvent<HTMLInputElement>, onBlur: boolean) => {
+  const onChangeHandler = async (e: React.FocusEvent<HTMLInputElement>, onBlur: boolean) => {
     const tempValue = e.target.value,
       id = e.target.id as SigninFormKeys,
       value = onBlur ? tempValue.trim() : tempValue;
@@ -100,14 +100,11 @@ const SignupContainer = () => {
     }
   };
 
-  const onBlurHandler = async (e: React.FocusEvent<HTMLInputElement>) => valueChangeFn(e, true);
-  const onInputChange = async (e: React.FocusEvent<HTMLInputElement>) => valueChangeFn(e, false);
-
   const handleClickShowPassword = () => {
     setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
   };
 
-  return userForm.options.accountCreated ? <Success /> : <Signup {...{ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }} />;
+  return userForm.options.accountCreated ? <Success /> : <Signup {...{ onChangeHandler, userForm, handleClickShowPassword, registerHandler }} />;
 };
 
 export default SignupContainer;

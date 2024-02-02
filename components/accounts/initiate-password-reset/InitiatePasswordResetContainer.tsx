@@ -8,7 +8,7 @@ import { initPassResetService } from "services/accounts.service";
 
 import { ForgotPasswordForm } from "interfaces/components/accounts.interfaces";
 
-export default () => {
+const InitiatePasswordResetContainer = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [form, setForm] = useState<ForgotPasswordForm>({
@@ -55,3 +55,5 @@ export default () => {
 
   return <ForgotPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} />;
 };
+
+export default InitiatePasswordResetContainer;

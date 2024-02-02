@@ -22,12 +22,12 @@
   justify-content: space-evenly;
 
   & > * {
-    border: 3px double var(--primary-color) !important;
     width: 70px !important;
     border-radius: 50%;
 
     & > * {
-      margin: -20px !important;
+      padding: 10px !important;
+      border: 3px double var(--primary-color) !important;
     }
   }
 }

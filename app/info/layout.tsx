@@ -2,4 +2,6 @@ import InfoLayoutContainer from "components/layouts/info";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 
-export default ({ children }: ReactChildren) => <InfoLayoutContainer>{children}</InfoLayoutContainer>;
+export default function InfoLayoutContainerPage({ children }: ReactChildren) {
+  return <InfoLayoutContainer>{children}</InfoLayoutContainer>;
+}

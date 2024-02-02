@@ -28,7 +28,14 @@ export const arrayRotate = ({ arr, reverse = false }: ArrayRotate) => {
 
 export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
 
-export const capitalize = (word: string) => word && word[0].toUpperCase() + word.slice(1);
+export const capitalize = (phrase: string) => {
+  if (!phrase) throw { message: "Unable to capitalize phrase" };
+
+  const words = phrase.split(" "),
+    capitalized = words.map((word) => word[0].toUpperCase() + word.slice(1));
+
+  return capitalized.join(" ");
+};
 
 // deobfuscate string
 export const deObfuscate = (phrase: string) => {
@@ -77,6 +84,20 @@ export const fullDateFn = (dateString: Date) => {
   const formattedDate = `${dayOfWeek}, ${dayOfMonth}${suffix} ${monthOfYear} ${year}`;
 
   return formattedDate; // Output: "Sunday, 23rd May 2023"
+};
+
+export const getSystemTheme = (): Theme => {
+  if (!window) throw { message: "Window Enviroment not accesible" };
+
+  const darkMode = matchMedia && matchMedia("(prefers-color-scheme: dark)").matches;
+  return darkMode ? "dark" : "light";
+};
+
+export const isSystemIOS = (): boolean => {
+  if (!window) throw { message: "Window Enviroment not accesible" };
+
+  const IOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  return IOS;
 };
 
 export const setCssThemeVar = (theme: Theme) => {

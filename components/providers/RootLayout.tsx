@@ -1,22 +1,32 @@
 "use client";
 
+import { Zoom } from "@mui/material";
+import muiTheme from "utils/muiTheme";
 import { Fade } from "react-awesome-reveal";
+import { ThemeProvider } from "@mui/system";
 import { useEffect, useState } from "react";
+import { SnackbarProvider } from "notistack";
+import { getSystemTheme } from "utils/helpers";
 import HeaderContainer from "../layouts/header";
-import { useStoreContext } from "components/providers/StoreContext";
+import { SWRConfig, SWRConfiguration } from "swr";
+import { LinearProgress, Stack } from "@mui/material";
+import stylesVariables from "styles/variables.module.scss";
+import { profileService } from "services/accounts.service";
+import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
+import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
-import { HEADER_HEIGHT } from "utils/constants";
 
-export default function RootLayout({ children }: ReactChildren) {
+const swrConfigOptions: SWRConfiguration = {};
+const RootLayout = ({ children }: ReactChildren) => {
   const [header, setHeader] = useState(false),
+    [initialized, setInitialized] = useState(false),
     [prevScrollPos, setPrevScrollPos] = useState(0),
-    { setDisplayHeader, setDeviceSize } = useStoreContext().layout;
+    { setProfile: setContextProfile } = useStoreContext().user,
+    { theme, setDisplayHeader, setDeviceSize } = useStoreContext().layout;
 
   useEffect(() => {
-    setHeader(true);
-    document.documentElement.style.setProperty("--headerHeight", `${HEADER_HEIGHT}px`); // <= Set relative (not sticky) header height
-    document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <=  --visibleScreen: to fix wrong VH in  iPhone
+    initSoccerMASS();
 
     window.addEventListener("resize", handleResize);
 
@@ -32,11 +42,29 @@ export default function RootLayout({ children }: ReactChildren) {
     };
   }, [prevScrollPos]);
 
-  function handleResize() {
-    setDeviceSize({ width: window.innerWidth, height: window.innerHeight });
-  }
+  const initSoccerMASS = async () => {
+    setHeader(true);
+    setInitialized(false);
 
-  function handleScroll() {
+    console.log(`Initializing SoccerMASS...${new Date().toLocaleTimeString()}`);
+    document.documentElement.style.setProperty("--headerHeight", `${HEADER_HEIGHT}px`); // <= Set relative (not sticky) header height
+    document.documentElement.style.setProperty("--visibleScreen", `${window.innerHeight}px`); // <=  --visibleScreen: to fix wrong VH in  iPhone
+
+    await profileService()
+      .then(({ data, success }) => {
+        if (!success) throw { message: "Profile not found" };
+        setContextProfile(data);
+      })
+      .catch(() => {
+        setContextProfile({ ...INIT_PROFILE, theme: getSystemTheme() });
+      });
+  };
+
+  const handleResize = () => {
+    setDeviceSize({ width: window.innerWidth, height: window.innerHeight });
+  };
+
+  const handleScroll = () => {
     const w = window,
       yScrollPosition = w.scrollY,
       pageTopReached = yScrollPosition < 81,
@@ -47,15 +75,25 @@ export default function RootLayout({ children }: ReactChildren) {
 
     setDisplayHeader(displayHeader);
     setPrevScrollPos(yScrollPosition);
-  }
+  };
 
-  return (
-    <>
-      {header ? <HeaderContainer position="sticky" /> : <></>}
+  return initialized ? (
+    <Stack sx={{ width: "100%", color: stylesVariables.primaryColor }}>
+      <LinearProgress color="inherit" />
+    </Stack>
+  ) : (
+    <ThemeProvider theme={muiTheme(theme)}>
+      <SnackbarProvider TransitionComponent={Zoom} maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+        <SWRConfig value={swrConfigOptions}>
+          {header ? <HeaderContainer position="sticky" /> : null}
 
-      <Fade direction="down" triggerOnce={true} big={true} duration={2500} style={{ perspective: "100px" }}>
-        {children}
-      </Fade>
-    </>
+          <Fade direction="down" triggerOnce={true} big={true} duration={2500} style={{ perspective: "100px" }}>
+            {children}
+          </Fade>
+        </SWRConfig>
+      </SnackbarProvider>
+    </ThemeProvider>
   );
-}
+};
+
+export default RootLayout;

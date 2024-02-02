@@ -12,9 +12,7 @@ import {
 } from "@mui/icons-material";
 import { Social } from "interfaces/components/shared.interface";
 
-// import { Social } from "@interface/components/shared/socialInterface";
-
-export default ({ account, link, fontSize }: Social) => {
+const Social = ({ account, link, fontSize }: Social) => {
   let icon;
 
   switch (account) {
@@ -48,7 +46,7 @@ export default ({ account, link, fontSize }: Social) => {
     <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize }}>
       {icon}
     </IconButton>
-  ) : (
-    <></>
-  );
+  ) : null;
 };
+
+export default Social;

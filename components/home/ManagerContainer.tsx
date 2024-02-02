@@ -1,12 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import ManagerIntro from "./Manager";
-import { useStoreContext } from "components/providers/StoreContext";
-// import { connector, ConnectorProps } from "@store";
+import { useEffect, useState } from "react";
+import { useStoreContext } from "components/providers/StoreProvider";
 
-export default function ManagerContainer() {
+const ManagerContainer = () => {
   const { deviceSize } = useStoreContext().layout,
     [slidesToShow, setSlidesToShow] = useState(0);
 
@@ -29,4 +27,6 @@ export default function ManagerContainer() {
   }, [deviceSize.width]);
 
   return <ManagerIntro slidesToShow={slidesToShow} deviceWidth={deviceSize.width} />;
-}
+};
+
+export default ManagerContainer;

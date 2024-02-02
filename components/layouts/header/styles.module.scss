@@ -71,9 +71,5 @@ header.stickyHeader {
 
 header.hiddenHeader {
   @extend .stickyHeader;
-  top: calc((-1 * var(--headerHeight)) - 15px);
-
-  @media screen and (min-width: 525px) {
-    top: calc(-1 * var(--headerHeight));
-  }
+  top: calc((-1 * var(--headerHeight)) - 10px);
 }

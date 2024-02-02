@@ -27,7 +27,7 @@ const navLinks = [
   { id: "signout", title: "Sign Out from SoccerMASS", Icon: SignOutIcon, path: `${process.env.API_URL}/accounts/signout` },
 ];
 
-export default function Menu({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuProps) {
+const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuProps) => {
   return (
     <>
       <IconButton onClick={(e) => toggleMenuOpen(e)}>
@@ -44,7 +44,7 @@ export default function Menu({ toggleMenuOpen, iOS, menuOpen, profile, authentic
         <Stack
           height="100%"
           justifyContent="space-between"
-          sx={{ width: "clamp(300px, calc(100vw - 10px), 600px)", padding: 2, overflow: "hidden" }}
+          sx={{ width: "clamp(400px, 70vw, 605px)", padding: 2, overflow: "hidden" }}
           role="presentation"
           onKeyDown={(e) => toggleMenuOpen(e)}
           className={styles.menu}>
@@ -129,4 +129,6 @@ export default function Menu({ toggleMenuOpen, iOS, menuOpen, profile, authentic
       </SwipeableDrawer>
     </>
   );
-}
+};
+
+export default Menu;

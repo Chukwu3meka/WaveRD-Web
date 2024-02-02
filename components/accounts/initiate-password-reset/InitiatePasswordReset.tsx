@@ -6,7 +6,7 @@ import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, 
 
 import { ForgotPasswordProps } from "interfaces/components/accounts.interfaces";
 
-export default ({ resetPasswordHandler, form, onInputChange }: ForgotPasswordProps) => (
+const InitiatePasswordReset = ({ resetPasswordHandler, form, onInputChange }: ForgotPasswordProps) => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
       <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
@@ -57,3 +57,5 @@ export default ({ resetPasswordHandler, form, onInputChange }: ForgotPasswordPro
     </Typography>
   </Stack>
 );
+
+export default InitiatePasswordReset;

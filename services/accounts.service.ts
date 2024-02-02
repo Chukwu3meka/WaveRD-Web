@@ -3,15 +3,8 @@ import { ConfPassResetService, ExistsPayload, InitPassResetService, SigninPayloa
 
 const baseURL = baseServiceUrl.accountsService;
 
-export const authService = async () => {
-  const response = await service.get(
-    baseURL + "/profile"
-    // {
-    // Add a random query parameter
-    // params: { noCache: new Date().getTime() },
-    // headers: { "Cache-Control": "no-cache" },
-    // }
-  );
+export const profileService = async () => {
+  const response = await service.get(baseURL + "/profile");
   return response.data;
 };
 

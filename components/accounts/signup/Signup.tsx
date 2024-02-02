@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import Grid from "@mui/material/Grid";
@@ -8,7 +10,7 @@ import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, Outl
 
 import { SignupProps } from "interfaces/components/accounts.interfaces";
 
-const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHandler, onBlurHandler }: SignupProps) => (
+const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHandler }: SignupProps) => (
   <Stack spacing={{ xs: 2, sm: 2, md: 2, lg: 2 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
     <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={120} height={100} style={{ margin: "auto" }} />
 
@@ -20,8 +22,8 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
       aria-describedby="name"
       value={userForm.name.value}
       placeholder="Firstname Middlename Lastname"
-      onBlur={(e) => onBlurHandler(e)}
-      onChange={(e) => onInputChange(e)}
+      onBlur={(e) => onChangeHandler(e, true)}
+      onChange={(e) => onChangeHandler(e, false)}
       disabled={userForm.options.loading}
       error={!userForm.name.valid && !userForm.name.validating}
       inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
@@ -33,8 +35,8 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
         id="email"
         label="Email Address"
         value={userForm.email.value}
-        onBlur={(e) => onBlurHandler(e)}
-        onChange={(e) => onInputChange(e)}
+        onBlur={(e) => onChangeHandler(e, true)}
+        onChange={(e) => onChangeHandler(e, false)}
         disabled={userForm.options.loading}
         placeholder="firstname.lastname@soccermass.com"
         error={!userForm.email.valid && !userForm.email.validating}
@@ -62,8 +64,8 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               id="handle"
               label="Handle"
               value={userForm.handle.value}
-              onBlur={(e) => onBlurHandler(e)}
-              onChange={(e) => onInputChange(e)}
+              onBlur={(e) => onChangeHandler(e, true)}
+              onChange={(e) => onChangeHandler(e, false)}
               disabled={userForm.options.loading}
               placeholder="What would you like us to call you?"
               error={!userForm.handle.valid && !userForm.handle.validating}
@@ -91,16 +93,15 @@ const Signup = ({ onInputChange, userForm, handleClickShowPassword, registerHand
               label="Password"
               placeholder="Password"
               value={userForm.password.value}
-              onBlur={(e) => onBlurHandler(e)}
-              onChange={(e) => onInputChange(e)}
+              onBlur={(e) => onChangeHandler(e, true)}
+              onChange={(e) => onChangeHandler(e, false)}
               disabled={userForm.options.loading}
-              // type={!userForm.password.value && userForm.options.showPassword ? "text" : "password"}
               type={userForm.options.showPassword ? "text" : "password"}
               error={!userForm.password.valid && !userForm.password.validating}
               inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
               endAdornment={
                 <InputAdornment position="end">
-                  <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end">
+                  <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" disabled={!userForm.password.value}>
                     {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                   </IconButton>
                 </InputAdornment>

@@ -1,5 +1,4 @@
 import RootLayout from "./RootLayout";
-import StoreContext from "./StoreContext";
-import ClientProviders from "./ClientProviders";
+import StoreContext from "./StoreProvider";
 
-export { RootLayout, ClientProviders, StoreContext as default };
+export { RootLayout, StoreContext as default };

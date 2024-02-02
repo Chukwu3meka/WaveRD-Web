@@ -4,25 +4,27 @@ import { Signin } from ".";
 import { AxiosError } from "axios";
 import validator from "utils/validator";
 import { useSnackbar } from "notistack";
-import { deObfuscate } from "utils/helpers";
+import { capitalize, deObfuscate } from "utils/helpers";
 import { OAUTH_PROVIDERS } from "utils/constants";
 import { FocusEvent, useEffect, useState } from "react";
 import { signinService } from "services/accounts.service";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useStoreContext } from "components/providers/StoreContext";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { SigninForm } from "interfaces/components/accounts.interfaces";
 
 const defaultFormValues: SigninForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 
-export default function SigninContainer() {
+const SigninContainer = () => {
   const router = useRouter(),
+    pathname = usePathname(),
     searchParams = useSearchParams(),
     { enqueueSnackbar } = useSnackbar(),
     resParam = searchParams.get("response"),
     [iconOnly, setIconOnly] = useState(true),
     { deviceSize } = useStoreContext().layout,
+    [target, setTarget] = useState<null | string>(null),
     { setProfile, authenticated } = useStoreContext().user,
     [userForm, setUserForm] = useState<SigninForm>(defaultFormValues),
     oAuthMessage = resParam && deObfuscate(decodeURIComponent(resParam as string));
@@ -36,6 +38,22 @@ export default function SigninContainer() {
   useEffect(() => {
     setIconOnly(deviceSize.width < 460);
   }, [deviceSize.width]);
+
+  useEffect(() => {
+    const target = searchParams.get("target");
+    if (target) {
+      const targetSplit = target.split("/"),
+        destination = targetSplit[targetSplit.length - 1].replaceAll("-", " ");
+
+      setTarget(target);
+      router.replace("/accounts/signin");
+      enqueueSnackbar(`Kindly signin to access '${capitalize(destination)}'`, { variant: "error" });
+    }
+
+    return () => {
+      setTarget(null);
+    };
+  }, [pathname, searchParams]);
 
   const loginHandler = async (e: FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -59,12 +77,9 @@ export default function SigninContainer() {
       await signinService({ email, password })
         .then(async ({ data }) => {
           setProfile(data);
-
           enqueueSnackbar("Authenticated Successfully", { variant: "success" });
 
-          const redirectTarget = searchParams.get("redirect");
-          if (redirectTarget && typeof redirectTarget === "string") return router.push(redirectTarget);
-
+          if (target) return router.push(target);
           router.push("/");
         })
         .catch(({ response }: AxiosError<ApiResponse>) => {
@@ -88,4 +103,6 @@ export default function SigninContainer() {
   const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }} />;
-}
+};
+
+export default SigninContainer;

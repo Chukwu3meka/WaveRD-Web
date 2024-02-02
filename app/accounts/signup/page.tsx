@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import SignUpContainer from "components/accounts/signup";
 
 export const metadata: Metadata = {
-  title: "Sign Up",
+  title: "SoccerMASS: Sign Up",
+  description: "Embark on an exciting soccer journey! Register for SoccerMASS to enjoy premium features, and experience the best in soccer networking.",
   keywords: ["signup", "register", "soccer manager", "soccer", "soccermass", "football manager", "football"],
-  description: "Join SoccerMass – for exciting soccer events, connect with players, and experience the best in soccer networking. Create your account now!",
 };
 
-export default function Signup() {
+export default function SignupPage() {
   return <SignUpContainer />;
 }

@@ -26,11 +26,10 @@ export interface SocialSignin {
 }
 
 export interface SignupProps {
-  onInputChange: Function;
   userForm: SignupForm;
-  handleClickShowPassword: Function;
-  onBlurHandler: Function;
+  onChangeHandler: Function;
   registerHandler: Function;
+  handleClickShowPassword: Function;
 }
 
 export interface SignupForm {

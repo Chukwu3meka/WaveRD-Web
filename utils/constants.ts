@@ -18,7 +18,13 @@ export const SOCIAL_ACCOUNTS: ISocialAccounts[] = [
   { id: "facebook", title: "Facebook", image: "/images/social/facebook.png", href: "https://web.facebook.com/Chukwu3meka" },
 ];
 
-export const INIT_PROFILE: Profile = { name: "SoccerMASS", handle: "API Hub and Soccer Manager", avatar: "/images/layout/profile.webp", role: "dummy", theme: "light" };
+export const INIT_PROFILE: Profile = {
+  role: "dummy",
+  theme: "dark",
+  name: "SoccerMASS",
+  handle: "API Hub and Soccer Manager",
+  avatar: "/images/layout/profile.webp",
+};
 
 export const OAUTH_PROVIDERS = ["facebook", "twitter", "google"];
 

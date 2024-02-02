@@ -2,11 +2,9 @@ import { Metadata } from "next";
 import ConfirmPasswordResetContainer from "components/accounts/confirm-password-reset";
 
 export const metadata: Metadata = {
-  title: "Password Reset",
+  title: "SoccerMASS: Password Reset",
 };
 
-const ConfirmPasswordResetPage = ({ params: { gear } }: { params: { gear: string } }) => {
+export default function ConfirmPasswordResetPage({ params: { gear } }: { params: { gear: string } }) {
   return <ConfirmPasswordResetContainer gear={gear} />;
-};
-
-export default ConfirmPasswordResetPage;
+}

@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Breadcrumbs, Typography, Stack, IconButton, Box } from "@mui/material";
-
+import { apiHubStyles } from ".";
 import VpnLockIcon from "@mui/icons-material/VpnLock";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import NetworkCheckIcon from "@mui/icons-material/NetworkCheck";
+import { Breadcrumbs, Typography, Stack, IconButton, Box } from "@mui/material";
 
-import { apiHubStyles } from ".";
-
-export default () => (
+const ApiHub = () => (
   <div className={apiHubStyles.apihub}>
     <Box role="presentation" pl={2} py={3}>
       <Breadcrumbs aria-label="breadcrumb">
@@ -69,6 +67,8 @@ export default () => (
     </Stack>
   </div>
 );
+
+export default ApiHub;
 
 const apihubFeatures = [
   {

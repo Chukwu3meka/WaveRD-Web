@@ -5,7 +5,7 @@ import { Button, Typography } from "@mui/material";
 
 import styles from "./welcome.module.scss";
 
-export default function Welcome() {
+const Welcome = () => {
   return (
     <div className={styles.welcome}>
       <main>
@@ -47,4 +47,6 @@ export default function Welcome() {
       </main>
     </div>
   );
-}
+};
+
+export default Welcome;

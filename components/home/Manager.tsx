@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import Carousel from "nuka-carousel";
-import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
-
 import { managerStyles as styles } from ".";
 import { COMPETITIONS } from "utils/constants";
+import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
 
-export default ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWidth: number }) => (
+const Manager = ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWidth: number }) => (
   <div className={styles.manager}>
     <Box role="presentation" pl={2} py={3}>
       <Breadcrumbs aria-label="breadcrumb" separator="›">
@@ -117,3 +116,5 @@ export default ({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWid
     )}
   </div>
 );
+
+export default Manager;
