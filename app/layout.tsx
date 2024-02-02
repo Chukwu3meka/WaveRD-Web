@@ -1,13 +1,14 @@
 import "styles/globals.scss";
 
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import StoreProvider from "components/providers/StoreProvider";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
-import { Suspense } from "react";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
@@ -29,6 +30,8 @@ export default function RootLayout({ children }: ReactChildren) {
         </AppRouterCacheProvider>
         <SpeedInsights />
       </body>
+
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />
     </html>
   );
 }
