@@ -8,12 +8,14 @@ export async function middleware(request: NextRequest) {
     { name, value } = request.cookies.get("SSID") || {},
     cookie = name && value ? `${name}=${value};` : null;
 
+  if (name && !value) response.cookies.delete("SSID");
+
   if (privateRoutes.includes(destination)) {
     const goToLogin = () => {
       return NextResponse.redirect(new URL(`/accounts/signin?target=${destination}`, request.url));
     };
 
-    if (!cookie) return goToLogin();
+    if (!cookie || !value) return goToLogin();
 
     jwt.verify(cookie, <string>process.env.JWT_SECRET, async (err: any, decoded: any) => {
       if (err) return goToLogin();
@@ -26,6 +28,7 @@ export async function middleware(request: NextRequest) {
 
     return goToLogin();
   }
+
   return response;
 }
 
