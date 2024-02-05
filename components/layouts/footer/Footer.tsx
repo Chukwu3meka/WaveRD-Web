@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Typography } from "@mui/material";
 import { SOCIAL_ACCOUNTS } from "utils/constants";
+import UserRoleContainer from "components/shared/user-role";
 
 const Footer = () => (
   <div className={styles.footer} style={{ maxWidth: "100vw", overflowX: "hidden" }}>
@@ -34,13 +35,13 @@ const Footer = () => (
               SoccerMASS
             </Typography>
 
-            <Link href="/">Home</Link>
+            <a href="https://blog.soccermass.com/">Blog</a>
+            <Link href="/organization">Organization</Link>
             <Link href="/accounts/password-reset">Forgot Password</Link>
-            <Link href="/info/faq/">Freq. Asked Questions</Link>
+            <Link href="/info/contact/">Contact Us</Link>
             <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
               Bug Report
             </a>
-            <Link href="/organization">Organization</Link>
           </div>
 
           <div>
@@ -49,23 +50,24 @@ const Footer = () => (
             </Typography>
 
             <Link href="/info/advertise/">Advertise</Link>
-            <Link href="/info/privacy-policy/">Privacy Policy</Link>
             <Link href="/info/terms/">Terms &amp; Conditions</Link>
-            <Link href="/info/contact/">Contact Us</Link>
+            <Link href="/info/faq/">Freq. Asked Questions</Link>
+            <Link href="/info/privacy-policy/">Privacy Policy</Link>
             <Link href="/info/deletion/">Data Deletion</Link>
           </div>
 
           <div>
             <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
-              Coming Soon
+              Partners
             </Typography>
 
-            <a href="https://blog.soccermass.com/">Blog</a>
+            <a href="https://apihub.soccermass.com/">API Hub</a>
             <a href="https://translate.soccermass.com/">Translation</a>
             <a href="https://manager.soccermass.com/">Soccer Manager</a>
+            <a href="https://soccermass.com/">Education</a>
             {/* <a href="https://soccermass.com/">Homes & Space</a> */}
-            <a href="https://apihub.soccermass.com/">API Hub</a>
-            <a href="https://soccermass.com/">Hourly Jobs</a>
+            {/* <a href="https://soccermass.com/">Hourly Jobs</a> */}
+            <a href="https://soccermass.com/">Career</a>
           </div>
         </nav>
       </main>
@@ -95,6 +97,7 @@ const Footer = () => (
         </Typography>
       </section>
     </footer>
+
   </div>
 );
 

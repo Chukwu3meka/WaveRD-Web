@@ -10,9 +10,9 @@
     grid-template-rows: var(--headerHeight) auto;
 
     & > div:last-of-type {
+      min-height: 600px;
       @include quickFlex();
       background: var(--secondary-color);
-
       & > form {
         margin: auto;
         max-width: 600px;

@@ -16,6 +16,7 @@ import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
+import UserRoleContainer from "components/shared/user-role/UserRoleContainer";
 
 const swrConfigOptions: SWRConfiguration = {};
 const RootLayout = ({ children }: ReactChildren) => {
@@ -82,17 +83,20 @@ const RootLayout = ({ children }: ReactChildren) => {
       <LinearProgress color="inherit" />
     </Stack>
   ) : (
-    <ThemeProvider theme={muiTheme(theme)}>
-      <SnackbarProvider TransitionComponent={Zoom} maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-        <SWRConfig value={swrConfigOptions}>
-          {header ? <HeaderContainer position="sticky" /> : null}
+    <>
+      <ThemeProvider theme={muiTheme(theme)}>
+        <SnackbarProvider TransitionComponent={Zoom} maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+          <SWRConfig value={swrConfigOptions}>
+            <UserRoleContainer />
+            {header ? <HeaderContainer position="sticky" /> : null}
 
-          <Fade direction="down" triggerOnce={true} big={true} duration={2500} style={{ perspective: "100px" }}>
-            {children}
-          </Fade>
-        </SWRConfig>
-      </SnackbarProvider>
-    </ThemeProvider>
+            <Fade direction="down" triggerOnce={true} big={true} duration={2500} style={{ perspective: "100px" }}>
+              {children}
+            </Fade>
+          </SWRConfig>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </>
   );
 };
 

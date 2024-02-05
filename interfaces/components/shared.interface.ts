@@ -2,7 +2,8 @@ import { AppProps } from "next/app";
 import { NextRouter } from "next/router";
 import { EmotionCache } from "@emotion/react";
 import { LayoutContext, Theme } from "interfaces/store/layout.interfaces";
-import { UserContext } from "interfaces/store/user.interfaces";
+import { Profile, UserContext } from "interfaces/store/user.interfaces";
+import { MouseEventHandler } from "react";
 
 // ? Interfaces
 
@@ -84,4 +85,9 @@ export interface Social {
 
 export interface NotFoundProps {
   height?: string;
+}
+
+export interface UserRoleProps {
+  role: Profile["role"];
+  clickHandler: MouseEventHandler<HTMLButtonElement>;
 }
