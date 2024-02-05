@@ -26,8 +26,6 @@ const StoreProvider = ({ children }: StoreContextProviderProps) => {
     setAuthenticated(profile && profile.role !== "dummy");
   };
 
-  console.log(profile.role);
-
   return (
     <StoreContext.Provider
       value={{

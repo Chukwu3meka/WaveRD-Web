@@ -2,6 +2,7 @@ import "styles/globals.scss";
 
 import { Metadata } from "next";
 import { Suspense } from "react";
+import Loading from "components/shared/loading";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: ReactChildren) {
       <body className={`${merienda.className}  ${robotoSlab.className}`}>
         <AppRouterCacheProvider>
           <StoreProvider>
-            <Suspense>{children}</Suspense>
+            <Suspense fallback={<Loading />}>{children}</Suspense>
           </StoreProvider>
         </AppRouterCacheProvider>
         <SpeedInsights />
