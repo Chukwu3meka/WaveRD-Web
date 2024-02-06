@@ -29,7 +29,7 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 ## 💰 Support Me 👋
 
 <p align="center">
-<a href="https://www.buymeacoffee.com/chukwuemeka" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="70" ></a>
+<a href="https://www.buymeacoffee.com/chukwu3meka" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="70" ></a>
 </p>
 
 ## Getting Started
