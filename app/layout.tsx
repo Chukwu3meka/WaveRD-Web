@@ -17,12 +17,16 @@ const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "SoccerMASS",
   description: "SoccerMASS: Football Manager, API Provider and much more.",
-  keywords: ["soccer manager", "soccer", "soccermass", "football manager", "football"],
+  keywords: ["soccer api", "soccer manager", "soccer data api", "soccer", "soccermass", "football manager", "football"],
 };
 
 export default function RootLayout({ children }: ReactChildren) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icon?<generated>" type="image/<generated>" sizes="<generated>" />
+        <link rel="apple-touch-icon" href="/apple-icon?<generated>" type="image/<generated>" sizes="<generated>" />
+      </head>
       <body className={`${merienda.className}  ${robotoSlab.className}`}>
         <AppRouterCacheProvider>
           <StoreProvider>

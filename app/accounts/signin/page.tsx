@@ -1,10 +1,11 @@
 import { Metadata } from "next";
+import pageInfo from "utils/page-info";
 import SigninContainer from "components/accounts/signin";
 
 export const metadata: Metadata = {
-  title: "SoccerMASS: Sign In",
-  keywords: ["signin", "login", "soccer manager", "soccer", "soccermass", "football manager", "football"],
-  description: "Seamlessly sign in to your account for personalized content, live updates, and more – sign in to SoccerMASS now!",
+  title: pageInfo.signin.title,
+  keywords: pageInfo.signin.keywords,
+  description: pageInfo.signin.description,
 };
 
 export default function SigninPage() {

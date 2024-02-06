@@ -44,7 +44,7 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
         <Stack
           height="100%"
           justifyContent="space-between"
-          sx={{ width: "clamp(300px, 100vw, 400px)", padding: 2, overflow: "hidden" }}
+          sx={{ width: "100%", padding: 2, overflow: "hidden" }}
           role="presentation"
           onKeyDown={(e) => toggleMenuOpen(e)}
           className={styles.menu}>
