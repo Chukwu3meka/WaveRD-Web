@@ -1,0 +1,49 @@
+@import "styles/index.scss";
+
+.comingSoon {
+  max-width: 100vw;
+  overflow: hidden;
+  @include quickFlex($dir: column, $width: 100%);
+  background-color: var(--primary-color);
+  background-image: radial-gradient(circle at bottom left, var(--secondary-color), var(--primary-color) 30%);
+  background-image: url("/images/layout/background.jpg");
+  background-size: 100% 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Change the last value (0.5) to adjust the darkness */
+  }
+
+  & > div:last-of-type {
+    position: relative;
+    @include quickFlex($dir: column, $width: 100%, $justify: space-evenly, $align: flex-start, $height: 100%);
+    max-height: 700px;
+    padding: 10px;
+    text-align: left;
+    max-width: 1100px;
+    & > section {
+      margin: 30px auto 10px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 8px;
+      border-radius: 20px;
+      overflow: hidden;
+      & > span {
+        padding: 5px;
+        @include quickFlex($dir: column);
+        height: clamp(100px, calc(var(--visibleScreen) - 600px), 200px);
+        text-align: center;
+        background-color: rgba($primary-color, 0.5); /* lightened white with 80% transparency */
+        color: white;
+      }
+    }
+  }
+}

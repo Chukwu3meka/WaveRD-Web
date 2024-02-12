@@ -1,16 +1,15 @@
 "use client";
 
-import { FocusEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import { AxiosError } from "axios";
+import { sleep } from "utils/helpers";
 import { useSnackbar } from "notistack";
-import { ResetPassword, InvalidLink } from ".";
-
 import validator from "utils/validator";
+import { FocusEvent, useState } from "react";
+import { GEAR_LENGTH } from "utils/constants";
+import { ResetPassword, InvalidLink } from ".";
 import { confPassResetService } from "services/accounts.service";
 
 import { ConfirmPasswordResetContainerProps, ResetForm, ResetFormKeys } from "interfaces/components/accounts.interfaces";
-import { GEAR_LENGTH } from "utils/constants";
-import { sleep } from "utils/helpers";
 
 const INIT_FORM: ResetForm = {
   options: { showPassword: false, loading: false },
@@ -71,10 +70,14 @@ const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerPr
         }
       }
 
-      await confPassResetService(userData).then(async () => {
-        enqueueSnackbar("Password reset successfully, You can now login with the new password", { variant: "success" });
-        setForm(INIT_FORM);
-      });
+      await confPassResetService(userData)
+        .then(async () => {
+          enqueueSnackbar("Password reset successfully, You can now login with the new password", { variant: "success" });
+          setForm(INIT_FORM);
+        })
+        .catch((err: AxiosError) => {
+          throw err.response?.data || {};
+        });
     } catch ({ message }: any) {
       enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error
     } finally {

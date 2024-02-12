@@ -7,7 +7,7 @@ import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 
-const InfoLayoutContainer = ({ children }: ReactChildren) => {
+export default function InfoLayoutContainer({ children }: ReactChildren) {
   const router = useRouter(),
     { deviceSize } = useStoreContext().layout,
     [activeRoute, setActiveRoute] = useState("");
@@ -28,6 +28,4 @@ const InfoLayoutContainer = ({ children }: ReactChildren) => {
       {children}
     </InfoLayout>
   );
-};
-
-export default InfoLayoutContainer;
+}

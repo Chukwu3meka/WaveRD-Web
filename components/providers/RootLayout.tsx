@@ -44,6 +44,7 @@ const RootLayout = ({ children }: ReactChildren) => {
   }, [prevScrollPos]);
 
   const initSoccerMASS = async () => {
+    handleResize();
     setHeader(true);
     setInitialized(false);
 

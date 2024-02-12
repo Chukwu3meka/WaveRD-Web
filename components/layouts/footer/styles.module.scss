@@ -31,7 +31,7 @@
       }
       & > nav {
         padding: 20px 0 0;
-        @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 40px, $align: flex-start, $justify: space-evenly);
+        @include quickFlex($dir: row, $width: 100%, $wrap: wrap, $column: 20px, $row: 40px, $align: flex-start, $justify: flex-start);
         & > div {
           @include quickFlex($dir: column, $width: max-content);
           align-items: flex-start;
@@ -61,6 +61,12 @@
       border-top: 1px solid var(--secondary-color);
       @include quickFlex($dir: column, $width: 100%, $row: 10px);
     }
+  }
+}
+
+@media screen and (min-width: 313px) {
+  .footer > footer > main > nav {
+    justify-content: space-evenly;
   }
 }
 

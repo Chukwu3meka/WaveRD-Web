@@ -23,7 +23,10 @@ const inititalTheme = createTheme({});
 
 export default function muiTheme(theme: Theme) {
   return createTheme({
-    typography: { fontFamily: '"Merienda", "Roboto Slab", serif' },
+    typography: {
+      fontSize: 16,
+      fontFamily: '"Merienda", "Roboto Slab", serif',
+    },
 
     palette: {
       mode: theme,

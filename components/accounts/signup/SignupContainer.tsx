@@ -54,6 +54,9 @@ const SignupContainer = () => {
         })
         .catch(({ response }: AxiosError<ApiResponse>) => {
           throw { message: response ? response.data.message : "Invalid Email/Password" };
+        })
+        .catch((err: AxiosError) => {
+          throw err.response?.data || {};
         });
     } catch ({ message }: any) {
       enqueueSnackbar(message || "Error creating your account", { variant: "error" }); // <=  Inform user of regex error

@@ -12,7 +12,7 @@
 
 @media screen and (min-width: 1200px) {
   .layout {
-    min-height: var(--visibleScreen) !important;
+    // min-height: var(--visibleScreen) !important;
     & > div:last-of-type {
       display: grid;
       grid-template-columns: clamp(200px, 30%, 250px) auto;

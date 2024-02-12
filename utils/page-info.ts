@@ -55,6 +55,12 @@ const pageInfo: PageInfo = {
     keywords: ["contact", "contact us", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
+  terms: {
+    path: "/info/terms",
+    title: "Terms and Condition",
+    description: "As with other websites, SoccerMASS has written and read it's terms and condition to ensure a fair and transparent user experience for all.",
+    keywords: ["terms", "terms and condition", "condition", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
   // sample: {
   //   path: "/",
   //   title: "SoccerMASS: ",

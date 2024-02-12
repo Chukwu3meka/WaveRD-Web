@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const baseServiceUrl = {
+  consoleService: "/console",
   accountsService: "/accounts",
 };
 

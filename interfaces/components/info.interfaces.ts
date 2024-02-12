@@ -40,10 +40,10 @@ export interface UserForm {
 type UserFormValuesData = { info: string; value: string; valid: boolean; validate: boolean };
 
 interface UserFormOptions {
-  section: string;
   loading: boolean;
   contact: "email" | "whatsapp";
   validate: boolean;
+  // section: string;
   category: string;
 }
 

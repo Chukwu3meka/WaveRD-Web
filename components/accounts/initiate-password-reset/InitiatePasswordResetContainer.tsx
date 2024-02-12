@@ -1,5 +1,6 @@
 "use client";
 
+import { AxiosError } from "axios";
 import { ForgotPassword } from ".";
 import { useSnackbar } from "notistack";
 import validator from "utils/validator";
@@ -42,10 +43,14 @@ const InitiatePasswordResetContainer = () => {
 
       validator({ value: email, type: "email", label: "Email Address" }); // <= re-validate all values before registeration
 
-      await initPassResetService({ email }).then(async () => {
-        setForm((values: any) => ({ ...values, email: { value: "", valid: true, info: "Email cannot be empty" } }));
-        enqueueSnackbar("Kindly check your email for password reset link", { variant: "success" }); // <=  Inform user of regex error
-      });
+      await initPassResetService({ email })
+        .then(async () => {
+          setForm((values: any) => ({ ...values, email: { value: "", valid: true, info: "Email cannot be empty" } }));
+          enqueueSnackbar("Kindly check your email for password reset link", { variant: "success" }); // <=  Inform user of regex error
+        })
+        .catch((err: AxiosError) => {
+          throw err.response?.data || {};
+        });
     } catch ({ message }: any) {
       enqueueSnackbar(message || "An error occured", { variant: "error" }); // <=  Inform user of regex error
     } finally {

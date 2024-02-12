@@ -91,3 +91,24 @@ export interface UserRoleProps {
   role: Profile["role"];
   clickHandler: MouseEventHandler<HTMLButtonElement>;
 }
+
+export interface ComingSoonContainerProps {
+  header?: boolean;
+  minHeight?: string;
+  finishDate?: Date;
+  title?: string;
+}
+
+export interface ComingSoonProps extends ComingSoonContainerProps {
+  header: boolean;
+  minHeight: string;
+  timeLeft: TimeLeft;
+}
+
+export interface TimeLeft {
+  date: string;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}

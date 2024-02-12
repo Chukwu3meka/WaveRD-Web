@@ -28,6 +28,8 @@ export const INIT_PROFILE: Profile = {
   avatar: "/images/layout/profile.webp",
 };
 
+export const GEAR_LENGTH = 300;
+export const HEADER_HEIGHT = 74;
 export const OAUTH_PROVIDERS = ["facebook", "twitter", "google"];
 
 export const COMPETITIONS: Competition[] = [
@@ -41,9 +43,6 @@ export const COMPETITIONS: Competition[] = [
   { title: "Serie A", id: "serieA", image: "/images/COMPETITIONS/serie-a.png" },
 ];
 
-export const GEAR_LENGTH = 300;
-export const HEADER_HEIGHT = 71.6;
-
 export const CONTACT_PREFERENCE: ContactPreferences = {
   email: "Email Address",
   whatsapp: "WhatsApp Number",
@@ -54,7 +53,7 @@ export const INFO_LINKS: InfoLinks[] = [
   { label: "Privacy Policy", path: pageInfo.privacyPolicy.path },
   { label: "Terms & Conditions", path: "/info/terms" },
   { label: "Cookie Policy", path: pageInfo.cookiePolicy.path },
-  { label: "Advertisement", path: "/info/advertise" },
+  { label: "Advertisement", path: "/info/advertisement" },
   { label: "Data Deletion", path: "/info/deletion" },
   { label: "Pricing", path: "/info/pricing" },
   { label: "FAQ Section", path: "/info/faq" },

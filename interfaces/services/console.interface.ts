@@ -1,9 +1,14 @@
 // import { Theme } from "interfaces/store/layout.interfaces";
 
-// export interface SigninPayload {
-//   email: string;
-//   password: string;
-// }
+import { UserForm } from "interfaces/components/info.interfaces";
+
+export interface ContactUsPayload {
+  name: UserForm["name"]["value"];
+  contact: UserForm["contact"]["value"];
+  comment: UserForm["comment"]["value"];
+  category: UserForm["options"]["category"];
+  preference: UserForm["options"]["contact"];
+}
 
 // export interface ThemePayload {
 //   theme: Theme;

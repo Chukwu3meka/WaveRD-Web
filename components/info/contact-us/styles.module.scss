@@ -25,7 +25,6 @@
 
   & > div.contactForm {
     @include quickFlex();
-    min-height: 400px;
     margin-top: 40px;
     width: 100%;
     padding: 30px 20px;
