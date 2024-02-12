@@ -30,7 +30,7 @@
       height: clamp(300px, 100%, 800px);
       transform: translate(0%, -50%);
       background: radial-gradient(circle closest-corner at 53% 50%, transparent -170%, var(--primary-color) 65%),
-        url("/images/layout/intro-welcome.jpg") 50%/220% no-repeat;
+        url("/images/layout/intro-welcome.webp") 50%/220% no-repeat;
       margin-top: -2px; // to hide image overflow light color
     }
   }

@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import Loading from "components/shared/loading";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import StoreProvider from "components/providers/StoreProvider";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
@@ -36,7 +36,8 @@ export default function RootLayout({ children }: ReactChildren) {
         <SpeedInsights />
       </body>
 
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />
+      {/* Temporarily disabled to improve page speed for search engine */}
+      {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} /> */}
     </html>
   );
 }
