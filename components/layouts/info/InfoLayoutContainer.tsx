@@ -1,24 +1,25 @@
 "use client";
 
 import { InfoLayout } from ".";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
-import { InfoLinks } from "interfaces/components/layouts.interface";
 
 const InfoLayoutContainer = ({ children }: ReactChildren) => {
-  const { deviceSize } = useStoreContext().layout,
+  const router = useRouter(),
+    { deviceSize } = useStoreContext().layout,
     [activeRoute, setActiveRoute] = useState("");
 
   useEffect(() => {
-    setActiveRoute(location.pathname);
+    autoCompleteHandler(location.pathname);
   }, []);
 
-  const autoCompleteHandler = (newValue: InfoLinks) => {
-    if (newValue) {
-      // router.push(newValue.path);
-      setActiveRoute(newValue.path);
+  const autoCompleteHandler = (path: string) => {
+    if (path) {
+      router.push(path);
+      setActiveRoute(path);
     }
   };
 

@@ -5,9 +5,11 @@ import Link from "next/link";
 import Footer from "../footer";
 import HeaderContainer from "../header";
 import { Fade } from "react-awesome-reveal";
+import { INFO_LINKS } from "utils/constants";
 import { List, ListItem, ListItemButton, ListItemText, Box, TextField, Autocomplete } from "@mui/material";
 
-import { InfoLayoutProps, InfoLinks } from "interfaces/components/layouts.interface";
+import { InfoLinks } from "interfaces/utils/constants.interface";
+import { InfoLayoutProps } from "interfaces/components/layouts.interface";
 
 const InfoLayout = ({ activeRoute, deviceWidth, autoCompleteHandler, children }: InfoLayoutProps) => (
   <>
@@ -16,9 +18,9 @@ const InfoLayout = ({ activeRoute, deviceWidth, autoCompleteHandler, children }:
 
       <div>
         <List component="nav">
-          {infoLinks.map(({ path, label }) => (
+          {INFO_LINKS.map(({ path, label }) => (
             <Link key={label} href={path}>
-              <ListItem disablePadding sx={{ textAlign: "center" }}>
+              <ListItem disablePadding sx={{ textAlign: "center" }} onClick={() => autoCompleteHandler(path)}>
                 <ListItemButton selected={path === activeRoute}>
                   <ListItemText primary={label} sx={{ color: "var(--contrast)" }} />
                 </ListItemButton>
@@ -34,12 +36,12 @@ const InfoLayout = ({ activeRoute, deviceWidth, autoCompleteHandler, children }:
                 <Autocomplete
                   fullWidth
                   disablePortal
-                  options={infoLinks}
+                  options={INFO_LINKS}
                   id="soccermass-info"
                   sx={{ zIndex: "100 !important" }}
-                  value={infoLinks.find(({ path }) => path === activeRoute)}
+                  value={INFO_LINKS.find(({ path }) => path === activeRoute)}
                   renderInput={(params) => <TextField {...params} label="SoccerMASS Info" />}
-                  onChange={(event: any, newValue: InfoLinks | null) => autoCompleteHandler(newValue)}
+                  onChange={(event: any, newValue: InfoLinks | null) => autoCompleteHandler(newValue?.path)}
                 />
               </Box>
             ) : null}
@@ -54,14 +56,3 @@ const InfoLayout = ({ activeRoute, deviceWidth, autoCompleteHandler, children }:
 );
 
 export default InfoLayout;
-
-const infoLinks: InfoLinks[] = [
-  { label: "Contact Us", path: "/info/contact" },
-  { label: "Privacy Policy", path: "/info/privacy" },
-  { label: "Terms & Conditions", path: "/info/terms" },
-  { label: "Cookie Policy", path: "/info/cookie" },
-  { label: "Advertisement", path: "/info/advertise" },
-  { label: "Data Deletion", path: "/info/deletion" },
-  { label: "Pricing", path: "/info/pricing" },
-  { label: "FAQ Section", path: "/info/faq" },
-];

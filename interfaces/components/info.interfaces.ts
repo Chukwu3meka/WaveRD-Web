@@ -1,22 +1,34 @@
 import { EnqueueSnackbar } from "notistack";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { CONTACT_PREFERENCE } from "utils/constants";
-
-export interface Categories {
-  value: string;
-  label: string;
-}
+import { ContactUsCategories } from "interfaces/utils/constants.interface";
 
 export interface ContactUS {
   sectionHandler: Function;
   contactPreference: typeof CONTACT_PREFERENCE;
   contactPrefHandler: Function;
-  categories: Categories[];
+  categories: ContactUsCategories[];
   submitHandler: Function;
   categoryRef: React.Ref<any>;
   userForm: UserForm;
   onInputChange: Function;
 }
+
+// export interface Categories {
+//   value: string;
+//   label: string;
+// }
+
+// export interface ContactUS {
+//   sectionHandler: Function;
+//   contactPreference: typeof CONTACT_PREFERENCE;
+//   contactPrefHandler: Function;
+//   categories: Categories[];
+//   submitHandler: Function;
+//   categoryRef: React.Ref<any>;
+//   userForm: UserForm;
+//   onInputChange: Function;
+// }
 
 export interface UserForm {
   options: UserFormOptions;
@@ -35,29 +47,29 @@ interface UserFormOptions {
   category: string;
 }
 
-export interface ContactPrefHandler {
-  e: SelectChangeEvent;
-  userForm: UserForm;
-  contactPreference: typeof CONTACT_PREFERENCE;
-  setUserForm: Function;
-  enqueueSnackbar: EnqueueSnackbar;
-  closeSnackbar: Function;
-}
+// export interface ContactPrefHandler {
+//   e: SelectChangeEvent;
+//   userForm: UserForm;
+//   contactPreference: typeof CONTACT_PREFERENCE;
+//   setUserForm: Function;
+//   enqueueSnackbar: EnqueueSnackbar;
+//   closeSnackbar: Function;
+// }
 
-export interface OnInputChange {
-  e: React.FocusEvent<HTMLInputElement>;
-  contactPreference: typeof CONTACT_PREFERENCE;
-  setUserForm: Function;
-  enqueueSnackbar: EnqueueSnackbar;
-  userForm: UserForm;
-  closeSnackbar: Function;
-  onBlur: boolean;
-}
+// export interface OnInputChange {
+//   e: React.FocusEvent<HTMLInputElement>;
+//   contactPreference: typeof CONTACT_PREFERENCE;
+//   setUserForm: Function;
+//   enqueueSnackbar: EnqueueSnackbar;
+//   userForm: UserForm;
+//   closeSnackbar: Function;
+//   onBlur: boolean;
+// }
 
-export interface SubmitHandler {
-  enqueueSnackbar: EnqueueSnackbar;
-  setUserForm: Function;
-  userForm: UserForm;
-  contactPreference: typeof CONTACT_PREFERENCE;
-  categories: Categories[];
-}
+// export interface SubmitHandler {
+//   enqueueSnackbar: EnqueueSnackbar;
+//   setUserForm: Function;
+//   userForm: UserForm;
+//   contactPreference: typeof CONTACT_PREFERENCE;
+//   categories: Categories[];
+// }

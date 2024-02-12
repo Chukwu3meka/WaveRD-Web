@@ -1,10 +1,11 @@
 import { Metadata } from "next";
+import pageInfo from "utils/page-info";
 import CookiePolicy from "components/info/cookie-policy";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Discover how we use cookies to enhance your browsing experience and provide personalized content. Your privacy matters to us.",
-  keywords: ["cookies", "cookie policy", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  title: pageInfo.cookiePolicy.title,
+  keywords: pageInfo.cookiePolicy.keywords,
+  description: pageInfo.cookiePolicy.description,
 };
 
 export default function CookiePolicyPage() {

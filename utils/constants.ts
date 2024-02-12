@@ -1,7 +1,9 @@
-import { Profile } from "interfaces/store/user.interfaces";
-import { ICompetition, ISocialAccounts } from "interfaces/utils/constants.interface";
+import pageInfo from "./page-info";
 
-export const SOCIAL_ACCOUNTS: ISocialAccounts[] = [
+import { Profile } from "interfaces/store/user.interfaces";
+import { Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
+
+export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
   { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/in/chukwu3meka/" },
   // { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/SoccerMASSinc/" },
@@ -28,7 +30,7 @@ export const INIT_PROFILE: Profile = {
 
 export const OAUTH_PROVIDERS = ["facebook", "twitter", "google"];
 
-export const COMPETITIONS: ICompetition[] = [
+export const COMPETITIONS: Competition[] = [
   { title: "Bundesliga", id: "bundesliga", image: "/images/COMPETITIONS/bundesliga.png" },
   { title: "Champions League", id: "championsLeague", image: "/images/COMPETITIONS/champions-league.png" },
   { title: "Eredivisie", id: "eredivisie", image: "/images/COMPETITIONS/eredivisie.png" },
@@ -42,7 +44,26 @@ export const COMPETITIONS: ICompetition[] = [
 export const GEAR_LENGTH = 300;
 export const HEADER_HEIGHT = 71.6;
 
-export const CONTACT_PREFERENCE = {
+export const CONTACT_PREFERENCE: ContactPreferences = {
   email: "Email Address",
   whatsapp: "WhatsApp Number",
 };
+
+export const INFO_LINKS: InfoLinks[] = [
+  { label: "Contact Us", path: pageInfo.contactUs.path },
+  { label: "Privacy Policy", path: pageInfo.privacyPolicy.path },
+  { label: "Terms & Conditions", path: "/info/terms" },
+  { label: "Cookie Policy", path: pageInfo.cookiePolicy.path },
+  { label: "Advertisement", path: "/info/advertise" },
+  { label: "Data Deletion", path: "/info/deletion" },
+  { label: "Pricing", path: "/info/pricing" },
+  { label: "FAQ Section", path: "/info/faq" },
+];
+
+export const CONTACT_US_CATEGORIES: ContactUsCategories[] = [
+  { value: "others", label: "Others" },
+  { value: "technical", label: "Technical" },
+  { value: "suggestion", label: "Suggestion" },
+  { value: "advertising", label: "Advertising" },
+  { value: "service", label: "Digital Service" },
+];

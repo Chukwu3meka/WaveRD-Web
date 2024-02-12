@@ -43,8 +43,3 @@ export interface InfoLayoutProps {
   children: React.ReactNode;
   autoCompleteHandler: Function;
 }
-
-export interface InfoLinks {
-  label: string;
-  path: string;
-}
