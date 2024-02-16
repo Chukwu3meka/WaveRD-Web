@@ -30,7 +30,7 @@ const navLinks = [
 const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuProps) => {
   return (
     <>
-      <IconButton onClick={(e) => toggleMenuOpen(e)}>
+      <IconButton onClick={(e) => toggleMenuOpen(e)} aria-label="mobile-menu">
         <MenuIcon color="action" />
       </IconButton>
 

@@ -55,12 +55,41 @@ const pageInfo: PageInfo = {
     keywords: ["contact", "contact us", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
-  terms: {
-    path: "/info/terms",
+  termsAndCondition: {
+    path: "/info/terms-and-condition",
     title: "Terms and Condition",
     description: "As with other websites, SoccerMASS has written and read it's terms and condition to ensure a fair and transparent user experience for all.",
     keywords: ["terms", "terms and condition", "condition", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
+
+  dataDeletion: {
+    path: "/info/data-deletion",
+    title: "Data Deletion",
+    description: `Initiate data deletion of your profile from SoccerMASS. This action is irreversible and will take ${process.env.DATA_DELETION_PERIOD} days without login to complete`,
+    keywords: ["data", "data deletion", "delete", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
+
+  faq: {
+    path: "/info/faq",
+    title: "Frequently Asked Questions",
+    description: "Answers to your questions? We've curated a list of FAQs to answer all your questions on registeration, payments, games and many more",
+    keywords: ["faq", "questions", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
+
+  advertisement: {
+    path: "/info/advertisement",
+    title: "Advertisement",
+    description: "Have a product? Share it with us and the world. Our unobtrusive ads means you have a very high chance for visitors from our site",
+    keywords: ["advertise", "advert", "advertisement", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
+
+  pricing: {
+    path: "/info/pricing",
+    title: "Pricing Plan",
+    description: "Our pricing plan always fits the bill. SoccerMASS is for everyone so we've included the `Forever Free Plan`",
+    keywords: ["pricing", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
+
   // sample: {
   //   path: "/",
   //   title: "SoccerMASS: ",

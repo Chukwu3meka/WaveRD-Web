@@ -1,3 +1,4 @@
 import DataDeletion from "./DataDeletion";
+import DataDeletionContainer from "./DataDeletionContainer";
 
-export { DataDeletion as default };
+export { DataDeletion, DataDeletionContainer as default };

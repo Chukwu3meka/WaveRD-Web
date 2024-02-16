@@ -26,14 +26,14 @@ body {
   a:hover,
   a:active {
     cursor: pointer;
-    color: $primary-color;
+    color: darken($color: $secondary-color, $amount: 10);
     text-decoration: none;
     transition: color 500ms ease-in;
   }
 
   a:hover {
+    color: $primary-color;
     transition: color 300ms ease-out;
-    color: darken($color: $secondary-color, $amount: 10);
   }
 
   * {

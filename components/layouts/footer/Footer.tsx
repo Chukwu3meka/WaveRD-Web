@@ -3,6 +3,7 @@
 import { styles } from ".";
 import Link from "next/link";
 import Image from "next/image";
+import pageInfo from "utils/page-info";
 import { Typography } from "@mui/material";
 import { SOCIAL_ACCOUNTS } from "utils/constants";
 
@@ -37,8 +38,8 @@ export default function Footer() {
 
               <a href="https://blog.soccermass.com/">Blog</a>
               <Link href="/organization">Organization</Link>
-              <Link href="/accounts/password-reset">Forgot Password</Link>
-              <Link href="/info/contact/">Contact Us</Link>
+              <Link href={pageInfo.passwordReset.path}>Forgot Password</Link>
+              <Link href={pageInfo.advertisement.path}>Advertisement</Link>
               <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
                 Bug Report
               </a>
@@ -49,11 +50,11 @@ export default function Footer() {
                 Learn More
               </Typography>
 
-              <Link href="/info/advertise/">Advertise</Link>
-              <Link href="/info/terms/">Terms &amp; Conditions</Link>
-              <Link href="/info/faq/">Freq. Asked Questions</Link>
-              <Link href="/info/privacy-policy/">Privacy Policy</Link>
-              <Link href="/info/deletion/">Data Deletion</Link>
+              <Link href={pageInfo.contactUs.path}>Contact Us</Link>
+              <Link href={pageInfo.termsAndCondition.path}>Terms &amp; Conditions</Link>
+              <Link href={pageInfo.privacyPolicy.path}>Privacy Policy</Link>
+              <Link href={pageInfo.faq.path}>Freq. Asked Questions</Link>
+              <Link href={pageInfo.dataDeletion.path}>Data Deletion</Link>
             </div>
 
             <div>
@@ -62,12 +63,12 @@ export default function Footer() {
               </Typography>
 
               <a href="https://apihub.soccermass.com/">API Hub</a>
-              <a href="https://translate.soccermass.com/">Translation</a>
+              <a href="https://translate.soccermass.com/">Translastion</a>
               <a href="https://manager.soccermass.com/">Soccer Manager</a>
+              <a href="https://soccermass.com/">Jobs & Career</a>
               <a href="https://soccermass.com/">Agriculture</a>
               {/* <a href="https://soccermass.com/">Homes & Space</a> */}
               {/* <a href="https://soccermass.com/">Hourly Jobs</a> */}
-              <a href="https://soccermass.com/">Career</a>
             </div>
           </nav>
         </main>

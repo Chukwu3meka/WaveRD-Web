@@ -1,27 +1,27 @@
+"use client";
+
 import { UserRole } from ".";
+import { useState } from "react";
 import { useSnackbar } from "notistack";
 import { useStoreContext } from "components/providers/StoreProvider";
 
 export default function UserRoleContainer() {
   const { enqueueSnackbar } = useSnackbar(),
-    { role } = useStoreContext().user.profile;
+    { role } = useStoreContext().user.profile,
+    [showDialog, setShowDialog] = useState(false);
 
-  const clickHandler = () => {
+  const toggleHandler = () => {
     switch (role) {
       case "test":
-        enqueueSnackbar(
-          `Kindly be informed that this is a test account and certain actions are restricted while others have no permanent result. 
-You can create a standard user account via signup to enjoy premium contents.
-Sign in if you already have an account with SoccerMASS to persist changes you make.
-`,
-          { variant: "error" }
-        );
+        setShowDialog(!showDialog);
         break;
-
+      // case "test":
+      //   enqueueSnackbar(``, { variant: "error" });
+      //   break;
       default:
         break;
     }
   };
 
-  return <UserRole role={role} clickHandler={clickHandler} />;
+  return <UserRole role={role} toggleHandler={toggleHandler} showDialog={showDialog} />;
 }

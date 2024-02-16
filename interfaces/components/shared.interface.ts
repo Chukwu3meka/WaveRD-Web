@@ -88,8 +88,9 @@ export interface NotFoundProps {
 }
 
 export interface UserRoleProps {
+  showDialog: boolean;
   role: Profile["role"];
-  clickHandler: MouseEventHandler<HTMLButtonElement>;
+  toggleHandler: MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface ComingSoonContainerProps {

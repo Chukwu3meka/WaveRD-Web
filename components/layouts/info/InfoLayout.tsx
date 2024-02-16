@@ -31,24 +31,22 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
           </List>
 
           <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
-            <>
-              {activeRoute && deviceWidth < 1200 ? (
-                <Box width="100%" maxWidth={1200} p={1} mt={2}>
-                  <Autocomplete
-                    fullWidth
-                    disablePortal
-                    options={INFO_LINKS}
-                    id="soccermass-info"
-                    sx={{ zIndex: "100 !important" }}
-                    value={INFO_LINKS.find(({ path }) => path === activeRoute)}
-                    renderInput={(params) => <TextField {...params} label="SoccerMASS Info" />}
-                    onChange={(event: any, newValue: InfoLinks | null) => autoCompleteHandler(newValue?.path)}
-                  />
-                </Box>
-              ) : null}
+            {activeRoute && deviceWidth < 1200 ? (
+              <Box width="100%" maxWidth={1200} p={1} mt={2}>
+                <Autocomplete
+                  fullWidth
+                  disablePortal
+                  options={INFO_LINKS}
+                  id="soccermass-info"
+                  sx={{ zIndex: "100 !important" }}
+                  value={INFO_LINKS.find(({ path }) => path === activeRoute)}
+                  renderInput={(params) => <TextField {...params} label="SoccerMASS Info" />}
+                  onChange={(event: any, newValue: InfoLinks | null) => autoCompleteHandler(newValue?.path)}
+                />
+              </Box>
+            ) : null}
 
-              {children}
-            </>
+            {children}
           </Fade>
         </div>
       </main>

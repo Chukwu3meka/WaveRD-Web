@@ -14,6 +14,9 @@ const nextConfig = {
   },
 
   env: {
+    NOTICE_PERIOD: "30",
+    INACTIVITY_PERIOD: "21",
+    DATA_DELETION_PERIOD_PERIOD: "14",
     WEB_URL: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
     API_URL: process.env.NODE_ENV === "production" ? "https://api.soccermass.com/v1" : "http://localhost:8081/v1",
   },

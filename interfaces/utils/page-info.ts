@@ -13,6 +13,10 @@ export interface PageInfo {
   cookiePolicy: PageInfoData;
   privacyPolicy: PageInfoData;
   contactUs: PageInfoData;
-  terms: PageInfoData;
+  termsAndCondition: PageInfoData;
+  dataDeletion: PageInfoData;
+  faq: PageInfoData;
+  advertisement: PageInfoData;
+  pricing: PageInfoData;
   // [key: string]: PageInfoData;
 }

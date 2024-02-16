@@ -29,3 +29,10 @@ export interface ConfPassResetService {
   email: string;
   password: string;
 }
+
+export interface DataDeletionService {
+  email: string;
+  handle: string;
+  comment: string;
+  password: string;
+}

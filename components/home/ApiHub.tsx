@@ -7,6 +7,7 @@ import VpnLockIcon from "@mui/icons-material/VpnLock";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import NetworkCheckIcon from "@mui/icons-material/NetworkCheck";
 import { Breadcrumbs, Typography, Stack, IconButton, Box } from "@mui/material";
+import { stringToId } from "utils/helpers";
 
 const ApiHub = () => (
   <div className={apiHubStyles.apihub}>
@@ -48,7 +49,7 @@ const ApiHub = () => (
         <div>
           {apihubFeatures.map(({ icon, title, description }) => (
             <Stack direction="row" alignItems="flex-start" key={title} spacing={2} marginBottom={3}>
-              <IconButton color="primary" sx={{ fontSize: "25px", marginTop: -0.5 }}>
+              <IconButton aria-label={stringToId(title)} color="primary" sx={{ fontSize: "25px", marginTop: -0.5 }}>
                 {icon}
               </IconButton>
 

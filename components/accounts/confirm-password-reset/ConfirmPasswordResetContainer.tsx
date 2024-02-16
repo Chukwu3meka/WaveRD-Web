@@ -10,6 +10,8 @@ import { ResetPassword, InvalidLink } from ".";
 import { confPassResetService } from "services/accounts.service";
 
 import { ConfirmPasswordResetContainerProps, ResetForm, ResetFormKeys } from "interfaces/components/accounts.interfaces";
+import { useRouter } from "next/navigation";
+import pageInfo from "utils/page-info";
 
 const INIT_FORM: ResetForm = {
   options: { showPassword: false, loading: false },
@@ -20,7 +22,8 @@ const INIT_FORM: ResetForm = {
 const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerProps) => {
   if (!gear) return <InvalidLink />;
 
-  const [form, setForm] = useState<ResetForm>(INIT_FORM),
+  const Router = useRouter(),
+    [form, setForm] = useState<ResetForm>(INIT_FORM),
     { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const handleClickShowPassword = () => setForm((values: any) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
@@ -72,8 +75,9 @@ const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerPr
 
       await confPassResetService(userData)
         .then(async () => {
-          enqueueSnackbar("Password reset successfully, You can now login with the new password", { variant: "success" });
           setForm(INIT_FORM);
+          Router.push(pageInfo.signin.path);
+          enqueueSnackbar("Password reset successfully, You can now login with the new password", { variant: "success" });
         })
         .catch((err: AxiosError) => {
           throw err.response?.data || {};

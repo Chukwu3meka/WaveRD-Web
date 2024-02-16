@@ -1,5 +1,13 @@
 import { service, baseServiceUrl } from ".";
-import { ConfPassResetService, ExistsPayload, InitPassResetService, SigninPayload, SignupPayload, ThemePayload } from "interfaces/services/accounts.interface";
+import {
+  ConfPassResetService,
+  DataDeletionService,
+  ExistsPayload,
+  InitPassResetService,
+  SigninPayload,
+  SignupPayload,
+  ThemePayload,
+} from "interfaces/services/accounts.interface";
 
 const baseURL = baseServiceUrl.accountsService;
 
@@ -35,5 +43,10 @@ export const initPassResetService = async (payload: InitPassResetService) => {
 
 export const confPassResetService = async (payload: ConfPassResetService) => {
   const response = await service.post(baseURL + "/confirm-password-reset", payload);
+  return response.data;
+};
+
+export const dataDeletionService = async (payload: DataDeletionService) => {
+  const response = await service.post(baseURL + "/data-deletion", payload);
   return response.data;
 };

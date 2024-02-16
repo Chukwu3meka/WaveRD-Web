@@ -1,7 +1,18 @@
-import { EnqueueSnackbar } from "notistack";
-import { SelectChangeEvent } from "@mui/material/Select";
 import { CONTACT_PREFERENCE } from "utils/constants";
 import { ContactUsCategories } from "interfaces/utils/constants.interface";
+
+type FormData = { info: string; value: string; valid: boolean; mandatory: boolean };
+export interface CustomerUsForm {
+  name: FormData;
+  contact: FormData;
+  comment: FormData;
+  options: CustomerUsOptions;
+}
+export interface CustomerUsOptions {
+  loading: boolean;
+  category: string;
+  contact: "email" | "whatsapp";
+}
 
 export interface ContactUS {
   sectionHandler: Function;
@@ -10,66 +21,27 @@ export interface ContactUS {
   categories: ContactUsCategories[];
   submitHandler: Function;
   categoryRef: React.Ref<any>;
-  userForm: UserForm;
+  userForm: CustomerUsForm;
   onInputChange: Function;
 }
 
-// export interface Categories {
-//   value: string;
-//   label: string;
-// }
-
-// export interface ContactUS {
-//   sectionHandler: Function;
-//   contactPreference: typeof CONTACT_PREFERENCE;
-//   contactPrefHandler: Function;
-//   categories: Categories[];
-//   submitHandler: Function;
-//   categoryRef: React.Ref<any>;
-//   userForm: UserForm;
-//   onInputChange: Function;
-// }
-
-export interface UserForm {
-  options: UserFormOptions;
-  name: UserFormValuesData;
-  contact: UserFormValuesData;
-  comment: UserFormValuesData;
+export interface DataDeletion {
+  authenticated: boolean;
+  onInputChange: Function;
+  deleteDataHandler: Function;
+  userForm: DataDeletionForm;
+  handleClickShowPassword: Function;
 }
 
-type UserFormValuesData = { info: string; value: string; valid: boolean; validate: boolean };
+export interface DataDeletionForm {
+  email: FormData;
+  handle: FormData;
+  comment: FormData;
+  password: FormData;
+  options: DataDeletionOptions;
+}
 
-interface UserFormOptions {
+interface DataDeletionOptions {
   loading: boolean;
-  contact: "email" | "whatsapp";
-  validate: boolean;
-  // section: string;
-  category: string;
+  showPassword: boolean;
 }
-
-// export interface ContactPrefHandler {
-//   e: SelectChangeEvent;
-//   userForm: UserForm;
-//   contactPreference: typeof CONTACT_PREFERENCE;
-//   setUserForm: Function;
-//   enqueueSnackbar: EnqueueSnackbar;
-//   closeSnackbar: Function;
-// }
-
-// export interface OnInputChange {
-//   e: React.FocusEvent<HTMLInputElement>;
-//   contactPreference: typeof CONTACT_PREFERENCE;
-//   setUserForm: Function;
-//   enqueueSnackbar: EnqueueSnackbar;
-//   userForm: UserForm;
-//   closeSnackbar: Function;
-//   onBlur: boolean;
-// }
-
-// export interface SubmitHandler {
-//   enqueueSnackbar: EnqueueSnackbar;
-//   setUserForm: Function;
-//   userForm: UserForm;
-//   contactPreference: typeof CONTACT_PREFERENCE;
-//   categories: Categories[];
-// }

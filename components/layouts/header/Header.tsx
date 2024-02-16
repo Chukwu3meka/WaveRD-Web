@@ -10,7 +10,9 @@ import { HeaderProps } from "interfaces/components/layouts.interface";
 const Header = ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible }: HeaderProps) => (
   <header id="header" className={styles[className]}>
     <main>
-      <IconButton onClick={() => themeHandler(theme)}>{theme === "light" ? <DarkIcon color="primary" /> : <LightIcon color="primary" />}</IconButton>
+      <IconButton aria-label="theme" onClick={() => themeHandler(theme)}>
+        {theme === "light" ? <DarkIcon color="primary" /> : <LightIcon color="primary" />}
+      </IconButton>
       <Box>
         <Stack direction="row" onMouseOver={() => swapColorFn()} onMouseLeave={() => swapColorFn()}>
           <Link href="/">

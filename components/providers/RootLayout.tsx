@@ -90,10 +90,7 @@ const RootLayout = ({ children }: ReactChildren) => {
           <SWRConfig value={swrConfigOptions}>
             <UserRoleContainer />
             {header ? <HeaderContainer position="sticky" /> : null}
-
-            <Fade direction="down" triggerOnce={true} big={true} duration={2500} style={{ perspective: "100px" }}>
-              {children}
-            </Fade>
+            {children}
           </SWRConfig>
         </SnackbarProvider>
       </ThemeProvider>

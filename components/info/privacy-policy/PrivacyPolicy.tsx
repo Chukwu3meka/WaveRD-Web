@@ -57,10 +57,10 @@ const PrivacyPolicy = () => (
       </Typography>
 
       <Typography color="text.secondary">
-        If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be
-        determined at sole discretion. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute your
-        acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy,
-        we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.
+        If a revision is material, we will try to provide at least {process.env.NOTICE_PERIOD} days' notice prior to any new terms taking effect. What constitutes a
+        material change will be determined at sole discretion. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will
+        constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this
+        Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.
       </Typography>
 
       <Typography color="primary" sx={{ display: "inline-block", ml: -1.5, mt: 3 }}>

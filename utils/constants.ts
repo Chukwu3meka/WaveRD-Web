@@ -22,7 +22,7 @@ export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
 
 export const INIT_PROFILE: Profile = {
   role: "dummy",
-  theme: "dark",
+  theme: "light",
   name: "SoccerMASS",
   handle: "API Hub and Soccer Manager",
   avatar: "/images/layout/profile.webp",
@@ -48,16 +48,12 @@ export const CONTACT_PREFERENCE: ContactPreferences = {
   whatsapp: "WhatsApp Number",
 };
 
-export const INFO_LINKS: InfoLinks[] = [
-  { label: "Contact Us", path: pageInfo.contactUs.path },
-  { label: "Privacy Policy", path: pageInfo.privacyPolicy.path },
-  { label: "Terms & Conditions", path: "/info/terms" },
-  { label: "Cookie Policy", path: pageInfo.cookiePolicy.path },
-  { label: "Advertisement", path: "/info/advertisement" },
-  { label: "Data Deletion", path: "/info/deletion" },
-  { label: "Pricing", path: "/info/pricing" },
-  { label: "FAQ Section", path: "/info/faq" },
-];
+export const INFO_LINKS: InfoLinks[] = Object.values(pageInfo).reduce((total, page) => {
+  if (page.path.startsWith("/info/")) {
+    total = [...total, { label: page.title, path: page.path }];
+  }
+  return total;
+}, []);
 
 export const CONTACT_US_CATEGORIES: ContactUsCategories[] = [
   { value: "others", label: "Others" },

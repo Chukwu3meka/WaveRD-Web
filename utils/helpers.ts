@@ -37,6 +37,15 @@ export const capitalize = (phrase: string) => {
   return capitalized.join(" ");
 };
 
+export const stringToId = (phrase: string) => {
+  if (!phrase) throw { message: "Unable to transform string" };
+
+  return phrase
+    .split(" ")
+    .map((word) => word.toLowerCase())
+    .join("-");
+};
+
 // deobfuscate string
 export const deObfuscate = (phrase: string) => {
   if (!phrase) return;
