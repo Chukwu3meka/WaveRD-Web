@@ -1,13 +1,13 @@
 // import { Theme } from "interfaces/store/layout.interfaces";
 
-import { UserForm } from "interfaces/components/info.interfaces";
+import { CustomerUsForm } from "interfaces/components/info.interfaces";
 
 export interface ContactUsPayload {
-  name: UserForm["name"]["value"];
-  contact: UserForm["contact"]["value"];
-  comment: UserForm["comment"]["value"];
-  category: UserForm["options"]["category"];
-  preference: UserForm["options"]["contact"];
+  name: CustomerUsForm["name"]["value"];
+  contact: CustomerUsForm["contact"]["value"];
+  comment: CustomerUsForm["comment"]["value"];
+  category: CustomerUsForm["options"]["category"];
+  preference: CustomerUsForm["options"]["contact"];
 }
 
 // export interface ThemePayload {
