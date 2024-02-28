@@ -122,3 +122,11 @@ export const setCssThemeVar = (theme: Theme) => {
     document.documentElement.style.setProperty("--contrast-color", stylesVariables.lightThemeContrastColor);
   }
 };
+
+type ValueOf<T> = T[keyof T];
+type Entries<T> = [keyof T, ValueOf<T>][];
+
+// Same as `Object.entries()` but with type inference
+export function ObjectEntries<T extends object>(obj: T): Entries<T> {
+  return Object.entries(obj) as Entries<T>;
+}

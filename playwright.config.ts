@@ -10,6 +10,10 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // expect: {
+  //   timeout: 0,
+  // },
+
   testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -25,7 +29,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    baseURL: process.env.WEB_URL,
+    baseURL: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",

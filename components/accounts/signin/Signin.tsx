@@ -58,6 +58,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     <AttentionSeeker effect="bounce">
       <LoadingButton
         fullWidth
+        id="signin"
         size="large"
         type="submit"
         color="primary"

@@ -38,7 +38,6 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
                   disablePortal
                   options={INFO_LINKS}
                   id="soccermass-info"
-                  sx={{ zIndex: "100 !important" }}
                   value={INFO_LINKS.find(({ path }) => path === activeRoute)}
                   renderInput={(params) => <TextField {...params} label="SoccerMASS Info" />}
                   onChange={(event: any, newValue: InfoLinks | null) => autoCompleteHandler(newValue?.path)}

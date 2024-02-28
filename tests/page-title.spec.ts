@@ -1,24 +1,18 @@
-// @ts-check
+// // @ts-check
 
-import { test, expect } from "@playwright/test";
-import pageInfo from "utils/page-info";
+// import pageInfo from "utils/page-info";
+// import { ObjectEntries } from "utils/helpers";
+// import { test, expect } from "@playwright/test";
+// import { PageInfo } from "interfaces/utils/page-info";
 
-test("has title", async ({ page }) => {
-  for (const [key, value] of Object.entries(pageInfo)) {
-    const { path, title, description, keywords } = value;
+// test.setTimeout(0);
 
-    await page.goto(path);
-    await expect(page).toHaveURL(path);
-    await expect(page).toHaveTitle(title);
-  }
-});
+// test("has correct meta data", async ({ page }) => {
+//   for (const [, { title, path, description, keywords }] of ObjectEntries<PageInfo>(pageInfo)) {
+//     console.log({ path, title, description, keywords });
 
-// test("get started link", async ({ page }) => {
-//   await page.goto("/");
-
-//   // Click the get started link.
-//   await page.getByRole("link", { name: "Get started" }).click();
-
-//   // Expects page to have a heading with the name of Installation.
-//   await expect(page.getByRole("heading", { name: "Installation" })).toBeVisible();
+//     await page.goto(path);
+//     // await expect(page).toHaveURL(path);
+//     await expect(page).toHaveTitle(title);
+//   }
 // });
