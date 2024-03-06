@@ -6,7 +6,7 @@
   @include quickFlex($dir: column, $width: 100%);
   background-color: var(--primary-color);
   background-image: radial-gradient(circle at bottom left, var(--secondary-color), var(--primary-color) 30%);
-  background-image: url("/images/layout/background.jpg");
+  background-image: url("/images/layout/background.webp");
   background-size: 100% 100%;
   height: 100%;
   background-repeat: no-repeat;

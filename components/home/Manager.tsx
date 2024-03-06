@@ -36,7 +36,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
         <Paper elevation={2}>
           <div>
             <Image
-              src="/images/layout/intro-signup.jpg"
+              src="/images/layout/intro-signup.webp"
               fill
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -56,7 +56,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
         <Paper elevation={4}>
           <div>
             <Image
-              src="/images/layout/intro-clubs.jpg"
+              src="/images/layout/intro-clubs.webp"
               fill
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -79,7 +79,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
         <Paper elevation={2}>
           <div>
             <Image
-              src="/images/layout/intro-signin.jpg"
+              src="/images/layout/intro-signin.webp"
               fill
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
