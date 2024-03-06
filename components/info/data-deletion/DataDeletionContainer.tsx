@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import validator from "utils/validator";
+
 import { DataDeletion } from ".";
 import { AxiosError } from "axios";
+import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import validator from "utils/validator";
+import { useEffect, useState } from "react";
 import { dataDeletionService } from "services/accounts.service";
-import { useStoreContext } from "components/providers/StoreProvider";
-
 import { Validator } from "interfaces/utils/validator.interface";
-import { DataDeletionForm } from "interfaces/components/info.interfaces";
+import { RootState } from "interfaces/redux-store/store.interface";
 import { DataDeletionService } from "interfaces/services/accounts.interface";
+import { DataDeletionContainer, DataDeletionForm } from "interfaces/components/info.interfaces";
 
 const INIT_FORM: DataDeletionForm = {
   options: { showPassword: false, loading: false },
@@ -20,10 +21,14 @@ const INIT_FORM: DataDeletionForm = {
   password: { value: "", valid: true, info: "Password cannot be empty", mandatory: true },
 };
 
-export default function DataDeletionContainer() {
-  const { authenticated } = useStoreContext().user,
-    { enqueueSnackbar, closeSnackbar } = useSnackbar(),
+const DataDeletionContainer = (props: DataDeletionContainer) => {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar(),
+    [authenticated, setAuthenticated] = useState(false),
     [userForm, setUserForm] = useState<DataDeletionForm>(INIT_FORM);
+
+  useEffect(() => {
+    setAuthenticated(props.authenticated);
+  }, [props.authenticated]);
 
   const handleClickShowPassword = () => {
     setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
@@ -86,4 +91,9 @@ export default function DataDeletionContainer() {
   };
 
   return <DataDeletion {...{ onInputChange, userForm, handleClickShowPassword, deleteDataHandler, authenticated }} />;
-}
+};
+
+const mapStateToProps = (state: RootState) => ({ authenticated: state.account.authenticated }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DataDeletionContainer);

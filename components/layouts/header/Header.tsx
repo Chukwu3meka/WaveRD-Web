@@ -7,7 +7,7 @@ import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkM
 
 import { HeaderProps } from "interfaces/components/layouts.interface";
 
-const Header = ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible }: HeaderProps) => (
+const Header = ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible, profile }: HeaderProps) => (
   <header id="header" className={styles[className]}>
     <main>
       <IconButton aria-label="theme" onClick={() => themeHandler(theme)}>
@@ -35,7 +35,7 @@ const Header = ({ className, authenticated, swapColorFn, color, theme, themeHand
       </Box>
 
       {visible.mobile ? (
-        <MenuContainer />
+        <MenuContainer profile={profile} authenticated={authenticated} />
       ) : (
         <Box display="flex">
           <SocialContainer filterParams={["twitter", "instagram", "whatsapp"]} />

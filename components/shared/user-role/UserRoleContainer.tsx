@@ -1,14 +1,22 @@
 "use client";
 
 import { UserRole } from ".";
-import { useState } from "react";
+import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import { useStoreContext } from "components/providers/StoreProvider";
+import { useEffect, useState } from "react";
+import { INIT_PROFILE } from "utils/constants";
+import { RootState } from "interfaces/redux-store/store.interface";
+import { Role } from "interfaces/redux-store/account.interfaces";
+import { UserRoleContainerProps } from "interfaces/components/shared.interface";
 
-export default function UserRoleContainer() {
+const UserRoleContainer = (props: UserRoleContainerProps) => {
   const { enqueueSnackbar } = useSnackbar(),
-    { role } = useStoreContext().user.profile,
-    [showDialog, setShowDialog] = useState(false);
+    [showDialog, setShowDialog] = useState(false),
+    [role, setRole] = useState<Role>(INIT_PROFILE.role);
+
+  useEffect(() => {
+    setRole(props.role!);
+  }, [props.role]);
 
   const toggleHandler = () => {
     switch (role) {
@@ -24,4 +32,9 @@ export default function UserRoleContainer() {
   };
 
   return <UserRole role={role} toggleHandler={toggleHandler} showDialog={showDialog} />;
-}
+};
+
+const mapStateToProps = (state: RootState) => ({ profile: state.account.profile }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserRoleContainer);

@@ -1,6 +1,6 @@
+import { Profile } from "interfaces/redux-store/account.interfaces";
 import pageInfo from "./page-info";
 
-import { Profile } from "interfaces/store/user.interfaces";
 import { Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
@@ -21,8 +21,8 @@ export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
 ];
 
 export const INIT_PROFILE: Profile = {
-  role: "dummy",
-  theme: "light",
+  role: "dummy", // <= Init role is always a dummy user
+  theme: "dark",
   name: "SoccerMASS",
   handle: "API Hub and Soccer Manager",
   avatar: "/images/layout/profile.webp",
@@ -33,14 +33,14 @@ export const HEADER_HEIGHT = 74;
 export const OAUTH_PROVIDERS = ["facebook", "twitter", "google"];
 
 export const COMPETITIONS: Competition[] = [
-  { title: "Bundesliga", id: "bundesliga", image: "/images/COMPETITIONS/bundesliga.png" },
-  { title: "Champions League", id: "championsLeague", image: "/images/COMPETITIONS/champions-league.png" },
-  { title: "Eredivisie", id: "eredivisie", image: "/images/COMPETITIONS/eredivisie.png" },
-  { title: "Europa League", id: "europaLeague", image: "/images/COMPETITIONS/europa-league.png" },
-  { title: "La Liga", id: "laLiga", image: "/images/COMPETITIONS/la-liga.png" },
-  { title: "Ligue 1", id: "ligue1", image: "/images/COMPETITIONS/ligue-1.png" },
-  { title: "Premier League", id: "premierLeague", image: "/images/COMPETITIONS/premier-league.png" },
-  { title: "Serie A", id: "serieA", image: "/images/COMPETITIONS/serie-a.png" },
+  { title: "Bundesliga", id: "bundesliga", image: "/images/competitions/bundesliga.png" },
+  { title: "Champions League", id: "championsLeague", image: "/images/competitions/champions-league.png" },
+  { title: "Eredivisie", id: "eredivisie", image: "/images/competitions/eredivisie.png" },
+  { title: "Europa League", id: "europaLeague", image: "/images/competitions/europa-league.png" },
+  { title: "La Liga", id: "laLiga", image: "/images/competitions/la-liga.png" },
+  { title: "Ligue 1", id: "ligue1", image: "/images/competitions/ligue-1.png" },
+  { title: "Premier League", id: "premierLeague", image: "/images/competitions/premier-league.png" },
+  { title: "Serie A", id: "serieA", image: "/images/competitions/serie-a.png" },
 ];
 
 export const CONTACT_PREFERENCE: ContactPreferences = {

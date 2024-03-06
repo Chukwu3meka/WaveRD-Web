@@ -7,7 +7,7 @@ const domains = [
   subDomains = ["apihub", "manager", "console", "accounts"];
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   modularizeImports: {
     "@mui/material": { transform: "@mui/material/{{ member }}" },
     "@mui/icons-material": { transform: "@mui/icons-material/{{ member }}" },

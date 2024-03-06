@@ -1,23 +1,34 @@
-import { Profile } from "interfaces/store/user.interfaces";
+import { Profile } from "interfaces/redux-store/account.interfaces";
+import { ReactChildren } from "./shared.interface";
 
-export type theme = "dark" | "light";
+export type Theme = "dark" | "light";
 export interface HeaderProps {
   authenticated: boolean;
   swapColorFn: Function;
   color: ColorState;
-  theme: theme;
+  theme: Theme;
+  profile: Profile;
   themeHandler: Function;
   visible: VisibleState;
   className: "relativeHeader" | "stickyHeader" | "hiddenHeader";
 }
 
 export interface HeaderContainerProps {
+  profile: Profile;
+  deviceWidth: number;
+  displayHeader: boolean;
+  authenticated: boolean;
   position: "relative" | "sticky";
 }
 
 export interface ColorState {
-  first: "textSecondary" | "primary";
-  last: "primary" | "textSecondary";
+  first: "text.secondary" | "primary";
+  last: "primary" | "text.secondary";
+}
+
+export interface MenuContainerProps {
+  profile: Profile;
+  authenticated: boolean;
 }
 
 export interface VisibleState {
@@ -42,4 +53,9 @@ export interface InfoLayoutProps {
   deviceWidth: number;
   children: React.ReactNode;
   autoCompleteHandler: Function;
+}
+
+export interface InfoLayoutContainerProps {
+  deviceWidth: number;
+  children: React.ReactNode;
 }

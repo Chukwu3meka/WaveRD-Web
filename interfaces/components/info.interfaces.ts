@@ -45,3 +45,19 @@ interface DataDeletionOptions {
   loading: boolean;
   showPassword: boolean;
 }
+
+export interface AdvertisementProps {
+  deviceWidth: number;
+}
+
+export interface FaqProps {
+  deviceWidth: number;
+}
+
+export interface PricingProps {
+  deviceWidth: number;
+}
+
+export interface DataDeletionContainer {
+  authenticated: boolean;
+}

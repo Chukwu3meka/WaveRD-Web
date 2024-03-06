@@ -9,35 +9,35 @@ import { OAUTH_PROVIDERS } from "utils/constants";
 import { FocusEvent, useEffect, useState } from "react";
 import { signinService } from "services/accounts.service";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useStoreContext } from "components/providers/StoreProvider";
 
 import { ApiResponse } from "interfaces/services/shared.interface";
-import { SigninForm } from "interfaces/components/accounts.interfaces";
+import { SigninContainerProps, SigninForm } from "interfaces/components/accounts.interfaces";
+import { connect } from "react-redux";
+import { RootState } from "interfaces/redux-store/store.interface";
+import { setProfileAction } from "app-store/actions";
 
 const defaultFormValues: SigninForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 
-const SigninContainer = () => {
-  const router = useRouter(),
+const SigninContainer = (props: SigninContainerProps) => {
+  const { setProfileAction } = props,
+    router = useRouter(),
     pathname = usePathname(),
     searchParams = useSearchParams(),
     { enqueueSnackbar } = useSnackbar(),
     resParam = searchParams.get("response"),
     [iconOnly, setIconOnly] = useState(true),
-    { deviceSize } = useStoreContext().layout,
+    [authenticated, setAuthenticated] = useState(false),
     [target, setTarget] = useState<null | string>(null),
-    { setProfile, authenticated } = useStoreContext().user,
     [userForm, setUserForm] = useState<SigninForm>(defaultFormValues),
     oAuthMessage = resParam && deObfuscate(decodeURIComponent(resParam as string));
 
-  if (oAuthMessage) {
-    for (const provider of OAUTH_PROVIDERS) {
-      if (searchParams.get(provider)) enqueueSnackbar(oAuthMessage, { variant: "error" });
-    }
-  }
+  useEffect(() => {
+    setAuthenticated(props.authenticated);
+  }, [props.authenticated]);
 
   useEffect(() => {
-    setIconOnly(deviceSize.width < 460);
-  }, [deviceSize.width]);
+    setIconOnly(props.deviceWidth < 460);
+  }, [props.deviceWidth]);
 
   useEffect(() => {
     const target = searchParams.get("target");
@@ -54,6 +54,12 @@ const SigninContainer = () => {
       setTarget(null);
     };
   }, [pathname, searchParams]);
+
+  if (oAuthMessage) {
+    for (const provider of OAUTH_PROVIDERS) {
+      if (searchParams.get(provider)) enqueueSnackbar(oAuthMessage, { variant: "error" });
+    }
+  }
 
   const loginHandler = async (e: FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -76,7 +82,7 @@ const SigninContainer = () => {
 
       await signinService({ email, password })
         .then(async ({ data }) => {
-          setProfile(data);
+          setProfileAction(data);
           enqueueSnackbar("Authenticated Successfully", { variant: "success" });
 
           if (target) return router.push(target);
@@ -105,4 +111,10 @@ const SigninContainer = () => {
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }} />;
 };
 
-export default SigninContainer;
+const mapStateToProps = (state: RootState) => ({
+  deviceWidth: state.layout.width,
+    authenticated: state.account.authenticated,
+  }),
+  mapDispatchToProps = { setProfileAction };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

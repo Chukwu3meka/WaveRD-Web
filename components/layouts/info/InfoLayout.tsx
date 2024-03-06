@@ -1,15 +1,15 @@
 "use client";
 
-import { styles } from ".";
 import Link from "next/link";
 import Footer from "../footer";
 import HeaderContainer from "../header";
+
+import { styles } from ".";
 import { Fade } from "react-awesome-reveal";
 import { INFO_LINKS } from "utils/constants";
-import { List, ListItem, ListItemButton, ListItemText, Box, TextField, Autocomplete } from "@mui/material";
-
 import { InfoLinks } from "interfaces/utils/constants.interface";
 import { InfoLayoutProps } from "interfaces/components/layouts.interface";
+import { List, ListItem, ListItemButton, ListItemText, Box, TextField, Autocomplete } from "@mui/material";
 
 export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandler, children }: InfoLayoutProps) {
   return (
@@ -31,6 +31,8 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
           </List>
 
           <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
+            {children}
+
             {activeRoute && deviceWidth < 1200 ? (
               <Box width="100%" maxWidth={1200} p={1} mt={2}>
                 <Autocomplete
@@ -44,8 +46,6 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
                 />
               </Box>
             ) : null}
-
-            {children}
           </Fade>
         </div>
       </main>

@@ -22,6 +22,7 @@
       "utils/*": ["./utils/*"],
       "styles/*": ["./styles/*"],
       "services/*": ["./services/*"],
+      "app-store/*": ["./app-store/*"],
       "interfaces/*": ["./interfaces/*"],
       "components/*": ["./components/*"]
     }

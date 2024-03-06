@@ -3,15 +3,18 @@
 .contact {
   padding: 10px;
   & > div.categories {
-    @include quickFlex($dir: row, $wrap: wrap, $column: 10px);
+    @include quickFlex($dir: column, $row: 20px);
+
     & > div {
-      @include quickFlex($dir: column, $justify: stretch, $width: clamp(120px, 30vw, 300px));
+      @include quickFlex($dir: row, $width: clamp(150px, calc(100vw - 20px), 500px), $column: 20px);
+      justify-content: flex-start;
       margin: auto;
       padding: 20px 10px;
       transition: 1s all ease;
       cursor: pointer;
-      text-align: center;
+
       & > img {
+        min-width: 100px;
         border-radius: 50%;
         overflow: hidden;
         border: 5px solid var(--secondary-color);
@@ -28,5 +31,15 @@
     margin-top: 40px;
     width: 100%;
     padding: 30px 20px;
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .contact > div.categories {
+    @include quickFlex($dir: row, $wrap: wrap, $column: 10px);
+    & > div {
+      @include quickFlex($dir: column, $justify: stretch, $width: clamp(120px, 30vw, 300px));
+      text-align: center;
+    }
   }
 }

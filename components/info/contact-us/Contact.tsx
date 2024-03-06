@@ -16,11 +16,13 @@ export default function Contact({ sectionHandler, contactPreference, categories,
           <Paper elevation={2} key={supportType} onClick={() => sectionHandler(buttonType)}>
             <Image src={image} alt={`SoccerMASS Contact Us - ${supportType}`} width={100} height={100} />
 
-            <Typography variant="h6">{supportType}</Typography>
+            <div>
+              <Typography variant="h6">{supportType}</Typography>
 
-            <Typography variant="body2" color="textSecondary">
-              {description}
-            </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {description}
+              </Typography>
+            </div>
           </Paper>
         ))}
       </div>

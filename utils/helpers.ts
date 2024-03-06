@@ -1,9 +1,7 @@
-// import stylesVariables from "styles/variables.module.scss";
-import axios from "axios";
-import stylesVariables from "../styles/variables.module.scss";
+import stylesVariables from "styles/variables.module.scss";
 
-import { Theme } from "interfaces/store/layout.interfaces";
 import { AgeGenerator, ArrayRotate } from "interfaces/utils/helpers.interface";
+import { Theme } from "interfaces/components/layouts.interface";
 
 export const ageGenerator = ({ date }: AgeGenerator) => {
   const todaysDate: number = Number(new Date()),
@@ -46,7 +44,6 @@ export const stringToId = (phrase: string) => {
     .join("-");
 };
 
-// deobfuscate string
 export const deObfuscate = (phrase: string) => {
   if (!phrase) return;
   let r = "";
@@ -110,16 +107,18 @@ export const isSystemIOS = (): boolean => {
 };
 
 export const setCssThemeVar = (theme: Theme) => {
-  if (theme === "dark") {
-    document.documentElement.style.setProperty("--theme", "dark");
-    document.documentElement.style.setProperty("--primary-color", stylesVariables.darkThemePrimaryColor);
-    document.documentElement.style.setProperty("--secondary-color", stylesVariables.darkThemeSecondaryColor);
-    document.documentElement.style.setProperty("--contrast-color", stylesVariables.darkThemeContrastColor);
-  } else {
-    document.documentElement.style.setProperty("--theme", "light");
-    document.documentElement.style.setProperty("--primary-color", stylesVariables.lightThemePrimaryColor);
-    document.documentElement.style.setProperty("--secondary-color", stylesVariables.lightThemeSecondaryColor);
-    document.documentElement.style.setProperty("--contrast-color", stylesVariables.lightThemeContrastColor);
+  if (document) {
+    if (theme === "dark") {
+      document.documentElement.style.setProperty("--theme", "dark");
+      document.documentElement.style.setProperty("--primary-color", stylesVariables.darkThemePrimaryColor);
+      document.documentElement.style.setProperty("--contrast-color", stylesVariables.darkThemeContrastColor);
+      document.documentElement.style.setProperty("--secondary-color", stylesVariables.darkThemeSecondaryColor);
+    } else {
+      document.documentElement.style.setProperty("--theme", "light");
+      document.documentElement.style.setProperty("--primary-color", stylesVariables.lightThemePrimaryColor);
+      document.documentElement.style.setProperty("--contrast-color", stylesVariables.lightThemeContrastColor);
+      document.documentElement.style.setProperty("--secondary-color", stylesVariables.lightThemeSecondaryColor);
+    }
   }
 };
 

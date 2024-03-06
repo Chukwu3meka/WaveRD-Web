@@ -1,9 +1,8 @@
 // "use client";
 
 import { createTheme } from "@mui/material/styles";
+import { Theme } from "interfaces/components/layouts.interface";
 import stylesVariables from "styles/variables.module.scss";
-
-import { Theme } from "interfaces/store/layout.interfaces";
 
 // const iPhoneInputFix = {
 //   styleOverrides: {

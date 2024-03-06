@@ -1,16 +1,21 @@
 "use client";
 
 import { InfoLayout } from ".";
+import { connect } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useStoreContext } from "components/providers/StoreProvider";
+import { RootState } from "interfaces/redux-store/store.interface";
+import { InfoLayoutContainerProps } from "interfaces/components/layouts.interface";
 
-import { ReactChildren } from "interfaces/components/shared.interface";
-
-export default function InfoLayoutContainer({ children }: ReactChildren) {
-  const router = useRouter(),
-    { deviceSize } = useStoreContext().layout,
+const InfoLayoutContainer = (props: InfoLayoutContainerProps) => {
+  const { children } = props,
+    router = useRouter(),
+    [deviceWidth, setDeviceWidth] = useState(0),
     [activeRoute, setActiveRoute] = useState("");
+
+  useEffect(() => {
+    setDeviceWidth(props.deviceWidth);
+  }, [props.deviceWidth]);
 
   useEffect(() => {
     autoCompleteHandler(location.pathname);
@@ -24,8 +29,13 @@ export default function InfoLayoutContainer({ children }: ReactChildren) {
   };
 
   return (
-    <InfoLayout activeRoute={activeRoute} deviceWidth={deviceSize.width} autoCompleteHandler={autoCompleteHandler}>
+    <InfoLayout activeRoute={activeRoute} deviceWidth={deviceWidth} autoCompleteHandler={autoCompleteHandler}>
       {children}
     </InfoLayout>
   );
-}
+};
+
+const mapStateToProps = (state: RootState) => ({ deviceWidth: state.layout.width }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InfoLayoutContainer);

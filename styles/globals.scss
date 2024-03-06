@@ -1,4 +1,12 @@
 @import "./index.scss";
+@import "./variables.scss";
+
+:root {
+  --theme: dark;
+  --primary-color: #22272e;
+  --contrast-color: #d8d8d8;
+  --secondary-color: #30353c;
+}
 
 body {
   margin: 0;
@@ -13,6 +21,7 @@ body {
 
   display: grid;
   max-width: 100vw;
+  overflow-x: hidden;
   box-sizing: border-box;
   background: var(--primary-color);
   min-height: var(--visibleScreen);
@@ -65,7 +74,7 @@ body {
   background-color: lighten($color: $primary-color, $amount: 0);
 }
 
-// Forcefully remove input background colour for Chrome autocomplete/autofill?
+// Forcefully remove input background color for Chrome autocomplete/autofill?
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

@@ -1,9 +1,5 @@
-import { AppProps } from "next/app";
-import { NextRouter } from "next/router";
-import { EmotionCache } from "@emotion/react";
-import { LayoutContext, Theme } from "interfaces/store/layout.interfaces";
-import { Profile, UserContext } from "interfaces/store/user.interfaces";
 import { MouseEventHandler } from "react";
+import { Profile, Role } from "interfaces/redux-store/account.interfaces";
 
 // ? Interfaces
 
@@ -112,4 +108,8 @@ export interface TimeLeft {
   hours: number;
   minutes: number;
   seconds: number;
+}
+
+export interface UserRoleContainerProps {
+  role?: Role;
 }

@@ -1,9 +1,28 @@
+import { Theme } from "./layouts.interface";
 import { ReactChildren } from "./shared.interface";
-import { LayoutContext } from "interfaces/store/layout.interfaces";
-import { UserContext } from "interfaces/store/user.interfaces";
-
-export type StoreContext = { layout: LayoutContext; user: UserContext };
+import { Profile } from "interfaces/redux-store/account.interfaces";
 
 export interface StoreContextProviderProps {
   children: ReactChildren["children"];
+}
+
+export interface ProvidersProps {
+  theme: Theme;
+  initialized: boolean;
+  displayHeader: boolean;
+  children: React.ReactNode;
+}
+export interface ProvidersContainerProps {
+  user: Profile | null;
+  displayHeader?: boolean;
+  setThemeAction?: Function;
+  children?: React.ReactNode;
+  setProfileAction?: Function;
+  setDeviceSizeAction?: Function;
+  setDisplayHeaderAction?: Function;
+}
+
+export interface RootProviders {
+  user: Profile | null;
+  children: React.ReactNode;
 }

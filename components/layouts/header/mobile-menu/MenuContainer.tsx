@@ -3,12 +3,11 @@
 import { Menu } from ".";
 import { useState } from "react";
 import { isSystemIOS } from "utils/helpers";
-import { useStoreContext } from "components/providers/StoreProvider";
+import { MenuContainerProps } from "interfaces/components/layouts.interface";
 
-const MenuContainer = () => {
+const MenuContainer = ({ profile, authenticated }: MenuContainerProps) => {
   const iOS = isSystemIOS(),
-    [menuOpen, setMenuOpen] = useState(false),
-    { profile, authenticated } = useStoreContext().user;
+    [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenuOpen = (event: React.KeyboardEvent | React.MouseEvent) => {
     if (event && event.type === "keydown" && ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) return;

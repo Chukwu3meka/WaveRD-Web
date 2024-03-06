@@ -75,7 +75,8 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
               </Box>
             </Stack>
 
-            <Divider sx={{ my: 4 }} />
+            <Divider sx={{ my: 2 }} />
+
             <Box>
               <List onClick={(e) => toggleMenuOpen(e)}>
                 {navLinks
@@ -101,8 +102,8 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
               <Image
                 src="/images/layout/soccermass.webp"
                 alt="SoccerMASS"
-                width={55}
-                height={55}
+                width={60}
+                height={60}
                 style={{
                   position: "relative",
                   zIndex: 5,
@@ -112,14 +113,14 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
               />
             </Box>
             <Paper sx={{ width: "100%", pt: 5 }} elevation={2}>
-              <SocialContainer filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} fontSize="24px" />
+              <SocialContainer filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} fontSize="30px" />
 
               <section>
-                <Typography component="span" variant="body2" fontSize=".8em">
+                <Typography component="span" variant="body2" fontSize=".9em">
                   ● All rights reserved. All trademarks are the property of their respective owners ●
                 </Typography>
 
-                <Typography component="span" variant="body2" fontSize=".9em">
+                <Typography component="span" variant="body2">
                   ©SoccerMASS 2018 ~ {new Date().getFullYear()}
                 </Typography>
               </section>

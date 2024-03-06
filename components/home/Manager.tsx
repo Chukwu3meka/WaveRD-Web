@@ -22,7 +22,15 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          <Carousel autoplay={true} withoutControls={true} wrapAround={true} slidesToShow={slidesToShow} autoplayInterval={2000} speed={10000} dragging={false}>
+          <Carousel
+            speed={10000}
+            autoplay={true}
+            dragging={false}
+            wrapAround={true}
+            autoplayReverse={true}
+            withoutControls={true}
+            autoplayInterval={2000}
+            slidesToShow={slidesToShow}>
             {COMPETITIONS.map(({ id, image, title }) => (
               <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
             ))}

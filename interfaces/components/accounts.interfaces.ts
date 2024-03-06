@@ -1,6 +1,12 @@
 import { Validator } from "interfaces/utils/validator.interface";
 import { ChangeEventHandler, MouseEventHandler } from "react";
 
+export interface SigninContainerProps {
+  setProfileAction: Function;
+  authenticated: boolean;
+  deviceWidth: number;
+}
+
 export interface SigninProps {
   iconOnly: boolean;
   userForm: SigninForm;

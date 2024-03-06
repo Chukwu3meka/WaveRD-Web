@@ -1,11 +1,14 @@
 "use client";
 
 import ManagerIntro from "./Manager";
-import { useEffect, useState } from "react";
-import { useStoreContext } from "components/providers/StoreProvider";
 
-const ManagerContainer = () => {
-  const { deviceSize } = useStoreContext().layout,
+import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import { ManagerContainerProps } from "interfaces/components/home.interfaces";
+import { RootState } from "interfaces/redux-store/store.interface";
+
+const ManagerContainer = (props: ManagerContainerProps) => {
+  const [deviceWidth, setDeviceWidth] = useState(0),
     [slidesToShow, setSlidesToShow] = useState(0);
 
   const handleResize = (width: number) => {
@@ -23,10 +26,14 @@ const ManagerContainer = () => {
   };
 
   useEffect(() => {
-    handleResize(deviceSize.width);
-  }, [deviceSize.width]);
+    handleResize(props.deviceWidth!);
+    setDeviceWidth(props.deviceWidth!);
+  }, [props.deviceWidth]);
 
-  return <ManagerIntro slidesToShow={slidesToShow} deviceWidth={deviceSize.width} />;
+  return <ManagerIntro slidesToShow={slidesToShow} deviceWidth={deviceWidth} />;
 };
 
-export default ManagerContainer;
+const mapStateToProps = (state: RootState) => ({ deviceWidth: state.layout.width }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManagerContainer);
