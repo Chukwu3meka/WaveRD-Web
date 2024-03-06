@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import pageInfo from "utils/page-info";
 import Footer from "components/layouts/footer";
 import HeaderContainer from "components/layouts/header";
-import { ApiHub, ManagerContainer, Welcome } from "components/home";
+import { ApiHub, ManagerContainer, WelcomeContainer } from "components/home";
 
 export const metadata: Metadata = {
   title: pageInfo.home.title,
@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <main>
       <HeaderContainer position="relative" />
-      <Welcome />
+      <WelcomeContainer />
       <ManagerContainer />
       <ApiHub />
       <Footer />

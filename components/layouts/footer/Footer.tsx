@@ -19,7 +19,9 @@ export default function Footer() {
 
             <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/layout/soccermass.webp" />
 
-            <Typography variant="subtitle2">Follow US</Typography>
+            <Typography variant="subtitle2" component="p">
+              Follow US
+            </Typography>
 
             <div>
               {SOCIAL_ACCOUNTS.map(({ title, id, href, image }) => (
@@ -62,7 +64,7 @@ export default function Footer() {
               </Typography>
 
               <a href="https://apihub.soccermass.com/">API Hub</a>
-              <a href="https://translate.soccermass.com/">Translastion</a>
+              <a href="https://translate.soccermass.com/">Translation</a>
               <a href="https://manager.soccermass.com/">Soccer Manager</a>
               <a href="https://soccermass.com/">Jobs & Career</a>
               <a href="https://soccermass.com/">Agriculture</a>

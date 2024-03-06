@@ -27,7 +27,7 @@ const pageInfo: PageInfo = {
 
   passwordReset: {
     path: "/accounts/password-reset",
-    title: "SoccerMASS: Password Reset",
+    title: "Forgot Password",
     description:
       "We've made it so easy to reset your password and securely regain access to your SoccerMASS account. Follow these steps to reset your SoccerMass password today!",
     keywords: ["password reset", "forgot password", "soccer manager", "soccer", "soccermass", "football manager", "football"],
