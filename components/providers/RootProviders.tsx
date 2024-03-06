@@ -1,7 +1,7 @@
 "use client";
 
 import ProvidersContainer from ".";
-import appStore from "app-store/appStore";
+import appStore from "../../redux-store/reduxStore";
 
 import { Zoom } from "@mui/material";
 import { SnackbarProvider } from "notistack";

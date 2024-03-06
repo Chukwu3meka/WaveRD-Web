@@ -18,5 +18,6 @@ export interface PageInfo {
   faq: PageInfoData;
   advertisement: PageInfoData;
   pricing: PageInfoData;
+  organization: PageInfoData;
   // [key: string]: PageInfoData;
 }

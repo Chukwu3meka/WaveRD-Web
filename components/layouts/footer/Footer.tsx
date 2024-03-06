@@ -37,12 +37,11 @@ export default function Footer() {
               </Typography>
 
               <a href="https://blog.soccermass.com/">Blog</a>
-              <Link href="/organization">Organization</Link>
-              <Link href={pageInfo.passwordReset.path}>Forgot Password</Link>
-              <Link href={pageInfo.advertisement.path}>Advertisement</Link>
-              <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank">
-                Bug Report
-              </a>
+              <Link href={pageInfo.organization.path}>{pageInfo.organization.title}</Link>
+              <Link href={pageInfo.passwordReset.path}>{pageInfo.passwordReset.title}</Link>
+              <Link href={pageInfo.advertisement.path}>{pageInfo.advertisement.title}</Link>
+              <Link href={pageInfo.contactUs.path}>Bug Report</Link>
+              {/* <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank"></a> */}
             </div>
 
             <div>

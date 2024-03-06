@@ -8,7 +8,7 @@ import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { Theme } from "interfaces/components/layouts.interface";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { ProvidersContainerProps } from "interfaces/components/providers.interface";
-import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction } from "app-store/actions";
+import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction } from "../../redux-store/actions";
 
 const ProvidersContainer = (props: ProvidersContainerProps) => {
   const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction } = props,

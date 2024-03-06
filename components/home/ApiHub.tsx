@@ -40,7 +40,7 @@ const ApiHub = () => (
           - WHY DO ANYTHING?
         </Typography>
 
-        <div style={{ margin: "20px auto", textAlign: "center", fontSize: "2em", fontWeight: 800 }}>
+        <div style={{ margin: "20px auto", textAlign: "center", fontSize: "2em", fontWeight: 800, lineHeight: 1.2 }}>
           <span>Let's handle the</span>
           <span style={{ color: "green" }}>&nbsp;Football data&nbsp;</span>
           <span>for your business</span>

@@ -22,9 +22,9 @@
       "utils/*": ["./utils/*"],
       "styles/*": ["./styles/*"],
       "services/*": ["./services/*"],
-      "app-store/*": ["./app-store/*"],
       "interfaces/*": ["./interfaces/*"],
-      "components/*": ["./components/*"]
+      "components/*": ["./components/*"],
+      "redux-store/*": ["./redux-store/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/layouts/slide-text/slides/index.tss"],

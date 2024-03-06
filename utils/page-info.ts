@@ -83,6 +83,13 @@ const pageInfo: PageInfo = {
     keywords: ["advertise", "advert", "advertisement", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
+  organization: {
+    path: "/info/organization",
+    title: "Organization",
+    description: "Have an Idea? Let's build it... Want to know who we are, what we do and why we do it?",
+    keywords: ["organization", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
+
   pricing: {
     path: "/info/pricing",
     title: "Pricing Plan",

@@ -99,7 +99,7 @@ export default function ContactContainer() {
       setUserForm((values: CustomerUsForm) => ({ ...values, [id]: { ...values[id as keyof CustomerUsForm], valid: true, info: null } }));
       closeSnackbar(); // <= hide any error that have been shown previously
     } catch ({ message }: any) {
-      if (onBlur) enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
+      if (onBlur && value) enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
       setUserForm((values: CustomerUsForm) => ({
         ...values,
         [id]: { ...values[id as keyof CustomerUsForm], valid: false, info: message || `Unable to validate ${id}`, validating: false },

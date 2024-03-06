@@ -34,7 +34,7 @@ const UserRoleContainer = (props: UserRoleContainerProps) => {
   return <UserRole role={role} toggleHandler={toggleHandler} showDialog={showDialog} />;
 };
 
-const mapStateToProps = (state: RootState) => ({ profile: state.account.profile }),
+const mapStateToProps = (state: RootState) => ({ role: state.account.profile.role }),
   mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRoleContainer);

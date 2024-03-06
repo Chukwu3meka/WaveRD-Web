@@ -1,20 +1,20 @@
 "use client";
 
+import validator from "utils/validator";
+
 import { Signin } from ".";
 import { AxiosError } from "axios";
-import validator from "utils/validator";
+import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import { capitalize, deObfuscate } from "utils/helpers";
 import { OAUTH_PROVIDERS } from "utils/constants";
+import { setProfileAction } from "../../../redux-store/actions";
+import { capitalize, deObfuscate } from "utils/helpers";
 import { FocusEvent, useEffect, useState } from "react";
 import { signinService } from "services/accounts.service";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
-import { ApiResponse } from "interfaces/services/shared.interface";
-import { SigninContainerProps, SigninForm } from "interfaces/components/accounts.interfaces";
-import { connect } from "react-redux";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { setProfileAction } from "app-store/actions";
+import { ApiResponse } from "interfaces/services/shared.interface";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { SigninContainerProps, SigninForm } from "interfaces/components/accounts.interfaces";
 
 const defaultFormValues: SigninForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 
@@ -82,6 +82,8 @@ const SigninContainer = (props: SigninContainerProps) => {
 
       await signinService({ email, password })
         .then(async ({ data }) => {
+          console.log({ data });
+
           setProfileAction(data);
           enqueueSnackbar("Authenticated Successfully", { variant: "success" });
 
@@ -112,7 +114,7 @@ const SigninContainer = (props: SigninContainerProps) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  deviceWidth: state.layout.width,
+    deviceWidth: state.layout.width,
     authenticated: state.account.authenticated,
   }),
   mapDispatchToProps = { setProfileAction };
