@@ -43,7 +43,7 @@ const Social = ({ account, link, fontSize }: Social) => {
   }
 
   return icon ? (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize }}>
+    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize }} aria-label={account.toLowerCase()}>
       {icon}
     </IconButton>
   ) : null;

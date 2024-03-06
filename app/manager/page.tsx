@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   return (
     <main>
-      <p>SoccerMASS APIHUB</p>
+      <p>SoccerMASS Game</p>
     </main>
   );
 }
