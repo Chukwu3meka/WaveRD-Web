@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   return (
     <>
-      {process.env.NODE_ENV !== "production" ? (
+      {process.env.NODE_ENV === "production" ? (
         <ComingSoonContainer header={true} finishDate={new Date("13 May 2024")} />
       ) : (
         <>
