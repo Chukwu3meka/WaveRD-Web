@@ -1,0 +1,196 @@
+@import "@source/_variables";
+
+.tactics {
+  padding: 0 5px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.header {
+  @include flexCenter(column);
+  padding: 5px;
+  & > div:nth-of-type(1) {
+    @include flexCenter(row);
+    margin: -30px auto 5px;
+    justify-content: space-between;
+    align-items: flex-end;
+    & > div {
+      @include flexCenter(column);
+      align-items: flex-start;
+    }
+    & > div:last-of-type {
+      align-items: flex-end;
+    }
+  }
+  & > div:nth-of-type(2) {
+    padding-left: 5px;
+    border-left: 2px solid color(err);
+  }
+}
+
+.subsTactics {
+  padding: 5px;
+  & > div:first-of-type {
+    @include flexCenter(row);
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    & > div:first-of-type {
+      @include flexCenter(column);
+      gap: 10px;
+      margin: auto;
+      & > div {
+        @include flexCenter(column);
+        min-width: 160px;
+        & > figure {
+          position: relative;
+          height: 100px;
+          width: 100px;
+          margin: 0;
+        }
+        & > div {
+          margin: 20px auto;
+          @include flexCenter(column, initial);
+          & > span {
+            margin-top: -5px;
+          }
+        }
+      }
+      & > main {
+        width: 100%;
+      }
+    }
+    & > div:last-of-type {
+      @include flexCenter(column);
+      & > div {
+        margin: 5px auto;
+      }
+    }
+  }
+}
+
+.playersOption {
+  @include flexCenter(row, initial);
+  justify-content: flex-start;
+  & > div {
+    @include flexCenter(column, initial);
+    & > span:first-of-type {
+      color: color(pryGold);
+      transform: rotate(90deg) !important;
+    }
+    & > span:last-of-type {
+      position: absolute;
+      font-size: 0.8em;
+      font-weight: 900;
+    }
+  }
+  & > span:first-of-type {
+    width: 33px;
+  }
+}
+
+.unavailable {
+  padding: px5;
+  margin: 10px auto;
+}
+
+.nextMatch {
+  padding: 5px;
+  margin: 10px auto;
+  @include flexCenter(row, initial);
+  flex-wrap: wrap-reverse;
+  gap: 10px;
+  justify-content: space-between;
+  & > div:first-of-type {
+    & > div:first-of-type {
+      @include flexCenter(row, initial);
+      & > main {
+        @include flexCenter(column, initial);
+        align-items: flex-start;
+        h6 {
+          margin: -10px 0 0;
+        }
+      }
+    }
+  }
+  & > div:last-of-type {
+    @include flexCenter(column, initial);
+    margin: 0 auto 20px;
+    & > div {
+      @include flexCenter(row);
+      justify-content: space-evenly;
+      // background: color(dark);
+      padding: 10px;
+      span {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        margin: 0 5px;
+      }
+      #win {
+        background: green;
+      }
+      #tie {
+        background: grey;
+      }
+      #lost {
+        background: red;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 380px) {
+  .subsTactics {
+    & > div:first-of-type {
+      & > div:first-of-type {
+        @include flexCenter(row);
+        gap: 10px;
+        margin: auto;
+        & > div {
+          min-width: 160px;
+          & > figure {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            margin: 0;
+          }
+          & > div {
+            margin: 20px auto;
+            @include flexCenter(column, initial);
+            & > span {
+              margin-top: -5px;
+            }
+          }
+        }
+        & > main {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 460px) {
+  .nextMatch > div:last-of-type {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .subsTactics {
+    & > div:first-of-type {
+      & > div:first-of-type {
+        @include flexCenter(column);
+        gap: 10px;
+        margin: 0;
+        max-width: 200px;
+      }
+      & > div:last-of-type {
+        margin-top: 5px;
+        max-width: 300px;
+      }
+    }
+  }
+}

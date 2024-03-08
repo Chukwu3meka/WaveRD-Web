@@ -1,0 +1,354 @@
+@import "@source/_variables";
+
+.home {
+  .news {
+    @include flexCenter(column, calc(100% - 10px));
+    justify-content: flex-end;
+    height: 97%;
+    position: relative;
+    min-height: 320px;
+    & > div:first-of-type {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      min-height: 250px;
+    }
+    & > div:last-of-type {
+      position: relative;
+      bottom: 0;
+      color: color(light);
+      min-height: 180px;
+      overflow: hidden;
+      @include flexCenter(column);
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 10px;
+      background: rgba(0, 0, 26, 0.7) !important;
+
+      h2 {
+        color: color(pry);
+        margin: 0 0 10px;
+        font-size: 1.2em;
+        text-align: left;
+        font-weight: 900;
+      }
+      h4 {
+        color: color(light);
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: left;
+        font-size: 1em;
+        line-height: 1.4em;
+        margin: 0;
+      }
+    }
+  }
+
+  .aside {
+    @include flexCenter(column);
+    height: 100%;
+    padding: 0 5px;
+    #calendar {
+      @include flexCenter(column);
+      border-radius: 10px;
+      // width: 200px;
+      overflow: hidden;
+      // margin: 19px auto;
+      // border: 3px solid red;
+      & > div:nth-of-type(1) {
+        // max-width: 300px;
+        @include flexCenter(row);
+        align-items: stretch;
+        .schedule {
+          // border: 3px solid blue;
+          @include flexCenter(column);
+          overflow: hidden;
+          padding: 10px;
+          position: relative;
+          // max-width: 200px;
+          text-align: center;
+          // width: 100%;
+          & > div:first-of-type {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+          }
+
+          & > div:first-of-type::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: color(dark);
+            opacity: 0.6;
+          }
+
+          & > div:last-of-type {
+            position: relative;
+            @include flexCenter(column);
+            justify-content: space-evenly;
+            color: color(light);
+            height: 100%;
+            span:nth-of-type(1) {
+              font-size: 0.7em;
+            }
+            span:nth-of-type(2) {
+              @include flexCenter(row);
+              justify-content: space-evenly;
+              font-size: 1em;
+              font-weight: 900;
+              color: color(pry);
+              margin-top: 5px;
+              & > div {
+                position: relative;
+                width: 60px;
+                height: 50px;
+              }
+              .circularBall {
+                overflow: hidden;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+              }
+            }
+            span:nth-of-type(3) {
+              color: color(light);
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              font-size: 1em;
+              line-height: 1.4em;
+              margin: auto;
+              text-align: center;
+              font-weight: 800;
+            }
+            span:nth-of-type(4) {
+              font-weight: 700;
+              font-size: 0.7em;
+            }
+          }
+        }
+        & > main:nth-of-type(2) {
+          margin: 0 3px;
+        }
+      }
+
+      & > div:nth-of-type(2) {
+        @include flexCenter(row);
+        justify-content: space-evenly;
+        background: color(dark);
+        padding: 10px;
+        span {
+          display: inline-block;
+          background: color(light);
+          height: 10px;
+          width: 10px;
+          border-radius: 50%;
+          margin: 0 5px;
+        }
+        #win {
+          background: green;
+        }
+        #tie {
+          background: grey;
+        }
+        #lost {
+          background: red;
+        }
+      }
+    }
+  }
+
+  .otherLinks {
+    @include flexCenter(row);
+    justify-content: space-evenly;
+    padding: 20px 10px;
+    gap: 10px;
+    & > div {
+      height: 100px;
+    }
+  }
+
+  .massNews {
+    padding: 0 5px 10px;
+    & > * > * {
+      padding: 0;
+      & > * {
+        padding: 0 !important;
+      }
+    }
+    h5 {
+      text-align: center;
+      color: color(pry);
+      font-weight: 900;
+      font-size: 1.3em;
+    }
+    div > span:first-of-type {
+      font-weight: 700;
+      color: darken($color: color(light), $amount: 60);
+    }
+    span {
+      font-size: 1em;
+      color: color(dark);
+    }
+    i {
+      font-size: 0.8em;
+      color: color(pry);
+    }
+  }
+
+  .massStat {
+    padding: 0 5px;
+    & > div {
+      padding: 0 5px;
+    }
+
+    border-radius: 10px;
+    & > div:first-of-type {
+      padding: 5px;
+      @include flexCenter(column);
+      h2 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.5em;
+        text-transform: capitalize;
+      }
+      h4 {
+        margin: 0;
+        font-size: 0.7em;
+        color: color(pry);
+      }
+      & > div {
+        @include flexCenter(column);
+        margin-bottom: 10px;
+        & > main {
+          @include flexCenter(row);
+          justify-content: space-between;
+          overflow: hidden;
+          & > span {
+            background-color: color(light);
+            border: 1px solid color(pry);
+            padding: 5px;
+            border-radius: 50%;
+            position: relative;
+            display: block;
+            height: 35px;
+            min-width: 35px;
+          }
+          & > p {
+            border: 1px solid color(pry);
+            max-width: calc(100% - 50px);
+            margin: 0 -10px 0 -10px;
+            color: color(dark);
+            background-color: darken($color: color(light), $amount: 5);
+            @include flexCenter(row);
+            & > b {
+              padding: 0 10px;
+              text-align: center;
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              width: 100%;
+              font-size: 0.8em;
+            }
+            & > i {
+              color: color(pry);
+              font-weight: 900;
+              padding: 0 8px 0 5px;
+              height: 100% !important;
+              border-radius: 50%;
+              background-color: darken($color: color(light), $amount: 14);
+            }
+          }
+        }
+        & > i {
+          color: color(light);
+          background-color: darken($color: color(light), $amount: 15);
+          margin: -5px 0 0;
+          color: color(dark);
+          font-size: 0.7em;
+          padding: 0px 25px;
+          border-radius: 0 0 100px 100px;
+        }
+      }
+    }
+    & > div:last-of-type {
+      padding: 5px;
+      margin-top: 15px;
+      @include flexCenter(column);
+      & > div {
+        height: 410px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        & > span {
+          display: block;
+          position: absolute;
+          top: 0;
+          right: -40px;
+          width: 100%;
+          max-width: 250px;
+          height: 100%;
+        }
+        & > div:first-of-type {
+          position: relative;
+          left: -25%;
+          top: -15%;
+          background-color: color(light);
+          height: calc(100% + 100%);
+          transform: rotate(-20deg);
+        }
+        & > div:last-of-type {
+          position: absolute;
+          top: 0;
+          left: 0;
+          @include flexCenter(column, calc(100% - 25%));
+          align-items: flex-start;
+          padding: 5px;
+          h2 {
+            border-bottom: 1px solid grey;
+            margin: 0 0 10px;
+            font-weight: 700;
+            font-size: 1.5em;
+            text-align: left;
+            color: color(pry);
+          }
+          & > div {
+            background-color: color(light);
+            div {
+              @include flexCenter(row, initial);
+              justify-content: flex-start;
+              & > svg {
+                margin: 0 5px -5px -5px;
+              }
+              & > b {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin: 0 5px -5px 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 520px) {
+  .home {
+    .otherLinks {
+      margin: 50px auto;
+      & > div {
+        height: 180px;
+      }
+    }
+  }
+}

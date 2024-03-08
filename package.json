@@ -1,0 +1,43 @@
+{
+  "name": "soccermass",
+  "version": "1.1.0",
+  "description": "SoccerMASS: Soccer manager simulation",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "stall": "cd ../SoccerMASS Server && npm run server && cd ../SoccerMASS Web && npm run web"
+  },
+  "keywords": [
+    "Soccer Manager",
+    "Football Manager",
+    "Football Simulation"
+  ],
+  "author": "SoccerMASS",
+  "license": "MIT",
+  "dependencies": {
+    "@date-io/date-fns": "^2.13.1",
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/lab": "^5.0.0-alpha.66",
+    "@mui/material": "^5.3.1",
+    "@mui/styles": "^5.3.0",
+    "axios": "^0.25.0",
+    "date-fns": "^2.28.0",
+    "jwt-decode": "^3.1.2",
+    "next": "^12.0.9",
+    "notistack": "^2.0.3",
+    "prop-types": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
+    "socket.io-client": "^4.4.1"
+  },
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}

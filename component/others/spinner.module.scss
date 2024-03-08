@@ -1,0 +1,22 @@
+@import "@source/_variables";
+
+.spinner {
+  @include flexCenter(column);
+  & > div {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    animation: spinner 1.1s infinite linear;
+  }
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

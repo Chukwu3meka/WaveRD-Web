@@ -1,0 +1,100 @@
+@import "@source/_variables";
+
+.market {
+  padding: 0 !important;
+  & > main {
+    max-width: 800px !important;
+    & > div:nth-of-type(1) {
+      & > div:nth-of-type(1) {
+        padding: 5px 5px 0;
+        & > div {
+          margin: 10px auto;
+        }
+        & > div:nth-of-type(2) > div {
+          margin: 0 auto -15px;
+          & > i {
+            display: block;
+            font-size: 0.8em;
+            margin-bottom: -10px;
+          }
+        }
+      }
+      & > div:nth-of-type(2) {
+        border-bottom: 3px solid lighten($color: color(pry), $amount: 45);
+        @include flexCenter(row);
+        max-width: 50vw;
+        margin: 0 auto;
+        position: relative;
+        & > button {
+          position: absolute;
+          background-color: color(light);
+        }
+      }
+    }
+    & > div:nth-of-type(2) {
+      margin: 20px auto;
+    }
+    ol {
+      margin: 0;
+      padding-left: 10px;
+      text-align: left;
+    }
+  }
+}
+
+.agents {
+  padding: 10px;
+  & > div {
+    & > p {
+      width: max-content;
+      border-bottom: 1px solid color(pry);
+      margin-bottom: 10px;
+    }
+    & > div {
+      @include flexCenter(row);
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 0 10px;
+      & > div {
+        @include flexCenter(column, 150px);
+        padding: 5px;
+        & > div {
+          @include flexCenter(row);
+          & > div:first-of-type {
+            @include flexCenter(column, initial);
+            & > b {
+              color: color(pry);
+              font-weight: 900;
+              font-size: 1.52em;
+            }
+          }
+        }
+        & > span:first-of-type {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-align: center;
+          font-size: 0.9em;
+          font-weight: 800;
+        }
+        i {
+          font-size: 0.8em;
+        }
+        & > div:last-of-type {
+          @include flexCenter(row);
+          margin-top: 5px;
+          div {
+            letter-spacing: 0.15em;
+            padding: 0 3px;
+            margin: auto 3px;
+            font-size: 0.7em;
+            font-weight: 600;
+            color: color(pry);
+          }
+        }
+      }
+    }
+  }
+}

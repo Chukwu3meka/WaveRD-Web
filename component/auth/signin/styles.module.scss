@@ -1,0 +1,75 @@
+@import "@source/_variables";
+
+.signin {
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  margin: auto;
+  padding: 40px 0 80px;
+  & > .social {
+    z-index: 2;
+    padding: 10px 5px;
+    position: relative;
+    margin-bottom: 15px;
+    background: color(light);
+    & > div:first-of-type {
+      @include flexCenter(row);
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      & > div {
+        color: color(dark);
+        margin: 4px 3px;
+      }
+    }
+    & > span {
+      display: block;
+      margin: 20px auto 10px;
+      width: 90%;
+      text-align: center;
+      line-height: 0.1em;
+      border-bottom: 1px solid color(pry);
+      i {
+        color: color(dark);
+        background-color: color(light);
+        padding: 0 10px;
+        font-size: 0.7em;
+      }
+    }
+  }
+
+  & > div {
+    overflow: visible;
+    position: relative;
+    border: 1px solid color(pry);
+    margin: auto;
+    & > main {
+      padding: 20px 10px 10px;
+      position: relative;
+      background-color: white;
+      z-index: 2;
+      text-align: center;
+      border-radius: 5px;
+      & > div:nth-child(2) {
+        margin: 15px 0;
+      }
+    }
+  }
+  & > div::after {
+    z-index: 1;
+    background-color: lighten($color: color(pry), $amount: 47);
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 140%;
+    border-radius: 5px;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(50deg);
+  }
+}
+
+@media screen and (min-width: 520px) {
+  .signin {
+    padding: 120px 10px;
+  }
+}

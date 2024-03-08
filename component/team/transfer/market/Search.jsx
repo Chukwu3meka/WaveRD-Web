@@ -1,0 +1,3 @@
+const Search = () => {
+  return "Search";
+};

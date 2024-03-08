@@ -1,0 +1,205 @@
+@import "@source/_variables";
+
+.history {
+  padding: 0 5px;
+  max-width: 800px;
+  margin: auto;
+  & > div {
+    padding: 5px;
+    margin: 10px auto;
+  }
+}
+
+.header {
+  @include flexCenter(row);
+  justify-content: space-between;
+  align-items: flex-end;
+  & > div {
+    @include flexCenter(column, initial);
+    align-items: flex-start;
+
+    & > figure {
+      position: relative;
+      height: 100px;
+      width: 100px;
+      margin: 0;
+    }
+    & > h1 {
+      font-size: 1.3em;
+      font-weight: 800;
+    }
+    & > h3 {
+      color: darken($color: color(light), $amount: 40);
+      font-weight: normal;
+    }
+  }
+  & > div:last-of-type {
+    align-items: center;
+    text-align: center;
+    & > div {
+      @include flexCenter(column, initial);
+      figure {
+        position: relative;
+        height: 0px;
+        width: 0px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.details {
+  & > main:nth-of-type(1) {
+    @include flexCenter(row);
+    margin: 10px auto 5px;
+    justify-content: space-between;
+    & > div:first-of-type {
+      p {
+        font-weight: 700;
+        margin: 5px auto;
+      }
+    }
+    & > div:last-of-type {
+      text-align: center;
+    }
+  }
+  & > main:nth-of-type(2) {
+    @include flexCenter(row);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    & > div {
+      @include flexCenter(column, initial);
+      padding: 10px;
+      & > label {
+        font-weight: 600;
+      }
+    }
+  }
+  & > main:nth-of-type(3) {
+    @include flexCenter(column);
+    border-top: 1px solid color(pry);
+    border-bottom: 1px solid color(pry);
+    padding: 10px;
+    & > i {
+      align-self: flex-end;
+    }
+    & > div {
+      @include flexCenter(row, initial);
+      flex-wrap: wrap;
+      max-width: 500px;
+      padding: 5px 20px;
+      gap: 10px;
+      justify-content: flex-start;
+      & > div {
+        @include flexCenter(row, initial);
+        b {
+          margin-left: 5px;
+          font-size: 0.9em;
+          color: darken($color: color(light), $amount: 55);
+        }
+      }
+    }
+  }
+  & > main:nth-of-type(4) {
+    @include flexCenter(row);
+    justify-content: space-evenly;
+    gap: 5px;
+    padding-top: 10px;
+    & > div {
+      padding: 10px;
+      border-radius: 50%;
+      width: 60px;
+      text-align: center;
+    }
+  }
+}
+
+.stat {
+  @include flexCenter(column);
+  & > div:last-of-type {
+    @include flexCenter(row);
+    justify-content: space-evenly;
+    align-items: stretch;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    & > div {
+      max-width: 200px;
+    }
+    & > div:nth-of-type(2) {
+      @include flexCenter(column);
+      padding: 10px;
+      & > p {
+        @include flexCenter(row);
+        justify-content: space-between;
+        font-size: 1em;
+        margin: 5px auto;
+        span {
+          color: color(pry);
+          // border: 3px solid red;
+          margin-left: 15px;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .schedule {
+      height: 100%;
+      @include flexCenter(column);
+      justify-content: space-evenly;
+      overflow: hidden;
+      padding: 10px;
+      position: relative;
+      // max-width: 200px;
+      text-align: center;
+      & > main:nth-of-type(1) {
+        margin-top: 5px;
+        @include flexCenter(row);
+        justify-content: space-evenly;
+        font-size: 1em;
+        font-weight: 900;
+        color: color(pry);
+        & > div {
+          position: relative;
+          width: 60px;
+          height: 50px;
+        }
+        span {
+          padding: 0px 5px;
+        }
+      }
+      & > span:nth-of-type(1) {
+        font-size: 0.8em;
+      }
+      & > span:nth-of-type(2) {
+        line-height: 1.4em;
+        font-weight: 800;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 1em;
+        margin: 15px auto 5px;
+        text-align: center;
+      }
+      & > span:nth-of-type(3) {
+        font-weight: 700;
+        font-size: 0.7em;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 460px) {
+  .header {
+    & > div:last-of-type > div {
+      @include flexCenter(row, initial);
+      figure {
+        height: 90px;
+        width: 100px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+    }
+  }
+}

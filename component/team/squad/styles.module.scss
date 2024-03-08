@@ -1,0 +1,139 @@
+@import "@source/_variables";
+
+.squad {
+  padding: 0 5px;
+  @include flexCenter(column);
+  max-width: 800px;
+  margin: 5px auto;
+  & > div:nth-of-type(1) {
+    padding: 10px;
+    @include flexCenter(column);
+    & > div:first-of-type {
+      position: relative;
+      height: 80px;
+      width: 90px;
+    }
+    & > h1 {
+      font-size: 1.4em;
+      font-weight: 800;
+      margin: 0;
+    }
+    & > div:nth-of-type(2) {
+      @include flexCenter(row);
+      justify-content: space-evenly;
+      align-items: flex-start;
+      margin-top: 10px;
+      & > p {
+        margin: 0;
+        @include flexCenter(column);
+        & > em {
+          color: color(pry);
+          font-size: 1.3em;
+        }
+        & > span {
+          text-align: center;
+          color: darken($color: color(dark), $amount: 30);
+        }
+      }
+    }
+  }
+  & > div:nth-of-type(2) {
+    margin: 5px auto;
+    figure {
+      height: 13px;
+      width: 15px;
+      display: block;
+      margin-top: -5px;
+    }
+  }
+  & > div:nth-of-type(3) {
+    padding: 5px;
+    text-align: center;
+    @include flexCenter(column);
+    & > span {
+      font-size: 0.7em;
+      text-align: center;
+      color: darken($color: color(dark), $amount: 30);
+    }
+    & > em {
+      color: color(pry);
+      font-size: 1.3em;
+      margin-top: -5px;
+    }
+  }
+  ol {
+    margin: 0;
+    padding-left: 10px;
+    text-align: left;
+  }
+}
+
+.viewPlayerContainer {
+  width: calc(100% + 50px) !important;
+  margin-left: -25px;
+  & > div > div > div {
+    padding: 5px;
+  }
+}
+
+.viewPlayer {
+  @include flexCenter(column);
+  & > div:nth-of-type(1) {
+    @include flexCenter(column);
+    & > div:nth-of-type(1) {
+      @include flexCenter(row);
+      justify-content: space-between !important;
+      padding: 5px 10px 5px 5px;
+      & > div:nth-of-type(1) {
+        @include flexCenter(column, initial);
+        margin: 0;
+        & > span {
+          padding: 0 5px;
+          margin: 3px auto;
+        }
+      }
+      & > div:nth-of-type(2) {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 40%;
+        margin-left: 5px;
+        overflow: hidden;
+        border-bottom: 1px solid color(pry);
+      }
+      & > div:nth-of-type(3) {
+        @include flexCenter(column, initial);
+      }
+    }
+    & > div:nth-of-type(2) {
+      @include flexCenter(row);
+      justify-content: space-between;
+      padding: 13px 5px;
+    }
+    & > div:nth-of-type(3) {
+      @include flexCenter(row);
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 5px;
+      & > div {
+        padding: 10px;
+        @include flexCenter(column, initial);
+        & > em {
+          font-size: 1.2em;
+          font-weight: 800;
+        }
+        & > span {
+          font-size: 0.7em;
+        }
+      }
+    }
+  }
+  & > div:nth-of-type(2) {
+    width: 100%;
+    margin: 10px auto;
+
+    & > div > div > div {
+      padding: 5px;
+    }
+  }
+}

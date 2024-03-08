@@ -1,0 +1,134 @@
+@import "@source/_variables";
+
+.finance {
+  padding: 0 5px;
+  max-width: 800px;
+  margin: auto;
+  & > div {
+    padding: 5px;
+    margin: 10px auto;
+  }
+}
+
+.header {
+  @include flexCenter(column);
+  & > figure {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    margin: 10px auto 0;
+  }
+  & > main {
+    @include flexCenter(column);
+    margin-top: 15px;
+    max-width: 600px;
+    & > div {
+      @include flexCenter(row);
+      justify-content: space-between;
+      & > span {
+        font-weight: 600;
+      }
+    }
+    & > i {
+      color: darken($color: color(light), $amount: 40);
+      font-size: 0.8em;
+    }
+  }
+}
+
+.review {
+  @include flexCenter(column);
+  & > main {
+    max-width: 600px;
+    @include flexCenter(column);
+    justify-content: space-evenly;
+    & > div {
+      @include flexCenter(column);
+      text-align: center;
+      & > div {
+        @include flexCenter(column);
+        position: relative;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+        & > figure {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+        & > figure::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background-color: color(pry);
+          opacity: 0.8;
+        }
+        & > p {
+          position: relative;
+          color: darken($color: color(pryGold), $amount: 5);
+          text-align: center;
+          font-weight: 600;
+          font-size: 1.8em;
+        }
+      }
+    }
+  }
+  & > div {
+    margin-top: 20px;
+    max-width: 600px;
+    @include flexCenter(column);
+    align-items: stretch;
+    padding: 5px;
+    & > figure {
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      min-height: 120px;
+      margin: 0 10px 0 0;
+    }
+    & > div {
+      @include flexCenter(column);
+      align-items: flex-start;
+      justify-content: space-between;
+      & > h1 {
+        border-bottom: 3px solid color(pry);
+      }
+    }
+  }
+}
+
+.nominalAccount {
+  @include flexCenter(column);
+  h2 {
+    font-weight: 600;
+    margin-bottom: -20px;
+  }
+  h3 {
+    color: color(pry);
+    margin-top: 20px;
+  }
+  & > div {
+    max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .review {
+    @include flexCenter(column);
+    & > main {
+      @include flexCenter(row);
+      gap: 10px;
+    }
+    & > div {
+      @include flexCenter(row);
+      align-items: stretch;
+      & > figure {
+        width: 150px;
+      }
+    }
+  }
+}

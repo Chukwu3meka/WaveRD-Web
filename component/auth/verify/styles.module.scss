@@ -1,0 +1,19 @@
+@import "@source/_variables";
+
+.verify {
+  @include flexCenter(column);
+  align-self: center;
+  padding: 20px;
+  text-align: center;
+  & > div:nth-of-type(1) {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 100px;
+    position: relative;
+    height: 100px;
+  }
+  & > p:nth-of-type(1) {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+}

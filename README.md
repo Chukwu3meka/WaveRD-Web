@@ -1,0 +1,34 @@
+# SoccerMASS Frontend ✨
+
+SoccerMASS: No. 1 free online football manager for advanced soccer management. The title of manager is almost exclusively used in British football. In most other European countries in which professional football is played, the person responsible for the direction of a team is awarded the position of coach or "trainer"
+
+## Responsibilities ⚡
+
+The manager's responsibilities in a professional football club usually include (but are not limited to) the following:[citation needed]
+
+1. Selecting the team of players for matches, and their formation.
+2. Planning the strategy, and instructing the players on the pitch.
+3. Motivating players before and during a match.
+4. Delegating duties to the first team coach and the coaching and medical staff.
+5. Scouting for young but talented players for eventual training in the youth academy or the reserves, and encouraging their development and improvement.
+6. Buying and selling players in the transfer market, including loans.
+7. Facing the media in pre-match and post-match interviews.
+
+> Some of the above responsibilities may be shared with a director of football or sporting director, and are at times delegated to an assistant manager or club coach.
+
+<hr/>
+
+Additionally, depending on the club, some minor[citation needed] responsibilities include:
+
+8. Marketing the club, most especially for ticket admission, sponsorship and merchandising.
+9. Growing turnover and keeping the club profitable.
+   These responsibilities are more common among managers of small clubs.
+
+## 💰 Support Me 👋
+
+<p align="center">
+<a href="https://www.buymeacoffee.com/chukwuemeka" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="70" ></a>
+</p>
+
+<!-- https://stripo.email/en/demo/?template=479632&project=275682&guid=99d14aaf-8662-48f0-889e-3bc99b74df05 to get png -->
+<!-- To visit Google oAuth site: https://console.cloud.google.com/apis/credentials/consent?project=august-now-278115 -->

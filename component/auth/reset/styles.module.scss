@@ -1,0 +1,23 @@
+.reset {
+  padding: 10px;
+  max-width: 600px;
+  h3 {
+    margin: 15px auto 5px;
+  }
+  & > div:nth-of-type(1) {
+    margin: 10px auto;
+    & > * {
+      margin-bottom: 20px;
+    }
+    & > div:last-of-type {
+      text-align: right;
+    }
+  }
+  & > div:last-of-type {
+    & > * {
+      display: block;
+      max-width: 240px;
+      margin: 10px auto !important;
+    }
+  }
+}

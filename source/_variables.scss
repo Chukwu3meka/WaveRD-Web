@@ -1,0 +1,21 @@
+$fontColors: (
+  "pry": rgb(68, 139, 68),
+  "sec": rgb(141, 202, 141),
+  "light": rgb(241, 241, 241),
+  "dark": rgb(6, 5, 27),
+  "err": rgb(241, 28, 28),
+  // "text": rgb(65, 65, 65),
+  "pryGold": rgb(238, 205, 20) // rgb(230, 170, 41),,,,
+);
+
+@function color($color) {
+  @return map-get($fontColors, $color);
+}
+
+@mixin flexCenter($direction, $width: 100%) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+}

@@ -1,0 +1,88 @@
+import Link from "next/link";
+import Image from "next/image";
+import { Typography } from "@mui/material";
+
+import { styles } from "/";
+
+const Footer = ({ maintainance, logoutHandler, social }) => (
+  <div className={styles.footer}>
+    <div />
+    <div>
+      {maintainance && (
+        <Typography variant="body2" component="p">
+          Maintainance: Full Rebuild Ongoing till {maintainance}, Kindly bear with us as we want the best for you.
+        </Typography>
+      )}
+      <main>
+        <aside>
+          <Typography variant="h5" component="h1">
+            SoccerMASS
+          </Typography>
+          <div>
+            <Image src="/images/soccermass.webp" alt="SoccerMASS" width={80} height={80} />
+          </div>
+          <Typography variant="subtitle2">Follow US</Typography>
+          <span>
+            {social.map(([social, link = "https://viewcrunch.com/"]) => (
+              <a href={link} key={social} rel="noopener noreferrer">
+                <Image src={`/images/social/${social.toLowerCase()}.png`} alt={`SoccerMASS ${social} page`} width={30} height={30} />
+              </a>
+            ))}
+          </span>
+        </aside>
+        <nav>
+          <div>
+            <label htmlFor="Pages without auth">SoccerMASS</label>
+            <Link href="/">Home</Link>
+            <Link href="/apihub">API HUB</Link>
+            <Link href="/manager">Manager</Link>
+            <Link href="/auth/signin">Signin</Link>
+            <Link href="/auth/signup">Signup</Link>
+            <Link href="/auth/reset">Reset Password</Link>
+            {/* <a HREF="/">Logouts</a> */}
+            <Link href="/auth/signin">
+              <a onClick={logoutHandler}>Logout</a>
+            </Link>
+            {/* onClick={logoutHandler} */}
+          </div>
+          <div>
+            <label htmlFor="company">Company</label>
+            <a href="https://viewcrunch.com/organization" rel="noopener noreferrer">
+              ViewCrunch
+            </a>
+            <a href="https://soccermass.com/" rel="noopener noreferrer">
+              SoccerMASS
+            </a>
+            <a href="https://alienforest.com/" rel="noopener noreferrer">
+              AlienForest
+            </a>
+          </div>
+          <div>
+            <label htmlFor="info">Info</label>
+            <Link href="/info/privacy/">Privacy Policy</Link>
+            {/* <Link href="/info/contact/">Contact US</Link> */}
+            <a href="https://chukwuemeka.vercel.app/" target="_blank" rel="noopener noreferrer">
+              Contact US
+            </a>
+            <Link href="/info/terms/">Terms &amp; Conditions</Link>
+            <Link href="/info/advertise/">Advertise</Link>
+            <Link href="/info/donate/">Support/Donation</Link>
+            {/* proundly hosted on Vercel && Render */}
+          </div>
+        </nav>
+      </main>
+      <section>
+        <Typography variant="body2" component="p">
+          ©SoccerMASS 2018 ~ {new Date().getFullYear()}
+        </Typography>
+        <Typography variant="body2" component="p">
+          ●No. 1 Free online Football Manager●
+          <br />
+          All rights reserved. All trademarks are the property of their respective owners.
+        </Typography>
+      </section>
+    </div>
+  </div>
+);
+
+export default Footer;

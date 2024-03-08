@@ -1,0 +1,43 @@
+@import "@source/_variables";
+
+.tournament {
+  padding: 10px 5px;
+  max-width: 800px;
+  margin: auto;
+  & > div {
+    padding: 10px;
+    margin: 10px auto;
+  }
+}
+
+.header {
+  & > div:first-of-type {
+    @include flexCenter(row);
+    justify-content: space-between;
+    // align-items: flex-end;
+    & > h1 {
+      font-size: 3vw;
+    }
+  }
+  & > div:last-of-type {
+    border-top: 3px solid color(pry);
+  }
+}
+
+.competition {
+  @include flexCenter(row);
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.data {
+  padding: 5px !important;
+  min-height: 200px;
+}
+
+.calendar {
+  @include flexCenter(column);
+  padding: 10px;
+}
