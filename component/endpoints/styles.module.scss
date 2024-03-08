@@ -1,0 +1,19 @@
+@import "@source/_variables";
+
+.endpoints {
+  position: sticky;
+  top: 0px;
+  padding: 10px;
+  min-height: calc(100vh - 190px);
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.description {
+  padding: 20px 10px 10px;
+  max-width: 700px;
+}
+
+// @media screen and (min-width: 600px) {
+// border: 3px solid red;
+// }

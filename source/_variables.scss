@@ -1,0 +1,25 @@
+$appColors: (
+  "primary": rgb(30, 57, 82),
+  // "secondary": rgb(87, 142, 194),
+  "secondary": #1197c0,
+  "textPrimary": rgb(245, 245, 245),
+  "highlight": rgb(226, 173, 38),
+  "success": rgb(38, 226, 38),
+  "textSecondary": rgb(94, 94, 94),
+);
+
+@function appColor($color) {
+  @return map-get($appColors, $color);
+}
+
+@mixin color($color) {
+  color: map-get($appColors, $color);
+}
+
+@mixin flex($direction, $width: 100%) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+}

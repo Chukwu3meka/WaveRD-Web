@@ -1,0 +1,32 @@
+[
+  {
+    "ref": "player67",
+    "name": "Jan Oblak",
+    "club": "club3",
+    "country": "Slovenia",
+    "dob": "1993-05-12T23:00:00.000Z",
+    "rating": 91,
+    "value": 130,
+    "roles": ["GK"]
+  },
+  {
+    "ref": "player165",
+    "name": "David Silva",
+    "club": "club6",
+    "country": "Spain",
+    "dob": "1986-05-12T23:00:00.000Z",
+    "rating": 86,
+    "value": 61.43,
+    "roles": ["AM", "CM"]
+  },
+  {
+    "ref": "player1142",
+    "name": "Dalbert",
+    "club": "club37",
+    "country": "Brazil",
+    "dob": "1994-05-12T23:00:00.000Z",
+    "rating": 71,
+    "value": 26.3,
+    "roles": ["LM", "LB"]
+  }
+]

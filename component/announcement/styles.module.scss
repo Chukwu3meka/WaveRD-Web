@@ -1,0 +1,14 @@
+@import "@source/_variables";
+
+.layout {
+  background-color: darken($color: white, $amount: 20);
+  @include flex(column);
+  justify-content: space-between;
+  & > div {
+    padding: 0 0 50px;
+    width: 100%;
+    margin-top: 0.8px;
+    height: 100%;
+    border-radius: 0;
+  }
+}

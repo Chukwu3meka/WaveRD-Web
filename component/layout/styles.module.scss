@@ -1,0 +1,64 @@
+@import "@source/_variables";
+
+.layout {
+  background-color: darken($color: white, $amount: 20);
+  @include flex(column);
+  justify-content: space-between;
+  min-height: 100vh;
+  & > div {
+    padding: 0;
+    width: 100%;
+    // margin-top: 0.8px;
+    // margin-top: 77px;
+    height: 100% !important;
+    border-radius: 0;
+  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Vollkorn", serif;
+  -webkit-box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  * {
+    outline: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    img {
+      overflow: hidden;
+    }
+  }
+
+  // follow this ordering of a to ensure styling apply to  links
+  // It's not necessary to specify {visited, focus, active} if you aren't using it.
+  a,
+  a:link {
+    color: appColor(secondary);
+    text-decoration-color: appColor(highlight) !important;
+    text-underline-position: under; // to increase the gap between text and underlining in CSS
+    text-decoration-thickness: 2px;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration-color: appColor(secondary) !important;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: appColor("primary");
+  margin-top: 03px;
+  color: whitesmoke;
+  // height: 200px;
+  padding: 20px 10px;
+  // border: 3px solid red;
+  text-align: center;
+}
