@@ -24,7 +24,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
         <Box className={styles.carousel}>
           <Carousel speed={10000} autoplay={true} dragging={false} wrapAround={true} withoutControls={true} autoplayInterval={2000} slidesToShow={slidesToShow}>
             {COMPETITIONS.map(({ id, image, title }) => (
-              <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
+              <Image  src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
             ))}
           </Carousel>
         </Box>
@@ -35,7 +35,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
       <div className={styles.managerIntro}>
         <Paper elevation={2}>
           <div>
-            <Image
+            <Image priority
               src="/images/layout/intro-signup.webp"
               fill
               sizes="(max-width: 768px) 100vw,
@@ -56,6 +56,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
         <Paper elevation={4}>
           <div>
             <Image
+              priority
               src="/images/layout/intro-clubs.webp"
               fill
               sizes="(max-width: 768px) 100vw,
@@ -66,6 +67,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
           </div>
           <div>
             <Image
+              priority
               src="/images/layout/intro-players.png"
               fill
               sizes="(max-width: 768px) 100vw,
@@ -79,6 +81,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
         <Paper elevation={2}>
           <div>
             <Image
+              priority
               src="/images/layout/intro-signin.webp"
               fill
               sizes="(max-width: 768px) 100vw,

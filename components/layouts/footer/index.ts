@@ -1,4 +1,4 @@
-import Footer from "./Footer";
 import styles from "./styles.module.scss";
+import FooterContainer from "./FooterContainer";
 
-export { Footer as default, styles };
+export { FooterContainer as default, styles };

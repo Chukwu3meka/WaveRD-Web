@@ -13,9 +13,9 @@ export interface ProvidersProps {
   children: React.ReactNode;
 }
 export interface ProvidersContainerProps {
+  theme?: Theme;
   user: Profile | null;
   displayHeader?: boolean;
-  setThemeAction?: Function;
   children?: React.ReactNode;
   setProfileAction?: Function;
   setDeviceSizeAction?: Function;

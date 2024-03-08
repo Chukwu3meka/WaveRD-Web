@@ -1,5 +1,5 @@
+import { MouseEventHandler } from "react";
 import { Profile } from "interfaces/redux-store/account.interfaces";
-import { ReactChildren } from "./shared.interface";
 
 export type Theme = "dark" | "light";
 export interface HeaderProps {
@@ -8,7 +8,7 @@ export interface HeaderProps {
   color: ColorState;
   theme: Theme;
   profile: Profile;
-  themeHandler: Function;
+  themeHandler: MouseEventHandler<HTMLButtonElement>;
   visible: VisibleState;
   className: "relativeHeader" | "stickyHeader" | "hiddenHeader";
 }
@@ -18,6 +18,7 @@ export interface HeaderContainerProps {
   deviceWidth: number;
   displayHeader: boolean;
   authenticated: boolean;
+  setThemeAction?: Function;
   position: "relative" | "sticky";
 }
 

@@ -97,7 +97,7 @@ export default async function RootLayout({ children }: ReactChildren) {
       </body>
 
       {/* Temporarily disabled to improve page speed for search engine */}
-      {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} /> */}
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />
     </html>
   );
 }

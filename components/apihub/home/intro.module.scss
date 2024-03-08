@@ -1,0 +1,14 @@
+@import "styles/index.scss";
+
+div.intro {
+  margin-top: 15px;
+  background-color: var(--secondary-color);
+  text-align: center;
+  margin-top: 0px;
+  min-height: 500px;
+  @include quickFlex();
+  padding: 20px;
+  & > div {
+    max-width: 1200px;
+  }
+}

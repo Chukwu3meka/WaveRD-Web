@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { apiHubStyles } from ".";
 import VpnLockIcon from "@mui/icons-material/VpnLock";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import NetworkCheckIcon from "@mui/icons-material/NetworkCheck";
 import { Breadcrumbs, Typography, Stack, IconButton, Box } from "@mui/material";
+
+import { apiHubStyles } from ".";
 import { stringToId } from "utils/helpers";
 
 const ApiHub = () => (
@@ -26,6 +27,7 @@ const ApiHub = () => (
     <Stack spacing={3} justifyContent="space-evenly">
       <div>
         <Image
+          priority
           src="/images/layout/intro-apihub.png"
           alt="SoccerMASS API HUB welcome image"
           fill

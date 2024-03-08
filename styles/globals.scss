@@ -54,7 +54,8 @@ body {
 
 ::-webkit-scrollbar {
   width: 5px;
-  background: $dark-color;
+  // background: $dark-color;
+  background: var(--primary-color);
   height: 7px;
 }
 

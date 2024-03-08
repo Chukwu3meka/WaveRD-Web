@@ -27,7 +27,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
       aria-describedby="email"
       disabled={userForm.options.loading}
       onChange={onInputChange}
-      placeholder="firstname.lastname@soccermass.com"
+      placeholder="username@email.com"
     />
 
     <FormControl fullWidth variant="outlined">

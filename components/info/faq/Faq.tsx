@@ -8,13 +8,13 @@ import { RootState } from "interfaces/redux-store/store.interface";
 import ComingSoonContainer from "components/shared/coming-soon";
 
 const Faq = (props: FaqProps) => {
-  const [deviceWidth, setDeviceWidth] = useState(0);
+  // const [deviceWidth, setDeviceWidth] = useState(0);
 
-  useEffect(() => {
-    setDeviceWidth(props.deviceWidth);
-  }, [props.deviceWidth]);
+  // useEffect(() => {
+  //   setDeviceWidth(props.deviceWidth);
+  // }, [props.deviceWidth]);
 
-  return <ComingSoonContainer minHeight={`calc(var(--visibleScreen) - var(--headerHeight) - ${deviceWidth >= 1200 ? "0px" : "90px"})`} />;
+  return <ComingSoonContainer />;
 };
 
 const mapStateToProps = (state: RootState) => ({ deviceWidth: state.layout.width }),

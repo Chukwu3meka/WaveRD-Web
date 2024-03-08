@@ -50,6 +50,10 @@ const ProvidersContainer = (props: ProvidersContainerProps) => {
     }
   }, [props.displayHeader]);
 
+  useEffect(() => {
+    setTheme(props.theme!);
+  }, [props.theme]);
+
   const handleResize = () => {
     if (setDeviceSizeAction) {
       setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight });
@@ -81,7 +85,10 @@ const ProvidersContainer = (props: ProvidersContainerProps) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({ displayHeader: state.layout.displayHeader }),
+const mapStateToProps = (state: RootState) => ({
+    theme: state.account.profile.theme,
+    displayHeader: state.layout.displayHeader,
+  }),
   mapDispatchToProps = { setProfileAction, setDeviceSizeAction, setDisplayHeaderAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProvidersContainer);

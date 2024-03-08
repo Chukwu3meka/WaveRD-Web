@@ -3,7 +3,6 @@
 import { ComingSoon } from ".";
 import { fullDateFn } from "utils/helpers";
 import { useEffect, useState } from "react";
-
 import { ComingSoonContainerProps, TimeLeft } from "interfaces/components/shared.interface";
 
 export default function ComingSoonContainer({ header = false, minHeight, finishDate = new Date("January 1 2025"), title }: ComingSoonContainerProps) {
@@ -19,7 +18,7 @@ export default function ComingSoonContainer({ header = false, minHeight, finishD
   }, []);
 
   const calcTimeLeftFn = (): TimeLeft => {
-    const diffInSeconds = Math.round((finishDate.getTime() - new Date().getTime()) / 1000);
+    const diffInSeconds = Math.round((new Date(finishDate).getTime() - new Date().getTime()) / 1000);
 
     return {
       date: fullDateFn(finishDate),

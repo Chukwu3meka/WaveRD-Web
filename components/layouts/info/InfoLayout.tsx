@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Footer from "../footer";
 import HeaderContainer from "../header";
+import FooterContainer from "../footer";
 
 import { styles } from ".";
 import { Fade } from "react-awesome-reveal";
@@ -49,7 +49,7 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
           </Fade>
         </div>
       </main>
-      <Footer />
+      <FooterContainer />
     </>
   );
 }

@@ -43,7 +43,7 @@ const Welcome = ({ showImage }: WelcomeProps) => (
           </Link>
         </span>
       </aside>
-      {showImage ? <figure /> : null}
+      {showImage ? <figure></figure> : null}
     </main>
   </div>
 );

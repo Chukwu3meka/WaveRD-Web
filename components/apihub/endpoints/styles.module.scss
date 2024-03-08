@@ -1,0 +1,11 @@
+@import "styles/index.scss";
+
+.endpoints > div:nth-of-type(1) {
+  background-color: var(--secondary-color);
+}
+
+.endpoints > div:nth-of-type(2) {
+  border: 3px solid green;
+  // max-width: 200px;
+  // border-top: 5px double var(--primary-color);
+}

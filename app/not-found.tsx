@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from "components/layouts/footer";
+import FooterContainer from "components/layouts/footer";
 import Header from "components/layouts/header";
 import NotFound from "components/shared/not-found";
 
@@ -9,7 +9,7 @@ export default function NotFoundPage() {
     <>
       <Header position="relative" />
       <NotFound />
-      <Footer />
+      <FooterContainer />
     </>
   );
 }

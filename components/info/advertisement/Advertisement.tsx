@@ -8,13 +8,13 @@ import { AdvertisementProps } from "interfaces/components/info.interfaces";
 import ComingSoonContainer from "components/shared/coming-soon";
 
 const Advertisement = (props: AdvertisementProps) => {
-  const [deviceWidth, setDeviceWidth] = useState(0);
+  // const [deviceWidth, setDeviceWidth] = useState(0);
 
-  useEffect(() => {
-    setDeviceWidth(props.deviceWidth);
-  }, [props.deviceWidth]);
+  // useEffect(() => {
+  //   setDeviceWidth(props.deviceWidth);
+  // }, [props.deviceWidth]);
 
-  return <ComingSoonContainer minHeight={`calc(var(--visibleScreen) - var(--headerHeight) - ${deviceWidth >= 1200 ? "0px" : "90px"})`} />;
+  return <ComingSoonContainer />;
 };
 
 const mapStateToProps = (state: RootState) => ({ deviceWidth: state.layout.width }),

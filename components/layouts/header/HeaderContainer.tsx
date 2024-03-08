@@ -6,13 +6,14 @@ import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { setCssThemeVar } from "utils/helpers";
 import { INIT_PROFILE } from "utils/constants";
+import { setThemeAction } from "redux-store/actions";
 import { themeService } from "services/accounts.service";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { ColorState, HeaderContainerProps, Theme, VisibleState } from "interfaces/components/layouts.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
+import { ColorState, HeaderContainerProps, Theme, VisibleState } from "interfaces/components/layouts.interface";
 
 const HeaderContainer = (props: HeaderContainerProps) => {
-  const { position } = props,
+  const { position, setThemeAction } = props,
     { enqueueSnackbar } = useSnackbar(),
     [profile, setProfile] = useState<Profile>(INIT_PROFILE),
     [theme, setTheme] = useState<Theme>(INIT_PROFILE.theme),
@@ -44,10 +45,11 @@ const HeaderContainer = (props: HeaderContainerProps) => {
 
   const swapColorFn = () => setColor((color) => ({ ...color, first: color.last, last: color.first }));
 
-  const themeHandler = async (oldTheme: Theme) => {
-    const newTheme = oldTheme === "dark" ? "light" : "dark";
+  const themeHandler = async () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     setCssThemeVar(newTheme);
+    if (setThemeAction) setThemeAction(newTheme);
 
     if (authenticated) {
       await themeService({ theme: newTheme }).catch((err) => {
@@ -65,6 +67,6 @@ const mapStateToProps = (state: RootState) => ({
     displayHeader: state.layout.displayHeader,
     authenticated: state.account.authenticated,
   }),
-  mapDispatchToProps = {};
+  mapDispatchToProps = { setThemeAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

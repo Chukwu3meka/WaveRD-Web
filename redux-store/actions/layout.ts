@@ -26,17 +26,6 @@ export const setActiveRouteAction = (data: string) => {
   };
 };
 
-export const setThemeAction = (data: Theme) => {
-  return async (dispatch: AppDispatch) => {
-    try {
-      dispatch({ type: "SET_THEME", data });
-      await dispatch(removeErrorAction("SET_THEME"));
-    } catch (err) {
-      return catchErr(dispatch, err, "SET_THEME");
-    }
-  };
-};
-
 export const setDisplayHeaderAction = (data: boolean) => {
   return async (dispatch: AppDispatch) => {
     try {

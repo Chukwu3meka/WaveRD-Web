@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import pageInfo from "utils/page-info";
-import Footer from "components/layouts/footer";
+import FooterContainer from "components/layouts/footer";
 import HeaderContainer from "components/layouts/header";
 import { ApiHub, ManagerContainer, WelcomeContainer } from "components/home";
 
@@ -17,7 +17,7 @@ export default function HomePage() {
       <WelcomeContainer />
       <ManagerContainer />
       <ApiHub />
-      <Footer />
+      <FooterContainer />
     </main>
   );
 }

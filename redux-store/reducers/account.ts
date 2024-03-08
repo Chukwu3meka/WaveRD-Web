@@ -9,8 +9,9 @@ const initState: InitState = {
 const authReducer = (state: InitState = initState, { data, type }: { data: any; type: string }) => {
   switch (type) {
     case "SET_PROFILE":
-      const prevState: InitState = { profile: data, authenticated: data.role !== INIT_PROFILE.role };
-      return prevState;
+      return { profile: data, authenticated: data.role !== INIT_PROFILE.role };
+    case "SET_THEME":
+      return { ...state, profile: { ...state.profile, theme: data } };
 
     // case "SET_AUTHENTICATED":
     //   if (typeof data === "boolean") {

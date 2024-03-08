@@ -129,3 +129,14 @@ type Entries<T> = [keyof T, ValueOf<T>][];
 export function ObjectEntries<T extends object>(obj: T): Entries<T> {
   return Object.entries(obj) as Entries<T>;
 }
+
+export const timeToMS = (time: number, unit: "m" | "s" | "h") => {
+  switch (unit) {
+    case "h":
+      return time * 60 * 60 * 1000;
+    case "m":
+      return time * 60 * 1000;
+    default:
+      return time * 1000;
+  }
+};

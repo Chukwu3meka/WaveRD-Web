@@ -1,8 +1,8 @@
 @import "styles/index.scss";
 
 .footer {
-  background-color: var(--primary-color);
-  border-top: 5px double var(--secondary-color);
+  background-color: var(--secondary-color);
+  border-top: 5px double var(--primary-color);
   & > footer {
     margin: auto;
     padding: 10px;
