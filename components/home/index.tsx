@@ -8,4 +8,6 @@ import apiHubStyles from "./apiHub.module.scss";
 import managerStyles from "./manager.module.scss";
 import welcomeStyles from "./welcome.module.scss";
 
-export { ManagerContainer, apiHubStyles, welcomeStyles, managerStyles, WelcomeContainer, ApiHub, Welcome, Manager };
+import HomeContainer from "./HomeContainer";
+
+export { ManagerContainer, apiHubStyles, welcomeStyles, managerStyles, WelcomeContainer, ApiHub, Welcome, Manager, HomeContainer as default };

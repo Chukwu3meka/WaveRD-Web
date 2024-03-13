@@ -1,7 +1,7 @@
 import styles from "./layout.module.scss";
-import Accounts from "components/layouts/accounts";
 import Slides from "components/layouts/slide-text";
 import FooterContainer from "components/layouts/footer";
+import Accounts from "components/layouts/accounts-layout";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 

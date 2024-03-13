@@ -1,12 +1,13 @@
 import { service, baseServiceUrl } from ".";
+
 import {
-  ConfPassResetService,
-  DataDeletionService,
+  ThemePayload,
   ExistsPayload,
-  InitPassResetService,
   SigninPayload,
   SignupPayload,
-  ThemePayload,
+  DataDeletionService,
+  ConfPassResetService,
+  InitPassResetService,
 } from "interfaces/services/accounts.interface";
 
 const baseURL = baseServiceUrl.accountsService;

@@ -31,7 +31,17 @@ const SocialSignin = ({ iconOnly }: SocialSignin) => (
           icon={<Icon />}
           href={endpoint}
           variant="outlined"
-          sx={{ background: color, color: `#fff !important`, "&>svg": { color: `#fff !important` } }}
+          sx={{
+            background: color,
+            color: `#fff !important`,
+            "&>svg": { color: `#fff !important` },
+
+            ":hover": {
+              color: `#fff !important`,
+              background: `${color} !important`,
+              "&>svg": { color: `#fff !important` },
+            },
+          }}
         />
       )
     )}

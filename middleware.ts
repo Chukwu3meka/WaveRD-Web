@@ -7,9 +7,10 @@ function goToLogin(destination: string, url: string) {
 }
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next(),
-    cookies = request.cookies.get("SSID"),
-    destination = new URL(request.url).pathname;
+  const url = request.url,
+    response = NextResponse.next(),
+    destination = new URL(url).pathname,
+    cookies = request.cookies.get("SSID");
 
   // ? Delete SoccerMASS SSID if it does not have a value
   if (cookies && !cookies.value) request.cookies.delete(["SSID"]);
@@ -17,18 +18,18 @@ export async function middleware(request: NextRequest) {
   if (privateRoutes.includes(destination)) {
     const ssidCookie = cookies && cookies.value;
 
-    if (!cookies || !ssidCookie) return goToLogin(destination, request.url);
+    if (!cookies || !ssidCookie) return goToLogin(destination, url);
 
     jwt.verify(ssidCookie, <string>process.env.JWT_SECRET, async (err: any, decoded: any) => {
-      if (err) return goToLogin(destination, request.url);
-      if (!decoded) return goToLogin(destination, request.url);
+      if (err) return goToLogin(destination, url);
+      if (!decoded) return goToLogin(destination, url);
 
       const { session } = decoded;
 
       if (session) return response;
     });
 
-    return goToLogin(destination, request.url);
+    return goToLogin(destination, url);
   }
 
   return response;

@@ -12,6 +12,11 @@
     font-weight: 600;
     padding: 18px 10px;
     transition: 0.5s all ease-in !important;
+
+    &:hover {
+      -webkit-filter: brightness(0.8);
+      filter: brightness(0.8);
+    }
   }
 }
 

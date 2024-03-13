@@ -1,4 +1,4 @@
-import InfoLayoutContainer from "components/layouts/info";
+import InfoLayoutContainer from "components/layouts/info-layout";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 

@@ -18,9 +18,9 @@ import stylesVariables from "styles/variables.module.scss";
 //   },
 // };
 
-const inititalTheme = createTheme({});
+const initialTheme = createTheme({});
 
-export default function muiTheme(theme: Theme) {
+const MuiTheme = (theme: Theme) => {
   return createTheme({
     typography: {
       fontSize: 16,
@@ -43,17 +43,19 @@ export default function muiTheme(theme: Theme) {
       // MuiPaper: { styleOverrides: { root: { padding: 5, boxSizing: "border-box" } } },
       // MuiTable: { styleOverrides: { root: { minWidth: 300 } } },
       // MuiTableCell: {
-      //   styleOverrides: { head: { backgroundColor: inititalTheme.palette.common.black, color: inititalTheme.palette.common.white }, body: { fontSize: 14 } },
+      //   styleOverrides: { head: { backgroundColor: initialTheme.palette.common.black, color: initialTheme.palette.common.white }, body: { fontSize: 14 } },
       // },
-      // MuiButton: { styleOverrides: { root: { fontWeight: "900", letterSpacing: ".2em" } } },
+      MuiButton: { styleOverrides: { root: { fontWeight: "600", letterSpacing: ".06em" } } },
       // MuiTableRow: {
       //   styleOverrides: {
       //     root: {
-      //       "&:nth-of-type(odd)": { backgroundColor: inititalTheme.palette.action.hover },
+      //       "&:nth-of-type(odd)": { backgroundColor: initialTheme.palette.action.hover },
       //       "&:last-child td, &:last-child th": { border: 0 }, // <= hide last border
       //     },
       //   },
       // },
     },
   });
-}
+};
+
+export default MuiTheme;

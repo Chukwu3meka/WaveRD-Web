@@ -7,10 +7,10 @@ import { AxiosError } from "axios";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import { OAUTH_PROVIDERS } from "utils/constants";
-import { setProfileAction } from "../../../redux-store/actions";
 import { capitalize, deObfuscate } from "utils/helpers";
 import { FocusEvent, useEffect, useState } from "react";
 import { signinService } from "services/accounts.service";
+import { setProfileAction } from "../../../redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -55,11 +55,19 @@ const SigninContainer = (props: SigninContainerProps) => {
     };
   }, [pathname, searchParams]);
 
-  if (oAuthMessage) {
-    for (const provider of OAUTH_PROVIDERS) {
-      if (searchParams.get(provider)) enqueueSnackbar(oAuthMessage, { variant: "error" });
+  useEffect(() => {
+    if (oAuthMessage) {
+      console.log("message", "dsdfds fdfsdffd dsfdf");
+      for (const provider of OAUTH_PROVIDERS) {
+        if (searchParams.get(provider)) {
+          enqueueSnackbar(oAuthMessage, { variant: "error" });
+
+          router.replace("/accounts/signin");
+          return;
+        }
+      }
     }
-  }
+  }, [oAuthMessage]);
 
   const loginHandler = async (e: FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -74,7 +82,9 @@ const SigninContainer = (props: SigninContainerProps) => {
 
     setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: true } }));
 
-    const disableLoading = () => setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: false } }));
+    const disableLoading = () => {
+      setUserForm((values: any) => ({ ...values, options: { ...values.options, loading: false } }));
+    };
 
     try {
       validator({ value: email, type: "email" });
@@ -82,9 +92,7 @@ const SigninContainer = (props: SigninContainerProps) => {
 
       await signinService({ email, password })
         .then(async ({ data }) => {
-          console.log({ data });
-
-          setProfileAction(data);
+          if (setProfileAction) setProfileAction(data);
           enqueueSnackbar("Authenticated Successfully", { variant: "success" });
 
           if (target) return router.push(target);
@@ -108,7 +116,8 @@ const SigninContainer = (props: SigninContainerProps) => {
     setUserForm((userForm: any) => ({ ...userForm, [id]: value }));
   };
 
-  const handleClickShowPassword = () => setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
+  const handleClickShowPassword = () =>
+    setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   return <Signin {...{ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }} />;
 };

@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
 import { MouseEventHandler } from "react";
+import { TypographyProps } from "@mui/material/Typography";
 import { Profile, Role } from "interfaces/redux-store/account.interfaces";
 
 // ? Interfaces
@@ -112,4 +114,10 @@ export interface TimeLeft {
 
 export interface UserRoleContainerProps {
   role?: Role;
+}
+
+// export interface EllipsisProps extends ComponentType<TypographyProps> {
+export interface EllipsisProps extends TypographyProps {
+  children: ReactNode;
+  maxLines: number;
 }

@@ -1,11 +1,25 @@
 @import "styles/index.scss";
 
-.endpoints > div:nth-of-type(1) {
-  background-color: var(--secondary-color);
-}
+.endpoints {
+  // border: 3px solid red;
 
-.endpoints > div:nth-of-type(2) {
-  border: 3px solid green;
+  & > div:nth-of-type(1) {
+    background-color: var(--secondary-color);
+    // border: 3px solid red;
+  }
+
+  // & > div:nth-of-type(2) {
+  // border: 3px solid green;
   // max-width: 200px;
   // border-top: 5px double var(--primary-color);
+  // }
 }
+
+// .endpoints-intro {
+//   position: sticky;
+//   top: 0px;
+//   padding: 10px;
+//   min-height: calc(100vh - 190px);
+//   max-height: 100vh;
+//   overflow-y: auto;
+// }

@@ -1,0 +1,11 @@
+@import "styles/index.scss";
+
+.layout {
+  display: grid;
+  min-height: var(--visibleScreen);
+  grid-template-rows: var(--headerHeight) auto max-content;
+
+  & > *:nth-of-type(2) {
+    min-height: 400px;
+  }
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import muiTheme from "utils/muiTheme";
+import muiTheme from "utils/MuiTheme";
 import HeaderContainer from "../layouts/header";
 import UserRoleContainer from "components/shared/user-role";
 import stylesVariables from "styles/variables.module.scss";
