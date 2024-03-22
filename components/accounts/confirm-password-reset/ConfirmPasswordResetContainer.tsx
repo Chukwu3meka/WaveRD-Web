@@ -7,11 +7,11 @@ import validator from "utils/validator";
 import { FocusEvent, useState } from "react";
 import { GEAR_LENGTH } from "utils/constants";
 import { ResetPassword, InvalidLink } from ".";
-import { confPassResetService } from "services/accounts.service";
 
 import { ConfirmPasswordResetContainerProps, ResetForm, ResetFormKeys } from "interfaces/components/accounts.interfaces";
 import { useRouter } from "next/navigation";
 import pageInfo from "utils/page-info";
+import accountsService from "services/accounts.service";
 
 const INIT_FORM: ResetForm = {
   options: { showPassword: false, loading: false },
@@ -26,7 +26,8 @@ const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerPr
     [form, setForm] = useState<ResetForm>(INIT_FORM),
     { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const handleClickShowPassword = () => setForm((values: any) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
+  const handleClickShowPassword = () =>
+    setForm((values: any) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
 
   const onInputChange = async (e: React.FocusEvent<HTMLInputElement>, onBlur: boolean) => {
     const { value: tempValue, id: tempId } = e.target,
@@ -73,7 +74,8 @@ const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerPr
         }
       }
 
-      await confPassResetService(userData)
+      await accountsService
+        .confPasswordReset(userData)
         .then(async () => {
           setForm(INIT_FORM);
           Router.push(pageInfo.signin.path);
@@ -89,7 +91,14 @@ const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerPr
     }
   };
 
-  return <ResetPassword onInputChange={onInputChange} form={form} resetPasswordHandler={resetPasswordHandler} handleClickShowPassword={handleClickShowPassword} />;
+  return (
+    <ResetPassword
+      onInputChange={onInputChange}
+      form={form}
+      resetPasswordHandler={resetPasswordHandler}
+      handleClickShowPassword={handleClickShowPassword}
+    />
+  );
 };
 
 export default ConfirmPasswordResetContainer;

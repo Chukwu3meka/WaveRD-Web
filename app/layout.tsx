@@ -5,8 +5,10 @@ import pageInfo from "utils/page-info";
 import stylesVariables from "styles/variables.module.scss";
 
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { cookies } from "next/headers";
-import { baseServiceUrl } from "services/index";
+import { unstable_noStore } from "next/cache";
+import { accountsServiceUrl } from "services/index";
 import { RootProviders } from "components/providers";
 import { LinearProgress, Stack } from "@mui/material";
 import { Merienda, Roboto_Slab } from "next/font/google";
@@ -39,7 +41,7 @@ const getUserProfile = async (): Promise<null | Profile> => {
     const { session } = decoded;
     if (!session) return deleteCookie(false);
 
-    const res = await fetch(process.env.API_URL + baseServiceUrl.accountsService + "/profile", {
+    const res = await fetch(process.env.API_URL + accountsServiceUrl + "/profile", {
       headers: { Cookie: cookies().toString(), "Content-Type": "application/json" },
       /* credentials: "include", tells browser will include credentials in the request, 
           The server must respond with the appropriate CORS headers, including:
@@ -70,14 +72,7 @@ export const metadata: Metadata = {
   description: pageInfo.home.description,
 };
 
-export default async function RootLayout({ children }: ReactChildren) {
-  let initializing = true;
-
-  const profile: null | Profile = await getUserProfile()
-    .then((res) => res)
-    .catch((err) => null)
-    .finally(() => (initializing = false));
-
+const RootLayout = async ({ children }: ReactChildren) => {
   return (
     <html lang="en">
       <head>
@@ -85,13 +80,14 @@ export default async function RootLayout({ children }: ReactChildren) {
         <link rel="apple-touch-icon" href="/apple-icon?<generated>" type="image/<generated>" sizes="<generated>" />
       </head>
       <body className={`${merienda.className}  ${robotoSlab.className}`}>
-        {initializing ? (
-          <Stack sx={{ width: "100%", color: stylesVariables.primaryColor }}>
-            <LinearProgress color="inherit" />
-          </Stack>
-        ) : (
-          <RootProviders user={profile}>{children}</RootProviders>
-        )}
+        <Suspense
+          fallback={
+            <Stack sx={{ width: "100%", color: stylesVariables.primaryColor }}>
+              <LinearProgress color="inherit" />
+            </Stack>
+          }>
+          <MainView>{children}</MainView>
+        </Suspense>
 
         <SpeedInsights />
       </body>
@@ -100,4 +96,14 @@ export default async function RootLayout({ children }: ReactChildren) {
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />
     </html>
   );
-}
+};
+
+const MainView = async ({ children }: ReactChildren) => {
+  const profile: null | Profile = await getUserProfile()
+    .then((res) => res)
+    .catch((err) => null);
+
+  return <RootProviders user={profile}>{children}</RootProviders>;
+};
+
+export default RootLayout;

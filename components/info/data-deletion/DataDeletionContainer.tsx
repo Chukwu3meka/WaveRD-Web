@@ -1,13 +1,13 @@
 "use client";
 
 import validator from "utils/validator";
+import accountsService from "services/accounts.service";
 
 import { DataDeletion } from ".";
 import { AxiosError } from "axios";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
-import { dataDeletionService } from "services/accounts.service";
 import { Validator } from "interfaces/utils/validator.interface";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { DataDeletionService } from "interfaces/services/accounts.interface";
@@ -53,7 +53,10 @@ const DataDeletionContainer = (props: DataDeletionContainer) => {
       }
     } catch ({ message }: any) {
       if (onBlur && id === "comment") enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
-      setUserForm((values: any) => ({ ...values, [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false } }));
+      setUserForm((values: any) => ({
+        ...values,
+        [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false },
+      }));
     }
   };
 
@@ -76,7 +79,8 @@ const DataDeletionContainer = (props: DataDeletionContainer) => {
         }
       }
 
-      await dataDeletionService(userData)
+      await accountsService
+        .initDataDeletion(userData)
         .then(async () => {
           setUserForm(INIT_FORM);
           enqueueSnackbar("Data deletion initiated, Kindly check your mail for the next step", { variant: "success" }); // <=  Inform user of regex error

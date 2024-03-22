@@ -25,7 +25,8 @@ const ProvidersContainer = (props: ProvidersContainerProps) => {
     setDisplayHeader(true);
     setTheme(profile.theme);
     setCssThemeVar(profile.theme);
-    setProfileAction && setProfileAction(profile);
+
+    if (setProfileAction) setProfileAction(profile);
 
     console.log(`%cInitializing SoccerMASS...${new Date().toLocaleTimeString()}`, "color: green; font-family:serif; font-size: 12px");
     document.documentElement.style.setProperty("--headerHeight", `${HEADER_HEIGHT}px`); // <= Set relative (not sticky) header height
@@ -45,8 +46,9 @@ const ProvidersContainer = (props: ProvidersContainerProps) => {
   }, [prevScrollPos]);
 
   useEffect(() => {
-    if (props.displayHeader !== displayHeader) {
+    if (initialized && props.displayHeader !== displayHeader) {
       setDisplayHeader(!!props.displayHeader);
+      if (setDisplayHeaderAction) setDisplayHeaderAction(!!props.displayHeader);
     }
   }, [props.displayHeader]);
 
@@ -72,9 +74,9 @@ const ProvidersContainer = (props: ProvidersContainerProps) => {
     setPrevScrollPos(yScrollPosition);
 
     // ? Update displayHeader only when new state is diff from prev
-    if (newDisplayHeader !== displayHeader) {
+    if (initialized && newDisplayHeader !== displayHeader) {
       setDisplayHeader(newDisplayHeader);
-      setDisplayHeaderAction && setDisplayHeaderAction(newDisplayHeader);
+      if (setDisplayHeaderAction) setDisplayHeaderAction(newDisplayHeader);
     }
   };
 

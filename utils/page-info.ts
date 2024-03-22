@@ -36,14 +36,16 @@ const pageInfo: PageInfo = {
   cookiePolicy: {
     path: "/info/cookie-policy",
     title: "Cookie Policy",
-    description: "Discover how we use cookies to enhance your browsing experience and provide personalized content. Your privacy matters to us.",
+    description:
+      "Discover how we use cookies to enhance your browsing experience and provide personalized content. Your privacy matters to us.",
     keywords: ["cookies", "cookie policy", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
   privacyPolicy: {
     path: "/info/privacy-policy",
     title: "Privacy Policy",
-    description: "Understand how SoccerMASS safeguards your information. Your privacy matters to us, and we are committed to transparency and data protection.",
+    description:
+      "Understand how SoccerMASS safeguards your information. Your privacy matters to us, and we are committed to transparency and data protection.",
     keywords: ["privacy", "privacy policy", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
@@ -58,7 +60,8 @@ const pageInfo: PageInfo = {
   termsAndCondition: {
     path: "/info/terms-and-condition",
     title: "Terms and Condition",
-    description: "As with other websites, SoccerMASS has written and read it's terms and condition to ensure a fair and transparent user experience for all.",
+    description:
+      "As with other websites, SoccerMASS has written and read it's terms and condition to ensure a fair and transparent user experience for all.",
     keywords: ["terms", "terms and condition", "condition", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
@@ -72,14 +75,16 @@ const pageInfo: PageInfo = {
   faq: {
     path: "/info/faq",
     title: "Frequently Asked Questions",
-    description: "Answers to your questions? We've curated a list of FAQs to answer all your questions on registeration, payments, games and many more",
+    description:
+      "Answers to your questions? We've curated a list of FAQs to answer all your questions on registeration, payments, games and many more",
     keywords: ["faq", "questions", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
   advertisement: {
     path: "/info/advertisement",
     title: "Advertisement",
-    description: "Have a product? Share it with us and the world. Our unobtrusive ads means you have a very high chance for visitors from our site",
+    description:
+      "Have a product? Share it with us and the world. Our unobtrusive ads means you have a very high chance for visitors from our site",
     keywords: ["advertise", "advert", "advertisement", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
@@ -97,6 +102,21 @@ const pageInfo: PageInfo = {
     keywords: ["pricing", "soccer manager", "soccer", "soccermass", "football manager", "football"],
   },
 
+  apihub: {
+    path: "/apihub",
+    title: "SoccerMASS: API Hub",
+    description:
+      "Connect with your community and showcase your unique brand and engage with your users through a bold and easy-to-manage API.",
+    keywords: ["api", "apihub", "soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
+
+  apihubEndpoints: {
+    path: "/apihub/endpoints",
+    title: "SoccerMASS: ",
+    description:
+      "With our Football data and an infinite variety of APIs through our API Hub, discover a world of wonders in SoccerMASS.",
+    keywords: ["soccer manager", "soccer", "soccermass", "football manager", "football"],
+  },
   // sample: {
   //   path: "/",
   //   title: "SoccerMASS: ",

@@ -1,5 +1,7 @@
 "use client";
 
+import accountsService from "services/accounts.service";
+
 import { Header } from ".";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
@@ -7,7 +9,6 @@ import { useEffect, useState } from "react";
 import { setCssThemeVar } from "utils/helpers";
 import { INIT_PROFILE } from "utils/constants";
 import { setThemeAction } from "redux-store/actions";
-import { themeService } from "services/accounts.service";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { ColorState, HeaderContainerProps, Theme, VisibleState } from "interfaces/components/layouts.interface";
@@ -52,7 +53,7 @@ const HeaderContainer = (props: HeaderContainerProps) => {
     if (setThemeAction) setThemeAction(newTheme);
 
     if (authenticated) {
-      await themeService({ theme: newTheme }).catch((err) => {
+      await accountsService.setTheme({ theme: newTheme }).catch((err) => {
         if (err) enqueueSnackbar("Failed to save new theme across profile", { variant: "error" });
       });
     }

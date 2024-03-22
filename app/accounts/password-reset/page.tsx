@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   description: pageInfo.passwordReset.description,
 };
 
-export default function InitiatePasswordResetPage() {
-  return <InitiatePasswordResetContainer />;
-}
+const InitPasswordResetPage = () => <InitiatePasswordResetContainer />;
+
+export default InitPasswordResetPage;

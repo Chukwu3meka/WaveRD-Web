@@ -1,18 +1,18 @@
 "use client";
 
+import validator from "utils/validator";
+
 import { AxiosError } from "axios";
 import { Signup, Success } from ".";
 import { useSnackbar } from "notistack";
-import validator from "utils/validator";
 import { capitalize } from "@mui/material";
 import { FocusEvent, useState } from "react";
 import { getSystemTheme } from "utils/helpers";
 import { INIT_PROFILE } from "utils/constants";
-import { existsService, signupService } from "services/accounts.service";
-
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { ExistsPayload, SignupPayload } from "interfaces/services/accounts.interface";
 import { SigninFormKeys, SignupForm } from "interfaces/components/accounts.interfaces";
+import accountsService from "services/accounts.service";
 
 const initUserForm: SignupForm = {
   email: { value: "", valid: true, info: "Email cannot be empty" },
@@ -47,7 +47,8 @@ const SignupContainer = () => {
       const theme = getSystemTheme();
       userData.theme = theme;
 
-      await signupService(userData)
+      await accountsService
+        .signup(userData)
         .then(async () => {
           closeSnackbar(); // <= hide any error that have been shown previously
           setUserForm({ ...initUserForm, options: { ...initUserForm.options, accountCreated: true } });
@@ -86,9 +87,13 @@ const SignupContainer = () => {
       validator({ value: value, type: id, label: id === "email" ? "Email Address" : null });
 
       if (["handle", "email"].includes(id)) {
-        setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: false, info: `Validating ${capitalize(id)}`, validating: true } }));
+        setUserForm((values) => ({
+          ...values,
+          [id]: { ...values[id], valid: false, info: `Validating ${capitalize(id)}`, validating: true },
+        }));
 
-        await existsService({ data: value, variant: id as ExistsPayload["variant"] })
+        await accountsService
+          .exists({ data: value, variant: id as ExistsPayload["variant"] })
           .then(async ({ data: { exists } }) => {
             if (exists) throw { message: `${capitalize(id)} not available, Kindly use a different ${capitalize(id)}` };
             setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
@@ -104,7 +109,10 @@ const SignupContainer = () => {
       closeSnackbar(); // <= hide any error that have been shown previously
     } catch ({ message }: any) {
       if (onBlur) enqueueSnackbar(message || "Could not validate this input", { variant: "error" }); // <=  Inform user of regex error
-      setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false } }));
+      setUserForm((values) => ({
+        ...values,
+        [id]: { ...values[id], valid: false, info: message || `Unable to validate ${id}`, validating: false },
+      }));
     }
   };
 
@@ -112,7 +120,11 @@ const SignupContainer = () => {
     setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
   };
 
-  return userForm.options.accountCreated ? <Success /> : <Signup {...{ onChangeHandler, userForm, handleClickShowPassword, registerHandler }} />;
+  return userForm.options.accountCreated ? (
+    <Success />
+  ) : (
+    <Signup {...{ onChangeHandler, userForm, handleClickShowPassword, registerHandler }} />
+  );
 };
 
 export default SignupContainer;

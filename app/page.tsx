@@ -1,9 +1,9 @@
-import { Metadata } from "next";
-
 import pageInfo from "utils/page-info";
 import FooterContainer from "components/layouts/footer";
 import HeaderContainer from "components/layouts/header";
-import HomeContainer from "components/home";
+
+import { Metadata } from "next";
+import { RefreshHome, ApiHub, ManagerContainer, Welcome } from "components/home";
 
 export const metadata: Metadata = {
   title: pageInfo.home.title,
@@ -14,7 +14,14 @@ export const metadata: Metadata = {
 const HomePage = () => (
   <>
     <HeaderContainer position="relative" />
-    <HomeContainer />
+
+    <main>
+      <Welcome />
+      <ManagerContainer />
+      <ApiHub />
+    </main>
+
+    <RefreshHome />
     <FooterContainer />
   </>
 );

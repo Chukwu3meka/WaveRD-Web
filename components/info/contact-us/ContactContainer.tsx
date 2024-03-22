@@ -6,13 +6,13 @@ import { useSnackbar } from "notistack";
 import validator from "utils/validator";
 import { useState, useRef } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { contactUsService } from "services/console.service";
 import { CONTACT_PREFERENCE, CONTACT_US_CATEGORIES } from "utils/constants";
 
 import { Validator } from "interfaces/utils/validator.interface";
 import { CustomerUsForm } from "interfaces/components/info.interfaces";
 import { ContactUsPayload } from "interfaces/services/console.interface";
 import { ContactPreferences } from "interfaces/utils/constants.interface";
+import consoleService from "services/console.service";
 
 const INIT_USER_FORM: CustomerUsForm = {
   name: { value: "", valid: true, info: "Handle cannot be empty", mandatory: true },
@@ -50,12 +50,16 @@ export default function ContactContainer() {
             preferenceId = CONTACT_PREFERENCE[validatorId as keyof ContactPreferences];
 
           validator({ value: value.trim(), type: validatorId as Validator["type"], label: validatorId !== id ? preferenceId : null });
-          setUserForm((values: CustomerUsForm) => ({ ...values, [id]: { ...values[id as keyof CustomerUsForm], valid: true, info: null } }));
+          setUserForm((values: CustomerUsForm) => ({
+            ...values,
+            [id]: { ...values[id as keyof CustomerUsForm], valid: true, info: null },
+          }));
           userData[id as keyof ContactUsPayload] = value.trim(); // <= append input to userdata if its valid
         }
       }
 
-      await contactUsService(userData)
+      await consoleService
+        .contactUs(userData)
         .then(async () => {
           setUserForm(INIT_USER_FORM);
           enqueueSnackbar("Success: We'll get in touch soon", { variant: "success" });

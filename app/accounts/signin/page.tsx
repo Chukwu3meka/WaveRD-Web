@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import pageInfo from "utils/page-info";
 import SigninContainer from "components/accounts/signin";
 
@@ -8,6 +9,6 @@ export const metadata: Metadata = {
   description: pageInfo.signin.description,
 };
 
-export default function SigninPage() {
-  return <SigninContainer />;
-}
+const SigninPage = () => <SigninContainer />;
+
+export default SigninPage;

@@ -1,12 +1,12 @@
 import { MetadataRoute } from "next";
 
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/accounts/email-verification", "/accounts/password-reset/"],
-    },
-    sitemap: "https://soccermass.com/sitemap.xml",
-  };
-}
+const robots = (): MetadataRoute.Robots => ({
+  rules: {
+    userAgent: "*",
+    allow: "/",
+    disallow: ["/accounts/email-verification", "/accounts/password-reset/"],
+  },
+  sitemap: "https://soccermass.com/sitemap.xml",
+});
+
+export default robots;

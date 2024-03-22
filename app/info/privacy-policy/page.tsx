@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   description: pageInfo.privacyPolicy.description,
 };
 
-export default function PrivacyPolicyPage() {
-  return <PrivacyPolicy />;
-}
+const PrivacyPolicyPage = () => <PrivacyPolicy />;
+
+export default PrivacyPolicyPage;

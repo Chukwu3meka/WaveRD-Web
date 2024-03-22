@@ -1,12 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import styles from "./welcome.module.scss";
 
 import { Button, Typography } from "@mui/material";
-import { WelcomeProps } from "interfaces/components/home.interfaces";
 
-const Welcome = ({ showImage }: WelcomeProps) => (
+const Welcome = () => (
   <div className={styles.welcome}>
     <main>
       <aside>
@@ -21,12 +18,13 @@ const Welcome = ({ showImage }: WelcomeProps) => (
         </Typography>
 
         <Typography fontSize={{ xs: "1.1em", sm: "1.3em" }}>
-          The ultimate destination for football enthusiasts and managers, designed to provide you with everything you need to stay ahead of the game.
+          The ultimate destination for football enthusiasts and managers, designed to provide you with everything you need to stay ahead of
+          the game.
         </Typography>
 
         <Typography fontSize={{ xs: "1.1em", sm: "1.3em" }} mt="10px" mb="20px">
-          With our cutting-edge tools and in-depth insights, you can access real-time data. So join us today and experience the power of data-driven football API like
-          never before!
+          With our cutting-edge tools and in-depth insights, you can access real-time data. So join us today and experience the power of
+          data-driven football API like never before!
         </Typography>
 
         <span>
@@ -43,7 +41,7 @@ const Welcome = ({ showImage }: WelcomeProps) => (
           </Link>
         </span>
       </aside>
-      {showImage ? <figure></figure> : null}
+      <figure></figure>
     </main>
   </div>
 );

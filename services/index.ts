@@ -1,16 +1,5 @@
 import axios from "axios";
 
-export const baseServiceUrl = {
-  apihubService: "/apihub",
-  consoleService: "/console",
-  accountsService: "/accounts",
-};
-
-export const service = axios.create({
-  withCredentials: true,
-  baseURL: process.env.API_URL,
-});
-
 // export const setAxiosCookieInterceptor = (cookies: string | null) => {
 //   service.interceptors.request.use(
 //     (config) => {
@@ -23,3 +12,19 @@ export const service = axios.create({
 //     }
 //   );
 // };
+
+const service = axios.create({
+    withCredentials: true,
+    baseURL: process.env.API_URL,
+  }),
+  apihubServiceUrl = "/apihub",
+  consoleServiceUrl = "/console",
+  accountsServiceUrl = "/accounts";
+
+export {
+  //
+  apihubServiceUrl,
+  consoleServiceUrl,
+  accountsServiceUrl,
+  service as default,
+};

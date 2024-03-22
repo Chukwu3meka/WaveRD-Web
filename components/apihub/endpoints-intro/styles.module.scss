@@ -15,11 +15,8 @@
   // }
 }
 
-// .endpoints-intro {
-//   position: sticky;
-//   top: 0px;
-//   padding: 10px;
-//   min-height: calc(100vh - 190px);
-//   max-height: 100vh;
-//   overflow-y: auto;
-// }
+.endpoints-menu {
+  position: sticky;
+  padding: 10px;
+  transition: top 0.5s linear;
+}

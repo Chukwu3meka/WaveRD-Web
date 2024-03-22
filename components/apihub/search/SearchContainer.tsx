@@ -1,56 +1,67 @@
 "use client";
 
+import apihubService from "services/apihub.service";
+
 import { Search } from ".";
 import { useState } from "react";
-import { SearchContainerProps, SearchProps, SearchResult } from "interfaces/components/apihub.interface";
-import { searchEndpointService } from "services/apihub.service";
-import { AxiosError } from "axios";
+import { useSnackbar } from "notistack";
 import { ApiResponse } from "interfaces/services/shared.interface";
+import { SearchProps, SearchResult } from "interfaces/components/apihub.interface";
+import validator from "utils/validator";
 
-const SearchContainer = ({ getEndpoint }: SearchContainerProps) => {
-  const [value, setValue] = useState<SearchProps["value"]>(null),
+const SearchContainer = () => {
+  const { enqueueSnackbar } = useSnackbar(),
+    [loading, setLoading] = useState(false),
+    [searchPhrase, setSearchPhrase] = useState<string>(""),
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
     [inputValue, setInputValue] = useState<SearchProps["inputValue"]>("");
 
-  const onValueChange = (newValue: any) => {
-    // console.log({newValue});
+  const onValueChange = (newSearchPhrase: string) => {
+    setSearchPhrase(newSearchPhrase);
+  };
 
-    setValue(newValue);
+  const getEndpoint = (id: string) => {
+    console.log("getEndpoint");
   };
 
   const onInputChange = async (newInputValue: string) => {
-    console.log({ newInputValue });
-
     setInputValue(newInputValue);
-    if (newInputValue?.length) {
-      await searchEndpointService(newInputValue)
-        .then(({ success, data }: ApiResponse) => {
-          console.log(data);
 
-          // if (success && Array.isArray(data) && data.length) setSearchResult(data);
-        })
-        .catch(({ response }: AxiosError<ApiResponse>) => {
-          setSearchResult([]);
-        });
-    }
+    // if (newInputValue?.length) {
+    //   await apihubService
+    //     .getEndpoints(newInputValue)
+    //     .then(({ success, data }: ApiResponse) => {
+    //       if (success && Array.isArray(data) && [...data].length) setSearchResult(data);
+    //     })
+    //     .catch(() => setSearchResult([]));
+    // }
   };
 
-  const isOptionEqualToValue = (option: any, value: any) => {
-    // Custom equality test logic
-    // Return true if the option is equal to the value, false otherwise
-    // For example, if both option and value are objects, you can compare their properties
-    return option.id === value.id;
+  const searchEndpoints = async () => {
+    try {
+      console.log({ inputValue });
+
+      if (!inputValue) throw { message: "Search Phrase cannot be empty" };
+
+      validator({ value: inputValue, type: "comment", label: "Search Phrase" });
+
+      setLoading(true);
+    } catch (err: any) {
+      if (err && err.message) enqueueSnackbar(err.message || "Something went wrong", { variant: "error" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Search
-      value={value}
+      loading={loading}
       inputValue={inputValue}
       getEndpoint={getEndpoint}
       searchResult={searchResult}
       onValueChange={onValueChange}
       onInputChange={onInputChange}
-      isOptionEqualToValue={isOptionEqualToValue}
+      searchEndpoints={searchEndpoints}
     />
   );
 };

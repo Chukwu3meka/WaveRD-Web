@@ -2,7 +2,7 @@ import { Validator } from "interfaces/utils/validator.interface";
 
 const validator = ({ value, type, label }: Validator) => {
   if (!label) label = type.charAt(0).toUpperCase() + type.slice(1);
-
+  if (!`${value}`.trim().length) throw { message: `${label} cannot have only whitespace` };
   if (value === "" || value === undefined) throw { message: `${label} cannot be empty` };
 
   const charLengthLimit = (min: number, max: number) => {
@@ -23,21 +23,25 @@ const validator = ({ value, type, label }: Validator) => {
         };
       break;
     }
+
     case "password": {
       charLengthLimit(8, 16);
       const reg = /^(?=.*[A-Za-z])(?=.*\d).+$/;
       if (!reg.test(value)) throw { message: `${label} must have at least one letter/number.` };
       break;
     }
+
     case "handle": {
       charLengthLimit(3, 16);
 
       const reg = /^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$/;
-      if (!reg.test(value)) throw { message: `${label} must begin with a letter or number and may only contain an underscore between letters or numbers` };
+      if (!reg.test(value))
+        throw {
+          message: `${label} must begin with a letter or number and may only contain an underscore between letters or numbers`,
+        };
       break;
     }
 
-    case "name":
     case "name": {
       charLengthLimit(3, 64);
       const reg = /^[a-zA-Z]+([\ \'\.\-][a-zA-Z]+)*$/;
@@ -48,28 +52,26 @@ const validator = ({ value, type, label }: Validator) => {
       break;
     }
 
-    case "whatsapp": {
-      charLengthLimit(5, 17);
-      const reg = /^(?:\+|0{0,2})\d{1,3}\s?\d{3}\s?\d{3}\s?\d{4}$/;
-
-      if (!reg.test(value))
-        throw {
-          message: `${label} must be a valid phone number.`,
-        };
-      break;
-    }
-
     case "comment": {
-      charLengthLimit(20, 700);
+      charLengthLimit(3, 700);
 
       const reg = /^[a-zA-Z0-9,.!? -]*$/;
-      if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, apostrophe, exclamation and question mark.` };
+      if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, exclamation and question mark.` };
       break;
     }
+
+    // case "query": {
+    //   charLengthLimit(1, 50);
+
+    //   // const reg = /^[\w\d]+(?:[,-.\s!]?[\w\d]+)*$/;
+    //   // if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, and exclamation.` };
+    //   break;
+    // }
 
     default:
       throw { message: "Validation failed" };
   }
+
   // return true
 };
 

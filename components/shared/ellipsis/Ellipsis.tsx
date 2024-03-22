@@ -9,7 +9,7 @@ const Ellipsis = (props: EllipsisProps) => (
       display: "-webkit-box",
       textOverflow: "ellipsis",
       WebkitBoxOrient: "vertical",
-      WebkitLineClamp: props.maxLines,
+      WebkitLineClamp: props.lines,
     }}>
     {props.children}
   </Typography>

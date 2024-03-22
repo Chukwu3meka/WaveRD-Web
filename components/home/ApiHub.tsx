@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import VpnLockIcon from "@mui/icons-material/VpnLock";
@@ -77,7 +75,8 @@ const apihubFeatures = [
   {
     icon: <NetworkCheckIcon fontSize="inherit" />,
     title: "Improve Performance",
-    description: "Our Server is hosted on 'Render'; A reliable Cloud Provider to ensure 24/7 data availability and minimal response time with little to no down time",
+    description:
+      "Our Server is hosted on 'Render'; A reliable Cloud Provider to ensure 24/7 data availability and minimal response time with little to no down time",
   },
   {
     icon: <DataObjectIcon fontSize="inherit" />,

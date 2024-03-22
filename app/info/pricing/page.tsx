@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   description: pageInfo.pricing.description,
 };
 
-export default function PricingPage() {
-  return <Pricing />;
-}
+const PricingPage = () => <Pricing />;
+
+export default PricingPage;

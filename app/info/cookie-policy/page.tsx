@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   description: pageInfo.cookiePolicy.description,
 };
 
-export default function CookiePolicyPage() {
-  return <CookiePolicy />;
-}
+const CookiePolicyPage = () => <CookiePolicy />;
+
+export default CookiePolicyPage;

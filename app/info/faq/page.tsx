@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   description: pageInfo.faq.description,
 };
 
-export default function FaqPage() {
-  return <Faq />;
-}
+const FaqPage = () => <Faq />;
+
+export default FaqPage;

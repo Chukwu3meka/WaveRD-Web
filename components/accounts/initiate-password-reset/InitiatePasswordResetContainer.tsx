@@ -1,12 +1,12 @@
 "use client";
 
+import validator from "utils/validator";
+import accountsService from "services/accounts.service";
+
 import { AxiosError } from "axios";
 import { ForgotPassword } from ".";
 import { useSnackbar } from "notistack";
-import validator from "utils/validator";
 import { FocusEvent, useState } from "react";
-import { initPassResetService } from "services/accounts.service";
-
 import { ForgotPasswordForm } from "interfaces/components/accounts.interfaces";
 
 const InitiatePasswordResetContainer = () => {
@@ -43,7 +43,8 @@ const InitiatePasswordResetContainer = () => {
 
       validator({ value: email, type: "email", label: "Email Address" }); // <= re-validate all values before registeration
 
-      await initPassResetService({ email })
+      await accountsService
+        .initPasswordReset({ email })
         .then(async () => {
           setForm((values: any) => ({ ...values, email: { value: "", valid: true, info: "Email cannot be empty" } }));
           enqueueSnackbar("Kindly check your email for password reset link", { variant: "success" }); // <=  Inform user of regex error

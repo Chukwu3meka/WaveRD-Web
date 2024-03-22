@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   description: pageInfo.termsAndCondition.description,
 };
 
-export default function TermsPage() {
-  return <Terms />;
-}
+const TermsPage = () => <Terms />;
+
+export default TermsPage;

@@ -1,6 +1,7 @@
 "use client";
 
 import validator from "utils/validator";
+import accountsService from "services/accounts.service";
 
 import { Signin } from ".";
 import { AxiosError } from "axios";
@@ -9,7 +10,6 @@ import { useSnackbar } from "notistack";
 import { OAUTH_PROVIDERS } from "utils/constants";
 import { capitalize, deObfuscate } from "utils/helpers";
 import { FocusEvent, useEffect, useState } from "react";
-import { signinService } from "services/accounts.service";
 import { setProfileAction } from "../../../redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { ApiResponse } from "interfaces/services/shared.interface";
@@ -57,7 +57,6 @@ const SigninContainer = (props: SigninContainerProps) => {
 
   useEffect(() => {
     if (oAuthMessage) {
-      console.log("message", "dsdfds fdfsdffd dsfdf");
       for (const provider of OAUTH_PROVIDERS) {
         if (searchParams.get(provider)) {
           enqueueSnackbar(oAuthMessage, { variant: "error" });
@@ -90,7 +89,8 @@ const SigninContainer = (props: SigninContainerProps) => {
       validator({ value: email, type: "email" });
       validator({ value: password, type: "password" });
 
-      await signinService({ email, password })
+      await accountsService
+        .signin({ email, password })
         .then(async ({ data }) => {
           if (setProfileAction) setProfileAction(data);
           enqueueSnackbar("Authenticated Successfully", { variant: "success" });

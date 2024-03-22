@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   description: pageInfo.dataDeletion.description,
 };
 
-export default function DataDeletionPage() {
-  return <DataDeletion />;
-}
+const DataDeletionPage = () => <DataDeletion />;
+
+export default DataDeletionPage;

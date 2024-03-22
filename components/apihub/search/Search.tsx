@@ -1,54 +1,55 @@
+import Link from "next/link";
 import Ellipsis from "components/shared/ellipsis";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 import { SearchOutlined as SearchIcon } from "@mui/icons-material";
 import { SearchProps } from "interfaces/components/apihub.interface";
-import { TextField, Autocomplete, Divider, Stack, Typography, Box, IconButton } from "@mui/material";
+import { TextField, Autocomplete, Divider, Typography, Stack, IconButton } from "@mui/material";
 
-const Search = ({ searchResult, onInputChange, onValueChange, value, inputValue, getEndpoint, isOptionEqualToValue }: SearchProps) => (
-  <Autocomplete
-    fullWidth
-    value={value}
-    options={searchResult}
-    inputValue={inputValue}
-    onChange={(e, newValue) => onValueChange(newValue)}
-    onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
-    filterOptions={(options) => options} // Return all options without filtering
-    isOptionEqualToValue={(option, value) => isOptionEqualToValue(option, value)}
-    getOptionLabel={(option) => (typeof option === "string" ? inputValue : option.title)}
-    renderOption={(props, { title, description, id }) => (
-      <Box key={id} component="li" mb={1} {...props}>
-        <Stack onClick={() => getEndpoint(id)}>
-          <Stack direction="row" justifyContent="space-between" alignItems="flex-end" spacing={1} sx={{ width: "100%" }}>
-            <Typography maxWidth="80%" fontSize=".8em" noWrap sx={{ textTransform: "uppercase" }}>
-              {title}
-            </Typography>
+const Search = ({ loading, searchResult, onInputChange, inputValue, getEndpoint, onValueChange, searchEndpoints }: SearchProps) => (
+  <Stack spacing={1} direction="row" alignItems="flex-end">
+    <Autocomplete
+      freeSolo
+      fullWidth
+      size="small"
+      disabled={loading}
+      options={searchResult}
+      inputValue={inputValue}
+      onChange={(e, newValue) => onValueChange(newValue)}
+      isOptionEqualToValue={(option, value) => option.id === value.id}
+      onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
+      filterOptions={(options) => options} // Return all options without filtering
+      getOptionLabel={(option) => (typeof option === "string" ? inputValue : option.title)}
+      renderOption={(props, { title, description, id }) => (
+        <Link href={`/apihub/endpoint/${id}`} key={id}>
+          <Stack component="li" mb={1} {...props} onClick={() => getEndpoint(id)}>
+            <Stack direction="row" justifyContent="space-between" alignItems="flex-end" spacing={1} sx={{ width: "100%" }}>
+              <Typography maxWidth="80%" fontSize=".8em" noWrap sx={{ textTransform: "uppercase" }}>
+                {title}
+              </Typography>
+            </Stack>
+
+            <Divider sx={{ width: "90%", my: 1, alignSelf: "flex-end" }} />
+
+            <Ellipsis lines={2} display="block" variant="caption" color="text.secondary" sx={{ mt: 0.5, ml: 2 }}>
+              {description}
+            </Ellipsis>
           </Stack>
+        </Link>
+      )}
+      renderInput={(params) => <TextField {...params} label={<Stack direction="row">Start typing to search endpoints</Stack>} />}
+    />
 
-          <Divider sx={{ width: "90%", my: 1, alignSelf: "flex-end" }} />
-
-          <Ellipsis maxLines={2} display="block" variant="caption" color="text.secondary" sx={{ mt: 0.5, ml: 2 }}>
-            {description}
-          </Ellipsis>
-        </Stack>
-      </Box>
-    )}
-    // renderInput={(params) => <TextField {...params} placeholder="Start typing to search" inputProps={{ ...params.inputProps }} />}
-
-    renderInput={(params) => (
-      <TextField
-        sx={{ mt: 2 }}
-        {...params}
-        label={
-          <Stack direction="row">
-            <IconButton aria-label="mongodb" component="span" sx={{ mt: -1 }}>
-              <SearchIcon />
-            </IconButton>
-            Start typing to search endpoints
-          </Stack>
-        }
-      />
-    )}
-  />
+    <LoadingButton
+      href=""
+      loading={loading}
+      variant="contained"
+      onClick={searchEndpoints}
+      sx={{ height: 43, px: 3 }}
+      startIcon={<SearchIcon />}>
+      Search
+    </LoadingButton>
+  </Stack>
 );
 
 export default Search;

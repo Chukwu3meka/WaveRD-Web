@@ -19,5 +19,7 @@ export interface PageInfo {
   advertisement: PageInfoData;
   pricing: PageInfoData;
   organization: PageInfoData;
+  apihub: PageInfoData;
+  apihubEndpoints: PageInfoData;
   // [key: string]: PageInfoData;
 }

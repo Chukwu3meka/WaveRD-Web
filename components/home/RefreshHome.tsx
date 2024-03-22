@@ -2,9 +2,8 @@
 
 import { useSearchParams } from "next/navigation";
 import { OAUTH_PROVIDERS } from "utils/constants";
-import { ApiHub, ManagerContainer, WelcomeContainer } from "components/home";
 
-const HomeContainer = () => {
+const RefreshHome = () => {
   const searchParams = useSearchParams(),
     oAuthUsed = searchParams.get("auth");
 
@@ -13,13 +12,7 @@ const HomeContainer = () => {
     if (location) location.replace("/");
   }
 
-  return (
-    <main>
-      <WelcomeContainer />
-      <ManagerContainer />
-      <ApiHub />
-    </main>
-  );
+  return <></>;
 };
 
-export default HomeContainer;
+export default RefreshHome;

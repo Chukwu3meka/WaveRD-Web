@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   description: pageInfo.home.description,
 };
 
-export default async function HomePage() {
-  return (
-    <main>
-      <p>SoccerMASS Game</p>
-    </main>
-  );
-}
+const HomePage = async () => (
+  <main>
+    <p>SoccerMASS Game</p>
+  </main>
+);
+
+export default HomePage;

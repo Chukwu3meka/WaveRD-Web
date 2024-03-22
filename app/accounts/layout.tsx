@@ -5,15 +5,15 @@ import Accounts from "components/layouts/accounts-layout";
 
 import { ReactChildren } from "interfaces/components/shared.interface";
 
-export default function RootLayout({ children }: ReactChildren) {
-  return (
-    <>
-      <main className={styles.layout}>
-        <Slides layout="accounts" />
-        <Accounts>{children}</Accounts>
-      </main>
+const AccountsLayout = ({ children }: ReactChildren) => (
+  <>
+    <main className={styles.layout}>
+      <Slides layout="accounts" />
+      <Accounts>{children}</Accounts>
+    </main>
 
-      <FooterContainer />
-    </>
-  );
-}
+    <FooterContainer />
+  </>
+);
+
+export default AccountsLayout;

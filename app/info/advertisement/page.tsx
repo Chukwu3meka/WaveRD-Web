@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   description: pageInfo.advertisement.description,
 };
 
-export default function AdvertisementPage() {
-  return <Advertisement />;
-}
+const AdvertisementPage = () => <Advertisement />;
+
+export default AdvertisementPage;

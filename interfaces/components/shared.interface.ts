@@ -3,69 +3,6 @@ import { MouseEventHandler } from "react";
 import { TypographyProps } from "@mui/material/Typography";
 import { Profile, Role } from "interfaces/redux-store/account.interfaces";
 
-// ? Interfaces
-
-// export interface RoutesHandler {
-//   router: NextRouter;
-//   authenticated: boolean;
-//   setRoute: Function;
-//   // setActiveRouteAction;
-//   enqueueSnackbar: EnqueueSnackbar;
-// }
-
-// export interface HandleScroll {
-//   prevScrollPos: number;
-//   setPrevScrollPos: Function;
-//   setDisplayHeaderAction: Function;
-// }
-
-// export interface SubLayout {
-//   Component: AppProps["Component"];
-//   pageProps: AppProps["pageProps"];
-//   loading: boolean;
-// }
-
-// export interface InfoLayout extends SubLayout {
-//   activeRoute: string;
-//   deviceWidth: number;
-//   autoCompleteHandler: Function;
-// }
-
-// export interface NavLinks {
-//   label: string;
-//   path: string;
-// }
-
-// export interface Header {
-//   position: "relative" | "sticky";
-//   authenticated: boolean;
-//   displayHeader: boolean;
-//   swapColorFn: Function;
-//   color: ColorState;
-//   theme: Theme;
-//   themeHandler: Function;
-//   visible: VisibleState;
-// }
-
-// export interface HeaderContainer {
-//   auth: UserContext;
-//   setThemeAction: Function;
-//   width: number;
-//   theme: Theme;
-//   header: boolean;
-//   position: "relative" | "sticky";
-// }
-
-// export interface ColorState {
-//   first: "textSecondary" | "primary";
-//   last: "primary" | "textSecondary";
-// }
-
-// export interface VisibleState {
-//   nav: boolean;
-//   mobile: boolean;
-// }
-
 export interface ReactChildren {
   children: React.ReactNode;
 }
@@ -119,5 +56,5 @@ export interface UserRoleContainerProps {
 // export interface EllipsisProps extends ComponentType<TypographyProps> {
 export interface EllipsisProps extends TypographyProps {
   children: ReactNode;
-  maxLines: number;
+  lines: number;
 }

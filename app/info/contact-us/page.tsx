@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   description: pageInfo.contactUs.description,
 };
 
-export default function ContactUsPage() {
-  return <ContactUs />;
-}
+const ContactUsPage = () => <ContactUs />;
+
+export default ContactUsPage;
