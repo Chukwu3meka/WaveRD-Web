@@ -1,9 +1,9 @@
-import { GetEndpoints } from "interfaces/services/apihub.interface";
+import { GetEndpoints, GetEndpointsCategories } from "interfaces/services/apihub.interface";
 import service, { apihubServiceUrl } from ".";
 
 const apihubService = {
-  getEndpointsCategories: async () => {
-    const response = await service.get(apihubServiceUrl + `/endpoints/categories`);
+  getEndpointsCategories: async ({ limit }: GetEndpointsCategories) => {
+    const response = await service.get(apihubServiceUrl + `/endpoints/categories?limit=${limit}`);
     return response.data;
   },
 

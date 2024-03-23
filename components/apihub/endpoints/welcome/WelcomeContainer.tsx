@@ -2,19 +2,26 @@
 
 import apihubService from "services/apihub.service";
 
-import { Search } from ".";
-import { useState } from "react";
+import { Welcome } from ".";
+import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { SearchProps, SearchResult } from "interfaces/components/apihub.interface";
 import validator from "utils/validator";
+import { connect } from "react-redux";
+import { RootState } from "interfaces/redux-store/store.interface";
 
-const SearchContainer = () => {
+const WelcomeContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
     [searchPhrase, setSearchPhrase] = useState<string>(""),
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
+    [showMenu, setShowMenu] = useState((props.deviceWidth || 0) > 900),
     [inputValue, setInputValue] = useState<SearchProps["inputValue"]>("");
+
+  useEffect(() => {
+    setShowMenu(props.deviceWidth > 900);
+  }, [props.deviceWidth]);
 
   const onValueChange = (newSearchPhrase: string) => {
     setSearchPhrase(newSearchPhrase);
@@ -54,8 +61,9 @@ const SearchContainer = () => {
   };
 
   return (
-    <Search
+    <Welcome
       loading={loading}
+      showMenu={showMenu}
       inputValue={inputValue}
       getEndpoint={getEndpoint}
       searchResult={searchResult}
@@ -66,4 +74,10 @@ const SearchContainer = () => {
   );
 };
 
-export default SearchContainer;
+const mapStateToProps = (state: RootState) => ({
+    deviceWidth: state.layout.width,
+    displayHeader: state.layout.displayHeader,
+  }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeContainer);

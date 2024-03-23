@@ -4,3 +4,7 @@ export interface GetEndpoints {
   token: "initial" | string;
   sequence: "next" | "prev";
 }
+
+export interface GetEndpointsCategories {
+  limit: number;
+}

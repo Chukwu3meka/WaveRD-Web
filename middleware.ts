@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
 
 function goToLogin(destination: string, url: string) {
   return NextResponse.redirect(new URL(`/accounts/signin?target=${destination}`, url));
+  // return Response.redirect(new URL(`/accounts/signin?target=${destination}`, url));
 }
 
 export async function middleware(request: NextRequest) {

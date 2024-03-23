@@ -4,7 +4,9 @@ const domains = [
     { host: "localhost", domain: "http://localhost:8081" },
     { host: "soccermass.com", domain: "https://soccermass.com" },
   ],
-  subDomains = ["apihub", "manager", "console", "accounts"];
+  subDomains = ["apihub", "manager", "console", "accounts"],
+  WEB_URL = process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
+  API_URL = process.env.NODE_ENV === "production" ? "https://api.soccermass.com/v1" : "http://localhost:8081/v1";
 
 const nextConfig = {
   reactStrictMode: false,
@@ -13,13 +15,31 @@ const nextConfig = {
     "@mui/icons-material": { transform: "@mui/icons-material/{{ member }}" },
   },
 
+  experimental: {
+    serverActions: {
+      // allowedForwardedHosts: ["localhost", "www.soccermass.com"],
+      // allowedOrigins: ["https://www.soccermass.com", "localhost:8081"],
+      allowedForwardedHosts: ["localhost", "www.soccermass.com"],
+      allowedOrigins: ["https://www.soccermass.com", "localhost:8081"],
+    },
+  },
+
   env: {
+    API_URL,
+    WEB_URL,
     NOTICE_PERIOD: "30",
     INACTIVITY_PERIOD: "21",
     DATA_DELETION_PERIOD_PERIOD: "14",
-    WEB_URL: process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
-    API_URL: process.env.NODE_ENV === "production" ? "https://api.soccermass.com/v1" : "http://localhost:8081/v1",
   },
+
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/:path",
+  //       headers: [{ key: "Access-Control-Allow-Origin", value: WEB_URL }],
+  //     },
+  //   ];
+  // },
 
   async redirects() {
     return subDomains
