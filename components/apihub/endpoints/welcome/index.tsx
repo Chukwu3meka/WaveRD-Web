@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-import Search from "./Search.tsx";
+import Search from "./Search";
 import Welcome from "./Welcome";
 import WelcomeContainer from "./WelcomeContainer";
 

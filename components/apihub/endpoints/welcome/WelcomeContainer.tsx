@@ -12,7 +12,8 @@ import { connect } from "react-redux";
 import { RootState } from "interfaces/redux-store/store.interface";
 
 const WelcomeContainer = (props) => {
-  const { enqueueSnackbar } = useSnackbar(),
+  const { getEndpoints } = props,
+    { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
     [searchPhrase, setSearchPhrase] = useState<string>(""),
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
@@ -34,14 +35,19 @@ const WelcomeContainer = (props) => {
   const onInputChange = async (newInputValue: string) => {
     setInputValue(newInputValue);
 
-    // if (newInputValue?.length) {
-    //   await apihubService
-    //     .getEndpoints(newInputValue)
-    //     .then(({ success, data }: ApiResponse) => {
-    //       if (success && Array.isArray(data) && [...data].length) setSearchResult(data);
-    //     })
-    //     .catch(() => setSearchResult([]));
-    // }
+    console.log(newInputValue);
+
+    if (newInputValue?.length) {
+      const a = await getEndpoints({ phrase: newInputValue, sequence: "next", token: "initial", limit: 3 });
+      console.log(a);
+
+      //   await apihubService
+      //     .getEndpoints(newInputValue)
+      //     .then(({ success, data }: ApiResponse) => {
+      //       if (success && Array.isArray(data) && [...data].length) setSearchResult(data);
+      //     })
+      //     .catch(() => setSearchResult([]));
+    }
   };
 
   const searchEndpoints = async () => {
