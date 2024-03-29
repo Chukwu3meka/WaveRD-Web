@@ -6,7 +6,8 @@ interface IFetcher {
 
 const fetcher = async ({ endpoint, data = null, method }: IFetcher) => {
   const WEB_URL = process.env.API_URL,
-    api_url = `${WEB_URL}/api/v1${endpoint}`;
+    // api_url = `${WEB_URL}/api/v1${endpoint}`;
+    api_url = `http://localhost:8081/v1${endpoint}`;
 
   const fetchOptions: any = {
     headers: { "Content-Type": "application/json" },

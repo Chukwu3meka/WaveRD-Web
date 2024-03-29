@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Endpoints } from ".";
 import fetcher from "@utils/fetcher";
 
-function EndpointsContainer(props) {
+const EndpointsContainer = (props) => {
   const [endpoint, setEndpoint] = useState(null);
   const [status, setStatus] = useState({ loading: false, error: false });
 
@@ -26,7 +26,7 @@ function EndpointsContainer(props) {
   };
 
   return <Endpoints getEndpoint={getEndpoint} endpoint={endpoint} status={status} />;
-}
+};
 
 const mapStateToProps = (state) => ({
   width: state.layout.width,

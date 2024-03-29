@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "SoccerMASS: Football Manager and Football API Provider",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "start": "next start",
     "build": "next build",
     "export": "next export",

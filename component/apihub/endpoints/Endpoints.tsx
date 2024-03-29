@@ -12,14 +12,14 @@ export default function ({ getEndpoint, endpoint, status }: any) {
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <div className="intro">
             <div>
-              <Image
+              {/* <Image
                 src="/images/layout/intro-apihub.png"
                 alt="SoccerMASS API HUB welcome image"
                 fill
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-              />
+              /> */}
             </div>
           </div>
         </Grid>

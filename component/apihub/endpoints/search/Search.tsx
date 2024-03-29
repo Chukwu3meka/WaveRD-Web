@@ -3,7 +3,7 @@ import { TextField, Autocomplete, Divider, Stack, Typography, Box } from "@mui/m
 
 import { SearchProps } from "@interface/apihub/endpoints-interface";
 
-export default function Search({ searchResult, onInputChange, onValueChange, value, inputValue, getEndpoint, isOptionEqualToValue }: SearchProps) {
+function Search({ searchResult, onInputChange, onValueChange, value, inputValue, getEndpoint, isOptionEqualToValue }: SearchProps) {
   return (
     <Autocomplete
       fullWidth
@@ -36,3 +36,5 @@ export default function Search({ searchResult, onInputChange, onValueChange, val
     />
   );
 }
+
+export default Search;
