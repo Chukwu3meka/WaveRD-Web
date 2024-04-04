@@ -1,7 +1,14 @@
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import pageInfo from "./page-info";
 
-import { Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
+import {
+  Categories,
+  Competition,
+  ContactPreferences,
+  ContactUsCategories,
+  InfoLinks,
+  SocialAccounts,
+} from "interfaces/utils/constants.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
@@ -62,3 +69,11 @@ export const CONTACT_US_CATEGORIES: ContactUsCategories[] = [
   { value: "advertising", label: "Advertising" },
   { value: "service", label: "Digital Service" },
 ];
+
+export const CATEGORIES: Categories = {
+  "": "football-referees",
+  "": "football-countries",
+  "": "football-competitions",
+  "65fdaf6b3f0da305ed4306ad": "football-clubs",
+  "65fdaf6b3f0da305ed4306ae": "football-players",
+};

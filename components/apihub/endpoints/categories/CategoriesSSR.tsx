@@ -4,10 +4,10 @@ import { CategoriesContainer } from ".";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { Category } from "interfaces/components/apihub.interface";
 
-const Categories = async () => {
+const CategoriesSSR = async () => {
   const categories: Category[] = await apihubService
     .getEndpointsCategories({ limit: 10 })
-    .then(({ success, data }: ApiResponse) => {
+    .then(({ success, data }: ApiResponse<Category[]>) => {
       if (success && Array.isArray(data)) return data;
       return [];
     })
@@ -16,4 +16,4 @@ const Categories = async () => {
   return <CategoriesContainer categories={categories} />;
 };
 
-export default Categories;
+export default CategoriesSSR;

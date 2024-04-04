@@ -8,22 +8,22 @@ import { CategoriesContainerProps, Category } from "interfaces/components/apihub
 
 const CategoriesContainer = (props: CategoriesContainerProps) => {
   const [categories, setCategories] = useState<Category[]>([]),
-    [showMenu, setShowMenu] = useState((props.deviceWidth || 0) > 900),
-    [displayHeader, setDisplayHeader] = useState(!!props.displayHeader);
+    [displayHeader, setDisplayHeader] = useState(!!props.displayHeader),
+    [showTopCategories, setShowTopCategories] = useState((props.deviceWidth || 0) > 900);
 
   useEffect(() => {
     setCategories(props.categories);
   }, [props.categories]);
 
   useEffect(() => {
-    setShowMenu(props.deviceWidth > 900);
+    setShowTopCategories(props.deviceWidth > 1200);
   }, [props.deviceWidth]);
 
   useEffect(() => {
     setDisplayHeader(props.displayHeader);
   }, [props.displayHeader]);
 
-  return <CategoriesView showMenu={showMenu} categories={categories} displayHeader={displayHeader} />;
+  return <CategoriesView showTopCategories={showTopCategories} categories={categories} displayHeader={displayHeader} />;
 };
 
 const mapStateToProps = (state: RootState) => ({

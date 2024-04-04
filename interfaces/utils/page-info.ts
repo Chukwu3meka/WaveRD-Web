@@ -21,5 +21,4 @@ export interface PageInfo {
   organization: PageInfoData;
   apihub: PageInfoData;
   apihubEndpoints: PageInfoData;
-  // [key: string]: PageInfoData;
 }

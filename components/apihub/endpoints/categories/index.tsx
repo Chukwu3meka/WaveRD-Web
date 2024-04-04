@@ -1,8 +1,8 @@
 import styles from "./styles.module.scss";
 
-import Categories from "./Categories";
+import CategoriesSSR from "./CategoriesSSR";
 import CategoriesView from "./CategoriesView";
 import CategoriesLoading from "./CategoriesLoading";
 import CategoriesContainer from "./CategoriesContainer";
 
-export { styles, CategoriesView, CategoriesLoading, Categories as default, CategoriesContainer };
+export { styles, CategoriesView, CategoriesLoading, CategoriesSSR as default, CategoriesContainer };

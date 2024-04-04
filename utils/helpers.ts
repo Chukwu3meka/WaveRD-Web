@@ -78,7 +78,20 @@ const getSuffix = (number: number): string => {
 export const fullDateFn = (dateString: Date) => {
   const date = new Date(dateString);
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const monthsOfYear = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   const dayOfWeek = daysOfWeek[date.getDay()];
   const dayOfMonth = date.getDate();
@@ -139,4 +152,21 @@ export const timeToMS = (time: number, unit: "m" | "s" | "h") => {
     default:
       return time * 1000;
   }
+};
+
+export const shortNumber = (x: number) => {
+  const num = Math.round(x);
+  if (!Number.isInteger(num)) return 0;
+
+  const numLen = num.toString().length;
+  if (numLen <= 3) return num;
+
+  const notation = numLen >= 4 && numLen <= 6 ? "K" : numLen >= 7 && numLen <= 9 ? "M" : "B";
+
+  const denoted = (no: number) =>
+    `${num.toString().substring(0, no)}${
+      Number(num.toString().substring(no, no + 1)) >= 1 ? `.${num.toString().substring(no, no + 1)}` : ""
+    }${notation}`;
+
+  return [4, 7, 10].includes(numLen) ? denoted(1) : [5, 8, 11].includes(numLen) ? denoted(2) : denoted(3);
 };

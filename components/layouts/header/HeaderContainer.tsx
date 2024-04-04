@@ -52,11 +52,10 @@ const HeaderContainer = (props: HeaderContainerProps) => {
     setCssThemeVar(newTheme);
     if (setThemeAction) setThemeAction(newTheme);
 
-    if (authenticated) {
-      await accountsService.setTheme({ theme: newTheme }).catch((err) => {
-        if (err) enqueueSnackbar("Failed to save new theme across profile", { variant: "error" });
-      });
-    }
+    if (authenticated)
+      await accountsService
+        .setTheme({ theme: newTheme })
+        .catch(() => enqueueSnackbar("Failed to save new theme across profile", { variant: "error" }));
   };
 
   return <Header {...{ className, authenticated, theme, swapColorFn, color, profile, themeHandler, visible }} />;

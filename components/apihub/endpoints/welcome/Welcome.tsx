@@ -12,45 +12,42 @@ const Welcome = ({
   inputValue,
   getEndpoint,
   onValueChange,
+  centered,
   searchEndpoints,
 }: WelcomeProps) => (
-  <>
-    <Box maxWidth={1200} margin="auto" p={1} sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {showMenu ? <Grid item lg={3}></Grid> : null}
-        <Grid item lg={9}>
-          <Box>
-            <Stack direction="row" alignItems="center" spacing={4} py={8} px={1}>
-              {showMenu && (
-                <Avatar sx={{ width: 100, height: 100 }}>
-                  <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={100} height={100} />
-                </Avatar>
-              )}
-              <Box maxWidth={540}>
-                <Typography fontSize="1.5em" color="text.secondary">
-                  Unlimited Endpoints for your team
-                </Typography>
+  <Box p={1} sx={{ flexGrow: 1, background: "var(--secondary-color)" }}>
+    <Grid container spacing={2} maxWidth={1200}>
+      {showMenu ? <Grid item lg={3}></Grid> : null}
+      <Grid item sm={12} lg={9}>
+        <Stack direction="row" alignItems="center" justifyContent={centered ? "center" : "flex-start"} spacing={4} py={8} px={1}>
+          {showMenu && (
+            <Avatar sx={{ width: 100, height: 100 }}>
+              <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={100} height={100} />
+            </Avatar>
+          )}
+          <Box maxWidth={540}>
+            <Typography fontSize="1.5em" color="text.secondary">
+              Unlimited Endpoints for your team
+            </Typography>
 
-                <Typography mb={1}>
-                  With our Football data and an infinite variety of APIs through our API Hub, discover a world of wonders in SoccerMASS.
-                </Typography>
+            <Typography mb={1}>
+              With our Football data and an infinite variety of APIs through our API Hub, discover a world of wonders in SoccerMASS.
+            </Typography>
 
-                <Search
-                  loading={loading}
-                  searchResult={searchResult}
-                  onInputChange={onInputChange}
-                  inputValue={inputValue}
-                  getEndpoint={getEndpoint}
-                  onValueChange={onValueChange}
-                  searchEndpoints={searchEndpoints}
-                />
-              </Box>
-            </Stack>
+            <Search
+              loading={loading}
+              searchResult={searchResult}
+              onInputChange={onInputChange}
+              inputValue={inputValue}
+              getEndpoint={getEndpoint}
+              onValueChange={onValueChange}
+              searchEndpoints={searchEndpoints}
+            />
           </Box>
-        </Grid>
+        </Stack>
       </Grid>
-    </Box>
-  </>
+    </Grid>
+  </Box>
 );
 
 export default Welcome;

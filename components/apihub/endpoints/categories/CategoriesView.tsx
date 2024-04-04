@@ -1,26 +1,31 @@
-import Link from "next/link";
-import Icon from "@mui/material/Icon";
+import CategoriesIcon from "./CategoriesIcon";
 
 import { styles } from ".";
-import { List, ListItemText, ListItemButton, ListItemIcon, Grid } from "@mui/material";
+import { CATEGORIES } from "utils/constants";
 import { CategoriesViewProps } from "interfaces/components/apihub.interface";
+import { List, ListItemText, ListItemButton, Typography, ListItemIcon } from "@mui/material";
 
-const CategoriesView = ({ showMenu, categories, displayHeader }: CategoriesViewProps) =>
-  showMenu ? (
+const CategoriesView = ({ showTopCategories, categories, displayHeader }: CategoriesViewProps) =>
+  showTopCategories ? (
     <aside className={styles.categories} style={{ top: displayHeader ? "var(--headerHeight)" : "-10px" }}>
-      {categories?.map(({ title, _id, icon }) => (
-        <Link href={_id} key={_id}>
-          <List component="nav" aria-labelledby="nested-list-subheader" sx={{ width: "100%" }}>
-            <ListItemButton>
-              <ListItemIcon>
-                <Icon>{icon}</Icon>
-              </ListItemIcon>
-              <ListItemText primary={title} />
-            </ListItemButton>
-          </List>
-        </Link>
+      <Typography pl={2} fontWeight={600}>
+        Top Categories
+      </Typography>
+
+      {categories?.map(({ title, id, category }) => (
+        <List key={id} component="nav" aria-labelledby="nested-list-subheader" sx={{ width: "100%", mb: -2 }}>
+          <ListItemButton>
+            <ListItemIcon>
+              <CategoriesIcon icon={CATEGORIES[id]} color="primary" />
+            </ListItemIcon>
+
+            <ListItemText primary={title} sx={{ ml: -2 }} />
+          </ListItemButton>
+        </List>
       ))}
     </aside>
-  ) : null;
+  ) : (
+    <></>
+  );
 
 export default CategoriesView;

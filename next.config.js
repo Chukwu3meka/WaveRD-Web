@@ -8,6 +8,10 @@ const domains = [
   WEB_URL = process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
   API_URL = process.env.NODE_ENV === "production" ? "https://api.soccermass.com/v1" : "http://localhost:8081/v1";
 
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const nextConfig = {
   reactStrictMode: false,
   modularizeImports: {
@@ -55,4 +59,6 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
+
+// module.exports = nextConfig;

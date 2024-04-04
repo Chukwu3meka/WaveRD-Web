@@ -98,7 +98,7 @@ const SigninContainer = (props: SigninContainerProps) => {
           if (target) return router.push(target);
           router.push("/");
         })
-        .catch(({ response }: AxiosError<ApiResponse>) => {
+        .catch(({ response }: AxiosError<ApiResponse<string>>) => {
           const message = response ? response.data.message : "Invalid Email/Password";
 
           enqueueSnackbar(message, { variant: "error" });

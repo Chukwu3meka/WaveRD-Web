@@ -1,10 +1,19 @@
+import { Endpoint } from "interfaces/components/apihub.interface";
+import { ApiResponse } from "./shared.interface";
+
 export interface GetEndpoints {
-  phrase: string;
-  limit?: 3 | 30;
-  token: "initial" | string;
-  sequence: "next" | "prev";
+  page: number;
+  size: 3 | 20;
+  phrase?: string;
+  category?: string;
+  token?: null | string;
+  sequence?: "next" | "prev";
+  filter: "all" | "category" | "search";
 }
 
-export interface GetEndpointsCategories {
-  limit: number;
+export interface GetEndpointsResponse {
+  size: 3 | 20;
+  page: number;
+  content: Endpoint[];
+  totalElements: number;
 }

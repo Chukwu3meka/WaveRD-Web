@@ -53,7 +53,7 @@ const SignupContainer = () => {
           closeSnackbar(); // <= hide any error that have been shown previously
           setUserForm({ ...initUserForm, options: { ...initUserForm.options, accountCreated: true } });
         })
-        .catch(({ response }: AxiosError<ApiResponse>) => {
+        .catch(({ response }: AxiosError<ApiResponse<string>>) => {
           throw { message: response ? response.data.message : "Invalid Email/Password" };
         })
         .catch((err: AxiosError) => {
@@ -98,7 +98,7 @@ const SignupContainer = () => {
             if (exists) throw { message: `${capitalize(id)} not available, Kindly use a different ${capitalize(id)}` };
             setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
           })
-          .catch(({ response }: AxiosError<ApiResponse>) => {
+          .catch(({ response }: AxiosError<ApiResponse<string>>) => {
             const message = response ? response.data.message : "An error occurred";
             setUserForm((values) => ({ ...values, [id]: { valid: false, info: message, validating: false } }));
           });

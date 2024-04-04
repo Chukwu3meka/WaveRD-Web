@@ -11,9 +11,10 @@ import validator from "utils/validator";
 import { connect } from "react-redux";
 import { RootState } from "interfaces/redux-store/store.interface";
 
-const WelcomeContainer = (props) => {
-  const { getEndpoints } = props,
+const WelcomeContainer = (props: any) => {
+  const { getEndpoints, setSearchParam } = props,
     { enqueueSnackbar } = useSnackbar(),
+    [centered, setCentered] = useState(false),
     [loading, setLoading] = useState(false),
     [searchPhrase, setSearchPhrase] = useState<string>(""),
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
@@ -22,6 +23,8 @@ const WelcomeContainer = (props) => {
 
   useEffect(() => {
     setShowMenu(props.deviceWidth > 900);
+    //  setCentered(props.deviceWidth < 1200);
+    setCentered(props.deviceWidth < 1200);
   }, [props.deviceWidth]);
 
   const onValueChange = (newSearchPhrase: string) => {
@@ -35,11 +38,10 @@ const WelcomeContainer = (props) => {
   const onInputChange = async (newInputValue: string) => {
     setInputValue(newInputValue);
 
-    console.log(newInputValue);
-
     if (newInputValue?.length) {
-      const a = await getEndpoints({ phrase: newInputValue, sequence: "next", token: "initial", limit: 3 });
-      console.log(a);
+      console.log(newInputValue);
+      // const a = await getEndpoints({ phrase: newInputValue, sequence: "next", token: "initial", limit: 3 });
+      // console.log(a);
 
       //   await apihubService
       //     .getEndpoints(newInputValue)
@@ -52,11 +54,13 @@ const WelcomeContainer = (props) => {
 
   const searchEndpoints = async () => {
     try {
-      console.log({ inputValue });
+      // console.log({ inputValue });
 
       if (!inputValue) throw { message: "Search Phrase cannot be empty" };
 
       validator({ value: inputValue, type: "comment", label: "Search Phrase" });
+
+      setSearchParam({ phrase: inputValue, initial: true });
 
       setLoading(true);
     } catch (err: any) {
@@ -70,6 +74,7 @@ const WelcomeContainer = (props) => {
     <Welcome
       loading={loading}
       showMenu={showMenu}
+      centered={centered}
       inputValue={inputValue}
       getEndpoint={getEndpoint}
       searchResult={searchResult}
