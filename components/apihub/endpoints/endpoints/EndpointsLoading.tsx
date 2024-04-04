@@ -2,10 +2,10 @@ import { EndpointsLoadingProps } from "interfaces/components/apihub.interface";
 import { Avatar, Skeleton, Stack, Typography, Paper, Box, Grid, Divider } from "@mui/material";
 
 const EndpointsLoading = ({ centered, items }: EndpointsLoadingProps) => (
-  <Box p={1} sx={{ flexGrow: 1 }}>
-    <Grid container spacing={2} maxWidth={900} margin={centered ? "auto" : 0}>
+  <Box maxWidth={900} p={1} sx={{ flexGrow: 1 }}>
+    <Grid container spacing={2} alignItems={centered ? "center" : "flex-start"}>
       {new Array(items).fill(" ").map((_, i) => (
-        <Grid key={i} item sm={2} md={3} lg={4}>
+        <Grid key={i} item sm={6} md={4} lg={4}>
           <Paper sx={{ padding: 1, width: "100%" }}>
             <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
               <Skeleton width="100%">
@@ -19,7 +19,7 @@ const EndpointsLoading = ({ centered, items }: EndpointsLoadingProps) => (
 
             <Divider variant="inset" />
 
-            <Box my={3}>
+            <Box my={2.5}>
               <Skeleton />
               <Skeleton animation="wave" />
               <Skeleton animation={false} />
@@ -27,9 +27,9 @@ const EndpointsLoading = ({ centered, items }: EndpointsLoadingProps) => (
 
             <Divider variant="middle" sx={{ my: 1 }} />
 
-            <Stack direction="row" justifyContent="flex-end" alignItems="flex-end" spacing={1} ml={-1}>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={0.5}>
               {new Array(3).fill(" ").map((_, i) => (
-                <Stack direction="row" alignItems="center" key={i} spacing={0.4}>
+                <Stack direction="row" alignItems="center" key={i} spacing={0.2}>
                   <Skeleton variant="circular">
                     <Avatar sx={{ width: 10, height: 10 }} />
                   </Skeleton>

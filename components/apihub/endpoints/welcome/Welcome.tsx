@@ -15,11 +15,11 @@ const Welcome = ({
   centered,
   searchEndpoints,
 }: WelcomeProps) => (
-  <Box p={1} sx={{ flexGrow: 1, background: "var(--secondary-color)" }}>
-    <Grid container spacing={2} maxWidth={1200}>
-      {showMenu ? <Grid item lg={3}></Grid> : null}
-      <Grid item sm={12} lg={9}>
-        <Stack direction="row" alignItems="center" justifyContent={centered ? "center" : "flex-start"} spacing={4} py={8} px={1}>
+  <Box sx={{ flexGrow: 1, background: "var(--secondary-color)" }}>
+    <Grid container spacing={2} maxWidth={1200} margin="auto">
+      {showMenu ? <Grid item lg={3}></Grid> : <></>}
+      <Grid item sm={12} md={12} lg={9}>
+        <Stack direction="row" alignItems="center" justifyContent={centered ? "center" : "flex-start"} spacing={4} py={6} px={1}>
           {showMenu && (
             <Avatar sx={{ width: 100, height: 100 }}>
               <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={100} height={100} />

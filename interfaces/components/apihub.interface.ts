@@ -76,7 +76,7 @@ export interface Endpoint {
   title: string;
   latency: number;
   category: string;
-  bookmarks: string;
+  bookmarks: number;
   lastUpdated: string;
   description: string;
   paginationToken: string;
