@@ -2,7 +2,7 @@ import { Endpoint } from "interfaces/components/apihub.interface";
 import { ApiResponse } from "./shared.interface";
 
 export interface GetEndpoints {
-  page: number;
+  page?: number;
   size: 3 | 20;
   phrase?: string;
   category?: string;

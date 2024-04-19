@@ -10,9 +10,10 @@ import { SearchProps, SearchResult } from "interfaces/components/apihub.interfac
 import validator from "utils/validator";
 import { connect } from "react-redux";
 import { RootState } from "interfaces/redux-store/store.interface";
+import { setEndpointsAction } from "redux-store/actions";
 
 const WelcomeContainer = (props: any) => {
-  const { getEndpoints, setSearchParam } = props,
+  const { getEndpoints, setSearchParam, setEndpointsAction } = props,
     { enqueueSnackbar } = useSnackbar(),
     [centered, setCentered] = useState(false),
     [loading, setLoading] = useState(false),
@@ -39,40 +40,38 @@ const WelcomeContainer = (props: any) => {
     setInputValue(newInputValue);
 
     if (newInputValue?.length) {
-      console.log(newInputValue);
-      // const a = await getEndpoints({ phrase: newInputValue, sequence: "next", token: "initial", limit: 3 });
-      // console.log(a);
-
-      //   await apihubService
-      //     .getEndpoints(newInputValue)
-      //     .then(({ success, data }: ApiResponse) => {
-      //       if (success && Array.isArray(data) && [...data].length) setSearchResult(data);
-      //     })
-      //     .catch(() => setSearchResult([]));
+      await apihubService
+        .getEndpoints({
+          filter: "search",
+          phrase: newInputValue,
+          sequence: "next",
+          token: null,
+          size: 3,
+        })
+        .then(({ success, data }) => {
+          if (success && data.content && Array.isArray(data.content)) {
+            setSearchResult(data.content);
+          } else {
+            setSearchResult([]);
+          }
+        })
+        .catch(() => setSearchResult([]));
     }
   };
 
-  const searchEndpoints = async () => {
+  const searchEndpoints = () => {
     try {
-      // console.log({ inputValue });
-
+      console.log(inputValue);
       if (!inputValue) throw { message: "Search Phrase cannot be empty" };
-
       validator({ value: inputValue, type: "comment", label: "Search Phrase" });
-
-      setSearchParam({ phrase: inputValue, initial: true });
-
-      setLoading(true);
+      setEndpointsAction({ filter: "search", phrase: inputValue });
     } catch (err: any) {
       if (err && err.message) enqueueSnackbar(err.message || "Something went wrong", { variant: "error" });
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
     <Welcome
-      loading={loading}
       showMenu={showMenu}
       centered={centered}
       inputValue={inputValue}
@@ -89,6 +88,6 @@ const mapStateToProps = (state: RootState) => ({
     deviceWidth: state.layout.width,
     displayHeader: state.layout.displayHeader,
   }),
-  mapDispatchToProps = {};
+  mapDispatchToProps = { setEndpointsAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomeContainer);

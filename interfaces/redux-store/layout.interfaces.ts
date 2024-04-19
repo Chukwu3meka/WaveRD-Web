@@ -17,6 +17,7 @@ export type DeviceSize = {
 };
 
 export interface LayoutState {
+  breakpoint: "xs" | "sm" | "md" | "lg" | "xl";
   displayHeader: boolean;
   route: string;
   height: number;

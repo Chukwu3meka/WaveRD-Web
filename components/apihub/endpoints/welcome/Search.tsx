@@ -1,18 +1,16 @@
 import Link from "next/link";
 import Ellipsis from "components/shared/ellipsis";
-import LoadingButton from "@mui/lab/LoadingButton";
 
 import { SearchOutlined as SearchIcon } from "@mui/icons-material";
 import { SearchProps } from "interfaces/components/apihub.interface";
-import { TextField, Autocomplete, Divider, Typography, Stack, IconButton } from "@mui/material";
+import { TextField, Autocomplete, Divider, Typography, Stack, Button } from "@mui/material";
 
-const Search = ({ loading, searchResult, onInputChange, inputValue, getEndpoint, onValueChange, searchEndpoints }: SearchProps) => (
+const Search = ({ searchResult, onInputChange, inputValue, getEndpoint, onValueChange, searchEndpoints }: SearchProps) => (
   <Stack spacing={1} direction="row" alignItems="flex-end">
     <Autocomplete
       freeSolo
       fullWidth
       size="small"
-      disabled={loading}
       options={searchResult}
       inputValue={inputValue}
       onChange={(e, newValue) => onValueChange(newValue)}
@@ -21,34 +19,30 @@ const Search = ({ loading, searchResult, onInputChange, inputValue, getEndpoint,
       filterOptions={(options) => options} // Return all options without filtering
       getOptionLabel={(option) => (typeof option === "string" ? inputValue : option.title)}
       renderOption={(props, { title, description, id }) => (
-        <Link href={`/apihub/endpoint/${id}`} key={id}>
-          <Stack component="li" mb={1} {...props} onClick={() => getEndpoint(id)}>
-            <Stack direction="row" justifyContent="space-between" alignItems="flex-end" spacing={1} sx={{ width: "100%" }}>
+        <Stack {...props} component="li" mb={1} onClick={() => getEndpoint(id)} key={id}>
+          <Stack direction="row" justifyContent="space-between" alignItems="flex-end" spacing={1} sx={{ width: "100%" }}>
+            <Link href={`/apihub/endpoint/${id}`}>
               <Typography maxWidth="80%" fontSize=".8em" noWrap sx={{ textTransform: "uppercase" }}>
                 {title}
               </Typography>
-            </Stack>
+            </Link>
+          </Stack>
 
-            <Divider sx={{ width: "90%", my: 1, alignSelf: "flex-end" }} />
+          <Divider sx={{ width: "90%", my: 1, alignSelf: "flex-end" }} />
 
+          <Link href={`/apihub/endpoint/${id}`}>
             <Ellipsis lines={2} display="block" variant="caption" color="text.secondary" sx={{ mt: 0.5, ml: 2 }}>
               {description}
             </Ellipsis>
-          </Stack>
-        </Link>
+          </Link>
+        </Stack>
       )}
       renderInput={(params) => <TextField {...params} label={<Stack direction="row">Start typing to search endpoints</Stack>} />}
     />
 
-    <LoadingButton
-      href=""
-      loading={loading}
-      variant="contained"
-      onClick={searchEndpoints}
-      sx={{ height: 43, px: 3 }}
-      startIcon={<SearchIcon />}>
+    <Button href="" variant="contained" onClick={searchEndpoints} sx={{ height: 43, px: 3 }} startIcon={<SearchIcon />}>
       Search
-    </LoadingButton>
+    </Button>
   </Stack>
 );
 

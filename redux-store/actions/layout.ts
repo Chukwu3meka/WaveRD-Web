@@ -35,3 +35,14 @@ export const setDisplayHeaderAction = (data: boolean) => {
     }
   };
 };
+
+export const setBreakpointAction = (data: "xl" | "lg" | "md" | "sm" | "xs") => {
+  return (dispatch: AppDispatch) => {
+    try {
+      dispatch({ type: "SET_BREAKPOINT", data });
+      dispatch(removeErrorAction("SET_BREAKPOINT"));
+    } catch (err) {
+      return catchErr(dispatch, err, "SET_BREAKPOINT");
+    }
+  };
+};

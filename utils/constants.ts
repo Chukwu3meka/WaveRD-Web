@@ -77,3 +77,11 @@ export const CATEGORIES: Categories = {
   "65fdaf6b3f0da305ed4306ad": "football-clubs",
   "65fdaf6b3f0da305ed4306ae": "football-players",
 };
+
+export const BREAKPOINTS = {
+  xs: 0,
+  sm: 600,
+  md: 900,
+  lg: 1200,
+  xl: 1536,
+};

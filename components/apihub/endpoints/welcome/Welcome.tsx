@@ -6,7 +6,6 @@ import { WelcomeProps } from "interfaces/components/apihub.interface";
 
 const Welcome = ({
   showMenu,
-  loading,
   searchResult,
   onInputChange,
   inputValue,
@@ -16,7 +15,7 @@ const Welcome = ({
   searchEndpoints,
 }: WelcomeProps) => (
   <Box sx={{ flexGrow: 1, background: "var(--secondary-color)" }}>
-    <Grid container spacing={2} maxWidth={1200} margin="auto">
+    <Grid container spacing={2} maxWidth={1500} margin="auto">
       {showMenu ? <Grid item lg={3}></Grid> : <></>}
       <Grid item sm={12} md={12} lg={9}>
         <Stack direction="row" alignItems="center" justifyContent={centered ? "center" : "flex-start"} spacing={4} py={6} px={1}>
@@ -25,6 +24,7 @@ const Welcome = ({
               <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={100} height={100} />
             </Avatar>
           )}
+
           <Box maxWidth={540}>
             <Typography fontSize="1.5em" color="text.secondary">
               Unlimited Endpoints for your team
@@ -35,7 +35,6 @@ const Welcome = ({
             </Typography>
 
             <Search
-              loading={loading}
               searchResult={searchResult}
               onInputChange={onInputChange}
               inputValue={inputValue}

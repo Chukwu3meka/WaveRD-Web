@@ -4,8 +4,8 @@ import { EndpointsContainer } from ".";
 import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 
 const EndpointsSSR = async () => {
-  const limit = 20,
-    initEndpoints: GetEndpointsResponse = await apihubService
+  const limit: 20 = 20,
+    endpoints: GetEndpointsResponse = await apihubService
       .getEndpoints({ filter: "all", size: limit, page: 0 })
       .then(({ success, data }) => {
         if (success && data && Array.isArray(data.content)) return data;
@@ -13,7 +13,7 @@ const EndpointsSSR = async () => {
       })
       .catch(() => ({ page: 0, size: limit, totalElements: 0, content: [] }));
 
-  return <EndpointsContainer initEndpoints={initEndpoints} limit={limit} />;
+  return <EndpointsContainer endpoints={endpoints} limit={limit} />;
 };
 
 export default EndpointsSSR;

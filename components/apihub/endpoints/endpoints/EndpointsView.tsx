@@ -1,38 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import Ellipsis from "components/shared/ellipsis";
+import stylesVariables from "styles/variables.module.scss";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { formatDistance } from "date-fns";
 import { shortNumber } from "utils/helpers";
 import { BookmarkAddOutlined } from "@mui/icons-material";
 import { EndpointsViewProps } from "interfaces/components/apihub.interface";
-import { Paper, Box, Grid, IconButton, Stack, Divider, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Stack, Divider, CircularProgress } from "@mui/material";
 import { Update as LatencyIcon, Insights as LastUpdatedIcon, AutoAwesome as InsightsIcon } from "@mui/icons-material";
 
-const EndpointsLoadingContainer = dynamic(() => import("./EndpointsLoadingContainer"));
-
-const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreEndpoints, alignment, limit }: EndpointsViewProps) => (
-  <main>
-    <InfiniteScroll
-      pullDownToRefresh
-      hasMore={hasMoreEndpoints}
-      next={() => getMoreEndpoints()}
-      pullDownToRefreshThreshold={50}
-      dataLength={endpoints.content.length}
-      refreshFunction={() => refreshEndpoints()}
-      loader={<EndpointsLoadingContainer items={limit} />}
-      endMessage={<p style={{ textAlign: "center" }}>Yay! You have seen it all</p>}
-      // releaseToRefreshContent={<h3 style={{ textAlign: "center" }}>&#8593; Release to refresh</h3>}
-      // pullDownToRefreshContent={<h3 style={{ textAlign: "center" }}>&#8595; Pull down to refresh</h3>}
-    >
-      <Box maxWidth={900} p={1} sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2} alignItems={alignment}>
+const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreEndpoints, centered, breakpoint }: EndpointsViewProps) => (
+  <InfiniteScroll
+    pullDownToRefresh
+    hasMore={hasMoreEndpoints}
+    next={() => getMoreEndpoints()}
+    pullDownToRefreshThreshold={50}
+    dataLength={endpoints.content.length}
+    refreshFunction={() => refreshEndpoints()}
+    loader={
+      <Box display="flex" justifyContent="center" mb={2} mt={5} maxWidth={["xl"].includes(breakpoint) ? 1200 : 900} p={1}>
+        <svg width={0} height={0}>
+          <defs>
+            <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor={stylesVariables.secondaryColor as string} />
+              <stop offset="50%" stopColor={stylesVariables.primaryColor as string} />
+            </linearGradient>
+          </defs>
+        </svg>
+        <CircularProgress sx={{ "svg circle": { stroke: "url(#my_gradient)" } }} />
+      </Box>
+    }
+    endMessage={<p style={{ textAlign: "center" }}>Yay! You have seen it all</p>}>
+    <Box display="flex" justifyContent={centered ? "center" : "flex-start"}>
+      <Box maxWidth={["xl"].includes(breakpoint) ? 1200 : 900} p={1} sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
           {endpoints.content.map(({ description, id, title, bookmarks, lastUpdated, latency, category }) => (
-            <Grid key={id} item sm={6} md={4} lg={4}>
-              <Paper elevation={2} sx={{ padding: 1 }}>
+            <Grid key={id} item xs={12} sm={6} md={4} lg={4} xl={3}>
+              <div style={{ padding: 10, borderRadius: 10, border: "2px solid var(--secondary-color)" }}>
                 <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
                   <Link href={`/apihub/endpoints/${id}`}>
                     <Ellipsis lines={1} fontWeight={600} textTransform="capitalize" fontSize="1.3em" color="text.secondary">
@@ -86,13 +93,13 @@ const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreE
                     </Ellipsis>
                   </Stack>
                 </Stack>
-              </Paper>
+              </div>
             </Grid>
           ))}
         </Grid>
       </Box>
-    </InfiniteScroll>
-  </main>
+    </Box>
+  </InfiniteScroll>
 );
 
 export default EndpointsView;

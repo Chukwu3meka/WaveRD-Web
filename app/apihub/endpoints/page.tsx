@@ -21,7 +21,7 @@ const EndpointsPage = () => {
     <main>
       <WelcomeContainer />
 
-      <Box maxWidth={1200} margin="auto" p={1} sx={{ flexGrow: 1 }}>
+      <Box maxWidth={1500} margin="auto" p={1} sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item sm={12} lg={3}>
             <Suspense fallback={<CategoriesLoading />}>

@@ -76,8 +76,8 @@ const RootLayout = async ({ children }: ReactChildren) => {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/icon?<generated>" type="image/<generated>" sizes="<generated>" />
-        <link rel="apple-touch-icon" href="/apple-icon?<generated>" type="image/<generated>" sizes="<generated>" />
+        <link rel="icon" href="/icon.ico" type="image/ico" sizes="auto" />
+        <link rel="apple-touch-icon" href="/apple-icon.ico" type="image/ico" sizes="auto" />
       </head>
       <body className={`${merienda.className}  ${robotoSlab.className}`}>
         <Suspense

@@ -1,4 +1,5 @@
 import { IconProps, SvgIconProps } from "@mui/material";
+import { LayoutState } from "interfaces/redux-store/layout.interfaces";
 import { GetEndpoints, GetEndpointsResponse } from "interfaces/services/apihub.interface";
 import { MouseEventHandler, ReactNode, WheelEventHandler } from "react";
 
@@ -30,7 +31,6 @@ export interface WelcomeProps extends SearchProps {
 }
 
 export interface SearchProps {
-  loading: boolean;
   inputValue: string;
   getEndpoint: Function;
   onValueChange: Function;
@@ -48,27 +48,29 @@ export interface SearchResult {
 export interface EndpointsContainerProps {
   deviceWidth?: number;
   limit: GetEndpoints["size"];
-  endpoints?: GetEndpointsResponse;
-  initEndpoints: GetEndpointsResponse;
+  endpoints: GetEndpointsResponse;
+  breakpoint?: LayoutState["breakpoint"];
 }
 
 export interface EndpointsLoadingContainerProps {
   items: number;
   deviceWidth?: number;
+  breakpoint?: LayoutState["breakpoint"];
 }
 
 export interface EndpointsLoadingProps {
   items: number;
   centered: boolean;
+  breakpoint: LayoutState["breakpoint"];
 }
 
 export interface EndpointsViewProps {
+  centered: boolean;
   hasMoreEndpoints: boolean;
   refreshEndpoints: Function;
   getMoreEndpoints: Function;
-  limit: GetEndpoints["size"];
   endpoints: GetEndpointsResponse;
-  alignment: "flex-end" | "center";
+  breakpoint: LayoutState["breakpoint"];
 }
 
 export interface Endpoint {

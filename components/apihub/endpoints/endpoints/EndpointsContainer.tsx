@@ -1,37 +1,55 @@
 "use client";
 
-import { EndpointsView } from ".";
-import { connect } from "react-redux";
-import { useEffect, useRef, useState } from "react";
-import { RootState } from "interfaces/redux-store/store.interface";
-import { EndpointsContainerProps, Category, Endpoint, EndpointsViewProps } from "interfaces/components/apihub.interface";
-import { setEndpointsAction } from "redux-store/actions";
-import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 import apihubService from "services/apihub.service";
 
+import { EndpointsView } from ".";
+import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import { BREAKPOINTS } from "utils/constants";
+import { setEndpointsAction } from "redux-store/actions";
+import { RootState } from "interfaces/redux-store/store.interface";
+import { LayoutState } from "interfaces/redux-store/layout.interfaces";
+import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
+import { EndpointsContainerProps } from "interfaces/components/apihub.interface";
+
 const EndpointsContainer = (props: EndpointsContainerProps) => {
-  const { limit, deviceWidth = 0 } = props,
+  const { limit } = props,
+    [centered, setCentered] = useState(false),
     [hasMoreEndpoints, setHasMoreEndpoints] = useState(false),
-    [endpoints, setEndpoints] = useState<GetEndpointsResponse>({ content: [], page: 0, size: limit, totalElements: 0 }),
-    [alignment, setAlignment] = useState<EndpointsViewProps["alignment"]>(deviceWidth > 900 ? "flex-end" : "center");
+    initEndpoints = { content: [], page: 0, size: limit, totalElements: 0 },
+    [breakpoint, setBreakpoint] = useState<LayoutState["breakpoint"]>("xs"),
+    [endpoints, setEndpoints] = useState<GetEndpointsResponse>(initEndpoints);
+
+  // useEffect(() => {
+  //   if (endpoints.content.length) {
+  //     // endpointsFilter: state.apihub.endpoints.filter,
+  //     // endpointsPhrase: state.apihub.endpoints.Phrase,
+  //   }
+  // }, [props.endpointsFilter, props.endpointsPhrase]);
 
   useEffect(() => {
-    setEndpoints(props.initEndpoints);
-    setHasMoreEndpoints(!!props.initEndpoints.content.length);
-  }, [props.initEndpoints]);
+    if (props.endpoints) {
+      setEndpoints(props.endpoints);
+      setHasMoreEndpoints(!!props.endpoints.content.length);
+    }
+  }, [props.endpoints]);
 
   useEffect(() => {
-    if (props.deviceWidth) setAlignment(props.deviceWidth > 900 ? "flex-end" : "center");
+    if (props.deviceWidth) setCentered(props.deviceWidth < BREAKPOINTS.lg);
   }, [props.deviceWidth]);
+
+  useEffect(() => {
+    if (props.breakpoint) setBreakpoint(props.breakpoint);
+  }, [props.breakpoint]);
 
   const getMoreEndpoints = async () => {
     const moreEndpoints: GetEndpointsResponse = await apihubService
       .getEndpoints({ filter: "all", size: limit, page: endpoints.page + 1 })
       .then(({ success, data }) => {
         if (success && data && Array.isArray(data.content)) return data;
-        return { page: endpoints.page, size: limit, totalElements: 0, content: [] };
+        return { ...initEndpoints, page: endpoints.page, size: limit };
       })
-      .catch(() => ({ page: endpoints.page, size: limit, totalElements: 0, content: [] }));
+      .catch(() => ({ ...initEndpoints, page: endpoints.page, size: limit }));
 
     const newContent = [...endpoints.content, ...moreEndpoints.content];
 
@@ -40,8 +58,7 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
   };
 
   const refreshEndpoints = async () => {
-    // ? Reset endpoints
-    setEndpoints({ content: [], page: 0, size: limit, totalElements: 0 });
+    setEndpoints(initEndpoints);
 
     const freshEndpoints: GetEndpointsResponse = await apihubService
       .getEndpoints({ filter: "all", size: limit, page: 0 })
@@ -57,9 +74,9 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
 
   return (
     <EndpointsView
-      limit={limit}
       endpoints={endpoints}
-      alignment={alignment}
+      centered={centered}
+      breakpoint={breakpoint}
       hasMoreEndpoints={hasMoreEndpoints}
       refreshEndpoints={refreshEndpoints}
       getMoreEndpoints={getMoreEndpoints}
@@ -69,6 +86,9 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
 
 const mapStateToProps = (state: RootState) => ({
     deviceWidth: state.layout.width,
+    breakpoint: state.layout.breakpoint,
+    endpointsFilter: state.apihub.endpoints.filter,
+    endpointsPhrase: state.apihub.endpoints.Phrase,
   }),
   mapDispatchToProps = { setEndpointsAction };
 

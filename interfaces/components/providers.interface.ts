@@ -18,6 +18,7 @@ export interface ProvidersContainerProps {
   displayHeader?: boolean;
   children?: React.ReactNode;
   setProfileAction?: Function;
+  setBreakpointAction?: Function;
   setDeviceSizeAction?: Function;
   setDisplayHeaderAction?: Function;
 }

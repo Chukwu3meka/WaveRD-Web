@@ -4,14 +4,16 @@ import { Providers } from ".";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { setCssThemeVar } from "utils/helpers";
-import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { Theme } from "interfaces/components/layouts.interface";
 import { RootState } from "interfaces/redux-store/store.interface";
+import { BREAKPOINTS, HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { ProvidersContainerProps } from "interfaces/components/providers.interface";
-import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction } from "../../redux-store/actions";
+import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction, setBreakpointAction } from "../../redux-store/actions";
+
+const { xl, lg, md, sm } = BREAKPOINTS;
 
 const ProvidersContainer = (props: ProvidersContainerProps) => {
-  const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction } = props,
+  const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction } = props,
     [initialized, setInitialized] = useState(false),
     [prevScrollPos, setPrevScrollPos] = useState(0),
     [displayHeader, setDisplayHeader] = useState(false),
@@ -57,8 +59,11 @@ const ProvidersContainer = (props: ProvidersContainerProps) => {
   }, [props.theme]);
 
   const handleResize = () => {
-    if (setDeviceSizeAction) {
-      setDeviceSizeAction({ width: window.innerWidth, height: window.innerHeight });
+    if (setDeviceSizeAction && setBreakpointAction) {
+      const { innerWidth: width, innerHeight: height } = window;
+
+      setDeviceSizeAction({ width, height });
+      setBreakpointAction(width > xl ? "xl" : width > lg ? "lg" : width > md ? "md" : width > sm ? "sm" : "xs");
     }
   };
 
@@ -91,6 +96,6 @@ const mapStateToProps = (state: RootState) => ({
     theme: state.account.profile.theme,
     displayHeader: state.layout.displayHeader,
   }),
-  mapDispatchToProps = { setProfileAction, setDeviceSizeAction, setDisplayHeaderAction };
+  mapDispatchToProps = { setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProvidersContainer);
