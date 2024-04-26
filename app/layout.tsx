@@ -8,8 +8,8 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { cookies } from "next/headers";
 import { unstable_noStore } from "next/cache";
+import RootProviders from "components/providers";
 import { accountsServiceUrl } from "services/index";
-import { RootProviders } from "components/providers";
 import { LinearProgress, Stack } from "@mui/material";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -72,7 +72,12 @@ export const metadata: Metadata = {
   description: pageInfo.home.description,
 };
 
-const RootLayout = async ({ children }: ReactChildren) => {
+type RootProps = {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+};
+
+const RootLayout = async ({ children, modal }: RootProps) => {
   return (
     <html lang="en">
       <head>
@@ -86,7 +91,7 @@ const RootLayout = async ({ children }: ReactChildren) => {
               <LinearProgress color="inherit" />
             </Stack>
           }>
-          <MainView>{children}</MainView>
+          <MainView modal={modal}>{children}</MainView>
         </Suspense>
 
         <SpeedInsights />
@@ -98,12 +103,16 @@ const RootLayout = async ({ children }: ReactChildren) => {
   );
 };
 
-const MainView = async ({ children }: ReactChildren) => {
+const MainView = async ({ children, modal }: RootProps) => {
   const profile: null | Profile = await getUserProfile()
     .then((res) => res)
     .catch((err) => null);
 
-  return <RootProviders user={profile}>{children}</RootProviders>;
+  return (
+    <RootProviders user={profile} modal={modal}>
+      {children}
+    </RootProviders>
+  );
 };
 
 export default RootLayout;

@@ -35,13 +35,15 @@ export const capitalize = (phrase: string) => {
   return capitalized.join(" ");
 };
 
-export const stringToId = (phrase: string) => {
+export const testToId = (phrase: string) => {
   if (!phrase) throw { message: "Unable to transform string" };
 
-  return phrase
-    .split(" ")
-    .map((word) => word.toLowerCase())
-    .join("-");
+  // return phrase
+  //   .split(" ")
+  //   .map((word) => word.toLowerCase())
+  //   .join("-");
+
+  return phrase.replace(/\s+/g, "-").toLowerCase();
 };
 
 export const deObfuscate = (phrase: string) => {

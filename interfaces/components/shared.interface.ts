@@ -58,3 +58,10 @@ export interface EllipsisProps extends TypographyProps {
   children: ReactNode;
   lines: number;
 }
+
+export interface ModalProps {
+  title?: string;
+  children: ReactNode;
+  height?: number | string;
+  maxHeight?: number | string;
+}

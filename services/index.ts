@@ -22,6 +22,7 @@ const service = axios.create({
   accountsServiceUrl = "/accounts";
 
 export {
+  axios,
   //
   apihubServiceUrl,
   consoleServiceUrl,

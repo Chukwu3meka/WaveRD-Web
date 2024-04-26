@@ -4,12 +4,21 @@ import { CategoriesView } from ".";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { CategoriesContainerProps, Category } from "interfaces/components/apihub.interface";
+import { CategoriesContainerProps, Category } from "interfaces/components/apihub/endpoints.interface";
+import { setEndpointsParamAction } from "redux-store/actions";
 
 const CategoriesContainer = (props: CategoriesContainerProps) => {
-  const [categories, setCategories] = useState<Category[]>([]),
+  const { setEndpointsParamAction } = props,
+    [selected, setSelected] = useState(""),
+    [categories, setCategories] = useState<Category[]>([]),
     [displayHeader, setDisplayHeader] = useState(!!props.displayHeader),
     [showTopCategories, setShowTopCategories] = useState((props.deviceWidth || 0) > 900);
+
+  useEffect(() => {
+    if (props.endpoints && props.endpoints.filter === "category") {
+      setSelected(props.endpoints.phrase);
+    }
+  }, [props.endpoints]);
 
   useEffect(() => {
     setCategories(props.categories);
@@ -23,13 +32,26 @@ const CategoriesContainer = (props: CategoriesContainerProps) => {
     setDisplayHeader(props.displayHeader);
   }, [props.displayHeader]);
 
-  return <CategoriesView showTopCategories={showTopCategories} categories={categories} displayHeader={displayHeader} />;
+  const switchCategory = (category: string) => () => {
+    if (setEndpointsParamAction) setEndpointsParamAction({ filter: "category", phrase: category });
+  };
+
+  return (
+    <CategoriesView
+      selected={selected}
+      categories={categories}
+      displayHeader={displayHeader}
+      switchCategory={switchCategory}
+      showTopCategories={showTopCategories}
+    />
+  );
 };
 
 const mapStateToProps = (state: RootState) => ({
+    endpoints: state.endpoints,
     deviceWidth: state.layout.width,
     displayHeader: state.layout.displayHeader,
   }),
-  mapDispatchToProps = {};
+  mapDispatchToProps = { setEndpointsParamAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);

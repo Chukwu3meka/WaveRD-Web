@@ -1,26 +1,20 @@
-"use client";
-
-import ProvidersContainer from ".";
-import appStore from "../../redux-store/reduxStore";
-
-import { Zoom } from "@mui/material";
-import { SnackbarProvider } from "notistack";
-import { SWRConfig, SWRConfiguration } from "swr";
-import { Provider as ReduxProvider } from "react-redux";
-import { RootProviders } from "interfaces/components/providers.interface";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { RootProvidersProps } from "interfaces/components/providers.interface";
+import { SwrProvider, SnackbarProvider, ReduxProvider, ProvidersContainer } from ".";
 
-const swrConfigOptions: SWRConfiguration = {},
-  RootProviders = ({ children, user }: RootProviders) => (
-    <AppRouterCacheProvider>
-      <ReduxProvider store={appStore}>
-        <SnackbarProvider TransitionComponent={Zoom} maxSnack={3} preventDuplicate anchorOrigin={{ horizontal: "right", vertical: "top" }}>
-          <ProvidersContainer user={user}>
-            <SWRConfig value={swrConfigOptions}>{children}</SWRConfig>
-          </ProvidersContainer>
-        </SnackbarProvider>
-      </ReduxProvider>
-    </AppRouterCacheProvider>
-  );
+const RootProviders = ({ children, user, modal }: RootProvidersProps) => (
+  <AppRouterCacheProvider>
+    <ReduxProvider>
+      <SnackbarProvider>
+        <ProvidersContainer user={user}>
+          <SwrProvider>
+            {children}
+            {modal}
+          </SwrProvider>
+        </ProvidersContainer>
+      </SnackbarProvider>
+    </ReduxProvider>
+  </AppRouterCacheProvider>
+);
 
 export default RootProviders;

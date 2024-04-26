@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { CategoriesIconProps } from "interfaces/components/apihub.interface";
+import { CategoriesIconProps } from "interfaces/components/apihub/endpoints.interface";
 import { AcUnit, GroupsRounded, EmojiEvents, ForkLeft, Public, SettingsAccessibility } from "@mui/icons-material";
 
 const CategoriesIcon = (props: CategoriesIconProps): ReactNode => {

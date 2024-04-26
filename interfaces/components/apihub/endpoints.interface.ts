@@ -11,9 +11,11 @@ export interface Category {
 }
 
 export interface CategoriesViewProps {
-  showTopCategories: boolean;
-  displayHeader: boolean;
+  selected: string;
   categories: Category[];
+  displayHeader: boolean;
+  switchCategory: Function;
+  showTopCategories: boolean;
 }
 
 export interface CategoriesIconProps extends SvgIconProps {
@@ -24,6 +26,8 @@ export interface CategoriesContainerProps {
   displayHeader: boolean;
   deviceWidth: number;
   categories: Category[];
+  endpoints?: { filter: string; phrase: string };
+  setEndpointsParamAction?: Function;
 }
 export interface WelcomeProps extends SearchProps {
   showMenu: boolean;
@@ -33,7 +37,6 @@ export interface WelcomeProps extends SearchProps {
 export interface SearchProps {
   inputValue: string;
   getEndpoint: Function;
-  onValueChange: Function;
   onInputChange: Function;
   searchResult: SearchResult[];
   searchEndpoints: MouseEventHandler<HTMLAnchorElement>;
@@ -49,7 +52,9 @@ export interface EndpointsContainerProps {
   deviceWidth?: number;
   limit: GetEndpoints["size"];
   endpoints: GetEndpointsResponse;
+  setEndpointsParamAction?: Function;
   breakpoint?: LayoutState["breakpoint"];
+  endpointsParam?: { filter: string; phrase: string };
 }
 
 export interface EndpointsLoadingContainerProps {
@@ -75,6 +80,7 @@ export interface EndpointsViewProps {
 
 export interface Endpoint {
   id: string;
+  path: string;
   title: string;
   latency: number;
   category: string;

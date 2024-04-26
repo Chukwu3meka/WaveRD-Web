@@ -1,9 +1,11 @@
-import { Endpoint } from "interfaces/components/apihub.interface";
+import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
 import { ApiResponse } from "./shared.interface";
+
+type AllowedLimit = 3 | 10 | 20;
 
 export interface GetEndpoints {
   page?: number;
-  size: 3 | 20;
+  size: AllowedLimit;
   phrase?: string;
   category?: string;
   token?: null | string;
@@ -12,8 +14,12 @@ export interface GetEndpoints {
 }
 
 export interface GetEndpointsResponse {
-  size: 3 | 20;
+  size: AllowedLimit;
   page: number;
   content: Endpoint[];
   totalElements: number;
+}
+
+export interface GetEndpointsCategories {
+  limit: AllowedLimit;
 }

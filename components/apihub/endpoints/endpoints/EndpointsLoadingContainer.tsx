@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { BREAKPOINTS } from "utils/constants";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { LayoutState } from "interfaces/redux-store/layout.interfaces";
-import { EndpointsLoadingContainerProps } from "interfaces/components/apihub.interface";
+import { EndpointsLoadingContainerProps } from "interfaces/components/apihub/endpoints.interface";
 
 const EndpointsLoadingContainer = (props: EndpointsLoadingContainerProps) => {
   const { items } = props,

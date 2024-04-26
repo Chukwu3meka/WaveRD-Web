@@ -1,36 +1,29 @@
 "use client";
 
-import apihubService from "services/apihub.service";
+import validator from "utils/validator";
+import ApihubService from "services/apihub.service";
 
 import { Welcome } from ".";
-import { useEffect, useState } from "react";
-import { useSnackbar } from "notistack";
-import { ApiResponse } from "interfaces/services/shared.interface";
-import { SearchProps, SearchResult } from "interfaces/components/apihub.interface";
-import validator from "utils/validator";
 import { connect } from "react-redux";
+import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
+import { setEndpointsParamAction } from "redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { setEndpointsAction } from "redux-store/actions";
+import { SearchProps, SearchResult } from "interfaces/components/apihub/endpoints.interface";
 
 const WelcomeContainer = (props: any) => {
-  const { getEndpoints, setSearchParam, setEndpointsAction } = props,
+  const apihubService = new ApihubService(),
     { enqueueSnackbar } = useSnackbar(),
     [centered, setCentered] = useState(false),
-    [loading, setLoading] = useState(false),
-    [searchPhrase, setSearchPhrase] = useState<string>(""),
+    { getEndpoints, setEndpointsParamAction } = props,
     [searchResult, setSearchResult] = useState<SearchResult[]>([]),
     [showMenu, setShowMenu] = useState((props.deviceWidth || 0) > 900),
     [inputValue, setInputValue] = useState<SearchProps["inputValue"]>("");
 
   useEffect(() => {
     setShowMenu(props.deviceWidth > 900);
-    //  setCentered(props.deviceWidth < 1200);
     setCentered(props.deviceWidth < 1200);
   }, [props.deviceWidth]);
-
-  const onValueChange = (newSearchPhrase: string) => {
-    setSearchPhrase(newSearchPhrase);
-  };
 
   const getEndpoint = (id: string) => {
     console.log("getEndpoint");
@@ -40,14 +33,11 @@ const WelcomeContainer = (props: any) => {
     setInputValue(newInputValue);
 
     if (newInputValue?.length) {
+      await apihubService.cancelGetEndpoints();
+      await apihubService.updateGetEndpointsSource();
+
       await apihubService
-        .getEndpoints({
-          filter: "search",
-          phrase: newInputValue,
-          sequence: "next",
-          token: null,
-          size: 3,
-        })
+        .getEndpoints({ filter: "search", size: 3, phrase: newInputValue, sequence: "next", token: "null" })
         .then(({ success, data }) => {
           if (success && data.content && Array.isArray(data.content)) {
             setSearchResult(data.content);
@@ -61,10 +51,8 @@ const WelcomeContainer = (props: any) => {
 
   const searchEndpoints = () => {
     try {
-      console.log(inputValue);
-      if (!inputValue) throw { message: "Search Phrase cannot be empty" };
       validator({ value: inputValue, type: "comment", label: "Search Phrase" });
-      setEndpointsAction({ filter: "search", phrase: inputValue });
+      setEndpointsParamAction({ filter: "search", phrase: inputValue });
     } catch (err: any) {
       if (err && err.message) enqueueSnackbar(err.message || "Something went wrong", { variant: "error" });
     }
@@ -77,7 +65,6 @@ const WelcomeContainer = (props: any) => {
       inputValue={inputValue}
       getEndpoint={getEndpoint}
       searchResult={searchResult}
-      onValueChange={onValueChange}
       onInputChange={onInputChange}
       searchEndpoints={searchEndpoints}
     />
@@ -88,6 +75,6 @@ const mapStateToProps = (state: RootState) => ({
     deviceWidth: state.layout.width,
     displayHeader: state.layout.displayHeader,
   }),
-  mapDispatchToProps = { setEndpointsAction };
+  mapDispatchToProps = { setEndpointsParamAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomeContainer);

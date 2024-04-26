@@ -23,7 +23,8 @@ export interface ProvidersContainerProps {
   setDisplayHeaderAction?: Function;
 }
 
-export interface RootProviders {
+export interface RootProvidersProps {
   user: Profile | null;
+  modal: React.ReactNode;
   children: React.ReactNode;
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { Providers } from ".";
+// import { Providers } from ".";
+import Providers from "./Providers";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { setCssThemeVar } from "utils/helpers";

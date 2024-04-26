@@ -1,9 +1,11 @@
-import apihubService from "services/apihub.service";
+import ApihubService from "services/apihub.service";
 
 import { EndpointsContainer } from ".";
 import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 
 const EndpointsSSR = async () => {
+  const apihubService = new ApihubService();
+
   const limit: 20 = 20,
     endpoints: GetEndpointsResponse = await apihubService
       .getEndpoints({ filter: "all", size: limit, page: 0 })

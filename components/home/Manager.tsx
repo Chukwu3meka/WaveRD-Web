@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Carousel from "nuka-carousel";
+// import { Carousel } from "nuka-carousel";
 import { managerStyles as styles } from ".";
 import { COMPETITIONS } from "utils/constants";
 import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
@@ -22,11 +22,19 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          <Carousel speed={10000} autoplay={true} dragging={false} wrapAround={true} withoutControls={true} autoplayInterval={2000} slidesToShow={slidesToShow}>
+          {/* <Carousel
+            // speed={10000}
+            autoplay={true}
+            // dragging={false}
+            // wrapAround={true}
+            // withoutControls={true}
+            autoplayInterval={2000}
+            // slidesToShow={slidesToShow}
+          >
             {COMPETITIONS.map(({ id, image, title }) => (
-              <Image  src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
+              <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
             ))}
-          </Carousel>
+          </Carousel> */}
         </Box>
       ) : (
         false
@@ -35,7 +43,8 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
       <div className={styles.managerIntro}>
         <Paper elevation={2}>
           <div>
-            <Image priority
+            <Image
+              priority
               src="/images/layout/intro-signup.webp"
               fill
               sizes="(max-width: 768px) 100vw,
@@ -101,7 +110,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          <Carousel
+          {/* <Carousel
             speed={10000}
             autoplay={true}
             dragging={false}
@@ -113,7 +122,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
             {clubs.map((club, index) => (
               <Image key={club} src={`/images/clubs/${club}.webp`} alt={`SoccerMASS  club ${index + 1}`} width={70} height={70} />
             ))}
-          </Carousel>
+          </Carousel> */}
         </Box>
       ) : (
         false

@@ -1,4 +1,4 @@
-import { EndpointsLoadingProps } from "interfaces/components/apihub.interface";
+import { EndpointsLoadingProps } from "interfaces/components/apihub/endpoints.interface";
 import { Avatar, Skeleton, Stack, Typography, Paper, Box, Grid, Divider } from "@mui/material";
 
 const EndpointsLoading = ({ items, centered, breakpoint }: EndpointsLoadingProps) => (

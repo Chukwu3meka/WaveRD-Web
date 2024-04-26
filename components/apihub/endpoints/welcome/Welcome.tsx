@@ -2,18 +2,9 @@ import Image from "next/image";
 
 import { Search } from ".";
 import { Avatar, Box, Grid, Stack, Typography } from "@mui/material";
-import { WelcomeProps } from "interfaces/components/apihub.interface";
+import { WelcomeProps } from "interfaces/components/apihub/endpoints.interface";
 
-const Welcome = ({
-  showMenu,
-  searchResult,
-  onInputChange,
-  inputValue,
-  getEndpoint,
-  onValueChange,
-  centered,
-  searchEndpoints,
-}: WelcomeProps) => (
+const Welcome = ({ showMenu, searchResult, onInputChange, inputValue, getEndpoint, centered, searchEndpoints }: WelcomeProps) => (
   <Box sx={{ flexGrow: 1, background: "var(--secondary-color)" }}>
     <Grid container spacing={2} maxWidth={1500} margin="auto">
       {showMenu ? <Grid item lg={3}></Grid> : <></>}
@@ -35,11 +26,10 @@ const Welcome = ({
             </Typography>
 
             <Search
-              searchResult={searchResult}
-              onInputChange={onInputChange}
               inputValue={inputValue}
               getEndpoint={getEndpoint}
-              onValueChange={onValueChange}
+              searchResult={searchResult}
+              onInputChange={onInputChange}
               searchEndpoints={searchEndpoints}
             />
           </Box>
