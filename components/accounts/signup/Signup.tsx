@@ -4,11 +4,24 @@ import Link from "next/link";
 import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import LoadingButton from "@mui/lab/LoadingButton";
+
 import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, PersonAddAlt1 as RegisterIcon } from "@mui/icons-material";
-import { Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment, Box, CircularProgress } from "@mui/material";
+import {
+  Stack,
+  TextField,
+  Typography,
+  InputLabel,
+  IconButton,
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 
 import { SignupProps } from "interfaces/components/accounts.interfaces";
+import pageInfo from "utils/page-info";
 
 const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHandler }: SignupProps) => (
   <Stack spacing={{ xs: 2, sm: 2, md: 2, lg: 2 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
@@ -101,7 +114,11 @@ const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHa
               inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
               endAdornment={
                 <InputAdornment position="end">
-                  <IconButton aria-label="toggle password visibility" onClick={() => handleClickShowPassword()} edge="end" disabled={!userForm.password.value}>
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => handleClickShowPassword()}
+                    edge="end"
+                    disabled={!userForm.password.value}>
                     {userForm.options.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                   </IconButton>
                 </InputAdornment>
@@ -127,8 +144,9 @@ const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHa
     </AttentionSeeker>
 
     <Typography fontSize={10.9} textAlign="center" pt={2}>
-      By clicking CREATE ACCOUNT, you agree to our <Link href="/info/terms">Terms & Conditions</Link> and have read and acknowledge our&nbsp;
-      <Link href="/info/privacy-policy">Privacy Policy</Link>
+      By clicking CREATE ACCOUNT, you agree to our <Link href={pageInfo.termsAndCondition.path}>Terms & Conditions</Link> and have read and
+      acknowledge our&nbsp;
+      <Link href={pageInfo.privacyPolicy.path}>Privacy Policy</Link>
     </Typography>
 
     <Typography fontSize={14}>

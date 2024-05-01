@@ -88,6 +88,20 @@ export interface Endpoint {
   lastUpdated: string;
   description: string;
   paginationToken: string;
+
+  response?: string;
+  snippets?: {
+    curl: SnippetsFormat;
+    fetch: SnippetsFormat;
+    [key: string]: SnippetsFormat;
+    // fetch: { title: string; snippet: string };
+    // curl: { title: string; snippet: string };
+  };
+}
+
+export interface SnippetsFormat {
+  title: string;
+  snippet: string;
 }
 
 // export interface EndpointsIntroProps {

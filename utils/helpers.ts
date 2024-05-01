@@ -80,20 +80,7 @@ const getSuffix = (number: number): string => {
 export const fullDateFn = (dateString: Date) => {
   const date = new Date(dateString);
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const monthsOfYear = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   const dayOfWeek = daysOfWeek[date.getDay()];
   const dayOfMonth = date.getDate();
@@ -171,4 +158,13 @@ export const shortNumber = (x: number) => {
     }${notation}`;
 
   return [4, 7, 10].includes(numLen) ? denoted(1) : [5, 8, 11].includes(numLen) ? denoted(2) : denoted(3);
+};
+
+export const copyToCLipboard = async (text: string) => {
+  // first time a user runs this function, a confirmation dialog is sent to confirm action
+  if (!navigator) throw { message: "Navigator is not defined" };
+  if (!navigator.clipboard) throw { message: "Navigator Clipboard is not available" };
+
+  // copy codeSnippet to clipboard
+  await navigator.clipboard.writeText(text);
 };

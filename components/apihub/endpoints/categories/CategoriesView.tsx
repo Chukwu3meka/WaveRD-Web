@@ -9,7 +9,7 @@ import { List, ListItemText, ListItemButton, Typography, ListItemIcon } from "@m
 const CategoriesView = ({ showTopCategories, categories, displayHeader, switchCategory, selected }: CategoriesViewProps) =>
   showTopCategories ? (
     <aside className={styles.categories} style={{ top: displayHeader ? "var(--headerHeight)" : "-10px" }}>
-      <Typography pl={7} sx={{ width: "100%", maxWidth: 220 }}>
+      <Typography pl={7} sx={{ width: "100%", maxWidth: 220 }} fontSize=".8em">
         Top Categories
       </Typography>
 

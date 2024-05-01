@@ -1,9 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-// import { Carousel } from "nuka-carousel";
+import Slider from "react-slick";
+
 import { managerStyles as styles } from ".";
 import { COMPETITIONS } from "utils/constants";
 import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
+
+const settings = {
+  dots: false,
+  speed: 2000,
+  infinite: true,
+  autoplay: true,
+  cssEase: "linear",
+  slidesToScroll: 1,
+  autoplaySpeed: 2000,
+  pauseOnHover: false,
+};
 
 export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWidth: number }) {
   return (
@@ -22,19 +36,13 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          {/* <Carousel
-            // speed={10000}
-            autoplay={true}
-            // dragging={false}
-            // wrapAround={true}
-            // withoutControls={true}
-            autoplayInterval={2000}
-            // slidesToShow={slidesToShow}
-          >
+          <Slider {...settings} slidesToShow={slidesToShow}>
             {COMPETITIONS.map(({ id, image, title }) => (
-              <Image src={image} key={id} alt={`SoccerMASS ${title}`} width={70} height={70} />
+              <figure key={id}>
+                <Image src={image} alt={`SoccerMASS ${title}`} width={70} height={70} />
+              </figure>
             ))}
-          </Carousel> */}
+          </Slider>
         </Box>
       ) : (
         false
@@ -110,19 +118,13 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          {/* <Carousel
-            speed={10000}
-            autoplay={true}
-            dragging={false}
-            wrapAround={true}
-            autoplayReverse={true}
-            withoutControls={true}
-            autoplayInterval={2000}
-            slidesToShow={slidesToShow}>
+          <Slider {...settings} slidesToShow={slidesToShow} rtl={true}>
             {clubs.map((club, index) => (
-              <Image key={club} src={`/images/clubs/${club}.webp`} alt={`SoccerMASS  club ${index + 1}`} width={70} height={70} />
+              <figure key={club}>
+                <Image src={`/images/clubs/${club}.webp`} alt={`SoccerMASS  club ${index + 1}`} width={70} height={70} />
+              </figure>
             ))}
-          </Carousel> */}
+          </Slider>
         </Box>
       ) : (
         false

@@ -6,12 +6,6 @@ export interface StoreContextProviderProps {
   children: ReactChildren["children"];
 }
 
-export interface ProvidersProps {
-  theme: Theme;
-  initialized: boolean;
-  displayHeader: boolean;
-  children: React.ReactNode;
-}
 export interface ProvidersContainerProps {
   theme?: Theme;
   user: Profile | null;
@@ -24,7 +18,6 @@ export interface ProvidersContainerProps {
 }
 
 export interface RootProvidersProps {
-  user: Profile | null;
   modal: React.ReactNode;
   children: React.ReactNode;
 }

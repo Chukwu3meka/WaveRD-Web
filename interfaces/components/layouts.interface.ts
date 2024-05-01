@@ -2,6 +2,9 @@ import { MouseEventHandler } from "react";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 
 export type Theme = "dark" | "light";
+
+export type RootProps = { children: React.ReactNode; modal: React.ReactNode };
+
 export interface HeaderProps {
   authenticated: boolean;
   swapColorFn: Function;

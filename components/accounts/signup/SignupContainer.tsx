@@ -1,9 +1,10 @@
 "use client";
 
 import validator from "utils/validator";
+import accountsService from "services/accounts.service";
 
 import { AxiosError } from "axios";
-import { Signup, Success } from ".";
+import { Signup, Success } from "./";
 import { useSnackbar } from "notistack";
 import { capitalize } from "@mui/material";
 import { FocusEvent, useState } from "react";
@@ -12,7 +13,6 @@ import { INIT_PROFILE } from "utils/constants";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { ExistsPayload, SignupPayload } from "interfaces/services/accounts.interface";
 import { SigninFormKeys, SignupForm } from "interfaces/components/accounts.interfaces";
-import accountsService from "services/accounts.service";
 
 const initUserForm: SignupForm = {
   email: { value: "", valid: true, info: "Email cannot be empty" },
@@ -120,11 +120,7 @@ const SignupContainer = () => {
     setUserForm((values) => ({ ...values, options: { ...values.options, showPassword: !values.options.showPassword } }));
   };
 
-  return userForm.options.accountCreated ? (
-    <Success />
-  ) : (
-    <Signup {...{ onChangeHandler, userForm, handleClickShowPassword, registerHandler }} />
-  );
+  return userForm.options.accountCreated ? <Success /> : <Signup {...{ onChangeHandler, userForm, handleClickShowPassword, registerHandler }} />;
 };
 
 export default SignupContainer;

@@ -63,5 +63,6 @@ export interface ModalProps {
   title?: string;
   children: ReactNode;
   height?: number | string;
+  minHeight?: number | string;
   maxHeight?: number | string;
 }

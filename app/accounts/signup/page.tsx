@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import pageInfo from "utils/page-info";
-import SignUpContainer from "components/accounts/signup";
+import SignUpContainer from "components/accounts/signup/SignupContainer";
 
 export const metadata: Metadata = {
   title: pageInfo.signup.title,

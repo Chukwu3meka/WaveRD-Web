@@ -2,21 +2,18 @@
 
 import ApihubService from "services/apihub.service";
 
-import { EndpointsLoadingContainer, EndpointsView } from ".";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { BREAKPOINTS } from "utils/constants";
-import { setEndpointsParamAction } from "redux-store/actions";
+import { EndpointsLoadingContainer, EndpointsView } from ".";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { LayoutState } from "interfaces/redux-store/layout.interfaces";
 import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 import { EndpointsContainerProps } from "interfaces/components/apihub/endpoints.interface";
-import { sleep } from "utils/helpers";
 
 const EndpointsContainer = (props: EndpointsContainerProps) => {
-  const apihubService = new ApihubService();
-
-  const { limit, setEndpointsParamAction } = props,
+  const { limit } = props,
+    apihubService = new ApihubService(),
     [ready, setReady] = useState(false),
     [centered, setCentered] = useState(false),
     [refreshing, setRefreshing] = useState(false),
@@ -52,7 +49,6 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
   }, [props.breakpoint]);
 
   const getMoreEndpoints = async () => {
-    await sleep(1000);
     const moreEndpoints: GetEndpointsResponse = await (endpointsParam.filter === "category"
       ? apihubService.getEndpoints({ filter: "category", size: limit, page: endpoints.page + 1, category: endpointsParam.phrase })
       : endpointsParam.filter === "search"
@@ -65,10 +61,6 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
         })
       : apihubService.getEndpoints({ filter: "all", size: limit, page: endpoints.page + 1 })
     )
-
-      // await apihubService
-      //   .getEndpoints({ filter: "all", size: limit, page: endpoints.page + 1 })
-
       .then(({ success, data }) => {
         if (success && data && Array.isArray(data.content)) return data;
         return { ...initEndpoints, page: endpoints.page, size: limit };
@@ -125,6 +117,6 @@ const mapStateToProps = (state: RootState) => ({
     endpointsParam: state.endpoints,
     breakpoint: state.layout.breakpoint,
   }),
-  mapDispatchToProps = { setEndpointsParamAction };
+  mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EndpointsContainer);

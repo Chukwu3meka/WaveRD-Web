@@ -1,7 +1,9 @@
-import { EndpointContainer } from ".";
 import ApihubService from "services/apihub.service";
 
-const EndpointSSR = async ({ path }: any) => {
+import { EndpointContainer } from ".";
+import { EndpointSSRProps } from "interfaces/components/apihub/endpoint.interface";
+
+const EndpointSSR = async ({ path }: EndpointSSRProps) => {
   const apihubService = new ApihubService();
 
   const endpoint = await apihubService

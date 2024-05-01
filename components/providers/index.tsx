@@ -1,8 +1,7 @@
 import Providers from "./Providers";
 import SwrProvider from "./SwrProvider";
-import RootProviders from "./RootProviders";
 import ReduxProvider from "./ReduxProvider";
+import RootProviders from "./RootProviders";
 import SnackbarProvider from "./SnackbarProvider";
-import ProvidersContainer from "./ProvidersContainer";
 
-export { SwrProvider, ReduxProvider, Providers, SnackbarProvider, ProvidersContainer, RootProviders as default };
+export { SwrProvider, ReduxProvider, Providers, SnackbarProvider, RootProviders as default };
