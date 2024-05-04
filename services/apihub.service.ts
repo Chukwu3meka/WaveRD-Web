@@ -4,7 +4,7 @@ import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { AxiosError } from "axios";
 
-class ApihubService {
+class ApihubService { 
   getEndpointsCategories = async ({ limit }: GetEndpointsCategories) => {
     const response = await service.get(apihubServiceUrl + `/endpoints/categories?limit=${limit}`);
     return response.data;

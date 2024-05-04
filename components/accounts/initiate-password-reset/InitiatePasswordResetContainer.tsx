@@ -1,7 +1,7 @@
 "use client";
 
 import validator from "utils/validator";
-import accountsService from "services/accounts.service";
+import AccountsService from "services/accounts.service";
 
 import { AxiosError } from "axios";
 import { ForgotPassword } from ".";
@@ -10,7 +10,8 @@ import { FocusEvent, useState } from "react";
 import { ForgotPasswordForm } from "interfaces/components/accounts.interfaces";
 
 const InitiatePasswordResetContainer = () => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const accountsService = new AccountsService(),
+    { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [form, setForm] = useState<ForgotPasswordForm>({
     options: { loading: false },

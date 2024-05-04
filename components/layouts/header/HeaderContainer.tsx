@@ -1,6 +1,6 @@
 "use client";
 
-import accountsService from "services/accounts.service";
+import AccountsService from "services/accounts.service";
 
 import { Header } from ".";
 import { connect } from "react-redux";
@@ -14,8 +14,9 @@ import { Profile } from "interfaces/redux-store/account.interfaces";
 import { ColorState, HeaderContainerProps, Theme, VisibleState } from "interfaces/components/layouts.interface";
 
 const HeaderContainer = (props: HeaderContainerProps) => {
-  const { position, setThemeAction } = props,
+  const accountsService = new AccountsService(),
     { enqueueSnackbar } = useSnackbar(),
+    { position, setThemeAction } = props,
     [profile, setProfile] = useState<Profile>(INIT_PROFILE),
     [theme, setTheme] = useState<Theme>(INIT_PROFILE.theme),
     [displayHeader, setDisplayHeader] = useState<boolean>(false),

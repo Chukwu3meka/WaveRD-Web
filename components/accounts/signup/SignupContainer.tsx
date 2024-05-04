@@ -1,7 +1,7 @@
 "use client";
 
 import validator from "utils/validator";
-import accountsService from "services/accounts.service";
+import AccountsService from "services/accounts.service";
 
 import { AxiosError } from "axios";
 import { Signup, Success } from "./";
@@ -23,7 +23,8 @@ const initUserForm: SignupForm = {
 };
 
 const SignupContainer = () => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar(),
+  const accountsService = new AccountsService(),
+    { enqueueSnackbar, closeSnackbar } = useSnackbar(),
     [userForm, setUserForm] = useState<SignupForm>(initUserForm);
 
   const registerHandler = async (e: FocusEvent<HTMLInputElement>) => {

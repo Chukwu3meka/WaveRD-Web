@@ -1,7 +1,7 @@
 "use client";
 
 import validator from "utils/validator";
-import accountsService from "services/accounts.service";
+import AccountsService from "services/accounts.service";
 
 import { DataDeletion } from ".";
 import { AxiosError } from "axios";
@@ -22,7 +22,8 @@ const INIT_FORM: DataDeletionForm = {
 };
 
 const DataDeletionContainer = (props: DataDeletionContainer) => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar(),
+  const accountsService = new AccountsService(),
+    { enqueueSnackbar, closeSnackbar } = useSnackbar(),
     [authenticated, setAuthenticated] = useState(false),
     [userForm, setUserForm] = useState<DataDeletionForm>(INIT_FORM);
 

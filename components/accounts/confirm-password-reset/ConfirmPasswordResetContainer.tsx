@@ -3,15 +3,15 @@
 import { AxiosError } from "axios";
 import { sleep } from "utils/helpers";
 import { useSnackbar } from "notistack";
-import validator from "utils/validator";
+import { useRouter } from "next/navigation";
 import { FocusEvent, useState } from "react";
 import { GEAR_LENGTH } from "utils/constants";
 import { ResetPassword, InvalidLink } from ".";
-
 import { ConfirmPasswordResetContainerProps, ResetForm, ResetFormKeys } from "interfaces/components/accounts.interfaces";
-import { useRouter } from "next/navigation";
+
 import pageInfo from "utils/page-info";
-import accountsService from "services/accounts.service";
+import validator from "utils/validator";
+import AccountsService from "services/accounts.service";
 
 const INIT_FORM: ResetForm = {
   options: { showPassword: false, loading: false },
@@ -22,7 +22,8 @@ const INIT_FORM: ResetForm = {
 const ConfirmPasswordResetContainer = ({ gear }: ConfirmPasswordResetContainerProps) => {
   if (!gear) return <InvalidLink />;
 
-  const Router = useRouter(),
+  const accountsService = new AccountsService(),
+    Router = useRouter(),
     [form, setForm] = useState<ResetForm>(INIT_FORM),
     { enqueueSnackbar, closeSnackbar } = useSnackbar();
 

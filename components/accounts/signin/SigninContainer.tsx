@@ -1,7 +1,7 @@
 "use client";
 
 import validator from "utils/validator";
-import accountsService from "services/accounts.service";
+import AccountsService from "services/accounts.service";
 
 import { Signin } from ".";
 import { AxiosError } from "axios";
@@ -19,9 +19,10 @@ import { SigninContainerProps, SigninForm } from "interfaces/components/accounts
 const defaultFormValues: SigninForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 
 const SigninContainer = (props: SigninContainerProps) => {
-  const { setProfileAction } = props,
+  const accountsService = new AccountsService(),
     router = useRouter(),
     pathname = usePathname(),
+    { setProfileAction } = props,
     searchParams = useSearchParams(),
     { enqueueSnackbar } = useSnackbar(),
     resParam = searchParams.get("response"),

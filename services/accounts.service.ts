@@ -10,46 +10,46 @@ import {
   InitPassResetService,
 } from "interfaces/services/accounts.interface";
 
-const accountsService = {
-  getProfile: async () => {
+class AccountsService {
+  getProfile = async () => {
     const response = await service.get(accountsServiceUrl + "/profile");
     return response.data;
-  },
+  };
 
-  setTheme: async (payload: ThemePayload) => {
+  setTheme = async (payload: ThemePayload) => {
     const response = await service.post(accountsServiceUrl + "/theme", payload);
     return response.data;
-  },
+  };
 
-  signin: async (payload: SigninPayload) => {
+  signin = async (payload: SigninPayload) => {
     const response = await service.post(accountsServiceUrl + "/signin", payload);
     return response.data;
-  },
+  };
 
-  exists: async ({ data, variant }: ExistsPayload) => {
+  exists = async ({ data, variant }: ExistsPayload) => {
     const response = await service.post(accountsServiceUrl + `/${variant}_exists`, { [variant]: data });
     return response.data;
-  },
+  };
 
-  signup: async (payload: SignupPayload) => {
+  signup = async (payload: SignupPayload) => {
     const response = await service.post(accountsServiceUrl + "/signup", payload);
     return response.data;
-  },
+  };
 
-  initPasswordReset: async (payload: InitPassResetService) => {
+  initPasswordReset = async (payload: InitPassResetService) => {
     const response = await service.post(accountsServiceUrl + "/initiate-password-reset", payload);
     return response.data;
-  },
+  };
 
-  confPasswordReset: async (payload: ConfPassResetService) => {
+  confPasswordReset = async (payload: ConfPassResetService) => {
     const response = await service.post(accountsServiceUrl + "/confirm-password-reset", payload);
     return response.data;
-  },
+  };
 
-  initDataDeletion: async (payload: DataDeletionService) => {
+  initDataDeletion = async (payload: DataDeletionService) => {
     const response = await service.post(accountsServiceUrl + "/data-deletion", payload);
     return response.data;
-  },
-};
+  };
+}
 
-export default accountsService;
+export default AccountsService;

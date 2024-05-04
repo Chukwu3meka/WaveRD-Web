@@ -1,14 +1,7 @@
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import pageInfo from "./page-info";
 
-import {
-  Categories,
-  Competition,
-  ContactPreferences,
-  ContactUsCategories,
-  InfoLinks,
-  SocialAccounts,
-} from "interfaces/utils/constants.interface";
+import { Categories, Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
@@ -84,4 +77,18 @@ export const BREAKPOINTS = {
   md: 900,
   lg: 1200,
   xl: 1536,
+};
+
+export const FETCH_OPTIONS: RequestInit = {
+  /* credentials: "include", tells browser will include credentials in the request, 
+  The server must respond with the appropriate CORS headers, including:
+  Access-Control-Allow-Origin and Access-Control-Allow-Credentials,
+  to allow the response to be received by the client. */
+  // credentials: "include",
+  credentials: "same-origin",
+  /* mode: "cors", This involves sending a preflight OPTIONS request to the server to check whether the server allows the requested access, 
+  and then sending the actual request if the server responds with the appropriate CORS headers. */
+  mode: "cors",
+  method: "GET",
+  cache: "no-store",
 };
