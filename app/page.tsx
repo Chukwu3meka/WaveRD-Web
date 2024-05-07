@@ -1,6 +1,6 @@
 import pageInfo from "utils/page-info";
-import FooterContainer from "components/layouts/footer";
-import HeaderContainer from "components/layouts/header";
+import FooterContainer from "components/shared/footer";
+import HeaderContainer from "components/shared/header";
 
 import { Metadata } from "next";
 import { RefreshHome, ApiHub, ManagerContainer, Welcome } from "components/home";

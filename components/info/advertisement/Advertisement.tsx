@@ -3,7 +3,7 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { AdvertisementProps } from "interfaces/components/info.interfaces";
+import { AdvertisementProps } from "interfaces/components/others/info.interfaces";
 
 import ComingSoonContainer from "components/shared/coming-soon";
 

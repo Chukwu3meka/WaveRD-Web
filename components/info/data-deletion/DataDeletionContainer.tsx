@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { Validator } from "interfaces/utils/validator.interface";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { DataDeletionService } from "interfaces/services/accounts.interface";
-import { DataDeletionContainer, DataDeletionForm } from "interfaces/components/info.interfaces";
+import { DataDeletionContainer, DataDeletionForm } from "interfaces/components/others/info.interfaces";
 
 const INIT_FORM: DataDeletionForm = {
   options: { showPassword: false, loading: false },

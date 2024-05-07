@@ -1,9 +1,9 @@
 import styles from "./layout.module.scss";
-import Slides from "components/layouts/slide-text";
-import FooterContainer from "components/layouts/footer";
-import Accounts from "components/layouts/accounts-layout";
+import Slides from "components/shared/slides";
+import FooterContainer from "components/shared/footer";
+import Accounts from "components/layouts/accounts";
 
-import { ReactChildren } from "interfaces/components/shared.interface";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
 
 const AccountsLayout = ({ children }: ReactChildren) => (
   <>

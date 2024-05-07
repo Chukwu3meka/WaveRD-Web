@@ -10,7 +10,7 @@ import { LinearProgress, Stack } from "@mui/material";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { RootProps } from "interfaces/components/layouts.interface";
+import { RootProps } from "interfaces/components/others/layouts.interface";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });

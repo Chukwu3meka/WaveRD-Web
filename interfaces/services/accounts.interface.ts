@@ -1,4 +1,4 @@
-import { Theme } from "interfaces/components/layouts.interface";
+import { Theme } from "interfaces/components/others/layouts.interface";
 
 export interface SigninPayload {
   email: string;

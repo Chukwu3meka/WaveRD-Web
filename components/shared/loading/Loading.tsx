@@ -1,5 +1,5 @@
 import { styles } from ".";
-import { NotFoundProps } from "interfaces/components/shared.interface";
+import { NotFoundProps } from "interfaces/components/others/shared.interface";
 
 const Loading = ({ height }: NotFoundProps) => (
   <main className={styles.loading} style={{ height: height || "calc(var(--visibleScreen) - var(--headerHeight))" }}>

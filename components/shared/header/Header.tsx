@@ -1,11 +1,11 @@
 import Link from "next/link";
-import MenuContainer from "./mobile-menu";
 import styles from "./styles.module.scss";
-import SocialContainer from "../../shared/social/SocialContainer";
-import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
-import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkModeOutlined as DarkIcon } from "@mui/icons-material";
+import SocialContainer from "../social/SocialContainer";
 
-import { HeaderProps } from "interfaces/components/layouts.interface";
+import { MenuContainer } from ".";
+import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
+import { HeaderProps } from "interfaces/components/others/shared.interface";
+import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkModeOutlined as DarkIcon } from "@mui/icons-material";
 
 const Header = ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible, profile }: HeaderProps) => (
   <header id="header" className={styles[className]}>

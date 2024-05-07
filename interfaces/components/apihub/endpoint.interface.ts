@@ -1,5 +1,5 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
-import { Theme } from "../layouts.interface";
+import { Theme } from "../others/layouts.interface";
 import { Endpoint, SnippetsFormat } from "./endpoints.interface";
 import { SelectChangeEvent } from "@mui/material";
 

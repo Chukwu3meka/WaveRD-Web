@@ -1,9 +1,9 @@
 "use client";
 
-import Header from "../header";
+import Header from "../../shared/header";
 import { Fade } from "react-awesome-reveal";
 
-import { ReactChildren } from "interfaces/components/shared.interface";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
 
 const Accounts = ({ children }: ReactChildren) => {
   return (

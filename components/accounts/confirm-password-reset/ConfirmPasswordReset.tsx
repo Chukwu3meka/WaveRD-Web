@@ -4,7 +4,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box } from "@mui/material";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 
-import { ResetPasswordProp } from "interfaces/components/accounts.interfaces";
+import { ResetPasswordProp } from "interfaces/components/others/accounts.interfaces";
 
 const ConfirmPasswordReset = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPasswordProp) => (
   <Stack spacing={3} component="form" noValidate>

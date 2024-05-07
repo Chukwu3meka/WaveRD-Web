@@ -5,7 +5,7 @@ import ManagerIntro from "./Manager";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { ManagerContainerProps } from "interfaces/components/home.interfaces";
+import { ManagerContainerProps } from "interfaces/components/others/home.interfaces";
 
 const ManagerContainer = (props: ManagerContainerProps) => {
   const [deviceWidth, setDeviceWidth] = useState(0),

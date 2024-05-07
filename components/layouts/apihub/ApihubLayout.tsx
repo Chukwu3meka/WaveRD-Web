@@ -1,10 +1,10 @@
 "use client";
 
 import { styles } from ".";
-import { ReactChildren } from "interfaces/components/shared.interface";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
 
-import HeaderContainer from "../header";
-import FooterContainer from "../footer";
+import HeaderContainer from "../../shared/header";
+import FooterContainer from "../../shared/footer";
 
 const ApiHubLayout = ({ children }: ReactChildren) => {
   return (

@@ -1,5 +1,5 @@
 import { removeErrorAction, catchErr } from "./error";
-import { Theme } from "interfaces/components/layouts.interface";
+import { Theme } from "interfaces/components/others/layouts.interface";
 import { AppDispatch } from "interfaces/redux-store/store.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 

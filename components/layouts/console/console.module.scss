@@ -1,0 +1,60 @@
+@import "styles/index.scss";
+
+.layout {
+  display: grid;
+  grid-template-columns: 300px auto;
+  width: 100vw;
+  height: 100vh;
+
+  & > div:nth-of-type(1) {
+    display: grid;
+    grid-template-rows: var(--headerHeight) auto max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    & > div > main {
+      min-height: 100%; // min-height: 400px;
+    }
+  }
+}
+
+nav.navigation {
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+  height: 100vh;
+  position: relative;
+  background: var(--secondary-color);
+  padding: 20px 10px 10px;
+
+  & > div:nth-of-type(1) {
+    position: relative;
+    overflow: hidden;
+
+    .spinner {
+      top: 10px;
+      left: -5px;
+      position: absolute;
+      border-radius: 50%;
+      animation: spin 14s alternate infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  }
+
+  & > div:nth-of-type(2) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    left: -5px;
+    & > *.active {
+      position: sticky;
+      top: -5px;
+      bottom: -5px;
+      z-index: 1;
+    }
+  }
+}

@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import HeaderContainer from "../header";
-import FooterContainer from "../footer";
+import HeaderContainer from "../../shared/header";
+import FooterContainer from "../../shared/footer";
 
 import { styles } from ".";
 import { Fade } from "react-awesome-reveal";
 import { INFO_LINKS } from "utils/constants";
 import { InfoLinks } from "interfaces/utils/constants.interface";
-import { InfoLayoutProps } from "interfaces/components/layouts.interface";
+import { InfoLayoutProps } from "interfaces/components/others/layouts.interface";
 import { List, ListItem, ListItemButton, ListItemText, Box, TextField, Autocomplete } from "@mui/material";
 
 export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandler, children }: InfoLayoutProps) {

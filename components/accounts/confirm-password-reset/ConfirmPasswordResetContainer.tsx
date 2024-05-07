@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { FocusEvent, useState } from "react";
 import { GEAR_LENGTH } from "utils/constants";
 import { ResetPassword, InvalidLink } from ".";
-import { ConfirmPasswordResetContainerProps, ResetForm, ResetFormKeys } from "interfaces/components/accounts.interfaces";
+import { ConfirmPasswordResetContainerProps, ResetForm, ResetFormKeys } from "interfaces/components/others/accounts.interfaces";
 
 import pageInfo from "utils/page-info";
 import validator from "utils/validator";

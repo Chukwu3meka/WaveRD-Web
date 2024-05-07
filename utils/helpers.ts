@@ -1,7 +1,7 @@
 import stylesVariables from "styles/variables.module.scss";
 
 import { AgeGenerator, ArrayRotate } from "interfaces/utils/helpers.interface";
-import { Theme } from "interfaces/components/layouts.interface";
+import { Theme } from "interfaces/components/others/layouts.interface";
 
 export const ageGenerator = ({ date }: AgeGenerator) => {
   const todaysDate: number = Number(new Date()),
@@ -167,4 +167,46 @@ export const copyToCLipboard = async (text: string) => {
 
   // copy codeSnippet to clipboard
   await navigator.clipboard.writeText(text);
+};
+
+export const verifyImageFile = (file: File): Promise<boolean> => {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const image = new Image();
+      image.src = event.target?.result as string;
+
+      image.onload = () => {
+        resolve(true); // File is a valid image
+      };
+
+      image.onerror = () => {
+        resolve(false); // File is not an image
+      };
+    };
+
+    reader.readAsDataURL(file);
+  });
+};
+
+export const verifyFileAsPDF = (file: File): Promise<boolean> => {
+  return new Promise<boolean>((resolve) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const uint = new Uint8Array(reader.result as ArrayBuffer).subarray(0, 4);
+      let header = "";
+
+      for (let i = 0; i < uint.length; i++) {
+        header += uint[i].toString(16);
+      }
+
+      // Check if the file's header matches the PDF magic number "25504446" (hex for "%PDF")
+      const isPDF = header === "25504446";
+      resolve(isPDF);
+    };
+
+    reader.readAsArrayBuffer(file);
+  });
 };

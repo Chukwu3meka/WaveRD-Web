@@ -7,7 +7,7 @@ import { AxiosError } from "axios";
 import { ForgotPassword } from ".";
 import { useSnackbar } from "notistack";
 import { FocusEvent, useState } from "react";
-import { ForgotPasswordForm } from "interfaces/components/accounts.interfaces";
+import { ForgotPasswordForm } from "interfaces/components/others/accounts.interfaces";
 
 const InitiatePasswordResetContainer = () => {
   const accountsService = new AccountsService(),

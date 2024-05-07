@@ -2,7 +2,7 @@ import { Social } from ".";
 import { Stack } from "@mui/material";
 import { SOCIAL_ACCOUNTS } from "utils/constants";
 
-import { SocialContainerProps } from "interfaces/components/shared.interface";
+import { SocialContainerProps } from "interfaces/components/others/shared.interface";
 
 const SocialContainer = ({ filterParams, fontSize = "18px" }: SocialContainerProps) => (
   <Stack direction="row" justifyContent="center">

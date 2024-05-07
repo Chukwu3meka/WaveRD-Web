@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { INIT_PROFILE } from "utils/constants";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { Role } from "interfaces/redux-store/account.interfaces";
-import { UserRoleContainerProps } from "interfaces/components/shared.interface";
+import { UserRoleContainerProps } from "interfaces/components/others/shared.interface";
 
 const UserRoleContainer = (props: UserRoleContainerProps) => {
   const { enqueueSnackbar } = useSnackbar(),

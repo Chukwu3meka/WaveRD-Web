@@ -1,5 +1,5 @@
-import InfoLayoutContainer from "components/layouts/info-layout";
-import { ReactChildren } from "interfaces/components/shared.interface";
+import InfoLayoutContainer from "components/layouts/info";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
 
 const InfoLayoutContainerPage = ({ children }: ReactChildren) => {
   return <InfoLayoutContainer>{children}</InfoLayoutContainer>;

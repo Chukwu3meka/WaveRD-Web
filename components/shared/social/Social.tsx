@@ -10,7 +10,7 @@ import {
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
 } from "@mui/icons-material";
-import { Social } from "interfaces/components/shared.interface";
+import { Social } from "interfaces/components/others/shared.interface";
 
 const Social = ({ account, link, fontSize }: Social) => {
   let icon;
@@ -43,7 +43,14 @@ const Social = ({ account, link, fontSize }: Social) => {
   }
 
   return icon ? (
-    <IconButton LinkComponent={Link} color="inherit" rel="noopener noreferrer" href={link} target="_blank" sx={{ fontSize }} aria-label={account.toLowerCase()}>
+    <IconButton
+      LinkComponent={Link}
+      color="inherit"
+      rel="noopener noreferrer"
+      href={link}
+      target="_blank"
+      sx={{ fontSize }}
+      aria-label={account.toLowerCase()}>
       {icon}
     </IconButton>
   ) : null;

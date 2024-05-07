@@ -1,16 +1,7 @@
+import { SvgIconComponent } from "@mui/icons-material";
+
 export interface SocialAccounts {
-  title:
-    | "Facebook"
-    | "Twitter"
-    | "Instagram"
-    | "LinkedIn"
-    | "SoccerMASS"
-    | "Pinterest"
-    | "Github"
-    | "YouTube"
-    | "Fiverr"
-    | "Whatsapp"
-    | "Phone";
+  title: "Facebook" | "Twitter" | "Instagram" | "LinkedIn" | "SoccerMASS" | "Pinterest" | "Github" | "YouTube" | "Fiverr" | "Whatsapp" | "Phone";
   id: string;
   image: string;
   href: string;
@@ -39,4 +30,12 @@ export interface ContactPreferences {
 
 export interface Categories {
   [key: string]: string;
+}
+
+export interface Routes {
+  path: string;
+  title: string;
+  label?: string;
+  Icon: SvgIconComponent;
+  research: string | null;
 }

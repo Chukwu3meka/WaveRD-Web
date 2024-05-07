@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Box, DialogTitle } from "@mui/material";
-import { ModalProps } from "interfaces/components/shared.interface";
+import { ModalProps } from "interfaces/components/others/shared.interface";
 
 import DialogContent from "@mui/material/DialogContent";
 import Dialog, { DialogProps } from "@mui/material/Dialog";

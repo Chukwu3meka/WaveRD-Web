@@ -1,29 +1,10 @@
-import { MouseEventHandler } from "react";
 import { Profile } from "interfaces/redux-store/account.interfaces";
+import { Routes } from "interfaces/utils/constants.interface";
+import { ChangeEventHandler, MouseEventHandler } from "react";
 
 export type Theme = "dark" | "light";
 
 export type RootProps = { children: React.ReactNode; modal: React.ReactNode };
-
-export interface HeaderProps {
-  authenticated: boolean;
-  swapColorFn: Function;
-  color: ColorState;
-  theme: Theme;
-  profile: Profile;
-  themeHandler: MouseEventHandler<HTMLButtonElement>;
-  visible: VisibleState;
-  className: "relativeHeader" | "stickyHeader" | "hiddenHeader";
-}
-
-export interface HeaderContainerProps {
-  profile: Profile;
-  deviceWidth: number;
-  displayHeader: boolean;
-  authenticated: boolean;
-  setThemeAction?: Function;
-  position: "relative" | "sticky";
-}
 
 export interface ColorState {
   first: "text.secondary" | "primary";
@@ -62,4 +43,23 @@ export interface InfoLayoutProps {
 export interface InfoLayoutContainerProps {
   deviceWidth: number;
   children: React.ReactNode;
+}
+
+export interface ConsoleLayoutContainerProps {
+  theme?: Theme;
+  activeRoute?: string;
+  deviceWidth?: number;
+  authHandler?: Function;
+  authenticated?: boolean;
+  profile?: null | Profile;
+  setThemeAction?: Function;
+  children: React.ReactNode;
+}
+
+export interface ConsoleLayoutProps {
+  thisYear: number;
+  activeRoute: string;
+  profile: null | Profile;
+  children: React.ReactNode;
+  themeHandler: MouseEventHandler<HTMLButtonElement>;
 }

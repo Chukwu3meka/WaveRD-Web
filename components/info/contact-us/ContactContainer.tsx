@@ -9,7 +9,7 @@ import { SelectChangeEvent } from "@mui/material/Select";
 import { CONTACT_PREFERENCE, CONTACT_US_CATEGORIES } from "utils/constants";
 
 import { Validator } from "interfaces/utils/validator.interface";
-import { CustomerUsForm } from "interfaces/components/info.interfaces";
+import { CustomerUsForm } from "interfaces/components/others/info.interfaces";
 import { ContactUsPayload } from "interfaces/services/console.interface";
 import { ContactPreferences } from "interfaces/utils/constants.interface";
 import consoleService from "services/console.service";

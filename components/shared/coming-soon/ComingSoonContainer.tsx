@@ -3,7 +3,7 @@
 import { ComingSoon } from ".";
 import { fullDateFn } from "utils/helpers";
 import { useEffect, useState } from "react";
-import { ComingSoonContainerProps, TimeLeft } from "interfaces/components/shared.interface";
+import { ComingSoonContainerProps, TimeLeft } from "interfaces/components/others/shared.interface";
 
 export default function ComingSoonContainer({ header = false, minHeight, finishDate = new Date("January 1 2025"), title }: ComingSoonContainerProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ date: "", days: 0, hours: 0, minutes: 0, seconds: 0 });

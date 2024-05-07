@@ -2,7 +2,7 @@
 
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { FaqProps } from "interfaces/components/info.interfaces";
+import { FaqProps } from "interfaces/components/others/info.interfaces";
 import { RootState } from "interfaces/redux-store/store.interface";
 
 import ComingSoonContainer from "components/shared/coming-soon";

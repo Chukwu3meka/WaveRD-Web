@@ -2,7 +2,7 @@ import { styles } from ".";
 import { Error } from "@mui/icons-material";
 import { Typography, Stack } from "@mui/material";
 
-import { NotFoundProps } from "interfaces/components/shared.interface";
+import { NotFoundProps } from "interfaces/components/others/shared.interface";
 
 const NotFound = ({ height }: NotFoundProps) => {
   return (

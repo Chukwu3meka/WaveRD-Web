@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { EllipsisProps } from "interfaces/components/shared.interface";
+import { EllipsisProps } from "interfaces/components/others/shared.interface";
 
 const Ellipsis = (props: EllipsisProps) => (
   <Typography

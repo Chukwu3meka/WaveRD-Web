@@ -5,7 +5,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
-import { SocialSignin } from "interfaces/components/accounts.interfaces";
+import { SocialSignin } from "interfaces/components/others/accounts.interfaces";
 
 const authData = [
   { color: "#1DA1F2", Icon: TwitterIcon, endpoint: `${process.env.API_URL}/accounts/twitter`, label: "Twitter" },

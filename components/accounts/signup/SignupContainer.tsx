@@ -12,7 +12,7 @@ import { getSystemTheme } from "utils/helpers";
 import { INIT_PROFILE } from "utils/constants";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { ExistsPayload, SignupPayload } from "interfaces/services/accounts.interface";
-import { SigninFormKeys, SignupForm } from "interfaces/components/accounts.interfaces";
+import { SigninFormKeys, SignupForm } from "interfaces/components/others/accounts.interfaces";
 
 const initUserForm: SignupForm = {
   email: { value: "", valid: true, info: "Email cannot be empty" },

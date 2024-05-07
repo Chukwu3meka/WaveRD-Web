@@ -6,9 +6,18 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { Grid, TextField, Typography, InputLabel, FormControl, OutlinedInput, Select, MenuItem, Paper } from "@mui/material";
 
-import { ContactUS } from "interfaces/components/info.interfaces";
+import { ContactUS } from "interfaces/components/others/info.interfaces";
 
-export default function Contact({ sectionHandler, contactPreference, categories, submitHandler, categoryRef, userForm, onInputChange, contactPrefHandler }: ContactUS) {
+export default function Contact({
+  sectionHandler,
+  contactPreference,
+  categories,
+  submitHandler,
+  categoryRef,
+  userForm,
+  onInputChange,
+  contactPrefHandler,
+}: ContactUS) {
   return (
     <main className={styles.contact}>
       <div className={styles.categories}>
@@ -32,7 +41,12 @@ export default function Contact({ sectionHandler, contactPreference, categories,
           <Grid item xs={12} sm={6} md={2}>
             <FormControl fullWidth>
               <InputLabel id="category">Category</InputLabel>
-              <Select labelId="category" id="category" value={userForm.options.category} onChange={(e) => sectionHandler(e.target.value)} label="Category">
+              <Select
+                labelId="category"
+                id="category"
+                value={userForm.options.category}
+                onChange={(e) => sectionHandler(e.target.value)}
+                label="Category">
                 {categories.map(({ value, label }) => (
                   <MenuItem key={label} value={value}>
                     {label}
@@ -61,7 +75,12 @@ export default function Contact({ sectionHandler, contactPreference, categories,
           <Grid item xs={12} sm={6} md={2}>
             <FormControl fullWidth>
               <InputLabel id="contact-preference">Preference</InputLabel>
-              <Select labelId="contact-preference" id="contact-preference" value={userForm.options.contact} label="Preference" onChange={(e) => contactPrefHandler(e)}>
+              <Select
+                labelId="contact-preference"
+                id="contact-preference"
+                value={userForm.options.contact}
+                label="Preference"
+                onChange={(e) => contactPrefHandler(e)}>
                 <MenuItem value="email">Email</MenuItem>
                 <MenuItem value="whatsapp">WhatsApp</MenuItem>
               </Select>

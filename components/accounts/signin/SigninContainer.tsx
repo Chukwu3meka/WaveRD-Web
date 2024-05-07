@@ -14,7 +14,7 @@ import { setProfileAction } from "../../../redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { ApiResponse } from "interfaces/services/shared.interface";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SigninContainerProps, SigninForm } from "interfaces/components/accounts.interfaces";
+import { SigninContainerProps, SigninForm } from "interfaces/components/others/accounts.interfaces";
 
 const defaultFormValues: SigninForm = { password: "", email: "", options: { showPassword: false, loading: false } };
 

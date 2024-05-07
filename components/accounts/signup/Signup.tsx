@@ -20,7 +20,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-import { SignupProps } from "interfaces/components/accounts.interfaces";
+import { SignupProps } from "interfaces/components/others/accounts.interfaces";
 import pageInfo from "utils/page-info";
 
 const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHandler }: SignupProps) => (

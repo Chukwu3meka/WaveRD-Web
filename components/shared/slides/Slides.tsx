@@ -2,9 +2,9 @@
 
 import Slider from "react-slick";
 
-import { styles, slides } from ".";
+import { styles, features } from ".";
 import { Typography } from "@mui/material";
-import { SlidesProp } from "interfaces/components/layouts.interface";
+import { SlidesProp } from "interfaces/components/others/layouts.interface";
 
 const settings = {
   speed: 5000,
@@ -22,7 +22,7 @@ export default function Slides({ layout }: SlidesProp) {
     <aside className={styles.slides}>
       <div>
         <Slider {...settings}>
-          {slides[layout].map((slide: any) => (
+          {features[layout].map((slide: any) => (
             <div key={slide}>
               <Typography fontSize="1.2em" component="div">
                 {slide}

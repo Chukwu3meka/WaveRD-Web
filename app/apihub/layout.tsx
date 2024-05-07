@@ -1,6 +1,6 @@
-import ApihubLayout from "components/layouts/apihub-layout";
+import ApihubLayout from "components/layouts/apihub";
 
-import { ReactChildren } from "interfaces/components/shared.interface";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
 
 const ApiHubLayout = ({ children }: ReactChildren) => <ApihubLayout>{children}</ApihubLayout>;
 

@@ -8,7 +8,7 @@ import { AttentionSeeker } from "react-awesome-reveal";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, Alert } from "@mui/material";
 
-import { SigninProps } from "interfaces/components/accounts.interfaces";
+import { SigninProps } from "interfaces/components/others/accounts.interfaces";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: SigninProps) => (
   <Stack spacing={2} component="form" noValidate>

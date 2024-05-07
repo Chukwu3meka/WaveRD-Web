@@ -14,6 +14,7 @@ export interface ProvidersContainerProps {
   setProfileAction?: Function;
   setBreakpointAction?: Function;
   setDeviceSizeAction?: Function;
+  setActiveRouteAction?: Function;
   setDisplayHeaderAction?: Function;
 }
 

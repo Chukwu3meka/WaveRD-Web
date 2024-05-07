@@ -4,7 +4,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Stack, Typography, IconButton, InputLabel, FormControl, OutlinedInput, Box } from "@mui/material";
 
-import { ForgotPasswordProps } from "interfaces/components/accounts.interfaces";
+import { ForgotPasswordProps } from "interfaces/components/others/accounts.interfaces";
 
 const InitiatePasswordReset = ({ resetPasswordHandler, form, onInputChange }: ForgotPasswordProps) => (
   <Stack spacing={3} component="form" noValidate>

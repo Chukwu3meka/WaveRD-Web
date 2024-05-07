@@ -3,7 +3,7 @@
 import { Menu } from ".";
 import { useState } from "react";
 import { isSystemIOS } from "utils/helpers";
-import { MenuContainerProps } from "interfaces/components/layouts.interface";
+import { MenuContainerProps } from "interfaces/components/others/layouts.interface";
 
 const MenuContainer = ({ profile, authenticated }: MenuContainerProps) => {
   const iOS = isSystemIOS(),

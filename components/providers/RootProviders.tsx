@@ -4,8 +4,8 @@ import { FETCH_OPTIONS } from "utils/constants";
 import { accountsServiceUrl } from "services/index";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import { RootProvidersProps } from "interfaces/components/providers.interface";
-import { SwrProvider, SnackbarProvider, ReduxProvider, Providers } from ".";
+import { RootProvidersProps } from "interfaces/components/others/providers.interface";
+import { SnackbarProvider, ReduxProvider, Providers } from ".";
 
 const getUserProfile = async (): Promise<null | Profile> => {
   const cookieStore = cookies(),
@@ -37,10 +37,8 @@ const RootProviders = async ({ children, modal }: RootProvidersProps) => {
       <ReduxProvider>
         <SnackbarProvider>
           <Providers user={user}>
-            <SwrProvider>
-              {children}
-              {modal}
-            </SwrProvider>
+            {children}
+            {modal}
           </Providers>
         </SnackbarProvider>
       </ReduxProvider>

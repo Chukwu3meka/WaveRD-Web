@@ -1,8 +1,8 @@
 "use client";
 
-import Header from "components/layouts/header";
+import Header from "components/shared/header";
 import NotFound from "components/shared/not-found";
-import FooterContainer from "components/layouts/footer";
+import FooterContainer from "components/shared/footer";
 
 const NotFoundPage = () => {
   return (

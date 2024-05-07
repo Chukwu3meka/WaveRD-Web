@@ -1,4 +1,4 @@
-import Header from "components/layouts/header";
+import Header from "components/shared/header";
 import Loading from "components/shared/loading";
 
 const LoadingPage = () => {

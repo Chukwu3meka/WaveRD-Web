@@ -2,6 +2,10 @@ import { ReactNode } from "react";
 import { MouseEventHandler } from "react";
 import { TypographyProps } from "@mui/material/Typography";
 import { Profile, Role } from "interfaces/redux-store/account.interfaces";
+import { BoxProps } from "@mui/material";
+import { SvgIconComponent } from "@mui/icons-material";
+import { ColorState, Theme, VisibleState } from "./layouts.interface";
+import { Routes } from "interfaces/utils/constants.interface";
 
 export interface ReactChildren {
   children: React.ReactNode;
@@ -65,4 +69,40 @@ export interface ModalProps {
   height?: number | string;
   minHeight?: number | string;
   maxHeight?: number | string;
+}
+
+export interface ListProps extends BoxProps {
+  label?: string;
+  size?: "small" | "medium";
+  Icon: SvgIconComponent;
+  color?: "secondary" | "primary";
+  active?: boolean;
+}
+
+export interface HeaderProps {
+  authenticated: boolean;
+  swapColorFn: Function;
+  color: ColorState;
+  theme: Theme;
+  profile: Profile;
+  themeHandler: MouseEventHandler<HTMLButtonElement>;
+  visible: VisibleState;
+  className: "relativeHeader" | "stickyHeader" | "hiddenHeader";
+}
+
+export interface HeaderContainerProps {
+  profile: Profile;
+  deviceWidth: number;
+  displayHeader: boolean;
+  authenticated: boolean;
+  setThemeAction?: Function;
+  position: "relative" | "sticky";
+}
+
+export interface NavigationProps {
+  routes: Routes[];
+}
+
+export interface NavigationContainerProps {
+  research: string;
 }

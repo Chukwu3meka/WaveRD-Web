@@ -1,7 +1,7 @@
 "use client";
 
 import { Zoom } from "@mui/material";
-import { ReactChildren } from "interfaces/components/shared.interface";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
 import { SnackbarProvider as ClientSnackbarProvider } from "notistack";
 
 const SnackbarProvider = ({ children }: ReactChildren) => (

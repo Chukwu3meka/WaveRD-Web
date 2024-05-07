@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { InfoLayoutContainerProps } from "interfaces/components/layouts.interface";
+import { InfoLayoutContainerProps } from "interfaces/components/others/layouts.interface";
 
 const InfoLayoutContainer = (props: InfoLayoutContainerProps) => {
   const { children } = props,

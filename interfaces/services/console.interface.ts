@@ -1,6 +1,6 @@
 // import { Theme } from "interfaces/store/layout.interfaces";
 
-import { CustomerUsForm } from "interfaces/components/info.interfaces";
+import { CustomerUsForm } from "interfaces/components/others/info.interfaces";
 
 export interface ContactUsPayload {
   name: CustomerUsForm["name"]["value"];

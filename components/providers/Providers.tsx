@@ -1,25 +1,28 @@
 "use client";
 
 import muiTheme from "utils/MuiTheme";
-import HeaderContainer from "../layouts/header";
+import HeaderContainer from "../shared/header";
 import UserRoleContainer from "components/shared/user-role";
 import stylesVariables from "styles/variables.module.scss";
 
 import { connect } from "react-redux";
 import { ThemeProvider } from "@mui/system";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { setCssThemeVar } from "utils/helpers";
 import { LinearProgress, Stack } from "@mui/material";
-import { Theme } from "interfaces/components/layouts.interface";
+import { Theme } from "interfaces/components/others/layouts.interface";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { BREAKPOINTS, HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
-import { ProvidersContainerProps } from "interfaces/components/providers.interface";
-import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction, setBreakpointAction } from "../../redux-store/actions";
+import { ProvidersContainerProps } from "interfaces/components/others/providers.interface";
+import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } from "../../redux-store/actions";
 
 const { xl, lg, md, sm } = BREAKPOINTS;
 
 const Providers = (props: ProvidersContainerProps) => {
-  const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction } = props,
+  const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } = props;
+
+  const pathname = usePathname(),
     [initialized, setInitialized] = useState(false),
     [prevScrollPos, setPrevScrollPos] = useState(0),
     [displayHeader, setDisplayHeader] = useState(false),
@@ -45,6 +48,13 @@ const Providers = (props: ProvidersContainerProps) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (setActiveRouteAction) setActiveRouteAction(pathname);
+    return () => {
+      if (setActiveRouteAction) setActiveRouteAction(pathname);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -109,6 +119,6 @@ const Providers = (props: ProvidersContainerProps) => {
 };
 
 const mapStateToProps = (state: RootState) => ({ theme: state.account.profile.theme, displayHeader: state.layout.displayHeader }),
-  mapDispatchToProps = { setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction };
+  mapDispatchToProps = { setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Providers);
