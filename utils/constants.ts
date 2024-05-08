@@ -78,17 +78,3 @@ export const BREAKPOINTS = {
   lg: 1200,
   xl: 1536,
 };
-
-export const FETCH_OPTIONS: RequestInit = {
-  /* credentials: "include", tells browser will include credentials in the request, 
-  The server must respond with the appropriate CORS headers, including:
-  Access-Control-Allow-Origin and Access-Control-Allow-Credentials,
-  to allow the response to be received by the client. */
-  // credentials: "include",
-  credentials: "same-origin",
-  /* mode: "cors", This involves sending a preflight OPTIONS request to the server to check whether the server allows the requested access, 
-  and then sending the actual request if the server responds with the appropriate CORS headers. */
-  mode: "cors",
-  method: "GET",
-  cache: "no-store",
-};

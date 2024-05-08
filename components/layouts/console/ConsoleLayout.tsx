@@ -1,6 +1,7 @@
 "use client";
 
 import { styles } from ".";
+import { capitalize } from "utils/helpers";
 import { Fade } from "react-awesome-reveal";
 import { Box, Avatar, Stack, Typography, Divider, List } from "@mui/material";
 import { ConsoleLayoutProps } from "interfaces/components/others/layouts.interface";
@@ -9,7 +10,6 @@ import Link from "next/link";
 import Image from "next/image";
 import routes from "utils/routes";
 import AppBar from "@mui/material/AppBar";
-import { capitalize } from "utils/helpers";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
@@ -25,7 +25,7 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler, thisYear 
       <Stack alignItems="center">
         <Box position="relative">
           <Avatar alt={profile?.name} src={profile ? profile.avatar : "/images/default-user.png"} sx={{ width: 115, height: 115 }} />
-          <Image className={styles.spinner} src="/images/layout/soccermass.webp" alt="SoccerMASS Avatar" width={35} height={35} />
+          <Image className={styles.spinner} src="/images/layout/soccermass.webp" alt="SoccerMASS Avatar" width={25} height={25} />
         </Box>
 
         <Stack>
@@ -45,8 +45,8 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler, thisYear 
           {routes
             .filter((route) => route.research === null)
             .map(({ title, path, Icon }, i) => (
-              <Link key={i} href={path} className={styles[activeRoute.startsWith(path) ? "active" : ""]}>
-                <ListItemButton selected={activeRoute.startsWith(path)}>
+              <Link key={i} href={path} className={styles[path.startsWith(activeRoute) ? "active" : ""]}>
+                <ListItemButton selected={path.startsWith(activeRoute)}>
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>

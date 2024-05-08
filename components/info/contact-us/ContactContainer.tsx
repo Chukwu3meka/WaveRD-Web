@@ -1,18 +1,18 @@
 "use client";
 
+import validator from "utils/validator";
+import ConsoleService from "services/info.service";
+
 import { Contact } from ".";
 import { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
-import validator from "utils/validator";
 import { useState, useRef } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { CONTACT_PREFERENCE, CONTACT_US_CATEGORIES } from "utils/constants";
-
 import { Validator } from "interfaces/utils/validator.interface";
-import { CustomerUsForm } from "interfaces/components/others/info.interfaces";
 import { ContactUsPayload } from "interfaces/services/console.interface";
 import { ContactPreferences } from "interfaces/utils/constants.interface";
-import consoleService from "services/console.service";
+import { CONTACT_PREFERENCE, CONTACT_US_CATEGORIES } from "utils/constants";
+import { CustomerUsForm } from "interfaces/components/others/info.interfaces";
 
 const INIT_USER_FORM: CustomerUsForm = {
   name: { value: "", valid: true, info: "Handle cannot be empty", mandatory: true },
@@ -22,7 +22,8 @@ const INIT_USER_FORM: CustomerUsForm = {
 };
 
 export default function ContactContainer() {
-  const categoryRef = useRef<HTMLDivElement>(null),
+  const consoleService = new ConsoleService(),
+    categoryRef = useRef<HTMLDivElement>(null),
     { enqueueSnackbar, closeSnackbar } = useSnackbar(),
     [userForm, setUserForm] = useState<CustomerUsForm>(INIT_USER_FORM);
 

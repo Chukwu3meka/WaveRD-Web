@@ -1,32 +1,33 @@
+import service from "services/service";
+import AccountsService from "services/accounts.service";
+
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
-import { FETCH_OPTIONS } from "utils/constants";
-import { accountsServiceUrl } from "services/index";
+import { SnackbarProvider, ReduxProvider, Providers } from ".";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { RootProvidersProps } from "interfaces/components/others/providers.interface";
-import { SnackbarProvider, ReduxProvider, Providers } from ".";
 
 const getUserProfile = async (): Promise<null | Profile> => {
   const cookieStore = cookies(),
+    accountsService = new AccountsService(),
     ssidCookie = cookieStore.get("SSID");
 
   if (!ssidCookie || !ssidCookie.value) return null;
-
   const decoded: any = jwtDecode(ssidCookie.value);
   if (!decoded || !decoded.session) return null;
 
-  const res = await fetch(process.env.API_URL + accountsServiceUrl + "/profile", {
-    ...FETCH_OPTIONS,
-    headers: { Cookie: cookies().toString(), "Content-Type": "application/json" },
+  service.interceptors.request.use((config) => {
+    config.headers.Cookie = `SSID=${ssidCookie.value}`;
+    return config;
   });
 
-  if (!res.ok) return null;
-
-  return res
-    .json()
-    .then((res) => res.data)
-    .catch((err) => null);
+  return await accountsService
+    .getProfile()
+    .then(async (res) => {
+      return res.data;
+    })
+    .catch(() => null);
 };
 
 const RootProviders = async ({ children, modal }: RootProvidersProps) => {

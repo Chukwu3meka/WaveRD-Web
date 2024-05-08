@@ -1,12 +1,15 @@
 import { GetEndpoints, GetEndpointsCategories, GetEndpointsResponse } from "interfaces/services/apihub.interface";
-import service, { axios, apihubServiceUrl } from ".";
+// import service, { axios, apihubServiceUrl } from ".";
+import service from "./service";
 import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
 import { ApiResponse } from "interfaces/services/shared.interface";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 
-class ApihubService { 
+class ApihubService {
+  apihubServiceUrl = "/apihub";
+
   getEndpointsCategories = async ({ limit }: GetEndpointsCategories) => {
-    const response = await service.get(apihubServiceUrl + `/endpoints/categories?limit=${limit}`);
+    const response = await service.get(this.apihubServiceUrl + `/endpoints/categories?limit=${limit}`);
     return response.data;
   };
 
@@ -33,34 +36,26 @@ class ApihubService {
     this.getEndpointsController.abort();
   };
 
-  getEndpoints = async ({
-    phrase,
-    size,
-    filter,
-    page,
-    token,
-    sequence,
-    category,
-  }: GetEndpoints): Promise<ApiResponse<GetEndpointsResponse>> => {
+  getEndpoints = async ({ phrase, size, filter, page, token, sequence, category }: GetEndpoints): Promise<ApiResponse<GetEndpointsResponse>> => {
     try {
       switch (filter) {
         case "search": {
           const params = `filter=search&phrase=${phrase}&token=${token}&sequence=${sequence}&size=${size}`,
-            endpoint = apihubServiceUrl + "/endpoints?" + params;
+            endpoint = this.apihubServiceUrl + "/endpoints?" + params;
 
           return (await service.get(endpoint, { signal: this.getEndpointsController.signal })).data;
         }
 
         case "category": {
           const params = `filter=category&page=${page}&size=${size}&category=${category}`,
-            endpoint = apihubServiceUrl + "/endpoints?" + params;
+            endpoint = this.apihubServiceUrl + "/endpoints?" + params;
 
           return (await service.get(endpoint, { signal: this.getEndpointsController.signal })).data;
         }
 
         default: {
           const params = `filter=all&page=${page}&size=${size}`,
-            endpoint = apihubServiceUrl + "/endpoints?" + params;
+            endpoint = this.apihubServiceUrl + "/endpoints?" + params;
 
           return (await service.get(endpoint, { signal: this.getEndpointsController.signal })).data;
         }
@@ -82,7 +77,7 @@ class ApihubService {
   };
 
   getEndpoint = async (path: string) => {
-    const response = await service.get(apihubServiceUrl + `/endpoints/${path}`);
+    const response = await service.get(this.apihubServiceUrl + `/endpoints/${path}`);
     return response.data;
   };
 }

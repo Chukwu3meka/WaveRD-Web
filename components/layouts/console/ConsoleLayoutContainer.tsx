@@ -39,7 +39,7 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
   }, [props.activeRoute]);
 
   useEffect(() => {
-    setBlankScreen(!props.deviceWidth || props.deviceWidth >= 1200);
+    setBlankScreen(!props.deviceWidth || props.deviceWidth <= 1200);
   }, [props.deviceWidth]);
 
   const themeHandler = async () => {

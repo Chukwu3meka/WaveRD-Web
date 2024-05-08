@@ -14,9 +14,9 @@ import { RootProps } from "interfaces/components/others/layouts.interface";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
-const { description, keywords, title } = pageInfo.home;
 
-export const metadata: Metadata = { description, keywords, title };
+const { description, keywords, title } = pageInfo.home,
+  metadata: Metadata = { description, keywords, title };
 
 const RootLayout = async ({ children, modal }: RootProps) => (
   <html lang="en">
@@ -45,4 +45,4 @@ const RootLayout = async ({ children, modal }: RootProps) => (
   </html>
 );
 
-export default RootLayout;
+export { metadata, RootLayout as default };

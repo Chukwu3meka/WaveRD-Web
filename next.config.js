@@ -45,6 +45,25 @@ const nextConfig = {
   //   ];
   // },
 
+  async rewrites() {
+    return [
+      {
+        source: "/v1/:path*",
+        destination: `http://localhost:3000/v1/:path*`, // Rewrite the API routes to the local host
+
+        //   async rewrites() {
+        //     return [
+        //       {
+        //         source: '/api/:path*',
+        //         destination: 'http://localhost:3000/api/:path*', // Rewrite the API routes to the local host
+        //       },
+        //     ];
+        //   },
+        // };
+      },
+    ];
+  },
+
   async redirects() {
     return subDomains
       .flatMap((subDomain) => [

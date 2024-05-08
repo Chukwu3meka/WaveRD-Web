@@ -1,12 +1,21 @@
-import service, { consoleServiceUrl } from ".";
+import service from "./service";
 
-import { ContactUsPayload } from "interfaces/services/console.interface";
+import { GetEndpointsPayload } from "interfaces/services/console.interface";
 
-const consoleService = {
-  contactUs: async (payload: ContactUsPayload) => {
-    const response = await service.post(consoleServiceUrl + "/contact-us", payload);
+class ConsoleService {
+  consoleServiceUrl = "/console";
+
+  getEndpoints = async ({ filter, page, size }: GetEndpointsPayload) => {
+    const response = await service.get(this.consoleServiceUrl + `/endpoints?filter=${filter}&page=${page}&size=${size}`);
     return response.data;
-  },
-};
+  };
 
-export default consoleService;
+  // const consoleService = {
+  //   contactUs: async (payload: ContactUsPayload) => {
+  //     const response = await service.post(consoleServiceUrl + "/contact-us", payload);
+  //     return response.data;
+  //   },
+  // };
+}
+
+export default ConsoleService;
