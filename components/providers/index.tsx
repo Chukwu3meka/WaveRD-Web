@@ -1,6 +1,6 @@
 import Providers from "./Providers";
+import AntProvider from "./AntProvider";
 import ReduxProvider from "./ReduxProvider";
-import RootProviders from "./RootProviders";
 import SnackbarProvider from "./SnackbarProvider";
 
-export { ReduxProvider, Providers, SnackbarProvider, RootProviders as default };
+export { AntProvider, ReduxProvider, SnackbarProvider, Providers as default };

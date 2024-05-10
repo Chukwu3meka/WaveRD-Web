@@ -8,6 +8,7 @@ import { SlidesProp } from "interfaces/components/others/layouts.interface";
 
 const settings = {
   speed: 5000,
+  arrows: false,
   infinite: true,
   autoplay: true,
   slidesToShow: 1,
@@ -20,17 +21,13 @@ const settings = {
 export default function Slides({ layout }: SlidesProp) {
   return (
     <aside className={styles.slides}>
-      <div>
-        <Slider {...settings}>
-          {features[layout].map((slide: any) => (
-            <div key={slide}>
-              <Typography fontSize="1.2em" component="div">
-                {slide}
-              </Typography>
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        {features[layout].map((slide: any) => (
+          <Typography key={slide} component="div" fontSize="1.2em">
+            {slide}
+          </Typography>
+        ))}
+      </Slider>
     </aside>
   );
 }

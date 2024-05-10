@@ -1,7 +1,6 @@
 @import "styles/index.scss";
 
 .navigation {
-  align-self: center;
   @include quickFlex($wrap: wrap, $row: 20px, $column: 20px);
   max-width: 1000px !important;
 

@@ -13,8 +13,6 @@ import { RootState } from "interfaces/redux-store/store.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { ConsoleLayoutContainerProps, Theme } from "interfaces/components/others/layouts.interface";
 
-const thisYear = new Date().getFullYear();
-
 const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
   const { children } = props,
     { setThemeAction } = props,
@@ -36,6 +34,8 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
 
   useEffect(() => {
     setActiveRoute(props.activeRoute || "/");
+
+    console.log(props.activeRoute);
   }, [props.activeRoute]);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
   if (blankScreen) return <main>loading...</main>;
 
   return (
-    <ConsoleLayout profile={profile} thisYear={thisYear} activeRoute={activeRoute} themeHandler={themeHandler}>
+    <ConsoleLayout profile={profile} activeRoute={activeRoute} themeHandler={themeHandler}>
       {children}
     </ConsoleLayout>
   );

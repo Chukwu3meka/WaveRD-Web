@@ -9,6 +9,7 @@ export interface StoreContextProviderProps {
 export interface ProvidersContainerProps {
   theme?: Theme;
   user: Profile | null;
+  // modal: React.ReactNode;
   displayHeader?: boolean;
   children?: React.ReactNode;
   setProfileAction?: Function;
@@ -18,7 +19,7 @@ export interface ProvidersContainerProps {
   setDisplayHeaderAction?: Function;
 }
 
-export interface RootProvidersProps {
-  modal: React.ReactNode;
+export interface AntProviderProps {
+  theme: Theme;
   children: React.ReactNode;
 }

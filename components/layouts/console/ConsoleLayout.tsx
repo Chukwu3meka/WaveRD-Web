@@ -1,32 +1,21 @@
 "use client";
 
-import { styles } from ".";
-import { capitalize } from "utils/helpers";
-import { Fade } from "react-awesome-reveal";
-import { Box, Avatar, Stack, Typography, Divider, List } from "@mui/material";
-import { ConsoleLayoutProps } from "interfaces/components/others/layouts.interface";
-
 import Link from "next/link";
 import Image from "next/image";
 import routes from "utils/routes";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import MenuIcon from "@mui/icons-material/Menu";
-import IconButton from "@mui/material/IconButton";
 import Ellipsis from "components/shared/ellipsis";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import FooterContainer from "components/shared/footer";
-import ListItemButton from "@mui/material/ListItemButton";
 
-const ConsoleLayout = ({ children, profile, activeRoute, themeHandler, thisYear }: ConsoleLayoutProps) => (
+import { styles } from ".";
+import { Fade } from "react-awesome-reveal";
+import { Contrast as ThemeIcon } from "@mui/icons-material";
+import { ConsoleLayoutProps } from "interfaces/components/others/layouts.interface";
+import { IconButton, ListItemIcon, ListItemText, ListItemButton, Avatar, Stack, Typography, Divider, List } from "@mui/material";
+
+const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: ConsoleLayoutProps) => (
   <div className={styles.layout}>
     <nav className={styles.navigation}>
       <Stack alignItems="center">
-        <Box position="relative">
-          <Avatar alt={profile?.name} src={profile ? profile.avatar : "/images/default-user.png"} sx={{ width: 115, height: 115 }} />
-          <Image className={styles.spinner} src="/images/layout/soccermass.webp" alt="SoccerMASS Avatar" width={25} height={25} />
-        </Box>
+        <Avatar alt={profile?.name} src={profile ? profile.avatar : "/images/default-user.png"} sx={{ width: 115, height: 115 }} />
 
         <Stack>
           <Ellipsis lines={1} fontWeight={600} fontSize="1em" textTransform="capitalize">
@@ -45,52 +34,54 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler, thisYear 
           {routes
             .filter((route) => route.research === null)
             .map(({ title, path, Icon }, i) => (
-              <Link key={i} href={path} className={styles[path.startsWith(activeRoute) ? "active" : ""]}>
-                <ListItemButton selected={path.startsWith(activeRoute)}>
+              <Link key={i} href={path} className={styles[activeRoute.startsWith(path) ? "active" : ""]}>
+                <ListItemButton selected={activeRoute.startsWith(path)}>
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>
-                  <ListItemText primary={title.toUpperCase()} sx={{ color: "var(--contrast-color)" }} />
+                  <ListItemText>
+                    <Typography sx={{ fontWeight: 600 }} color="var(--contrast-color) !important">
+                      {title.toUpperCase()}
+                    </Typography>
+                  </ListItemText>
                 </ListItemButton>
               </Link>
             ))}
+
+          <ListItemButton>
+            <ListItemIcon>
+              <IconButton aria-label="theme icon" sx={{ ml: -0.7 }} onClick={themeHandler}>
+                <ThemeIcon />
+              </IconButton>
+            </ListItemIcon>
+            <ListItemText>
+              <Typography
+                component="a"
+                sx={{ fontWeight: 600 }}
+                rel="noopener noreferrer"
+                color="var(--contrast-color) !important"
+                href={`${process.env.API_URL}/accounts/signout`}>
+                LOGOUT
+              </Typography>
+            </ListItemText>
+          </ListItemButton>
         </List>
       </Stack>
 
       <Stack alignItems="center">
-        <Divider sx={{ width: "100%", mt: 4, mb: 0.5 }} />
+        <Divider sx={{ width: "100%", mt: 4, mb: 1.5 }} />
 
-        <Typography mt={1} fontSize=".7em">
-          Ireland | Nigeria | Israel | United States
-        </Typography>
+        <Image className={styles.spinner} src="/images/layout/soccermass.webp" alt="SoccerMASS Avatar" width={25} height={25} />
+
+        <Typography fontSize=".7em">Ireland | Nigeria | Israel | United States</Typography>
 
         <Typography fontFamily="Fredericka the Great" fontSize=".9em" letterSpacing=".009">
-          ©{thisYear} Wave Research
+          ©{new Date().getFullYear()} Wave Research
         </Typography>
       </Stack>
     </nav>
 
-    <div>
-      <AppBar position="sticky" color="transparent" sx={{ background: "var(--secondary-color)", height: 70 }}>
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={themeHandler}>
-            <MenuIcon />
-          </IconButton>
-
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {capitalize(routes?.find((route) => route.path === activeRoute)?.title || "SoccerMASS Console")}
-          </Typography>
-
-          <Typography color="inherit" component="a" href={`${process.env.API_URL}/accounts/signout`} rel="noopener noreferrer">
-            Logout
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
-      <Fade direction="right">{children}</Fade>
-
-      <FooterContainer />
-    </div>
+    <Fade direction="right">{children}</Fade>
   </div>
 );
 

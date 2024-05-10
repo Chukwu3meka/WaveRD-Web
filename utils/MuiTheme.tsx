@@ -2,6 +2,7 @@
 
 import { createTheme } from "@mui/material/styles";
 import { Theme } from "interfaces/components/others/layouts.interface";
+
 import stylesVariables from "styles/variables.module.scss";
 
 // const iPhoneInputFix = {
@@ -42,18 +43,21 @@ const MuiTheme = (theme: Theme) => {
       // MuiTypography: { styleOverrides: { root: { lineHeight: "1.7em", letterSpacing: "0.01em" } } },
       // MuiPaper: { styleOverrides: { root: { padding: 5, boxSizing: "border-box" } } },
       // MuiTable: { styleOverrides: { root: { minWidth: 300 } } },
-      // MuiTableCell: {
-      //   styleOverrides: { head: { backgroundColor: initialTheme.palette.common.black, color: initialTheme.palette.common.white }, body: { fontSize: 14 } },
-      // },
+      MuiTableCell: {
+        styleOverrides: {
+          body: { fontSize: 14 },
+          head: { backgroundColor: initialTheme.palette.common.black, color: initialTheme.palette.common.white, height: 70 },
+        },
+      },
       MuiButton: { styleOverrides: { root: { fontWeight: "600", letterSpacing: ".06em" } } },
-      // MuiTableRow: {
-      //   styleOverrides: {
-      //     root: {
-      //       "&:nth-of-type(odd)": { backgroundColor: initialTheme.palette.action.hover },
-      //       "&:last-child td, &:last-child th": { border: 0 }, // <= hide last border
-      //     },
-      //   },
-      // },
+      MuiTableRow: {
+        styleOverrides: {
+          root: {
+            "&:nth-of-type(odd)": { backgroundColor: initialTheme.palette.action.hover },
+            "&:last-child td, &:last-child th": { border: 0 }, // <= hide last border
+          },
+        },
+      },
     },
   });
 };

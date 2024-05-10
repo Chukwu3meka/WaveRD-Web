@@ -1,19 +1,25 @@
 @import "styles/index.scss";
 
 .layout {
-  display: grid;
-  grid-template-columns: 300px auto;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 300px auto;
 
   & > div:nth-of-type(1) {
-    display: grid;
-    grid-template-rows: var(--headerHeight) auto max-content;
-    overflow-x: hidden;
+    height: 100vh;
     overflow-y: auto;
 
-    & > div > main {
-      min-height: 100%; // min-height: 400px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto;
+
+    // Use :where to allow child style take higher css specificity
+    :where(& > *) {
+      align-self: center;
+      justify-self: center;
     }
   }
 }
@@ -26,25 +32,6 @@ nav.navigation {
   background: var(--secondary-color);
   padding: 20px 10px 10px;
 
-  & > div:nth-of-type(1) {
-    position: relative;
-    overflow: hidden;
-
-    .spinner {
-      top: 10px;
-      left: -2px;
-      position: absolute;
-      border-radius: 50%;
-      animation: spin 14s alternate infinite;
-    }
-
-    @keyframes spin {
-      100% {
-        transform: rotateY(360deg);
-      }
-    }
-  }
-
   & > div:nth-of-type(2) {
     overflow-x: hidden;
     overflow-y: auto;
@@ -55,6 +42,17 @@ nav.navigation {
       top: -5px;
       bottom: -5px;
       z-index: 1;
+    }
+  }
+
+  & > div:nth-of-type(3) > img {
+    border-radius: 50%;
+    animation: spin 14s alternate infinite;
+
+    @keyframes spin {
+      100% {
+        transform: rotateY(360deg);
+      }
     }
   }
 }

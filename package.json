@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.0",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -22,6 +23,7 @@
     "@next/third-parties": "^14.2.3",
     "@reduxjs/toolkit": "^2.2.3",
     "@vercel/speed-insights": "^1.0.10",
+    "antd": "^5.17.0",
     "axios": "^1.6.8",
     "date-fns": "^3.6.0",
     "jwt-decode": "^4.0.0",

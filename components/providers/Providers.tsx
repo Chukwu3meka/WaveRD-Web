@@ -11,9 +11,11 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { setCssThemeVar } from "utils/helpers";
 import { LinearProgress, Stack } from "@mui/material";
-import { Theme } from "interfaces/components/others/layouts.interface";
+import { AntProvider, SnackbarProvider, ReduxProvider } from ".";
 import { RootState } from "interfaces/redux-store/store.interface";
+import { Theme } from "interfaces/components/others/layouts.interface";
 import { BREAKPOINTS, HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ProvidersContainerProps } from "interfaces/components/others/providers.interface";
 import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } from "../../redux-store/actions";
 
@@ -102,19 +104,23 @@ const Providers = (props: ProvidersContainerProps) => {
   };
 
   return (
-    <ThemeProvider theme={muiTheme(theme)}>
-      {initialized ? (
-        <>
-          <UserRoleContainer />
-          {displayHeader ? <HeaderContainer position="sticky" /> : null}
-          {children}
-        </>
-      ) : (
-        <Stack sx={{ width: "100%", color: stylesVariables.primaryColor }}>
-          <LinearProgress color="inherit" />
-        </Stack>
-      )}
-    </ThemeProvider>
+    <AppRouterCacheProvider>
+      <ThemeProvider theme={muiTheme(theme)}>
+        <AntProvider theme={theme}>
+          {initialized ? (
+            <SnackbarProvider>
+              <UserRoleContainer />
+              {displayHeader ? <HeaderContainer position="sticky" /> : null}
+              {children}
+            </SnackbarProvider>
+          ) : (
+            <Stack sx={{ width: "100%", color: stylesVariables.primaryColor }}>
+              <LinearProgress color="inherit" />
+            </Stack>
+          )}
+        </AntProvider>
+      </ThemeProvider>
+    </AppRouterCacheProvider>
   );
 };
 

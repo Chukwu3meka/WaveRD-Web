@@ -57,7 +57,6 @@ export interface ConsoleLayoutContainerProps {
 }
 
 export interface ConsoleLayoutProps {
-  thisYear: number;
   activeRoute: string;
   profile: null | Profile;
   children: React.ReactNode;
