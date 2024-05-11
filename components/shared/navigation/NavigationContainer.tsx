@@ -7,7 +7,13 @@ import { NavigationContainerProps } from "interfaces/components/others/shared.in
 const NavigationContainer = ({ research }: NavigationContainerProps) => {
   const navRoutes = routes.filter((props) => props.research === research);
 
-  if (!navRoutes.length) return <Empty description="No Module Found" />;
+  if (!navRoutes.length)
+    return (
+      <main>
+        <Empty description="No Module Found" />
+      </main>
+    );
+
   return <Navigation routes={navRoutes} />;
 };
 

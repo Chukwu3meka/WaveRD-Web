@@ -6,18 +6,21 @@
   overflow: hidden;
 
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: 340px auto;
 
   & > div:nth-of-type(1) {
     height: 100vh;
     overflow-y: auto;
 
-    padding: 10px;
     display: grid;
     grid-template-columns: auto;
 
     // Use :where to allow child style take higher css specificity
-    :where(& > *) {
+    :where(& > main, & > div) {
+      width: calc(100vw - 340px);
+      overflow-x: hidden;
+
+      padding: 10px;
       align-self: center;
       justify-self: center;
     }

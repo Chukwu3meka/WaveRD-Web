@@ -5,4 +5,11 @@ const service = axios.create({
   baseURL: process.env.API_URL,
 });
 
-export default service;
+const cookieInterceptor = (cookie: string) => {
+  return service.interceptors.request.use((config) => {
+    config.headers.Cookie = cookie;
+    return config;
+  });
+};
+
+export { cookieInterceptor, service as default };

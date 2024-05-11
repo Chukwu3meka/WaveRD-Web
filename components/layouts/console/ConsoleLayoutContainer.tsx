@@ -34,8 +34,6 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
 
   useEffect(() => {
     setActiveRoute(props.activeRoute || "/");
-
-    console.log(props.activeRoute);
   }, [props.activeRoute]);
 
   useEffect(() => {
