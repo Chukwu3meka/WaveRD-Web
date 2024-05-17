@@ -1,15 +1,12 @@
 import "styles/globals.scss";
 
 import pageInfo from "utils/page-info";
-import service, { cookieInterceptor } from "services/service";
-import Providers, { ReduxProvider } from "components/providers";
-import AccountsService from "services/accounts.service";
 import stylesVariables from "styles/variables.module.scss";
+import Providers, { ReduxProvider } from "components/providers";
 
 import { Metadata } from "next";
 import { Suspense } from "react";
-import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
+import { getUserProfile } from "utils/serverHelpers";
 import { LinearProgress, Stack } from "@mui/material";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -17,7 +14,6 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { RootProps } from "interfaces/components/others/layouts.interface";
 import { ReactChildren } from "interfaces/components/others/shared.interface";
-import { getUserProfile } from "utils/serverHelpers";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });

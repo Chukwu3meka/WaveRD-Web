@@ -1,4 +1,3 @@
-import EndpointSSR from "./EndpointSSR";
 import EndpointView from "./EndpointView";
 import EndpointContainer from "./EndpointContainer";
 
@@ -7,4 +6,4 @@ import Response from "./Response";
 import Description from "./Description";
 import SnippetsContainer from "./SnippetsContainer";
 
-export { Snippets, SnippetsContainer, Description, Response, EndpointView, EndpointContainer, EndpointSSR as default };
+export { Snippets, SnippetsContainer, Description, Response, EndpointView, EndpointContainer as default };

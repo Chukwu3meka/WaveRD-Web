@@ -1,12 +1,15 @@
+import Link from "next/link";
 import Ellipsis from "components/shared/ellipsis";
 import LoadingButton from "@mui/lab/LoadingButton";
 
+import { Divider } from "antd";
 import { format } from "date-fns";
-import { capitalize } from "utils/helpers";
 import { CATEGORIES } from "utils/constants";
-import { Paper, Skeleton, TextField, Typography, Stack } from "@mui/material";
+import { capitalize, shortNumber } from "utils/helpers";
+import { Paper, Skeleton, TextField, Stack, IconButton } from "@mui/material";
 import { ConsoleEndpointsProps } from "interfaces/components/console/apihub.interface";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import { DeleteForever as DeleteEndpointIcon, Add as AddEndpointIcon, VisibilityOff as HideEndpointIcon } from "@mui/icons-material";
 
 const ConsoleEndpoints = ({
   data,
@@ -16,49 +19,70 @@ const ConsoleEndpoints = ({
   searching,
   searchHandler,
   handlePageChange,
-  toggleViewRequest,
+  toggleShowEndpoint,
 }: ConsoleEndpointsProps) => (
   <main style={{ alignSelf: "start" }}>
-    <Stack mb={1} spacing={1} alignItems="center" direction="row">
-      <Typography sx={{ fontWeight: 900 }}>Search</Typography>
+    <Divider orientation="left">AVAILABLE API HUB ENDPOINTS</Divider>
 
-      <TextField
-        id="search"
-        size="small"
-        value={filter}
-        variant="outlined"
-        sx={{ minWidth: 350 }}
-        aria-describedby="search"
-        label="Search Endpoint title"
-        placeholder="Search Endpoint title"
-        disabled={data.loading || searching}
-        onChange={(e) => setFilter(e.target.value)}
-      />
+    <Stack mb={2} spacing={1} justifyContent="space-between" direction="row">
+      <Stack spacing={1} alignItems="center" direction="row">
+        <TextField
+          id="search"
+          size="small"
+          value={filter}
+          variant="outlined"
+          sx={{ minWidth: 350 }}
+          aria-describedby="search"
+          label="Search Endpoint title"
+          placeholder="Search Endpoint title"
+          disabled={data.loading || searching}
+          onChange={(e) => setFilter(e.target.value)}
+        />
 
-      <LoadingButton
-        id="signin"
-        size="small"
-        type="submit"
-        color="primary"
-        variant="contained"
-        loading={searching}
-        onClick={searchHandler}
-        disabled={searching || data.loading}>
-        Search
-      </LoadingButton>
+        <LoadingButton
+          id="signin"
+          type="submit"
+          color="primary"
+          variant="contained"
+          loading={searching}
+          onClick={searchHandler}
+          disabled={searching || data.loading}>
+          Search
+        </LoadingButton>
+      </Stack>
+
+      <nav style={{ border: "1px solid var(--secondary-color)", borderRadius: 10 }}>
+        <IconButton>
+          <AddEndpointIcon />
+        </IconButton>
+
+        <IconButton>
+          <HideEndpointIcon />
+        </IconButton>
+
+        <IconButton>
+          <DeleteEndpointIcon />
+        </IconButton>
+      </nav>
     </Stack>
 
     <Paper elevation={2} sx={{ width: "100%", overflow: "hidden", alignSelf: "start" }}>
-      <TableContainer style={{ maxHeight: "calc(100vh - 140px)" }}>
+      <TableContainer style={{ maxHeight: "calc(100vh - 200px)" }}>
         <Table stickyHeader aria-label="Console Endpoints table" size="small" ref={tableRef}>
           <TableHead>
             <TableRow>
               <TableCell width={30}></TableCell>
               <TableCell width={350}>Title</TableCell>
-              <TableCell width={150}>Path</TableCell>
-              <TableCell width={50}>Latency</TableCell>
+              <TableCell width={150} align="center">
+                Bookmarks
+              </TableCell>
+              <TableCell width={50} align="right">
+                Latency
+              </TableCell>
               <TableCell width={100}>Category</TableCell>
-              <TableCell width={100}>Last Activity</TableCell>
+              <TableCell width={100} align="center">
+                Last Activity
+              </TableCell>
             </TableRow>
           </TableHead>
 
@@ -86,29 +110,51 @@ const ConsoleEndpoints = ({
                     </TableCell>
                   </TableRow>
                 ))
-              : data.content?.map(({ title, path, latency, category, lastUpdated, id }, sn) => (
-                  <TableRow sx={{ cursor: "pointer" }} hover key={id} onClick={(e) => toggleViewRequest(e, id)}>
+              : data.content?.map(({ title, bookmarks, latency, category, lastUpdated, id }, sn) => (
+                  <TableRow key={id} hover onClick={(e) => toggleShowEndpoint(e, id)} sx={{ cursor: "pointer" }}>
                     <TableCell sx={{ py: 1.3 }}>
-                      <Ellipsis lines={1}>{data.page * data.rows + (sn + 1)}.</Ellipsis>
+                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
+                        <Ellipsis color="text.secondary" lines={1}>
+                          {data.page * data.rows + (sn + 1)}.
+                        </Ellipsis>
+                      </Link>
                     </TableCell>
                     <TableCell>
-                      <Ellipsis lines={1}>{title}</Ellipsis>
+                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
+                        <Ellipsis color="text.secondary" lines={1}>
+                          {title}
+                        </Ellipsis>
+                      </Link>
                     </TableCell>
                     <TableCell align="center">
-                      <Ellipsis lines={1}>{path}</Ellipsis>
+                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
+                        <Ellipsis color="text.secondary" lines={1} align="right">
+                          {shortNumber(bookmarks)}
+                        </Ellipsis>
+                      </Link>
                     </TableCell>
                     <TableCell>
-                      <Ellipsis lines={1}>{latency}</Ellipsis>
+                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
+                        <Ellipsis color="text.secondary" lines={1} align="right">
+                          {latency}
+                        </Ellipsis>
+                      </Link>
                     </TableCell>
                     <TableCell>
-                      <Ellipsis lines={1}>{capitalize(CATEGORIES[category].replaceAll("-", " "))} </Ellipsis>
+                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
+                        <Ellipsis color="text.secondary" lines={1}>
+                          {capitalize(CATEGORIES[category].replaceAll("-", " "))}{" "}
+                        </Ellipsis>
+                      </Link>
                     </TableCell>
-                    <TableCell>
-                      <Ellipsis lines={1}>
-                        {format(new Date(lastUpdated), "iii")},&nbsp;{format(new Date(lastUpdated), "do")}&nbsp;
-                        {format(new Date(lastUpdated), "LLL")}&nbsp;
-                        {format(new Date(lastUpdated), "uuuu")}
-                      </Ellipsis>
+                    <TableCell align="center">
+                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
+                        <Ellipsis color="text.secondary" lines={1}>
+                          {format(new Date(lastUpdated), "iii")},&nbsp;{format(new Date(lastUpdated), "do")}&nbsp;
+                          {format(new Date(lastUpdated), "LLL")}&nbsp;
+                          {format(new Date(lastUpdated), "uuuu")}
+                        </Ellipsis>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -121,7 +167,7 @@ const ConsoleEndpoints = ({
         count={data.total}
         rowsPerPage={data.rows}
         onPageChange={(event: unknown, newPage: number) => handlePageChange(newPage)}
-        rowsPerPageOptions={[20, 50, 75, 100]}
+        rowsPerPageOptions={[10, 20, 50, 75, 100]}
         onRowsPerPageChange={(event: React.ChangeEvent<HTMLInputElement>) => handlePageChange(0, +event.target.value)}
       />
     </Paper>

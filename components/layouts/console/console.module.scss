@@ -17,7 +17,8 @@
 
     // Use :where to allow child style take higher css specificity
     :where(& > main, & > div) {
-      width: calc(100vw - 340px);
+      width: calc(100vw - 350px);
+      max-width: 1500px;
       overflow-x: hidden;
 
       padding: 10px;

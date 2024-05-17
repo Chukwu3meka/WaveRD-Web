@@ -13,3 +13,32 @@ export interface GetConsoleEndpointsResponse {
   totalElements: number;
   content: ConsoleEndpointsContent[];
 }
+
+export interface GetConsoleEndpointPayload {
+  id: string;
+  cookie?: string | null;
+}
+
+export interface GetConsoleEndpointResponse {
+  snippets: Snippets[];
+  title: string;
+  latency: number;
+  description: string;
+  category: string;
+  method: string;
+  response: string;
+  lastUpdated: Date;
+  bookmarks: number;
+  path: string;
+  id: string;
+}
+
+export interface Snippets {
+  id: string;
+  title: string;
+  snippet: string;
+}
+
+export interface ConsoleEndpointTitleExistsResponse {
+  exists: boolean;
+}

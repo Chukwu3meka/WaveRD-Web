@@ -1,16 +1,49 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { Box, Grid } from "@mui/material";
+import { ApiResponse } from "interfaces/services/shared.interface";
+import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
+import { Category } from "interfaces/components/apihub/endpoints.interface";
 
 import pageInfo from "utils/page-info";
+import ApihubService from "services/apihub.service";
 import WelcomeContainer from "components/apihub/endpoints/welcome";
-import CategoriesSSR, { CategoriesLoading } from "components/apihub/endpoints/categories";
-import EndpointsSSR, { EndpointsLoadingContainer } from "components/apihub/endpoints/endpoints";
+import CategoriesContainer, { CategoriesLoading } from "components/apihub/endpoints/categories";
+import EndpointsContainer, { EndpointsLoadingContainer } from "components/apihub/endpoints/endpoints";
 
 export const metadata: Metadata = {
   title: pageInfo.home.title,
   keywords: pageInfo.home.keywords,
   description: pageInfo.home.description,
+};
+
+const CategoriesSSR = async () => {
+  const apihubService = new ApihubService();
+
+  const categories: Category[] = await apihubService
+    .getEndpointsCategories({ limit: 10 })
+    .then(({ success, data }: ApiResponse<Category[]>) => {
+      if (success && Array.isArray(data)) return data;
+      return [];
+    })
+    .catch(() => []);
+
+  return <CategoriesContainer categories={categories} />;
+};
+
+const EndpointsSSR = async () => {
+  const apihubService = new ApihubService();
+
+  const limit: 20 = 20,
+    endpoints: GetEndpointsResponse = await apihubService
+      .getEndpoints({ filter: "all", size: limit, page: 0 })
+      .then(({ success, data }) => {
+        if (success && data && Array.isArray(data.content)) return data;
+        return { page: 0, size: limit, totalElements: 0, content: [] };
+      })
+      .catch(() => ({ page: 0, size: limit, totalElements: 0, content: [] }));
+
+  return <EndpointsContainer endpoints={endpoints} limit={limit} />;
 };
 
 const EndpointsPage = () => (

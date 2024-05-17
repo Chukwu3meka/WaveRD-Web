@@ -60,6 +60,13 @@ const validator = ({ value, type, label }: Validator) => {
       break;
     }
 
+    case "snippet": {
+      charLengthLimit(3, 700);
+
+      // if (!reg.test(value)) throw { message: `${label} can only have letters, Numbers, comma, dot, exclamation and question mark.` };
+      break;
+    }
+
     // case "query": {
     //   charLengthLimit(1, 50);
 

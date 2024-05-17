@@ -1,7 +1,7 @@
 import { Suspense } from "react";
+import { getUserCookies } from "utils/serverHelpers";
 
 import ConsoleService from "services/console.service";
-import { getUserCookies } from "utils/serverHelpers";
 import EndpointsContainer from "components/console/apihub/console-endpoints";
 
 const EndpointsSSR = async () => {

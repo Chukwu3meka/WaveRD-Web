@@ -1,8 +1,24 @@
 import { Suspense } from "react";
 import { Box } from "@mui/material";
+import { EndpointSSRProps } from "interfaces/components/apihub/endpoint.interface";
 
 import Loading from "components/shared/loading";
-import EndpointSSR from "components/apihub/endpoint";
+import ApihubService from "services/apihub.service";
+import EndpointContainer from "components/apihub/endpoint";
+
+const EndpointSSR = async ({ path }: EndpointSSRProps) => {
+  const apihubService = new ApihubService();
+
+  const endpoint = await apihubService
+    .getEndpoint(path)
+    .then(({ success, data }) => {
+      if (success) return data;
+      return null;
+    })
+    .catch(() => null);
+
+  return <EndpointContainer endpoint={endpoint} />;
+};
 
 const EndpointsPage = ({ params: { endpoint } }: { params: { endpoint: string } }) => (
   <Suspense fallback={<Loading />}>

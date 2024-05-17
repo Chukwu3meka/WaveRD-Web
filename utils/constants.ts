@@ -2,6 +2,8 @@ import { Profile } from "interfaces/redux-store/account.interfaces";
 import pageInfo from "./page-info";
 
 import { Categories, Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
+import { ObjectEntries, capitalize } from "./helpers";
+import { ConsoleEndpointContainerProps } from "interfaces/components/console/apihub.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
@@ -64,12 +66,17 @@ export const CONTACT_US_CATEGORIES: ContactUsCategories[] = [
 ];
 
 export const CATEGORIES: Categories = {
-  "": "football-referees",
-  "": "football-countries",
-  "": "football-competitions",
   "65fdaf6b3f0da305ed4306ad": "football-clubs",
   "65fdaf6b3f0da305ed4306ae": "football-players",
+  "65fdaf6b3f0da305ed4306b0": "football-referees",
+  "65fdaf6b3f0da305ed4306ac": "football-countries",
+  "65fdaf6b3f0da305ed4306af": "football-competitions",
 };
+
+export const CATEGORIES_ARRAY = Object.entries(CATEGORIES).map(([k, v]) => ({
+  value: k,
+  label: capitalize(v?.replace("-", " ")),
+}));
 
 export const BREAKPOINTS = {
   xs: 0,
@@ -78,3 +85,8 @@ export const BREAKPOINTS = {
   lg: 1200,
   xl: 1536,
 };
+
+export const ENDPOINTS_SNIPPETS = [
+  { id: "curl", title: "cURL (Client for URL)" },
+  { id: "fetch", title: "JavaScript Fetch API" },
+];

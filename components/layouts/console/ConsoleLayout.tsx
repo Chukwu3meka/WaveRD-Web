@@ -78,7 +78,8 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
         </Typography>
 
         <Typography fontFamily="Fredericka the Great" fontSize=".9em" letterSpacing=".009">
-          ©{new Date().getFullYear()} Wave Research
+          ©{new Date().getFullYear()}
+          {/* Wave Research */}
         </Typography>
       </Stack>
     </nav>

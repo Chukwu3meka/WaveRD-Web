@@ -33,7 +33,7 @@ const SignupContainer = () => {
     try {
       setUserForm((values: SignupForm) => ({ ...values, options: { ...values.options, loading: true } }));
 
-      /* re-validate all values before registeration */
+      /* re-validate all values before registration */
       const userData: SignupPayload = { email: "", name: "", handle: "", password: "", theme: INIT_PROFILE.theme };
       for (const [tempId, { value, valid, info: message }] of Object.entries(userForm)) {
         const id = tempId as SigninFormKeys;

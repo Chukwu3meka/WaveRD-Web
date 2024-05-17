@@ -24,7 +24,7 @@ export const arrayRotate = ({ arr, reverse = false }: ArrayRotate) => {
   return arr;
 };
 
-export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 60 * 60));
+export const sleep = async (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 
 export const capitalize = (phrase: string) => {
   if (!phrase) throw { message: "Unable to capitalize phrase" };

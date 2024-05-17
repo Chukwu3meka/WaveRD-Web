@@ -1,20 +1,18 @@
 "use client";
 
+import validator from "utils/validator";
+import ConsoleService from "services/console.service";
+
 import { ConsoleEndpoints } from ".";
 import { useRef, useState } from "react";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
-import ConsoleService from "services/console.service";
-import { ConsoleEndpointsProps, EndpointsContainerProps, ConsoleEndpointsData } from "interfaces/components/console/apihub.interface";
-import validator from "utils/validator";
+import { ConsoleEndpointsProps, ConsoleEndpointsContainerProps, ConsoleEndpointsData } from "interfaces/components/console/apihub.interface";
 
-const ConsoleEndpointsContainer = ({ endpoints }: EndpointsContainerProps) => {
+const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps) => {
   const consoleService = new ConsoleService(),
     [filter, setFilter] = useState(""),
     [searching, setSearching] = useState(false),
     tableRef: ConsoleEndpointsProps["tableRef"] = useRef(null);
-
-  const [viewRequest, setViewRequest] = useState<null | any>(null),
-    [fetchingRequest, setFetchingRequest] = useState(true);
 
   const [data, setData] = useState<ConsoleEndpointsData>({
     filter: "",
@@ -58,31 +56,22 @@ const ConsoleEndpointsContainer = ({ endpoints }: EndpointsContainerProps) => {
     }
   };
 
-  const toggleViewRequest = async (event: React.KeyboardEvent | React.MouseEvent, id: null | any = null) => {
+  const toggleShowEndpoint = async (event: React.KeyboardEvent | React.MouseEvent, id: null | any = null) => {
     if (event.type === "keydown" && ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) return;
 
-    setViewRequest(id);
-
-    if (id) {
-      setFetchingRequest(true);
-
-      // await fetcher({ endpoint: `/gaAppraisalRequest/${id}`, method: "get" })
-      //   .then((res) => setViewRequest(res.data))
-      //   .catch(() => enqueueSnackbar("Failed to retrieve data", { variant: "error" }))
-      //   .finally(() => setFetchingRequest(false));
-    }
+    // setShowEndpoint(id);
   };
 
   return (
     <ConsoleEndpoints
       data={data}
-      searching={searching}
       filter={filter}
+      tableRef={tableRef}
+      searching={searching}
       setFilter={setFilter}
       searchHandler={searchHandler}
-      tableRef={tableRef}
       handlePageChange={handlePageChange}
-      toggleViewRequest={toggleViewRequest}
+      toggleShowEndpoint={toggleShowEndpoint}
     />
   );
 };
