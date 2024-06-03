@@ -14,6 +14,9 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { RootProps } from "interfaces/components/others/layouts.interface";
 import { ReactChildren } from "interfaces/components/others/shared.interface";
+// import Router, { useRouter } from "next/router";
+
+import { headers } from "next/headers";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
@@ -23,6 +26,16 @@ const { description, keywords, title } = pageInfo.home,
 
 const ProvidersSSR = async ({ children }: ReactChildren) => {
   const user: null | Profile = await getUserProfile();
+
+  process.env.MY_VARIABLE = "some-value";
+  const headersList = headers();
+  const domain = headersList.get("host") || "";
+  const fullUrl = headersList.get("referer") || "";
+
+  console.log({ domain, fullUrl });
+  // const router = useRouter();
+
+  // router.asPath;
 
   // ReduxProvider should be called here before Providers
   // This will allow Providers to use redux actions without errors

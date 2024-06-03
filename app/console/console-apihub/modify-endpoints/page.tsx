@@ -9,6 +9,8 @@ const EndpointsSSR = async () => {
   const cookie = await getUserCookies(),
     consoleService = new ConsoleService();
 
+  console.log({ a: process.env.MY_VARIABLE, b: "MY_VARIABLE" });
+
   const endpoints = await consoleService
     .getEndpoints({ filter: "", page: 0, size: 20, cookie })
     .then(({ success, data }) => {

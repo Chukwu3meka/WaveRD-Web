@@ -2,8 +2,8 @@
 
 import muiTheme from "utils/MuiTheme";
 import HeaderContainer from "../shared/header";
-import UserRoleContainer from "components/shared/user-role";
 import stylesVariables from "styles/variables.module.scss";
+import UserRoleContainer from "components/shared/user-role";
 
 import { connect } from "react-redux";
 import { ThemeProvider } from "@mui/system";
