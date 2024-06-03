@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 
-const domains = [
+const lts = 1,
+  domains = [
     { host: "localhost", domain: "http://localhost:8081" },
     { host: "waverd.com", domain: "https://waverd.com" },
   ],
   subDomains = ["apihub", "manager", "console", "accounts"],
   WEB_URL = process.env.NODE_ENV === "production" ? "https://waverd.com" : "http://localhost:8081",
-  API_URL = process.env.NODE_ENV === "production" ? "https://api.waverd.com/v1" : "http://localhost:8081/v1";
+  API_URL = process.env.NODE_ENV === "production" ? "https://api.waverd.com/" + lts : "http://localhost:8081/" + lts;
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -31,10 +32,10 @@ const nextConfig = {
   env: {
     API_URL,
     WEB_URL,
+    STABLE_VERSION: lts,
     NOTICE_PERIOD: "30",
     INACTIVITY_PERIOD: "21",
     DATA_DELETION_PERIOD_PERIOD: "14",
-    API_VERSION: "v1",
   },
 
   // async headers() {
@@ -49,8 +50,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/v1/:path*",
-        destination: `http://localhost:3000/v1/:path*`, // Rewrite the API routes to the local host
+        source: `/${lts}/:path*`,
+        destination: `http://localhost:3000/${lts}/:path*`, // Rewrite the API routes to the local host
 
         //   async rewrites() {
         //     return [

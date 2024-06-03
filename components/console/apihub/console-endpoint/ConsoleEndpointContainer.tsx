@@ -42,7 +42,7 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
       onInputChange({ target: { id: "title", value: props.endpoint.title } }, true);
       onSelectChange({ target: { id: "category", value: props.endpoint.category } });
       onInputChange({ target: { id: "description", value: props.endpoint.description } }, true);
-      onInputChange({ target: { id: "path", value: props.endpoint.path.replace("/v1/public/", "") } }, true);
+      onInputChange({ target: { id: "path", value: props.endpoint.path.replace(`/${process.env.STABLE_VERSION}/public/`, "") } }, true);
 
       setFormData((formData) => ({ ...formData, options: { ...formData.options, snippets: props.endpoint?.snippets || [] } }));
     }
@@ -146,15 +146,17 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
 
     setFormData((values) => ({ ...values, options: { ...values.options, composing: true } }));
 
-    await consoleService.composeEndpoint({ method, path: "/v1/public/" + path }).then(async ({ success, data, message }) => {
-      if (success) {
-        enqueueSnackbar(message, { variant: "success" });
-        setFormData((values) => ({ ...values, options: { ...values.options, composing: false, response: data.response, latency: data.latency } }));
-      } else {
-        enqueueSnackbar(message || "An error occurred", { variant: "error" });
-        setFormData((values) => ({ ...values, options: { ...values.options, composing: false, response: null, latency: "0.00" } }));
-      }
-    });
+    await consoleService
+      .composeEndpoint({ method, path: `/${process.env.STABLE_VERSION}/public/` + path })
+      .then(async ({ success, data, message }) => {
+        if (success) {
+          enqueueSnackbar(message, { variant: "success" });
+          setFormData((values) => ({ ...values, options: { ...values.options, composing: false, response: data.response, latency: data.latency } }));
+        } else {
+          enqueueSnackbar(message || "An error occurred", { variant: "error" });
+          setFormData((values) => ({ ...values, options: { ...values.options, composing: false, response: null, latency: "0.00" } }));
+        }
+      });
   };
 
   const saveEndpoint = async () => {
@@ -189,8 +191,8 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
           category: formData.category.value,
           snippets: formData.options.snippets,
           description: formData.description.value,
-          path: "/v1/public/" + formData.path.value,
           id: props.endpoint ? props.endpoint.id : "new",
+          path: `/${process.env.STABLE_VERSION}/public/` + formData.path.value,
         })
         .then(async ({ success, message }) => {
           if (success) {
