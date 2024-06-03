@@ -42,7 +42,7 @@ const EndpointView = ({ endpoint, currentTab, handleTabChange, theme }: Endpoint
           {endpoint ? <Description title={endpoint.title} description={endpoint.description} theme={theme} /> : <NotFound />}
         </TabPanel>
         <TabPanel value="2">{endpoint ? <SnippetsContainer snippets={endpoint.snippets} theme={theme} /> : <NotFound />}</TabPanel>
-        <TabPanel value="3">{endpoint ? <Response response={endpoint.response!} theme={theme} /> : <NotFound />}</TabPanel>
+        <TabPanel value="3">{endpoint ? <Response response={endpoint.response!} theme={theme} path={endpoint.path} /> : <NotFound />}</TabPanel>
       </TabContext>
     </Box>
   </Fade>

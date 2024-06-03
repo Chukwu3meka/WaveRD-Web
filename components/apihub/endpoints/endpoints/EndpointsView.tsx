@@ -54,7 +54,7 @@ const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreE
 
                 <Divider variant="inset" />
 
-                <Link href={`/apihub/endpoints/${path}`}>
+                <Link href={`/apihub/endpoints/${reference}`}>
                   <Ellipsis lines={3} color="text.primary" mt={2.5}>
                     {description}
                   </Ellipsis>

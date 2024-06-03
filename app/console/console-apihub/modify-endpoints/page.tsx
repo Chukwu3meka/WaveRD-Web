@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getUserCookies } from "utils/serverHelpers";
 
+import Loading from "components/shared/loading";
 import ConsoleService from "services/console.service";
 import EndpointsContainer from "components/console/apihub/console-endpoints";
 
@@ -20,7 +21,7 @@ const EndpointsSSR = async () => {
 };
 
 const EndpointsPage = () => (
-  <Suspense fallback="Loading...">
+  <Suspense fallback={<Loading />}>
     <EndpointsSSR />
   </Suspense>
 );

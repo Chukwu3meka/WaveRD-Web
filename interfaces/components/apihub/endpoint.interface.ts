@@ -2,6 +2,7 @@ import { ChangeEventHandler, MouseEventHandler } from "react";
 import { Theme } from "../others/layouts.interface";
 import { Endpoint, SnippetsFormat } from "./endpoints.interface";
 import { SelectChangeEvent } from "@mui/material";
+import { LayoutState } from "interfaces/redux-store/layout.interfaces";
 
 export interface SnippetsContainerProps {
   snippets: Endpoint["snippets"];
@@ -24,12 +25,13 @@ export interface DescriptionProps {
 }
 
 export interface EndpointViewProps extends EndpointContainerProps {
-  currentTab: "1" | "2" | "3";
   handleTabChange: Function;
+  currentTab: "1" | "2" | "3";
 }
 
 export interface EndpointResponseProps {
   response: string;
+  path: string;
   theme: Theme;
 }
 
