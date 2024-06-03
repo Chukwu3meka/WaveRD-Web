@@ -14,7 +14,7 @@ export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/Chukwu3meka/" },
   // {id:"waverd",title:"Wave Research",image:"/images/social/waverd.png",href: "https://www.waverd.com/"],
   // {id:"pinterest",title:"Pinterest",image:"/images/social/pinterest.png",href: "https://www.pinterest.com/viewcrunch/"],
-  { id: "github", title: "Github", image: "/images/social/github.png", href: "https://github.com/Chukwu3meka/Wave Research-Web/issues" },
+  { id: "github", title: "Github", image: "/images/social/github.png", href: "https://github.com/Chukwu3meka/WaveRD-Web/issues" },
   // {id:"youtube",title:"YouTube",image:"/images/social/youtube.png",href: "https://www.youtube.com/channel/UCs_hSlk3N8bxP5xHSdKw3IQ/"],
   // {id:"fiverr",title:"Fiverr",image:"/images/social/fiverr.png",href: "https://www.fiverr.com/viewcrunch/"],
   { id: "whatsapp", title: "Whatsapp", image: "/images/social/whatsapp.png", href: "https://wa.me/qr/5KYEVNBVLVVSI1" },
