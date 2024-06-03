@@ -23,7 +23,7 @@ export default function Contact({
       <div className={styles.categories}>
         {supportTeam.map(({ supportType, image, description, buttonType }) => (
           <Paper elevation={2} key={supportType} onClick={() => sectionHandler(buttonType)}>
-            <Image src={image} alt={`SoccerMASS Contact Us - ${supportType}`} width={100} height={100} />
+            <Image src={image} alt={`Wave Research Contact Us - ${supportType}`} width={100} height={100} />
 
             <div>
               <Typography variant="h6">{supportType}</Typography>
@@ -145,7 +145,7 @@ const supportTeam = [
   {
     supportType: "Technical Support",
     image: "/images/layout/support.png",
-    description: "Already using SoccerMASS and experiencing issues on our platform",
+    description: "Already using Wave Research and experiencing issues on our platform",
     buttonType: "technical",
   },
   {

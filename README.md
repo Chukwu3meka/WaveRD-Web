@@ -1,6 +1,6 @@
-# SoccerMASS Web ✨
+# Wave Research Web ✨
 
-SoccerMASS is a free online football manager for advanced soccer management. The title of manager is almost exclusively used in British football. In most other European countries in which professional football is played, the person responsible for the direction of a team is awarded the position of coach or "trainer"
+Wave Research is a free online football manager for advanced soccer management. The title of manager is almost exclusively used in British football. In most other European countries in which professional football is played, the person responsible for the direction of a team is awarded the position of coach or "trainer"
 
 ## Responsibilities ⚡
 
@@ -20,9 +20,9 @@ The manager's responsibilities in a professional football club usually include (
 
 - Chukwuemeka Maduekwe [@Twitter](https://www.twitter.com/Chukwu3meka) [@GitHub](https://github.com/Chukwu3meka)
 
-## About SoccerMASS Web
+## About Wave Research Web
 
-SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found here at [home](https://www.soccermass.com), [Manager](https://manager.soccermass.com/) and [apihub](https://hub.soccermass.com/)
+Wave Research Web is hosted on **[Vercel](https://vercel.com/)** and can be found here at [home](https://www.waverd.com), [Manager](https://manager.waverd.com/) and [apihub](https://hub.waverd.com/)
 
 > To learn more about this project, kindly contact the developer [😎 ChukwuEmeka Maduekwe](https://www.linkedin.com/in/chukwu3meka/):
 
@@ -36,7 +36,7 @@ SoccerMass Web is hosted on **[Vercel](https://vercel.com/)** and can be found h
 
 - Migration to TypeScript is being carried out
 - _builder_: contains most UI components used throughout the app
-- _Fork_ **SoccerMASS Web** [here](https://github.com/Chukwu3meka/SoccerMASS-Web.git)
+- _Fork_ **Wave Research Web** [here](https://github.com/Chukwu3meka/Wave Research-Web.git)
 - Now clone your remote branch, and run `npm install` or `npm i` for short; to install all packages
 - If you don't have a gitignore file, create one and [run](https://sigalambigha.home.blog/2020/03/11/how-to-refresh-gitignore/) `git rm -r --cached .` to ensure git is tracking the right file, i.e files not listed in the new _.gitignore_
 - In development we run a single command to reflect changes on file change, and to keep our app running all the time

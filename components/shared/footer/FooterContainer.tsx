@@ -14,10 +14,17 @@ const FooterContainer = () => (
       <main>
         <aside>
           <Typography fontWeight={700} fontSize="2.2em" component="h1" color="text.secondary">
-            SoccerMASS
+            Wave Research
           </Typography>
 
-          <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={80} height={80} placeholder="blur" blurDataURL="/images/layout/soccermass.webp" />
+          <Image
+            src="/images/layout/waverd.webp"
+            alt="Wave Research"
+            width={80}
+            height={80}
+            placeholder="blur"
+            blurDataURL="/images/layout/waverd.webp"
+          />
 
           <Typography variant="subtitle2" component="p">
             Follow US
@@ -26,7 +33,7 @@ const FooterContainer = () => (
           <div>
             {SOCIAL_ACCOUNTS.map(({ title, id, href, image }) => (
               <a href={href} key={id} rel="noopener noreferrer" target="_blank">
-                <Image src={image} alt={`SoccerMASS ${title} page`} width={30} height={30} />
+                <Image src={image} alt={`Wave Research ${title} page`} width={30} height={30} />
               </a>
             ))}
           </div>
@@ -34,20 +41,20 @@ const FooterContainer = () => (
 
         <nav>
           <div>
-            <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
-              SoccerMASS
+            <Typography component="label" htmlFor="waverd-links" color="text.secondary">
+              Wave Research
             </Typography>
 
-            <a href="https://blog.soccermass.com/">Blog</a>
+            <a href="https://blog.waverd.com/">Blog</a>
             <Link href={pageInfo.organization.path}>{pageInfo.organization.title}</Link>
             <Link href={pageInfo.passwordReset.path}>{pageInfo.passwordReset.title}</Link>
             <Link href={pageInfo.advertisement.path}>{pageInfo.advertisement.title}</Link>
             <Link href={pageInfo.contactUs.path}>Bug Report</Link>
-            {/* <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank"></a> */}
+            {/* <a href="https://github.com/Wave Research-Inc/Wave Research-Web/issues" rel="noopener noreferrer" target="_blank"></a> */}
           </div>
 
           <div>
-            <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
+            <Typography component="label" htmlFor="waverd-links" color="text.secondary">
               Learn More
             </Typography>
 
@@ -59,17 +66,17 @@ const FooterContainer = () => (
           </div>
 
           <div>
-            <Typography component="label" htmlFor="soccermass-links" color="text.secondary">
+            <Typography component="label" htmlFor="waverd-links" color="text.secondary">
               Partners
             </Typography>
 
-            <a href="https://apihub.soccermass.com/">API Hub</a>
-            <a href="https://translate.soccermass.com/">Translation</a>
-            <a href="https://manager.soccermass.com/">Soccer Manager</a>
-            <a href="https://soccermass.com/">Jobs & Career</a>
-            <a href="https://soccermass.com/">Agriculture</a>
-            {/* <a href="https://soccermass.com/">Homes & Space</a> */}
-            {/* <a href="https://soccermass.com/">Hourly Jobs</a> */}
+            <a href="https://apihub.waverd.com/">API Hub</a>
+            <a href="https://translate.waverd.com/">Translation</a>
+            <a href="https://manager.waverd.com/">Soccer Manager</a>
+            <a href="https://waverd.com/">Jobs & Career</a>
+            <a href="https://waverd.com/">Agriculture</a>
+            {/* <a href="https://waverd.com/">Homes & Space</a> */}
+            {/* <a href="https://waverd.com/">Hourly Jobs</a> */}
           </div>
         </nav>
       </main>
@@ -95,7 +102,7 @@ const FooterContainer = () => (
         </Typography>
 
         <Typography component="span" variant="body2" fontSize="1em">
-          ©SoccerMASS 2018 ~ {new Date().getFullYear()}
+          ©Wave Research 2018 ~ {new Date().getFullYear()}
         </Typography>
       </section>
     </footer>

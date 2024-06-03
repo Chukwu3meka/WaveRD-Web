@@ -8,8 +8,8 @@ import { PageInfo } from "interfaces/utils/page-info";
 test("Can users signin", async ({ page }) => {
   await page.goto(pageInfo.signin.path);
 
-  await page.locator("#password").fill("2018SoccerMASS");
-  await page.locator("#email").fill("mariam.yamal@soccermass.dev");
+  await page.locator("#password").fill("2018WaveRD");
+  await page.locator("#email").fill("mariam.yamal@waverd.dev");
 
   await expect(page.locator("#signin")).toHaveText("Sign in", { timeout: 500 });
   await page.locator("#signin").click();
@@ -51,6 +51,6 @@ test("Can users signin", async ({ page }) => {
   // await page.getByLabel("Password").fill("6565656Lagos");
   // await page.get("Password").fill("6565656Lagos");
 });
-// await page.getByPlaceholder("username@email.com").fill("mariam.yamal@soccermass.dev");
-// await page.getByPlaceholder("Password").fill("2018SoccerMASS");
+// await page.getByPlaceholder("username@email.com").fill("mariam.yamal@waverd.dev");
+// await page.getByPlaceholder("Password").fill("2018WaveRD");
 // await page.getByRole("button", { name: "Sign in" }).last().click();

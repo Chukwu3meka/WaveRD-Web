@@ -72,7 +72,7 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
     </AttentionSeeker>
 
     <Typography sx={{ marginTop: "35px !important" }} fontSize={14}>
-      New to SoccerMASS? <Link href="/accounts/signup">Create Account</Link>
+      New to Wave Research? <Link href="/accounts/signup">Create Account</Link>
     </Typography>
   </Stack>
 );

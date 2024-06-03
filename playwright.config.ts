@@ -34,9 +34,9 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
     baseURL:
       process.env.NODE_ENV === "production"
-        ? "https://www.soccermass.com"
+        ? "https://www.waverd.com"
         : process.env.NODE_ENV === "test"
-        ? "https://dev.soccermass.com"
+        ? "https://dev.waverd.com"
         : "http://localhost:8081",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */

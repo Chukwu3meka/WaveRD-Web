@@ -25,7 +25,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
     <div className={styles.manager}>
       <Box role="presentation" pl={2} py={3}>
         <Breadcrumbs aria-label="breadcrumb" separator="›">
-          <Typography color="text.secondary">SoccerMASS</Typography>
+          <Typography color="text.secondary">Wave Research</Typography>
 
           <Typography color="text.secondary">Core</Typography>
 
@@ -40,7 +40,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
           <Carousel {...settings} slidesToShow={slidesToShow}>
             {COMPETITIONS.map(({ id, image, title }) => (
               <figure key={id}>
-                <Image src={image} alt={`SoccerMASS ${title}`} width={70} height={70} />
+                <Image src={image} alt={`Wave Research ${title}`} width={70} height={70} />
               </figure>
             ))}
           </Carousel>
@@ -59,7 +59,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-              alt="SoccerMASS Clubs"
+              alt="Wave Research Clubs"
             />
           </div>
           <span>Step up to the challenge and beat the best managers. Take charge and steer your team to victory by joining now.</span>
@@ -80,7 +80,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-              alt="SoccerMASS Clubs"
+              alt="Wave Research Clubs"
             />
           </div>
           <div>
@@ -91,7 +91,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-              alt="SoccerMASS Players"
+              alt="Wave Research Players"
             />
           </div>
         </Paper>
@@ -105,7 +105,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
               sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-              alt="SoccerMASS Clubs"
+              alt="Wave Research Clubs"
             />
           </div>
           <span>Assemble your team and manage club finances, your players are eager for your leadership.</span>
@@ -122,7 +122,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
           <Carousel {...settings} slidesToShow={slidesToShow} rtl>
             {clubs.map((club, index) => (
               <figure key={club}>
-                <Image src={`/images/clubs/${club}.webp`} alt={`SoccerMASS  club ${index + 1}`} width={70} height={70} />
+                <Image src={`/images/clubs/${club}.webp`} alt={`Wave Research  club ${index + 1}`} width={70} height={70} />
               </figure>
             ))}
           </Carousel>

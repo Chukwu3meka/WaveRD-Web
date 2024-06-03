@@ -68,7 +68,7 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
       <Stack alignItems="center" py={2}>
         <Divider sx={{ width: "100%", mt: 2, mb: 1.5 }} />
 
-        <Image className={styles.spinner} src="/images/layout/soccermass.webp" alt="SoccerMASS Avatar" width={30} height={30} />
+        <Image className={styles.spinner} src="/images/layout/waverd.webp" alt="Wave Research Avatar" width={30} height={30} />
 
         <Typography fontSize=".7em" my={1}>
           Ireland | Nigeria | Israel | United States

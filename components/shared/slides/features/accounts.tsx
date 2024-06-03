@@ -7,7 +7,7 @@ const slides = [
   </>,
 
   <>
-    <h2>We are happy to have you, SoccerMASS was built to meet your need of real soccer experience</h2>
+    <h2>We are happy to have you, Wave Research was built to meet your need of real soccer experience</h2>
     <h3>
       <ul>
         <li>Interactive Play</li>
@@ -24,7 +24,7 @@ const slides = [
   </>,
 
   <>
-    <h2>Why SoccerMASS</h2>
+    <h2>Why Wave Research</h2>
     <h3>
       <ul>
         <li>Free forever</li>

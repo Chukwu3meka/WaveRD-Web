@@ -13,18 +13,17 @@ const Welcome = () => (
 
         <Typography fontSize={{ xs: "2.7em", sm: "3.89em", md: "4.0em", lg: "5em", xl: "6em" }} fontWeight={900}>
           <a href="/organization" rel="noopener noreferrer" target="_blank">
-            SoccerMASS
+            Wave Research
           </a>
         </Typography>
 
         <Typography fontSize={{ xs: "1.1em", sm: "1.3em" }}>
-          The ultimate destination for football enthusiasts and managers, designed to provide you with everything you need to stay ahead of
-          the game.
+          The ultimate destination for football enthusiasts and managers, designed to provide you with everything you need to stay ahead of the game.
         </Typography>
 
         <Typography fontSize={{ xs: "1.1em", sm: "1.3em" }} mt="10px" mb="20px">
-          With our cutting-edge tools and in-depth insights, you can access real-time data. So join us today and experience the power of
-          data-driven football API like never before!
+          With our cutting-edge tools and in-depth insights, you can access real-time data. So join us today and experience the power of data-driven
+          football API like never before!
         </Typography>
 
         <span>

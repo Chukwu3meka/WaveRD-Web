@@ -26,8 +26,8 @@ const UserRole = ({ role, toggleHandler, showDialog }: UserRoleProps) => {
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 Kindly be informed that this is a test account mainly for visual assistance and certain actions are restricted. You can create a
-                standard user account via signup to enjoy premium contents or signin if you already have an account with SoccerMASS to persist changes
-                you make.
+                standard user account via signup to enjoy premium contents or signin if you already have an account with Wave Research to persist
+                changes you make.
               </DialogContentText>
             </DialogContent>
             <DialogActions>

@@ -9,7 +9,7 @@ import { ResetPasswordProp } from "interfaces/components/others/accounts.interfa
 const ConfirmPasswordReset = ({ resetPasswordHandler, form, onInputChange, handleClickShowPassword }: ResetPasswordProp) => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
-      <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+      <Image src="/images/layout/password.png" alt="Wave Research" width={150} height={120} style={{ margin: "auto" }} />
     </Box>
 
     <Typography fontSize="1.3em" fontWeight={600}>
@@ -28,7 +28,7 @@ const ConfirmPasswordReset = ({ resetPasswordHandler, form, onInputChange, handl
         disabled={form.options.loading}
         onBlur={(e) => onInputChange(e, true)}
         onChange={(e) => onInputChange(e, false)}
-        placeholder="firstname.lastname@soccermass.com"
+        placeholder="firstname.lastname@waverd.com"
         error={!form.email.valid}
         label="Email Address"
         autoComplete="off"

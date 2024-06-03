@@ -12,7 +12,7 @@ const Welcome = ({ showMenu, searchResult, onInputChange, inputValue, getEndpoin
         <Stack direction="row" alignItems="center" justifyContent={centered ? "center" : "flex-start"} spacing={4} py={6} px={1}>
           {showMenu && (
             <Avatar sx={{ width: 100, height: 100 }}>
-              <Image src="/images/layout/soccermass.webp" alt="SoccerMASS" width={100} height={100} />
+              <Image src="/images/layout/waverd.webp" alt="Wave Research" width={100} height={100} />
             </Avatar>
           )}
 
@@ -22,7 +22,7 @@ const Welcome = ({ showMenu, searchResult, onInputChange, inputValue, getEndpoin
             </Typography>
 
             <Typography mb={1}>
-              With our Football data and an infinite variety of APIs through our API Hub, discover a world of wonders in SoccerMASS.
+              With our Football data and an infinite variety of APIs through our API Hub, discover a world of wonders in Wave Research.
             </Typography>
 
             <Search

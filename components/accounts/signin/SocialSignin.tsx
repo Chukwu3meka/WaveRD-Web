@@ -18,7 +18,7 @@ const SocialSignin = ({ iconOnly }: SocialSignin) => (
     {authData.map(({ color, endpoint, Icon, label }) =>
       iconOnly ? (
         <a href={endpoint} key={label}>
-          <IconButton aria-label="SoccerMASS oAuth Sign In" component="label" sx={{ color }}>
+          <IconButton aria-label="Wave Research oAuth Sign In" component="label" sx={{ color }}>
             <Icon fontSize="large" />
           </IconButton>
         </a>

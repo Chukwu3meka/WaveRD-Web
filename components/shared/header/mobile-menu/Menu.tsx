@@ -24,7 +24,7 @@ const navLinks = [
   { id: "manager", title: "Soccer Manager", Icon: ManagerIcon, path: "/manager" },
   { id: "signup", title: "Register/Create an Account", Icon: SignUpIcon, path: "/accounts/signup" },
   { id: "signin", title: "Login to your Account", Icon: SignInIcon, path: "/accounts/signin" },
-  { id: "signout", title: "Sign Out from SoccerMASS", Icon: SignOutIcon, path: `${process.env.API_URL}/accounts/signout` },
+  { id: "signout", title: "Sign Out from Wave Research", Icon: SignOutIcon, path: `${process.env.API_URL}/accounts/signout` },
 ];
 
 const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuProps) => {
@@ -102,8 +102,8 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
           <Stack alignItems="center">
             <Box sx={{ mb: -4 }}>
               <Image
-                src="/images/layout/soccermass.webp"
-                alt="SoccerMASS"
+                src="/images/layout/waverd.webp"
+                alt="Wave Research"
                 width={60}
                 height={60}
                 style={{
@@ -123,7 +123,7 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
                 </Typography>
 
                 <Typography component="span" variant="body2">
-                  ©SoccerMASS 2018 ~ {new Date().getFullYear()}
+                  ©Wave Research 2018 ~ {new Date().getFullYear()}
                 </Typography>
               </section>
             </Paper>

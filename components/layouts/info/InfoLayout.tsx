@@ -39,9 +39,9 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
                   fullWidth
                   disablePortal
                   options={INFO_LINKS}
-                  id="soccermass-info"
+                  id="waverd-info"
                   value={INFO_LINKS.find(({ path }) => path === activeRoute)}
-                  renderInput={(params) => <TextField {...params} label="SoccerMASS Info" />}
+                  renderInput={(params) => <TextField {...params} label="Wave Research Info" />}
                   onChange={(event: any, newValue: InfoLinks | null) => autoCompleteHandler(newValue?.path)}
                 />
               </Box>

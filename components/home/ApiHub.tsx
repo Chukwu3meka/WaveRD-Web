@@ -12,7 +12,7 @@ const ApiHub = () => (
   <div className={apiHubStyles.apihub}>
     <Box role="presentation" pl={2} py={3}>
       <Breadcrumbs aria-label="breadcrumb">
-        <Typography color="text.secondary">SoccerMASS</Typography>
+        <Typography color="text.secondary">Wave Research</Typography>
 
         <Typography color="text.secondary">Core</Typography>
 
@@ -27,7 +27,7 @@ const ApiHub = () => (
         <Image
           priority
           src="/images/layout/intro-apihub.png"
-          alt="SoccerMASS API HUB welcome image"
+          alt="Wave Research API HUB welcome image"
           fill
           sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -82,7 +82,7 @@ const apihubFeatures = [
     icon: <DataObjectIcon fontSize="inherit" />,
     title: "Massive data to consume",
     description:
-      "Building and maintaining ever changing football data will stretch your budget and Team. Allow SoccerMASS handle this task as we provide a large pool of data to fetch from ranging from Players, Clubs, Countries, Leagues, e.t.c.",
+      "Building and maintaining ever changing football data will stretch your budget and Team. Allow Wave Research handle this task as we provide a large pool of data to fetch from ranging from Players, Clubs, Countries, Leagues, e.t.c.",
   },
   {
     icon: <VpnLockIcon fontSize="inherit" />,

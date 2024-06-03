@@ -6,7 +6,7 @@ const robots = (): MetadataRoute.Robots => ({
     allow: "/",
     disallow: ["/accounts/email-verification", "/accounts/password-reset/"],
   },
-  sitemap: "https://soccermass.com/sitemap.xml",
+  sitemap: "https://waverd.com/sitemap.xml",
 });
 
 export default robots;

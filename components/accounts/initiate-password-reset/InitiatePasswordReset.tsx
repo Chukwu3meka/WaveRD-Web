@@ -9,7 +9,7 @@ import { ForgotPasswordProps } from "interfaces/components/others/accounts.inter
 const InitiatePasswordReset = ({ resetPasswordHandler, form, onInputChange }: ForgotPasswordProps) => (
   <Stack spacing={3} component="form" noValidate>
     <Box>
-      <Image src="/images/layout/password.png" alt="SoccerMASS" width={150} height={120} style={{ margin: "auto" }} />
+      <Image src="/images/layout/password.png" alt="Wave Research" width={150} height={120} style={{ margin: "auto" }} />
     </Box>
 
     <Typography fontSize="1.3em" fontWeight={600}>
@@ -28,7 +28,7 @@ const InitiatePasswordReset = ({ resetPasswordHandler, form, onInputChange }: Fo
         disabled={form.options.loading}
         onBlur={(e) => onInputChange(e, true)}
         onChange={(e) => onInputChange(e, false)}
-        placeholder="firstname.lastname@soccermass.com"
+        placeholder="firstname.lastname@waverd.com"
         error={!form.email.valid}
         label="Email Address"
         autoComplete="off"

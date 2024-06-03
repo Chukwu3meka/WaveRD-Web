@@ -2,11 +2,11 @@
 
 const domains = [
     { host: "localhost", domain: "http://localhost:8081" },
-    { host: "soccermass.com", domain: "https://soccermass.com" },
+    { host: "waverd.com", domain: "https://waverd.com" },
   ],
   subDomains = ["apihub", "manager", "console", "accounts"],
-  WEB_URL = process.env.NODE_ENV === "production" ? "https://soccermass.com" : "http://localhost:8081",
-  API_URL = process.env.NODE_ENV === "production" ? "https://api.soccermass.com/v1" : "http://localhost:8081/v1";
+  WEB_URL = process.env.NODE_ENV === "production" ? "https://waverd.com" : "http://localhost:8081",
+  API_URL = process.env.NODE_ENV === "production" ? "https://api.waverd.com/v1" : "http://localhost:8081/v1";
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -21,10 +21,10 @@ const nextConfig = {
 
   experimental: {
     serverActions: {
-      // allowedForwardedHosts: ["localhost", "www.soccermass.com"],
-      // allowedOrigins: ["https://www.soccermass.com", "localhost:8081"],
-      allowedForwardedHosts: ["localhost", "www.soccermass.com"],
-      allowedOrigins: ["https://www.soccermass.com", "localhost:8081"],
+      // allowedForwardedHosts: ["localhost", "www.waverd.com"],
+      // allowedOrigins: ["https://www.waverd.com", "localhost:8081"],
+      allowedForwardedHosts: ["localhost", "www.waverd.com"],
+      allowedOrigins: ["https://www.waverd.com", "localhost:8081"],
     },
   },
 

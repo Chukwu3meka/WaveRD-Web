@@ -6,15 +6,15 @@ import { ObjectEntries, capitalize } from "./helpers";
 import { ConsoleEndpointContainerProps } from "interfaces/components/console/apihub.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
-  // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/soccermass/" },
+  // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/waverd/" },
   { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/in/chukwu3meka/" },
-  // { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/SoccerMASSinc/" },
+  // { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/WaveRDinc/" },
   { id: "instagram", title: "Instagram", image: "/images/social/instagram.png", href: "https://www.instagram.com/Chukwuemeka_Maduekwe" },
-  // { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/SoccerMASSinc/" },
+  // { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/WaveRDinc/" },
   { id: "twitter", title: "Twitter", image: "/images/social/twitter.png", href: "https://twitter.com/Chukwu3meka/" },
-  // {id:"soccermass",title:"SoccerMASS",image:"/images/social/soccermass.png",href: "https://www.soccermass.com/"],
+  // {id:"waverd",title:"Wave Research",image:"/images/social/waverd.png",href: "https://www.waverd.com/"],
   // {id:"pinterest",title:"Pinterest",image:"/images/social/pinterest.png",href: "https://www.pinterest.com/viewcrunch/"],
-  { id: "github", title: "Github", image: "/images/social/github.png", href: "https://github.com/Chukwu3meka/SoccerMASS-Web/issues" },
+  { id: "github", title: "Github", image: "/images/social/github.png", href: "https://github.com/Chukwu3meka/Wave Research-Web/issues" },
   // {id:"youtube",title:"YouTube",image:"/images/social/youtube.png",href: "https://www.youtube.com/channel/UCs_hSlk3N8bxP5xHSdKw3IQ/"],
   // {id:"fiverr",title:"Fiverr",image:"/images/social/fiverr.png",href: "https://www.fiverr.com/viewcrunch/"],
   { id: "whatsapp", title: "Whatsapp", image: "/images/social/whatsapp.png", href: "https://wa.me/qr/5KYEVNBVLVVSI1" },
@@ -25,7 +25,7 @@ export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
 export const INIT_PROFILE: Profile = {
   role: "dummy", // <= Init role is always a dummy user
   theme: "dark",
-  name: "SoccerMASS",
+  name: "Wave Research",
   handle: "API Hub and Soccer Manager",
   avatar: "/images/layout/profile.webp",
 };

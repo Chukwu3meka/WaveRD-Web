@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
     cookies = request.cookies.get("SSID");
 
   try {
-    // ? Delete SoccerMASS SSID if it does not have a value
+    // ? Delete Wave Research SSID if it does not have a value
     if (cookies && !cookies.value) request.cookies.delete(["SSID"]);
   } catch (err) {
     return goToLogin(destination, url);

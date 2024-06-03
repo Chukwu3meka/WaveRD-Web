@@ -25,7 +25,7 @@ import pageInfo from "utils/page-info";
 
 const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHandler }: SignupProps) => (
   <Stack spacing={{ xs: 2, sm: 2, md: 2, lg: 2 }} textAlign="center" component="form" noValidate margin="auto" maxWidth={600}>
-    <Image src="/images/layout/accounts.png" alt="SoccerMASS" width={120} height={100} style={{ margin: "auto" }} />
+    <Image src="/images/layout/accounts.png" alt="Wave Research" width={120} height={100} style={{ margin: "auto" }} />
 
     <TextField
       fullWidth
@@ -51,7 +51,7 @@ const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHa
         onBlur={(e) => onChangeHandler(e, true)}
         onChange={(e) => onChangeHandler(e, false)}
         disabled={userForm.options.loading}
-        placeholder="firstname.lastname@soccermass.com"
+        placeholder="firstname.lastname@waverd.com"
         error={!userForm.email.valid && !userForm.email.validating}
         inputProps={{ autoComplete: "new-password", form: { autoComplete: "off" } }}
         endAdornment={
@@ -150,7 +150,7 @@ const Signup = ({ onChangeHandler, userForm, handleClickShowPassword, registerHa
     </Typography>
 
     <Typography fontSize={14}>
-      Already on SoccerMASS? <Link href="/accounts/signin">Sign in</Link>
+      Already on Wave Research? <Link href="/accounts/signin">Sign in</Link>
     </Typography>
   </Stack>
 );

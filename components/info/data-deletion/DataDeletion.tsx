@@ -73,7 +73,7 @@ export default function DataDeletion({ onInputChange, userForm, handleClickShowP
                   disabled={userForm.options.loading}
                   onBlur={(e) => onInputChange(e, true)}
                   onChange={(e) => onInputChange(e, false)}
-                  placeholder="firstname.lastname@soccermass.com"
+                  placeholder="firstname.lastname@waverd.com"
                   error={!userForm.email.valid}
                   label="Email Address"
                   autoComplete="off"
