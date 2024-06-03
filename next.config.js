@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const lts = 1,
+const lts = "v1",
   domains = [
     { host: "localhost", domain: "http://localhost:8081" },
     { host: "waverd.com", domain: "https://waverd.com" },
