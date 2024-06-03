@@ -68,9 +68,9 @@ export const CONTACT_US_CATEGORIES: ContactUsCategories[] = [
 export const CATEGORIES: Categories = {
   "65fdaf6b3f0da305ed4306ad": "football-clubs",
   "65fdaf6b3f0da305ed4306ae": "football-players",
-  "65fdaf6b3f0da305ed4306b0": "football-referees",
-  "65fdaf6b3f0da305ed4306ac": "football-countries",
   "65fdaf6b3f0da305ed4306af": "football-competitions",
+  "65fdaf6b3f0da305ed4306ac": "football-countries",
+  "65fdaf6b3f0da305ed4306b0": "football-referees",
 };
 
 export const CATEGORIES_ARRAY = Object.entries(CATEGORIES).map(([k, v]) => ({
@@ -90,3 +90,5 @@ export const ENDPOINTS_SNIPPETS = [
   { id: "curl", title: "cURL (Client for URL)" },
   { id: "fetch", title: "JavaScript Fetch API" },
 ];
+
+export const HTTP_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"];

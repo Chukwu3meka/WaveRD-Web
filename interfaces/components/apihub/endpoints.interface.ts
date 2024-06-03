@@ -83,7 +83,7 @@ export interface Endpoint {
   path: string;
   title: string;
   latency: number;
-  category: string;
+  reference: string;
   bookmarks: number;
   lastUpdated: string;
   description: string;

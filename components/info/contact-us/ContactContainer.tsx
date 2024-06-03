@@ -9,10 +9,10 @@ import { useSnackbar } from "notistack";
 import { useState, useRef } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { Validator } from "interfaces/utils/validator.interface";
-import { ContactUsPayload } from "interfaces/services/console.interface";
 import { ContactPreferences } from "interfaces/utils/constants.interface";
 import { CONTACT_PREFERENCE, CONTACT_US_CATEGORIES } from "utils/constants";
 import { CustomerUsForm } from "interfaces/components/others/info.interfaces";
+import { ContactUsPayload } from "interfaces/services/info.interface";
 
 const INIT_USER_FORM: CustomerUsForm = {
   name: { value: "", valid: true, info: "Handle cannot be empty", mandatory: true },

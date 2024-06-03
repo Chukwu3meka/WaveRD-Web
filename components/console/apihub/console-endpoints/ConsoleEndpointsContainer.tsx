@@ -3,16 +3,20 @@
 import validator from "utils/validator";
 import ConsoleService from "services/console.service";
 
-import { ConsoleEndpoints } from ".";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
+import { ConsoleEndpoints, ConsoleEndpointsDialog } from ".";
 import { ConsoleEndpointsProps, ConsoleEndpointsContainerProps, ConsoleEndpointsData } from "interfaces/components/console/apihub.interface";
 
 const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps) => {
   const consoleService = new ConsoleService(),
+    router = useRouter(),
     [filter, setFilter] = useState(""),
     [searching, setSearching] = useState(false),
-    tableRef: ConsoleEndpointsProps["tableRef"] = useRef(null);
+    [reference, setReference] = useState<string | null>(null),
+    tableRef: ConsoleEndpointsProps["tableRef"] = useRef(null),
+    [action, setAction] = useState<ConsoleEndpointsProps["actions"] | null>(null);
 
   const [data, setData] = useState<ConsoleEndpointsData>({
     filter: "",
@@ -23,6 +27,14 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
     total: endpoints?.totalElements || 0,
   });
 
+  const refreshEndpoints = () => {
+    try {
+      window?.location.reload();
+    } catch (error) {
+      router.refresh();
+    }
+  };
+
   const handlePageChange = async (page: number, rowsPerPage: number = data.rows) => {
     tableRef.current?.scrollIntoView({ behavior: "smooth" });
 
@@ -31,8 +43,10 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
     await consoleService
       .getEndpoints({ filter: data.filter, page, size: rowsPerPage })
       .then(({ success, data }) => {
-        if (success) setData((initData) => ({ ...initData, loading: false, content: data.content, total: data.totalElements }));
-        return null;
+        if (!success) throw { message: "An error occurred" };
+        if (!data.totalElements) enqueueSnackbar("No Endpoint added yet", { variant: "success" });
+
+        setData((initData) => ({ ...initData, loading: false, content: data.content, total: data.totalElements }));
       })
       .catch(() => {
         setData((data) => ({ ...data, loading: false }));
@@ -56,23 +70,33 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
     }
   };
 
-  const toggleShowEndpoint = async (event: React.KeyboardEvent | React.MouseEvent, id: null | any = null) => {
-    if (event.type === "keydown" && ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) return;
+  const rowActionHandler = (action: ConsoleEndpointsProps["actions"], id: null | string) => () => {
+    if (!id) return;
 
-    // setShowEndpoint(id);
+    if (action === "modify") {
+      router.push(`/console/console-apihub/modify-endpoints/${id}`);
+    } else {
+      setReference(id);
+      setAction(action);
+    }
   };
 
   return (
-    <ConsoleEndpoints
-      data={data}
-      filter={filter}
-      tableRef={tableRef}
-      searching={searching}
-      setFilter={setFilter}
-      searchHandler={searchHandler}
-      handlePageChange={handlePageChange}
-      toggleShowEndpoint={toggleShowEndpoint}
-    />
+    <main style={{ alignSelf: "start" }}>
+      <ConsoleEndpoints
+        data={data}
+        filter={filter}
+        tableRef={tableRef}
+        searching={searching}
+        setFilter={setFilter}
+        searchHandler={searchHandler}
+        refreshEndpoints={refreshEndpoints}
+        handlePageChange={handlePageChange}
+        rowActionHandler={rowActionHandler}
+      />
+
+      <ConsoleEndpointsDialog data={data} action={action} setData={setData} reference={reference} setReference={setReference} />
+    </main>
   );
 };
 

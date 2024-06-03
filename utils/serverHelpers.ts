@@ -27,10 +27,8 @@ export const getUserProfile = async (): Promise<null | Profile> => {
 
   cookieInterceptor(cookie);
 
-  return await accountsService
-    .getProfile()
-    .then(async (res) => {
-      return res.data;
-    })
-    .catch(() => null);
+  return await accountsService.getProfile().then(({ success, data }) => {
+    if (success) return data;
+    return null;
+  });
 };

@@ -1,4 +1,6 @@
-import ConsoleEndpoint from "./ConsoleEndpoint";
+import EndpointForm from "./EndpointForm";
+import SuccessDialog from "./SuccessDialog";
+import InvalidEndpoint from "./InvalidEndpoint";
 import ConsoleEndpointContainer from "./ConsoleEndpointContainer";
 
-export { ConsoleEndpoint, ConsoleEndpointContainer as default };
+export { EndpointForm, InvalidEndpoint, SuccessDialog, ConsoleEndpointContainer as default };

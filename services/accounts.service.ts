@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import service from "./service";
 
 import {
@@ -10,48 +10,52 @@ import {
   ConfPassResetService,
   InitPassResetService,
 } from "interfaces/services/accounts.interface";
+import { ApiResponse } from "interfaces/services/shared.interface";
 
 class AccountsService {
-  baseUrl = "/accounts";
+  accountsServiceUrl = "/accounts";
 
-  getProfile = async () => {
-    // const options: AxiosRequestConfig<any> | undefined = cookies ? { headers: { Cookie: cookies } } : undefined,
-    const response = await service.get(this.baseUrl + "/profile");
-    return response.data;
+  getProfile = async (): Promise<ApiResponse<any>> => {
+    const endpoint = this.accountsServiceUrl + "/profile";
+
+    return await service
+      .get(endpoint)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data);
   };
 
   setTheme = async (payload: ThemePayload) => {
-    const response = await service.post(this.baseUrl + "/theme", payload);
+    const response = await service.post(this.accountsServiceUrl + "/theme", payload);
     return response.data;
   };
 
   signin = async (payload: SigninPayload) => {
-    const response = await service.post(this.baseUrl + "/signin", payload);
+    const response = await service.post(this.accountsServiceUrl + "/signin", payload);
     return response.data;
   };
 
   exists = async ({ data, variant }: ExistsPayload) => {
-    const response = await service.post(this.baseUrl + `/${variant}_exists`, { [variant]: data });
+    const response = await service.post(this.accountsServiceUrl + `/${variant}_exists`, { [variant]: data });
     return response.data;
   };
 
   signup = async (payload: SignupPayload) => {
-    const response = await service.post(this.baseUrl + "/signup", payload);
+    const response = await service.post(this.accountsServiceUrl + "/signup", payload);
     return response.data;
   };
 
   initPasswordReset = async (payload: InitPassResetService) => {
-    const response = await service.post(this.baseUrl + "/initiate-password-reset", payload);
+    const response = await service.post(this.accountsServiceUrl + "/initiate-password-reset", payload);
     return response.data;
   };
 
   confPasswordReset = async (payload: ConfPassResetService) => {
-    const response = await service.post(this.baseUrl + "/confirm-password-reset", payload);
+    const response = await service.post(this.accountsServiceUrl + "/confirm-password-reset", payload);
     return response.data;
   };
 
   initDataDeletion = async (payload: DataDeletionService) => {
-    const response = await service.post(this.baseUrl + "/data-deletion", payload);
+    const response = await service.post(this.accountsServiceUrl + "/data-deletion", payload);
     return response.data;
   };
 }

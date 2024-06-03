@@ -14,6 +14,7 @@ import {
   ConnectWithoutContact,
   ContactPhone,
   AdminPanelSettings,
+  CloudDownload,
 } from "@mui/icons-material";
 
 import { Routes } from "interfaces/utils/constants.interface";
@@ -29,6 +30,8 @@ const routes: Routes[] = [
   { research: null, title: "HOMES AND SPACES", Icon: AddHomeWork, path: "/console/spaces" },
   { research: null, title: "ADD TO CART MARKET", Icon: LocalGroceryStore, path: "/console/cart" },
   { research: null, title: "MODERATORS", Icon: AdminPanelSettings, path: "/console/moderator" },
+  { research: null, title: "LOCAL BACKUP", Icon: CloudDownload, path: "/console/backup" },
+  { research: null, title: "LAUNDRY SERVICES", Icon: AdminPanelSettings, path: "/console/laundry" },
 
   // ? Console Apihub
   { research: "console-apihub", title: "Endpoints", Icon: Insights, path: "/console/console-apihub/modify-endpoints" },

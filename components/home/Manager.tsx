@@ -2,21 +2,22 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Slider from "react-slick";
 
 import { managerStyles as styles } from ".";
 import { COMPETITIONS } from "utils/constants";
+import { Carousel, CarouselProps } from "antd";
 import { Typography, Breadcrumbs, Box, Paper, Button } from "@mui/material";
 
-const settings = {
+const settings: CarouselProps = {
   dots: false,
   speed: 2000,
   infinite: true,
   autoplay: true,
   cssEase: "linear",
-  slidesToScroll: 1,
   autoplaySpeed: 2000,
   pauseOnHover: false,
+  centerMode: false,
+  arrows: false,
 };
 
 export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: number; deviceWidth: number }) {
@@ -36,13 +37,13 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          <Slider {...settings} slidesToShow={slidesToShow}>
+          <Carousel {...settings} slidesToShow={slidesToShow}>
             {COMPETITIONS.map(({ id, image, title }) => (
               <figure key={id}>
                 <Image src={image} alt={`SoccerMASS ${title}`} width={70} height={70} />
               </figure>
             ))}
-          </Slider>
+          </Carousel>
         </Box>
       ) : (
         false
@@ -118,13 +119,13 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
       {deviceWidth > 620 ? (
         <Box className={styles.carousel}>
-          <Slider {...settings} slidesToShow={slidesToShow} rtl={true}>
+          <Carousel {...settings} slidesToShow={slidesToShow} rtl>
             {clubs.map((club, index) => (
               <figure key={club}>
                 <Image src={`/images/clubs/${club}.webp`} alt={`SoccerMASS  club ${index + 1}`} width={70} height={70} />
               </figure>
             ))}
-          </Slider>
+          </Carousel>
         </Box>
       ) : (
         false

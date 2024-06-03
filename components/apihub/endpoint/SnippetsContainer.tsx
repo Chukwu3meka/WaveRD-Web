@@ -32,22 +32,9 @@ const SnippetsContainer = ({ snippets, theme }: SnippetsContainerProps) => {
   };
 
   const copyToCLipboardHandler = async () => {
-    // first time a user runs this function, a confirmation dialog is sent to confirm action
-
     copyToCLipboard(codeSnippet.snippet)
       .then(() => enqueueSnackbar("Copied!!!", { variant: "success" }))
       .catch(() => enqueueSnackbar("Failed to copy!!!", { variant: "error" }));
-    // if (navigator && navigator.clipboard) {
-    //   // copy codeSnippet to clipboard
-    //   await navigator.clipboard.writeText(codeSnippet.snippet);
-
-    //   // read content of clipboard
-    //   // await navigator.clipboard.readText();
-
-    //   enqueueSnackbar("Copied!!!", { variant: "success" });
-    // } else {
-    //   enqueueSnackbar("Failed to copy!!!", { variant: "error" });
-    // }
   };
 
   return (

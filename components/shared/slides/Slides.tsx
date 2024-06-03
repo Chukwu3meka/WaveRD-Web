@@ -1,12 +1,12 @@
 "use client";
 
-import Slider from "react-slick";
+import { Carousel, CarouselProps } from "antd";
 
 import { styles, features } from ".";
 import { Typography } from "@mui/material";
 import { SlidesProp } from "interfaces/components/others/layouts.interface";
 
-const settings = {
+const settings: CarouselProps = {
   speed: 5000,
   arrows: false,
   infinite: true,
@@ -21,13 +21,13 @@ const settings = {
 export default function Slides({ layout }: SlidesProp) {
   return (
     <aside className={styles.slides}>
-      <Slider {...settings}>
+      <Carousel {...settings}>
         {features[layout].map((slide: any) => (
           <Typography key={slide} component="div" fontSize="1.2em">
             {slide}
           </Typography>
         ))}
-      </Slider>
+      </Carousel>
     </aside>
   );
 }

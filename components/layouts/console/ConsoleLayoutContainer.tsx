@@ -12,6 +12,7 @@ import { setThemeAction } from "redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { ConsoleLayoutContainerProps, Theme } from "interfaces/components/others/layouts.interface";
+import Loading from "components/shared/loading";
 
 const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
   const { children } = props,
@@ -52,7 +53,7 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
         .catch(() => enqueueSnackbar("Failed to save new theme across profile", { variant: "error" }));
   };
 
-  if (blankScreen) return <main>loading...</main>;
+  if (blankScreen) return <p>Persisting layout. Kindly wait, Loading...</p>;
 
   return (
     <ConsoleLayout profile={profile} activeRoute={activeRoute} themeHandler={themeHandler}>

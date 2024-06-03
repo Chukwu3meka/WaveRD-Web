@@ -13,7 +13,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   modularizeImports: {
     "@mui/material": { transform: "@mui/material/{{ member }}" },
     "@mui/icons-material": { transform: "@mui/icons-material/{{ member }}" },
@@ -34,6 +34,7 @@ const nextConfig = {
     NOTICE_PERIOD: "30",
     INACTIVITY_PERIOD: "21",
     DATA_DELETION_PERIOD_PERIOD: "14",
+    API_VERSION: "v1",
   },
 
   // async headers() {

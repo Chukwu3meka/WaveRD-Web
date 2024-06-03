@@ -14,7 +14,7 @@ import { IconButton, ListItemIcon, ListItemText, ListItemButton, Avatar, Stack, 
 const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: ConsoleLayoutProps) => (
   <div className={styles.layout}>
     <nav className={styles.navigation}>
-      <Stack alignItems="center">
+      <Stack alignItems="center" sx={{ py: 2 }}>
         <Avatar alt={profile?.name} src={profile ? profile.avatar : "/images/default-user.png"} sx={{ width: 115, height: 115 }} />
 
         <Stack>
@@ -26,23 +26,23 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
           </Ellipsis>
         </Stack>
 
-        <Divider sx={{ width: "100%", mt: 1, mb: 4 }} />
+        <Divider sx={{ width: "100%", mt: 1, mb: 2 }} />
       </Stack>
 
       <Stack pr={2} mr={-1.5}>
-        <List component="nav" aria-label="main mailbox folders">
+        <List component="nav" aria-label="main mailbox folders" sx={{ mt: -1.5 }}>
           {routes
             .filter((route) => route.research === null)
             .map(({ title, path, Icon }, i) => (
               <Link key={i} href={path} className={styles[activeRoute.replace("console-", "").startsWith(path) ? "active" : ""]}>
                 <ListItemButton selected={activeRoute.replace("console-", "").startsWith(path)}>
                   <ListItemIcon>
-                    <Icon />
+                    <Icon fontSize="small" />
                   </ListItemIcon>
                   <ListItemText>
-                    <Typography sx={{ fontWeight: 600 }} color="var(--contrast-color) !important">
+                    <Ellipsis lines={1} fontWeight={600} fontSize=".85em" color="var(--contrast-color) !important">
                       {title.toUpperCase()}
-                    </Typography>
+                    </Ellipsis>
                   </ListItemText>
                 </ListItemButton>
               </Link>
@@ -50,26 +50,23 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
 
           <ListItemButton>
             <ListItemIcon>
-              <IconButton aria-label="theme icon" sx={{ ml: -0.7 }} onClick={themeHandler}>
-                <WebhookIcon />
+              <IconButton aria-label="theme icon" sx={{ ml: -1.05 }} onClick={themeHandler}>
+                <WebhookIcon fontSize="small" />
               </IconButton>
             </ListItemIcon>
             <ListItemText>
-              <Typography
-                component="a"
-                sx={{ fontWeight: 600 }}
-                rel="noopener noreferrer"
-                color="var(--contrast-color) !important"
-                href={`${process.env.API_URL}/accounts/signout`}>
-                LOGOUT
-              </Typography>
+              <a href={`${process.env.API_URL}/accounts/signout`} rel="noopener noreferrer" target="_blank">
+                <Ellipsis lines={1} fontWeight={600} fontSize=".85em" color="var(--contrast-color) !important">
+                  LOGOUT
+                </Ellipsis>
+              </a>
             </ListItemText>
           </ListItemButton>
         </List>
       </Stack>
 
-      <Stack alignItems="center">
-        <Divider sx={{ width: "100%", mt: 4, mb: 1.5 }} />
+      <Stack alignItems="center" py={2}>
+        <Divider sx={{ width: "100%", mt: 2, mb: 1.5 }} />
 
         <Image className={styles.spinner} src="/images/layout/soccermass.webp" alt="SoccerMASS Avatar" width={30} height={30} />
 
@@ -78,8 +75,7 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
         </Typography>
 
         <Typography fontFamily="Fredericka the Great" fontSize=".9em" letterSpacing=".009">
-          ©{new Date().getFullYear()}
-          {/* Wave Research */}
+          ©{new Date().getFullYear()} Wave Research
         </Typography>
       </Stack>
     </nav>

@@ -18,6 +18,7 @@ const AntProvider = ({ children, theme: userTheme }: AntProviderProps) => {
 
         token: {
           colorPrimary: stylesVariables.primaryColor || "#fffff",
+          // colorPrimary: stylesVariables.primaryColor || "#fffff",
           // colorFillSecondary:stylesVariables.secondaryColor || "#fffff"
         },
       }}>

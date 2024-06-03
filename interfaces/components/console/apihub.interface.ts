@@ -1,6 +1,6 @@
-import { KeyboardEventHandler, MouseEventHandler, RefObject } from "react";
-import { GetConsoleEndpointResponse, GetConsoleEndpointsResponse, Snippets } from "interfaces/services/console.interface";
 import { Theme } from "../others/layouts.interface";
+import { MouseEvent, MouseEventHandler, RefObject } from "react";
+import { GetConsoleEndpointResponse, GetConsoleEndpointsResponse, Snippets } from "interfaces/services/console.interface";
 
 export interface ConsoleEndpointsContainerProps {
   endpoints: GetConsoleEndpointsResponse | null;
@@ -14,6 +14,7 @@ export interface ConsoleEndpointsContent {
   lastUpdated: Date;
   bookmarks: number;
   path: string;
+  visibility: boolean;
   id: string;
 }
 
@@ -26,19 +27,26 @@ export interface ConsoleEndpointsData {
   content: ConsoleEndpointsContent[];
 }
 
+type RowAction = "modify" | "visibility" | "delete";
 export interface ConsoleEndpointsProps {
   filter: string;
   searching: boolean;
   setFilter: Function;
+  actions?: RowAction;
   data: ConsoleEndpointsData;
   handlePageChange: Function;
-  toggleShowEndpoint: Function;
   tableRef: RefObject<HTMLTableElement>;
   searchHandler: MouseEventHandler<HTMLButtonElement>;
+  refreshEndpoints: MouseEventHandler<HTMLButtonElement>;
+  rowActionHandler: (action: RowAction, id: string | null) => () => void;
+  // toggleRowAction: (event: MouseEvent, params: RowAction) => () => void;
 }
+
+// ConsoleEndpointsProps["rowAction"]
 
 export interface ConsoleEndpointContainerProps {
   theme?: Theme;
+  exists: boolean;
   endpoint: GetConsoleEndpointResponse | null;
 }
 
@@ -51,7 +59,7 @@ interface FormData {
   title: { value: string; valid: boolean; info: string | null; validating?: boolean };
   description: { value: string; valid: boolean; info: string | null; validating?: boolean };
 
-  options: { response: any; composing: boolean; latency: string | number; snippets: Snippets[] };
+  options: { response: any; composing: boolean; latency: string; snippets: Snippets[]; saving: boolean };
 }
 
 export interface ConsoleEndpointProps {
@@ -60,5 +68,7 @@ export interface ConsoleEndpointProps {
   onInputChange: Function;
   updateSnippet: Function;
   onSelectChange: Function;
+  saveEndpoint: MouseEventHandler<HTMLButtonElement>;
+  composeEndpoint: MouseEventHandler<HTMLButtonElement>;
   // onValueChange: React.FocusEvent<HTMLInputElement>;
 }

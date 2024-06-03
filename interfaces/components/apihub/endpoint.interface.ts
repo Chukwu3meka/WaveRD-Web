@@ -18,6 +18,7 @@ export interface EndpointSSRProps {
 }
 
 export interface DescriptionProps {
+  theme: Theme;
   title: string;
   description: string;
 }

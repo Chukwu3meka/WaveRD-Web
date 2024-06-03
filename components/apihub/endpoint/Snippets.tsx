@@ -1,11 +1,12 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+
 import { docco, darcula } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { SnippetsProps } from "interfaces/components/apihub/endpoint.interface";
 import { InputLabel, MenuItem, FormControl, Button, Select, Typography, Box, Stack, SelectChangeEvent } from "@mui/material";
 
 const Snippets = ({ copyToCLipboardHandler, codeSnippet, optionChangeHandler, theme, options }: SnippetsProps) => (
-  <Box py={3}>
+  <Box>
     <Stack direction="row" justifyContent="space-between">
       <Box width="100%" maxWidth={300}>
         <FormControl fullWidth>
@@ -30,11 +31,9 @@ const Snippets = ({ copyToCLipboardHandler, codeSnippet, optionChangeHandler, th
     </Stack>
 
     {codeSnippet.snippet ? (
-      <Box sx={{ maxWidth: "calc(100vw - 25px)", overflowX: "auto" }}>
-        <SyntaxHighlighter showLineNumbers language="javascript" style={theme === "dark" ? darcula : docco} customStyle={{ borderRadius: "10px" }}>
-          {codeSnippet.snippet}
-        </SyntaxHighlighter>
-      </Box>
+      <SyntaxHighlighter showLineNumbers language="json" customStyle={{ borderRadius: "10px" }} style={theme === "dark" ? darcula : docco}>
+        {codeSnippet.snippet}
+      </SyntaxHighlighter>
     ) : (
       <></>
     )}

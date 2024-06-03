@@ -8,6 +8,44 @@
   --secondary-color: #30353c;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  // background: $dark-color;
+  background: var(--primary-color);
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: $primary-color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: darken($color: $primary-color, $amount: 10);
+}
+
+// style the text that a user selects on a webpage.
+::selection {
+  color: var(--primary-color);
+  background-color: lighten($color: $primary-color, $amount: 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: var(--theme);
+  }
+}
+
+// Forcefully remove input background color for Chrome autocomplete/autofill?
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  box-shadow: inset 0 0 20px 20px transparent !important;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -20,6 +58,8 @@ body {
   font-family: "Merienda", "Roboto Slab", serif;
 
   display: grid;
+  grid-template-rows: max-content auto max-content;
+
   max-width: 100vw;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -49,43 +89,5 @@ body {
     outline: none;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-  // background: $dark-color;
-  background: var(--primary-color);
-  height: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: $primary-color;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: darken($color: $primary-color, $amount: 10);
-}
-
-// style the text that a user selects on a webpage.
-::selection {
-  color: var(--primary-color);
-  background-color: lighten($color: $primary-color, $amount: 0);
-}
-
-// Forcefully remove input background color for Chrome autocomplete/autofill?
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-background-clip: text;
-  box-shadow: inset 0 0 20px 20px transparent !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: var(--theme);
   }
 }

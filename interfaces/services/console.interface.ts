@@ -42,3 +42,18 @@ export interface Snippets {
 export interface ConsoleEndpointTitleExistsResponse {
   exists: boolean;
 }
+
+export interface ConsoleComposeEndpoint {
+  response: any;
+  latency: string;
+}
+
+export interface SaveEndpointPayload {
+  id: string;
+  path: string;
+  title: string;
+  method: string;
+  category: string;
+  snippets: Snippets[];
+  description: string;
+}

@@ -1,7 +1,7 @@
 import stylesVariables from "styles/variables.module.scss";
 
-import { AgeGenerator, ArrayRotate } from "interfaces/utils/helpers.interface";
 import { Theme } from "interfaces/components/others/layouts.interface";
+import { AgeGenerator, ArrayRotate } from "interfaces/utils/helpers.interface";
 
 export const ageGenerator = ({ date }: AgeGenerator) => {
   const todaysDate: number = Number(new Date()),
@@ -35,7 +35,7 @@ export const capitalize = (phrase: string) => {
   return capitalized.join(" ");
 };
 
-export const testToId = (phrase: string) => {
+export const textToId = (phrase: string) => {
   if (!phrase) throw { message: "Unable to transform string" };
 
   // return phrase
@@ -210,3 +210,5 @@ export const verifyFileAsPDF = (file: File): Promise<boolean> => {
     reader.readAsArrayBuffer(file);
   });
 };
+
+export const codeFormat = (json: string) => JSON.stringify(JSON.parse(json), undefined, 4).replace(/\n/g, "\n");

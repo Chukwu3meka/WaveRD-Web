@@ -1,4 +1,5 @@
 import ConsoleEndpoints from "./ConsoleEndpoints";
+import ConsoleEndpointsDialog from "./ConsoleEndpointsDialog";
 import ConsoleEndpointsContainer from "./ConsoleEndpointsContainer";
 
-export { ConsoleEndpoints, ConsoleEndpointsContainer as default };
+export { ConsoleEndpointsDialog, ConsoleEndpoints, ConsoleEndpointsContainer as default };

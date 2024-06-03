@@ -6,22 +6,30 @@ import { Divider } from "antd";
 import { format } from "date-fns";
 import { CATEGORIES } from "utils/constants";
 import { capitalize, shortNumber } from "utils/helpers";
-import { Paper, Skeleton, TextField, Stack, IconButton } from "@mui/material";
+import { Paper, Skeleton, TextField, Stack, IconButton, Box } from "@mui/material";
 import { ConsoleEndpointsProps } from "interfaces/components/console/apihub.interface";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
-import { DeleteForever as DeleteEndpointIcon, Add as AddEndpointIcon, VisibilityOff as HideEndpointIcon } from "@mui/icons-material";
+import {
+  VisibilityOff,
+  Add as AddIcon,
+  VisibilityRounded,
+  Refresh as RefreshIcon,
+  EditCalendar as ModifyIcon,
+  DeleteForever as DeleteForeverIcon,
+} from "@mui/icons-material";
 
 const ConsoleEndpoints = ({
   data,
   filter,
   tableRef,
-  setFilter,
   searching,
+  setFilter,
   searchHandler,
   handlePageChange,
-  toggleShowEndpoint,
+  refreshEndpoints,
+  rowActionHandler,
 }: ConsoleEndpointsProps) => (
-  <main style={{ alignSelf: "start" }}>
+  <>
     <Divider orientation="left">AVAILABLE API HUB ENDPOINTS</Divider>
 
     <Stack mb={2} spacing={1} justifyContent="space-between" direction="row">
@@ -51,19 +59,19 @@ const ConsoleEndpoints = ({
         </LoadingButton>
       </Stack>
 
-      <nav style={{ border: "1px solid var(--secondary-color)", borderRadius: 10 }}>
-        <IconButton>
-          <AddEndpointIcon />
-        </IconButton>
+      <Box component="nav" sx={{ border: "1px solid var(--secondary-color)", borderRadius: 2 }}>
+        <Link href="/console/console-apihub/modify-endpoints/new">
+          <IconButton>
+            <AddIcon />
+          </IconButton>
+        </Link>
 
-        <IconButton>
-          <HideEndpointIcon />
-        </IconButton>
-
-        <IconButton>
-          <DeleteEndpointIcon />
-        </IconButton>
-      </nav>
+        <Link href="/console/console-apihub/modify-endpoints">
+          <IconButton onClick={refreshEndpoints}>
+            <RefreshIcon fontSize="small" />
+          </IconButton>
+        </Link>
+      </Box>
     </Stack>
 
     <Paper elevation={2} sx={{ width: "100%", overflow: "hidden", alignSelf: "start" }}>
@@ -72,17 +80,18 @@ const ConsoleEndpoints = ({
           <TableHead>
             <TableRow>
               <TableCell width={30}></TableCell>
-              <TableCell width={350}>Title</TableCell>
-              <TableCell width={150} align="center">
+              <TableCell width={300}>Title</TableCell>
+              <TableCell width={80} align="center">
                 Bookmarks
               </TableCell>
-              <TableCell width={50} align="right">
+              <TableCell width={80} align="right">
                 Latency
               </TableCell>
-              <TableCell width={100}>Category</TableCell>
-              <TableCell width={100} align="center">
+              <TableCell width={150}>Category</TableCell>
+              <TableCell width={120} align="center">
                 Last Activity
               </TableCell>
+              <TableCell width={100} align="center"></TableCell>
             </TableRow>
           </TableHead>
 
@@ -108,53 +117,63 @@ const ConsoleEndpoints = ({
                     <TableCell>
                       <Skeleton animation="wave" />
                     </TableCell>
+                    <TableCell>
+                      <Skeleton />
+                    </TableCell>
                   </TableRow>
                 ))
-              : data.content?.map(({ title, bookmarks, latency, category, lastUpdated, id }, sn) => (
-                  <TableRow key={id} hover onClick={(e) => toggleShowEndpoint(e, id)} sx={{ cursor: "pointer" }}>
+              : data.content?.map(({ title, bookmarks, latency, category, lastUpdated, visibility, id }, sn) => (
+                  <TableRow key={id} hover sx={{ cursor: "pointer" }}>
                     <TableCell sx={{ py: 1.3 }}>
-                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
-                        <Ellipsis color="text.secondary" lines={1}>
-                          {data.page * data.rows + (sn + 1)}.
-                        </Ellipsis>
-                      </Link>
+                      <Ellipsis color="text.secondary" lines={1}>
+                        {data.page * data.rows + (sn + 1)}.
+                      </Ellipsis>
                     </TableCell>
                     <TableCell>
-                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
-                        <Ellipsis color="text.secondary" lines={1}>
-                          {title}
-                        </Ellipsis>
-                      </Link>
+                      <Ellipsis color="text.secondary" lines={1}>
+                        {title}
+                      </Ellipsis>
                     </TableCell>
                     <TableCell align="center">
-                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
-                        <Ellipsis color="text.secondary" lines={1} align="right">
-                          {shortNumber(bookmarks)}
-                        </Ellipsis>
-                      </Link>
+                      <Ellipsis color="text.secondary" lines={1} align="right">
+                        {shortNumber(bookmarks)}
+                      </Ellipsis>
                     </TableCell>
                     <TableCell>
-                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
-                        <Ellipsis color="text.secondary" lines={1} align="right">
-                          {latency}
-                        </Ellipsis>
-                      </Link>
+                      <Ellipsis color="text.secondary" lines={1} align="right">
+                        {latency} MS
+                      </Ellipsis>
                     </TableCell>
                     <TableCell>
-                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
-                        <Ellipsis color="text.secondary" lines={1}>
-                          {capitalize(CATEGORIES[category].replaceAll("-", " "))}{" "}
-                        </Ellipsis>
-                      </Link>
+                      <Ellipsis color="text.secondary" lines={1}>
+                        {capitalize(CATEGORIES[category].replaceAll("-", " "))}
+                      </Ellipsis>
                     </TableCell>
                     <TableCell align="center">
-                      <Link href={`/console/console-apihub/modify-endpoints/${id}`}>
-                        <Ellipsis color="text.secondary" lines={1}>
-                          {format(new Date(lastUpdated), "iii")},&nbsp;{format(new Date(lastUpdated), "do")}&nbsp;
-                          {format(new Date(lastUpdated), "LLL")}&nbsp;
-                          {format(new Date(lastUpdated), "uuuu")}
-                        </Ellipsis>
-                      </Link>
+                      <Ellipsis color="text.secondary" lines={1}>
+                        {format(new Date(lastUpdated), "iii")},&nbsp;{format(new Date(lastUpdated), "do")}&nbsp;
+                        {format(new Date(lastUpdated), "LLL")}&nbsp;
+                        {format(new Date(lastUpdated), "uuuu")}
+                      </Ellipsis>
+                    </TableCell>
+                    <TableCell>
+                      <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5}>
+                        <IconButton onClick={rowActionHandler("delete", id)} sx={{ fontSize: "1.2em" }}>
+                          <DeleteForeverIcon color="error" fontSize="inherit" />
+                        </IconButton>
+
+                        <IconButton onClick={rowActionHandler("visibility", id)} sx={{ fontSize: "1.2em" }}>
+                          {visibility ? (
+                            <VisibilityOff color="secondary" fontSize="inherit" />
+                          ) : (
+                            <VisibilityRounded color="secondary" fontSize="inherit" />
+                          )}
+                        </IconButton>
+
+                        <IconButton onClick={rowActionHandler("modify", id)} sx={{ fontSize: "1.2em" }}>
+                          <ModifyIcon color="primary" fontSize="inherit" />
+                        </IconButton>
+                      </Stack>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -166,12 +185,12 @@ const ConsoleEndpoints = ({
         component="div"
         count={data.total}
         rowsPerPage={data.rows}
-        onPageChange={(event: unknown, newPage: number) => handlePageChange(newPage)}
         rowsPerPageOptions={[10, 20, 50, 75, 100]}
+        onPageChange={(event: unknown, newPage: number) => handlePageChange(newPage)}
         onRowsPerPageChange={(event: React.ChangeEvent<HTMLInputElement>) => handlePageChange(0, +event.target.value)}
       />
     </Paper>
-  </main>
+  </>
 );
 
 export default ConsoleEndpoints;

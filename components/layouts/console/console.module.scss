@@ -6,24 +6,27 @@
   overflow: hidden;
 
   display: grid;
-  grid-template-columns: 340px auto;
+  grid-template-columns: 280px auto;
 
   & > div:nth-of-type(1) {
-    height: 100vh;
-    overflow-y: auto;
-
     display: grid;
     grid-template-columns: auto;
 
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: calc(100vw - 280px);
+
     // Use :where to allow child style take higher css specificity
     :where(& > main, & > div) {
-      width: calc(100vw - 350px);
+      // margin: auto;
       max-width: 1500px;
-      overflow-x: hidden;
-
-      padding: 10px;
       align-self: center;
       justify-self: center;
+
+      // border: 3px solid red;
+
+      padding: 10px clamp(10px, 5vw, 20px);
     }
   }
 }
@@ -38,9 +41,14 @@ nav.navigation {
 
   & > div:nth-of-type(2) {
     overflow-x: hidden;
-    overflow-y: auto;
     position: relative;
+    overflow-y: auto;
     left: -5px;
+
+    p {
+      margin-left: -20px;
+    }
+
     & > *.active {
       position: sticky;
       top: -5px;

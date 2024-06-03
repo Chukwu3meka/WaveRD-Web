@@ -11,16 +11,18 @@ const NotFoundPage = () => {
   return (
     <>
       <Header position="relative" />
-      <Result
-        status={404}
-        title="404"
-        subTitle="Sorry, the page you have visited does not exist."
-        extra={
-          <Link href="/">
-            <Button variant="contained">Back Home</Button>
-          </Link>
-        }
-      />
+      <main>
+        <Result
+          status={404}
+          title="404"
+          subTitle="Sorry, the page you have visited does not exist."
+          extra={
+            <Link href="/">
+              <Button variant="contained">Back Home</Button>
+            </Link>
+          }
+        />
+      </main>
       <FooterContainer />
     </>
   );

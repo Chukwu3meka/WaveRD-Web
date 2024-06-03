@@ -18,7 +18,7 @@ const ModifyEndpointSSR = async ({ id }: { id: string }) => {
     })
     .catch(() => null);
 
-  return <ConsoleEndpointContainer endpoint={endpoint} />;
+  return <ConsoleEndpointContainer endpoint={endpoint} exists={id !== "new"} />;
 };
 
 const EndpointsPage = ({ params: { "modify-endpoint": id } }: { params: { "modify-endpoint": string } }) => (

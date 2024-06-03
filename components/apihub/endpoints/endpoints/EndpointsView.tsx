@@ -6,7 +6,7 @@ import stylesVariables from "styles/variables.module.scss";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { formatDistance } from "date-fns";
-import { shortNumber } from "utils/helpers";
+import { shortNumber, textToId } from "utils/helpers";
 import { BookmarkAddOutlined } from "@mui/icons-material";
 import { EndpointsViewProps } from "interfaces/components/apihub/endpoints.interface";
 import { Box, Grid, IconButton, Stack, Divider, CircularProgress } from "@mui/material";
@@ -37,11 +37,11 @@ const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreE
     <Box display="flex" justifyContent={centered ? "center" : "flex-start"}>
       <Box maxWidth={["xl"].includes(breakpoint) ? 1200 : 900} p={1} sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {endpoints.content.map(({ description, id, title, bookmarks, lastUpdated, latency, category, path }) => (
+          {endpoints.content.map(({ description, id, title, bookmarks, lastUpdated, latency, reference, path }) => (
             <Grid key={id} item xs={12} sm={6} md={4} lg={4} xl={3}>
               <div style={{ padding: 10, borderRadius: 10, border: "2px solid var(--secondary-color)" }}>
                 <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
-                  <Link href={`/apihub/endpoints/${path}`}>
+                  <Link href={`/apihub/endpoints/${reference}`}>
                     <Ellipsis lines={1} fontWeight={600} textTransform="capitalize" fontSize="1.3em" color="text.secondary">
                       {title}
                     </Ellipsis>
@@ -69,7 +69,7 @@ const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreE
                     </IconButton>
 
                     <Ellipsis lines={1} ml={-0.7} mb={-0.3} fontSize=".85em">
-                      {`${latency}`.substring(0, 4)}s
+                      {`${latency / 1000}`.substring(0, 4)}s
                     </Ellipsis>
                   </Stack>
 
