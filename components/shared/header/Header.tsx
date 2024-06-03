@@ -17,10 +17,10 @@ const Header = ({ className, authenticated, swapColorFn, color, theme, themeHand
         <Stack direction="row" onMouseOver={() => swapColorFn()} onMouseLeave={() => swapColorFn()}>
           <Link href="/">
             <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
-              Soccer
+              {`Wave `}
             </Typography>
             <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.last}>
-              MASS
+              Research
             </Typography>
           </Link>
         </Stack>
