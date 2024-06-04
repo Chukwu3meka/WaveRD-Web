@@ -1,17 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const lts = "v1",
-  domains = [
-    { host: "localhost", domain: "http://localhost:8081" },
-    { host: "waverd.com", domain: "https://waverd.com" },
-  ],
-  subDomains = ["apihub", "manager", "console", "accounts"],
-  WEB_URL = process.env.NODE_ENV === "production" ? "https://waverd.com" : "http://localhost:8081",
-  API_URL = process.env.NODE_ENV === "production" ? "https://api.waverd.com/" + lts : "http://localhost:8081/" + lts;
-
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
+const STABLE_VERSION = "/v1",
+  NODE_ENV = process.env.NODE_ENV,
+  DOMAINS = ["apihub", "manager", "console", "accounts"],
+  [PREVIEW, PRODUCTION] = ["https://dev.waverd.com", "https://api.waverd.com"],
+  BASE_URL = NODE_ENV === "production" ? PRODUCTION : NODE_ENV === "test" ? PREVIEW : "http://localhost:8081";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -22,64 +15,22 @@ const nextConfig = {
 
   experimental: {
     serverActions: {
-      // allowedForwardedHosts: ["localhost", "www.waverd.com"],
-      // allowedOrigins: ["https://www.waverd.com", "localhost:8081"],
-      allowedForwardedHosts: ["localhost", "www.waverd.com"],
-      allowedOrigins: ["https://www.waverd.com", "localhost:8081"],
+      allowedForwardedHosts: ["localhost", "www.waverd.com", "preview.waverd.com"],
+      allowedOrigins: ["http://localhost:8081", "https://www.waverd.com", "https://preview.waverd.com"],
     },
   },
 
-  env: {
-    API_URL,
-    WEB_URL,
-    STABLE_VERSION: lts,
-    NOTICE_PERIOD: "30",
-    INACTIVITY_PERIOD: "21",
-    DATA_DELETION_PERIOD_PERIOD: "14",
-  },
-
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/:path",
-  //       headers: [{ key: "Access-Control-Allow-Origin", value: WEB_URL }],
-  //     },
-  //   ];
-  // },
-
-  async rewrites() {
-    return [
-      {
-        source: `/${lts}/:path*`,
-        destination: `http://localhost:3000/${lts}/:path*`, // Rewrite the API routes to the local host
-
-        //   async rewrites() {
-        //     return [
-        //       {
-        //         source: '/api/:path*',
-        //         destination: 'http://localhost:3000/api/:path*', // Rewrite the API routes to the local host
-        //       },
-        //     ];
-        //   },
-        // };
-      },
-    ];
-  },
-
   async redirects() {
-    return subDomains
-      .flatMap((subDomain) => [
-        domains.map(({ host, domain }) => ({
-          source: "/:path*",
-          has: [{ type: "host", value: `${subDomain}.${host}` }],
-          destination: `${domain}/${subDomain}/:path*`,
-          permanent: false,
-        })),
-      ])
-      .flat();
+    return DOMAINS.map((domain) => ({
+      permanent: false,
+      source: "/:path*",
+      destination: `https://www.waverd.com/${domain}/:path*`,
+      has: [{ type: "host", value: `${domain}.waverd.com` }],
+    }));
   },
+
+  env: { BASE_URL: BASE_URL + STABLE_VERSION, STABLE_VERSION, NOTICE_PERIOD: "30", INACTIVITY_PERIOD: "21", DATA_DELETION_PERIOD_PERIOD: "14" },
 };
 
+const withBundleAnalyzer = require("@next/bundle-analyzer")({ enabled: process.env.ANALYZE === "true" });
 module.exports = withBundleAnalyzer(nextConfig);
-
-// module.exports = nextConfig;

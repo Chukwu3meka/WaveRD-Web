@@ -27,7 +27,8 @@
 
 // style the text that a user selects on a webpage.
 ::selection {
-  color: var(--primary-color);
+  // color: var(--primary-color);
+  color: var(--contrast-color);
   background-color: lighten($color: $primary-color, $amount: 0);
 }
 

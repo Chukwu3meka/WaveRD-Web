@@ -1,8 +1,9 @@
-import { Profile } from "interfaces/redux-store/account.interfaces";
-import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
 import AccountsService from "services/accounts.service";
+
+import { cookies } from "next/headers";
+import { jwtDecode } from "jwt-decode";
 import { cookieInterceptor } from "services/service";
+import { Profile } from "interfaces/redux-store/account.interfaces";
 
 export const getUserCookies = async (): Promise<string | null> => {
   "use server";
@@ -31,4 +32,5 @@ export const getUserProfile = async (): Promise<null | Profile> => {
     if (success) return data;
     return null;
   });
+  // .catch(() => null);
 };

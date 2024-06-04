@@ -14,12 +14,12 @@ const FooterContainer = () => (
       <main>
         <aside>
           <Typography fontWeight={700} fontSize="2.2em" component="h1" color="text.secondary">
-            Wave Research
+            SoccerMASS
           </Typography>
 
           <Image
             src="/images/layout/waverd.webp"
-            alt="Wave Research"
+            alt="SoccerMASS"
             width={80}
             height={80}
             placeholder="blur"
@@ -33,7 +33,7 @@ const FooterContainer = () => (
           <div>
             {SOCIAL_ACCOUNTS.map(({ title, id, href, image }) => (
               <a href={href} key={id} rel="noopener noreferrer" target="_blank">
-                <Image src={image} alt={`Wave Research ${title} page`} width={30} height={30} />
+                <Image src={image} alt={`SoccerMASS ${title} page`} width={30} height={30} />
               </a>
             ))}
           </div>
@@ -42,7 +42,7 @@ const FooterContainer = () => (
         <nav>
           <div>
             <Typography component="label" htmlFor="waverd-links" color="text.secondary">
-              Wave Research
+              SoccerMASS
             </Typography>
 
             <a href="https://blog.waverd.com/">Blog</a>
@@ -50,7 +50,7 @@ const FooterContainer = () => (
             <Link href={pageInfo.passwordReset.path}>{pageInfo.passwordReset.title}</Link>
             <Link href={pageInfo.advertisement.path}>{pageInfo.advertisement.title}</Link>
             <Link href={pageInfo.contactUs.path}>Bug Report</Link>
-            {/* <a href="https://github.com/Wave Research-Inc/Wave Research-Web/issues" rel="noopener noreferrer" target="_blank"></a> */}
+            {/* <a href="https://github.com/SoccerMASS-Inc/SoccerMASS-Web/issues" rel="noopener noreferrer" target="_blank"></a> */}
           </div>
 
           <div>
@@ -71,10 +71,11 @@ const FooterContainer = () => (
             </Typography>
 
             <a href="https://apihub.waverd.com/">API Hub</a>
-            <a href="https://translate.waverd.com/">Translation</a>
+            <Link href={pageInfo.sponsors.path}>{pageInfo.sponsors.title}</Link>
             <a href="https://manager.waverd.com/">Soccer Manager</a>
+            <a href="https://translate.waverd.com/">Translation</a>
             <a href="https://waverd.com/">Jobs & Career</a>
-            <a href="https://waverd.com/">Agriculture</a>
+            {/* <a href="https://waverd.com/">Agriculture</a> */}
             {/* <a href="https://waverd.com/">Homes & Space</a> */}
             {/* <a href="https://waverd.com/">Hourly Jobs</a> */}
           </div>
@@ -102,7 +103,7 @@ const FooterContainer = () => (
         </Typography>
 
         <Typography component="span" variant="body2" fontSize="1em">
-          ©Wave Research 2018 ~ {new Date().getFullYear()}
+          ©SoccerMASS 2018 ~ {new Date().getFullYear()}
         </Typography>
       </section>
     </footer>

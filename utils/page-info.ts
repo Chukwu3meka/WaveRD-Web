@@ -79,6 +79,13 @@ const pageInfo: PageInfo = {
     keywords: ["faq", "questions", "soccer manager", "soccer", "waverd", "football manager", "football"],
   },
 
+  sponsors: {
+    path: "/info/sponsors",
+    title: "Our Sponsors",
+    description: "sponsors",
+    keywords: ["sponsors", "soccer manager", "soccer", "waverd", "wave research", "football manager", "football"],
+  },
+
   advertisement: {
     path: "/info/advertisement",
     title: "Advertisement",

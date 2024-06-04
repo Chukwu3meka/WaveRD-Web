@@ -8,9 +8,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { SocialSignin } from "interfaces/components/others/accounts.interfaces";
 
 const authData = [
-  { color: "#1DA1F2", Icon: TwitterIcon, endpoint: `${process.env.API_URL}/accounts/twitter`, label: "Twitter" },
-  { color: "#DB4437", Icon: GoogleIcon, endpoint: `${process.env.API_URL}/accounts/google`, label: "Google" },
-  { color: "#4267B2", Icon: FacebookIcon, endpoint: `${process.env.API_URL}/accounts/facebook`, label: "Facebook" },
+  { color: "#1DA1F2", Icon: TwitterIcon, endpoint: `${process.env.BASE_URL}/accounts/twitter`, label: "Twitter" },
+  { color: "#DB4437", Icon: GoogleIcon, endpoint: `${process.env.BASE_URL}/accounts/google`, label: "Google" },
+  { color: "#4267B2", Icon: FacebookIcon, endpoint: `${process.env.BASE_URL}/accounts/facebook`, label: "Facebook" },
 ];
 
 const SocialSignin = ({ iconOnly }: SocialSignin) => (

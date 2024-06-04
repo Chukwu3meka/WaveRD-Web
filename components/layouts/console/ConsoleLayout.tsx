@@ -55,7 +55,7 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
               </IconButton>
             </ListItemIcon>
             <ListItemText>
-              <a href={`${process.env.API_URL}/accounts/signout`} rel="noopener noreferrer" target="_blank">
+              <a href={`${process.env.BASE_URL}/accounts/signout`} rel="noopener noreferrer" target="_blank">
                 <Ellipsis lines={1} fontWeight={600} fontSize=".85em" color="var(--contrast-color) !important">
                   LOGOUT
                 </Ellipsis>

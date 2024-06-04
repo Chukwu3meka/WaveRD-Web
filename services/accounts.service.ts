@@ -1,5 +1,6 @@
-import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import service from "./service";
+import { AxiosError, AxiosResponse } from "axios";
+import { ApiResponse } from "interfaces/services/shared.interface";
 
 import {
   ThemePayload,
@@ -10,7 +11,6 @@ import {
   ConfPassResetService,
   InitPassResetService,
 } from "interfaces/services/accounts.interface";
-import { ApiResponse } from "interfaces/services/shared.interface";
 
 class AccountsService {
   accountsServiceUrl = "/accounts";

@@ -11,7 +11,7 @@ async function goToLogin(destination: string, url: string) {
 
 async function getUserRole(cookies: any) {
   const accountsService = new AccountsService(),
-    baseUrl = process.env.API_URL + accountsService.accountsServiceUrl;
+    baseUrl = process.env.BASE_URL + accountsService.accountsServiceUrl;
 
   return await fetch(baseUrl + "/profile", {
     /* credentials: "include", tells browser will include credentials in the request,
