@@ -36,7 +36,7 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
     if (!ready) {
       setReady(true);
       setEndpoints(props.endpoints);
-      setHasMoreEndpoints(!!props.endpoints.content.length);
+      setHasMoreEndpoints(props.endpoints.totalElements > limit);
     }
   }, [props.endpoints]);
 

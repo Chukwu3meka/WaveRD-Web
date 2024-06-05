@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
 
+const [DEVELOPMENT, PREVIEW, PRODUCTION] = ["http://localhost:8081", "https://dev.waverd.com", "https://api.waverd.com"];
+
 const STABLE_VERSION = "/v1",
   NODE_ENV = process.env.NODE_ENV,
   DOMAINS = ["apihub", "manager", "console", "accounts"],
-  [PREVIEW, PRODUCTION] = ["https://dev.waverd.com", "https://api.waverd.com"],
-  BASE_URL = NODE_ENV === "production" ? PRODUCTION : NODE_ENV === "test" ? PREVIEW : "http://localhost:8081";
+  BASE_URL = (NODE_ENV === "production" ? PRODUCTION : NODE_ENV === "test" ? PREVIEW : DEVELOPMENT) + STABLE_VERSION;
 
 const nextConfig = {
   reactStrictMode: true,
+
   modularizeImports: {
     "@mui/material": { transform: "@mui/material/{{ member }}" },
     "@mui/icons-material": { transform: "@mui/icons-material/{{ member }}" },
@@ -29,7 +31,13 @@ const nextConfig = {
     }));
   },
 
-  env: { BASE_URL: BASE_URL + STABLE_VERSION, STABLE_VERSION, NOTICE_PERIOD: "30", INACTIVITY_PERIOD: "21", DATA_DELETION_PERIOD_PERIOD: "14" },
+  env: {
+    BASE_URL,
+    STABLE_VERSION,
+    NOTICE_PERIOD: "30",
+    INACTIVITY_PERIOD: "21",
+    DATA_DELETION_PERIOD_PERIOD: "14",
+  },
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({ enabled: process.env.ANALYZE === "true" });

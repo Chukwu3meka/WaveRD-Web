@@ -6,7 +6,7 @@ import stylesVariables from "styles/variables.module.scss";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { formatDistance } from "date-fns";
-import { shortNumber, textToId } from "utils/helpers";
+import { shortNumber } from "utils/helpers";
 import { BookmarkAddOutlined } from "@mui/icons-material";
 import { EndpointsViewProps } from "interfaces/components/apihub/endpoints.interface";
 import { Box, Grid, IconButton, Stack, Divider, CircularProgress } from "@mui/material";

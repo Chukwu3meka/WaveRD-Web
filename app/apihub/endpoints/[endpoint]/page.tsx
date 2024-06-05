@@ -9,13 +9,10 @@ import EndpointContainer from "components/apihub/endpoint";
 const EndpointSSR = async ({ path }: EndpointSSRProps) => {
   const apihubService = new ApihubService();
 
-  const endpoint = await apihubService
-    .getEndpoint(path)
-    .then(({ success, data }) => {
-      if (success) return data;
-      return null;
-    })
-    .catch(() => null);
+  const endpoint = await apihubService.getEndpoint(path).then(({ success, data }) => {
+    if (success) return data;
+    return null;
+  });
 
   return <EndpointContainer endpoint={endpoint} />;
 };

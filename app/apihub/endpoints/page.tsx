@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { Box, Grid } from "@mui/material";
 import { ApiResponse } from "interfaces/services/shared.interface";
-import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 import { Category } from "interfaces/components/apihub/endpoints.interface";
+import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 
 import pageInfo from "utils/page-info";
 import ApihubService from "services/apihub.service";

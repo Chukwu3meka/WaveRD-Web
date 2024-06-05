@@ -3,14 +3,18 @@ import { GetEndpoints, GetEndpointsCategories, GetEndpointsResponse } from "inte
 import service from "./service";
 import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
 import { ApiResponse } from "interfaces/services/shared.interface";
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 class ApihubService {
   apihubServiceUrl = "/apihub";
 
   getEndpointsCategories = async ({ limit }: GetEndpointsCategories) => {
-    const response = await service.get(this.apihubServiceUrl + `/endpoints/categories?limit=${limit}`);
-    return response.data;
+    const endpoint = `${this.apihubServiceUrl}/endpoints/categories?limit=${limit}`;
+
+    return await service
+      .get(endpoint)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data);
   };
 
   // getEndpointsCategory = async (category: string) => {
