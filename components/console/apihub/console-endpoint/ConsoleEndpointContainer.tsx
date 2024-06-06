@@ -42,7 +42,7 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
       onInputChange({ target: { id: "title", value: props.endpoint.title } }, true);
       onSelectChange({ target: { id: "category", value: props.endpoint.category } });
       onInputChange({ target: { id: "description", value: props.endpoint.description } }, true);
-      onInputChange({ target: { id: "path", value: props.endpoint.path.replace(`/${process.env.STABLE_VERSION}/public/`, "") } }, true);
+      onInputChange({ target: { id: "path", value: props.endpoint.path.replace(`${process.env.STABLE_VERSION}/public/`, "") } }, true);
 
       setFormData((formData) => ({ ...formData, options: { ...formData.options, snippets: props.endpoint?.snippets || [] } }));
     }
@@ -147,7 +147,7 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
     setFormData((values) => ({ ...values, options: { ...values.options, composing: true } }));
 
     await consoleService
-      .composeEndpoint({ method, path: `/${process.env.STABLE_VERSION}/public/` + path })
+      .composeEndpoint({ method, path: `${process.env.STABLE_VERSION}/public/` + path })
       .then(async ({ success, data, message }) => {
         if (success) {
           enqueueSnackbar(message, { variant: "success" });
@@ -192,7 +192,7 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
           snippets: formData.options.snippets,
           description: formData.description.value,
           id: props.endpoint ? props.endpoint.id : "new",
-          path: `/${process.env.STABLE_VERSION}/public/` + formData.path.value,
+          path: `${process.env.STABLE_VERSION}/public/` + formData.path.value,
         })
         .then(async ({ success, message }) => {
           if (success) {

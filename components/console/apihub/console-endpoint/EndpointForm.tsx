@@ -85,7 +85,7 @@ const EndpointForm = ({ theme, formData, saveEndpoint, updateSnippet, onInputCha
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" sx={{ mr: 0 }}>
-                  /{process.env.STABLE_VERSION}/public/
+                  {process.env.STABLE_VERSION}/public/
                 </InputAdornment>
               ),
             }}

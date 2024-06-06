@@ -6,7 +6,7 @@ import { Divider } from "antd";
 import { format } from "date-fns";
 import { CATEGORIES } from "utils/constants";
 import { capitalize, shortNumber } from "utils/helpers";
-import { Paper, Skeleton, TextField, Stack, IconButton, Box } from "@mui/material";
+import { Paper, Skeleton, TextField, Stack, IconButton, Box, Tooltip } from "@mui/material";
 import { ConsoleEndpointsProps } from "interfaces/components/console/apihub.interface";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import {
@@ -162,13 +162,15 @@ const ConsoleEndpoints = ({
                           <DeleteForeverIcon color="error" fontSize="inherit" />
                         </IconButton>
 
-                        <IconButton onClick={rowActionHandler("visibility", id)} sx={{ fontSize: "1.2em" }}>
-                          {visibility ? (
-                            <VisibilityOff color="secondary" fontSize="inherit" />
-                          ) : (
-                            <VisibilityRounded color="secondary" fontSize="inherit" />
-                          )}
-                        </IconButton>
+                        <Tooltip title={`${visibility ? "Hide" : "Show"} Endpoint`}>
+                          <IconButton onClick={rowActionHandler("visibility", id)} sx={{ fontSize: "1.2em" }}>
+                            {visibility ? (
+                              <VisibilityOff color="secondary" fontSize="inherit" />
+                            ) : (
+                              <VisibilityRounded color="secondary" fontSize="inherit" />
+                            )}
+                          </IconButton>
+                        </Tooltip>
 
                         <IconButton onClick={rowActionHandler("modify", id)} sx={{ fontSize: "1.2em" }}>
                           <ModifyIcon color="primary" fontSize="inherit" />

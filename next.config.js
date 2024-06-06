@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const [DEVELOPMENT, PREVIEW, PRODUCTION] = ["http://localhost:8081", "https://dev.waverd.com", "https://api.waverd.com"];
-
-const STABLE_VERSION = "/v1",
-  NODE_ENV = process.env.NODE_ENV,
+const SERVER_ENV_URLS = { test: "https://dev.waverd.com", development: "http://localhost:8081", production: "https://api.waverd.com" },
+  STABLE_VERSION = "/v1",
+  INIT_NODE_ENV = process.env.NODE_ENV,
   DOMAINS = ["apihub", "manager", "console", "accounts"],
-  BASE_URL = (NODE_ENV === "production" ? PRODUCTION : NODE_ENV === "test" ? PREVIEW : DEVELOPMENT) + STABLE_VERSION;
+  BASE_URL = SERVER_ENV_URLS[INIT_NODE_ENV] + STABLE_VERSION;
 
 const nextConfig = {
   reactStrictMode: true,
