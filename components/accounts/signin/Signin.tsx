@@ -1,14 +1,15 @@
 "use client";
 
-import { Social } from ".";
 import Link from "next/link";
 import Divider from "@mui/material/Divider";
+import Ellipsis from "components/shared/ellipsis";
 import LoadingButton from "@mui/lab/LoadingButton";
+
+import { Social } from ".";
 import { AttentionSeeker } from "react-awesome-reveal";
+import { SigninProps } from "interfaces/components/others/accounts.interfaces";
 import { Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, Login as LoginIcon } from "@mui/icons-material";
 import { Stack, TextField, Typography, IconButton, InputLabel, FormControl, OutlinedInput, InputAdornment, Box, Alert } from "@mui/material";
-
-import { SigninProps } from "interfaces/components/others/accounts.interfaces";
 
 const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler, iconOnly, authenticated }: SigninProps) => (
   <Stack spacing={2} component="form" noValidate>
@@ -71,9 +72,9 @@ const Signin = ({ onInputChange, handleClickShowPassword, userForm, loginHandler
       </LoadingButton>
     </AttentionSeeker>
 
-    <Typography sx={{ marginTop: "35px !important" }} fontSize={14}>
+    <Ellipsis lines={1} sx={{ marginTop: "35px !important" }} fontSize={14}>
       New to Wave Research? <Link href="/accounts/signup">Create Account</Link>
-    </Typography>
+    </Ellipsis>
   </Stack>
 );
 

@@ -6,16 +6,15 @@ import routes from "utils/routes";
 import Ellipsis from "components/shared/ellipsis";
 
 import { styles } from ".";
-import { Fade } from "react-awesome-reveal";
-import { Webhook as WebhookIcon } from "@mui/icons-material";
 import { ConsoleLayoutProps } from "interfaces/components/others/layouts.interface";
-import { IconButton, ListItemIcon, ListItemText, ListItemButton, Avatar, Stack, Typography, Divider, List } from "@mui/material";
+import { ArrowBack as PrevPageIcon, Webhook as WebhookIcon } from "@mui/icons-material";
+import { IconButton, ListItemIcon, ListItemText, ListItemButton, Avatar, Stack, Divider, List, Button, Paper } from "@mui/material";
 
-const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: ConsoleLayoutProps) => (
+const ConsoleLayout = ({ children, profile, activeRoute, title, themeHandler, prevPageHandler }: ConsoleLayoutProps) => (
   <div className={styles.layout}>
     <nav className={styles.navigation}>
       <Stack alignItems="center" sx={{ py: 2 }}>
-        <Avatar alt={profile?.name} src={profile ? profile.avatar : "/images/default-user.png"} sx={{ width: 115, height: 115 }} />
+        <Avatar alt={profile?.name} src={profile ? profile.avatar : "/images/layout/profile.webp"} sx={{ width: 115, height: 115 }} />
 
         <Stack>
           <Ellipsis lines={1} fontWeight={600} fontSize="1em" textTransform="capitalize">
@@ -70,17 +69,37 @@ const ConsoleLayout = ({ children, profile, activeRoute, themeHandler }: Console
 
         <Image className={styles.spinner} src="/images/layout/waverd.webp" alt="Wave Research Avatar" width={30} height={30} />
 
-        <Typography fontSize=".7em" my={1}>
+        <Ellipsis lines={1} fontSize=".7em" my={1}>
           Ireland | Nigeria | Israel | United States
-        </Typography>
+        </Ellipsis>
 
-        <Typography fontFamily="Fredericka the Great" fontSize=".9em" letterSpacing=".009">
-          ©{new Date().getFullYear()} Wave Research
-        </Typography>
+        <Link href="/">
+          <Ellipsis lines={1} fontFamily="Fredericka the Great" fontSize=".9em" letterSpacing=".009">
+            ©{new Date().getFullYear()} Wave Research
+          </Ellipsis>
+        </Link>
       </Stack>
     </nav>
 
-    <Fade direction="right">{children}</Fade>
+    <main>
+      <Paper component="header" elevation={2} sx={{ p: 1 }}>
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <IconButton onClick={prevPageHandler}>
+            <PrevPageIcon />
+          </IconButton>
+
+          <Ellipsis lines={1} fontWeight={600} fontSize="1.3em">
+            {title.toUpperCase()}
+          </Ellipsis>
+        </Stack>
+
+        <Button id="back" variant="outlined" color="primary" onClick={prevPageHandler}>
+          Back
+        </Button>
+      </Paper>
+
+      <div>{children}</div>
+    </main>
   </div>
 );
 

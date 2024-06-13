@@ -12,7 +12,7 @@ import { capitalize, deObfuscate } from "utils/helpers";
 import { FocusEvent, useEffect, useState } from "react";
 import { setProfileAction } from "../../../redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
-import { ApiResponse } from "interfaces/services/shared.interface";
+import { NonPaginatedResponse } from "interfaces/services/shared.interface";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SigninContainerProps, SigninForm } from "interfaces/components/others/accounts.interfaces";
 
@@ -99,7 +99,7 @@ const SigninContainer = (props: SigninContainerProps) => {
           if (target) return router.push(target);
           router.push("/");
         })
-        .catch(({ response }: AxiosError<ApiResponse<string>>) => {
+        .catch(({ response }: AxiosError<NonPaginatedResponse<string>>) => {
           const message = response ? response.data.message : "Invalid Email/Password";
 
           enqueueSnackbar(message, { variant: "error" });

@@ -6,13 +6,13 @@
   overflow: hidden;
   & > main {
     @include quickFlex($dir: row, $justify: flex-start, $align: stretch);
-    padding: 20px;
     position: relative;
+    padding: 10px 5px;
     max-width: 1200px;
     & > aside {
       z-index: 1;
       @include quickFlex($dir: column, $align: flex-start);
-      padding: 10px 20px;
+      padding: 10px 10px;
       border-radius: 0 70px 0 70px;
       border: 2px solid var(--secondary-color);
 

@@ -1,17 +1,38 @@
-import { ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
-
-export interface GetConsoleEndpointsPayload {
+export interface GetEndpointsPayload {
   page: number;
   size: number;
   filter: string;
   cookie?: string | null;
 }
+export type GetDailyStatPayload = GetEndpointsPayload;
+export type GetAllRequestsPayload = GetEndpointsPayload;
+export type GetFailedRequestsPayload = GetEndpointsPayload;
 
-export interface GetConsoleEndpointsResponse {
-  size: number;
-  page: number;
-  totalElements: number;
-  content: ConsoleEndpointsContent[];
+export interface DailyStatResponse {
+  _id: string;
+  date: string;
+  accounts: number;
+  apihub: number;
+  console: number;
+  info: number;
+  manager: number;
+}
+
+export interface FailedRequestsResponse {
+  id: string;
+  date: Date;
+  time: Date;
+  error: { message: string };
+  // data: { auth: { id: string; session: string } };
+  data: { auth: { id: string; session: string } };
+  request: { endpoint: string; version: string; domain: string; path: string };
+}
+
+export interface AllRequestsResponse {
+  time: Date;
+  domain: string;
+  version: string;
+  path: string;
 }
 
 export interface GetConsoleEndpointPayload {

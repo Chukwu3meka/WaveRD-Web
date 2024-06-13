@@ -1,10 +1,6 @@
 import { Theme } from "../others/layouts.interface";
-import { MouseEvent, MouseEventHandler, RefObject } from "react";
-import { GetConsoleEndpointResponse, GetConsoleEndpointsResponse, Snippets } from "interfaces/services/console.interface";
-
-export interface ConsoleEndpointsContainerProps {
-  endpoints: GetConsoleEndpointsResponse | null;
-}
+import { MouseEventHandler, RefObject } from "react";
+import { GetConsoleEndpointResponse, Snippets } from "interfaces/services/console.interface";
 
 export interface ConsoleEndpointsContent {
   title: string;

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Ellipsis from "components/shared/ellipsis";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-import { Divider } from "antd";
 import { format } from "date-fns";
 import { CATEGORIES } from "utils/constants";
 import { capitalize, shortNumber } from "utils/helpers";
@@ -30,8 +29,6 @@ const ConsoleEndpoints = ({
   rowActionHandler,
 }: ConsoleEndpointsProps) => (
   <>
-    <Divider orientation="left">AVAILABLE API HUB ENDPOINTS</Divider>
-
     <Stack mb={2} spacing={1} justifyContent="space-between" direction="row">
       <Stack spacing={1} alignItems="center" direction="row">
         <TextField
@@ -74,124 +71,123 @@ const ConsoleEndpoints = ({
       </Box>
     </Stack>
 
-    <Paper elevation={2} sx={{ width: "100%", overflow: "hidden", alignSelf: "start" }}>
-      <TableContainer style={{ maxHeight: "calc(100vh - 200px)" }}>
-        <Table stickyHeader aria-label="Console Endpoints table" size="small" ref={tableRef}>
-          <TableHead>
-            <TableRow>
-              <TableCell width={30}></TableCell>
-              <TableCell width={300}>Title</TableCell>
-              <TableCell width={80} align="center">
-                Bookmarks
-              </TableCell>
-              <TableCell width={80} align="right">
-                Latency
-              </TableCell>
-              <TableCell width={150}>Category</TableCell>
-              <TableCell width={120} align="center">
-                Last Activity
-              </TableCell>
-              <TableCell width={100} align="center"></TableCell>
-            </TableRow>
-          </TableHead>
+    <TableContainer component={Paper} style={{ maxHeight: "calc(100vh - 230px)", maxWidth: "calc(100vw - (var(--console-nav-size) + 50px))" }}>
+      <Table stickyHeader aria-label="Console Endpoints Table" size="small" ref={tableRef} sx={{ minWidth: 1000 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell width={50}></TableCell>
+            <TableCell width={250}>Title</TableCell>
+            <TableCell width={70} align="center">
+              Bookmarks
+            </TableCell>
+            <TableCell width={100} align="right">
+              Latency
+            </TableCell>
+            <TableCell width={150}>Category</TableCell>
+            <TableCell width={180} align="center">
+              Last Activity
+            </TableCell>
+            <TableCell width={80} align="center"></TableCell>
+          </TableRow>
+        </TableHead>
 
-          <TableBody>
-            {data.loading
-              ? new Array(data.rows).fill("").map((_: string, sn: number) => (
-                  <TableRow hover key={sn}>
-                    <TableCell sx={{ py: 1.3 }}>
-                      <Ellipsis lines={1}>{data.page * data.rows + (sn + 1)}.</Ellipsis>
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton animation="wave" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton animation={false} />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton animation="wave" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton />
-                    </TableCell>
-                  </TableRow>
-                ))
-              : data.content?.map(({ title, bookmarks, latency, category, lastUpdated, visibility, id }, sn) => (
-                  <TableRow key={id} hover sx={{ cursor: "pointer" }}>
-                    <TableCell sx={{ py: 1.3 }}>
-                      <Ellipsis color="text.secondary" lines={1}>
-                        {data.page * data.rows + (sn + 1)}.
-                      </Ellipsis>
-                    </TableCell>
-                    <TableCell>
-                      <Ellipsis color="text.secondary" lines={1}>
-                        {title}
-                      </Ellipsis>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Ellipsis color="text.secondary" lines={1} align="right">
-                        {shortNumber(bookmarks)}
-                      </Ellipsis>
-                    </TableCell>
-                    <TableCell>
-                      <Ellipsis color="text.secondary" lines={1} align="right">
-                        {latency} MS
-                      </Ellipsis>
-                    </TableCell>
-                    <TableCell>
-                      <Ellipsis color="text.secondary" lines={1}>
-                        {capitalize(CATEGORIES[category].replaceAll("-", " "))}
-                      </Ellipsis>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Ellipsis color="text.secondary" lines={1}>
-                        {format(new Date(lastUpdated), "iii")},&nbsp;{format(new Date(lastUpdated), "do")}&nbsp;
-                        {format(new Date(lastUpdated), "LLL")}&nbsp;
-                        {format(new Date(lastUpdated), "uuuu")}
-                      </Ellipsis>
-                    </TableCell>
-                    <TableCell>
-                      <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5}>
-                        <IconButton onClick={rowActionHandler("delete", id)} sx={{ fontSize: "1.2em" }}>
-                          <DeleteForeverIcon color="error" fontSize="inherit" />
+        <TableBody>
+          {data.loading
+            ? new Array(data.rows).map((_: null, sn: number) => (
+                <TableRow hover key={sn}>
+                  <TableCell sx={{ py: 1.3 }}>
+                    <Ellipsis lines={1}>{data.page * data.rows + (sn + 1)}.</Ellipsis>
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton />
+                  </TableCell>
+                </TableRow>
+              ))
+            : data.content?.map(({ title, bookmarks, latency, category, lastUpdated, visibility, id }, sn) => (
+                <TableRow key={id} hover sx={{ cursor: "pointer" }}>
+                  <TableCell sx={{ py: 1.3 }}>
+                    <Ellipsis color="text.secondary" lines={1}>
+                      {data.page * data.rows + (sn + 1)}.
+                    </Ellipsis>
+                  </TableCell>
+                  <TableCell>
+                    <Ellipsis color="text.secondary" lines={1}>
+                      {title}
+                    </Ellipsis>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Ellipsis color="text.secondary" lines={1} align="right">
+                      {shortNumber(bookmarks)}
+                    </Ellipsis>
+                  </TableCell>
+                  <TableCell>
+                    <Ellipsis color="text.secondary" lines={1} align="right">
+                      {latency} MS
+                    </Ellipsis>
+                  </TableCell>
+                  <TableCell>
+                    <Ellipsis color="text.secondary" lines={1}>
+                      {capitalize(CATEGORIES[category].replaceAll("-", " "))}
+                    </Ellipsis>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Ellipsis color="text.secondary" lines={1}>
+                      {format(new Date(lastUpdated), "iii")},&nbsp;{format(new Date(lastUpdated), "do")}&nbsp;
+                      {format(new Date(lastUpdated), "LLL")}&nbsp;
+                      {format(new Date(lastUpdated), "uuuu")}
+                    </Ellipsis>
+                  </TableCell>
+                  <TableCell>
+                    <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5}>
+                      <IconButton onClick={rowActionHandler("delete", id)} sx={{ fontSize: "1.2em" }}>
+                        <DeleteForeverIcon color="error" fontSize="inherit" />
+                      </IconButton>
+
+                      <Tooltip title={`${visibility ? "Hide" : "Show"} Endpoint`}>
+                        <IconButton onClick={rowActionHandler("visibility", id)} sx={{ fontSize: "1.2em" }}>
+                          {visibility ? (
+                            <VisibilityOff color="secondary" fontSize="inherit" />
+                          ) : (
+                            <VisibilityRounded color="secondary" fontSize="inherit" />
+                          )}
                         </IconButton>
+                      </Tooltip>
 
-                        <Tooltip title={`${visibility ? "Hide" : "Show"} Endpoint`}>
-                          <IconButton onClick={rowActionHandler("visibility", id)} sx={{ fontSize: "1.2em" }}>
-                            {visibility ? (
-                              <VisibilityOff color="secondary" fontSize="inherit" />
-                            ) : (
-                              <VisibilityRounded color="secondary" fontSize="inherit" />
-                            )}
-                          </IconButton>
-                        </Tooltip>
+                      <IconButton onClick={rowActionHandler("modify", id)} sx={{ fontSize: "1.2em" }}>
+                        <ModifyIcon color="primary" fontSize="inherit" />
+                      </IconButton>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+              ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
 
-                        <IconButton onClick={rowActionHandler("modify", id)} sx={{ fontSize: "1.2em" }}>
-                          <ModifyIcon color="primary" fontSize="inherit" />
-                        </IconButton>
-                      </Stack>
-                    </TableCell>
-                  </TableRow>
-                ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        page={data.page}
-        component="div"
-        count={data.total}
-        rowsPerPage={data.rows}
-        rowsPerPageOptions={[10, 20, 50, 75, 100]}
-        onPageChange={(event: unknown, newPage: number) => handlePageChange(newPage)}
-        onRowsPerPageChange={(event: React.ChangeEvent<HTMLInputElement>) => handlePageChange(0, +event.target.value)}
-      />
-    </Paper>
+    <TablePagination
+      page={data.page}
+      component="div"
+      count={data.total}
+      rowsPerPage={data.rows}
+      rowsPerPageOptions={[10, 20, 50, 75, 100]}
+      onPageChange={(event: unknown, newPage: number) => handlePageChange(newPage)}
+      onRowsPerPageChange={(event: React.ChangeEvent<HTMLInputElement>) => handlePageChange(0, +event.target.value)}
+    />
   </>
 );
 

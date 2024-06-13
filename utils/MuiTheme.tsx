@@ -19,17 +19,17 @@ import stylesVariables from "styles/variables.module.scss";
 //   },
 // };
 
-const initialTheme = createTheme({});
+const theme = createTheme({});
 
-const MuiTheme = (theme: Theme) => {
-  return createTheme({
+const muiTheme = (mode: Theme) =>
+  createTheme({
     typography: {
       fontSize: 16,
       fontFamily: '"Merienda", "Roboto Slab", serif',
     },
 
     palette: {
-      mode: theme,
+      mode: mode,
       primary: { main: stylesVariables.primaryColor || "#fffff" },
       secondary: { main: stylesVariables.secondaryColor || "#fffff" },
     },
@@ -46,20 +46,23 @@ const MuiTheme = (theme: Theme) => {
       MuiTableCell: {
         styleOverrides: {
           body: { fontSize: 14 },
-          head: { backgroundColor: initialTheme.palette.common.black, color: initialTheme.palette.common.white, height: 70 },
+          head: {
+            height: 70,
+            color: theme.palette.common.white,
+            backgroundColor: theme.palette.common.black,
+          },
         },
       },
       MuiButton: { styleOverrides: { root: { fontWeight: "600", letterSpacing: ".06em" } } },
       MuiTableRow: {
         styleOverrides: {
           root: {
-            "&:nth-of-type(odd)": { backgroundColor: initialTheme.palette.action.hover },
+            "&:nth-of-type(odd)": { background: theme.palette.action.hover },
             "&:last-child td, &:last-child th": { border: 0 }, // <= hide last border
           },
         },
       },
     },
   });
-};
 
-export default MuiTheme;
+export default muiTheme;

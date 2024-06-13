@@ -57,8 +57,10 @@ export interface ConsoleLayoutContainerProps {
 }
 
 export interface ConsoleLayoutProps {
+  title: string;
   activeRoute: string;
   profile: null | Profile;
   children: React.ReactNode;
   themeHandler: MouseEventHandler<HTMLButtonElement>;
+  prevPageHandler: MouseEventHandler<HTMLButtonElement>;
 }

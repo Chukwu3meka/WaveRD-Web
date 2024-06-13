@@ -7,6 +7,7 @@ const Ellipsis = (props: EllipsisProps) => (
     style={{
       overflow: "hidden",
       display: "-webkit-box",
+      wordBreak: "break-all",
       textOverflow: "ellipsis",
       WebkitBoxOrient: "vertical",
       WebkitLineClamp: props.lines,

@@ -8,8 +8,8 @@ import { BREAKPOINTS } from "utils/constants";
 import { EndpointsLoadingContainer, EndpointsView } from ".";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { LayoutState } from "interfaces/redux-store/layout.interfaces";
-import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
-import { EndpointsContainerProps } from "interfaces/components/apihub/endpoints.interface";
+import { PaginatedResponse } from "interfaces/services/shared.interface";
+import { Endpoint, EndpointsContainerProps } from "interfaces/components/apihub/endpoints.interface";
 
 const EndpointsContainer = (props: EndpointsContainerProps) => {
   const { limit } = props,
@@ -20,8 +20,8 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
     [hasMoreEndpoints, setHasMoreEndpoints] = useState(false),
     initEndpoints = { content: [], page: 0, size: limit, totalElements: 0 },
     [breakpoint, setBreakpoint] = useState<LayoutState["breakpoint"]>("xs"),
-    [endpoints, setEndpoints] = useState<GetEndpointsResponse>(initEndpoints),
-    [endpointsParam, setEndpointsParam] = useState({ filter: "all", phrase: "" });
+    [endpointsParam, setEndpointsParam] = useState({ filter: "all", phrase: "" }),
+    [endpoints, setEndpoints] = useState<PaginatedResponse<Endpoint>["data"]>(initEndpoints);
 
   useEffect(() => {
     if (ready && props.endpointsParam) {
@@ -49,7 +49,7 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
   }, [props.breakpoint]);
 
   const getMoreEndpoints = async () => {
-    const moreEndpoints: GetEndpointsResponse = await (endpointsParam.filter === "category"
+    const moreEndpoints = await (endpointsParam.filter === "category"
       ? apihubService.getEndpoints({ filter: "category", size: limit, page: endpoints.page + 1, category: endpointsParam.phrase })
       : endpointsParam.filter === "search"
       ? apihubService.getEndpoints({
@@ -81,7 +81,7 @@ const EndpointsContainer = (props: EndpointsContainerProps) => {
 
     setEndpoints(initEndpoints);
 
-    const freshEndpoints: GetEndpointsResponse = await (filter === "category"
+    const freshEndpoints = await (filter === "category"
       ? apihubService.getEndpoints({ filter: "category", size: limit, page: 0, category: phrase })
       : filter === "search"
       ? apihubService.getEndpoints({ filter: "search", size: limit, phrase, sequence: "next", token: "null" })

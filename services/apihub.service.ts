@@ -1,9 +1,9 @@
-import { GetEndpoints, GetEndpointsCategories, GetEndpointsResponse } from "interfaces/services/apihub.interface";
-// import service, { axios, apihubServiceUrl } from ".";
 import service from "./service";
-import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
-import { ApiResponse } from "interfaces/services/shared.interface";
 import axios, { AxiosError, AxiosResponse } from "axios";
+
+import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
+import { GetEndpoints, GetEndpointsCategories } from "interfaces/services/apihub.interface";
+import { NonPaginatedResponse, PaginatedResponse } from "interfaces/services/shared.interface";
 
 class ApihubService {
   apihubServiceUrl = "/apihub";
@@ -40,7 +40,16 @@ class ApihubService {
     this.getEndpointsController.abort();
   };
 
-  getEndpoints = async ({ phrase, size, filter, page, token, sequence, category }: GetEndpoints): Promise<ApiResponse<GetEndpointsResponse>> => {
+  getEndpoints = async ({
+    phrase,
+    size,
+    filter,
+    page,
+    token,
+    sequence,
+    category,
+  }: // }: GetEndpoints): Promise<NonPaginatedResponse<Endpoint>> => {
+  GetEndpoints): Promise<PaginatedResponse<Endpoint>> => {
     try {
       switch (filter) {
         case "search": {
@@ -72,7 +81,7 @@ class ApihubService {
           data: { content: [], page: page || 0, size, totalElements: 0 },
         };
       } else {
-        const errMessage = err as AxiosError<ApiResponse<string>>,
+        const errMessage = err as AxiosError<NonPaginatedResponse<string>>,
           clientMessage = errMessage.response?.data?.message || "Something went wrong!!!";
 
         return { data: { content: [], page: page || 0, size, totalElements: 0 }, success: false, message: clientMessage };

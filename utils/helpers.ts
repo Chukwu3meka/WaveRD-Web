@@ -210,5 +210,3 @@ export const verifyFileAsPDF = (file: File): Promise<boolean> => {
     reader.readAsArrayBuffer(file);
   });
 };
-
-export const codeFormat = (json: string) => JSON.stringify(JSON.parse(json), undefined, 4).replace(/\n/g, "\n");

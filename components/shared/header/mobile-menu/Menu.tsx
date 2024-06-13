@@ -17,6 +17,7 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui
 import { Box, Divider, SwipeableDrawer, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 import { MenuProps } from "interfaces/components/others/layouts.interface";
+import Ellipsis from "components/shared/ellipsis";
 
 const navLinks = [
   { id: "home", title: "Home", Icon: HomeIcon, path: "/" },
@@ -90,7 +91,7 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
                           <ListItemIcon>
                             <Icon />
                           </ListItemIcon>
-                          <ListItemText primary={title} sx={{ color: "var(--contrast-color)" }} />
+                          <ListItemText primary={<Ellipsis lines={1}>{title}</Ellipsis>} sx={{ color: "var(--contrast-color)" }} />
                         </ListItemButton>
                       </ListItem>
                     </Link>
@@ -122,9 +123,9 @@ const Menu = ({ toggleMenuOpen, iOS, menuOpen, profile, authenticated }: MenuPro
                   ● All rights reserved. All trademarks are the property of their respective owners ●
                 </Typography>
 
-                <Typography component="span" variant="body2">
+                <Ellipsis lines={1} component="span" variant="body2">
                   ©Wave Research 2018 ~ {new Date().getFullYear()}
-                </Typography>
+                </Ellipsis>
               </section>
             </Paper>
           </Stack>

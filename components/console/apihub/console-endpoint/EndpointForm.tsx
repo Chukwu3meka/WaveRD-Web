@@ -1,12 +1,11 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-import { Divider } from "antd";
 import { CATEGORIES_ARRAY, HTTP_METHODS } from "utils/constants";
 import { docco, darcula } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { ConsoleEndpointProps } from "interfaces/components/console/apihub.interface";
 import { TextField, IconButton, Grid, FormControl, InputLabel, Select } from "@mui/material";
-import { Box, CircularProgress, InputAdornment, MenuItem, OutlinedInput } from "@mui/material";
+import { CircularProgress, InputAdornment, MenuItem, OutlinedInput } from "@mui/material";
 
 const EndpointForm = ({ theme, formData, saveEndpoint, updateSnippet, onInputChange, onSelectChange, composeEndpoint }: ConsoleEndpointProps) => (
   <Grid container spacing={1}>

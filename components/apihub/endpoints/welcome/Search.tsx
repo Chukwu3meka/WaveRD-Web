@@ -13,6 +13,7 @@ const Search = ({ searchResult, onInputChange, inputValue, getEndpoint, searchEn
       size="small"
       options={searchResult}
       inputValue={inputValue}
+      sx={{ maxWidth: "calc(100vw - 200px)" }}
       isOptionEqualToValue={(option, value) => option.id === value.id}
       onInputChange={(e, newInputValue) => onInputChange(newInputValue)}
       filterOptions={(options) => options} // Return all options without filtering

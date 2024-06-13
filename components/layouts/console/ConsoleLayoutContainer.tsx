@@ -1,9 +1,11 @@
 "use client";
 
+import routes from "utils/routes";
 import AccountsService from "services/accounts.service";
 
 import { ConsoleLayout } from ".";
 import { connect } from "react-redux";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { enqueueSnackbar } from "notistack";
 import { setCssThemeVar } from "utils/helpers";
@@ -12,15 +14,16 @@ import { setThemeAction } from "redux-store/actions";
 import { RootState } from "interfaces/redux-store/store.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { ConsoleLayoutContainerProps, Theme } from "interfaces/components/others/layouts.interface";
-import Loading from "components/shared/loading";
 
 const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
-  const { children } = props,
+  const router = useRouter(),
+    { children } = props,
     { setThemeAction } = props,
     accountsService = new AccountsService(),
     [activeRoute, setActiveRoute] = useState(""),
     [blankScreen, setBlankScreen] = useState(true),
     [authenticated, setAuthenticated] = useState(false),
+    [title, setTitle] = useState("Wave Research Console"),
     [profile, setProfile] = useState<null | Profile>(null),
     [theme, setTheme] = useState<Theme>(INIT_PROFILE.theme);
 
@@ -35,10 +38,13 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
 
   useEffect(() => {
     setActiveRoute(props.activeRoute || "/");
+
+    const route = routes.find((route) => route.path === props.activeRoute);
+    setTitle(route ? route.title : "Wave Research Console");
   }, [props.activeRoute]);
 
   useEffect(() => {
-    setBlankScreen(!props.deviceWidth || props.deviceWidth <= 1200);
+    setBlankScreen(!props.deviceWidth || props.deviceWidth <= 1000);
   }, [props.deviceWidth]);
 
   const themeHandler = async () => {
@@ -53,10 +59,14 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
         .catch(() => enqueueSnackbar("Failed to save new theme across profile", { variant: "error" }));
   };
 
+  function prevPageHandler() {
+    router.back();
+  }
+
   if (blankScreen) return <p>Persisting layout. Kindly wait, Loading...</p>;
 
   return (
-    <ConsoleLayout profile={profile} activeRoute={activeRoute} themeHandler={themeHandler}>
+    <ConsoleLayout prevPageHandler={prevPageHandler} profile={profile} activeRoute={activeRoute} themeHandler={themeHandler} title={title}>
       {children}
     </ConsoleLayout>
   );

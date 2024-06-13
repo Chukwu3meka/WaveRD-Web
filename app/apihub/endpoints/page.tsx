@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { Box, Grid } from "@mui/material";
-import { ApiResponse } from "interfaces/services/shared.interface";
+import { NonPaginatedResponse } from "interfaces/services/shared.interface";
 import { Category } from "interfaces/components/apihub/endpoints.interface";
-import { GetEndpointsResponse } from "interfaces/services/apihub.interface";
 
 import pageInfo from "utils/page-info";
 import ApihubService from "services/apihub.service";
@@ -22,7 +21,7 @@ const CategoriesSSR = async () => {
 
   const categories: Category[] = await apihubService
     .getEndpointsCategories({ limit: 10 })
-    .then(({ success, data }: ApiResponse<Category[]>) => {
+    .then(({ success, data }: NonPaginatedResponse<Category[]>) => {
       if (success && Array.isArray(data)) return data;
       return [];
     })
@@ -35,7 +34,7 @@ const EndpointsSSR = async () => {
   const apihubService = new ApihubService();
 
   const limit: 20 = 20,
-    endpoints: GetEndpointsResponse = await apihubService
+    endpoints = await apihubService
       .getEndpoints({ filter: "all", size: limit, page: 0 })
       .then(({ success, data }) => {
         if (success && data && Array.isArray(data.content)) return data;

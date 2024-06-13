@@ -10,7 +10,7 @@ import { capitalize } from "@mui/material";
 import { FocusEvent, useState } from "react";
 import { getSystemTheme } from "utils/helpers";
 import { INIT_PROFILE } from "utils/constants";
-import { ApiResponse } from "interfaces/services/shared.interface";
+import { NonPaginatedResponse } from "interfaces/services/shared.interface";
 import { ExistsPayload, SignupPayload } from "interfaces/services/accounts.interface";
 import { SigninFormKeys, SignupForm } from "interfaces/components/others/accounts.interfaces";
 
@@ -54,7 +54,7 @@ const SignupContainer = () => {
           closeSnackbar(); // <= hide any error that have been shown previously
           setUserForm({ ...initUserForm, options: { ...initUserForm.options, accountCreated: true } });
         })
-        .catch(({ response }: AxiosError<ApiResponse<string>>) => {
+        .catch(({ response }: AxiosError<NonPaginatedResponse<string>>) => {
           throw { message: response ? response.data.message : "Invalid Email/Password" };
         })
         .catch((err: AxiosError) => {
@@ -99,7 +99,7 @@ const SignupContainer = () => {
             if (exists) throw { message: `${capitalize(id)} not available, Kindly use a different ${capitalize(id)}` };
             setUserForm((values) => ({ ...values, [id]: { ...values[id], valid: true, info: null, validating: false } }));
           })
-          .catch(({ response }: AxiosError<ApiResponse<string>>) => {
+          .catch(({ response }: AxiosError<NonPaginatedResponse<string>>) => {
             const message = response ? response.data.message : "An error occurred";
             setUserForm((values) => ({ ...values, [id]: { valid: false, info: message, validating: false } }));
           });

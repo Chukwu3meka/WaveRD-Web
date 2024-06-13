@@ -1,6 +1,7 @@
 import { IconProps, SvgIconProps } from "@mui/material";
 import { LayoutState } from "interfaces/redux-store/layout.interfaces";
-import { GetEndpoints, GetEndpointsResponse } from "interfaces/services/apihub.interface";
+import { GetEndpoints } from "interfaces/services/apihub.interface";
+import { PaginatedResponse } from "interfaces/services/shared.interface";
 import { MouseEventHandler, ReactNode, WheelEventHandler } from "react";
 
 export interface Category {
@@ -47,13 +48,12 @@ export interface SearchResult {
   description: string;
 }
 
-// // !!!!!!!!!!!!
 export interface EndpointsContainerProps {
   deviceWidth?: number;
   limit: GetEndpoints["size"];
-  endpoints: GetEndpointsResponse;
   setEndpointsParamAction?: Function;
   breakpoint?: LayoutState["breakpoint"];
+  endpoints: PaginatedResponse<Endpoint>["data"];
   endpointsParam?: { filter: string; phrase: string };
 }
 
@@ -74,8 +74,8 @@ export interface EndpointsViewProps {
   hasMoreEndpoints: boolean;
   refreshEndpoints: Function;
   getMoreEndpoints: Function;
-  endpoints: GetEndpointsResponse;
   breakpoint: LayoutState["breakpoint"];
+  endpoints: PaginatedResponse<Endpoint>["data"];
 }
 
 export interface Endpoint {

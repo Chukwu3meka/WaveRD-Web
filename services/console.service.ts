@@ -1,35 +1,75 @@
 import service from "./service";
 
-import { ApiResponse } from "interfaces/services/shared.interface";
+import { AxiosError, AxiosResponse } from "axios";
+import { ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
+import { NonPaginatedResponse, PaginatedResponse } from "interfaces/services/shared.interface";
+
 import {
+  DailyStatResponse,
+  GetEndpointsPayload,
+  SaveEndpointPayload,
+  GetDailyStatPayload,
+  AllRequestsResponse,
+  GetAllRequestsPayload,
   ConsoleComposeEndpoint,
-  ConsoleEndpointTitleExistsResponse,
+  FailedRequestsResponse,
+  GetFailedRequestsPayload,
   GetConsoleEndpointPayload,
   GetConsoleEndpointResponse,
-  GetConsoleEndpointsPayload,
-  GetConsoleEndpointsResponse,
-  SaveEndpointPayload,
+  ConsoleEndpointTitleExistsResponse,
 } from "interfaces/services/console.interface";
-import { AxiosError, AxiosResponse } from "axios";
 
 class ConsoleService {
   consoleServiceUrl = "/console";
 
-  getEndpoints = async ({ filter, page, size, cookie }: GetConsoleEndpointsPayload): Promise<ApiResponse<GetConsoleEndpointsResponse>> => {
-    const option = cookie ? { headers: { Cookie: cookie } } : {},
-      response = await service.get(this.consoleServiceUrl + `/apihub/endpoints?filter=${filter}&page=${page}&size=${size}`, option);
+  getEndpoints = async ({ filter, page, size, cookie }: GetEndpointsPayload): Promise<PaginatedResponse<ConsoleEndpointsContent>> => {
+    const path = this.consoleServiceUrl + `/apihub/endpoints?filter=${filter}&page=${page}&size=${size}`,
+      option = cookie ? { headers: { Cookie: cookie } } : {};
 
-    return response.data;
+    return await service
+      .get(path, option)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data);
   };
 
-  getEndpoint = async ({ id, cookie }: GetConsoleEndpointPayload): Promise<ApiResponse<GetConsoleEndpointResponse>> => {
+  getDailyStat = async ({ filter, page, size, cookie }: GetDailyStatPayload): Promise<PaginatedResponse<DailyStatResponse>> => {
+    const endpoint = this.consoleServiceUrl + `/logs/daily-statistics?filter=${filter}&page=${page}&size=${size}`,
+      option = cookie ? { headers: { Cookie: cookie } } : {};
+
+    return await service
+      .get(endpoint, option)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data);
+  };
+
+  getAllRequests = async ({ filter, page, size, cookie }: GetAllRequestsPayload): Promise<PaginatedResponse<AllRequestsResponse>> => {
+    const endpoint = this.consoleServiceUrl + `/logs/all-requests?filter=${filter}&page=${page}&size=${size}`,
+      option = cookie ? { headers: { Cookie: cookie } } : {};
+
+    return await service
+      .get(endpoint, option)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data);
+  };
+
+  getFailedRequests = async ({ filter, page, size, cookie }: GetFailedRequestsPayload): Promise<PaginatedResponse<FailedRequestsResponse>> => {
+    const endpoint = this.consoleServiceUrl + `/logs/failed-requests?filter=${filter}&page=${page}&size=${size}`,
+      option = cookie ? { headers: { Cookie: cookie } } : {};
+
+    return await service
+      .get(endpoint, option)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data);
+  };
+
+  getEndpoint = async ({ id, cookie }: GetConsoleEndpointPayload): Promise<NonPaginatedResponse<GetConsoleEndpointResponse>> => {
     const option = cookie ? { headers: { Cookie: cookie } } : {},
       response = await service.get(this.consoleServiceUrl + `/apihub/endpoints/${id}`, option);
 
     return response.data;
   };
 
-  endpointTitleExists = async ({ title }: { title: string }): Promise<ApiResponse<ConsoleEndpointTitleExistsResponse>> => {
+  endpointTitleExists = async ({ title }: { title: string }): Promise<NonPaginatedResponse<ConsoleEndpointTitleExistsResponse>> => {
     const endpoint = this.consoleServiceUrl + "/apihub/endpoint-title-exists";
 
     return await service
@@ -38,7 +78,7 @@ class ConsoleService {
       .catch((err: AxiosError) => err.response?.data);
   };
 
-  composeEndpoint = async ({ path, method }: { path: string; method: string }): Promise<ApiResponse<ConsoleComposeEndpoint>> => {
+  composeEndpoint = async ({ path, method }: { path: string; method: string }): Promise<NonPaginatedResponse<ConsoleComposeEndpoint>> => {
     const endpoint = this.consoleServiceUrl + "/apihub/compose-endpoint";
 
     return await service
@@ -47,7 +87,7 @@ class ConsoleService {
       .catch((err: AxiosError) => err.response?.data);
   };
 
-  saveEndpoint = async (payload: SaveEndpointPayload): Promise<ApiResponse<string>> => {
+  saveEndpoint = async (payload: SaveEndpointPayload): Promise<NonPaginatedResponse<string>> => {
     const endpoint = this.consoleServiceUrl + "/apihub/save-endpoint";
 
     return await service
@@ -56,7 +96,7 @@ class ConsoleService {
       .catch((err: AxiosError) => err.response?.data);
   };
 
-  toggleEndpointVisibility = async (id: string): Promise<ApiResponse<string>> => {
+  toggleEndpointVisibility = async (id: string): Promise<NonPaginatedResponse<string>> => {
     const endpoint = this.consoleServiceUrl + "/apihub/toggle-endpoint-visibility";
 
     return await service
@@ -65,7 +105,7 @@ class ConsoleService {
       .catch((err: AxiosError) => err.response?.data);
   };
 
-  deleteEndpoint = async (id: string): Promise<ApiResponse<string>> => {
+  deleteEndpoint = async (id: string): Promise<NonPaginatedResponse<string>> => {
     const endpoint = this.consoleServiceUrl + "/apihub/delete-endpoint";
 
     return await service

@@ -1,6 +1,6 @@
 import service from "./service";
 import { AxiosError, AxiosResponse } from "axios";
-import { ApiResponse } from "interfaces/services/shared.interface";
+import { NonPaginatedResponse } from "interfaces/services/shared.interface";
 
 import {
   ThemePayload,
@@ -15,7 +15,7 @@ import {
 class AccountsService {
   accountsServiceUrl = "/accounts";
 
-  getProfile = async (): Promise<ApiResponse<any>> => {
+  getProfile = async (): Promise<NonPaginatedResponse<any>> => {
     const endpoint = this.accountsServiceUrl + "/profile";
 
     return await service

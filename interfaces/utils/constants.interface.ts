@@ -35,7 +35,7 @@ export interface Categories {
 export interface Routes {
   path: string;
   title: string;
-  label?: string;
+  // label?: string;
   Icon: SvgIconComponent;
   research: string | null;
 }

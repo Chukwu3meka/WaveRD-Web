@@ -6,6 +6,7 @@ import { MenuContainer } from ".";
 import { Button, IconButton, Stack, Typography, Box } from "@mui/material";
 import { HeaderProps } from "interfaces/components/others/shared.interface";
 import { Login as LoginIcon, Logout as LogOutIcon, LightMode as LightIcon, DarkModeOutlined as DarkIcon } from "@mui/icons-material";
+import Ellipsis from "../ellipsis";
 
 const Header = ({ className, authenticated, swapColorFn, color, theme, themeHandler, visible, profile }: HeaderProps) => (
   <header id="header" className={styles[className]}>
@@ -16,12 +17,14 @@ const Header = ({ className, authenticated, swapColorFn, color, theme, themeHand
       <Box>
         <Stack direction="row" onMouseOver={() => swapColorFn()} onMouseLeave={() => swapColorFn()}>
           <Link href="/">
-            <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
-              {`Wave `}
-            </Typography>
-            <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.last}>
-              Research
-            </Typography>
+            <Ellipsis lines={1}>
+              <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.first}>
+                {`Wave `}
+              </Typography>
+              <Typography fontWeight={700} fontSize="1.7em" component="span" color={color.last}>
+                Research
+              </Typography>
+            </Ellipsis>
           </Link>
         </Stack>
       </Box>

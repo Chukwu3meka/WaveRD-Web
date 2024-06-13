@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import Ellipsis from "../ellipsis";
 import pageInfo from "utils/page-info";
 
 import { styles } from ".";
@@ -13,9 +14,9 @@ const FooterContainer = () => (
     <footer>
       <main>
         <aside>
-          <Typography fontWeight={700} fontSize="2.2em" component="h1" color="text.secondary">
+          <Ellipsis lines={1} fontWeight={700} fontSize="2.2em" component="h1" color="text.secondary">
             Wave Research
-          </Typography>
+          </Ellipsis>
 
           <Image
             src="/images/layout/waverd.webp"

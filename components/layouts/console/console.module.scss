@@ -1,69 +1,83 @@
 @import "styles/index.scss";
 
 .layout {
+  --header-size: 70px;
+
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 
   display: grid;
-  grid-template-columns: 280px auto;
+  grid-template-columns: var(--console-nav-size) auto;
 
-  & > div:nth-of-type(1) {
+  & > nav.navigation:nth-of-type(1) {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-rows: max-content auto max-content;
+    height: 100vh;
+    position: relative;
+    background: var(--secondary-color);
+    padding: 20px 10px 10px;
+
+    & > div:nth-of-type(2) {
+      overflow-x: hidden;
+      position: relative;
+      overflow-y: auto;
+      left: -5px;
+
+      p {
+        margin-left: -20px;
+      }
+
+      & > *.active {
+        position: sticky;
+        top: -5px;
+        bottom: -5px;
+        z-index: 1;
+      }
+    }
+
+    & > div:nth-of-type(3) > img {
+      border-radius: 50%;
+      animation: spin 14s alternate infinite;
+
+      @keyframes spin {
+        100% {
+          transform: rotateY(360deg);
+        }
+      }
+    }
+  }
+
+  & > main:nth-of-type(1) {
+    display: grid;
+    grid-template-rows: max-content auto;
 
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    width: calc(100vw - 280px);
+    width: calc(100vw - var(--console-nav-size));
 
-    // Use :where to allow child style take higher css specificity
-    :where(& > main, & > div) {
-      // margin: auto;
-      max-width: 1500px;
-      align-self: center;
-      justify-self: center;
-
-      // border: 3px solid red;
-
-      padding: 10px clamp(10px, 5vw, 20px);
-    }
-  }
-}
-
-nav.navigation {
-  display: grid;
-  grid-template-rows: max-content auto max-content;
-  height: 100vh;
-  position: relative;
-  background: var(--secondary-color);
-  padding: 20px 10px 10px;
-
-  & > div:nth-of-type(2) {
-    overflow-x: hidden;
-    position: relative;
-    overflow-y: auto;
-    left: -5px;
-
-    p {
-      margin-left: -20px;
-    }
-
-    & > *.active {
+    & > header:nth-of-type(1) {
       position: sticky;
-      top: -5px;
-      bottom: -5px;
-      z-index: 1;
+      top: 0;
+      height: var(--header-size);
+      padding: 5px 20px;
+      display: grid;
+      grid-template-columns: auto max-content;
+      column-gap: 20px;
+      align-items: center;
     }
-  }
 
-  & > div:nth-of-type(3) > img {
-    border-radius: 50%;
-    animation: spin 14s alternate infinite;
+    & > div:nth-of-type(1) {
+      display: grid;
+      grid-template-columns: auto;
 
-    @keyframes spin {
-      100% {
-        transform: rotateY(360deg);
+      // Use :where to allow child style take higher css specificity
+      :where(& > main, & > div) {
+        max-width: 1500px;
+        align-self: center;
+        justify-self: center;
+        padding: 10px clamp(10px, 5vw, 20px);
       }
     }
   }

@@ -7,7 +7,14 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
 import { ConsoleEndpoints, ConsoleEndpointsDialog } from ".";
-import { ConsoleEndpointsProps, ConsoleEndpointsContainerProps, ConsoleEndpointsData } from "interfaces/components/console/apihub.interface";
+import { ConsoleEndpointsProps, ConsoleEndpointsData, ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
+import { PaginatedResponse } from "interfaces/services/shared.interface";
+import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
+
+interface ConsoleEndpointsContainerProps {
+  // endpoints: PaginatedResponse<Endpoint>["data"] | null;
+  endpoints: PaginatedResponse<ConsoleEndpointsContent>["data"] | null;
+}
 
 const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps) => {
   const consoleService = new ConsoleService(),
