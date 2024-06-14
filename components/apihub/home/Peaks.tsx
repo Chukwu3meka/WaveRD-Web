@@ -5,7 +5,7 @@ import { peaksStyles as styles } from ".";
 import { Grid, Stack, Typography } from "@mui/material";
 
 const Peaks = () => (
-  <Stack py={5} px={1} margin="auto" maxWidth={1000} component="main" alignItems="center">
+  <Stack py={5} px={2} margin="auto" maxWidth={1000} component="main" alignItems="center">
     <Stack width="100%">
       <Grid container rowSpacing={2} columnSpacing={10} direction={{ xs: "column", sm: "column", md: "row" }}>
         <Grid item xs={12} sm={7} textAlign={{ xs: "left", sm: "center", md: "left" }}>

@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const SERVER_ENV_URLS = { test: "https://dev.waverd.com", development: "http://localhost:8081", production: "https://api.waverd.com" },
+// !!! Update this once api.waverd domain is back online
+// const SERVER_ENV_URLS = { test: "https://dev.waverd.com", development: "http://localhost:8081", production: "https://api.waverd.com" },
+const SERVER_ENV_URLS = { test: "https://dev.waverd.com", development: "http://localhost:8081", production: "https://dev.waverd.com" },
   STABLE_VERSION = "/v1",
   INIT_NODE_ENV = process.env.NODE_ENV,
   DOMAINS = ["apihub", "manager", "console", "accounts"],
