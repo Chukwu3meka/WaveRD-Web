@@ -1,7 +1,7 @@
 "use client";
 
-import { EndpointView } from ".";
 import { connect } from "react-redux";
+import { EndpointView, NotFound } from ".";
 import { useEffect, useState } from "react";
 import { INIT_PROFILE } from "utils/constants";
 import { RootState } from "interfaces/redux-store/store.interface";
@@ -20,7 +20,7 @@ const EndpointContainer = (props: EndpointContainerProps) => {
     if (typeof newValue === "string") setCurrentTab(newValue);
   };
 
-  return <EndpointView theme={theme} endpoint={endpoint} currentTab={currentTab} handleTabChange={handleTabChange} />;
+  return endpoint ? <EndpointView theme={theme} endpoint={endpoint} currentTab={currentTab} handleTabChange={handleTabChange} /> : <NotFound />;
 };
 
 const mapStateToProps = (state: RootState) => ({

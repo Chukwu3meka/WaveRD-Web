@@ -6,8 +6,8 @@ import ConsoleService from "services/console.service";
 import { DailyStatistics } from ".";
 import { useRef, useState } from "react";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
-import { DailyStatResponse } from "interfaces/services/console.interface";
 import { PaginatedResponse } from "interfaces/services/shared.interface";
+import { DailyStatResponse } from "interfaces/services/console.interface";
 import { ConsoleEndpointsProps } from "interfaces/components/console/apihub.interface";
 
 interface DailyStatisticsContainerProps {

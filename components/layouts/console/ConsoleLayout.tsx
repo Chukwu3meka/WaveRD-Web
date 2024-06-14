@@ -2,15 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import routes from "utils/routes";
+import routes from "../../../routes/console.routes";
 import Ellipsis from "components/shared/ellipsis";
 
 import { styles } from ".";
 import { ConsoleLayoutProps } from "interfaces/components/others/layouts.interface";
 import { ArrowBack as PrevPageIcon, Webhook as WebhookIcon } from "@mui/icons-material";
 import { IconButton, ListItemIcon, ListItemText, ListItemButton, Avatar, Stack, Divider, List, Button, Paper } from "@mui/material";
+import { Fade } from "react-awesome-reveal";
 
-const ConsoleLayout = ({ children, profile, activeRoute, title, themeHandler, prevPageHandler }: ConsoleLayoutProps) => (
+const ConsoleLayout = ({ title, profile, children, activeRoute, themeHandler, menuPageHandler, prevPageHandler }: ConsoleLayoutProps) => (
   <div className={styles.layout}>
     <nav className={styles.navigation}>
       <Stack alignItems="center" sx={{ py: 2 }}>
@@ -32,20 +33,25 @@ const ConsoleLayout = ({ children, profile, activeRoute, title, themeHandler, pr
         <List component="nav" aria-label="main mailbox folders" sx={{ mt: -1.5 }}>
           {routes
             .filter((route) => route.research === null)
-            .map(({ title, path, Icon }, i) => (
-              <Link key={i} href={path} className={styles[activeRoute.replace("console-", "").startsWith(path) ? "active" : ""]}>
-                <ListItemButton selected={activeRoute.replace("console-", "").startsWith(path)}>
-                  <ListItemIcon>
-                    <Icon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>
-                    <Ellipsis lines={1} fontWeight={600} fontSize=".85em" color="var(--contrast-color) !important">
-                      {title.toUpperCase()}
-                    </Ellipsis>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
-            ))}
+            .map(({ title, path, Icon }, i) => {
+              const newPath = path.replace("/console/console-", ""),
+                newActiveRoute = activeRoute.replace("/console/", "");
+
+              return (
+                <Link key={i} href={path} className={styles[newActiveRoute.startsWith(newPath) ? "active" : ""]}>
+                  <ListItemButton selected={newActiveRoute.startsWith(newPath)}>
+                    <ListItemIcon>
+                      <Icon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>
+                      <Ellipsis lines={1} fontWeight={600} fontSize=".85em" color="var(--contrast-color) !important">
+                        {title.toUpperCase()}
+                      </Ellipsis>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
+              );
+            })}
 
           <ListItemButton>
             <ListItemIcon>
@@ -84,10 +90,13 @@ const ConsoleLayout = ({ children, profile, activeRoute, title, themeHandler, pr
     <main>
       <Paper component="header" elevation={2} sx={{ p: 1 }}>
         <Stack direction="row" alignItems="center" spacing={1}>
-          <IconButton onClick={prevPageHandler}>
-            <PrevPageIcon />
-          </IconButton>
-
+          {activeRoute.startsWith("/console/console-") ? (
+            <></>
+          ) : (
+            <IconButton onClick={menuPageHandler}>
+              <PrevPageIcon />
+            </IconButton>
+          )}
           <Ellipsis lines={1} fontWeight={600} fontSize="1.3em">
             {title.toUpperCase()}
           </Ellipsis>
@@ -98,7 +107,7 @@ const ConsoleLayout = ({ children, profile, activeRoute, title, themeHandler, pr
         </Button>
       </Paper>
 
-      <div>{children}</div>
+      <Fade>{children}</Fade>
     </main>
   </div>
 );

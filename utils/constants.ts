@@ -1,9 +1,8 @@
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import pageInfo from "./page-info";
 
+import { capitalize } from "./helpers";
 import { Categories, Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
-import { ObjectEntries, capitalize } from "./helpers";
-import { ConsoleEndpointContainerProps } from "interfaces/components/console/apihub.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   // { id: "linkedin", title: "LinkedIn", image: "/images/social/linkedin.png", href: "https://www.linkedin.com/company/waverd/" },
@@ -78,17 +77,8 @@ export const CATEGORIES_ARRAY = Object.entries(CATEGORIES).map(([k, v]) => ({
   label: capitalize(v?.replace("-", " ")),
 }));
 
-export const BREAKPOINTS = {
-  xs: 0,
-  sm: 600,
-  md: 900,
-  lg: 1200,
-  xl: 1536,
-};
+export const BREAKPOINTS = { xs: 0, sm: 600, md: 900, lg: 1200, xl: 1536 };
 
-export const ENDPOINTS_SNIPPETS = [
-  { id: "curl", title: "cURL (Client for URL)" },
-  { id: "fetch", title: "JavaScript Fetch API" },
-];
+export const ENDPOINTS_SNIPPETS = ["JavaScript Fetch", "JavaScript JQuery", "cURL (Client for URL)", "Rust - reqwest", "Python - Requests"];
 
 export const HTTP_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"];

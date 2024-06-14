@@ -10,7 +10,7 @@ const InvalidEndpoint = () => (
       title="404"
       subTitle="Sorry, the endpoint you selected does not exist."
       extra={
-        <Link href="/console/console-apihub/modify-endpoints">
+        <Link href="/console/apihub/modify-endpoints">
           <Button variant="contained">Back to Endpoints</Button>
         </Link>
       }

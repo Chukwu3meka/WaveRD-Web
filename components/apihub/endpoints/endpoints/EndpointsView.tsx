@@ -35,7 +35,7 @@ const EndpointsView = ({ endpoints, refreshEndpoints, getMoreEndpoints, hasMoreE
     }
     endMessage={<p style={{ textAlign: "center" }}>Yay! You have seen it all</p>}>
     <Box display="flex" justifyContent={centered ? "center" : "flex-start"}>
-      <Box maxWidth={["xl"].includes(breakpoint) ? 1200 : 900} p={1} sx={{ flexGrow: 1 }}>
+      <Box maxWidth={["xl"].includes(breakpoint) ? 1200 : 1000} p={1} sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           {endpoints.content.map(({ description, id, title, bookmarks, lastUpdated, latency, reference, path }) => (
             <Grid key={id} item xs={12} sm={6} md={4} lg={4} xl={3}>

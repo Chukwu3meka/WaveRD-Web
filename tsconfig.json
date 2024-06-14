@@ -22,12 +22,20 @@
     "paths": {
       "utils/*": ["./utils/*"],
       "styles/*": ["./styles/*"],
+      "routes/*": ["./routes/*"],
       "services/*": ["./services/*"],
       "interfaces/*": ["./interfaces/*"],
       "components/*": ["./components/*"],
       "redux-store/*": ["./redux-store/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/shared/slides/features/index.tss"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/shared/slides/features/index.tss",
+    "components/shared/tab-panel/index.tss"
+  ],
   "exclude": ["node_modules"]
 }

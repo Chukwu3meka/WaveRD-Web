@@ -5,8 +5,8 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { format } from "date-fns";
 import { CATEGORIES } from "utils/constants";
 import { capitalize, shortNumber } from "utils/helpers";
-import { Paper, Skeleton, TextField, Stack, IconButton, Box, Tooltip } from "@mui/material";
 import { ConsoleEndpointsProps } from "interfaces/components/console/apihub.interface";
+import { Paper, Skeleton, TextField, Stack, IconButton, Box, Tooltip } from "@mui/material";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import {
   VisibilityOff,
@@ -57,13 +57,13 @@ const ConsoleEndpoints = ({
       </Stack>
 
       <Box component="nav" sx={{ border: "1px solid var(--secondary-color)", borderRadius: 2 }}>
-        <Link href="/console/console-apihub/modify-endpoints/new">
+        <Link href="/console/apihub/modify-endpoints/new">
           <IconButton>
             <AddIcon />
           </IconButton>
         </Link>
 
-        <Link href="/console/console-apihub/modify-endpoints">
+        <Link href="/console/apihub/modify-endpoints">
           <IconButton onClick={refreshEndpoints}>
             <RefreshIcon fontSize="small" />
           </IconButton>

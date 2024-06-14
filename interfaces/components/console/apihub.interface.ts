@@ -59,6 +59,7 @@ interface FormData {
 }
 
 export interface ConsoleEndpointProps {
+  exists: boolean;
   theme: Theme;
   formData: FormData;
   onInputChange: Function;

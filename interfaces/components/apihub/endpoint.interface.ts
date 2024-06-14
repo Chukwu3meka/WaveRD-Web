@@ -37,7 +37,7 @@ export interface EndpointResponseProps {
 
 export interface SnippetsProps {
   copyToCLipboardHandler: MouseEventHandler<HTMLButtonElement>;
-  codeSnippet: { format: string; snippet: string };
+  snippet: { format: string; code: string };
   optionChangeHandler: Function;
   theme: Theme;
   options: SnippetsFormat[];

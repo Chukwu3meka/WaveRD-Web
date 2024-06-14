@@ -1,8 +1,6 @@
 @import "styles/index.scss";
 
 .layout {
-  --header-size: 70px;
-
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -60,7 +58,7 @@
     & > header:nth-of-type(1) {
       position: sticky;
       top: 0;
-      height: var(--header-size);
+      height: var(--console-header-size);
       padding: 5px 20px;
       display: grid;
       grid-template-columns: auto max-content;

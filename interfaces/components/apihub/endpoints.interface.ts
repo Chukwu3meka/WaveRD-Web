@@ -90,18 +90,12 @@ export interface Endpoint {
   paginationToken: string;
 
   response?: string;
-  snippets?: {
-    curl: SnippetsFormat;
-    fetch: SnippetsFormat;
-    [key: string]: SnippetsFormat;
-    // fetch: { title: string; snippet: string };
-    // curl: { title: string; snippet: string };
-  };
+  snippets?: { [key: string]: SnippetsFormat };
 }
 
 export interface SnippetsFormat {
   title: string;
-  snippet: string;
+  code: string;
 }
 
 // export interface EndpointsIntroProps {

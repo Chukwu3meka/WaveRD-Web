@@ -6,9 +6,9 @@ import { Divider } from "antd";
 import { format } from "date-fns";
 import { Fragment, MouseEventHandler, RefObject } from "react";
 import { Theme } from "interfaces/components/others/layouts.interface";
-import { Collapse, Box, Skeleton, TextField, Stack } from "@mui/material";
 import { docco, darcula } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FailedRequestsResponse } from "interfaces/services/console.interface";
+import { Collapse, Box, Skeleton, TextField, Stack, Paper } from "@mui/material";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 
 interface FailedRequestsViewProps {
@@ -66,7 +66,7 @@ const FailedRequestsView = ({
       </Stack>
     </Stack>
 
-    <TableContainer style={{ maxHeight: "calc(100vh - 230px)", maxWidth: "calc(100vw - (var(--console-nav-size) + 50px))" }}>
+    <TableContainer component={Paper} style={{ maxHeight: "calc(100vh - 230px)", maxWidth: "calc(100vw - (var(--console-nav-size) + 50px))" }}>
       <Table stickyHeader aria-label="Console Failed Requests Table" size="small" ref={tableRef} sx={{ minWidth: 1200 }}>
         <TableHead>
           <TableRow>

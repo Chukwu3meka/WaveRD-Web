@@ -4,7 +4,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { format } from "date-fns";
 import { shortNumber } from "utils/helpers";
 import { MouseEventHandler, RefObject } from "react";
-import { Skeleton, TextField, Stack } from "@mui/material";
+import { Skeleton, TextField, Stack, Paper } from "@mui/material";
 import { DailyStatResponse } from "interfaces/services/console.interface";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 
@@ -56,24 +56,26 @@ const DailyStatistics = ({ data, filter, tableRef, searching, setFilter, searchH
       </Stack>
     </Stack>
 
-    <TableContainer style={{ maxHeight: "calc(100vh - 230px)", maxWidth: "calc(100vw - (var(--console-nav-size) + 50px))" }}>
-      <Table stickyHeader aria-label="Console Daily Stat Table" size="small" ref={tableRef} sx={{ minWidth: 1200 }}>
+    <TableContainer component={Paper} style={{ maxHeight: "calc(100vh - 230px)", maxWidth: "calc(100vw - (var(--console-nav-size) + 50px))" }}>
+      <Table stickyHeader aria-label="Console Daily Stat Table" size="small" ref={tableRef} sx={{ minWidth: 1000 }}>
         <TableHead>
           <TableRow>
             <TableCell width={30}></TableCell>
-            <TableCell width={300}>Date</TableCell>
-            <TableCell width={100} align="center">
+            <TableCell width={150}>Date</TableCell>
+            <TableCell width={50} align="right">
+              Info
+            </TableCell>
+            <TableCell width={50} align="right">
               Accounts
             </TableCell>
-            <TableCell width={100} align="right">
+            <TableCell width={50} align="right">
               API Hub
             </TableCell>
-            <TableCell width={100}>Console</TableCell>
-            <TableCell width={100} align="center">
-              Manager
+            <TableCell width={50} align="right">
+              Console
             </TableCell>
-            <TableCell width={100} align="center">
-              Info
+            <TableCell width={50} align="right">
+              Manager
             </TableCell>
           </TableRow>
         </TableHead>

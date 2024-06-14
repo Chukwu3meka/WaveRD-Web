@@ -11,13 +11,13 @@ import { SnippetsContainerProps } from "interfaces/components/apihub/endpoint.in
 const SnippetsContainer = ({ snippets, theme }: SnippetsContainerProps) => {
   const { enqueueSnackbar } = useSnackbar(),
     [options, setOptions] = useState<SnippetsFormat[]>([]),
-    [codeSnippet, setCodeSnippet] = useState({ snippet: "", format: "" });
+    [snippet, setCodeSnippet] = useState({ code: "", format: "" });
 
   useEffect(() => {
     const options: SnippetsFormat[] = [];
 
     for (const [key, value] of ObjectEntries<any>(snippets)) {
-      options.push({ snippet: key as string, title: value.title });
+      options.push({ code: key as string, title: value.title });
     }
 
     setOptions(options);
@@ -27,12 +27,12 @@ const SnippetsContainer = ({ snippets, theme }: SnippetsContainerProps) => {
     const format = event.target.value as string;
 
     if (snippets) {
-      setCodeSnippet({ format, snippet: snippets[format].snippet });
+      setCodeSnippet({ format, code: snippets[format].code });
     }
   };
 
   const copyToCLipboardHandler = async () => {
-    copyToCLipboard(codeSnippet.snippet)
+    copyToCLipboard(snippet.code)
       .then(() => enqueueSnackbar("Copied!!!", { variant: "success" }))
       .catch(() => enqueueSnackbar("Failed to copy!!!", { variant: "error" }));
   };
@@ -41,7 +41,7 @@ const SnippetsContainer = ({ snippets, theme }: SnippetsContainerProps) => {
     <Snippets
       theme={theme}
       options={options}
-      codeSnippet={codeSnippet}
+      snippet={snippet}
       optionChangeHandler={optionChangeHandler}
       copyToCLipboardHandler={copyToCLipboardHandler}
     />

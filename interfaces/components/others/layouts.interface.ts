@@ -62,5 +62,6 @@ export interface ConsoleLayoutProps {
   profile: null | Profile;
   children: React.ReactNode;
   themeHandler: MouseEventHandler<HTMLButtonElement>;
+  menuPageHandler: MouseEventHandler<HTMLButtonElement>;
   prevPageHandler: MouseEventHandler<HTMLButtonElement>;
 }

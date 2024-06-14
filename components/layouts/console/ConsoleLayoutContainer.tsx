@@ -1,6 +1,6 @@
 "use client";
 
-import routes from "utils/routes";
+import CONSOLE_ROUTES from "routes/console.routes";
 import AccountsService from "services/accounts.service";
 
 import { ConsoleLayout } from ".";
@@ -39,7 +39,7 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
   useEffect(() => {
     setActiveRoute(props.activeRoute || "/");
 
-    const route = routes.find((route) => route.path === props.activeRoute);
+    const route = CONSOLE_ROUTES.find((route) => route.path === props.activeRoute);
     setTitle(route ? route.title : "Wave Research Console");
   }, [props.activeRoute]);
 
@@ -63,10 +63,21 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
     router.back();
   }
 
+  function menuPageHandler() {
+    const [, , menu] = activeRoute.split("/");
+    router.push(`/console/${menu.replace("console-", "")}`);
+  }
+
   if (blankScreen) return <p>Persisting layout. Kindly wait, Loading...</p>;
 
   return (
-    <ConsoleLayout prevPageHandler={prevPageHandler} profile={profile} activeRoute={activeRoute} themeHandler={themeHandler} title={title}>
+    <ConsoleLayout
+      title={title}
+      profile={profile}
+      activeRoute={activeRoute}
+      themeHandler={themeHandler}
+      menuPageHandler={menuPageHandler}
+      prevPageHandler={prevPageHandler}>
       {children}
     </ConsoleLayout>
   );

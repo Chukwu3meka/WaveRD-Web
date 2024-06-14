@@ -55,9 +55,8 @@ export interface GetConsoleEndpointResponse {
 }
 
 export interface Snippets {
-  id: string;
   title: string;
-  snippet: string;
+  code: string;
 }
 
 export interface ConsoleEndpointTitleExistsResponse {

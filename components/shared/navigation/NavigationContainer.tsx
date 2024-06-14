@@ -1,11 +1,11 @@
-import routes from "utils/routes";
-
 import { Empty } from "antd";
 import { Navigation } from ".";
 import { NavigationContainerProps } from "interfaces/components/others/shared.interface";
 
+import CONSOLE_ROUTES from "routes/console.routes";
+
 const NavigationContainer = ({ research }: NavigationContainerProps) => {
-  const navRoutes = routes.filter((props) => props.research === research);
+  const navRoutes = CONSOLE_ROUTES.filter((props) => props.research === research);
 
   if (!navRoutes.length)
     return (

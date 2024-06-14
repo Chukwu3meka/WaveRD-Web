@@ -3,10 +3,10 @@ import { Suspense } from "react";
 import Loading from "components/shared/loading";
 import NavigationContainer from "components/shared/navigation";
 
-const EndpointsPage = ({ params: { research } }: { params: { research: string } }) => (
+const ConsoleMenuPage = ({ params: { research } }: { params: { research: string } }) => (
   <Suspense fallback={<Loading />}>
-    <NavigationContainer research={`console-${research}`} />
+    <NavigationContainer research={research.replace("console-", "")} />
   </Suspense>
 );
 
-export default EndpointsPage;
+export default ConsoleMenuPage;

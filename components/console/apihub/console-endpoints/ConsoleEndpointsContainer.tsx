@@ -7,9 +7,8 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
 import { ConsoleEndpoints, ConsoleEndpointsDialog } from ".";
-import { ConsoleEndpointsProps, ConsoleEndpointsData, ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
 import { PaginatedResponse } from "interfaces/services/shared.interface";
-import { Endpoint } from "interfaces/components/apihub/endpoints.interface";
+import { ConsoleEndpointsProps, ConsoleEndpointsData, ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
 
 interface ConsoleEndpointsContainerProps {
   // endpoints: PaginatedResponse<Endpoint>["data"] | null;
@@ -81,7 +80,7 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
     if (!id) return;
 
     if (action === "modify") {
-      router.push(`/console/console-apihub/modify-endpoints/${id}`);
+      router.push(`/console/apihub/modify-endpoints/${id}`);
     } else {
       setReference(id);
       setAction(action);

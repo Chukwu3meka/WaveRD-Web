@@ -3,7 +3,6 @@
 import validator from "utils/validator";
 import ConsoleService from "services/console.service";
 
-import { Divider } from "antd";
 import { connect } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,7 +14,7 @@ import { ENDPOINTS_SNIPPETS, INIT_PROFILE } from "utils/constants";
 import { Theme } from "interfaces/components/others/layouts.interface";
 import { ConsoleEndpointContainerProps, ConsoleEndpointProps } from "interfaces/components/console/apihub.interface";
 
-const snippets = ENDPOINTS_SNIPPETS.map((snippet) => ({ ...snippet, snippet: "" }));
+const snippets = ENDPOINTS_SNIPPETS.map((title) => ({ title, code: "" }));
 
 const consoleService = new ConsoleService(),
   initConsoleEndpointForm: ConsoleEndpointProps["formData"] = {
@@ -44,7 +43,21 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
       onInputChange({ target: { id: "description", value: props.endpoint.description } }, true);
       onInputChange({ target: { id: "path", value: props.endpoint.path.replace(`${process.env.STABLE_VERSION}/public/`, "") } }, true);
 
-      setFormData((formData) => ({ ...formData, options: { ...formData.options, snippets: props.endpoint?.snippets || [] } }));
+      // get snippets already saved to this endpoint
+      // map it through current list of snippets in client
+      // attach db snippet to client, and set client snippets as ""
+      // This will allow users add snippets to recently added sclient snippets that were not available at the time API was modified/created
+      const snippets = ENDPOINTS_SNIPPETS.map((title) => {
+        const propsSnippets = props.endpoint?.snippets;
+        if (!propsSnippets) return { title, code: "" };
+
+        const snippet = propsSnippets.find((snippet) => snippet.title === title);
+        if (!snippet) return { title, code: "" };
+
+        return snippet;
+      });
+
+      setFormData((formData) => ({ ...formData, options: { ...formData.options, snippets } }));
     }
   }, [props.endpoint]);
 
@@ -58,14 +71,14 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
   }, [formData.path.value, formData.method.value]);
 
   const updateSnippet = (value: string, onBlur: boolean) => {
-    const id = formData.snippet.value;
-    if (!id && !onBlur) return enqueueSnackbar("Kindly, select a snippet type to proceed", { variant: "error" });
+    const title = formData.snippet.value;
+    if (!title && !onBlur) return enqueueSnackbar("Kindly, select a snippet type to proceed", { variant: "error" });
 
     setFormData((values) => ({
       ...values,
       options: {
         ...values.options,
-        snippets: formData.options.snippets.map((snippet) => ({ ...snippet, snippet: snippet.id === id ? value : snippet.snippet })),
+        snippets: formData.options.snippets.map((snippet) => ({ ...snippet, code: snippet.title === title ? value : snippet.code })),
       },
     }));
   };
@@ -178,18 +191,33 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
 
       if (!Array.isArray(formData.options.snippets)) throw { message: "Snippet is not an array" };
 
-      for (const x of formData.options.snippets) {
-        validator({ value: x.id, type: "comment" });
-        validator({ value: x.title, type: "comment" });
-        validator({ value: x.snippet, type: "comment" });
+      // get only snippets that are visible in the client
+      // remove db snippet that has been deleted from client
+      // This will allow users add only snippets that are currently visible while editing
+      // so if Curl snippet was saved to DB and has been deleted from Client, It wont be sent back to server to be saved again
+      const snippets = ENDPOINTS_SNIPPETS.map((title) => {
+        const formSnippets = formData.options.snippets;
+        if (!formSnippets) return { title, code: "" };
+
+        const snippet = formSnippets.find((snippet) => snippet.title === title);
+        if (!snippet) return { title, code: "" };
+
+        return snippet;
+      }).filter((snippet) => Boolean(snippet.code));
+
+      if (snippets.length <= 3) throw { message: "Add at least Three Snippets to proceed" };
+
+      for (const snippet of formData.options.snippets) {
+        validator({ value: snippet.code, type: "comment", label: snippet.title + " Snippet Code" });
+        validator({ value: snippet.title, type: "comment", label: snippet.title + " Snippet Title" });
       }
 
       await consoleService
         .saveEndpoint({
+          snippets,
           title: formData.title.value,
           method: formData.method.value,
           category: formData.category.value,
-          snippets: formData.options.snippets,
           description: formData.description.value,
           id: props.endpoint ? props.endpoint.id : "new",
           path: `${process.env.STABLE_VERSION}/public/` + formData.path.value,
@@ -210,18 +238,15 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
 
   const toggleShowSuccessDialog = () => {
     setShowSuccessDialog(false);
-
-    // if (props.exists) router.replace("/console/console-apihub/modify-endpoints/new");
     if (props.exists) router.back();
   };
 
   return (
-    <main style={{ width: 1100 }}>
-      <Divider orientation="left">{`${props.exists ? "Modify existing" : "Create new"} API Hub Endpoint`}</Divider>
-
+    <main>
       <EndpointForm
         theme={theme}
         formData={formData}
+        exists={props.exists}
         saveEndpoint={saveEndpoint}
         onInputChange={onInputChange}
         updateSnippet={updateSnippet}

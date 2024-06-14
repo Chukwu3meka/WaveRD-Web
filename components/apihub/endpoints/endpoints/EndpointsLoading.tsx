@@ -3,7 +3,7 @@ import { Avatar, Skeleton, Stack, Typography, Paper, Box, Grid, Divider } from "
 
 const EndpointsLoading = ({ items, centered, breakpoint }: EndpointsLoadingProps) => (
   <Box display="flex" justifyContent={centered ? "center" : "flex-start"}>
-    <Box maxWidth={["xl"].includes(breakpoint) ? 1200 : 900} p={1} sx={{ flexGrow: 1 }}>
+    <Box maxWidth={["xl"].includes(breakpoint) ? 1200 : 1000} p={1} sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         {new Array(items).fill(" ").map((_, i) => (
           <Grid key={i} item xs={12} sm={6} md={4} lg={4} xl={3}>

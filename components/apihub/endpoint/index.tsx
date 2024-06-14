@@ -6,4 +6,6 @@ import Response from "./Response";
 import Description from "./Description";
 import SnippetsContainer from "./SnippetsContainer";
 
-export { Snippets, SnippetsContainer, Description, Response, EndpointView, EndpointContainer as default };
+import NotFound from "./NotFound";
+
+export { NotFound, Snippets, SnippetsContainer, Description, Response, EndpointView, EndpointContainer as default };

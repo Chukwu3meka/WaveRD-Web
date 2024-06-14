@@ -22,9 +22,25 @@ const Modal = (props: ModalProps) => {
     styles = Object.fromEntries(Object.entries(customStyles).filter(([_, v]) => ![null, undefined].includes(v as any)));
 
   return (
-    <Dialog fullWidth={fullWidth} maxWidth={maxWidth} open onClose={handleClose}>
+    <Dialog
+      fullWidth={fullWidth}
+      maxWidth={maxWidth}
+      open
+      onClose={handleClose}
+      sx={{
+        border: "3px solid red",
+        //
+        padding: "0 !important",
+      }}>
       {title ? <DialogTitle>{title}</DialogTitle> : <></>}
-      <DialogContent style={{ padding: 2 }}>
+      <DialogContent
+        sx={
+          {
+            // padding: 2,
+            // margin: "0 !important",
+            // border: "3px solid red",
+          }
+        }>
         <Box sx={styles}>{children}</Box>
       </DialogContent>
     </Dialog>
