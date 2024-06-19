@@ -31,13 +31,10 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
           </List>
 
           <Fade direction="down" triggerOnce={true} style={{ perspective: "100px" }}>
-            {children}
-
             {activeRoute && deviceWidth < 1200 ? (
               <Box width="100%" maxWidth={1200} p={1} mt={2}>
                 <Autocomplete
                   fullWidth
-                  disablePortal
                   options={INFO_LINKS}
                   id="waverd-info"
                   value={INFO_LINKS.find(({ path }) => path === activeRoute)}
@@ -46,6 +43,8 @@ export default function InfoLayout({ activeRoute, deviceWidth, autoCompleteHandl
                 />
               </Box>
             ) : null}
+
+            {children}
           </Fade>
         </div>
       </main>
