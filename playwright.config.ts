@@ -36,7 +36,7 @@ export default defineConfig({
       process.env.NODE_ENV === "production"
         ? "https://www.waverd.com"
         : process.env.NODE_ENV === "test"
-        ? "https://dev.waverd.com"
+        ? "https://review.waverd.com"
         : "http://localhost:8081",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */

@@ -71,5 +71,5 @@ export default Header;
 const navLinks = [
   { title: "Home", path: "/" },
   { title: "API Hub", path: "/apihub" },
-  { title: "Manager", path: "/manager" },
+  { title: "Manager", path: "/games" },
 ];

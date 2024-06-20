@@ -27,7 +27,7 @@ const CONSOLE_ROUTES: Routes[] = [
   // ? Nav Route
   { research: null, title: "PROFILES", Icon: Engineering, path: "/console/console-profiles" },
   { research: null, title: "APIHUB CORE", Icon: Hub, path: "/console/console-apihub" },
-  { research: null, title: "FOOTBALL MANAGER", Icon: SportsSoccer, path: "/console/console-manager" },
+  { research: null, title: "FOOTBALL MANAGER", Icon: SportsSoccer, path: "/console/console-games" },
   { research: null, title: "INSTANT TRANSLATION", Icon: Translate, path: "/console/console-translation" },
   { research: null, title: "CONTACT US / REPLY", Icon: ContactPhone, path: "/console/console-contact" },
   { research: null, title: "HOURLY JOBS", Icon: WorkHistory, path: "/console/console-jobs" },

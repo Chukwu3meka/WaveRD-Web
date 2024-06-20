@@ -29,7 +29,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
           <Typography color="text.secondary">Core</Typography>
 
-          <Link href="/manager">
+          <Link href="/games">
             <Typography color="primary">Football Manager</Typography>
           </Link>
         </Breadcrumbs>
