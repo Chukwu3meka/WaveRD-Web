@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const [test, production, development] = ["https://dev.waverd.com", "http://localhost:8081", "https://api.waverd.com"];
+const [test, development, production] = ["https://dev.waverd.com", "http://localhost:8081", "https://api.waverd.com"];
 
 const STABLE_VERSION = "/v1",
   INIT_NODE_ENV = process.env.NODE_ENV,

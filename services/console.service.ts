@@ -29,7 +29,7 @@ class ConsoleService {
     return await service
       .get(path, option)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   getDailyStat = async ({ filter, page, size, cookie }: GetDailyStatPayload): Promise<PaginatedResponse<DailyStatResponse>> => {
@@ -39,7 +39,7 @@ class ConsoleService {
     return await service
       .get(endpoint, option)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   getAllRequests = async ({ filter, page, size, cookie }: GetAllRequestsPayload): Promise<PaginatedResponse<AllRequestsResponse>> => {
@@ -49,7 +49,7 @@ class ConsoleService {
     return await service
       .get(endpoint, option)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   getFailedRequests = async ({ filter, page, size, cookie }: GetFailedRequestsPayload): Promise<PaginatedResponse<FailedRequestsResponse>> => {
@@ -59,7 +59,7 @@ class ConsoleService {
     return await service
       .get(endpoint, option)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   getEndpoint = async ({ id, cookie }: GetConsoleEndpointPayload): Promise<NonPaginatedResponse<GetConsoleEndpointResponse>> => {
@@ -75,7 +75,7 @@ class ConsoleService {
     return await service
       .post(endpoint, { title })
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   composeEndpoint = async ({ path, method }: { path: string; method: string }): Promise<NonPaginatedResponse<ConsoleComposeEndpoint>> => {
@@ -84,7 +84,7 @@ class ConsoleService {
     return await service
       .post(endpoint, { path, method })
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   saveEndpoint = async (payload: SaveEndpointPayload): Promise<NonPaginatedResponse<string>> => {
@@ -93,7 +93,7 @@ class ConsoleService {
     return await service
       .post(endpoint, payload)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   toggleEndpointVisibility = async (id: string): Promise<NonPaginatedResponse<string>> => {
@@ -102,7 +102,7 @@ class ConsoleService {
     return await service
       .post(endpoint, { id })
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   deleteEndpoint = async (id: string): Promise<NonPaginatedResponse<string>> => {
@@ -111,7 +111,7 @@ class ConsoleService {
     return await service
       .post(endpoint, { id })
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   // const consoleService = {

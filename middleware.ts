@@ -4,10 +4,10 @@ import { NextResponse, userAgent } from "next/server";
 import type { NextRequest } from "next/server";
 import AccountsService from "services/accounts.service";
 
-async function goToLogin(destination: string, url: string) {
+const goToLogin = async (destination: string, url: string) => {
   // return Response.redirect(new URL(`/accounts/signin?target=${destination}`, url));
   return NextResponse.redirect(new URL(`/accounts/signin?target=${destination}`, url));
-}
+};
 
 async function getUserRole(cookies: any) {
   const accountsService = new AccountsService(),
@@ -61,9 +61,9 @@ export async function middleware(request: NextRequest) {
     const decoded: any = jwtDecode(ssidCookie);
     if (!decoded || !decoded.session) return goToLogin(destination, url);
 
-    const role = await getUserRole(`SSID=${ssidCookie}`);
-
     if (destination.startsWith("/console/")) {
+      const role = await getUserRole(`SSID=${ssidCookie}`);
+
       if (!["moderator"].includes(role)) return goToLogin(destination, url);
 
       // const url = request.nextUrl;
