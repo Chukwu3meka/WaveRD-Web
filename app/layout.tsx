@@ -6,14 +6,14 @@ import Providers, { ReduxProvider } from "components/providers";
 
 import { Metadata } from "next";
 import { Suspense } from "react";
-import { getUserProfile } from "utils/serverHelpers";
+import { getUserCookies } from "utils/serverHelpers";
 import { LinearProgress, Stack } from "@mui/material";
 import { Merienda, Roboto_Slab } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Profile } from "interfaces/redux-store/account.interfaces";
 import { RootProps } from "interfaces/components/others/layouts.interface";
 import { ReactChildren } from "interfaces/components/others/shared.interface";
+import AccountsService from "services/accounts.service";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
@@ -22,7 +22,13 @@ const { description, keywords, title } = pageInfo.home,
   metadata: Metadata = { description, keywords, title };
 
 const ProvidersSSR = async ({ children }: ReactChildren) => {
-  const user: null | Profile = await getUserProfile();
+  const cookie = await getUserCookies(),
+    accountsService = new AccountsService();
+
+  const user = await accountsService.getProfile(cookie).then(({ success, data }) => {
+    if (success) return data;
+    return null;
+  });
 
   // ReduxProvider should be called here before Providers
   // This will allow Providers to use redux actions without errors
@@ -60,7 +66,7 @@ const RootLayout = async ({ children, modal }: RootProps) => (
     </body>
 
     {/* Temporarily disabled to improve page speed for search engine */}
-    <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />
+    {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} /> */}
   </html>
 );
 

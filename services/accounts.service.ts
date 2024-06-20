@@ -15,13 +15,14 @@ import {
 class AccountsService {
   accountsServiceUrl = "/accounts";
 
-  getProfile = async (): Promise<NonPaginatedResponse<any>> => {
-    const endpoint = this.accountsServiceUrl + "/profile";
+  getProfile = async (cookie?: string | null): Promise<NonPaginatedResponse<any>> => {
+    const path = this.accountsServiceUrl + "/profile",
+      option = cookie ? { headers: { Cookie: cookie } } : {};
 
     return await service
-      .get(endpoint)
+      .get(path, option)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   setTheme = async (payload: ThemePayload) => {

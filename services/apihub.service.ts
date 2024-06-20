@@ -14,7 +14,7 @@ class ApihubService {
     return await service
       .get(endpoint)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 
   // getEndpointsCategory = async (category: string) => {

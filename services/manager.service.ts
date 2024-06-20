@@ -16,7 +16,7 @@ class GamesService {
     return await service
       .get(path, option)
       .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data);
+      .catch((err: AxiosError) => err.response?.data || {});
   };
 }
 

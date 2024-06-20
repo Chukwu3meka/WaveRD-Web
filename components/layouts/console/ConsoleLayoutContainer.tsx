@@ -65,7 +65,7 @@ const ConsoleLayoutContainer = (props: ConsoleLayoutContainerProps) => {
 
   function menuPageHandler() {
     const [, , menu] = activeRoute.split("/");
-    router.push(`/console/${menu.replace("console-", "")}`);
+    if (menu) router.push(`/console/${menu.replace("console-", "")}`);
   }
 
   if (blankScreen) return <p>Persisting layout. Kindly wait, Loading...</p>;
