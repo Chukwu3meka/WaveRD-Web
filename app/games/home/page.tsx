@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: pageInfo.home.description,
 };
 
-const HomePage = async ({ children }: ReactChildren) => {
+const HomePage = async () => {
   if (process.env.NODE_ENV !== "development") {
     return (
       <div className={styles.layout}>
