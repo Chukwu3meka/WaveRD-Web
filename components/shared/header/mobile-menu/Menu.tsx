@@ -22,7 +22,7 @@ import Ellipsis from "components/shared/ellipsis";
 const navLinks = [
   { id: "home", title: "Home", Icon: HomeIcon, path: "/" },
   { id: "apihub", title: "Football API Hub", Icon: ApiHubIcon, path: "/apihub" },
-  { id: "manager", title: "Soccer Manager", Icon: ManagerIcon, path: "/manager" },
+  { id: "manager", title: "Soccer Manager", Icon: ManagerIcon, path: "/games" },
   { id: "signup", title: "Register/Create an Account", Icon: SignUpIcon, path: "/accounts/signup" },
   { id: "signin", title: "Login to your Account", Icon: SignInIcon, path: "/accounts/signin" },
   { id: "signout", title: "Sign Out from Wave Research", Icon: SignOutIcon, path: `${process.env.BASE_URL}/accounts/signout` },

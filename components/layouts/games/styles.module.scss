@@ -1,0 +1,35 @@
+@import "styles/index.scss";
+
+main.layout {
+  display: grid;
+  min-height: var(--visibleScreen);
+  grid-template-rows: var(--headerHeight) auto max-content;
+
+  & > div:last-of-type {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    max-width: 650px;
+    grid-template-columns: auto;
+
+    // Use :where to allow child style take higher css specificity
+    :where(& > main, & > div) {
+      align-self: center;
+      justify-self: center;
+      padding: 10px clamp(10px, 5vw, 20px);
+    }
+  }
+
+  & > nav {
+    bottom: 0;
+    width: 100%;
+    position: sticky;
+    background-color: var(--secondary-color);
+
+    & > div {
+      margin: auto;
+      max-width: 700px;
+      background-color: var(--secondary-color);
+    }
+  }
+}

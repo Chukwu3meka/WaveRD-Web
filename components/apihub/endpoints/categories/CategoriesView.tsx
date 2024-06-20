@@ -1,10 +1,11 @@
-import CategoriesIcon from "./CategoriesIcon";
+// import CategoriesIcon from "./CategoriesIcon";
 import Ellipsis from "components/shared/ellipsis";
 
 import { styles } from ".";
-import { CATEGORIES } from "utils/constants";
+// import { CATEGORIES } from "utils/constants";
+import { List, ListItemText, ListItemButton, Typography } from "@mui/material";
 import { CategoriesViewProps } from "interfaces/components/apihub/endpoints.interface";
-import { List, ListItemText, ListItemButton, Typography, ListItemIcon } from "@mui/material";
+// import { List, ListItemText, ListItemButton, Typography, ListItemIcon } from "@mui/material";
 
 const CategoriesView = ({ showTopCategories, categories, displayHeader, switchCategory, selected }: CategoriesViewProps) =>
   showTopCategories ? (
@@ -16,11 +17,11 @@ const CategoriesView = ({ showTopCategories, categories, displayHeader, switchCa
       {categories?.map(({ title, id, category }) => (
         <List key={id} aria-label="categories-list" sx={{ width: "100%", maxWidth: 220, mb: -2 }}>
           <ListItemButton onClick={switchCategory(id)} selected={selected === id}>
-            <ListItemIcon>
+            {/* <ListItemIcon>
               <CategoriesIcon icon={CATEGORIES[id]} color="primary" />
-            </ListItemIcon>
+            </ListItemIcon> */}
 
-            <ListItemText sx={{ ml: -2 }}>
+            <ListItemText sx={{ ml: 5 }}>
               <Ellipsis lines={1} fontWeight={600}>
                 {title}
               </Ellipsis>

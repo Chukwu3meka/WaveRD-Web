@@ -73,7 +73,7 @@ const FooterContainer = () => (
 
             <a href="https://apihub.waverd.com/">API Hub</a>
             <Link href={pageInfo.sponsors.path}>{pageInfo.sponsors.title}</Link>
-            <a href="https://manager.waverd.com/">Soccer Manager</a>
+            <a href="https://games.waverd.com/">Soccer Manager</a>
             <a href="https://translate.waverd.com/">Translation</a>
             <a href="https://waverd.com/">Jobs & Career</a>
             {/* <a href="https://waverd.com/">Agriculture</a> */}

@@ -83,10 +83,10 @@ export async function middleware(request: NextRequest) {
   return response;
 }
 
+// ? Routes that require authentication
+const privateRoutes = ["/console", "/games"];
+
 // ? Use this else middleware will apply to even files in /public, etc
 export const config = {
-  matcher: ["/", "/info/:path*", "/accounts/:path*", "/console/:path*"],
+  matcher: ["/", "/info/:path*", "/accounts/:path*", "/apihub/:path*", "/console/:path*", "/games/:path*"],
 };
-
-// ? Routes that require authentication
-const privateRoutes = ["/apihub", "/console"];

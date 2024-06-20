@@ -27,7 +27,7 @@ const Welcome = () => (
         </Typography>
 
         <span>
-          <Link href="/manager">
+          <Link href="/games">
             <Button size="large" variant="contained">
               Soccer Manager
             </Button>

@@ -1,8 +1,8 @@
 import Link from "next/link";
+import pageInfo from "utils/page-info";
 
 import { Result } from "antd";
 import { Button } from "@mui/material";
-import pageInfo from "utils/page-info";
 
 const FallbackPage = () => (
   <main style={{ justifyContent: "center" }}>

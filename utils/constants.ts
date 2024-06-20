@@ -1,7 +1,7 @@
-import { Profile } from "interfaces/redux-store/account.interfaces";
 import pageInfo from "./page-info";
 
 import { capitalize } from "./helpers";
+import { Profile } from "interfaces/redux-store/account.interfaces";
 import { Categories, Competition, ContactPreferences, ContactUsCategories, InfoLinks, SocialAccounts } from "interfaces/utils/constants.interface";
 
 export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
@@ -21,8 +21,9 @@ export const SOCIAL_ACCOUNTS: SocialAccounts[] = [
   { id: "facebook", title: "Facebook", image: "/images/social/facebook.png", href: "https://web.facebook.com/Chukwu3meka" },
 ];
 
+// <= Init role is always a dummy user
 export const INIT_PROFILE: Profile = {
-  role: "dummy", // <= Init role is always a dummy user
+  role: "dummy",
   theme: "dark",
   name: "Wave Research",
   handle: "API Hub and Soccer Manager",
