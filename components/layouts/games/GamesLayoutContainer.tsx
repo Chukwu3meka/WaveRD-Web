@@ -9,8 +9,8 @@ import { RootState } from "interfaces/redux-store/store.interface";
 import GAMES_ROUTES from "routes/games.routes";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 
+const homeRoutes = GAMES_ROUTES.find((route) => route.path === "/games");
 const teamRoutes = GAMES_ROUTES.find((route) => route.path === "/games/team");
-const homeRoutes = GAMES_ROUTES.find((route) => route.path === "/games/home");
 const infoRoutes = GAMES_ROUTES.find((route) => route.path === "/games/info");
 
 interface GamesLayoutContainerProps {

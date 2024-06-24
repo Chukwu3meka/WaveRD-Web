@@ -9,8 +9,8 @@ import { DailyStatResponse, GetEndpointsPayload } from "interfaces/services/cons
 class GamesService {
   gamesServiceUrl = "/games";
 
-  getProfile = async ({ filter, page, size, cookie }: GetEndpointsPayload): Promise<PaginatedResponse<ConsoleEndpointsContent>> => {
-    const path = this.gamesServiceUrl + `/apihub/endpoints?filter=${filter}&page=${page}&size=${size}`,
+  getProfile = async (cookie?: string | null): Promise<NonPaginatedResponse<any>> => {
+    const path = this.gamesServiceUrl + "/get-profile",
       option = cookie ? { headers: { Cookie: cookie } } : {};
 
     return await service

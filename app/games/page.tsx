@@ -1,21 +1,30 @@
-import Link from "next/link";
+import pageInfo from "utils/page-info";
+import HeaderContainer from "components/shared/header";
+import FooterContainer from "components/shared/footer";
+import ComingSoonContainer from "components/shared/coming-soon";
 
-import { Result } from "antd";
-import { Button } from "@mui/material";
+import { Metadata } from "next";
+import { Box } from "@mui/material";
+import { styles } from "components/layouts/apihub";
+import { ReactChildren } from "interfaces/components/others/shared.interface";
+import { getUserCookies } from "utils/serverHelpers";
+import ManagerService from "services/manager.service";
 
-const FallbackPage = () => (
-  <main style={{ justifyContent: "center" }}>
-    <Result
-      status={404}
-      title="404"
-      subTitle="Sorry, the page you have visited does not exist."
-      extra={
-        <Link href="/games/home">
-          <Button variant="contained">Football manager</Button>
-        </Link>
-      }
-    />
-  </main>
-);
+export const metadata: Metadata = {
+  title: pageInfo.home.title,
+  keywords: pageInfo.home.keywords,
+  description: pageInfo.home.description,
+};
 
-export default FallbackPage;
+const HomePage = async () => {
+  return (
+    // <div className={styles.layout}>
+    //   <HeaderContainer position="relative" />
+    // children
+    <main>sadsads</main>
+    //   <FooterContainer />
+    // </div>
+  );
+};
+
+export default HomePage;
