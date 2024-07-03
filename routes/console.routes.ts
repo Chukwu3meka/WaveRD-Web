@@ -19,6 +19,7 @@ import {
   RequestPage,
   Today,
   ReportProblem,
+  AddBox,
 } from "@mui/icons-material";
 
 import { Routes } from "interfaces/utils/constants.interface";
@@ -30,13 +31,13 @@ const CONSOLE_ROUTES: Routes[] = [
   { research: null, title: "FOOTBALL MANAGER", Icon: SportsSoccer, path: "/console/console-games" },
   { research: null, title: "INSTANT TRANSLATION", Icon: Translate, path: "/console/console-translation" },
   { research: null, title: "CONTACT US / REPLY", Icon: ContactPhone, path: "/console/console-contact" },
-  { research: null, title: "HOURLY JOBS", Icon: WorkHistory, path: "/console/console-jobs" },
-  { research: null, title: "HOMES AND SPACES", Icon: AddHomeWork, path: "/console/console-spaces" },
+  // { research: null, title: "HOURLY JOBS", Icon: WorkHistory, path: "/console/console-jobs" },
+  // { research: null, title: "HOMES AND SPACES", Icon: AddHomeWork, path: "/console/console-spaces" },
   { research: null, title: "ADD TO CART MARKET", Icon: LocalGroceryStore, path: "/console/console-cart" },
   { research: null, title: "MODERATORS", Icon: AdminPanelSettings, path: "/console/console-moderator" },
   { research: null, title: "LOCAL BACKUP", Icon: CloudDownload, path: "/console/console-backup" },
-  { research: null, title: "LAUNDRY SERVICES", Icon: AdminPanelSettings, path: "/console/console-laundry" },
-  { research: null, title: "WAVE RESEARCH LOGS", Icon: Password, path: "/console/console-logs" },
+  // { research: null, title: "LAUNDRY SERVICES", Icon: AdminPanelSettings, path: "/console/console-laundry" },
+  { research: null, title: "CONSOLE LOGS", Icon: Password, path: "/console/console-logs" },
 
   // ? Console Apihub Core
   { research: "apihub", title: "API Hub Endpoints", Icon: Insights, path: "/console/apihub/modify-endpoints" },
@@ -46,6 +47,9 @@ const CONSOLE_ROUTES: Routes[] = [
   { research: "logs", title: "All Requests", Icon: RequestPage, path: "/console/logs/all-requests" },
   { research: "logs", title: "Daily Statistics", Icon: Today, path: "/console/logs/daily-statistics" },
   { research: "logs", title: "Failed Requests", Icon: ReportProblem, path: "/console/logs/failed-requests" },
+
+  // ? Console Games Logs
+  { research: "games", title: "Create Game world", Icon: AddBox, path: "/console/games/create-world" },
 ];
 
 export default CONSOLE_ROUTES;

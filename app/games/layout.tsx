@@ -8,7 +8,7 @@ import { Box } from "@mui/material";
 import { styles } from "components/layouts/apihub";
 import { ReactChildren } from "interfaces/components/others/shared.interface";
 import { getUserCookies } from "utils/serverHelpers";
-import ManagerService from "services/manager.service";
+import ManagerService from "services/games.service";
 
 export const metadata: Metadata = {
   title: pageInfo.home.title,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 import GamesLayoutContainer from "components/layouts/games";
-import RegisterContainer from "components/manager/Register";
+import RegisterContainer from "components/games/Register";
 
 const InfoLayoutContainerPage = async ({ children }: ReactChildren) => {
   if (process.env.NODE_ENV !== "development") {

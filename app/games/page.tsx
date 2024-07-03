@@ -8,7 +8,7 @@ import { Box } from "@mui/material";
 import { styles } from "components/layouts/apihub";
 import { ReactChildren } from "interfaces/components/others/shared.interface";
 import { getUserCookies } from "utils/serverHelpers";
-import ManagerService from "services/manager.service";
+import ManagerService from "services/games.service";
 
 export const metadata: Metadata = {
   title: pageInfo.home.title,

@@ -9,15 +9,15 @@ import { DailyStatResponse, GetEndpointsPayload } from "interfaces/services/cons
 class GamesService {
   gamesServiceUrl = "/games";
 
-  getProfile = async (cookie?: string | null): Promise<NonPaginatedResponse<any>> => {
-    const path = this.gamesServiceUrl + "/get-profile",
-      option = cookie ? { headers: { Cookie: cookie } } : {};
+  // gamesService = async (cookie?: string | null): Promise<NonPaginatedResponse<any>> => {
+  //   const path = this.gamesServiceUrl + "/get-profile",
+  //     option = cookie ? { headers: { Cookie: cookie } } : {};
 
-    return await service
-      .get(path, option)
-      .then((res: AxiosResponse) => res.data)
-      .catch((err: AxiosError) => err.response?.data || {});
-  };
+  //   return await service
+  //     .get(path, option)
+  //     .then((res: AxiosResponse) => res.data)
+  //     .catch((err: AxiosError) => err.response?.data || {});
+  // };
 }
 
 export default GamesService;
