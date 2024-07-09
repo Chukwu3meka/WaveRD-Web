@@ -33,14 +33,15 @@ const InfoLayoutContainerPage = async ({ children }: ReactChildren) => {
   const cookie = await getUserCookies(),
     managerService = new ManagerService();
 
-  const profile = await managerService.getProfile(cookie).then(({ success, data, message }) => {
-    if (success) return data;
-    return null;
-  });
+  // const profile = await managerService.getProfile(cookie).then(({ success, data, message }) => {
+  //   if (success) return data;
+  //   return null;
+  // });
 
-  console.log({ profile });
+  // console.log({ profile });
 
-  return profile ? <GamesLayoutContainer>{children}</GamesLayoutContainer> : <RegisterContainer />;
+  // return profile ? <GamesLayoutContainer>{children}</GamesLayoutContainer> : <RegisterContainer />;
+  return <RegisterContainer />;
 };
 
 export default InfoLayoutContainerPage;
