@@ -16,31 +16,31 @@ interface GamesLayoutProps {
   navRoutes: { label: string; Icon: SvgIconComponent; id: number }[];
 }
 
-export default function GamesLayout({ navRoutes, children, activeRoute, handlerRouteChange }: GamesLayoutProps) {
-  return (
-    <main className={styles.layout}>
-      <HeaderContainer position="relative" />
+const GamesLayout = ({ navRoutes, children, activeRoute, handlerRouteChange }: GamesLayoutProps) => (
+  <main className={styles.layout}>
+    <HeaderContainer position="relative" />
 
-      <Fade>{children}</Fade>
+    <Fade>{children}</Fade>
 
-      <nav>
-        <BottomNavigation showLabels value={activeRoute}>
-          {navRoutes
-            .sort((a, b) => a.id - b.id)
-            .map(({ label, Icon, id }) => (
-              <BottomNavigationAction
-                onClick={handlerRouteChange(id)}
-                key={label}
-                icon={<Icon fontSize="small" />}
-                label={
-                  <Typography mt={-0.1} fontSize=".6em" fontWeight="600" letterSpacing=".05em">
-                    {label}
-                  </Typography>
-                }
-              />
-            ))}
-        </BottomNavigation>
-      </nav>
-    </main>
-  );
-}
+    <nav>
+      <BottomNavigation showLabels value={activeRoute}>
+        {navRoutes
+          .sort((a, b) => a.id - b.id)
+          .map(({ label, Icon, id }) => (
+            <BottomNavigationAction
+              onClick={handlerRouteChange(id)}
+              key={label}
+              icon={<Icon fontSize="small" />}
+              label={
+                <Typography mt={-0.1} fontSize=".6em" fontWeight="600" letterSpacing=".05em">
+                  {label}
+                </Typography>
+              }
+            />
+          ))}
+      </BottomNavigation>
+    </nav>
+  </main>
+);
+
+export default GamesLayout;

@@ -9,7 +9,7 @@ const STABLE_VERSION = "/v1",
   BASE_URL = SERVER_ENV_URLS[INIT_NODE_ENV] + STABLE_VERSION;
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
 
   modularizeImports: {
     "@mui/material": { transform: "@mui/material/{{ member }}" },

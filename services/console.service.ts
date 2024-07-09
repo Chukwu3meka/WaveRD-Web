@@ -114,6 +114,16 @@ class ConsoleService {
       .catch((err: AxiosError) => err.response?.data || {});
   };
 
+  // ! GAMES
+  createWorld = async (title: string): Promise<NonPaginatedResponse<string>> => {
+    const path = this.consoleServiceUrl + "/games/manage-game-world";
+
+    return await service
+      .post(path, { title }, { responseType: "stream" })
+      .then((res: AxiosResponse) => res.data.getReader())
+      .catch((err: AxiosError) => err.response?.data || {});
+  };
+
   // const consoleService = {
   //   contactUs: async (payload: ContactUsPayload) => {
   //     const response = await service.post(consoleServiceUrl + "/contact-us", payload);
