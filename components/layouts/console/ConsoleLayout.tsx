@@ -88,7 +88,7 @@ const ConsoleLayout = ({ title, profile, children, activeRoute, themeHandler, me
     </nav>
 
     <main>
-      <Paper component="header" elevation={2} sx={{ p: 1 }}>
+      <Paper component="header" elevation={2} sx={{ p: 1, zIndex: 10 }}>
         <Stack direction="row" alignItems="center" spacing={1}>
           {activeRoute.startsWith("/console/console-") ? (
             <></>

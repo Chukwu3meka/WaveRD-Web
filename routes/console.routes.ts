@@ -20,6 +20,7 @@ import {
   Today,
   ReportProblem,
   AddBox,
+  ModeEditOutline,
 } from "@mui/icons-material";
 
 import { Routes } from "interfaces/utils/constants.interface";
@@ -50,6 +51,7 @@ const CONSOLE_ROUTES: Routes[] = [
 
   // ? Console Games Logs
   { research: "games", title: "Create Game world", Icon: AddBox, path: "/console/games/create-world" },
+  { research: "games", title: "Manage Game world", Icon: ModeEditOutline, path: "/console/games/manage-world" },
 ];
 
 export default CONSOLE_ROUTES;
