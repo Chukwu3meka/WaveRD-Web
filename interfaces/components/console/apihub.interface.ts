@@ -1,6 +1,6 @@
 import { Theme } from "../others/layouts.interface";
 import { MouseEventHandler, RefObject } from "react";
-import { GetConsoleEndpointResponse, Snippets } from "interfaces/services/console.interface";
+import { ConsoleData, GetConsoleEndpointResponse, Snippets } from "interfaces/services/console.interface";
 
 export interface ConsoleEndpointsContent {
   title: string;
@@ -14,22 +14,13 @@ export interface ConsoleEndpointsContent {
   id: string;
 }
 
-export interface ConsoleEndpointsData {
-  loading: boolean;
-  page: number;
-  rows: number;
-  total: number;
-  filter: string;
-  content: ConsoleEndpointsContent[];
-}
-
 type RowAction = "modify" | "visibility" | "delete";
 export interface ConsoleEndpointsProps {
   filter: string;
   searching: boolean;
   setFilter: Function;
   actions?: RowAction;
-  data: ConsoleEndpointsData;
+  data: ConsoleData<ConsoleEndpointsContent>;
   handlePageChange: Function;
   tableRef: RefObject<HTMLTableElement>;
   searchHandler: MouseEventHandler<HTMLButtonElement>;
@@ -59,8 +50,8 @@ interface FormData {
 }
 
 export interface ConsoleEndpointProps {
-  exists: boolean;
   theme: Theme;
+  exists: boolean;
   formData: FormData;
   onInputChange: Function;
   updateSnippet: Function;
@@ -69,3 +60,5 @@ export interface ConsoleEndpointProps {
   composeEndpoint: MouseEventHandler<HTMLButtonElement>;
   // onValueChange: React.FocusEvent<HTMLInputElement>;
 }
+
+//

@@ -14,6 +14,7 @@ const teamRoutes = GAMES_ROUTES.find((route) => route.path === "/games/team");
 const infoRoutes = GAMES_ROUTES.find((route) => route.path === "/games/info");
 
 interface GamesLayoutContainerProps {
+  profile: any;
   currRoute: string;
   children: React.ReactNode;
 }
@@ -50,8 +51,9 @@ const GamesLayoutContainer = (props: GamesLayoutContainerProps) => {
     }
   };
 
+
   return (
-    <GamesLayout activeRoute={activeRoute} handlerRouteChange={handlerRouteChange} navRoutes={navRoutes}>
+    <GamesLayout activeRoute={activeRoute} profile={props.profile} handlerRouteChange={handlerRouteChange} navRoutes={navRoutes}>
       {props.children}
     </GamesLayout>
   );

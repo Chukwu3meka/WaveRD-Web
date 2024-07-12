@@ -259,7 +259,9 @@ const ConsoleEndpointContainer = (props: ConsoleEndpointContainerProps) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({ theme: state.account.profile.theme }),
+const mapStateToProps = (state: RootState) => ({
+    theme: state.account.profile.theme,
+  }),
   mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConsoleEndpointContainer);

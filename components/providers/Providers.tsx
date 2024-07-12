@@ -22,7 +22,10 @@ import { setDeviceSizeAction, setProfileAction, setDisplayHeaderAction, setBreak
 const { xl, lg, md, sm } = BREAKPOINTS;
 
 const Providers = (props: ProvidersContainerProps) => {
-  const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } = props;
+  // setGamesProfileAction
+
+  const { children, user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction, gamesProfile } =
+    props;
 
   const pathname = usePathname(),
     [initialized, setInitialized] = useState(false),

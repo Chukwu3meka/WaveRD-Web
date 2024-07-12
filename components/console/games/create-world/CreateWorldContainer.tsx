@@ -10,12 +10,12 @@ import { FocusEvent, useState } from "react";
 type Status = "pending" | "success" | "failed";
 
 const CreateWorldContainer = () => {
-  const [progress, setProgress] = useState<{ status: Status; activity: string }[]>([]);
-  const [formData, setFormData] = useState({ title: "111", loading: false, invalid: false });
+  const [created, setCreated] = useState(false),
+    [progress, setProgress] = useState<{ status: Status; activity: string }[]>([]),
+    [formData, setFormData] = useState({ title: "", loading: false, invalid: false });
 
   const titleHandler = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>, status: boolean) => {
-    const title = e.target.value;
-    setFormData((formData) => ({ ...formData, title }));
+    setFormData((formData) => ({ ...formData, title: e.target.value }));
   };
 
   const createWorldHandler = async () => {
@@ -24,8 +24,8 @@ const CreateWorldContainer = () => {
     const title = formData.title;
 
     try {
+      setCreated(false);
       setProgress(() => []);
-
       validator({ value: title, type: "comment", label: "Title" });
 
       setFormData((formData) => ({ ...formData, loading: true }));
@@ -59,6 +59,12 @@ const CreateWorldContainer = () => {
               if (!success && message) {
                 enqueueSnackbar(message || "An error occured", { variant: "error" });
               }
+
+              if (success && message === "Game world created successfully") {
+                setCreated(true);
+                setProgress(() => []);
+                setFormData((formData) => ({ ...formData, title: "" }));
+              }
             }
           });
         },
@@ -69,12 +75,15 @@ const CreateWorldContainer = () => {
       } else {
         enqueueSnackbar(err ? err.message : "An error occured", { variant: "error" });
       }
+      setProgress((progress) => progress.map((action) => ({ ...action, status: "failed" })));
     } finally {
       setFormData((formData) => ({ ...formData, loading: false }));
     }
   };
 
-  return <CreateWorld progress={progress} formData={formData} titleHandler={titleHandler} createWorldHandler={createWorldHandler} />;
+  return (
+    <CreateWorld created={created} progress={progress} formData={formData} titleHandler={titleHandler} createWorldHandler={createWorldHandler} />
+  );
 };
 
 export default CreateWorldContainer;

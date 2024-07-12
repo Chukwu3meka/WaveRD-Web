@@ -3,35 +3,30 @@
 import validator from "utils/validator";
 import ConsoleService from "services/console.service";
 
+import { ManageWorldView } from ".";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
-import { ConsoleEndpoints, ConsoleEndpointsDialog } from ".";
 import { PaginatedResponse } from "interfaces/services/shared.interface";
-import { ConsoleEndpointsProps, ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
-import { ConsoleData } from "interfaces/services/console.interface";
+import { ManageGameWorldsProps } from "interfaces/components/console/games.interface";
+import { ConsoleData, GetGameWorldsResponse } from "interfaces/services/console.interface";
 
-interface ConsoleEndpointsContainerProps {
-  // endpoints: PaginatedResponse<Endpoint>["data"] | null;
-  endpoints: PaginatedResponse<ConsoleEndpointsContent>["data"] | null;
-}
-
-const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps) => {
+const ManageWorldContainer = ({ worlds }: { worlds: PaginatedResponse<GetGameWorldsResponse>["data"] | null }) => {
   const consoleService = new ConsoleService(),
     router = useRouter(),
     [filter, setFilter] = useState(""),
     [searching, setSearching] = useState(false),
     [reference, setReference] = useState<string | null>(null),
-    tableRef: ConsoleEndpointsProps["tableRef"] = useRef(null),
-    [action, setAction] = useState<ConsoleEndpointsProps["actions"] | null>(null);
+    tableRef: ManageGameWorldsProps["tableRef"] = useRef(null),
+    [action, setAction] = useState<ManageGameWorldsProps["actions"] | null>(null);
 
-  const [data, setData] = useState<ConsoleData<ConsoleEndpointsContent>>({
+  const [data, setData] = useState<ConsoleData<GetGameWorldsResponse>>({
     filter: "",
     loading: false,
-    page: endpoints?.page || 0,
-    rows: endpoints?.size || 20,
-    content: endpoints?.content || [],
-    total: endpoints?.totalElements || 0,
+    page: worlds?.page || 0,
+    rows: worlds?.size || 20,
+    content: worlds?.content || [],
+    total: worlds?.totalElements || 0,
   });
 
   const refreshEndpoints = () => {
@@ -44,15 +39,12 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
 
   const handlePageChange = async (page: number, rowsPerPage: number = data.rows) => {
     tableRef.current?.scrollIntoView({ behavior: "smooth" });
-
     setData((data) => ({ ...data, loading: true, page, rows: rowsPerPage }));
-
     await consoleService
-      .getEndpoints({ filter: data.filter, page, size: rowsPerPage })
+      .getGameWorlds({ filter: data.filter, page, size: rowsPerPage })
       .then(({ success, data }) => {
         if (!success) throw { message: "An error occurred" };
         if (!data.totalElements) enqueueSnackbar("No Endpoint added yet", { variant: "success" });
-
         setData((initData) => ({ ...initData, loading: false, content: data.content, total: data.totalElements }));
       })
       .catch(() => {
@@ -77,11 +69,11 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
     }
   };
 
-  const rowActionHandler = (action: ConsoleEndpointsProps["actions"], id: null | string) => () => {
+  const rowActionHandler = (action: ManageGameWorldsProps["actions"], id: null | string) => () => {
     if (!id) return;
 
     if (action === "modify") {
-      router.push(`/console/apihub/modify-endpoints/${id}`);
+      router.push(`/console/apihub/modify-worlds/${id}`);
     } else {
       setReference(id);
       setAction(action);
@@ -90,7 +82,7 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
 
   return (
     <main style={{ alignSelf: "start" }}>
-      <ConsoleEndpoints
+      {/* <ManageWorldView
         data={data}
         filter={filter}
         tableRef={tableRef}
@@ -100,11 +92,11 @@ const ConsoleEndpointsContainer = ({ endpoints }: ConsoleEndpointsContainerProps
         refreshEndpoints={refreshEndpoints}
         handlePageChange={handlePageChange}
         rowActionHandler={rowActionHandler}
-      />
+      /> */}
 
-      <ConsoleEndpointsDialog data={data} action={action} setData={setData} reference={reference} setReference={setReference} />
+      {/* <ManageWorldDialog data={data} action={action} setData={setData} reference={reference} setReference={setReference} /> */}
     </main>
   );
 };
 
-export default ConsoleEndpointsContainer;
+export default ManageWorldContainer;

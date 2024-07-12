@@ -17,6 +17,7 @@ import {
   GetConsoleEndpointPayload,
   GetConsoleEndpointResponse,
   ConsoleEndpointTitleExistsResponse,
+  GetGameWorldsResponse,
 } from "interfaces/services/console.interface";
 
 class ConsoleService {
@@ -124,12 +125,15 @@ class ConsoleService {
       .catch((err: AxiosError) => err.response?.data || {});
   };
 
-  // const consoleService = {
-  //   contactUs: async (payload: ContactUsPayload) => {
-  //     const response = await service.post(consoleServiceUrl + "/contact-us", payload);
-  //     return response.data;
-  //   },
-  // };
+  getGameWorlds = async ({ filter, page, size, cookie }: GetAllRequestsPayload): Promise<PaginatedResponse<GetGameWorldsResponse>> => {
+    const endpoint = this.consoleServiceUrl + `/games/game-worlds?filter=${filter}&page=${page}&size=${size}`,
+      option = cookie ? { headers: { Cookie: cookie } } : {};
+
+    return await service
+      .get(endpoint, option)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data || {});
+  };
 }
 
 export default ConsoleService;

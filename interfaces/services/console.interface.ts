@@ -77,3 +77,19 @@ export interface SaveEndpointPayload {
   snippets: Snippets[];
   description: string;
 }
+
+export interface GetGameWorldsResponse {
+  ref: string;
+  title: string;
+  created: string;
+  totalUnmanaged: number;
+}
+
+export interface ConsoleData<K> {
+  loading: boolean;
+  page: number;
+  rows: number;
+  total: number;
+  filter: string;
+  content: K[];
+}

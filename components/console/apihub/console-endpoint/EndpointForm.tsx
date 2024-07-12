@@ -4,8 +4,9 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { CATEGORIES_ARRAY, HTTP_METHODS } from "utils/constants";
 import { docco, darcula } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { ConsoleEndpointProps } from "interfaces/components/console/apihub.interface";
-import { TextField, IconButton, Grid, FormControl, InputLabel, Select } from "@mui/material";
+import { TextareaAutosize as BaseTextareaAutosize } from "@mui/base/TextareaAutosize";
 import { CircularProgress, InputAdornment, MenuItem, OutlinedInput } from "@mui/material";
+import { TextField, IconButton, Grid, FormControl, InputLabel, Select } from "@mui/material";
 
 const EndpointForm = ({
   theme,

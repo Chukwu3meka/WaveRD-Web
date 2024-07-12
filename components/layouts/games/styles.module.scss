@@ -10,7 +10,10 @@ main.layout {
     margin: auto;
     display: grid;
     max-width: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
     grid-template-columns: auto;
+    height: calc(100vh - var(--headerHeight));
 
     // Use :where to allow child style take higher css specificity
     :where(& > main, & > div) {

@@ -1,3 +1,4 @@
+import { GamesProfile } from "interfaces/redux-store/games.interfaces";
 import { Theme } from "./layouts.interface";
 import { ReactChildren } from "./shared.interface";
 import { Profile } from "interfaces/redux-store/account.interfaces";
@@ -9,7 +10,10 @@ export interface StoreContextProviderProps {
 export interface ProvidersContainerProps {
   theme?: Theme;
   user: Profile | null;
+  gamesProfile: GamesProfile;
+  //
   // modal: React.ReactNode;
+  //
   displayHeader?: boolean;
   children?: React.ReactNode;
   setProfileAction?: Function;

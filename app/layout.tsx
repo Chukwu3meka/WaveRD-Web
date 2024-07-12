@@ -14,6 +14,7 @@ import { Profile } from "interfaces/redux-store/account.interfaces";
 import { RootProps } from "interfaces/components/others/layouts.interface";
 import { ReactChildren } from "interfaces/components/others/shared.interface";
 import AccountsService from "services/accounts.service";
+import GamesService from "services/games.service";
 
 const merienda = Merienda({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({ subsets: ["latin"] });
@@ -23,9 +24,15 @@ const { description, keywords, title } = pageInfo.home,
 
 const ProvidersSSR = async ({ children }: ReactChildren) => {
   const cookie = await getUserCookies(),
+    gamesService = new GamesService(),
     accountsService = new AccountsService();
 
   const user = await accountsService.getProfile(cookie).then(({ success, data }) => {
+    if (success) return data;
+    return null;
+  });
+
+  const gamesProfile = await gamesService.getProfile(cookie).then(({ success, data }) => {
     if (success) return data;
     return null;
   });
@@ -35,7 +42,9 @@ const ProvidersSSR = async ({ children }: ReactChildren) => {
 
   return (
     <ReduxProvider>
-      <Providers user={user}>{children}</Providers>
+      <Providers user={user} gamesProfile={gamesProfile}>
+        {children}
+      </Providers>
     </ReduxProvider>
   );
 };
