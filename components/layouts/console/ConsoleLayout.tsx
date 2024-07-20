@@ -102,7 +102,7 @@ const ConsoleLayout = ({ title, profile, children, activeRoute, themeHandler, me
           </Ellipsis>
         </Stack>
 
-        <Button id="back" variant="outlined" color="primary" onClick={prevPageHandler}>
+        <Button id="back" variant="outlined" color="primary" onClick={prevPageHandler} sx={{ fontWeight: "600" }}>
           Back
         </Button>
       </Paper>

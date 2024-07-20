@@ -19,7 +19,7 @@ const VerificationFailed = () => (
     </Typography>
 
     <Box>
-      <Button variant="outlined" sx={{ width: "230px", mt: 1 }}>
+      <Button variant="outlined" sx={{ width: "230px", mt: 1, fontWeight: "600" }}>
         <Link href="/info/contact">Contact US</Link>
       </Button>
     </Box>

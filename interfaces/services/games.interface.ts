@@ -15,9 +15,8 @@ export interface GetGameWorldsResponse {
 }
 
 export interface GetGameWorldClubsResponse {
-  reference: string;
-  club: string;
-  divison: string;
-  manager: null | string;
+  ref: string;
+  title: string;
   budget: number;
+  manager: null | string;
 }

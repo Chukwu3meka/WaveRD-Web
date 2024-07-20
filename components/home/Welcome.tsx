@@ -28,13 +28,13 @@ const Welcome = () => (
 
         <span>
           <Link href="/games">
-            <Button size="large" variant="contained">
+            <Button size="large" variant="contained" sx={{ fontWeight: "600" }}>
               Soccer Manager
             </Button>
           </Link>
 
           <Link href="/apihub">
-            <Button size="large" variant="contained">
+            <Button size="large" variant="contained" sx={{ fontWeight: "600" }}>
               API Hub
             </Button>
           </Link>

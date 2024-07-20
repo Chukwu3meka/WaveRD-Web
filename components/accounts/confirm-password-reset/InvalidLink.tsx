@@ -18,7 +18,7 @@ const InvalidLink = () => (
     </Typography>
 
     <Link href="/accounts/signin">
-      <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)" }}>
+      <Button variant="outlined" sx={{ width: "clamp(200px, 100%, 320px)", fontWeight: "600" }}>
         Sign in
       </Button>
     </Link>

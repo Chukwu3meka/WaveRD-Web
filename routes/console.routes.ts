@@ -21,6 +21,7 @@ import {
   ReportProblem,
   AddBox,
   ModeEditOutline,
+  AddAPhotoOutlined,
 } from "@mui/icons-material";
 
 import { Routes } from "interfaces/utils/constants.interface";
@@ -41,7 +42,8 @@ const CONSOLE_ROUTES: Routes[] = [
   { research: null, title: "CONSOLE LOGS", Icon: Password, path: "/console/console-logs" },
 
   // ? Console Apihub Core
-  { research: "apihub", title: "API Hub Endpoints", Icon: Insights, path: "/console/apihub/modify-endpoints" },
+  { research: "apihub", title: "Add New Endpoint", Icon: AddAPhotoOutlined, path: "/console/apihub/modify-endpoints/new" },
+  { research: "apihub", title: "Manage Endpoints", Icon: Insights, path: "/console/apihub/modify-endpoints" },
   { research: "apihub", title: "API Hub Home", Icon: Home, path: "/console/apihub/home" },
 
   // ? Console WAVE Logs

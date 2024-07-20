@@ -71,6 +71,7 @@ export const CATEGORIES: Categories = {
   "65fdaf6b3f0da305ed4306af": "football-competitions",
   "65fdaf6b3f0da305ed4306ac": "football-countries",
   "65fdaf6b3f0da305ed4306b0": "football-referees",
+  "669b04ac3a269a875e3702db": "others",
 };
 
 export const CATEGORIES_ARRAY = Object.entries(CATEGORIES).map(([k, v]) => ({

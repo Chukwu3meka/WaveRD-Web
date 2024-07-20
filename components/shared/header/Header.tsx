@@ -46,7 +46,7 @@ const Header = ({ className, authenticated, swapColorFn, color, theme, themeHand
           <Box>
             {!authenticated && (
               <Link href="/accounts/signin">
-                <Button variant="contained" color="primary" startIcon={<LoginIcon />}>
+                <Button variant="contained" color="primary" startIcon={<LoginIcon />} sx={{ fontWeight: "600" }}>
                   Sign in
                 </Button>
               </Link>
@@ -54,7 +54,7 @@ const Header = ({ className, authenticated, swapColorFn, color, theme, themeHand
 
             {authenticated && (
               <a href={`${process.env.BASE_URL}/accounts/signout`} rel="noopener noreferrer">
-                <Button variant="outlined" startIcon={<LogOutIcon />}>
+                <Button variant="outlined" sx={{ fontWeight: "600" }} startIcon={<LogOutIcon />}>
                   Sign out
                 </Button>
               </a>

@@ -65,7 +65,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
           <span>Step up to the challenge and beat the best managers. Take charge and steer your team to victory by joining now.</span>
 
           <Link href="/accounts/signup">
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" sx={{ fontWeight: "600" }}>
               Sign up
             </Button>
           </Link>
@@ -110,7 +110,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
           </div>
           <span>Assemble your team and manage club finances, your players are eager for your leadership.</span>
           <Link href="/accounts/signin">
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" sx={{ fontWeight: "600" }}>
               Sign in
             </Button>
           </Link>

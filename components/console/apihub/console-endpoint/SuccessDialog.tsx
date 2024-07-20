@@ -22,7 +22,7 @@ const SuccessDialog = ({ open, handleClose, exists }: SuccessDialogProps) => (
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button variant="contained" onClick={handleClose}>
+      <Button variant="contained" onClick={handleClose} sx={{ fontWeight: "600" }}>
         Back
       </Button>
     </DialogActions>

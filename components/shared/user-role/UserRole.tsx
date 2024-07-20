@@ -31,7 +31,7 @@ const UserRole = ({ role, toggleHandler, showDialog }: UserRoleProps) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button variant="contained" onClick={toggleHandler} autoFocus>
+              <Button variant="contained" onClick={toggleHandler} autoFocus sx={{ fontWeight: "600" }}>
                 Okay
               </Button>
             </DialogActions>

@@ -88,7 +88,7 @@ const VisibilityDialog = ({ action, reference, setReference, data, setData }: Vi
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" color={action === "delete" ? "error" : "primary"} onClick={proceedHandler}>
+        <Button variant="contained" color={action === "delete" ? "error" : "primary"} onClick={proceedHandler} sx={{ fontWeight: "600" }}>
           Proceed
         </Button>
       </DialogActions>

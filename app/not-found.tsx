@@ -18,7 +18,9 @@ const NotFoundPage = () => {
           subTitle="Sorry, the page you have visited does not exist."
           extra={
             <Link href="/">
-              <Button variant="contained">Back Home</Button>
+              <Button variant="contained" sx={{ fontWeight: "600" }}>
+                Back Home
+              </Button>
             </Link>
           }
         />

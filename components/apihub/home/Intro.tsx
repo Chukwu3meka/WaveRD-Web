@@ -20,7 +20,7 @@ const Intro = () => (
           </Typography>
 
           <Link href="/apihub/endpoints">
-            <Button size="large" variant="contained" color="success">
+            <Button size="large" variant="contained" color="success" sx={{ fontWeight: "600" }}>
               Start for free
             </Button>
           </Link>

@@ -42,7 +42,7 @@ const Search = ({ searchResult, onInputChange, inputValue, getEndpoint, searchEn
       renderInput={(params) => <TextField {...params} label={<Stack direction="row">Start typing to search endpoints</Stack>} />}
     />
 
-    <Button href="" variant="contained" onClick={searchEndpoints} sx={{ height: 43, px: 3 }} startIcon={<SearchIcon />}>
+    <Button href="" variant="contained" onClick={searchEndpoints} sx={{ height: 43, px: 3, fontWeight: "600" }} startIcon={<SearchIcon />}>
       Search
     </Button>
   </Stack>

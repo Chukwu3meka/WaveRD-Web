@@ -31,7 +31,14 @@ const CreateWorld = ({ createWorldHandler, progress, formData, titleHandler, cre
         />
       </FormControl>
 
-      <Button id="signin" type="submit" color="primary" variant="contained" onClick={createWorldHandler} disabled={formData.loading}>
+      <Button
+        id="signin"
+        type="submit"
+        color="primary"
+        variant="contained"
+        sx={{ fontWeight: "600" }}
+        disabled={formData.loading}
+        onClick={createWorldHandler}>
         Create
       </Button>
     </Stack>

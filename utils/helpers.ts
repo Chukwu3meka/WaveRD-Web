@@ -245,3 +245,6 @@ export const transformDivision = (source: "ref" | "tournament", key: string) => 
   const tournament = tournaments.find((tournament) => tournament[source] === key);
   if (!!tournament) return tournament[source === "ref" ? "tournament" : "ref"];
 };
+
+// ordinal suffix
+export const ordinalSuffix = (n: number) => n + (n + 0 ? ["th", "st", "nd", "rd"][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : "");

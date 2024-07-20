@@ -21,7 +21,7 @@ const Success = () => (
     </Typography>
 
     <Link href="/accounts/signin">
-      <Button variant="outlined" sx={{ width: "230px", mt: 1 }}>
+      <Button variant="outlined" sx={{ width: "230px", mt: 1, fontWeight: "600" }}>
         Sign in
       </Button>
     </Link>

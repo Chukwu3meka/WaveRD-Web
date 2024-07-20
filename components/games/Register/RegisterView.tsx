@@ -1,6 +1,8 @@
 "use client";
 
-import { Badge, Box, CircularProgress, Stack, Tooltip } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
+import { Badge, Box, ButtonGroup, CircularProgress, Divider, IconButton, Skeleton, Stack, Tooltip } from "@mui/material";
 import { Fade } from "react-awesome-reveal";
 import { SvgIconComponent } from "@mui/icons-material";
 
@@ -14,10 +16,11 @@ import { Grid, Table, Paper, Alert, Button, TableRow, TableBody, TableCell, Tabl
 import Autocomplete from "@mui/material/Autocomplete";
 import { Fragment, useEffect, useState } from "react";
 import GamesService from "services/games.service";
-import { ObjectEntries, transformDivision } from "utils/helpers";
+import { ObjectEntries, ordinalSuffix, transformDivision } from "utils/helpers";
 import Ellipsis from "components/shared/ellipsis";
-import { SelectGameDivision, SelectGameWorld } from ".";
+import { SelectClub, SelectGameDivision, SelectGameWorld, ViewClub } from ".";
 import { GetGameWorldClubsResponse, GetGameWorldsResponse } from "interfaces/services/games.interface";
+import { Result } from "antd";
 // import { Badge, Card } from "antd";
 
 interface Divisions {
@@ -28,11 +31,13 @@ interface Divisions {
 }
 
 const RegisterView = (props: any) => {
-  const [clubs, setClubs] = useState<GetGameWorldClubsResponse[]>([]),
-    [divisions, setDivisions] = useState<Divisions[]>([]),
-    [gameWorlds, setGameWorlds] = useState<GetGameWorldsResponse[]>([]),
-    [loadingWorlds, setLoadingWorlds] = useState(false),
+  const [clubData, setClubData] = useState<any>({}),
     [loadingClubs, setLoadingClubs] = useState(false),
+    [loadingWorlds, setLoadingWorlds] = useState(false),
+    [divisions, setDivisions] = useState<Divisions[]>([]),
+    [showClub, setShowClub] = useState<string | null>(null),
+    [clubs, setClubs] = useState<GetGameWorldClubsResponse[]>([]),
+    [gameWorlds, setGameWorlds] = useState<GetGameWorldsResponse[]>([]),
     [formData, setFormData] = useState({ gameWorld: "", gameWorldInput: "", division: "", club: "" });
 
   const gamesService = new GamesService();
@@ -56,17 +61,16 @@ const RegisterView = (props: any) => {
   };
 
   const onGameWorldChange = async (event: any, gameWorld: any | null) => {
-    if (gameWorld) {
-      if (clubs) setClubs([]);
-      if (divisions) setDivisions([]);
-      setFormData((x) => ({ ...x, gameWorld: gameWorld.ref, division: "", club: "" }));
+    if (clubs) setClubs([]);
+    if (divisions) setDivisions([]);
+    setFormData((x) => ({ ...x, gameWorld: gameWorld?.ref || "", division: "", club: "" }));
 
+    if (gameWorld)
       setDivisions(
         gameWorld.divisions
           .sort((a: any, b: any) => Number(a.division.split("_")[0].replace("tour", "")) - Number(b.division.split("_")[0].replace("tour", "")))
           .map(({ division, total }: any) => ({ title: transformDivision("ref", division), unmanaged: total }))
       );
-    }
   };
 
   const onGameWorldInputChange = async (event: Event, newInputValue: string) => {
@@ -79,6 +83,8 @@ const RegisterView = (props: any) => {
 
   const onDivisionChange = async (event: any, divisionLabel: any | null) => {
     setClubs([]);
+    if (!divisionLabel) setFormData((formData) => ({ ...formData, division: "", club: "" }));
+
     if (divisionLabel) {
       const world = formData.gameWorld,
         division = transformDivision("tournament", divisionLabel) || "";
@@ -91,16 +97,30 @@ const RegisterView = (props: any) => {
           .getGameWorldClubs({ world, division })
           .then(({ success, data }) => {
             if (success) return setClubs(data);
-            return setClubs([]);
           })
           .finally(() => setLoadingClubs(false));
       }
     }
   };
 
+  const viewClubHandler = async (ref: string) => {
+    console.log({ club: ref, world: formData.gameWorld });
+    setShowClub(ref);
+  };
+
+  const manageClubHandler = async (ref: string) => {
+    //
+
+    console.log({ manageClubHandler: ref });
+  };
+
+  const showClubHandler = () => {
+    setShowClub(null);
+  };
+
   return (
     <main style={{ width: "100%", maxWidth: 1200, alignSelf: "start" }}>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, mb: 1.5 }}>
         <Grid container spacing={1}>
           <Grid item sm={12} md={7} lg={7}>
             <SelectGameWorld {...{ gameWorlds, loadingWorlds, formData, onGameWorldChange, onGameWorldInputChange }} />
@@ -111,68 +131,15 @@ const RegisterView = (props: any) => {
         </Grid>
       </Box>
 
-      {formData.division && loadingClubs ? (
-        "loading"
-      ) : formData.division && !loadingClubs ? (
-        <TableContainer
-          component={Paper}
-          style={{ margin: "10px auto", overflow: "scroll", maxWidth: "100vw", maxHeight: "calc(100vh - 300px)" }}
-          // className={styles.tableContainer}
-        >
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell align="left">Club</TableCell>
-                <TableCell
-                  align="center"
-                  // onClick={sortClubsBudget}
-                >
-                  Budget
-                </TableCell>
-                <TableCell align="center">Manager</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {clubs?.map(
-                (
-                  {
-                    club,
-                    divison,
-                    // title,
-                    // ref,
-                    budget,
-                    manager,
-                    // ref,
-                    //
-                  },
-                  i
-                ) => (
-                  <TableRow key={i}>
-                    <TableCell
-                    // onClick={viewClubHandler(ref)}
-                    >
-                      {/* <figure>
-                        <Image src={`/images/club/${club}.webp`} layout="fill" alt="Club logo" />
-                      </figure> */}
+      {formData.gameWorld && formData.division ? (
+        <SelectClub {...{ loadingClubs, division: formData.division, clubs, viewClubHandler, manageClubHandler }} />
+      ) : (
+        <Result status="403" subTitle={formData.gameWorld ? "Kindly Select a Division to proceed" : "Kindly Select a Game World to proceed"} />
+      )}
 
-                      {/*  */}
-
-                      {/* {title} */}
-                    </TableCell>
-                    <TableCell align="center">{`$${budget}m`}</TableCell>
-                    <TableCell align="center">
-                      {
-                        manager || <button>manage club</button>
-                        // <ManageClub club={ref} />
-                      }
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      ) : null}
+      <ViewClub
+        {...{ showClub: !!showClub, showClubHandler, clubData, created: gameWorlds.find((world) => world.ref !== formData.gameWorld)!?.created }}
+      />
     </main>
   );
 };

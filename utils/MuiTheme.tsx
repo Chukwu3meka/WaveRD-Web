@@ -53,7 +53,15 @@ const muiTheme = (mode: Theme) =>
           },
         },
       },
-      MuiButton: { styleOverrides: { root: { fontWeight: "600", letterSpacing: ".06em" } } },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            letterSpacing: ".06em",
+
+            //
+          },
+        },
+      },
       MuiTableRow: {
         styleOverrides: {
           root: {
