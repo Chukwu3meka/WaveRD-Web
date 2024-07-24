@@ -1,11 +1,14 @@
 import service from "./service";
 
 import { AxiosError, AxiosResponse } from "axios";
-import { ConsoleEndpointsContent } from "interfaces/components/console/apihub.interface";
-import { NonPaginatedResponse, PaginatedResponse } from "interfaces/services/shared.interface";
+import { NonPaginatedResponse } from "interfaces/services/shared.interface";
 
-import { DailyStatResponse, GetEndpointsPayload } from "interfaces/services/console.interface";
-import { GetGameWorldClubsResponse, GetGameWorldsResponse } from "interfaces/services/games.interface";
+import {
+  GetGameWorldsResponse,
+  GetGameWorldClubPayload,
+  GetGameWorldClubResponse,
+  GetGameWorldClubsResponse,
+} from "interfaces/services/games.interface";
 
 class GamesService {
   gamesServiceUrl = "/games";
@@ -37,6 +40,15 @@ class GamesService {
     division: string;
   }): Promise<NonPaginatedResponse<GetGameWorldClubsResponse[]>> => {
     const path = this.gamesServiceUrl + `/clubs/${world}/${division}`;
+
+    return await service
+      .get(path)
+      .then((res: AxiosResponse) => res.data)
+      .catch((err: AxiosError) => err.response?.data || {});
+  };
+
+  getGameWorldClub = async ({ world, club }: GetGameWorldClubPayload): Promise<NonPaginatedResponse<GetGameWorldClubResponse>> => {
+    const path = this.gamesServiceUrl + `/club/${world}/${club}`;
 
     return await service
       .get(path)

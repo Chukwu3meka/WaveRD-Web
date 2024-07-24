@@ -9,7 +9,6 @@ main.layout {
     width: 100%;
     margin: auto;
     display: grid;
-    max-width: 650px;
     overflow-y: auto;
     overflow-x: hidden;
     grid-template-columns: auto;
@@ -17,6 +16,7 @@ main.layout {
 
     // Use :where to allow child style take higher css specificity
     :where(& > main, & > div) {
+      max-width: 650px;
       align-self: center;
       justify-self: center;
       padding: 10px clamp(10px, 5vw, 20px);

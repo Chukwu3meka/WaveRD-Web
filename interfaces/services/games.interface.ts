@@ -20,3 +20,28 @@ export interface GetGameWorldClubsResponse {
   budget: number;
   manager: null | string;
 }
+
+interface Player {
+  ref: string;
+  age: number;
+  name: string;
+  rating: number;
+  roles: string[];
+}
+
+interface Club {
+  rating: number;
+  title: string;
+  manager: string | null;
+  stadium: string | null;
+  location: string | null;
+}
+export interface GetGameWorldClubResponse {
+  players: Player[];
+  club: Club;
+}
+
+export interface GetGameWorldClubPayload {
+  world: string;
+  club: string;
+}

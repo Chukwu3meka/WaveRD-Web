@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "lan-dev": "next dev -- -H 10.128.32.60",
     "turbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
